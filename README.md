@@ -1,3 +1,3 @@
 box2d.js
 ========
-https://code.google.com/p/box2d-html5/
+https://cdn.rawgit.com/flyover/box2d.js/master/Box2D/Build/Testbed/index.html
