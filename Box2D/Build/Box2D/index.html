@@ -1,0 +1,27 @@
+<html>
+
+<head>
+	<title>Box2D</title>
+	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="X-UA-Compatible" content="IE=9">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<script type="text/javascript" src="box2d-html5.js"></script>
+	<script type="text/javascript">
+	var main = {};
+	main.start = function ()
+	{
+		var str = "Box2D version " + box2d.b2_version + " (revision " + box2d.b2_changelist + ")";
+
+		document.body.appendChild(document.createElement('p')).innerHTML = str;
+
+		var gravity = new box2d.b2Vec2(0.0, -9.8);
+		var world = new box2d.b2World(gravity);
+	}
+	</script>
+</head>
+
+<body onload="main.start();">
+</body>
+
+</html>
+
