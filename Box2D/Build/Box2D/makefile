@@ -92,7 +92,7 @@ COMPILER_FLAGS += --jscomp_error=misplacedTypeAnnotation
 COMPILER_FLAGS += --jscomp_error=missingGetCssName
 COMPILER_FLAGS += --jscomp_error=missingProperties
 COMPILER_FLAGS += --jscomp_error=missingProvide
-COMPILER_FLAGS += --jscomp_error=missingRequire
+#COMPILER_FLAGS += --jscomp_error=missingRequire
 COMPILER_FLAGS += --jscomp_error=missingReturn
 COMPILER_FLAGS += --jscomp_error=newCheckTypes
 COMPILER_FLAGS += --jscomp_error=nonStandardJsDocs
