@@ -443,7 +443,12 @@ box2d.b2Contact.prototype.GetTangentSpeed = function ()
  */
 box2d.b2Contact.prototype.Reset = function (fixtureA, indexA, fixtureB, indexB)
 {
+	this.m_flag_islandFlag = false;
+	this.m_flag_touchingFlag = false;
 	this.m_flag_enabledFlag = true;
+	this.m_flag_filterFlag = false;
+	this.m_flag_bulletHitFlag = false;
+	this.m_flag_toiFlag = false;
 
 	this.m_fixtureA = fixtureA;
 	this.m_fixtureB = fixtureB;
