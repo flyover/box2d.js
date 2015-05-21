@@ -44,18 +44,21 @@ goog.exportProperty(box2d.b2ContactFeatureType, 'e_face'  , box2d.b2ContactFeatu
  * This must be 4 bytes or less.
  * @export 
  * @constructor 
- * @param {box2d.b2ContactID} id 
  */
-box2d.b2ContactFeature = function (id)
+box2d.b2ContactFeature = function ()
 {
-	this._id = id;
 };
 
 /**
  * @export 
- * @type {box2d.b2ContactID}
+ * @type {number}
  */
-box2d.b2ContactFeature.prototype._id = null;
+box2d.b2ContactFeature.prototype._key = 0;
+/**
+ * @export 
+ * @type {boolean}
+ */
+box2d.b2ContactFeature.prototype._key_invalid = false;
 /**
  * @export 
  * @type {number}
@@ -78,6 +81,33 @@ box2d.b2ContactFeature.prototype._typeA = 0; ///< The feature type on shapeA
 box2d.b2ContactFeature.prototype._typeB = 0; ///< The feature type on shapeB
 
 Object.defineProperty(
+	box2d.b2ContactFeature.prototype, 'key',
+	{
+		enumerable: false,
+		configurable: true,
+		/** @this {box2d.b2ContactFeature} */
+		get: function ()
+		{
+			if (this._key_invalid)
+			{
+				this._key_invalid = false;
+				this._key = this._indexA | (this._indexB << 8) | (this._typeA << 16) | (this._typeB << 24);
+			}
+			return this._key;
+		},
+		/** @this {box2d.b2ContactFeature} */
+		set: function (value)
+		{
+			this._key = value;
+			this._indexA = this._key & 0xff;
+			this._indexB = (this._key >> 8) & 0xff;
+			this._typeA = (this._key >> 16) & 0xff;
+			this._typeB = (this._key >> 24) & 0xff;
+		}
+	}
+);
+
+Object.defineProperty(
 	box2d.b2ContactFeature.prototype, 'indexA',
 	{
 		enumerable: false,
@@ -91,8 +121,7 @@ Object.defineProperty(
 		set: function (value)
 		{
 			this._indexA = value;
-			// update the b2ContactID
-			this._id._key = (this._id._key & 0xffffff00) | (this._indexA & 0x000000ff);
+			this._key_invalid = true;
 		}
 	}
 );
@@ -111,8 +140,7 @@ Object.defineProperty(
 		set: function (value)
 		{
 			this._indexB = value;
-			// update the b2ContactID
-			this._id._key = (this._id._key & 0xffff00ff) | ((this._indexB << 8) & 0x0000ff00);
+			this._key_invalid = true;
 		}
 	}
 );
@@ -131,8 +159,7 @@ Object.defineProperty(
 		set: function (value)
 		{
 			this._typeA = value;
-			// update the b2ContactID
-			this._id._key = (this._id._key & 0xff00ffff) | ((this._typeA << 16) & 0x00ff0000);
+			this._key_invalid = true;
 		}
 	}
 );
@@ -151,8 +178,7 @@ Object.defineProperty(
 		set: function (value)
 		{
 			this._typeB = value;
-			// update the b2ContactID
-			this._id._key = (this._id._key & 0x00ffffff) | ((this._typeB << 24) & 0xff000000);
+			this._key_invalid = true;
 		}
 	}
 );
@@ -164,7 +190,7 @@ Object.defineProperty(
  */
 box2d.b2ContactID = function ()
 {
-	this.cf = new box2d.b2ContactFeature(this);
+	this.cf = new box2d.b2ContactFeature();
 }
 
 /**
@@ -177,6 +203,23 @@ box2d.b2ContactID.prototype.cf = null;
  * @type {number}
  */
 box2d.b2ContactID.prototype.key = 0; ///< Used to quickly compare contact ids.
+Object.defineProperty(
+	box2d.b2ContactID.prototype, 'key',
+	{
+		enumerable: false,
+		configurable: true,
+		/** @this {box2d.b2ContactID} */
+		get: function ()
+		{
+			return this.cf.key;
+		},
+		/** @this {box2d.b2ContactID} */
+		set: function (value)
+		{
+			this.cf.key = value;
+		}
+	}
+);
 
 /**
  * @export 
@@ -197,29 +240,6 @@ box2d.b2ContactID.prototype.Clone = function ()
 {
 	return new box2d.b2ContactID().Copy(this);
 }
-
-Object.defineProperty(
-	box2d.b2ContactID.prototype, 'key',
-	{
-		enumerable: false,
-		configurable: true,
-		/** @this {box2d.b2ContactID} */
-		get: function ()
-		{
-			return this._key;
-		},
-		/** @this {box2d.b2ContactID} */
-		set: function (value)
-		{
-			this._key = value;
-			// update the b2ContactFeature
-			this.cf._indexA = this._key & 0x000000ff;
-			this.cf._indexB = (this._key >> 8) & 0x000000ff;
-			this.cf._typeA = (this._key >> 16) & 0x000000ff;
-			this.cf._typeB = (this._key >> 24) & 0x000000ff;
-		}
-	}
-);
 
 /**
  * A manifold point is a contact point belonging to a contact
