@@ -263,7 +263,7 @@ box2d.b2DynamicTree.prototype.RayCast = function (callback, input)
 			continue;
 		}
 
-		if (!box2d.b2TestOverlapAABB(node.aabb, segmentAABB))
+		if (!box2d.b2TestOverlap_AABB(node.aabb, segmentAABB))
 		{
 			continue;
 		}

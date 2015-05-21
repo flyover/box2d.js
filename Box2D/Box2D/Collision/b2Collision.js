@@ -1047,7 +1047,7 @@ box2d.b2AABB.prototype.TestOverlap = function (other)
  * @param {box2d.b2AABB} a
  * @param {box2d.b2AABB} b 
  */
-box2d.b2TestOverlapAABB = function (a, b)
+box2d.b2TestOverlap_AABB = function (a, b)
 {
 	var d1_x = b.lowerBound.x - a.upperBound.x;
 	var d1_y = b.lowerBound.y - a.upperBound.y;
@@ -1115,29 +1115,63 @@ box2d.b2ClipSegmentToLine = function (vOut, vIn, normal, offset, vertexIndexA)
  * @export 
  * @return {boolean} 
  * @param {box2d.b2Shape} shapeA 
+ * @param {number} indexA 
  * @param {box2d.b2Shape} shapeB 
+ * @param {number} indexB 
  * @param {box2d.b2Transform} xfA 
  * @param {box2d.b2Transform} xfB 
  */
-box2d.b2TestOverlapShape = function (shapeA, indexA, shapeB, indexB, xfA, xfB)
+box2d.b2TestOverlap_Shape = function (shapeA, indexA, shapeB, indexB, xfA, xfB)
 {
-	var input = box2d.b2TestOverlapShape.s_input.Reset();
+	var input = box2d.b2TestOverlap_Shape.s_input.Reset();
 	input.proxyA.SetShape(shapeA, indexA);
 	input.proxyB.SetShape(shapeB, indexB);
 	input.transformA.Copy(xfA);
 	input.transformB.Copy(xfB);
 	input.useRadii = true;
 
-	var simplexCache = box2d.b2TestOverlapShape.s_simplexCache.Reset();
+	var simplexCache = box2d.b2TestOverlap_Shape.s_simplexCache.Reset();
 	simplexCache.count = 0;
 
-	var output = box2d.b2TestOverlapShape.s_output.Reset();
+	var output = box2d.b2TestOverlap_Shape.s_output.Reset();
 
 	box2d.b2ShapeDistance(output, simplexCache, input);
 
 	return output.distance < 10 * box2d.b2_epsilon;
 }
-box2d.b2TestOverlapShape.s_input = new box2d.b2DistanceInput();
-box2d.b2TestOverlapShape.s_simplexCache = new box2d.b2SimplexCache();
-box2d.b2TestOverlapShape.s_output = new box2d.b2DistanceOutput();
+box2d.b2TestOverlap_Shape.s_input = new box2d.b2DistanceInput();
+box2d.b2TestOverlap_Shape.s_simplexCache = new box2d.b2SimplexCache();
+box2d.b2TestOverlap_Shape.s_output = new box2d.b2DistanceOutput();
+
+/**
+ * @export 
+ * @return {boolean} 
+ * @param {box2d.b2AABB|box2d.b2Shape} AABBA_or_shapeA 
+ * @param {box2d.b2AABB|number} AABBB_or_indexA 
+ * @param {box2d.b2Shape=} shapeB 
+ * @param {number=} indexB 
+ * @param {box2d.b2Transform=} xfA 
+ * @param {box2d.b2Transform=} xfB 
+ */
+box2d.b2TestOverlap = function (AABBA_or_shapeA, AABBB_or_indexA, shapeB, indexB, xfA, xfB)
+{
+	if ((AABBA_or_shapeA instanceof box2d.b2AABB) && 
+		(AABBB_or_indexA instanceof box2d.b2AABB))
+	{
+		return box2d.b2TestOverlap_AABB(AABBA_or_shapeA, AABBB_or_indexA);
+	}
+	else if ((AABBA_or_shapeA instanceof box2d.b2Shape) && 
+			 (typeof(AABBB_or_indexA) === 'number') && 
+			 (shapeB instanceof box2d.b2Shape) && 
+			 (typeof(indexB) === 'number') && 
+			 (xfA instanceof box2d.b2Transform) && 
+			 (xfB instanceof box2d.b2Transform))
+	{
+		return box2d.b2TestOverlap_Shape(AABBA_or_shapeA, AABBB_or_indexA, shapeB, indexB, xfA, xfB);
+	}
+	else
+	{
+		throw new Error();
+	}
+}
 

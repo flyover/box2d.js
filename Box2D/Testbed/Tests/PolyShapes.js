@@ -125,7 +125,7 @@ box2d.Testbed.PolyShapesCallback.prototype.ReportFixture = function (fixture)
 	var body = fixture.GetBody();
 	var shape = fixture.GetShape();
 
-	var overlap = box2d.b2TestOverlapShape(shape, 0, this.m_circle, 0, body.GetTransform(), this.m_transform);
+	var overlap = box2d.b2TestOverlap_Shape(shape, 0, this.m_circle, 0, body.GetTransform(), this.m_transform);
 
 	if (overlap)
 	{

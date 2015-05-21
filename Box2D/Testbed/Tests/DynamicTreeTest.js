@@ -269,7 +269,7 @@ box2d.Testbed.DynamicTreeTest.prototype.Keyboard = function (key)
 box2d.Testbed.DynamicTreeTest.prototype.QueryCallback = function (proxyId)
 {
 	var actor = this.m_tree.GetUserData(proxyId);
-	actor.overlap = box2d.b2TestOverlapAABB(this.m_queryAABB, actor.aabb);
+	actor.overlap = box2d.b2TestOverlap_AABB(this.m_queryAABB, actor.aabb);
 	return true;
 }
 */
@@ -443,7 +443,7 @@ box2d.Testbed.DynamicTreeTest.prototype.Query = function ()
 	var QueryCallback = function (proxyId)
 	{
 		var actor = that.m_tree.GetUserData(proxyId);
-		actor.overlap = box2d.b2TestOverlapAABB(that.m_queryAABB, actor.aabb);
+		actor.overlap = box2d.b2TestOverlap_AABB(that.m_queryAABB, actor.aabb);
 		return true;
 	}
 
@@ -457,7 +457,7 @@ box2d.Testbed.DynamicTreeTest.prototype.Query = function ()
 			continue;
 		}
 
-		var overlap = box2d.b2TestOverlapAABB(this.m_queryAABB, this.m_actors[i].aabb);
+		var overlap = box2d.b2TestOverlap_AABB(this.m_queryAABB, this.m_actors[i].aabb);
 		if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(overlap === this.m_actors[i].overlap); }
 	}
 }

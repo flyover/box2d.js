@@ -188,7 +188,7 @@ box2d.b2BroadPhase.prototype.TestOverlap = function (proxyA, proxyB)
 {
 	var aabbA = this.m_tree.GetFatAABB(proxyA);
 	var aabbB = this.m_tree.GetFatAABB(proxyB);
-	return box2d.b2TestOverlapAABB(aabbA, aabbB);
+	return box2d.b2TestOverlap_AABB(aabbA, aabbB);
 }
 
 /** 

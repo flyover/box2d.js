@@ -506,7 +506,7 @@ box2d.b2Contact.prototype.Update = function (listener)
 	var xfA = bodyA.GetTransform();
 	var xfB = bodyB.GetTransform();
 
-//	var aabbOverlap = box2d.b2TestOverlapAABB(this.m_fixtureA.GetAABB(0), this.m_fixtureB.GetAABB(0));
+//	var aabbOverlap = box2d.b2TestOverlap_AABB(this.m_fixtureA.GetAABB(0), this.m_fixtureB.GetAABB(0));
 
 	// Is this contact a sensor?
 	if (sensor)
@@ -515,7 +515,7 @@ box2d.b2Contact.prototype.Update = function (listener)
 //		{
 			var shapeA = this.m_fixtureA.GetShape();
 			var shapeB = this.m_fixtureB.GetShape();
-			touching = box2d.b2TestOverlapShape(shapeA, this.m_indexA, shapeB, this.m_indexB, xfA, xfB);
+			touching = box2d.b2TestOverlap_Shape(shapeA, this.m_indexA, shapeB, this.m_indexB, xfA, xfB);
 //		}
 
 		// Sensors don't generate manifolds.
