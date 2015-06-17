@@ -1065,6 +1065,35 @@ box2d.b2Body.prototype.ApplyLinearImpulse = function (impulse, point, wake)
 }
 
 /** 
+ * Apply an impulse to the center of mass. This wakes up the body. 
+ * @export 
+ * @return {void} 
+ * @param {box2d.b2Vec2} impulse the world impulse vector, usually in N-seconds or kg-m/s.
+ * @param {boolean=} wake also wake up the body 
+ */
+box2d.b2Body.prototype.ApplyLinearImpulseToCenter = function (impulse, wake)
+{
+	wake = (typeof(wake) === 'boolean')?(wake):(true);
+
+	if (this.m_type !== box2d.b2BodyType.b2_dynamicBody)
+	{
+		return;
+	}
+
+	if (wake && !this.m_flag_awakeFlag)
+	{
+		this.SetAwake(true);
+	}
+
+	// Don't accumulate a force if the body is sleeping.
+	if (this.m_flag_awakeFlag)
+	{
+		this.m_linearVelocity.x += this.m_invMass * impulse.x;
+		this.m_linearVelocity.y += this.m_invMass * impulse.y;
+	}
+}
+
+/** 
  * Apply an angular impulse. 
  * @export 
  * @return {void} 
