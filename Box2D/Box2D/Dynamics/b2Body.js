@@ -1783,8 +1783,8 @@ box2d.b2Body.prototype.SynchronizeTransform = function ()
  */
 box2d.b2Body.prototype.ShouldCollide = function (other)
 {
-	// At least one body should be dynamic.
-	if (this.m_type !== box2d.b2BodyType.b2_dynamicBody && other.m_type !== box2d.b2BodyType.b2_dynamicBody)
+	// At least one body should be dynamic or kinematic.
+	if (this.m_type === box2d.b2BodyType.b2_staticBody && other.m_type === box2d.b2BodyType.b2_staticBody)
 	{
 		return false;
 	}

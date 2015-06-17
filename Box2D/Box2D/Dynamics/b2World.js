@@ -1193,7 +1193,7 @@ box2d.b2World.prototype.SolveTOI = function (step)
 
 				/** @type {box2d.b2BodyType} */ var typeA = bA.m_type;
 				/** @type {box2d.b2BodyType} */ var typeB = bB.m_type;
-				if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(typeA === box2d.b2BodyType.b2_dynamicBody || typeB === box2d.b2BodyType.b2_dynamicBody); }
+				if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(typeA !== box2d.b2BodyType.b2_staticBody || typeB !== box2d.b2BodyType.b2_staticBody); }
 
 				/** @type {boolean} */ var activeA = bA.IsAwake() && typeA !== box2d.b2BodyType.b2_staticBody;
 				/** @type {boolean} */ var activeB = bB.IsAwake() && typeB !== box2d.b2BodyType.b2_staticBody;
