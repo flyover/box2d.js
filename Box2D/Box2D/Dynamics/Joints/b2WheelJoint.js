@@ -815,6 +815,24 @@ box2d.b2WheelJoint.prototype.GetLocalAxisA = function (out) { return out.Copy(th
  */
 box2d.b2WheelJoint.prototype.GetJointTranslation = function ()
 {
+    return this.GetPrismaticJointTranslation();
+}
+
+/**
+ * @export 
+ * @return {number}
+ */
+box2d.b2WheelJoint.prototype.GetJointSpeed = function ()
+{
+    return this.GetRevoluteJointSpeed();
+}
+
+/**
+ * @export 
+ * @return {number}
+ */
+box2d.b2WheelJoint.prototype.GetPrismaticJointTranslation = function ()
+{
 	/*box2d.b2Body*/ var bA = this.m_bodyA;
 	/*box2d.b2Body*/ var bB = this.m_bodyB;
 
@@ -831,7 +849,60 @@ box2d.b2WheelJoint.prototype.GetJointTranslation = function ()
  * @export 
  * @return {number}
  */
-box2d.b2WheelJoint.prototype.GetJointSpeed = function ()
+box2d.b2WheelJoint.prototype.GetPrismaticJointSpeed = function ()
+{
+	/*box2d.b2Body*/ var bA = this.m_bodyA;
+	/*box2d.b2Body*/ var bB = this.m_bodyB;
+
+//	b2Vec2 rA = b2Mul(bA->m_xf.q, m_localAnchorA - bA->m_sweep.localCenter);
+	box2d.b2Sub_V2_V2(this.m_localAnchorA, bA.m_sweep.localCenter, this.m_lalcA);
+	var rA = box2d.b2Mul_R_V2(bA.m_xf.q, this.m_lalcA, this.m_rA);
+//	b2Vec2 rB = b2Mul(bB->m_xf.q, m_localAnchorB - bB->m_sweep.localCenter);
+	box2d.b2Sub_V2_V2(this.m_localAnchorB, bB.m_sweep.localCenter, this.m_lalcB);
+	var rB = box2d.b2Mul_R_V2(bB.m_xf.q, this.m_lalcB, this.m_rB);
+//	b2Vec2 pA = bA->m_sweep.c + rA;
+	var pA = box2d.b2Add_V2_V2(bA.m_sweep.c, rA, box2d.b2Vec2.s_t0); // pA uses s_t0
+//	b2Vec2 pB = bB->m_sweep.c + rB;
+	var pB = box2d.b2Add_V2_V2(bB.m_sweep.c, rB, box2d.b2Vec2.s_t1); // pB uses s_t1
+//	b2Vec2 d = pB - pA;
+	var d = box2d.b2Sub_V2_V2(pB, pA, box2d.b2Vec2.s_t2); // d uses s_t2
+//	b2Vec2 axis = b2Mul(bA.m_xf.q, m_localXAxisA);
+	var axis = bA.GetWorldVector(this.m_localXAxisA, new box2d.b2Vec2());
+
+	var vA = bA.m_linearVelocity;
+	var vB = bB.m_linearVelocity;
+	var wA = bA.m_angularVelocity;
+	var wB = bB.m_angularVelocity;
+
+//	float32 speed = b2Dot(d, b2Cross(wA, axis)) + b2Dot(axis, vB + b2Cross(wB, rB) - vA - b2Cross(wA, rA));
+	var speed = 
+		box2d.b2Dot_V2_V2(d, box2d.b2Cross_S_V2(wA, axis, box2d.b2Vec2.s_t0)) + 
+		box2d.b2Dot_V2_V2(
+			axis, 
+			box2d.b2Sub_V2_V2(
+				box2d.b2AddCross_V2_S_V2(vB, wB, rB, box2d.b2Vec2.s_t0),
+				box2d.b2AddCross_V2_S_V2(vA, wA, rA, box2d.b2Vec2.s_t1), 
+				box2d.b2Vec2.s_t0));
+	return speed;
+}
+
+/**
+ * @export 
+ * @return {number}
+ */
+box2d.b2WheelJoint.prototype.GetRevoluteJointAngle = function ()
+{
+//	b2Body* bA = this.m_bodyA;
+//	b2Body* bB = this.m_bodyB;
+//	return bB->this.m_sweep.a - bA->this.m_sweep.a;
+	return this.m_bodyB.m_sweep.a - this.m_bodyA.m_sweep.a;
+}
+
+/**
+ * @export 
+ * @return {number}
+ */
+box2d.b2WheelJoint.prototype.GetRevoluteJointSpeed = function ()
 {
 	/*float32*/ var wA = this.m_bodyA.m_angularVelocity;
 	/*float32*/ var wB = this.m_bodyB.m_angularVelocity;
