@@ -103,6 +103,21 @@ box2d.b2ContactFilter = function ()
  */
 box2d.b2ContactFilter.prototype.ShouldCollide = function (fixtureA, fixtureB)
 {
+	var bodyA = fixtureA.GetBody();
+	var bodyB = fixtureB.GetBody();
+
+	// At least one body should be dynamic or kinematic.
+	if (bodyB.GetType() === box2d.b2BodyType.b2_staticBody && bodyA.GetType() === box2d.b2BodyType.b2_staticBody)
+	{
+		return false;
+	}
+
+	// Does a joint prevent collision?
+	if (bodyB.ShouldCollideConnected(bodyA) === false)
+	{
+		return false;
+	}
+
 	var filter1 = fixtureA.GetFilterData();
 	var filter2 = fixtureB.GetFilterData();
 

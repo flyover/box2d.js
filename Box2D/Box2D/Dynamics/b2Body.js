@@ -1818,6 +1818,16 @@ box2d.b2Body.prototype.ShouldCollide = function (other)
 		return false;
 	}
 
+	return this.ShouldCollideConnected(other);
+}
+
+/** 
+ * @export 
+ * @return {boolean} 
+ * @param {box2d.b2Body} other 
+ */
+box2d.b2Body.prototype.ShouldCollideConnected = function (other)
+{
 	// Does a joint prevent collision?
 	for (var jn = this.m_jointList; jn; jn = jn.next)
 	{
