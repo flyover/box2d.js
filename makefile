@@ -220,7 +220,7 @@ GOOGLE_COMPILER_FLAGS += --jscomp_error=checkEventfulObjectDisposal
 GOOGLE_COMPILER_FLAGS += --jscomp_error=checkRegExp
 GOOGLE_COMPILER_FLAGS += --jscomp_error=checkStructDictInheritance
 GOOGLE_COMPILER_FLAGS += --jscomp_error=checkTypes
-GOOGLE_COMPILER_FLAGS += --jscomp_error=checkVars
+#GOOGLE_COMPILER_FLAGS += --jscomp_error=checkVars
 GOOGLE_COMPILER_FLAGS += --jscomp_error=const
 GOOGLE_COMPILER_FLAGS += --jscomp_error=constantProperty
 GOOGLE_COMPILER_FLAGS += --jscomp_error=deprecated
@@ -236,7 +236,7 @@ GOOGLE_COMPILER_FLAGS += --jscomp_error=invalidCasts
 GOOGLE_COMPILER_FLAGS += --jscomp_error=misplacedTypeAnnotation
 GOOGLE_COMPILER_FLAGS += --jscomp_error=missingGetCssName
 GOOGLE_COMPILER_FLAGS += --jscomp_error=missingProperties
-GOOGLE_COMPILER_FLAGS += --jscomp_error=missingProvide
+#GOOGLE_COMPILER_FLAGS += --jscomp_error=missingProvide
 #GOOGLE_COMPILER_FLAGS += --jscomp_error=missingRequire
 GOOGLE_COMPILER_FLAGS += --jscomp_error=missingReturn
 GOOGLE_COMPILER_FLAGS += --jscomp_error=newCheckTypes
@@ -246,7 +246,7 @@ GOOGLE_COMPILER_FLAGS += --jscomp_error=strictModuleDepCheck
 GOOGLE_COMPILER_FLAGS += --jscomp_error=suspiciousCode
 GOOGLE_COMPILER_FLAGS += --jscomp_error=typeInvalidation
 GOOGLE_COMPILER_FLAGS += --jscomp_error=undefinedNames
-GOOGLE_COMPILER_FLAGS += --jscomp_error=undefinedVars
+#GOOGLE_COMPILER_FLAGS += --jscomp_error=undefinedVars
 GOOGLE_COMPILER_FLAGS += --jscomp_error=unknownDefines
 GOOGLE_COMPILER_FLAGS += --jscomp_error=uselessCode
 #GOOGLE_COMPILER_FLAGS += --jscomp_error=useOfGoogBase
