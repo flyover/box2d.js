@@ -6589,9 +6589,8 @@ box2d.b2ParticleSystem.prototype.SolveColorMixing = function ()
 {
 	// mixes color between contacting particles
 	box2d.b2Assert(this.m_colorBuffer.data !== null);
-	//var colorMixing128 = Math.floor(128 * this.m_def.colorMixingStrength);
-	var colorMixing128 = 0.5 * this.m_def.colorMixingStrength;
-	if (colorMixing128) {
+	var colorMixing = 0.5 * this.m_def.colorMixingStrength;
+	if (colorMixing) {
 		for (var k = 0; k < this.m_contactBuffer.count; k++)
 		{
 			var contact = this.m_contactBuffer.data[k];
@@ -6604,7 +6603,7 @@ box2d.b2ParticleSystem.prototype.SolveColorMixing = function ()
 				var colorB = this.m_colorBuffer.data[b];
 				// Use the static method to ensure certain compilers inline
 				// this correctly.
-				box2d.b2Color.MixColors(colorA, colorB, colorMixing128);
+				box2d.b2Color.MixColors(colorA, colorB, colorMixing);
 			}
 		}
 	}
