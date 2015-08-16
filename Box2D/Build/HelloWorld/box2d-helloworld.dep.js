@@ -52,7 +52,7 @@ goog.addDependency('../../../../Box2D/Box2D/Dynamics/b2Island.js', ['box2d.b2Isl
 goog.addDependency('../../../../Box2D/Box2D/Dynamics/b2TimeStep.js', ['box2d.b2TimeStep'], ['box2d.b2Settings'], false);
 goog.addDependency('../../../../Box2D/Box2D/Dynamics/b2World.js', ['box2d.b2World'], ['box2d.b2Body', 'box2d.b2Collision', 'box2d.b2ContactManager', 'box2d.b2ContactSolver', 'box2d.b2Draw', 'box2d.b2Island', 'box2d.b2JointFactory', 'box2d.b2Math', 'box2d.b2Settings', 'box2d.b2TimeStep', 'box2d.b2WorldCallbacks'], false);
 goog.addDependency('../../../../Box2D/Box2D/Dynamics/b2WorldCallbacks.js', ['box2d.b2WorldCallbacks'], ['box2d.b2Settings'], false);
-goog.addDependency('../../../../Box2D/Box2D/Particle/b2Particle.js', ['box2d.b2Particle', 'box2d.b2ParticleColor', 'box2d.b2ParticleDef', 'box2d.b2ParticleFlag'], [], false);
+goog.addDependency('../../../../Box2D/Box2D/Particle/b2Particle.js', ['box2d.b2Particle', 'box2d.b2ParticleDef', 'box2d.b2ParticleFlag'], [], false);
 goog.addDependency('../../../../Box2D/Box2D/Particle/b2ParticleGroup.js', ['box2d.b2ParticleGroup', 'box2d.b2ParticleGroupDef'], ['box2d.b2Particle'], false);
 goog.addDependency('../../../../Box2D/Box2D/Particle/b2ParticleSystem.js', ['box2d.b2ParticleSystem'], ['box2d.b2Particle', 'box2d.b2ParticleGroup', 'box2d.b2TimeStep'], false);
 goog.addDependency('../../../../Box2D/Box2D/Particle/b2StackQueue.js', ['box2d.b2StackQueue'], [], false);

@@ -235,10 +235,10 @@ box2d.Testbed.SpecialParticleTracker.prototype.Step = function (dt)
 									   this.m_colorOscillationPeriod);
 	var colorCoeff = 2.0 * Math.abs(
 		(this.m_colorOscillationTime / this.m_colorOscillationPeriod) - 0.5);
-	var color = new box2d.b2ParticleColor(
-		128 + (128.0 * (1.0 - colorCoeff)),
-		128 + (256.0 * Math.abs(0.5 - colorCoeff)),
-		128 + (128.0 * colorCoeff), 255);
+	var color = new box2d.b2Color(
+		0.5 + (0.5 * (1.0 - colorCoeff)),
+		0.5 + (1.0 * Math.abs(0.5 - colorCoeff)),
+		0.5 + (0.5 * colorCoeff), 1.0);
 	// Update the color of all special particles.
 	for (var i = 0; i < this.m_particles.length; ++i)
 	{
@@ -536,9 +536,9 @@ box2d.Testbed.Sandbox.prototype.SetupMaze = function ()
 	var circleShape = new box2d.b2CircleShape();
 	circleShape.m_radius = box2d.Testbed.SandboxParams.k_tileRadius * 0.7;
 
-	var red = new box2d.b2ParticleColor(255, 128, 128, 255);
-	var green = new box2d.b2ParticleColor(128, 255, 128, 255);
-	var blue = new box2d.b2ParticleColor(128, 128, 255, 255);
+	var red = new box2d.b2Color(1.0, 0.5, 0.5, 1.0);
+	var green = new box2d.b2Color(0.5, 1.0, 0.5, 1.0);
+	var blue = new box2d.b2Color(0.5, 0.5, 1.0, 1.0);
 
 	this.m_pumpForce = new box2d.b2Vec2(box2d.Testbed.SandboxParams.k_pumpForce,0);
 

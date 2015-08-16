@@ -90,7 +90,7 @@ box2d.Testbed.RadialEmitter.prototype.m_halfSize = null;
 box2d.Testbed.RadialEmitter.prototype.m_emitRate = 1.0;
 /** 
  * Initial color of particle emitted. 
- * @type {box2d.b2ParticleColor}
+ * @type {box2d.b2Color}
  */
 box2d.Testbed.RadialEmitter.prototype.m_color;
 /** 
@@ -127,7 +127,7 @@ box2d.Testbed.RadialEmitter.prototype._ctor_ = function ()
 	this.m_origin = new box2d.b2Vec2();
 	this.m_startingVelocity = new box2d.b2Vec2();
 	this.m_halfSize = new box2d.b2Vec2();
-	this.m_color = new box2d.b2ParticleColor();
+	this.m_color = new box2d.b2Color(0, 0, 0, 0);
 }
 
 /**
@@ -238,7 +238,7 @@ box2d.Testbed.RadialEmitter.prototype.GetParticleFlags = function ()
 /** 
  * Set the color of particles. 
  * @return {void} 
- * @param {box2d.b2ParticleColor} color 
+ * @param {box2d.b2Color} color 
  */
 box2d.Testbed.RadialEmitter.prototype.SetColor = function (color)
 {
@@ -247,7 +247,7 @@ box2d.Testbed.RadialEmitter.prototype.SetColor = function (color)
 
 /** 
  * Get the color of particles emitter. 
- * @return {box2d.b2ParticleColor}
+ * @return {box2d.b2Color}
  */
 box2d.Testbed.RadialEmitter.prototype.GetColor = function (out)
 {

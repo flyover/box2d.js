@@ -162,15 +162,15 @@ box2d.Testbed.MultipleParticleSystems.k_emitterSize = new box2d.b2Vec2(1.0, 1.0)
 /** 
  * Color of the left emitter's particles. 
  * @const 
- * @type {box2d.b2ParticleColor}
+ * @type {box2d.b2Color}
  */
-box2d.Testbed.MultipleParticleSystems.k_leftEmitterColor = new box2d.b2ParticleColor(0x22, 0x33, 0xff, 0xff);
+box2d.Testbed.MultipleParticleSystems.k_leftEmitterColor = new box2d.b2Color(0x22/255, 0x33/255, 0xff/255, 0xff/255);
 /** 
  * Color of the right emitter's particles. 
  * @const 
- * @type {box2d.b2ParticleColor}
+ * @type {box2d.b2Color}
  */
-box2d.Testbed.MultipleParticleSystems.k_rightEmitterColor = new box2d.b2ParticleColor(0xff, 0x22, 0x11, 0xff);
+box2d.Testbed.MultipleParticleSystems.k_rightEmitterColor = new box2d.b2Color(0xff/255, 0x22/255, 0x11/255, 0xff/255);
 
 /** 
  * Run a simulation step. 

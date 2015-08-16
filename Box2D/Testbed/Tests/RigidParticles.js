@@ -83,7 +83,7 @@ box2d.Testbed.RigidParticles = function (canvas, settings)
 		var pd = new box2d.b2ParticleGroupDef();
 		pd.groupFlags = box2d.b2ParticleGroupFlag.b2_rigidParticleGroup | box2d.b2ParticleGroupFlag.b2_solidParticleGroup;
 		pd.shape = shape;
-		pd.color.Set(255, 0, 0, 255);
+		pd.color.Set(1.0, 0.0, 0.0, 1.0);
 		this.m_particleSystem.CreateParticleGroup(pd);
 	}
 
@@ -94,7 +94,7 @@ box2d.Testbed.RigidParticles = function (canvas, settings)
 		var pd = new box2d.b2ParticleGroupDef();
 		pd.groupFlags = box2d.b2ParticleGroupFlag.b2_rigidParticleGroup | box2d.b2ParticleGroupFlag.b2_solidParticleGroup;
 		pd.shape = shape;
-		pd.color.Set(0, 255, 0, 255);
+		pd.color.Set(0.0, 1.0, 0.0, 1.0);
 		this.m_particleSystem.CreateParticleGroup(pd);
 	}
 
@@ -114,7 +114,7 @@ box2d.Testbed.RigidParticles = function (canvas, settings)
 		pd.angle = -0.5;
 		pd.angularVelocity = 2.0;
 		pd.shape = shape;
-		pd.color.Set(0, 0, 255, 255);
+		pd.color.Set(0.0, 0.0, 1.0, 1.0);
 		this.m_particleSystem.CreateParticleGroup(pd);
 	}
 

@@ -185,7 +185,7 @@ box2d.Testbed.DebugDraw.prototype.DrawSolidCircle = function (center, radius, ax
  * @return {void} 
  * @param {Array.<box2d.b2Vec2>} centers
  * @param {number} radius
- * @param {Array.<box2d.b2ParticleColor>} colors 
+ * @param {Array.<box2d.b2Color>} colors 
  * @param {number} count
  */
 box2d.Testbed.DebugDraw.prototype.DrawParticles = function (centers, radius, colors, count)
@@ -199,7 +199,7 @@ box2d.Testbed.DebugDraw.prototype.DrawParticles = function (centers, radius, col
 		{
 			var center = centers[i];
 			var color = colors[i];
-			ctx.fillStyle = 'rgba(' + color.r + ',' + color.g + ',' + color.b + ',' + (color.a/255.0) + ')';
+			ctx.fillStyle = color.MakeStyleString();
 			ctx.fillRect(center.x - radius, center.y - radius, diameter, diameter);
 			//ctx.beginPath();
 			//ctx.arc(center.x, center.y, radius, 0, box2d.b2_pi * 2, true);

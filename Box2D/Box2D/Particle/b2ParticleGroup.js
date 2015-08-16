@@ -68,7 +68,7 @@ box2d.b2ParticleGroupDef = function ()
 {
 	this.position = box2d.b2Vec2_zero.Clone();
 	this.linearVelocity = box2d.b2Vec2_zero.Clone();
-	this.color = box2d.b2ParticleColor_zero.Clone();
+	this.color = new box2d.b2Color(0, 0, 0, 0);
 }
 
 /** 
@@ -125,7 +125,7 @@ box2d.b2ParticleGroupDef.prototype.angularVelocity = 0.0;
  * The color of all particles in the group. 
  *  
  * @export 
- * @type {box2d.b2ParticleColor} 
+ * @type {box2d.b2Color} 
  */
 box2d.b2ParticleGroupDef.prototype.color = null;
 

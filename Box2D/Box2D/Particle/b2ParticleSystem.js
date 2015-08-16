@@ -1253,7 +1253,7 @@ box2d.b2ParticleSystem.prototype.m_depthBuffer = null;
 
 /** 
  * @type 
- *  	 {box2d.b2ParticleSystem.UserOverridableBuffer<box2d.b2ParticleColor>}
+ *  	 {box2d.b2ParticleSystem.UserOverridableBuffer<box2d.b2Color>}
  */
 box2d.b2ParticleSystem.prototype.m_colorBuffer = null;
 
@@ -2550,7 +2550,7 @@ box2d.b2ParticleSystem.prototype.GetVelocityBuffer = function ()
  * Array is length GetParticleCount() 
  *  
  * @export 
- * @return {Array.<box2d.b2ParticleColor>} the pointer to the 
+ * @return {Array.<box2d.b2Color>} the pointer to the 
  *  	   head of the particle colors array.
  */
 box2d.b2ParticleSystem.prototype.GetColorBuffer = function ()
@@ -6589,7 +6589,8 @@ box2d.b2ParticleSystem.prototype.SolveColorMixing = function ()
 {
 	// mixes color between contacting particles
 	box2d.b2Assert(this.m_colorBuffer.data !== null);
-	var colorMixing128 = Math.floor(128 * this.m_def.colorMixingStrength);
+	//var colorMixing128 = Math.floor(128 * this.m_def.colorMixingStrength);
+	var colorMixing128 = 0.5 * this.m_def.colorMixingStrength;
 	if (colorMixing128) {
 		for (var k = 0; k < this.m_contactBuffer.count; k++)
 		{
@@ -6603,7 +6604,7 @@ box2d.b2ParticleSystem.prototype.SolveColorMixing = function ()
 				var colorB = this.m_colorBuffer.data[b];
 				// Use the static method to ensure certain compilers inline
 				// this correctly.
-				box2d.b2ParticleColor.MixColors(colorA, colorB, colorMixing128);
+				box2d.b2Color.MixColors(colorA, colorB, colorMixing128);
 			}
 		}
 	}

@@ -33,7 +33,7 @@ goog.require('box2d.Testbed.Test');
  */
 box2d.Testbed.ParticleVFX = function (particleSystem, origin, size, speed, lifetime, particleFlags)
 {
-	this.m_origColor = new box2d.b2ParticleColor();
+	this.m_origColor = new box2d.b2Color(0, 0, 0, 0);
 
 	// Create a circle to house the particles of size size
 	var shape = new box2d.b2CircleShape();
@@ -45,10 +45,10 @@ box2d.Testbed.ParticleVFX = function (particleSystem, origin, size, speed, lifet
 	pd.flags = particleFlags;
 	pd.shape = shape;
 	this.m_origColor.Set(
-		Math.floor(Math.random() * 256), 
-		Math.floor(Math.random() * 256), 
-		Math.floor(Math.random() * 256), 
-		255);
+		Math.random(), 
+		Math.random(), 
+		Math.random(), 
+		1.0);
 	pd.color.Copy(this.m_origColor);
 	this.m_particleSystem = particleSystem;
 
@@ -98,7 +98,7 @@ box2d.Testbed.ParticleVFX.prototype.m_pg = null;
 box2d.Testbed.ParticleVFX.prototype.m_particleSystem = null;
 
 /**
- * @type {box2d.b2ParticleColor}
+ * @type {box2d.b2Color}
  */
 box2d.Testbed.ParticleVFX.prototype.m_origColor = null;
 
@@ -147,7 +147,9 @@ box2d.Testbed.ParticleVFX.prototype.Step = function (dt)
 		{
 			var c = colors[i];
 			///	c *= coeff;
-			c.SelfMul_0_1(coeff);
+			c.r *= coeff;
+			c.g *= coeff;
+			c.b *= coeff;
 			c.a = this.m_origColor.a;
 		}
 	}

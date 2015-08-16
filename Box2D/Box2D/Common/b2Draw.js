@@ -58,6 +58,61 @@ box2d.b2Color.prototype.b = 0.5;
  */
 box2d.b2Color.prototype.a = 1.0;
 
+/** 
+ * @export 
+ * @return {boolean} 
+ */
+box2d.b2Color.prototype.IsZero = function ()
+{
+	return (this.r === 0) && (this.g === 0) && (this.b === 0) && (this.a === 0);
+}
+
+/** 
+ * @export 
+ * @return {box2d.b2Color} 
+ * @param {box2d.b2Color} color 
+ */
+box2d.b2Color.prototype.Copy = function (color)
+{
+	this.r = color.r;
+	this.g = color.g;
+	this.b = color.b;
+	this.a = color.a;
+	return this;
+}
+
+/**
+ * @return {box2d.b2Color}
+ */
+box2d.b2Color.prototype.Clone = function ()
+{
+	return new box2d.b2Color(this.r, this.g, this.b, this.a);
+}
+
+/**
+ * @export 
+ * @return {void} 
+ * @param {number|box2d.b2Color} a0 
+ * @param {number=} a1 
+ * @param {number=} a2 
+ * @param {number=} a3 
+ */
+box2d.b2Color.prototype.Set = function (a0, a1, a2, a3)
+{
+	if (a0 instanceof box2d.b2Color)
+	{
+		this.Copy(a0);
+	}
+	else if (arguments.length >= 3)
+	{
+		this.SetRGBA(a0 || 0, a1 || 0, a2 || 0, a3);
+	}
+	else
+	{
+		throw new Error();
+	}
+}
+
 /**
  * @export
  * @return {box2d.b2Color}
@@ -71,6 +126,23 @@ box2d.b2Color.prototype.SetRGB = function (rr, gg, bb)
 	this.g = gg;
 	this.b = bb;
 	return this;
+}
+
+/** 
+ * @export 
+ * @return {void} 
+ * @param {number} r 
+ * @param {number} g 
+ * @param {number} b 
+ * @param {number=} a 
+ */
+box2d.b2Color.prototype.SetRGBA = function (r, g, b, a)
+{
+	a = (typeof(a) === 'number')?(a):(1.0);
+	this.r = r;
+	this.g = g;
+	this.b = b;
+	this.a = a;
 }
 
 /**
@@ -101,6 +173,35 @@ box2d.b2Color.MakeStyleString = function (r, g, b, a)
 	{
 		return 'rgb(' + r + ',' + g + ',' + b + ')';
 	}
+}
+
+/** 
+ * Mix colorA with colorB using strength to control how much of 
+ * colorA is mixed with colorB and vice versa.  The range of 
+ * strength is 0..0.5 where 0 results in no color mixing and 0.5 
+ * results in an equal mix of both colors.  strength 0..0.5 is 
+ * analogous to an alpha channel value between 0.0f..0.5f. 
+ *  
+ * @export 
+ * @return {void} 
+ * @param {box2d.b2Color} colorA 
+ * @param {box2d.b2Color} colorB 
+ * @param {number} strength 
+ */
+box2d.b2Color.MixColors = function (colorA, colorB, strength)
+{
+	var dr = (strength * (colorB.r - colorA.r));
+	var dg = (strength * (colorB.g - colorA.g));
+	var db = (strength * (colorB.b - colorA.b));
+	var da = (strength * (colorB.a - colorA.a));
+	colorA.r += dr;
+	colorA.g += dg;
+	colorA.b += db;
+	colorA.a += da;
+	colorB.r -= dr;
+	colorB.g -= dg;
+	colorB.b -= db;
+	colorB.a -= da;
 }
 
 /**
@@ -290,7 +391,7 @@ box2d.b2Draw.prototype.DrawSolidCircle = function (center, radius, axis, color)
  * @return {void} 
  * @param {Array.<box2d.b2Vec2>} centers
  * @param {number} radius
- * @param {Array.<box2d.b2ParticleColor>} colors 
+ * @param {Array.<box2d.b2Color>} colors 
  * @param {number} count
  */
 box2d.b2Draw.prototype.DrawParticles = function (centers, radius, colors, count)

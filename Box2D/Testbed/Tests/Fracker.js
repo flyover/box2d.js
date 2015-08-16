@@ -244,19 +244,19 @@ box2d.Testbed.FrackerSettings.k_playerFrackColor = new box2d.b2Color(1.0, 0.5, 0
 box2d.Testbed.FrackerSettings.k_wellColor = new box2d.b2Color(0.5, 0.5, 0.5);
 /**
  * @const 
- * @type {box2d.b2ParticleColor} 
+ * @type {box2d.b2Color} 
  */
-box2d.Testbed.FrackerSettings.k_oilColor = new box2d.b2ParticleColor(new box2d.b2Color(1.0, 0.0, 0.0));
+box2d.Testbed.FrackerSettings.k_oilColor = new box2d.b2Color(1.0, 0.0, 0.0);
 /**
  * @const 
- * @type {box2d.b2ParticleColor} 
+ * @type {box2d.b2Color} 
  */
-box2d.Testbed.FrackerSettings.k_waterColor = new box2d.b2ParticleColor(new box2d.b2Color(0.0, 0.2, 1.0));
+box2d.Testbed.FrackerSettings.k_waterColor = new box2d.b2Color(0.0, 0.2, 1.0);
 /**
  * @const 
- * @type {box2d.b2ParticleColor} 
+ * @type {box2d.b2Color} 
  */
-box2d.Testbed.FrackerSettings.k_frackingFluidColor = new box2d.b2ParticleColor(new box2d.b2Color(0.8, 0.4, 0.0));
+box2d.Testbed.FrackerSettings.k_frackingFluidColor = new box2d.b2Color(0.8, 0.4, 0.0);
 
 /** 
  * Default density of each body. 

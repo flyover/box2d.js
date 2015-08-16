@@ -110,7 +110,7 @@ box2d.Testbed.Faucet = function (canvas, settings)
 			box2d.Testbed.Faucet.k_containerHeight * box2d.Testbed.Faucet.k_faucetHeight + (faucetLength * 0.5)));
 		this.m_emitter.SetVelocity(new box2d.b2Vec2(0.0, 0.0));
 		this.m_emitter.SetSize(new box2d.b2Vec2(0.0, faucetLength));
-		this.m_emitter.SetColor(new box2d.b2ParticleColor(255, 255, 255, 255));
+		this.m_emitter.SetColor(new box2d.b2Color(1.0, 1.0, 1.0, 1.0));
 		this.m_emitter.SetEmitRate(120.0);
 		this.m_emitter.SetParticleFlags(box2d.Testbed.TestMain.GetParticleParameterValue());
 	}
@@ -277,7 +277,7 @@ box2d.Testbed.Faucet.prototype.Step = function (settings)
 	this.m_emitter.SetParticleFlags(box2d.Testbed.TestMain.GetParticleParameterValue());
 
 	// If this is a color mixing particle, add some color.
-	///	b2ParticleColor color(255, 255, 255, 255);
+	///	b2Color color(1.0, 1.0, 1.0, 1.0);
 	if (this.m_emitter.GetParticleFlags() & box2d.b2ParticleFlag.b2_colorMixingParticle)
 	{
 		// Each second, select a different color.
@@ -285,7 +285,7 @@ box2d.Testbed.Faucet.prototype.Step = function (settings)
 	}
 	else
 	{
-		this.m_emitter.SetColor(new box2d.b2ParticleColor(255, 255, 255, 255));
+		this.m_emitter.SetColor(new box2d.b2Color(1.0, 1.0, 1.0, 1.0));
 	}
 
 	// Create the particles.
