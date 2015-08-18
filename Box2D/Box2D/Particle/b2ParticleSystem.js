@@ -4111,7 +4111,7 @@ box2d.b2ParticleSystem.prototype.CloneParticle = function (oldIndex, group)
 	}
 	if (this.m_hasForce)
 	{
-		this.m_forceBuffer[newIndex] = this.m_forceBuffer[oldIndex];
+		this.m_forceBuffer[newIndex].Copy(this.m_forceBuffer[oldIndex]);
 	}
 	if (this.m_staticPressureBuffer)
 	{
