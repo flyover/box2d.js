@@ -1214,17 +1214,17 @@ box2d.Testbed.Test.prototype.GetDefaultViewZoom = function ()
 //#if B2_ENABLE_PARTICLE
 
 /**
- * @type {Array.<box2d.b2Color>}
+ * @type {Array.<box2d.b2ParticleColor>}
  */
 box2d.Testbed.Test.k_ParticleColors = [
-	new box2d.b2Color(0xff/255, 0x00/255, 0x00/255, 0xff/255), // red
-	new box2d.b2Color(0x00/255, 0xff/255, 0x00/255, 0xff/255), // green
-	new box2d.b2Color(0x00/255, 0x00/255, 0xff/255, 0xff/255), // blue
-	new box2d.b2Color(0xff/255, 0x8c/255, 0x00/255, 0xff/255), // orange
-	new box2d.b2Color(0x00/255, 0xce/255, 0xd1/255, 0xff/255), // turquoise
-	new box2d.b2Color(0xff/255, 0x00/255, 0xff/255, 0xff/255), // magenta
-	new box2d.b2Color(0xff/255, 0xd7/255, 0x00/255, 0xff/255), // gold
-	new box2d.b2Color(0x00/255, 0xff/255, 0xff/255, 0xff/255), // cyan
+	new box2d.b2ParticleColor(0xff, 0x00, 0x00, 0xff), // red
+	new box2d.b2ParticleColor(0x00, 0xff, 0x00, 0xff), // green
+	new box2d.b2ParticleColor(0x00, 0x00, 0xff, 0xff), // blue
+	new box2d.b2ParticleColor(0xff, 0x8c, 0x00, 0xff), // orange
+	new box2d.b2ParticleColor(0x00, 0xce, 0xd1, 0xff), // turquoise
+	new box2d.b2ParticleColor(0xff, 0x00, 0xff, 0xff), // magenta
+	new box2d.b2ParticleColor(0xff, 0xd7, 0x00, 0xff), // gold
+	new box2d.b2ParticleColor(0x00, 0xff, 0xff, 0xff), // cyan
 ];
 
 /**

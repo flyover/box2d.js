@@ -52,7 +52,7 @@ goog.addDependency('../../../../Box2D/Box2D/Dynamics/b2Island.js', ['box2d.b2Isl
 goog.addDependency('../../../../Box2D/Box2D/Dynamics/b2TimeStep.js', ['box2d.b2TimeStep'], ['box2d.b2Settings'], false);
 goog.addDependency('../../../../Box2D/Box2D/Dynamics/b2World.js', ['box2d.b2World'], ['box2d.b2Body', 'box2d.b2Collision', 'box2d.b2ContactManager', 'box2d.b2ContactSolver', 'box2d.b2Draw', 'box2d.b2Island', 'box2d.b2JointFactory', 'box2d.b2Math', 'box2d.b2Settings', 'box2d.b2TimeStep', 'box2d.b2WorldCallbacks'], false);
 goog.addDependency('../../../../Box2D/Box2D/Dynamics/b2WorldCallbacks.js', ['box2d.b2WorldCallbacks'], ['box2d.b2Settings'], false);
-goog.addDependency('../../../../Box2D/Box2D/Particle/b2Particle.js', ['box2d.b2Particle', 'box2d.b2ParticleDef', 'box2d.b2ParticleFlag'], [], false);
+goog.addDependency('../../../../Box2D/Box2D/Particle/b2Particle.js', ['box2d.b2Particle', 'box2d.b2ParticleColor', 'box2d.b2ParticleDef', 'box2d.b2ParticleFlag'], [], false);
 goog.addDependency('../../../../Box2D/Box2D/Particle/b2ParticleGroup.js', ['box2d.b2ParticleGroup', 'box2d.b2ParticleGroupDef'], ['box2d.b2Particle'], false);
 goog.addDependency('../../../../Box2D/Box2D/Particle/b2ParticleSystem.js', ['box2d.b2ParticleSystem'], ['box2d.b2Particle', 'box2d.b2ParticleGroup', 'box2d.b2TimeStep'], false);
 goog.addDependency('../../../../Box2D/Box2D/Particle/b2StackQueue.js', ['box2d.b2StackQueue'], [], false);
@@ -483,7 +483,7 @@ goog.addDependency('../../../../google/closure-library/closure/goog/events/actio
 goog.addDependency('../../../../google/closure-library/closure/goog/events/actionhandler.js', ['goog.events.ActionEvent', 'goog.events.ActionHandler', 'goog.events.ActionHandler.EventType', 'goog.events.BeforeActionEvent'], ['goog.events', 'goog.events.BrowserEvent', 'goog.events.EventTarget', 'goog.events.EventType', 'goog.events.KeyCodes', 'goog.userAgent'], false);
 goog.addDependency('../../../../google/closure-library/closure/goog/events/actionhandler_test.js', ['goog.events.ActionHandlerTest'], ['goog.dom', 'goog.events', 'goog.events.ActionHandler', 'goog.testing.events', 'goog.testing.jsunit'], false);
 goog.addDependency('../../../../google/closure-library/closure/goog/events/browserevent.js', ['goog.events.BrowserEvent', 'goog.events.BrowserEvent.MouseButton'], ['goog.events.BrowserFeature', 'goog.events.Event', 'goog.events.EventType', 'goog.reflect', 'goog.userAgent'], false);
-goog.addDependency('../../../../google/closure-library/closure/goog/events/browserevent_test.js', ['goog.events.BrowserEventTest'], ['goog.events.BrowserEvent', 'goog.events.BrowserFeature', 'goog.testing.PropertyReplacer', 'goog.testing.jsunit', 'goog.userAgent'], false);
+goog.addDependency('../../../../google/closure-library/closure/goog/events/browserevent_test.js', ['goog.events.BrowserEventTest'], ['goog.events.BrowserEvent', 'goog.events.BrowserFeature', 'goog.math.Coordinate', 'goog.testing.PropertyReplacer', 'goog.testing.jsunit', 'goog.userAgent'], false);
 goog.addDependency('../../../../google/closure-library/closure/goog/events/browserfeature.js', ['goog.events.BrowserFeature'], ['goog.userAgent'], false);
 goog.addDependency('../../../../google/closure-library/closure/goog/events/event.js', ['goog.events.Event', 'goog.events.EventLike'], ['goog.Disposable', 'goog.events.EventId'], false);
 goog.addDependency('../../../../google/closure-library/closure/goog/events/event_test.js', ['goog.events.EventTest'], ['goog.events.Event', 'goog.events.EventId', 'goog.events.EventTarget', 'goog.testing.jsunit'], false);
