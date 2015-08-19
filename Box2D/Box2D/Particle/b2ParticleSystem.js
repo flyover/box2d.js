@@ -1802,10 +1802,10 @@ box2d.b2ParticleSystem.prototype.CreateParticle = function (def)
 	{
 		this.m_consecutiveContactStepsBuffer.data[index] = 0;
 	}
-	this.m_positionBuffer.data[index] = def.position.Clone();
-	this.m_velocityBuffer.data[index] = def.velocity.Clone();
+	this.m_positionBuffer.data[index] = (this.m_positionBuffer.data[index] || new box2d.b2Vec2()).Copy(def.position);
+	this.m_velocityBuffer.data[index] = (this.m_velocityBuffer.data[index] || new box2d.b2Vec2()).Copy(def.velocity);
 	this.m_weightBuffer[index] = 0;
-	this.m_forceBuffer[index] = box2d.b2Vec2_zero.Clone();
+	this.m_forceBuffer[index] = (this.m_forceBuffer[index] || new box2d.b2Vec2()).SetZero();
 	if (this.m_staticPressureBuffer)
 	{
 		this.m_staticPressureBuffer[index] = 0;
@@ -1817,7 +1817,7 @@ box2d.b2ParticleSystem.prototype.CreateParticle = function (def)
 	if (this.m_colorBuffer.data || !def.color.IsZero())
 	{
 		this.m_colorBuffer.data = this.RequestBuffer(this.m_colorBuffer.data);
-		this.m_colorBuffer.data[index] = def.color.Clone();
+		this.m_colorBuffer.data[index] = (this.m_colorBuffer.data[index] || new box2d.b2ParticleColor()).Copy(def.color);
 	}
 	if (this.m_userDataBuffer.data || def.userData)
 	{
