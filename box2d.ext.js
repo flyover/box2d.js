@@ -1871,6 +1871,23 @@ box2d.b2World.prototype.CalculateReasonableParticleIterations;
 box2d.b2CalculateParticleIterations;
 box2d.b2ParticleFlag;
 box2d.b2ParticleFlag.b2_waterParticle;
+box2d.b2ParticleFlag.b2_zombieParticle;
+box2d.b2ParticleFlag.b2_wallParticle;
+box2d.b2ParticleFlag.b2_springParticle;
+box2d.b2ParticleFlag.b2_elasticParticle;
+box2d.b2ParticleFlag.b2_viscousParticle;
+box2d.b2ParticleFlag.b2_powderParticle;
+box2d.b2ParticleFlag.b2_tensileParticle;
+box2d.b2ParticleFlag.b2_colorMixingParticle;
+box2d.b2ParticleFlag.b2_destructionListenerParticle;
+box2d.b2ParticleFlag.b2_barrierParticle;
+box2d.b2ParticleFlag.b2_staticPressureParticle;
+box2d.b2ParticleFlag.b2_reactiveParticle;
+box2d.b2ParticleFlag.b2_repulsiveParticle;
+box2d.b2ParticleFlag.b2_fixtureContactListenerParticle;
+box2d.b2ParticleFlag.b2_particleContactListenerParticle;
+box2d.b2ParticleFlag.b2_fixtureContactFilterParticle;
+box2d.b2ParticleFlag.b2_particleContactFilterParticle;
 /**
  * @constructor
  */
