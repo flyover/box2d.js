@@ -456,10 +456,10 @@ default-clean: box2d-helloworld-clean
 default-build: box2d-helloworld-build
 
 BOX2D_HELLOWORLD_SOURCE_JS_FILES += Box2D/HelloWorld/HelloWorld.js
-BOX2D_HELLOWORLD_SOURCE_JS_FILES += Box2D/Build/HelloWorld/main.js
+#BOX2D_HELLOWORLD_SOURCE_JS_FILES += Box2D/Build/HelloWorld/main.js
 
-#BOX2D_HELLOWORLD_OUTPUT_NAMESPACE = "box2d.HelloWorld"
-BOX2D_HELLOWORLD_OUTPUT_NAMESPACE = "main.start"
+BOX2D_HELLOWORLD_OUTPUT_NAMESPACE = "box2d.HelloWorld"
+#BOX2D_HELLOWORLD_OUTPUT_NAMESPACE = "main.start"
 BOX2D_HELLOWORLD_OUTPUT_MIN_JS_FILE = Box2D/Build/HelloWorld/box2d-helloworld.min.js
 BOX2D_HELLOWORLD_OUTPUT_MAP_JSON_FILE = Box2D/Build/HelloWorld/box2d-helloworld.map.json
 BOX2D_HELLOWORLD_OUTPUT_DEP_JS_FILE = Box2D/Build/HelloWorld/box2d-helloworld.dep.js
@@ -619,10 +619,10 @@ BOX2D_TESTBED_SOURCE_JS_FILES += Box2D/Testbed/Tests/VaryingRestitution.js
 BOX2D_TESTBED_SOURCE_JS_FILES += Box2D/Testbed/Tests/VerticalStack.js
 BOX2D_TESTBED_SOURCE_JS_FILES += Box2D/Testbed/Tests/WaveMachine.js
 BOX2D_TESTBED_SOURCE_JS_FILES += Box2D/Testbed/Tests/Web.js
-BOX2D_TESTBED_SOURCE_JS_FILES += Box2D/Build/Testbed/main.js
+#BOX2D_TESTBED_SOURCE_JS_FILES += Box2D/Build/Testbed/main.js
 
-#BOX2D_TESTBED_OUTPUT_NAMESPACE = "box2d.Testbed"
-BOX2D_TESTBED_OUTPUT_NAMESPACE = "main.start"
+BOX2D_TESTBED_OUTPUT_NAMESPACE = "box2d.Testbed"
+#BOX2D_TESTBED_OUTPUT_NAMESPACE = "main.start"
 BOX2D_TESTBED_OUTPUT_MIN_JS_FILE = Box2D/Build/Testbed/box2d-testbed.min.js
 BOX2D_TESTBED_OUTPUT_MAP_JSON_FILE = Box2D/Build/Testbed/box2d-testbed.map.json
 BOX2D_TESTBED_OUTPUT_DEP_JS_FILE = Box2D/Build/Testbed/box2d-testbed.dep.js
