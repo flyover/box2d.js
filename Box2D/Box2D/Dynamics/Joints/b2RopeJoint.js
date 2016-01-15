@@ -250,13 +250,13 @@ box2d.b2RopeJoint.prototype.InitVelocityConstraints = function(data) {
   var qA = this.m_qA.SetAngle(aA),
     qB = this.m_qB.SetAngle(aB);
 
-  //	this.m_rA = b2Mul(qA, this.m_localAnchorA - this.m_localCenterA);
+  //  this.m_rA = b2Mul(qA, this.m_localAnchorA - this.m_localCenterA);
   box2d.b2Sub_V2_V2(this.m_localAnchorA, this.m_localCenterA, this.m_lalcA);
   box2d.b2Mul_R_V2(qA, this.m_lalcA, this.m_rA);
-  //	this.m_rB = b2Mul(qB, this.m_localAnchorB - this.m_localCenterB);
+  //  this.m_rB = b2Mul(qB, this.m_localAnchorB - this.m_localCenterB);
   box2d.b2Sub_V2_V2(this.m_localAnchorB, this.m_localCenterB, this.m_lalcB);
   box2d.b2Mul_R_V2(qB, this.m_lalcB, this.m_rB);
-  //	this.m_u = cB + this.m_rB - cA - this.m_rA;
+  //  this.m_u = cB + this.m_rB - cA - this.m_rA;
   this.m_u.Copy(cB).SelfAdd(this.m_rB).SelfSub(cA).SelfSub(this.m_rA);
 
   this.m_length = this.m_u.Length();
@@ -292,21 +292,21 @@ box2d.b2RopeJoint.prototype.InitVelocityConstraints = function(data) {
     // Scale the impulse to support a variable time step.
     this.m_impulse *= data.step.dtRatio;
 
-    //		b2Vec2 P = m_impulse * m_u;
+    //    b2Vec2 P = m_impulse * m_u;
     var P = box2d.b2Mul_S_V2(this.m_impulse, this.m_u, box2d.b2RopeJoint.prototype.InitVelocityConstraints.s_P);
-    //		vA -= m_invMassA * P;
+    //    vA -= m_invMassA * P;
     vA.SelfMulSub(this.m_invMassA, P);
     wA -= this.m_invIA * box2d.b2Cross_V2_V2(this.m_rA, P);
-    //		vB += m_invMassB * P;
+    //    vB += m_invMassB * P;
     vB.SelfMulAdd(this.m_invMassB, P);
     wB += this.m_invIB * box2d.b2Cross_V2_V2(this.m_rB, P);
   } else {
     this.m_impulse = 0;
   }
 
-  //	data.velocities[this.m_indexA].v = vA;
+  //  data.velocities[this.m_indexA].v = vA;
   data.velocities[this.m_indexA].w = wA;
-  //	data.velocities[this.m_indexB].v = vB;
+  //  data.velocities[this.m_indexB].v = vB;
   data.velocities[this.m_indexB].w = wB;
 }
 box2d.b2RopeJoint.prototype.InitVelocityConstraints.s_P = new box2d.b2Vec2();
@@ -327,14 +327,14 @@ box2d.b2RopeJoint.prototype.SolveVelocityConstraints = function(data) {
   var wB = data.velocities[this.m_indexB].w;
 
   // Cdot = dot(u, v + cross(w, r))
-  //	b2Vec2 vpA = vA + b2Cross(wA, m_rA);
+  //  b2Vec2 vpA = vA + b2Cross(wA, m_rA);
   var vpA = box2d.b2AddCross_V2_S_V2(vA, wA, this.m_rA, box2d.b2RopeJoint.prototype.SolveVelocityConstraints.s_vpA);
-  //	b2Vec2 vpB = vB + b2Cross(wB, m_rB);
+  //  b2Vec2 vpB = vB + b2Cross(wB, m_rB);
   var vpB = box2d.b2AddCross_V2_S_V2(vB, wB, this.m_rB, box2d.b2RopeJoint.prototype.SolveVelocityConstraints.s_vpB);
-  //	float32 C = m_length - m_maxLength;
+  //  float32 C = m_length - m_maxLength;
   /*float32*/
   var C = this.m_length - this.m_maxLength;
-  //	float32 Cdot = b2Dot(m_u, vpB - vpA);
+  //  float32 Cdot = b2Dot(m_u, vpB - vpA);
   /*float32*/
   var Cdot = box2d.b2Dot_V2_V2(this.m_u, box2d.b2Sub_V2_V2(vpB, vpA, box2d.b2Vec2.s_t0));
 
@@ -350,18 +350,18 @@ box2d.b2RopeJoint.prototype.SolveVelocityConstraints = function(data) {
   this.m_impulse = box2d.b2Min(0, this.m_impulse + impulse);
   impulse = this.m_impulse - oldImpulse;
 
-  //	b2Vec2 P = impulse * m_u;
+  //  b2Vec2 P = impulse * m_u;
   var P = box2d.b2Mul_S_V2(impulse, this.m_u, box2d.b2RopeJoint.prototype.SolveVelocityConstraints.s_P);
-  //	vA -= m_invMassA * P;
+  //  vA -= m_invMassA * P;
   vA.SelfMulSub(this.m_invMassA, P);
   wA -= this.m_invIA * box2d.b2Cross_V2_V2(this.m_rA, P);
-  //	vB += m_invMassB * P;
+  //  vB += m_invMassB * P;
   vB.SelfMulAdd(this.m_invMassB, P);
   wB += this.m_invIB * box2d.b2Cross_V2_V2(this.m_rB, P);
 
-  //	data.velocities[this.m_indexA].v = vA;
+  //  data.velocities[this.m_indexA].v = vA;
   data.velocities[this.m_indexA].w = wA;
-  //	data.velocities[this.m_indexB].v = vB;
+  //  data.velocities[this.m_indexB].v = vB;
   data.velocities[this.m_indexB].w = wB;
 }
 box2d.b2RopeJoint.prototype.SolveVelocityConstraints.s_vpA = new box2d.b2Vec2();
@@ -387,13 +387,13 @@ box2d.b2RopeJoint.prototype.SolvePositionConstraints = function(data) {
   var qA = this.m_qA.SetAngle(aA),
     qB = this.m_qB.SetAngle(aB);
 
-  //	b2Vec2 rA = b2Mul(qA, this.m_localAnchorA - this.m_localCenterA);
+  //  b2Vec2 rA = b2Mul(qA, this.m_localAnchorA - this.m_localCenterA);
   box2d.b2Sub_V2_V2(this.m_localAnchorA, this.m_localCenterA, this.m_lalcA);
   var rA = box2d.b2Mul_R_V2(qA, this.m_lalcA, this.m_rA);
-  //	b2Vec2 rB = b2Mul(qB, this.m_localAnchorB - this.m_localCenterB);
+  //  b2Vec2 rB = b2Mul(qB, this.m_localAnchorB - this.m_localCenterB);
   box2d.b2Sub_V2_V2(this.m_localAnchorB, this.m_localCenterB, this.m_lalcB);
   var rB = box2d.b2Mul_R_V2(qB, this.m_lalcB, this.m_rB);
-  //	b2Vec2 u = cB + rB - cA - rA;
+  //  b2Vec2 u = cB + rB - cA - rA;
   /*box2d.b2Vec2*/
   var u = this.m_u.Copy(cB).SelfAdd(rB).SelfSub(cA).SelfSub(rA);
 
@@ -406,19 +406,19 @@ box2d.b2RopeJoint.prototype.SolvePositionConstraints = function(data) {
 
   /*float32*/
   var impulse = -this.m_mass * C;
-  //	b2Vec2 P = impulse * u;
+  //  b2Vec2 P = impulse * u;
   var P = box2d.b2Mul_S_V2(impulse, u, box2d.b2RopeJoint.prototype.SolvePositionConstraints.s_P);
 
-  //	cA -= m_invMassA * P;
+  //  cA -= m_invMassA * P;
   cA.SelfMulSub(this.m_invMassA, P);
   aA -= this.m_invIA * box2d.b2Cross_V2_V2(rA, P);
-  //	cB += m_invMassB * P;
+  //  cB += m_invMassB * P;
   cB.SelfMulAdd(this.m_invMassB, P);
   aB += this.m_invIB * box2d.b2Cross_V2_V2(rB, P);
 
-  //	data.positions[this.m_indexA].c = cA;
+  //  data.positions[this.m_indexA].c = cA;
   data.positions[this.m_indexA].a = aA;
-  //	data.positions[this.m_indexB].c = cB;
+  //  data.positions[this.m_indexB].c = cB;
   data.positions[this.m_indexB].a = aB;
 
   return length - this.m_maxLength < box2d.b2_linearSlop;
@@ -453,7 +453,7 @@ box2d.b2RopeJoint.prototype.GetReactionForce = function(inv_dt, out) {
   /*box2d.b2Vec2*/
   var F = box2d.b2Mul_S_V2((inv_dt * this.m_impulse), this.m_u, out);
   return F;
-  //	return out.Set(inv_dt * this.m_linearImpulse.x, inv_dt * this.m_linearImpulse.y);
+  //  return out.Set(inv_dt * this.m_linearImpulse.x, inv_dt * this.m_linearImpulse.y);
 }
 
 /**

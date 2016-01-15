@@ -70,25 +70,25 @@ box2d.Testbed.Tiles = function(canvas, settings) {
         position.y -= 2.0 * a;
       }
     }
-    //		else
-    //		{
-    //			/*int32*/ var N = 200;
-    //			/*int32*/ var M = 10;
-    //			/*box2d.b2Vec2*/ var position = new box2d.b2Vec2();
-    //			position.x = -N * a;
-    //			for (/*int32*/ var i = 0; i < N; ++i)
-    //			{
-    //				position.y = 0.0;
-    //				for (/*int32*/ var j = 0; j < M; ++j)
-    //				{
-    //					/*box2d.b2PolygonShape*/ var shape = new box2d.b2PolygonShape();
-    //					shape.SetAsBox(a, a, position, 0.0);
-    //					ground.CreateFixture(shape, 0.0);
-    //					position.y -= 2.0 * a;
-    //				}
-    //				position.x += 2.0 * a;
-    //			}
-    //		}
+    //    else
+    //    {
+    //      /*int32*/ var N = 200;
+    //      /*int32*/ var M = 10;
+    //      /*box2d.b2Vec2*/ var position = new box2d.b2Vec2();
+    //      position.x = -N * a;
+    //      for (/*int32*/ var i = 0; i < N; ++i)
+    //      {
+    //        position.y = 0.0;
+    //        for (/*int32*/ var j = 0; j < M; ++j)
+    //        {
+    //          /*box2d.b2PolygonShape*/ var shape = new box2d.b2PolygonShape();
+    //          shape.SetAsBox(a, a, position, 0.0);
+    //          ground.CreateFixture(shape, 0.0);
+    //          position.y -= 2.0 * a;
+    //        }
+    //        position.x += 2.0 * a;
+    //      }
+    //    }
   }
 
   {
@@ -118,11 +118,11 @@ box2d.Testbed.Tiles = function(canvas, settings) {
 
         //if (i === 0 && j === 0)
         //{
-        //	bd.allowSleep = false;
+        //  bd.allowSleep = false;
         //}
         //else
         //{
-        //	bd.allowSleep = true;
+        //  bd.allowSleep = true;
         //}
 
         /*box2d.b2Body*/
@@ -188,7 +188,7 @@ box2d.Testbed.Tiles.prototype.Step = function(settings) {
 
   //if (this.m_stepCount === 400)
   //{
-  //	tree.RebuildBottomUp();
+  //  tree.RebuildBottomUp();
   //}
 }
 

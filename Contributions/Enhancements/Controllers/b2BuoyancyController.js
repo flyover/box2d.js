@@ -140,7 +140,7 @@ box2d.b2BuoyancyController.prototype.Step = function(step) {
     }
     areac.x /= area;
     areac.y /= area;
-    //		b2Vec2 localCentroid = b2MulT(body->GetXForm(),areac);
+    //    b2Vec2 localCentroid = b2MulT(body->GetXForm(),areac);
     massc.x /= mass;
     massc.y /= mass;
     if (area < box2d.b2_epsilon)

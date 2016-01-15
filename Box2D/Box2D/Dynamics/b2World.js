@@ -1078,7 +1078,7 @@ box2d.b2World.prototype.Solve = function(step) {
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2World.prototype.SolveTOI = function(step) {
-  //	box2d.b2Island island(2 * box2d.b2_maxTOIContacts, box2d.b2_maxTOIContacts, 0, &m_stackAllocator, m_contactManager.m_contactListener);
+  //  box2d.b2Island island(2 * box2d.b2_maxTOIContacts, box2d.b2_maxTOIContacts, 0, &m_stackAllocator, m_contactManager.m_contactListener);
   /** @type {box2d.b2Island} */
   var island = this.m_island;
   island.Initialize(2 * box2d.b2_maxTOIContacts, box2d.b2_maxTOIContacts, 0, null, this.m_contactManager.m_contactListener);
@@ -1525,8 +1525,8 @@ box2d.b2World.prototype.ClearForces = function() {
  * @export
  * @return {void}
  * @param
- *  	  {box2d.b2QueryCallback|function(box2d.b2Fixture):boolean}
- *  	  callback a user implemented callback class.
+ *      {box2d.b2QueryCallback|function(box2d.b2Fixture):boolean}
+ *      callback a user implemented callback class.
  * @param {box2d.b2AABB} aabb the query box.
  */
 box2d.b2World.prototype.QueryAABB = function(callback, aabb) {
@@ -1569,8 +1569,8 @@ box2d.b2World.prototype.QueryAABB = function(callback, aabb) {
  * @export
  * @return {void}
  * @param
- *  	  {box2d.b2QueryCallback|function(box2d.b2Fixture):boolean}
- *  	  callback
+ *      {box2d.b2QueryCallback|function(box2d.b2Fixture):boolean}
+ *      callback
  * @param {box2d.b2Shape} shape
  * @param {box2d.b2Transform} transform
  * @param {number=} childIndex
@@ -1623,8 +1623,8 @@ box2d.b2World.prototype.QueryShape.s_aabb = new box2d.b2AABB();
  * @export
  * @return {void}
  * @param
- *  	  {box2d.b2QueryCallback|function(box2d.b2Fixture):boolean}
- *  	  callback
+ *      {box2d.b2QueryCallback|function(box2d.b2Fixture):boolean}
+ *      callback
  * @param {box2d.b2Vec2} point
  * @param {number=} slop
  */
@@ -1681,8 +1681,8 @@ box2d.b2World.prototype.QueryPoint.s_aabb = new box2d.b2AABB();
  * @export
  * @return {void}
  * @param
- *  	  {box2d.b2RayCastCallback|function(box2d.b2Fixture,box2d.b2Vec2,box2d.b2Vec2,number):number}
- *  	  callback a user implemented callback class.
+ *      {box2d.b2RayCastCallback|function(box2d.b2Fixture,box2d.b2Vec2,box2d.b2Vec2,number):number}
+ *      callback a user implemented callback class.
  * @param {box2d.b2Vec2} point1 the ray starting point
  * @param {box2d.b2Vec2} point2 the ray ending point
  */
@@ -2030,17 +2030,17 @@ box2d.b2World.prototype.DrawDebugData = function() {
   /*
   if (flags & box2d.b2DrawFlags.e_pairBit)
   {
-  	color.SetRGB(0.3, 0.9, 0.9);
-  	for (var contact = this.m_contactManager.m_contactList; contact; contact = contact.m_next)
-  	{
-  		var fixtureA = contact.GetFixtureA();
-  		var fixtureB = contact.GetFixtureB();
+    color.SetRGB(0.3, 0.9, 0.9);
+    for (var contact = this.m_contactManager.m_contactList; contact; contact = contact.m_next)
+    {
+      var fixtureA = contact.GetFixtureA();
+      var fixtureB = contact.GetFixtureB();
 
-  		var cA = fixtureA.GetAABB().GetCenter();
-  		var cB = fixtureB.GetAABB().GetCenter();
+      var cA = fixtureA.GetAABB().GetCenter();
+      var cB = fixtureB.GetAABB().GetCenter();
 
-  		this.m_debugDraw.DrawSegment(cA, cB, color);
-  	}
+      this.m_debugDraw.DrawSegment(cA, cB, color);
+    }
   }
   */
 
@@ -2126,7 +2126,7 @@ box2d.b2World.prototype.SetBroadPhase = function(broadPhase) {
  * @export
  * @return {number}
  * @param {number} timeStep is the value to be passed into
- *  	  `Step`.
+ *      `Step`.
  */
 box2d.b2World.prototype.CalculateReasonableParticleIterations = function(timeStep) {
   if (this.m_particleSystemList === null) {

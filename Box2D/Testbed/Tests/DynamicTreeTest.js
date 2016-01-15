@@ -251,9 +251,9 @@ box2d.Testbed.DynamicTreeTest.prototype.Keyboard = function(key) {
 /*
 box2d.Testbed.DynamicTreeTest.prototype.QueryCallback = function (proxyId)
 {
-	var actor = this.m_tree.GetUserData(proxyId);
-	actor.overlap = box2d.b2TestOverlap_AABB(this.m_queryAABB, actor.aabb);
-	return true;
+  var actor = this.m_tree.GetUserData(proxyId);
+  actor.overlap = box2d.b2TestOverlap_AABB(this.m_queryAABB, actor.aabb);
+  return true;
 }
 */
 
@@ -261,20 +261,20 @@ box2d.Testbed.DynamicTreeTest.prototype.QueryCallback = function (proxyId)
 /*
 box2d.Testbed.DynamicTreeTest.prototype.RayCastCallback = function (input, proxyId)
 {
-	var actor = this.m_tree.GetUserData(proxyId);
+  var actor = this.m_tree.GetUserData(proxyId);
 
-	var output = new box2d.b2RayCastOutput();
-	var hit = actor.aabb.RayCast(output, input);
+  var output = new box2d.b2RayCastOutput();
+  var hit = actor.aabb.RayCast(output, input);
 
-	if (hit)
-	{
-		this.m_rayCastOutput = output;
-		this.m_rayActor = actor;
-		this.m_rayActor.fraction = output.fraction;
-		return output.fraction;
-	}
+  if (hit)
+  {
+    this.m_rayCastOutput = output;
+    this.m_rayActor = actor;
+    this.m_rayActor.fraction = output.fraction;
+    return output.fraction;
+  }
 
-	return input.maxFraction;
+  return input.maxFraction;
 }
 */
 
@@ -489,7 +489,7 @@ box2d.Testbed.DynamicTreeTest.prototype.RayCast = function() {
   /*
   if (bruteActor !== null)
   {
-  	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(bruteOutput.fraction === this.m_rayCastOutput.fraction); }
+    if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(bruteOutput.fraction === this.m_rayCastOutput.fraction); }
   }
   */
 }

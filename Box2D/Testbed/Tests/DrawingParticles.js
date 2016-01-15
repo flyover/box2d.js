@@ -250,8 +250,8 @@ box2d.Testbed.DrawingParticles.prototype.MouseMove = function(p) {
     var shape = new box2d.b2CircleShape();
     shape.m_p.Copy(p);
     shape.m_radius = 0.2;
-    ///	b2Transform xf;
-    ///	xf.SetIdentity();
+    ///  b2Transform xf;
+    ///  xf.SetIdentity();
     var xf = box2d.b2Transform.IDENTITY;
 
     this.m_particleSystem.DestroyParticlesInShape(shape, xf);

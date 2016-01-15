@@ -345,8 +345,8 @@ box2d.b2QueryCallback.prototype.ReportParticle = function(particleSystem, partic
  * Ignored for b2ParticleSystem::QueryAABB.
  * @export
  * @return {boolean} true if you want to include particleSystem
- *  	   in the AABB query, or false to cull particleSystem
- *  	   from the AABB query.
+ *       in the AABB query, or false to cull particleSystem
+ *       from the AABB query.
  * @param {box2d.b2ParticleSystem} particleSystem
  */
 box2d.b2QueryCallback.prototype.ShouldQueryParticleSystem = function(particleSystem) {
@@ -375,7 +375,7 @@ box2d.b2RayCastCallback = function() {}
  * @param {box2d.b2Fixture} fixture the fixture hit by the ray
  * @param {box2d.b2Vec2} point the point of initial intersection
  * @param {box2d.b2Vec2} normal the normal vector at the point
- *  	  of intersection
+ *      of intersection
  * @param {number} fraction
  */
 box2d.b2RayCastCallback.prototype.ReportFixture = function(fixture, point, normal, fraction) {
@@ -394,18 +394,18 @@ box2d.b2RayCastCallback.prototype.ReportFixture = function(fixture, point, norma
  * 'point1' and 'point2' are parameters to b2World::RayCast.
  * @export
  * @return {number} <=0 to ignore rest of particle system,
- *  	   fraction to ignore particles that are farther away.
+ *       fraction to ignore particles that are farther away.
  * @param {box2d.b2ParticleSystem} particleSystem the particle
- *  	  system containing the particle
+ *      system containing the particle
  * @param {number} particleIndex the index of the particle in
- *  	  particleSystem
+ *      particleSystem
  * @param {box2d.b2Vec2} point the point of intersection bt the
- *  	  ray and the particle
+ *      ray and the particle
  * @param {box2d.b2Vec2} normal the normal vector at the point
- *  	  of intersection
+ *      of intersection
  * @param {number} fraction percent (0.0~1.0) from 'point0' to
- *  	  'point1' along the ray. Note that 'point1' and
- *  	  'point2' are parameters to b2World::RayCast.
+ *      'point1' along the ray. Note that 'point1' and
+ *      'point2' are parameters to b2World::RayCast.
  */
 box2d.b2RayCastCallback.prototype.ReportParticle = function(particleSystem, particleIndex, point, normal, fraction) {
   return 0;
@@ -416,8 +416,8 @@ box2d.b2RayCastCallback.prototype.ReportParticle = function(particleSystem, part
  * in b2ParticleSystem::RayCast.
  * @export
  * @return {boolean} true if you want to include particleSystem
- *  	   in the RayCast, or false to cull particleSystem from
- *  	   the RayCast.
+ *       in the RayCast, or false to cull particleSystem from
+ *       the RayCast.
  * @param {box2d.b2ParticleSystem} particleSystem
  */
 box2d.b2RayCastCallback.prototype.ShouldQueryParticleSystem = function(particleSystem) {

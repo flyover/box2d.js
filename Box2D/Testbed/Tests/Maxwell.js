@@ -229,18 +229,18 @@ box2d.Testbed.Maxwell.prototype.ResetParticles = function() {
     pd.flags = box2d.b2ParticleFlag.b2_powderParticle;
     pd.shape = shape;
     this.m_particleGroup = this.m_particleSystem.CreateParticleGroup(pd);
-    ///	b2Vec2* velocities =
-    ///		this.m_particleSystem.GetVelocityBuffer() +
-    ///		this.m_particleGroup.GetBufferIndex();
+    ///  b2Vec2* velocities =
+    ///    this.m_particleSystem.GetVelocityBuffer() +
+    ///    this.m_particleGroup.GetBufferIndex();
     var velocities = this.m_particleSystem.GetVelocityBuffer();
     var index = this.m_particleGroup.GetBufferIndex();
 
     for (var i = 0; i < this.m_particleGroup.GetParticleCount(); ++i) {
-      ///	b2Vec2& v = *(velocities + i);
+      ///  b2Vec2& v = *(velocities + i);
       var v = velocities[index + i];
       v.Set(box2d.Testbed.RandomFloat() + 1.0, box2d.Testbed.RandomFloat() + 1.0);
       v.Normalize();
-      ///	v *= this.m_temperature;
+      ///  v *= this.m_temperature;
       v.SelfMul(this.m_temperature);
     }
   }
@@ -344,22 +344,22 @@ box2d.Testbed.Maxwell.prototype.Step = function(settings) {
   var top = 0;
   var bottom = 0;
   var index = this.m_particleGroup.GetBufferIndex();
-  ///	b2Vec2* const velocities = this.m_particleSystem.GetVelocityBuffer() + index;
+  ///  b2Vec2* const velocities = this.m_particleSystem.GetVelocityBuffer() + index;
   var velocities = this.m_particleSystem.GetVelocityBuffer();
-  ///	b2Vec2* const positions = this.m_particleSystem.GetPositionBuffer() + index;
+  ///  b2Vec2* const positions = this.m_particleSystem.GetPositionBuffer() + index;
   var positions = this.m_particleSystem.GetPositionBuffer();
 
   for (var i = 0; i < this.m_particleGroup.GetParticleCount(); i++) {
     // Add energy to particles based upon the temperature.
-    ///	b2Vec2& v = velocities[i];
+    ///  b2Vec2& v = velocities[i];
     var v = velocities[index + i];
     v.Normalize();
-    ///	v *= this.m_temperature;
+    ///  v *= this.m_temperature;
     v.SelfMul(this.m_temperature);
 
     // Keep track of the number of particles above / below the
     // divider / barrier position.
-    ///	b2Vec2& p = positions[i];
+    ///  b2Vec2& p = positions[i];
     var p = positions[index + i];
     if (p.y > this.m_position)
       top++;

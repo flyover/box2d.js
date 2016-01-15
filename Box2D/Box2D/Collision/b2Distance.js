@@ -901,7 +901,7 @@ box2d.b2ShapeDistance = function(output, cache, input) {
     TODO: to fix compile warning
     if (distanceSqr2 > distanceSqr1)
     {
-    	//break;
+      //break;
     }
     */
     distanceSqr1 = distanceSqr2;

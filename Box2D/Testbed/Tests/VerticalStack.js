@@ -165,31 +165,31 @@ box2d.Testbed.VerticalStack.prototype.Step = function(settings) {
   this.m_debugDraw.DrawString(5, this.m_textLine, "Blocksolve = %d", (box2d.g_blockSolve) ? (1) : (0));
   //if (this.m_stepCount === 300)
   //{
-  //	if (this.m_bullet !== null)
-  //	{
-  //		this.m_world.DestroyBody(this.m_bullet);
-  //		this.m_bullet = null;
-  //	}
+  //  if (this.m_bullet !== null)
+  //  {
+  //    this.m_world.DestroyBody(this.m_bullet);
+  //    this.m_bullet = null;
+  //  }
 
-  //	{
-  //		var shape = new box2d.b2CircleShape();
-  //		shape.m_radius = 0.25;
+  //  {
+  //    var shape = new box2d.b2CircleShape();
+  //    shape.m_radius = 0.25;
 
-  //		var fd = new box2d.b2FixtureDef();
-  //		fd.shape = shape;
-  //		fd.density = 20.0;
-  //		fd.restitution = 0.05;
+  //    var fd = new box2d.b2FixtureDef();
+  //    fd.shape = shape;
+  //    fd.density = 20.0;
+  //    fd.restitution = 0.05;
 
-  //		var bd = new box2d.b2BodyDef();
-  //		bd.type = box2d.b2BodyType.b2_dynamicBody;
-  //		bd.bullet = true;
-  //		bd.position.Set(-31.0, 5.0);
+  //    var bd = new box2d.b2BodyDef();
+  //    bd.type = box2d.b2BodyType.b2_dynamicBody;
+  //    bd.bullet = true;
+  //    bd.position.Set(-31.0, 5.0);
 
-  //		this.m_bullet = this.m_world.CreateBody(bd);
-  //		this.m_bullet.CreateFixture(fd);
+  //    this.m_bullet = this.m_world.CreateBody(bd);
+  //    this.m_bullet.CreateFixture(fd);
 
-  //		this.m_bullet.SetLinearVelocity(new box2d.b2Vec2(400.0, 0.0));
-  //	}
+  //    this.m_bullet.SetLinearVelocity(new box2d.b2Vec2(400.0, 0.0));
+  //  }
   //}
 }
 

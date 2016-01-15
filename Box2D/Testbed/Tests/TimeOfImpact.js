@@ -127,15 +127,15 @@ box2d.Testbed.TimeOfImpact.prototype.Step = function(settings) {
 
   /*
   #if 0
-  	for (float32 t = 0.0f; t < 1.0f; t += 0.1f)
-  	{
-  		sweepB.GetTransform(&transformB, t);
-  		for (int32 i = 0; i < m_shapeB.m_count; ++i)
-  		{
-  			vertices[i] = b2Mul(transformB, m_shapeB.m_vertices[i]);
-  		}
-  		m_debugDraw.DrawPolygon(vertices, m_shapeB.m_count, box2d.b2Color(0.9f, 0.5f, 0.5f));
-  	}
+    for (float32 t = 0.0f; t < 1.0f; t += 0.1f)
+    {
+      sweepB.GetTransform(&transformB, t);
+      for (int32 i = 0; i < m_shapeB.m_count; ++i)
+      {
+        vertices[i] = b2Mul(transformB, m_shapeB.m_vertices[i]);
+      }
+      m_debugDraw.DrawPolygon(vertices, m_shapeB.m_count, box2d.b2Color(0.9f, 0.5f, 0.5f));
+    }
   #endif
   */
 }

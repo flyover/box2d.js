@@ -210,12 +210,12 @@ box2d.b2DynamicTree.prototype.Query = function(callback, aabb) {
  * @export
  * @return {void}
  * @param
- *  	  {function(box2d.b2RayCastInput,box2d.b2TreeNode):number}
- *  	  callback a callback class that is called for each
- *  	  proxy that is hit by the ray.
+ *      {function(box2d.b2RayCastInput,box2d.b2TreeNode):number}
+ *      callback a callback class that is called for each
+ *      proxy that is hit by the ray.
  * @param {box2d.b2RayCastInput} input the ray-cast input data.
- *  	  The ray extends from p1 to p1 + maxFraction * (p2 -
- *  	  p1).
+ *      The ray extends from p1 to p1 + maxFraction * (p2 -
+ *      p1).
  */
 box2d.b2DynamicTree.prototype.RayCast = function(callback, input) {
   if (this.m_root === null) return;
@@ -813,14 +813,14 @@ box2d.b2DynamicTree.prototype.GetAreaRatio = function() {
   float32 totalArea = 0.0;
   for (int32 i = 0; i < m_nodeCapacity; ++i)
   {
-  	const b2TreeNode* node = m_nodes + i;
-  	if (node.height < 0)
-  	{
-  		// Free node in pool
-  		continue;
-  	}
+    const b2TreeNode* node = m_nodes + i;
+    if (node.height < 0)
+    {
+      // Free node in pool
+      continue;
+    }
 
-  	totalArea += node.aabb.GetPerimeter();
+    totalArea += node.aabb.GetPerimeter();
   }
   */
 
@@ -1019,18 +1019,18 @@ box2d.b2DynamicTree.prototype.GetMaxBalance = function() {
   int32 maxBalance = 0;
   for (int32 i = 0; i < m_nodeCapacity; ++i)
   {
-  	const b2TreeNode* node = m_nodes + i;
-  	if (node.height <= 1)
-  	{
-  		continue;
-  	}
+    const b2TreeNode* node = m_nodes + i;
+    if (node.height <= 1)
+    {
+      continue;
+    }
 
-  	b2Assert(!node.IsLeaf());
+    b2Assert(!node.IsLeaf());
 
-  	int32 child1 = node.child1;
-  	int32 child2 = node.child2;
-  	int32 balance = b2Abs(m_nodes[child2].height - m_nodes[child1].height);
-  	maxBalance = b2Max(maxBalance, balance);
+    int32 child1 = node.child1;
+    int32 child2 = node.child2;
+    int32 balance = b2Abs(m_nodes[child2].height - m_nodes[child1].height);
+    maxBalance = b2Max(maxBalance, balance);
   }
   */
 
@@ -1050,66 +1050,66 @@ box2d.b2DynamicTree.prototype.RebuildBottomUp = function() {
   // Build array of leaves. Free the rest.
   for (int32 i = 0; i < m_nodeCapacity; ++i)
   {
-  	if (m_nodes[i].height < 0)
-  	{
-  		// free node in pool
-  		continue;
-  	}
+    if (m_nodes[i].height < 0)
+    {
+      // free node in pool
+      continue;
+    }
 
-  	if (m_nodes[i].IsLeaf())
-  	{
-  		m_nodes[i].parent = b2_nullNode;
-  		nodes[count] = i;
-  		++count;
-  	}
-  	else
-  	{
-  		FreeNode(i);
-  	}
+    if (m_nodes[i].IsLeaf())
+    {
+      m_nodes[i].parent = b2_nullNode;
+      nodes[count] = i;
+      ++count;
+    }
+    else
+    {
+      FreeNode(i);
+    }
   }
 
   while (count > 1)
   {
-  	float32 minCost = b2_maxFloat;
-  	int32 iMin = -1, jMin = -1;
-  	for (int32 i = 0; i < count; ++i)
-  	{
-  		b2AABB aabbi = m_nodes[nodes[i]].aabb;
+    float32 minCost = b2_maxFloat;
+    int32 iMin = -1, jMin = -1;
+    for (int32 i = 0; i < count; ++i)
+    {
+      b2AABB aabbi = m_nodes[nodes[i]].aabb;
 
-  		for (int32 j = i + 1; j < count; ++j)
-  		{
-  			b2AABB aabbj = m_nodes[nodes[j]].aabb;
-  			b2AABB b;
-  			b.Combine(aabbi, aabbj);
-  			float32 cost = b.GetPerimeter();
-  			if (cost < minCost)
-  			{
-  				iMin = i;
-  				jMin = j;
-  				minCost = cost;
-  			}
-  		}
-  	}
+      for (int32 j = i + 1; j < count; ++j)
+      {
+        b2AABB aabbj = m_nodes[nodes[j]].aabb;
+        b2AABB b;
+        b.Combine(aabbi, aabbj);
+        float32 cost = b.GetPerimeter();
+        if (cost < minCost)
+        {
+          iMin = i;
+          jMin = j;
+          minCost = cost;
+        }
+      }
+    }
 
-  	int32 index1 = nodes[iMin];
-  	int32 index2 = nodes[jMin];
-  	b2TreeNode* child1 = m_nodes + index1;
-  	b2TreeNode* child2 = m_nodes + index2;
+    int32 index1 = nodes[iMin];
+    int32 index2 = nodes[jMin];
+    b2TreeNode* child1 = m_nodes + index1;
+    b2TreeNode* child2 = m_nodes + index2;
 
-  	int32 parentIndex = AllocateNode();
-  	b2TreeNode* parent = m_nodes + parentIndex;
-  	parent.child1 = index1;
-  	parent.child2 = index2;
-  	parent.height = 1 + b2Max(child1.height, child2.height);
-  	parent.aabb.Combine(child1.aabb, child2.aabb);
-  	parent.parent = b2_nullNode;
+    int32 parentIndex = AllocateNode();
+    b2TreeNode* parent = m_nodes + parentIndex;
+    parent.child1 = index1;
+    parent.child2 = index2;
+    parent.height = 1 + b2Max(child1.height, child2.height);
+    parent.aabb.Combine(child1.aabb, child2.aabb);
+    parent.parent = b2_nullNode;
 
-  	child1.parent = parentIndex;
-  	child2.parent = parentIndex;
+    child1.parent = parentIndex;
+    child2.parent = parentIndex;
 
-  	nodes[jMin] = nodes[count-1];
-  	nodes[iMin] = parentIndex;
-  	--count;
+    nodes[jMin] = nodes[count-1];
+    nodes[iMin] = parentIndex;
+    --count;
   }
 
   m_root = nodes[0];
@@ -1157,8 +1157,8 @@ box2d.b2DynamicTree.prototype.ShiftOrigin = function(newOrigin) {
   // Build array of leaves. Free the rest.
   for (int32 i = 0; i < m_nodeCapacity; ++i)
   {
-  	m_nodes[i].aabb.lowerBound -= newOrigin;
-  	m_nodes[i].aabb.upperBound -= newOrigin;
+    m_nodes[i].aabb.lowerBound -= newOrigin;
+    m_nodes[i].aabb.upperBound -= newOrigin;
   }
   */
 }

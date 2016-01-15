@@ -134,9 +134,9 @@ box2d.b2VoronoiDiagram.b2VoronoiDiagramTask.prototype.m_generator = null;
  * @return {void}
  * @param {box2d.b2Vec2} center the position of the generator.
  * @param {number} tag a tag used to identify the generator in
- *  	  callback functions.
+ *      callback functions.
  * @param {boolean} necessary whether to callback for nodes
- *  	  associated with the generator.
+ *      associated with the generator.
  */
 box2d.b2VoronoiDiagram.prototype.AddGenerator = function(center, tag, necessary) {
   box2d.b2Assert(this.m_generatorCount < this.m_generatorCapacity);
@@ -154,7 +154,7 @@ box2d.b2VoronoiDiagram.prototype.AddGenerator = function(center, tag, necessary)
  * @return {void}
  * @param {number} radius the interval of the diagram.
  * @param {number} margin margin for which the range of the
- *  	  diagram is extended.
+ *      diagram is extended.
  */
 box2d.b2VoronoiDiagram.prototype.Generate = function(radius, margin) {
   box2d.b2Assert(this.m_diagram === null);
@@ -182,11 +182,11 @@ box2d.b2VoronoiDiagram.prototype.Generate = function(radius, margin) {
   upper.y += margin;
   this.m_countX = 1 + Math.floor(inverseRadius * (upper.x - lower.x));
   this.m_countY = 1 + Math.floor(inverseRadius * (upper.y - lower.y));
-  ///	m_diagram = (Generator**) m_allocator->Allocate(sizeof(Generator*) * m_countX * m_countY);
-  ///	for (int32 i = 0; i < m_countX * m_countY; i++)
-  ///	{
-  ///		m_diagram[i] = NULL;
-  ///	}
+  ///  m_diagram = (Generator**) m_allocator->Allocate(sizeof(Generator*) * m_countX * m_countY);
+  ///  for (int32 i = 0; i < m_countX * m_countY; i++)
+  ///  {
+  ///    m_diagram[i] = NULL;
+  ///  }
   this.m_diagram = /** @type {Array.<box2d.b2VoronoiDiagram.Generator>} */ (box2d.b2MakeArray(this.m_countX * this.m_countY));
 
   // (4 * m_countX * m_countY) is the queue capacity that is experimentally
@@ -194,7 +194,7 @@ box2d.b2VoronoiDiagram.prototype.Generate = function(radius, margin) {
   var queue = new box2d.b2StackQueue(4 * this.m_countX * this.m_countY);
   for (var k = 0; k < this.m_generatorCount; k++) {
     var g = this.m_generatorBuffer[k];
-    ///	g.center = inverseRadius * (g.center - lower);
+    ///  g.center = inverseRadius * (g.center - lower);
     g.center.SelfSub(lower).SelfMul(inverseRadius);
     var x = Math.floor(g.center.x);
     var y = Math.floor(g.center.y);

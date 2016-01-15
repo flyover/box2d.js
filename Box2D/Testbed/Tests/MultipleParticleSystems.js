@@ -75,7 +75,7 @@ box2d.Testbed.MultipleParticleSystems = function(canvas, settings) {
     var center = new box2d.b2Vec2(0.0, 1.2);
     shape.SetAsBox(box2d.Testbed.MultipleParticleSystems.k_dynamicBoxSize.x, box2d.Testbed.MultipleParticleSystems.k_dynamicBoxSize.y, center, 0.0);
     body.CreateFixture(shape, 0.0);
-    ///	b2MassData massData = { box2d.Testbed.MultipleParticleSystems.k_boxMass, center, 0.0 };
+    ///  b2MassData massData = { box2d.Testbed.MultipleParticleSystems.k_boxMass, center, 0.0 };
     var massData = new box2d.b2MassData();
     massData.mass = box2d.Testbed.MultipleParticleSystems.k_boxMass;
     massData.center.Copy(center);

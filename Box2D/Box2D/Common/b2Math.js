@@ -307,15 +307,15 @@ box2d.b2Vec2.prototype.x = 0.0;
  */
 box2d.b2Vec2.prototype.y = 0.0;
 
-//	/**
-//	 * @type {Float32Array}
-//	 */
-//	box2d.b2Vec2.prototype.a;
+//  /**
+//   * @type {Float32Array}
+//   */
+//  box2d.b2Vec2.prototype.a;
 //
-//	box2d.b2Vec2.prototype.__defineGetter__('x', function () { return this.a[0]; });
-//	box2d.b2Vec2.prototype.__defineGetter__('y', function () { return this.a[1]; });
-//	box2d.b2Vec2.prototype.__defineSetter__('x', function (n) { this.a[0] = n; });
-//	box2d.b2Vec2.prototype.__defineSetter__('y', function (n) { this.a[1] = n; });
+//  box2d.b2Vec2.prototype.__defineGetter__('x', function () { return this.a[0]; });
+//  box2d.b2Vec2.prototype.__defineGetter__('y', function () { return this.a[1]; });
+//  box2d.b2Vec2.prototype.__defineSetter__('x', function (n) { this.a[0] = n; });
+//  box2d.b2Vec2.prototype.__defineSetter__('y', function (n) { this.a[1] = n; });
 
 /**
  * @export
@@ -987,17 +987,17 @@ box2d.b2Vec3.prototype.y = 0.0;
  */
 box2d.b2Vec3.prototype.z = 0.0;
 
-//	/**
-//	 * @type {Float32Array}
-//	 */
-//	box2d.b2Vec3.prototype.a;
+//  /**
+//   * @type {Float32Array}
+//   */
+//  box2d.b2Vec3.prototype.a;
 //
-//	box2d.b2Vec3.prototype.__defineGetter__('x', function () { return this.a[0]; });
-//	box2d.b2Vec3.prototype.__defineGetter__('y', function () { return this.a[1]; });
-//	box2d.b2Vec3.prototype.__defineGetter__('z', function () { return this.a[2]; });
-//	box2d.b2Vec3.prototype.__defineSetter__('x', function (n) { this.a[0] = n; });
-//	box2d.b2Vec3.prototype.__defineSetter__('y', function (n) { this.a[1] = n; });
-//	box2d.b2Vec3.prototype.__defineSetter__('z', function (n) { this.a[2] = n; });
+//  box2d.b2Vec3.prototype.__defineGetter__('x', function () { return this.a[0]; });
+//  box2d.b2Vec3.prototype.__defineGetter__('y', function () { return this.a[1]; });
+//  box2d.b2Vec3.prototype.__defineGetter__('z', function () { return this.a[2]; });
+//  box2d.b2Vec3.prototype.__defineSetter__('x', function (n) { this.a[0] = n; });
+//  box2d.b2Vec3.prototype.__defineSetter__('y', function (n) { this.a[1] = n; });
+//  box2d.b2Vec3.prototype.__defineSetter__('z', function (n) { this.a[2] = n; });
 
 /**
  * @export
@@ -1350,19 +1350,19 @@ box2d.b2Vec4.prototype.z = 0.0;
  */
 box2d.b2Vec4.prototype.w = 0.0;
 
-//	/**
-//	 * @type {Float32Array}
-//	 */
-//	box2d.b2Vec4.prototype.a;
+//  /**
+//   * @type {Float32Array}
+//   */
+//  box2d.b2Vec4.prototype.a;
 //
-//	box2d.b2Vec4.prototype.__defineGetter__('x', function () { return this.a[0]; });
-//	box2d.b2Vec4.prototype.__defineGetter__('y', function () { return this.a[1]; });
-//	box2d.b2Vec4.prototype.__defineGetter__('z', function () { return this.a[2]; });
-//	box2d.b2Vec4.prototype.__defineGetter__('w', function () { return this.a[3]; });
-//	box2d.b2Vec4.prototype.__defineSetter__('x', function (n) { this.a[0] = n; });
-//	box2d.b2Vec4.prototype.__defineSetter__('y', function (n) { this.a[1] = n; });
-//	box2d.b2Vec4.prototype.__defineSetter__('z', function (n) { this.a[2] = n; });
-//	box2d.b2Vec4.prototype.__defineSetter__('w', function (n) { this.a[3] = n; });
+//  box2d.b2Vec4.prototype.__defineGetter__('x', function () { return this.a[0]; });
+//  box2d.b2Vec4.prototype.__defineGetter__('y', function () { return this.a[1]; });
+//  box2d.b2Vec4.prototype.__defineGetter__('z', function () { return this.a[2]; });
+//  box2d.b2Vec4.prototype.__defineGetter__('w', function () { return this.a[3]; });
+//  box2d.b2Vec4.prototype.__defineSetter__('x', function (n) { this.a[0] = n; });
+//  box2d.b2Vec4.prototype.__defineSetter__('y', function (n) { this.a[1] = n; });
+//  box2d.b2Vec4.prototype.__defineSetter__('z', function (n) { this.a[2] = n; });
+//  box2d.b2Vec4.prototype.__defineSetter__('w', function (n) { this.a[3] = n; });
 
 /**
  * @export
@@ -2093,7 +2093,7 @@ box2d.b2Rot.prototype.SetIdentity = function() {
  */
 box2d.b2Rot.prototype.GetAngle = function() {
   return this.angle;
-  //	return Math.atan2(this.s, this.c);
+  //  return Math.atan2(this.s, this.c);
 }
 
 /**
@@ -2377,10 +2377,10 @@ box2d.b2Transform.prototype.GetAngle = function() {
  * @param {box2d.b2Vec2} out
  */
 box2d.b2Mul_X_V2 = function(T, v, out) {
-  //	float32 x = (T.q.c * v.x - T.q.s * v.y) + T.p.x;
-  //	float32 y = (T.q.s * v.x + T.q.c * v.y) + T.p.y;
+  //  float32 x = (T.q.c * v.x - T.q.s * v.y) + T.p.x;
+  //  float32 y = (T.q.s * v.x + T.q.c * v.y) + T.p.y;
   //
-  //	return b2Vec2(x, y);
+  //  return b2Vec2(x, y);
   var T_q_c = T.q.c,
     T_q_s = T.q.s;
   var v_x = v.x,
@@ -2398,12 +2398,12 @@ box2d.b2Mul_X_V2 = function(T, v, out) {
  * @param {box2d.b2Vec2} out
  */
 box2d.b2MulT_X_V2 = function(T, v, out) {
-  //	float32 px = v.x - T.p.x;
-  //	float32 py = v.y - T.p.y;
-  //	float32 x = (T.q.c * px + T.q.s * py);
-  //	float32 y = (-T.q.s * px + T.q.c * py);
+  //  float32 px = v.x - T.p.x;
+  //  float32 py = v.y - T.p.y;
+  //  float32 x = (T.q.c * px + T.q.s * py);
+  //  float32 y = (-T.q.s * px + T.q.c * py);
   //
-  //	return b2Vec2(x, y);
+  //  return b2Vec2(x, y);
   var T_q_c = T.q.c,
     T_q_s = T.q.s;
   var p_x = v.x - T.p.x;
@@ -2687,10 +2687,10 @@ box2d.b2MulT = function(a, b, out) {
   } else if ((a instanceof box2d.b2Mat22) && (b instanceof box2d.b2Mat22) && (out instanceof box2d.b2Mat22)) {
     return box2d.b2MulT_M22_M22(a, b, out);
   }
-  ///	else if ((a instanceof box2d.b2Mat33) && (b instanceof box2d.b2Vec3) && (out instanceof box2d.b2Vec3))
-  ///	{
-  ///		return box2d.b2MulT_M33_V3(a, b, out);
-  ///	}
+  ///  else if ((a instanceof box2d.b2Mat33) && (b instanceof box2d.b2Vec3) && (out instanceof box2d.b2Vec3))
+  ///  {
+  ///    return box2d.b2MulT_M33_V3(a, b, out);
+  ///  }
   else if ((a instanceof box2d.b2Rot) && (b instanceof box2d.b2Rot) && (out instanceof box2d.b2Rot)) {
     return box2d.b2MulT_R_R(a, b, out);
   } else if ((a instanceof box2d.b2Rot) && (b instanceof box2d.b2Vec2) && (out instanceof box2d.b2Vec2)) {

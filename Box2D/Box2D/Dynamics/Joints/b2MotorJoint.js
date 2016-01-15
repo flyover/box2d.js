@@ -80,8 +80,8 @@ box2d.b2MotorJointDef.prototype.correctionFactor = 0.3;
 box2d.b2MotorJointDef.prototype.Initialize = function(bA, bB) {
   this.bodyA = bA;
   this.bodyB = bB;
-  //	b2Vec2 xB = bodyB->GetPosition();
-  //	linearOffset = bodyA->GetLocalPoint(xB);
+  //  b2Vec2 xB = bodyB->GetPosition();
+  //  linearOffset = bodyA->GetLocalPoint(xB);
   this.bodyA.GetLocalPoint(this.bodyB.GetPosition(), this.linearOffset);
 
   /** @type {number} */
@@ -272,7 +272,7 @@ box2d.b2MotorJoint.prototype.GetAnchorB = function(out) {
  * @param {box2d.b2Vec2} out
  */
 box2d.b2MotorJoint.prototype.GetReactionForce = function(inv_dt, out) {
-  //	return inv_dt * m_linearImpulse;
+  //  return inv_dt * m_linearImpulse;
   return box2d.b2Mul_S_V2(inv_dt, this.m_linearImpulse, out);
 }
 
@@ -430,9 +430,9 @@ box2d.b2MotorJoint.prototype.InitVelocityConstraints = function(data) {
     qB = this.m_qB.SetAngle(aB);
 
   // Compute the effective mass matrix.
-  //	this.m_rA = b2Mul(qA, -this.m_localCenterA);
+  //  this.m_rA = b2Mul(qA, -this.m_localCenterA);
   var rA = box2d.b2Mul_R_V2(qA, box2d.b2Vec2.s_t0.Copy(this.m_localCenterA).SelfNeg(), this.m_rA);
-  //	this.m_rB = b2Mul(qB, -this.m_localCenterB);
+  //  this.m_rB = b2Mul(qB, -this.m_localCenterB);
   var rB = box2d.b2Mul_R_V2(qB, box2d.b2Vec2.s_t0.Copy(this.m_localCenterB).SelfNeg(), this.m_rB);
 
   // J = [-I -r1_skew I r2_skew]
@@ -458,7 +458,7 @@ box2d.b2MotorJoint.prototype.InitVelocityConstraints = function(data) {
   K.ey.x = K.ex.y;
   K.ey.y = mA + mB + iA * rA.x * rA.x + iB * rB.x * rB.x;
 
-  //	this.m_linearMass = K.GetInverse();
+  //  this.m_linearMass = K.GetInverse();
   K.GetInverse(this.m_linearMass);
 
   this.m_angularMass = iA + iB;
@@ -466,7 +466,7 @@ box2d.b2MotorJoint.prototype.InitVelocityConstraints = function(data) {
     this.m_angularMass = 1 / this.m_angularMass;
   }
 
-  //	this.m_linearError = cB + rB - cA - rA - b2Mul(qA, this.m_linearOffset);
+  //  this.m_linearError = cB + rB - cA - rA - b2Mul(qA, this.m_linearOffset);
   box2d.b2Sub_V2_V2(
     box2d.b2Sub_V2_V2(
       box2d.b2Add_V2_V2(cB, rB, box2d.b2Vec2.s_t0),
@@ -478,16 +478,16 @@ box2d.b2MotorJoint.prototype.InitVelocityConstraints = function(data) {
 
   if (data.step.warmStarting) {
     // Scale impulses to support a variable time step.
-    //		this.m_linearImpulse *= data.step.dtRatio;
+    //    this.m_linearImpulse *= data.step.dtRatio;
     this.m_linearImpulse.SelfMul(data.step.dtRatio);
     this.m_angularImpulse *= data.step.dtRatio;
 
-    //		b2Vec2 P(this.m_linearImpulse.x, this.m_linearImpulse.y);
+    //    b2Vec2 P(this.m_linearImpulse.x, this.m_linearImpulse.y);
     var P = this.m_linearImpulse;
-    //		vA -= mA * P;
+    //    vA -= mA * P;
     vA.SelfMulSub(mA, P);
     wA -= iA * (box2d.b2Cross_V2_V2(rA, P) + this.m_angularImpulse);
-    //		vB += mB * P;
+    //    vB += mB * P;
     vB.SelfMulAdd(mB, P);
     wB += iB * (box2d.b2Cross_V2_V2(rB, P) + this.m_angularImpulse);
   } else {
@@ -495,9 +495,9 @@ box2d.b2MotorJoint.prototype.InitVelocityConstraints = function(data) {
     this.m_angularImpulse = 0;
   }
 
-  //	data.velocities[this.m_indexA].v = vA; // vA is a reference
+  //  data.velocities[this.m_indexA].v = vA; // vA is a reference
   data.velocities[this.m_indexA].w = wA;
-  //	data.velocities[this.m_indexB].v = vB; // vB is a reference
+  //  data.velocities[this.m_indexB].v = vB; // vB is a reference
   data.velocities[this.m_indexB].w = wB;
 }
 
@@ -551,7 +551,7 @@ box2d.b2MotorJoint.prototype.SolveVelocityConstraints = function(data) {
     var rA = this.m_rA;
     var rB = this.m_rB;
 
-    //		b2Vec2 Cdot = vB + b2CrossSV(wB, rB) - vA - b2CrossSV(wA, rA) + inv_h * this.m_correctionFactor * this.m_linearError;
+    //    b2Vec2 Cdot = vB + b2CrossSV(wB, rB) - vA - b2CrossSV(wA, rA) + inv_h * this.m_correctionFactor * this.m_linearError;
     var Cdot =
       box2d.b2Add_V2_V2(
         box2d.b2Sub_V2_V2(
@@ -560,11 +560,11 @@ box2d.b2MotorJoint.prototype.SolveVelocityConstraints = function(data) {
         box2d.b2Mul_S_V2(inv_h * this.m_correctionFactor, this.m_linearError, box2d.b2Vec2.s_t3),
         box2d.b2MotorJoint.prototype.SolveVelocityConstraints.s_Cdot);
 
-    //		b2Vec2 impulse = -b2Mul(this.m_linearMass, Cdot);
+    //    b2Vec2 impulse = -b2Mul(this.m_linearMass, Cdot);
     var impulse = box2d.b2Mul_M22_V2(this.m_linearMass, Cdot, box2d.b2MotorJoint.prototype.SolveVelocityConstraints.s_impulse).SelfNeg();
-    //		b2Vec2 oldImpulse = this.m_linearImpulse;
+    //    b2Vec2 oldImpulse = this.m_linearImpulse;
     var oldImpulse = box2d.b2MotorJoint.prototype.SolveVelocityConstraints.s_oldImpulse.Copy(this.m_linearImpulse);
-    //		this.m_linearImpulse += impulse;
+    //    this.m_linearImpulse += impulse;
     this.m_linearImpulse.SelfAdd(impulse);
 
     /*float32*/
@@ -572,27 +572,27 @@ box2d.b2MotorJoint.prototype.SolveVelocityConstraints = function(data) {
 
     if (this.m_linearImpulse.LengthSquared() > maxImpulse * maxImpulse) {
       this.m_linearImpulse.Normalize();
-      //			this.m_linearImpulse *= maxImpulse;
+      //      this.m_linearImpulse *= maxImpulse;
       this.m_linearImpulse.SelfMul(maxImpulse);
     }
 
-    //		impulse = this.m_linearImpulse - oldImpulse;
+    //    impulse = this.m_linearImpulse - oldImpulse;
     box2d.b2Sub_V2_V2(this.m_linearImpulse, oldImpulse, impulse);
 
-    //		vA -= mA * impulse;
+    //    vA -= mA * impulse;
     vA.SelfMulSub(mA, impulse);
-    //		wA -= iA * b2CrossVV(rA, impulse);
+    //    wA -= iA * b2CrossVV(rA, impulse);
     wA -= iA * box2d.b2Cross_V2_V2(rA, impulse);
 
-    //		vB += mB * impulse;
+    //    vB += mB * impulse;
     vB.SelfMulAdd(mB, impulse);
-    //		wB += iB * b2CrossVV(rB, impulse);
+    //    wB += iB * b2CrossVV(rB, impulse);
     wB += iB * box2d.b2Cross_V2_V2(rB, impulse);
   }
 
-  //	data.velocities[this.m_indexA].v = vA; // vA is a reference
+  //  data.velocities[this.m_indexA].v = vA; // vA is a reference
   data.velocities[this.m_indexA].w = wA;
-  //	data.velocities[this.m_indexB].v = vB; // vB is a reference
+  //  data.velocities[this.m_indexB].v = vB; // vB is a reference
   data.velocities[this.m_indexB].w = wB;
 }
 box2d.b2MotorJoint.prototype.SolveVelocityConstraints.s_Cdot = new box2d.b2Vec2();

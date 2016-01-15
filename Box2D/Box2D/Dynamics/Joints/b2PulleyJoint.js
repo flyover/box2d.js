@@ -350,22 +350,22 @@ box2d.b2PulleyJoint.prototype.InitVelocityConstraints = function(data) {
   /*float32*/
   var wB = data.velocities[this.m_indexB].w;
 
-  //	box2d.b2Rot qA(aA), qB(aB);
+  //  box2d.b2Rot qA(aA), qB(aB);
   /*box2d.b2Rot*/
   var qA = this.m_qA.SetAngle(aA),
     qB = this.m_qB.SetAngle(aB);
 
-  //	m_rA = b2Mul(qA, m_localAnchorA - m_localCenterA);
+  //  m_rA = b2Mul(qA, m_localAnchorA - m_localCenterA);
   box2d.b2Sub_V2_V2(this.m_localAnchorA, this.m_localCenterA, this.m_lalcA);
   box2d.b2Mul_R_V2(qA, this.m_lalcA, this.m_rA);
-  //	m_rB = b2Mul(qB, m_localAnchorB - m_localCenterB);
+  //  m_rB = b2Mul(qB, m_localAnchorB - m_localCenterB);
   box2d.b2Sub_V2_V2(this.m_localAnchorB, this.m_localCenterB, this.m_lalcB);
   box2d.b2Mul_R_V2(qB, this.m_lalcB, this.m_rB);
 
   // Get the pulley axes.
-  //	m_uA = cA + m_rA - m_groundAnchorA;
+  //  m_uA = cA + m_rA - m_groundAnchorA;
   this.m_uA.Copy(cA).SelfAdd(this.m_rA).SelfSub(this.m_groundAnchorA);
-  //	m_uB = cB + m_rB - m_groundAnchorB;
+  //  m_uB = cB + m_rB - m_groundAnchorB;
   this.m_uB.Copy(cB).SelfAdd(this.m_rB).SelfSub(this.m_groundAnchorB);
 
   /*float32*/
@@ -407,24 +407,24 @@ box2d.b2PulleyJoint.prototype.InitVelocityConstraints = function(data) {
     this.m_impulse *= data.step.dtRatio;
 
     // Warm starting.
-    //		box2d.b2Vec2 PA = -(m_impulse) * m_uA;
+    //    box2d.b2Vec2 PA = -(m_impulse) * m_uA;
     var PA = box2d.b2Mul_S_V2(-(this.m_impulse), this.m_uA, box2d.b2PulleyJoint.prototype.InitVelocityConstraints.s_PA);
-    //		box2d.b2Vec2 PB = (-m_ratio * m_impulse) * m_uB;
+    //    box2d.b2Vec2 PB = (-m_ratio * m_impulse) * m_uB;
     var PB = box2d.b2Mul_S_V2((-this.m_ratio * this.m_impulse), this.m_uB, box2d.b2PulleyJoint.prototype.InitVelocityConstraints.s_PB);
 
-    //		vA += m_invMassA * PA;
+    //    vA += m_invMassA * PA;
     vA.SelfMulAdd(this.m_invMassA, PA);
     wA += this.m_invIA * box2d.b2Cross_V2_V2(this.m_rA, PA);
-    //		vB += m_invMassB * PB;
+    //    vB += m_invMassB * PB;
     vB.SelfMulAdd(this.m_invMassB, PB);
     wB += this.m_invIB * box2d.b2Cross_V2_V2(this.m_rB, PB);
   } else {
     this.m_impulse = 0;
   }
 
-  //	data.velocities[this.m_indexA].v = vA;
+  //  data.velocities[this.m_indexA].v = vA;
   data.velocities[this.m_indexA].w = wA;
-  //	data.velocities[this.m_indexB].v = vB;
+  //  data.velocities[this.m_indexB].v = vB;
   data.velocities[this.m_indexB].w = wB;
 }
 box2d.b2PulleyJoint.prototype.InitVelocityConstraints.s_PA = new box2d.b2Vec2();
@@ -445,9 +445,9 @@ box2d.b2PulleyJoint.prototype.SolveVelocityConstraints = function(data) {
   /*float32*/
   var wB = data.velocities[this.m_indexB].w;
 
-  //	b2Vec2 vpA = vA + b2Cross(wA, m_rA);
+  //  b2Vec2 vpA = vA + b2Cross(wA, m_rA);
   var vpA = box2d.b2AddCross_V2_S_V2(vA, wA, this.m_rA, box2d.b2PulleyJoint.prototype.SolveVelocityConstraints.s_vpA);
-  //	b2Vec2 vpB = vB + b2Cross(wB, m_rB);
+  //  b2Vec2 vpB = vB + b2Cross(wB, m_rB);
   var vpB = box2d.b2AddCross_V2_S_V2(vB, wB, this.m_rB, box2d.b2PulleyJoint.prototype.SolveVelocityConstraints.s_vpB);
 
   /*float32*/
@@ -456,20 +456,20 @@ box2d.b2PulleyJoint.prototype.SolveVelocityConstraints = function(data) {
   var impulse = -this.m_mass * Cdot;
   this.m_impulse += impulse;
 
-  //	b2Vec2 PA = -impulse * m_uA;
+  //  b2Vec2 PA = -impulse * m_uA;
   var PA = box2d.b2Mul_S_V2(-impulse, this.m_uA, box2d.b2PulleyJoint.prototype.SolveVelocityConstraints.s_PA);
-  //	b2Vec2 PB = -m_ratio * impulse * m_uB;
+  //  b2Vec2 PB = -m_ratio * impulse * m_uB;
   var PB = box2d.b2Mul_S_V2(-this.m_ratio * impulse, this.m_uB, box2d.b2PulleyJoint.prototype.SolveVelocityConstraints.s_PB);
-  //	vA += m_invMassA * PA;
+  //  vA += m_invMassA * PA;
   vA.SelfMulAdd(this.m_invMassA, PA);
   wA += this.m_invIA * box2d.b2Cross_V2_V2(this.m_rA, PA);
-  //	vB += m_invMassB * PB;
+  //  vB += m_invMassB * PB;
   vB.SelfMulAdd(this.m_invMassB, PB);
   wB += this.m_invIB * box2d.b2Cross_V2_V2(this.m_rB, PB);
 
-  //	data.velocities[this.m_indexA].v = vA;
+  //  data.velocities[this.m_indexA].v = vA;
   data.velocities[this.m_indexA].w = wA;
-  //	data.velocities[this.m_indexB].v = vB;
+  //  data.velocities[this.m_indexB].v = vB;
   data.velocities[this.m_indexB].w = wB;
 }
 box2d.b2PulleyJoint.prototype.SolveVelocityConstraints.s_vpA = new box2d.b2Vec2();
@@ -492,22 +492,22 @@ box2d.b2PulleyJoint.prototype.SolvePositionConstraints = function(data) {
   /*float32*/
   var aB = data.positions[this.m_indexB].a;
 
-  //	box2d.b2Rot qA(aA), qB(aB);
+  //  box2d.b2Rot qA(aA), qB(aB);
   /*box2d.b2Rot*/
   var qA = this.m_qA.SetAngle(aA),
     qB = this.m_qB.SetAngle(aB);
 
-  //	b2Vec2 rA = b2Mul(qA, m_localAnchorA - m_localCenterA);
+  //  b2Vec2 rA = b2Mul(qA, m_localAnchorA - m_localCenterA);
   box2d.b2Sub_V2_V2(this.m_localAnchorA, this.m_localCenterA, this.m_lalcA);
   var rA = box2d.b2Mul_R_V2(qA, this.m_lalcA, this.m_rA);
-  //	b2Vec2 rB = b2Mul(qB, m_localAnchorB - m_localCenterB);
+  //  b2Vec2 rB = b2Mul(qB, m_localAnchorB - m_localCenterB);
   box2d.b2Sub_V2_V2(this.m_localAnchorB, this.m_localCenterB, this.m_lalcB);
   var rB = box2d.b2Mul_R_V2(qB, this.m_lalcB, this.m_rB);
 
   // Get the pulley axes.
-  //	b2Vec2 uA = cA + rA - m_groundAnchorA;
+  //  b2Vec2 uA = cA + rA - m_groundAnchorA;
   var uA = this.m_uA.Copy(cA).SelfAdd(rA).SelfSub(this.m_groundAnchorA);
-  //	b2Vec2 uB = cB + rB - m_groundAnchorB;
+  //  b2Vec2 uB = cB + rB - m_groundAnchorB;
   var uB = this.m_uB.Copy(cB).SelfAdd(rB).SelfSub(this.m_groundAnchorB);
 
   /*float32*/
@@ -553,21 +553,21 @@ box2d.b2PulleyJoint.prototype.SolvePositionConstraints = function(data) {
   /*float32*/
   var impulse = -mass * C;
 
-  //	b2Vec2 PA = -impulse * uA;
+  //  b2Vec2 PA = -impulse * uA;
   var PA = box2d.b2Mul_S_V2(-impulse, uA, box2d.b2PulleyJoint.prototype.SolvePositionConstraints.s_PA);
-  //	b2Vec2 PB = -m_ratio * impulse * uB;
+  //  b2Vec2 PB = -m_ratio * impulse * uB;
   var PB = box2d.b2Mul_S_V2(-this.m_ratio * impulse, uB, box2d.b2PulleyJoint.prototype.SolvePositionConstraints.s_PB);
 
-  //	cA += m_invMassA * PA;
+  //  cA += m_invMassA * PA;
   cA.SelfMulAdd(this.m_invMassA, PA);
   aA += this.m_invIA * box2d.b2Cross_V2_V2(rA, PA);
-  //	cB += m_invMassB * PB;
+  //  cB += m_invMassB * PB;
   cB.SelfMulAdd(this.m_invMassB, PB);
   aB += this.m_invIB * box2d.b2Cross_V2_V2(rB, PB);
 
-  //	data.positions[this.m_indexA].c = cA;
+  //  data.positions[this.m_indexA].c = cA;
   data.positions[this.m_indexA].a = aA;
-  //	data.positions[this.m_indexB].c = cB;
+  //  data.positions[this.m_indexB].c = cB;
   data.positions[this.m_indexB].a = aB;
 
   return linearError < box2d.b2_linearSlop;
@@ -600,8 +600,8 @@ box2d.b2PulleyJoint.prototype.GetAnchorB = function(out) {
  * @param {box2d.b2Vec2} out
  */
 box2d.b2PulleyJoint.prototype.GetReactionForce = function(inv_dt, out) {
-  //	b2Vec2 P = m_impulse * m_uB;
-  //	return inv_dt * P;
+  //  b2Vec2 P = m_impulse * m_uB;
+  //  return inv_dt * P;
   return out.Set(inv_dt * this.m_impulse * this.m_uB.x, inv_dt * this.m_impulse * this.m_uB.y);
 }
 
@@ -665,10 +665,10 @@ box2d.b2PulleyJoint.prototype.GetRatio = function() {
  * @return {number}
  */
 box2d.b2PulleyJoint.prototype.GetCurrentLengthA = function() {
-  //	b2Vec2 p = m_bodyA->GetWorldPoint(m_localAnchorA);
-  //	b2Vec2 s = m_groundAnchorA;
-  //	b2Vec2 d = p - s;
-  //	return d.Length();
+  //  b2Vec2 p = m_bodyA->GetWorldPoint(m_localAnchorA);
+  //  b2Vec2 s = m_groundAnchorA;
+  //  b2Vec2 d = p - s;
+  //  return d.Length();
   var p = this.m_bodyA.GetWorldPoint(this.m_localAnchorA, box2d.b2PulleyJoint.prototype.GetCurrentLengthA.s_p);
   var s = this.m_groundAnchorA;
   return box2d.b2Distance(p, s);
@@ -681,10 +681,10 @@ box2d.b2PulleyJoint.prototype.GetCurrentLengthA.s_p = new box2d.b2Vec2();
  * @return {number}
  */
 box2d.b2PulleyJoint.prototype.GetCurrentLengthB = function() {
-  //	b2Vec2 p = m_bodyB->GetWorldPoint(m_localAnchorB);
-  //	b2Vec2 s = m_groundAnchorB;
-  //	b2Vec2 d = p - s;
-  //	return d.Length();
+  //  b2Vec2 p = m_bodyB->GetWorldPoint(m_localAnchorB);
+  //  b2Vec2 s = m_groundAnchorB;
+  //  b2Vec2 d = p - s;
+  //  return d.Length();
   var p = this.m_bodyB.GetWorldPoint(this.m_localAnchorB, box2d.b2PulleyJoint.prototype.GetCurrentLengthB.s_p);
   var s = this.m_groundAnchorB;
   return box2d.b2Distance(p, s);

@@ -55,7 +55,7 @@ box2d.b2CollideEdgeAndCircle = function(manifold, edgeA, xfA, circleB, xfB) {
   /** @type {number} */
   var radius = edgeA.m_radius + circleB.m_radius;
 
-  //	/** @type {box2d.b2ContactFeature} */ var cf = new box2d.b2ContactFeature();
+  //  /** @type {box2d.b2ContactFeature} */ var cf = new box2d.b2ContactFeature();
   /** @type {box2d.b2ContactID} */
   var id = box2d.b2CollideEdgeAndCircle.s_id;
   id.cf.indexB = 0;
@@ -97,8 +97,8 @@ box2d.b2CollideEdgeAndCircle = function(manifold, edgeA, xfA, circleB, xfB) {
     manifold.localNormal.SetZero();
     manifold.localPoint.Copy(P);
     manifold.points[0].id.Copy(id);
-    //		manifold.points[0].id.key = 0;
-    //		manifold.points[0].id.cf = cf;
+    //    manifold.points[0].id.key = 0;
+    //    manifold.points[0].id.cf = cf;
     manifold.points[0].localPoint.Copy(circleB.m_p);
     return;
   }
@@ -139,8 +139,8 @@ box2d.b2CollideEdgeAndCircle = function(manifold, edgeA, xfA, circleB, xfB) {
     manifold.localNormal.SetZero();
     manifold.localPoint.Copy(P);
     manifold.points[0].id.Copy(id);
-    //		manifold.points[0].id.key = 0;
-    //		manifold.points[0].id.cf = cf;
+    //    manifold.points[0].id.key = 0;
+    //    manifold.points[0].id.cf = cf;
     manifold.points[0].localPoint.Copy(circleB.m_p);
     return;
   }
@@ -177,8 +177,8 @@ box2d.b2CollideEdgeAndCircle = function(manifold, edgeA, xfA, circleB, xfB) {
   manifold.localNormal.Copy(n);
   manifold.localPoint.Copy(A);
   manifold.points[0].id.Copy(id);
-  //	manifold.points[0].id.key = 0;
-  //	manifold.points[0].id.cf = cf;
+  //  manifold.points[0].id.key = 0;
+  //  manifold.points[0].id.cf = cf;
   manifold.points[0].localPoint.Copy(circleB.m_p);
 }
 box2d.b2CollideEdgeAndCircle.s_Q = new box2d.b2Vec2();

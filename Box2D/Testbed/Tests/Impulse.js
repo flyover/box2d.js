@@ -124,12 +124,12 @@ box2d.Testbed.Impulse.prototype.ApplyImpulseOrForce = function(direction) {
 
   if (this.m_useLinearImpulse) {
     var kImpulseMagnitude = 0.005;
-    ///	const b2Vec2 impulse = kImpulseMagnitude * direction * (float32)numParticles;
+    ///  const b2Vec2 impulse = kImpulseMagnitude * direction * (float32)numParticles;
     var impulse = box2d.b2Mul_S_V2(kImpulseMagnitude * numParticles, direction, new box2d.b2Vec2());
     particleGroup.ApplyLinearImpulse(impulse);
   } else {
     var kForceMagnitude = 1.0;
-    ///	const b2Vec2 force = kForceMagnitude * direction * (float32)numParticles;
+    ///  const b2Vec2 force = kForceMagnitude * direction * (float32)numParticles;
     var force = box2d.b2Mul_S_V2(kForceMagnitude * numParticles, direction, new box2d.b2Vec2());
     particleGroup.ApplyForce(force);
   }

@@ -336,12 +336,12 @@ box2d.b2BroadPhase.prototype.Query = function(callback, aabb) {
  * @export
  * @return {void}
  * @param
- *  	  {function(box2d.b2RayCastInput,box2d.b2TreeNode):number}
- *  	  callback a callback class that is called for each
- *  	  proxy that is hit by the ray.
+ *      {function(box2d.b2RayCastInput,box2d.b2TreeNode):number}
+ *      callback a callback class that is called for each
+ *      proxy that is hit by the ray.
  * @param {box2d.b2RayCastInput} input the ray-cast input data.
- *  	  The ray extends from p1 to p1 + maxFraction * (p2 -
- *  	  p1).
+ *      The ray extends from p1 to p1 + maxFraction * (p2 -
+ *      p1).
  */
 box2d.b2BroadPhase.prototype.RayCast = function(callback, input) {
   this.m_tree.RayCast(callback, input);

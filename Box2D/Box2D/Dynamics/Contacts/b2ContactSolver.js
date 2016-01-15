@@ -709,9 +709,9 @@ box2d.b2ContactSolver.prototype.InitializeVelocityConstraints = function() {
     for (j = 0, jct = pointCount; j < jct; ++j) {
       vcp = vc.points[j];
 
-      //			vcp->rA = worldManifold.points[j] - cA;
+      //      vcp->rA = worldManifold.points[j] - cA;
       box2d.b2Sub_V2_V2(worldManifold.points[j], cA, vcp.rA);
-      //			vcp->rB = worldManifold.points[j] - cB;
+      //      vcp->rB = worldManifold.points[j] - cB;
       box2d.b2Sub_V2_V2(worldManifold.points[j], cB, vcp.rB);
 
       rnA = box2d.b2Cross_V2_V2(vcp.rA, vc.normal);
@@ -721,7 +721,7 @@ box2d.b2ContactSolver.prototype.InitializeVelocityConstraints = function() {
 
       vcp.normalMass = kNormal > 0 ? 1 / kNormal : 0;
 
-      //			b2Vec2 tangent = b2Cross(vc->normal, 1.0f);
+      //      b2Vec2 tangent = b2Cross(vc->normal, 1.0f);
       tangent = vc.tangent; // precomputed from normal
 
       rtA = box2d.b2Cross_V2_V2(vcp.rA, tangent);
@@ -733,7 +733,7 @@ box2d.b2ContactSolver.prototype.InitializeVelocityConstraints = function() {
 
       // Setup a velocity bias for restitution.
       vcp.velocityBias = 0;
-      //			float32 vRel = b2Dot(vc->normal, vB + b2Cross(wB, vcp->rB) - vA - b2Cross(wA, vcp->rA));
+      //      float32 vRel = b2Dot(vc->normal, vB + b2Cross(wB, vcp->rB) - vA - b2Cross(wA, vcp->rA));
       vRel = box2d.b2Dot_V2_V2(
         vc.normal,
         box2d.b2Sub_V2_V2(
@@ -760,7 +760,7 @@ box2d.b2ContactSolver.prototype.InitializeVelocityConstraints = function() {
       k12 = mA + mB + iA * rn1A * rn2A + iB * rn1B * rn2B;
 
       // Ensure a reasonable condition number.
-      //			float32 k_maxConditionNumber = 1000.0f;
+      //      float32 k_maxConditionNumber = 1000.0f;
       if (k11 * k11 < k_maxConditionNumber * (k11 * k22 - k12 * k12)) {
         // K is safe to invert.
         vc.K.ex.Set(k11, k12);
@@ -847,29 +847,29 @@ box2d.b2ContactSolver.prototype.WarmStart = function() {
     wB = this.m_velocities[indexB].w;
 
     normal = vc.normal;
-    //		b2Vec2 tangent = b2Cross(normal, 1.0f);
+    //    b2Vec2 tangent = b2Cross(normal, 1.0f);
     tangent = vc.tangent; // precomputed from normal
 
     for (j = 0, jct = pointCount; j < jct; ++j) {
       vcp = vc.points[j];
-      //			b2Vec2 P = vcp->normalImpulse * normal + vcp->tangentImpulse * tangent;
+      //      b2Vec2 P = vcp->normalImpulse * normal + vcp->tangentImpulse * tangent;
       box2d.b2Add_V2_V2(
         box2d.b2Mul_S_V2(vcp.normalImpulse, normal, box2d.b2Vec2.s_t0),
         box2d.b2Mul_S_V2(vcp.tangentImpulse, tangent, box2d.b2Vec2.s_t1),
         P);
-      //			wA -= iA * b2Cross(vcp->rA, P);
+      //      wA -= iA * b2Cross(vcp->rA, P);
       wA -= iA * box2d.b2Cross_V2_V2(vcp.rA, P);
-      //			vA -= mA * P;
+      //      vA -= mA * P;
       vA.SelfMulSub(mA, P);
-      //			wB += iB * b2Cross(vcp->rB, P);
+      //      wB += iB * b2Cross(vcp->rB, P);
       wB += iB * box2d.b2Cross_V2_V2(vcp.rB, P);
-      //			vB += mB * P;
+      //      vB += mB * P;
       vB.SelfMulAdd(mB, P);
     }
 
-    //		this.m_velocities[indexA].v = vA;
+    //    this.m_velocities[indexA].v = vA;
     this.m_velocities[indexA].w = wA;
-    //		this.m_velocities[indexB].v = vB;
+    //    this.m_velocities[indexB].v = vB;
     this.m_velocities[indexB].w = wB;
   }
 }
@@ -986,9 +986,9 @@ box2d.b2ContactSolver.prototype.SolveVelocityConstraints = function() {
     vB = this.m_velocities[indexB].v;
     wB = this.m_velocities[indexB].w;
 
-    //		b2Vec2 normal = vc->normal;
+    //    b2Vec2 normal = vc->normal;
     normal = vc.normal;
-    //		b2Vec2 tangent = b2Cross(normal, 1.0f);
+    //    b2Vec2 tangent = b2Cross(normal, 1.0f);
     tangent = vc.tangent; // precomputed from normal
     friction = vc.friction;
 
@@ -1002,14 +1002,14 @@ box2d.b2ContactSolver.prototype.SolveVelocityConstraints = function() {
       vcp = vc.points[j];
 
       // Relative velocity at contact
-      //			b2Vec2 dv = vB + b2Cross(wB, vcp->rB) - vA - b2Cross(wA, vcp->rA);
+      //      b2Vec2 dv = vB + b2Cross(wB, vcp->rB) - vA - b2Cross(wA, vcp->rA);
       box2d.b2Sub_V2_V2(
         box2d.b2AddCross_V2_S_V2(vB, wB, vcp.rB, box2d.b2Vec2.s_t0),
         box2d.b2AddCross_V2_S_V2(vA, wA, vcp.rA, box2d.b2Vec2.s_t1),
         dv);
 
       // Compute tangent force
-      //			float32 vt = b2Dot(dv, tangent) - vc->tangentSpeed;
+      //      float32 vt = b2Dot(dv, tangent) - vc->tangentSpeed;
       vt = box2d.b2Dot_V2_V2(dv, tangent) - vc.tangentSpeed;
       lambda = vcp.tangentMass * (-vt);
 
@@ -1020,17 +1020,17 @@ box2d.b2ContactSolver.prototype.SolveVelocityConstraints = function() {
       vcp.tangentImpulse = newImpulse;
 
       // Apply contact impulse
-      //			b2Vec2 P = lambda * tangent;
+      //      b2Vec2 P = lambda * tangent;
       box2d.b2Mul_S_V2(lambda, tangent, P);
 
-      //			vA -= mA * P;
+      //      vA -= mA * P;
       vA.SelfMulSub(mA, P);
-      //			wA -= iA * b2Cross(vcp->rA, P);
+      //      wA -= iA * b2Cross(vcp->rA, P);
       wA -= iA * box2d.b2Cross_V2_V2(vcp.rA, P);
 
-      //			vB += mB * P;
+      //      vB += mB * P;
       vB.SelfMulAdd(mB, P);
-      //			wB += iB * b2Cross(vcp->rB, P);
+      //      wB += iB * b2Cross(vcp->rB, P);
       wB += iB * box2d.b2Cross_V2_V2(vcp.rB, P);
     }
 
@@ -1040,34 +1040,34 @@ box2d.b2ContactSolver.prototype.SolveVelocityConstraints = function() {
         vcp = vc.points[ii];
 
         // Relative velocity at contact
-        //				b2Vec2 dv = vB + b2Cross(wB, vcp->rB) - vA - b2Cross(wA, vcp->rA);
+        //        b2Vec2 dv = vB + b2Cross(wB, vcp->rB) - vA - b2Cross(wA, vcp->rA);
         box2d.b2Sub_V2_V2(
           box2d.b2AddCross_V2_S_V2(vB, wB, vcp.rB, box2d.b2Vec2.s_t0),
           box2d.b2AddCross_V2_S_V2(vA, wA, vcp.rA, box2d.b2Vec2.s_t1),
           dv);
 
         // Compute normal impulse
-        //				float32 vn = b2Dot(dv, normal);
+        //        float32 vn = b2Dot(dv, normal);
         vn = box2d.b2Dot_V2_V2(dv, normal);
         lambda = (-vcp.normalMass * (vn - vcp.velocityBias));
 
         // box2d.b2Clamp the accumulated impulse
-        //				float32 newImpulse = box2d.b2Max(vcp->normalImpulse + lambda, 0.0f);
+        //        float32 newImpulse = box2d.b2Max(vcp->normalImpulse + lambda, 0.0f);
         newImpulse = box2d.b2Max(vcp.normalImpulse + lambda, 0);
         lambda = newImpulse - vcp.normalImpulse;
         vcp.normalImpulse = newImpulse;
 
         // Apply contact impulse
-        //				b2Vec2 P = lambda * normal;
+        //        b2Vec2 P = lambda * normal;
         box2d.b2Mul_S_V2(lambda, normal, P);
-        //				vA -= mA * P;
+        //        vA -= mA * P;
         vA.SelfMulSub(mA, P);
-        //				wA -= iA * b2Cross(vcp->rA, P);
+        //        wA -= iA * b2Cross(vcp->rA, P);
         wA -= iA * box2d.b2Cross_V2_V2(vcp.rA, P);
 
-        //				vB += mB * P;
+        //        vB += mB * P;
         vB.SelfMulAdd(mB, P);
-        //				wB += iB * b2Cross(vcp->rB, P);
+        //        wB += iB * b2Cross(vcp->rB, P);
         wB += iB * box2d.b2Cross_V2_V2(vcp.rB, P);
       }
     } else {
@@ -1107,41 +1107,41 @@ box2d.b2ContactSolver.prototype.SolveVelocityConstraints = function() {
       cp1 = vc.points[0];
       cp2 = vc.points[1];
 
-      //			b2Vec2 a(cp1->normalImpulse, cp2->normalImpulse);
+      //      b2Vec2 a(cp1->normalImpulse, cp2->normalImpulse);
       a.Set(cp1.normalImpulse, cp2.normalImpulse);
       if (box2d.ENABLE_ASSERTS) {
         box2d.b2Assert(a.x >= 0 && a.y >= 0);
       }
 
       // Relative velocity at contact
-      //			b2Vec2 dv1 = vB + b2Cross(wB, cp1->rB) - vA - b2Cross(wA, cp1->rA);
+      //      b2Vec2 dv1 = vB + b2Cross(wB, cp1->rB) - vA - b2Cross(wA, cp1->rA);
       box2d.b2Sub_V2_V2(
         box2d.b2AddCross_V2_S_V2(vB, wB, cp1.rB, box2d.b2Vec2.s_t0),
         box2d.b2AddCross_V2_S_V2(vA, wA, cp1.rA, box2d.b2Vec2.s_t1),
         dv1);
-      //			b2Vec2 dv2 = vB + b2Cross(wB, cp2->rB) - vA - b2Cross(wA, cp2->rA);
+      //      b2Vec2 dv2 = vB + b2Cross(wB, cp2->rB) - vA - b2Cross(wA, cp2->rA);
       box2d.b2Sub_V2_V2(
         box2d.b2AddCross_V2_S_V2(vB, wB, cp2.rB, box2d.b2Vec2.s_t0),
         box2d.b2AddCross_V2_S_V2(vA, wA, cp2.rA, box2d.b2Vec2.s_t1),
         dv2);
 
       // Compute normal velocity
-      //			float32 vn1 = b2Dot(dv1, normal);
+      //      float32 vn1 = b2Dot(dv1, normal);
       vn1 = box2d.b2Dot_V2_V2(dv1, normal);
-      //			float32 vn2 = b2Dot(dv2, normal);
+      //      float32 vn2 = b2Dot(dv2, normal);
       vn2 = box2d.b2Dot_V2_V2(dv2, normal);
 
-      //			b2Vec2 b;
+      //      b2Vec2 b;
       b.x = vn1 - cp1.velocityBias;
       b.y = vn2 - cp2.velocityBias;
 
       // Compute b'
-      //			b -= b2Mul(vc->K, a);
+      //      b -= b2Mul(vc->K, a);
       b.SelfSub(box2d.b2Mul_M22_V2(vc.K, a, box2d.b2Vec2.s_t0));
 
       /*
       #if B2_DEBUG_SOLVER === 1
-      			var k_errorTol = 0.001;
+            var k_errorTol = 0.001;
       #endif
       */
 
@@ -1155,28 +1155,28 @@ box2d.b2ContactSolver.prototype.SolveVelocityConstraints = function() {
         //
         // x = - inv(A) * b'
         //
-        //				b2Vec2 x = - b2Mul(vc->normalMass, b);
+        //        b2Vec2 x = - b2Mul(vc->normalMass, b);
         box2d.b2Mul_M22_V2(vc.normalMass, b, x).SelfNeg();
 
         if (x.x >= 0 && x.y >= 0) {
           // Get the incremental impulse
-          //					b2Vec2 d = x - a;
+          //          b2Vec2 d = x - a;
           box2d.b2Sub_V2_V2(x, a, d);
 
           // Apply incremental impulse
-          //					b2Vec2 P1 = d.x * normal;
+          //          b2Vec2 P1 = d.x * normal;
           box2d.b2Mul_S_V2(d.x, normal, P1);
-          //					b2Vec2 P2 = d.y * normal;
+          //          b2Vec2 P2 = d.y * normal;
           box2d.b2Mul_S_V2(d.y, normal, P2);
           box2d.b2Add_V2_V2(P1, P2, P1P2);
-          //					vA -= mA * (P1 + P2);
+          //          vA -= mA * (P1 + P2);
           vA.SelfMulSub(mA, P1P2);
-          //					wA -= iA * (b2Cross(cp1->rA, P1) + b2Cross(cp2->rA, P2));
+          //          wA -= iA * (b2Cross(cp1->rA, P1) + b2Cross(cp2->rA, P2));
           wA -= iA * (box2d.b2Cross_V2_V2(cp1.rA, P1) + box2d.b2Cross_V2_V2(cp2.rA, P2));
 
-          //					vB += mB * (P1 + P2);
+          //          vB += mB * (P1 + P2);
           vB.SelfMulAdd(mB, P1P2);
-          //					wB += iB * (b2Cross(cp1->rB, P1) + b2Cross(cp2->rB, P2));
+          //          wB += iB * (b2Cross(cp1->rB, P1) + b2Cross(cp2->rB, P2));
           wB += iB * (box2d.b2Cross_V2_V2(cp1.rB, P1) + box2d.b2Cross_V2_V2(cp2.rB, P2));
 
           // Accumulate
@@ -1185,16 +1185,16 @@ box2d.b2ContactSolver.prototype.SolveVelocityConstraints = function() {
 
           /*
           #if B2_DEBUG_SOLVER === 1
-          					// Postconditions
-          					dv1 = vB + b2Cross(wB, cp1->rB) - vA - b2Cross(wA, cp1->rA);
-          					dv2 = vB + b2Cross(wB, cp2->rB) - vA - b2Cross(wA, cp2->rA);
+                    // Postconditions
+                    dv1 = vB + b2Cross(wB, cp1->rB) - vA - b2Cross(wA, cp1->rA);
+                    dv2 = vB + b2Cross(wB, cp2->rB) - vA - b2Cross(wA, cp2->rA);
 
-          					// Compute normal velocity
-          					vn1 = b2Dot(dv1, normal);
-          					vn2 = b2Dot(dv2, normal);
+                    // Compute normal velocity
+                    vn1 = b2Dot(dv1, normal);
+                    vn2 = b2Dot(dv2, normal);
 
-          					if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(box2d.b2Abs(vn1 - cp1->velocityBias) < k_errorTol); }
-          					if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(box2d.b2Abs(vn2 - cp2->velocityBias) < k_errorTol); }
+                    if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(box2d.b2Abs(vn1 - cp1->velocityBias) < k_errorTol); }
+                    if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(box2d.b2Abs(vn2 - cp2->velocityBias) < k_errorTol); }
           #endif
           */
           break;
@@ -1213,23 +1213,23 @@ box2d.b2ContactSolver.prototype.SolveVelocityConstraints = function() {
 
         if (x.x >= 0 && vn2 >= 0) {
           // Get the incremental impulse
-          //					b2Vec2 d = x - a;
+          //          b2Vec2 d = x - a;
           box2d.b2Sub_V2_V2(x, a, d);
 
           // Apply incremental impulse
-          //					b2Vec2 P1 = d.x * normal;
+          //          b2Vec2 P1 = d.x * normal;
           box2d.b2Mul_S_V2(d.x, normal, P1);
-          //					b2Vec2 P2 = d.y * normal;
+          //          b2Vec2 P2 = d.y * normal;
           box2d.b2Mul_S_V2(d.y, normal, P2);
           box2d.b2Add_V2_V2(P1, P2, P1P2);
-          //					vA -= mA * (P1 + P2);
+          //          vA -= mA * (P1 + P2);
           vA.SelfMulSub(mA, P1P2);
-          //					wA -= iA * (b2Cross(cp1->rA, P1) + b2Cross(cp2->rA, P2));
+          //          wA -= iA * (b2Cross(cp1->rA, P1) + b2Cross(cp2->rA, P2));
           wA -= iA * (box2d.b2Cross_V2_V2(cp1.rA, P1) + box2d.b2Cross_V2_V2(cp2.rA, P2));
 
-          //					vB += mB * (P1 + P2);
+          //          vB += mB * (P1 + P2);
           vB.SelfMulAdd(mB, P1P2);
-          //					wB += iB * (b2Cross(cp1->rB, P1) + b2Cross(cp2->rB, P2));
+          //          wB += iB * (b2Cross(cp1->rB, P1) + b2Cross(cp2->rB, P2));
           wB += iB * (box2d.b2Cross_V2_V2(cp1.rB, P1) + box2d.b2Cross_V2_V2(cp2.rB, P2));
 
           // Accumulate
@@ -1238,13 +1238,13 @@ box2d.b2ContactSolver.prototype.SolveVelocityConstraints = function() {
 
           /*
           #if B2_DEBUG_SOLVER === 1
-          					// Postconditions
-          					dv1 = vB + b2Cross(wB, cp1->rB) - vA - b2Cross(wA, cp1->rA);
+                    // Postconditions
+                    dv1 = vB + b2Cross(wB, cp1->rB) - vA - b2Cross(wA, cp1->rA);
 
-          					// Compute normal velocity
-          					vn1 = b2Dot(dv1, normal);
+                    // Compute normal velocity
+                    vn1 = b2Dot(dv1, normal);
 
-          					if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(box2d.b2Abs(vn1 - cp1->velocityBias) < k_errorTol); }
+                    if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(box2d.b2Abs(vn1 - cp1->velocityBias) < k_errorTol); }
           #endif
           */
           break;
@@ -1264,23 +1264,23 @@ box2d.b2ContactSolver.prototype.SolveVelocityConstraints = function() {
 
         if (x.y >= 0 && vn1 >= 0) {
           // Resubstitute for the incremental impulse
-          //					b2Vec2 d = x - a;
+          //          b2Vec2 d = x - a;
           box2d.b2Sub_V2_V2(x, a, d);
 
           // Apply incremental impulse
-          //					b2Vec2 P1 = d.x * normal;
+          //          b2Vec2 P1 = d.x * normal;
           box2d.b2Mul_S_V2(d.x, normal, P1);
-          //					b2Vec2 P2 = d.y * normal;
+          //          b2Vec2 P2 = d.y * normal;
           box2d.b2Mul_S_V2(d.y, normal, P2);
           box2d.b2Add_V2_V2(P1, P2, P1P2);
-          //					vA -= mA * (P1 + P2);
+          //          vA -= mA * (P1 + P2);
           vA.SelfMulSub(mA, P1P2);
-          //					wA -= iA * (b2Cross(cp1->rA, P1) + b2Cross(cp2->rA, P2));
+          //          wA -= iA * (b2Cross(cp1->rA, P1) + b2Cross(cp2->rA, P2));
           wA -= iA * (box2d.b2Cross_V2_V2(cp1.rA, P1) + box2d.b2Cross_V2_V2(cp2.rA, P2));
 
-          //					vB += mB * (P1 + P2);
+          //          vB += mB * (P1 + P2);
           vB.SelfMulAdd(mB, P1P2);
-          //					wB += iB * (b2Cross(cp1->rB, P1) + b2Cross(cp2->rB, P2));
+          //          wB += iB * (b2Cross(cp1->rB, P1) + b2Cross(cp2->rB, P2));
           wB += iB * (box2d.b2Cross_V2_V2(cp1.rB, P1) + box2d.b2Cross_V2_V2(cp2.rB, P2));
 
           // Accumulate
@@ -1289,13 +1289,13 @@ box2d.b2ContactSolver.prototype.SolveVelocityConstraints = function() {
 
           /*
           #if B2_DEBUG_SOLVER === 1
-          					// Postconditions
-          					dv2 = vB + b2Cross(wB, cp2->rB) - vA - b2Cross(wA, cp2->rA);
+                    // Postconditions
+                    dv2 = vB + b2Cross(wB, cp2->rB) - vA - b2Cross(wA, cp2->rA);
 
-          					// Compute normal velocity
-          					vn2 = b2Dot(dv2, normal);
+                    // Compute normal velocity
+                    vn2 = b2Dot(dv2, normal);
 
-          					if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(box2d.b2Abs(vn2 - cp2->velocityBias) < k_errorTol); }
+                    if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(box2d.b2Abs(vn2 - cp2->velocityBias) < k_errorTol); }
           #endif
           */
           break;
@@ -1313,23 +1313,23 @@ box2d.b2ContactSolver.prototype.SolveVelocityConstraints = function() {
 
         if (vn1 >= 0 && vn2 >= 0) {
           // Resubstitute for the incremental impulse
-          //					b2Vec2 d = x - a;
+          //          b2Vec2 d = x - a;
           box2d.b2Sub_V2_V2(x, a, d);
 
           // Apply incremental impulse
-          //					b2Vec2 P1 = d.x * normal;
+          //          b2Vec2 P1 = d.x * normal;
           box2d.b2Mul_S_V2(d.x, normal, P1);
-          //					b2Vec2 P2 = d.y * normal;
+          //          b2Vec2 P2 = d.y * normal;
           box2d.b2Mul_S_V2(d.y, normal, P2);
           box2d.b2Add_V2_V2(P1, P2, P1P2);
-          //					vA -= mA * (P1 + P2);
+          //          vA -= mA * (P1 + P2);
           vA.SelfMulSub(mA, P1P2);
-          //					wA -= iA * (b2Cross(cp1->rA, P1) + b2Cross(cp2->rA, P2));
+          //          wA -= iA * (b2Cross(cp1->rA, P1) + b2Cross(cp2->rA, P2));
           wA -= iA * (box2d.b2Cross_V2_V2(cp1.rA, P1) + box2d.b2Cross_V2_V2(cp2.rA, P2));
 
-          //					vB += mB * (P1 + P2);
+          //          vB += mB * (P1 + P2);
           vB.SelfMulAdd(mB, P1P2);
-          //					wB += iB * (b2Cross(cp1->rB, P1) + b2Cross(cp2->rB, P2));
+          //          wB += iB * (b2Cross(cp1->rB, P1) + b2Cross(cp2->rB, P2));
           wB += iB * (box2d.b2Cross_V2_V2(cp1.rB, P1) + box2d.b2Cross_V2_V2(cp2.rB, P2));
 
           // Accumulate
@@ -1344,9 +1344,9 @@ box2d.b2ContactSolver.prototype.SolveVelocityConstraints = function() {
       }
     }
 
-    //		this.m_velocities[indexA].v = vA;
+    //    this.m_velocities[indexA].v = vA;
     this.m_velocities[indexA].w = wA;
-    //		this.m_velocities[indexB].v = vB;
+    //    this.m_velocities[indexB].v = vB;
     this.m_velocities[indexB].w = wB;
   }
 }
@@ -1442,52 +1442,52 @@ box2d.b2PositionSolverManifold.prototype.Initialize = function(pc, xfA, xfB, ind
   switch (pc.type) {
     case box2d.b2ManifoldType.e_circles:
       {
-        //			b2Vec2 pointA = b2Mul(xfA, pc->localPoint);
+        //      b2Vec2 pointA = b2Mul(xfA, pc->localPoint);
         box2d.b2Mul_X_V2(xfA, pc.localPoint, pointA);
-        //			b2Vec2 pointB = b2Mul(xfB, pc->localPoints[0]);
+        //      b2Vec2 pointB = b2Mul(xfB, pc->localPoints[0]);
         box2d.b2Mul_X_V2(xfB, pc.localPoints[0], pointB);
-        //			normal = pointB - pointA;
-        //			normal.Normalize();
+        //      normal = pointB - pointA;
+        //      normal.Normalize();
         box2d.b2Sub_V2_V2(pointB, pointA, this.normal).SelfNormalize();
-        //			point = 0.5f * (pointA + pointB);
+        //      point = 0.5f * (pointA + pointB);
         box2d.b2Mid_V2_V2(pointA, pointB, this.point);
-        //			separation = b2Dot(pointB - pointA, normal) - pc->radius;
+        //      separation = b2Dot(pointB - pointA, normal) - pc->radius;
         this.separation = box2d.b2Dot_V2_V2(box2d.b2Sub_V2_V2(pointB, pointA, box2d.b2Vec2.s_t0), this.normal) - pc.radiusA - pc.radiusB;
       }
       break;
 
     case box2d.b2ManifoldType.e_faceA:
       {
-        //			normal = b2Mul(xfA.q, pc->localNormal);
+        //      normal = b2Mul(xfA.q, pc->localNormal);
         box2d.b2Mul_R_V2(xfA.q, pc.localNormal, this.normal);
-        //			b2Vec2 planePoint = b2Mul(xfA, pc->localPoint);
+        //      b2Vec2 planePoint = b2Mul(xfA, pc->localPoint);
         box2d.b2Mul_X_V2(xfA, pc.localPoint, planePoint);
 
-        //			b2Vec2 clipPoint = b2Mul(xfB, pc->localPoints[index]);
+        //      b2Vec2 clipPoint = b2Mul(xfB, pc->localPoints[index]);
         box2d.b2Mul_X_V2(xfB, pc.localPoints[index], clipPoint);
-        //			separation = b2Dot(clipPoint - planePoint, normal) - pc->radius;
+        //      separation = b2Dot(clipPoint - planePoint, normal) - pc->radius;
         this.separation = box2d.b2Dot_V2_V2(box2d.b2Sub_V2_V2(clipPoint, planePoint, box2d.b2Vec2.s_t0), this.normal) - pc.radiusA - pc.radiusB;
-        //			point = clipPoint;
+        //      point = clipPoint;
         this.point.Copy(clipPoint);
       }
       break;
 
     case box2d.b2ManifoldType.e_faceB:
       {
-        //			normal = b2Mul(xfB.q, pc->localNormal);
+        //      normal = b2Mul(xfB.q, pc->localNormal);
         box2d.b2Mul_R_V2(xfB.q, pc.localNormal, this.normal);
-        //			b2Vec2 planePoint = b2Mul(xfB, pc->localPoint);
+        //      b2Vec2 planePoint = b2Mul(xfB, pc->localPoint);
         box2d.b2Mul_X_V2(xfB, pc.localPoint, planePoint);
 
-        //			b2Vec2 clipPoint = b2Mul(xfA, pc->localPoints[index]);
+        //      b2Vec2 clipPoint = b2Mul(xfA, pc->localPoints[index]);
         box2d.b2Mul_X_V2(xfA, pc.localPoints[index], clipPoint);
-        //			separation = b2Dot(clipPoint - planePoint, normal) - pc->radius;
+        //      separation = b2Dot(clipPoint - planePoint, normal) - pc->radius;
         this.separation = box2d.b2Dot_V2_V2(box2d.b2Sub_V2_V2(clipPoint, planePoint, box2d.b2Vec2.s_t0), this.normal) - pc.radiusA - pc.radiusB;
-        //			point = clipPoint;
+        //      point = clipPoint;
         this.point.Copy(clipPoint);
 
         // Ensure normal points from A to B
-        //			normal = -normal;
+        //      normal = -normal;
         this.normal.SelfNeg();
       }
       break;
@@ -1613,9 +1613,9 @@ box2d.b2ContactSolver.prototype.SolvePositionConstraints = function() {
       point = psm.point;
       separation = psm.separation;
 
-      //			b2Vec2 rA = point - cA;
+      //      b2Vec2 rA = point - cA;
       box2d.b2Sub_V2_V2(point, cA, rA);
-      //			b2Vec2 rB = point - cB;
+      //      b2Vec2 rB = point - cB;
       box2d.b2Sub_V2_V2(point, cB, rB);
 
       // Track max constraint error.
@@ -1625,34 +1625,34 @@ box2d.b2ContactSolver.prototype.SolvePositionConstraints = function() {
       C = box2d.b2Clamp(box2d.b2_baumgarte * (separation + box2d.b2_linearSlop), (-box2d.b2_maxLinearCorrection), 0);
 
       // Compute the effective mass.
-      //			float32 rnA = b2Cross(rA, normal);
+      //      float32 rnA = b2Cross(rA, normal);
       rnA = box2d.b2Cross_V2_V2(rA, normal);
-      //			float32 rnB = b2Cross(rB, normal);
+      //      float32 rnB = b2Cross(rB, normal);
       rnB = box2d.b2Cross_V2_V2(rB, normal);
-      //			float32 K = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
+      //      float32 K = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
       K = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
 
       // Compute normal impulse
       impulse = K > 0 ? -C / K : 0;
 
-      //			b2Vec2 P = impulse * normal;
+      //      b2Vec2 P = impulse * normal;
       box2d.b2Mul_S_V2(impulse, normal, P);
 
-      //			cA -= mA * P;
+      //      cA -= mA * P;
       cA.SelfMulSub(mA, P);
-      //			aA -= iA * b2Cross(rA, P);
+      //      aA -= iA * b2Cross(rA, P);
       aA -= iA * box2d.b2Cross_V2_V2(rA, P);
 
-      //			cB += mB * P;
+      //      cB += mB * P;
       cB.SelfMulAdd(mB, P);
-      //			aB += iB * b2Cross(rB, P);
+      //      aB += iB * b2Cross(rB, P);
       aB += iB * box2d.b2Cross_V2_V2(rB, P);
     }
 
-    //		this.m_positions[indexA].c = cA;
+    //    this.m_positions[indexA].c = cA;
     this.m_positions[indexA].a = aA;
 
-    //		this.m_positions[indexB].c = cB;
+    //    this.m_positions[indexB].c = cB;
     this.m_positions[indexB].a = aB;
   }
 
@@ -1793,9 +1793,9 @@ box2d.b2ContactSolver.prototype.SolveTOIPositionConstraints = function(toiIndexA
       point = psm.point;
       separation = psm.separation;
 
-      //			b2Vec2 rA = point - cA;
+      //      b2Vec2 rA = point - cA;
       box2d.b2Sub_V2_V2(point, cA, rA);
-      //			b2Vec2 rB = point - cB;
+      //      b2Vec2 rB = point - cB;
       box2d.b2Sub_V2_V2(point, cB, rB);
 
       // Track max constraint error.
@@ -1805,34 +1805,34 @@ box2d.b2ContactSolver.prototype.SolveTOIPositionConstraints = function(toiIndexA
       C = box2d.b2Clamp(box2d.b2_toiBaumgarte * (separation + box2d.b2_linearSlop), (-box2d.b2_maxLinearCorrection), 0);
 
       // Compute the effective mass.
-      //			float32 rnA = b2Cross(rA, normal);
+      //      float32 rnA = b2Cross(rA, normal);
       rnA = box2d.b2Cross_V2_V2(rA, normal);
-      //			float32 rnB = b2Cross(rB, normal);
+      //      float32 rnB = b2Cross(rB, normal);
       rnB = box2d.b2Cross_V2_V2(rB, normal);
-      //			float32 K = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
+      //      float32 K = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
       K = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
 
       // Compute normal impulse
       impulse = K > 0 ? -C / K : 0;
 
-      //			b2Vec2 P = impulse * normal;
+      //      b2Vec2 P = impulse * normal;
       box2d.b2Mul_S_V2(impulse, normal, P);
 
-      //			cA -= mA * P;
+      //      cA -= mA * P;
       cA.SelfMulSub(mA, P);
-      //			aA -= iA * b2Cross(rA, P);
+      //      aA -= iA * b2Cross(rA, P);
       aA -= iA * box2d.b2Cross_V2_V2(rA, P);
 
-      //			cB += mB * P;
+      //      cB += mB * P;
       cB.SelfMulAdd(mB, P);
-      //			aB += iB * b2Cross(rB, P);
+      //      aB += iB * b2Cross(rB, P);
       aB += iB * box2d.b2Cross_V2_V2(rB, P);
     }
 
-    //		this.m_positions[indexA].c = cA;
+    //    this.m_positions[indexA].c = cA;
     this.m_positions[indexA].a = aA;
 
-    //		this.m_positions[indexB].c = cB;
+    //    this.m_positions[indexB].c = cB;
     this.m_positions[indexB].a = aB;
   }
 

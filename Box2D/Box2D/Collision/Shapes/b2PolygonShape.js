@@ -729,12 +729,12 @@ box2d.b2PolygonShape.ComputeCentroid = function(vs, count, out) {
   var pRef = box2d.b2PolygonShape.ComputeCentroid.s_pRef.SetZero();
   /*
   #if 0
-  	// This code would put the reference point inside the polygon.
-  	for (var i = 0; i < count; ++i)
-  	{
-      	pRef.SelfAdd(vs[i]);
-  	}
-  	pRef.SelfMul(1 / count);
+    // This code would put the reference point inside the polygon.
+    for (var i = 0; i < count; ++i)
+    {
+        pRef.SelfAdd(vs[i]);
+    }
+    pRef.SelfMul(1 / count);
   #endif
   */
 
@@ -773,55 +773,55 @@ box2d.b2PolygonShape.ComputeCentroid.s_e2 = new box2d.b2Vec2();
 /*
 box2d.b2PolygonShape.ComputeOBB = function (obb, vs, count)
 {
-	var i = 0;
-	var p = new Array(count + 1);
-	for (i = 0; i < count; ++i)
-	{
-		p[i] = vs[i];
-	}
-	p[count] = p[0];
-	var minArea = box2d.b2_maxFloat;
-	for (i = 1; i <= count; ++i)
-	{
-		var root = p[i - 1];
-		var uxX = p[i].x - root.x;
-		var uxY = p[i].y - root.y;
-		var length = box2d.b2Sqrt(uxX * uxX + uxY * uxY);
-		uxX /= length;
-		uxY /= length;
-		var uyX = (-uxY);
-		var uyY = uxX;
-		var lowerX = box2d.b2_maxFloat;
-		var lowerY = box2d.b2_maxFloat;
-		var upperX = (-box2d.b2_maxFloat);
-		var upperY = (-box2d.b2_maxFloat);
-		for (var j = 0; j < count; ++j)
-		{
-			var dX = p[j].x - root.x;
-			var dY = p[j].y - root.y;
-			var rX = (uxX * dX + uxY * dY);
-			var rY = (uyX * dX + uyY * dY);
-			if (rX < lowerX) lowerX = rX;
-			if (rY < lowerY) lowerY = rY;
-			if (rX > upperX) upperX = rX;
-			if (rY > upperY) upperY = rY;
-		}
-		var area = (upperX - lowerX) * (upperY - lowerY);
-		if (area < 0.95 * minArea)
-		{
-			minArea = area;
-			obb.R.ex.x = uxX;
-			obb.R.ex.y = uxY;
-			obb.R.ey.x = uyX;
-			obb.R.ey.y = uyY;
-			var center_x = 0.5 * (lowerX + upperX);
-			var center_y = 0.5 * (lowerY + upperY);
-			var tMat = obb.R;
-			obb.center.x = root.x + (tMat.ex.x * center_x + tMat.ey.x * center_y);
-			obb.center.y = root.y + (tMat.ex.y * center_x + tMat.ey.y * center_y);
-			obb.extents.x = 0.5 * (upperX - lowerX);
-			obb.extents.y = 0.5 * (upperY - lowerY);
-		}
-	}
+  var i = 0;
+  var p = new Array(count + 1);
+  for (i = 0; i < count; ++i)
+  {
+    p[i] = vs[i];
+  }
+  p[count] = p[0];
+  var minArea = box2d.b2_maxFloat;
+  for (i = 1; i <= count; ++i)
+  {
+    var root = p[i - 1];
+    var uxX = p[i].x - root.x;
+    var uxY = p[i].y - root.y;
+    var length = box2d.b2Sqrt(uxX * uxX + uxY * uxY);
+    uxX /= length;
+    uxY /= length;
+    var uyX = (-uxY);
+    var uyY = uxX;
+    var lowerX = box2d.b2_maxFloat;
+    var lowerY = box2d.b2_maxFloat;
+    var upperX = (-box2d.b2_maxFloat);
+    var upperY = (-box2d.b2_maxFloat);
+    for (var j = 0; j < count; ++j)
+    {
+      var dX = p[j].x - root.x;
+      var dY = p[j].y - root.y;
+      var rX = (uxX * dX + uxY * dY);
+      var rY = (uyX * dX + uyY * dY);
+      if (rX < lowerX) lowerX = rX;
+      if (rY < lowerY) lowerY = rY;
+      if (rX > upperX) upperX = rX;
+      if (rY > upperY) upperY = rY;
+    }
+    var area = (upperX - lowerX) * (upperY - lowerY);
+    if (area < 0.95 * minArea)
+    {
+      minArea = area;
+      obb.R.ex.x = uxX;
+      obb.R.ex.y = uxY;
+      obb.R.ey.x = uyX;
+      obb.R.ey.y = uyY;
+      var center_x = 0.5 * (lowerX + upperX);
+      var center_y = 0.5 * (lowerY + upperY);
+      var tMat = obb.R;
+      obb.center.x = root.x + (tMat.ex.x * center_x + tMat.ey.x * center_y);
+      obb.center.y = root.y + (tMat.ex.y * center_x + tMat.ey.y * center_y);
+      obb.extents.x = 0.5 * (upperX - lowerX);
+      obb.extents.y = 0.5 * (upperY - lowerY);
+    }
+  }
 }
 */

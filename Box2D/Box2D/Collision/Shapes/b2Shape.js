@@ -171,7 +171,7 @@ box2d.b2Shape.prototype.TestPoint = function(xf, p) {
  * @param {box2d.b2Transform} xf the shape world transform.
  * @param {box2d.b2Vec2} p a point in world coordinates.
  * @param {box2d.b2Vec2} normal returns the direction in which
- *  	  the distance increases.
+ *      the distance increases.
  * @param {number} childIndex
  */
 box2d.b2Shape.prototype.ComputeDistance = function(xf, p, normal, childIndex) {

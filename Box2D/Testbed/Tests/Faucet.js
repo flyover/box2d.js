@@ -271,7 +271,7 @@ box2d.Testbed.Faucet.prototype.Step = function(settings) {
   this.m_emitter.SetParticleFlags(box2d.Testbed.TestMain.GetParticleParameterValue());
 
   // If this is a color mixing particle, add some color.
-  ///	b2ParticleColor color(255, 255, 255, 255);
+  ///  b2ParticleColor color(255, 255, 255, 255);
   if (this.m_emitter.GetParticleFlags() & box2d.b2ParticleFlag.b2_colorMixingParticle) {
     // Each second, select a different color.
     this.m_emitter.SetColor(box2d.Testbed.Test.k_ParticleColors[Math.floor(this.m_particleColorOffset) % box2d.Testbed.Test.k_ParticleColorsCount]);

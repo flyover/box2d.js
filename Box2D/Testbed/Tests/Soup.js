@@ -127,7 +127,7 @@ box2d.Testbed.Soup = function(canvas, settings) {
     var shape = new box2d.b2EdgeShape();
     shape.Set(new box2d.b2Vec2(0, 2), new box2d.b2Vec2(0.1, 2.1));
     body.CreateFixture(shape, 1);
-    ///	b2MassData massData = {0.1f, 0.5f * (shape.m_vertex1 + shape.m_vertex2), 0.0f};
+    ///  b2MassData massData = {0.1f, 0.5f * (shape.m_vertex1 + shape.m_vertex2), 0.0f};
     var massData = new box2d.b2MassData();
     massData.mass = 0.1;
     massData.center.x = 0.5 * shape.m_vertex1.x + shape.m_vertex2.x;
@@ -143,7 +143,7 @@ box2d.Testbed.Soup = function(canvas, settings) {
     var shape = new box2d.b2EdgeShape();
     shape.Set(new box2d.b2Vec2(0.3, 2.0), new box2d.b2Vec2(0.4, 2.1));
     body.CreateFixture(shape, 1);
-    ///	b2MassData massData = {0.1f, 0.5f * (shape.m_vertex1 + shape.m_vertex2), 0.0f};
+    ///  b2MassData massData = {0.1f, 0.5f * (shape.m_vertex1 + shape.m_vertex2), 0.0f};
     var massData = new box2d.b2MassData();
     massData.mass = 0.1;
     massData.center.x = 0.5 * shape.m_vertex1.x + shape.m_vertex2.x;
@@ -159,7 +159,7 @@ box2d.Testbed.Soup = function(canvas, settings) {
     var shape = new box2d.b2EdgeShape();
     shape.Set(new box2d.b2Vec2(-0.3, 2.1), new box2d.b2Vec2(-0.2, 2.0));
     body.CreateFixture(shape, 1);
-    ///	b2MassData massData = {0.1f, 0.5f * (shape.m_vertex1 + shape.m_vertex2), 0.0f};
+    ///  b2MassData massData = {0.1f, 0.5f * (shape.m_vertex1 + shape.m_vertex2), 0.0f};
     var massData = new box2d.b2MassData();
     massData.mass = 0.1;
     massData.center.x = 0.5 * shape.m_vertex1.x + shape.m_vertex2.x;

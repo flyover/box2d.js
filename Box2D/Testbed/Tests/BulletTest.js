@@ -108,9 +108,9 @@ box2d.Testbed.BulletTest.prototype.Launch = function() {
   this.m_bullet.SetLinearVelocity(new box2d.b2Vec2(0.0, -50.0));
   this.m_bullet.SetAngularVelocity(0.0);
 
-  //	extern int32 box2d.b2_gjkCalls, box2d.b2_gjkIters, box2d.b2_gjkMaxIters;
-  //	extern int32 box2d.b2_toiCalls, box2d.b2_toiIters, box2d.b2_toiMaxIters;
-  //	extern int32 box2d.b2_toiRootIters, box2d.b2_toiMaxRootIters;
+  //  extern int32 box2d.b2_gjkCalls, box2d.b2_gjkIters, box2d.b2_gjkMaxIters;
+  //  extern int32 box2d.b2_toiCalls, box2d.b2_toiIters, box2d.b2_toiMaxIters;
+  //  extern int32 box2d.b2_toiRootIters, box2d.b2_toiMaxRootIters;
 
   box2d.b2_gjkCalls = 0;
   box2d.b2_gjkIters = 0;
@@ -131,9 +131,9 @@ box2d.Testbed.BulletTest.prototype.Launch = function() {
 box2d.Testbed.BulletTest.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
 
-  //	extern int32 box2d.b2_gjkCalls, box2d.b2_gjkIters, box2d.b2_gjkMaxIters;
-  //	extern int32 box2d.b2_toiCalls, box2d.b2_toiIters;
-  //	extern int32 box2d.b2_toiRootIters, box2d.b2_toiMaxRootIters;
+  //  extern int32 box2d.b2_gjkCalls, box2d.b2_gjkIters, box2d.b2_gjkMaxIters;
+  //  extern int32 box2d.b2_toiCalls, box2d.b2_toiIters;
+  //  extern int32 box2d.b2_toiRootIters, box2d.b2_toiMaxRootIters;
 
   if (box2d.b2_gjkCalls > 0) {
     this.m_debugDraw.DrawString(5, this.m_textLine, "gjk calls = %d, ave gjk iters = %3.1f, max gjk iters = %d",

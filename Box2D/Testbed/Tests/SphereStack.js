@@ -84,12 +84,12 @@ box2d.Testbed.SphereStack.prototype.Step = function(settings) {
 
   //for (var i = 0; i < box2d.Testbed.SphereStack.e_count; ++i)
   //{
-  //	printf("%g ", this.m_bodies[i].GetWorldCenter().y);
+  //  printf("%g ", this.m_bodies[i].GetWorldCenter().y);
   //}
 
   //for (var i = 0; i < box2d.Testbed.SphereStack.e_count; ++i)
   //{
-  //	printf("%g ", this.m_bodies[i].GetLinearVelocity().y);
+  //  printf("%g ", this.m_bodies[i].GetLinearVelocity().y);
   //}
 
   //printf("\n");

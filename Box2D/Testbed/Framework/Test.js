@@ -210,7 +210,7 @@ box2d.Testbed.Settings.prototype.strictContacts = false;
  * @constructor
  * @param {string} name
  * @param {function(HTMLCanvasElement, box2d.Testbed.Settings):
- *  	  box2d.Testbed.Test} createFcn
+ *      box2d.Testbed.Test} createFcn
  */
 box2d.Testbed.TestEntry = function(name, createFcn) {
   this.name = name;
@@ -225,7 +225,7 @@ box2d.Testbed.TestEntry.prototype.name = "unknown";
 /**
  * @export
  * @type {function(HTMLCanvasElement, box2d.Testbed.Settings):
- *  	 box2d.Testbed.Test} createFcn
+ *     box2d.Testbed.Test} createFcn
  */
 box2d.Testbed.TestEntry.prototype.createFcn = function(canvas, settings) {};
 
@@ -725,13 +725,13 @@ box2d.Testbed.Test.QueryCallback2.prototype.ReportParticle = function(particleSy
   if (particleSystem !== this.m_particleSystem)
     return false;
 
-  ///	b2Transform xf;
-  ///	xf.SetIdentity();
+  ///  b2Transform xf;
+  ///  xf.SetIdentity();
   var xf = box2d.b2Transform.IDENTITY;
   var p = this.m_particleSystem.GetPositionBuffer()[index];
   if (this.m_shape.TestPoint(xf, p)) {
     var v = this.m_particleSystem.GetVelocityBuffer()[index];
-    ///	v = m_velocity;
+    ///  v = m_velocity;
     v.Copy(this.m_velocity);
   }
   return true;
@@ -891,12 +891,12 @@ box2d.Testbed.Test.prototype.LaunchBombAt = function(position, velocity) {
   fd.density = 20;
   fd.restitution = 0;
 
-  //	box2d.b2Vec2 minV = position - box2d.b2Vec2(0.3f,0.3f);
-  //	box2d.b2Vec2 maxV = position + box2d.b2Vec2(0.3f,0.3f);
+  //  box2d.b2Vec2 minV = position - box2d.b2Vec2(0.3f,0.3f);
+  //  box2d.b2Vec2 maxV = position + box2d.b2Vec2(0.3f,0.3f);
 
-  //	box2d.b2AABB aabb;
-  //	aabb.lowerBound = minV;
-  //	aabb.upperBound = maxV;
+  //  box2d.b2AABB aabb;
+  //  aabb.lowerBound = minV;
+  //  aabb.upperBound = maxV;
 
   this.m_bomb.CreateFixture(fd);
 }
@@ -956,7 +956,7 @@ box2d.Testbed.Test.prototype.Step = function(settings) {
   //#if B2_ENABLE_PARTICLE
   this.m_world.Step(timeStep, settings.velocityIterations, settings.positionIterations, settings.particleIterations);
   // #else
-  //	this.m_world.Step(timeStep, settings.velocityIterations, settings.positionIterations);
+  //  this.m_world.Step(timeStep, settings.velocityIterations, settings.positionIterations);
   //#endif
 
   this.m_world.DrawDebugData();
@@ -1049,18 +1049,18 @@ box2d.Testbed.Test.prototype.Step = function(settings) {
 
   if (this.m_mouseTracing && !this.m_mouseJoint) {
     var delay = 0.1;
-    ///	b2Vec2 acceleration = 2 / delay * (1 / delay * (m_mouseWorld - m_mouseTracerPosition) - m_mouseTracerVelocity);
+    ///  b2Vec2 acceleration = 2 / delay * (1 / delay * (m_mouseWorld - m_mouseTracerPosition) - m_mouseTracerVelocity);
     var acceleration = new box2d.b2Vec2();
     acceleration.x = 2 / delay * (1 / delay * (this.m_mouseWorld.x - this.m_mouseTracerPosition.x) - this.m_mouseTracerVelocity.x);
     acceleration.y = 2 / delay * (1 / delay * (this.m_mouseWorld.y - this.m_mouseTracerPosition.y) - this.m_mouseTracerVelocity.y);
-    ///	m_mouseTracerVelocity += timeStep * acceleration;
+    ///  m_mouseTracerVelocity += timeStep * acceleration;
     this.m_mouseTracerVelocity.SelfMulAdd(timeStep, acceleration);
-    ///	m_mouseTracerPosition += timeStep * m_mouseTracerVelocity;
+    ///  m_mouseTracerPosition += timeStep * m_mouseTracerVelocity;
     this.m_mouseTracerPosition.SelfMulAdd(timeStep, this.m_mouseTracerVelocity);
     var shape = new box2d.b2CircleShape();
     shape.m_p.Copy(this.m_mouseTracerPosition);
     shape.m_radius = 2 * this.GetDefaultViewZoom();
-    ///	QueryCallback2 callback(m_particleSystem, &shape, m_mouseTracerVelocity);
+    ///  QueryCallback2 callback(m_particleSystem, &shape, m_mouseTracerVelocity);
     var callback = new box2d.Testbed.Test.QueryCallback2(this.m_particleSystem, shape, this.m_mouseTracerVelocity);
     var aabb = new box2d.b2AABB();
     var xf = new box2d.b2Transform();
@@ -1194,7 +1194,7 @@ box2d.Testbed.Test.prototype.ColorParticleGroup = function(group, particlesPerCo
     }
   }
   for (var i = groupStart; i < groupEnd; i++) {
-    ///	colorBuffer[i].Copy(box2d.Testbed.Test.k_ParticleColors[Math.floor(i / particlesPerColor) % colorCount]);
+    ///  colorBuffer[i].Copy(box2d.Testbed.Test.k_ParticleColors[Math.floor(i / particlesPerColor) % colorCount]);
     colorBuffer[i] = box2d.Testbed.Test.k_ParticleColors[Math.floor(i / particlesPerColor) % colorCount].Clone();
   }
 }
@@ -1209,7 +1209,7 @@ box2d.Testbed.Test.prototype.ColorParticleGroup = function(group, particlesPerCo
 box2d.Testbed.Test.prototype.InitializeParticleParameters = function(filterMask) {
   var defaultNumValues = box2d.Testbed.ParticleParameter.k_defaultDefinition[0].numValues;
   var defaultValues = box2d.Testbed.ParticleParameter.k_defaultDefinition[0].values;
-  ///	m_particleParameters = new ParticleParameter::Value[defaultNumValues];
+  ///  m_particleParameters = new ParticleParameter::Value[defaultNumValues];
   this.m_particleParameters = [];
 
   // Disable selection of wall and barrier particle types.
@@ -1218,13 +1218,13 @@ box2d.Testbed.Test.prototype.InitializeParticleParameters = function(filterMask)
     if (defaultValues[i].value & filterMask) {
       continue;
     }
-    ///	memcpy(&m_particleParameters[numValues], &defaultValues[i], sizeof(defaultValues[0]));
+    ///  memcpy(&m_particleParameters[numValues], &defaultValues[i], sizeof(defaultValues[0]));
     this.m_particleParameters[numValues] = defaultValues[i]; // TODO: clone?
     numValues++;
   }
   this.m_particleParameterDef = new box2d.Testbed.ParticleParameter.Definition(this.m_particleParameters, numValues);
-  ///	m_particleParameterDef.values = m_particleParameters;
-  ///	m_particleParameterDef.numValues = numValues;
+  ///  m_particleParameterDef.values = m_particleParameters;
+  ///  m_particleParameterDef.numValues = numValues;
   box2d.Testbed.TestMain.SetParticleParameters([this.m_particleParameterDef], 1);
 }
 
@@ -1236,7 +1236,7 @@ box2d.Testbed.Test.prototype.InitializeParticleParameters = function(filterMask)
 box2d.Testbed.Test.prototype.RestoreParticleParameters = function() {
   if (this.m_particleParameters) {
     box2d.Testbed.TestMain.SetParticleParameters(box2d.Testbed.ParticleParameter.k_defaultDefinition, 1);
-    ///	delete [] m_particleParameters;
+    ///  delete [] m_particleParameters;
     this.m_particleParameters = null;
   }
 }

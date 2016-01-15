@@ -478,22 +478,22 @@ box2d.b2Contact.prototype.Update = function(listener) {
   var xfA = bodyA.GetTransform();
   var xfB = bodyB.GetTransform();
 
-  //	var aabbOverlap = box2d.b2TestOverlap_AABB(this.m_fixtureA.GetAABB(0), this.m_fixtureB.GetAABB(0));
+  //  var aabbOverlap = box2d.b2TestOverlap_AABB(this.m_fixtureA.GetAABB(0), this.m_fixtureB.GetAABB(0));
 
   // Is this contact a sensor?
   if (sensor) {
-    //		if (aabbOverlap)
-    //		{
+    //    if (aabbOverlap)
+    //    {
     var shapeA = this.m_fixtureA.GetShape();
     var shapeB = this.m_fixtureB.GetShape();
     touching = box2d.b2TestOverlap_Shape(shapeA, this.m_indexA, shapeB, this.m_indexB, xfA, xfB);
-    //		}
+    //    }
 
     // Sensors don't generate manifolds.
     this.m_manifold.pointCount = 0;
   } else {
-    //		if (aabbOverlap)
-    //		{
+    //    if (aabbOverlap)
+    //    {
     this.Evaluate(this.m_manifold, xfA, xfB);
     touching = this.m_manifold.pointCount > 0;
 
@@ -515,11 +515,11 @@ box2d.b2Contact.prototype.Update = function(listener) {
         }
       }
     }
-    //		}
-    //		else
-    //		{
-    //			this.m_manifold.pointCount = 0;
-    //		}
+    //    }
+    //    else
+    //    {
+    //      this.m_manifold.pointCount = 0;
+    //    }
 
     if (touching !== wasTouching) {
       bodyA.SetAwake(true);

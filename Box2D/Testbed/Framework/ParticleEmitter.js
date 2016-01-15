@@ -354,7 +354,7 @@ box2d.Testbed.RadialEmitter.prototype.Step = function(dt, particleIndices, parti
     // Send it flying
     pd.velocity.Copy(this.m_startingVelocity);
     if (this.m_speed !== 0.0) {
-      ///	pd.velocity += positionOnUnitCircle * m_speed;
+      ///  pd.velocity += positionOnUnitCircle * m_speed;
       pd.velocity.SelfMulAdd(this.m_speed, positionOnUnitCircle);
     }
 

@@ -47,10 +47,10 @@ box2d.Testbed.SensorTest = function(canvas, settings) {
 
   /*
   {
-  	var sd = new box2d.b2FixtureDef();
-  	sd.SetAsBox(10.0, 2.0, new box2d.b2Vec2(0.0, 20.0), 0.0);
-  	sd.isSensor = true;
-  	this.m_sensor = ground.CreateFixture(sd);
+    var sd = new box2d.b2FixtureDef();
+    sd.SetAsBox(10.0, 2.0, new box2d.b2Vec2(0.0, 20.0), 0.0);
+    sd.isSensor = true;
+    this.m_sensor = ground.CreateFixture(sd);
   }
   */
   {

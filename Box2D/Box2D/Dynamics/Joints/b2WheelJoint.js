@@ -451,13 +451,13 @@ box2d.b2WheelJoint.prototype.InitVelocityConstraints = function(data) {
     qB = this.m_qB.SetAngle(aB);
 
   // Compute the effective masses.
-  //	box2d.b2Vec2 rA = b2Mul(qA, m_localAnchorA - m_localCenterA);
+  //  box2d.b2Vec2 rA = b2Mul(qA, m_localAnchorA - m_localCenterA);
   box2d.b2Sub_V2_V2(this.m_localAnchorA, this.m_localCenterA, this.m_lalcA);
   var rA = box2d.b2Mul_R_V2(qA, this.m_lalcA, this.m_rA);
-  //	box2d.b2Vec2 rB = b2Mul(qB, m_localAnchorB - m_localCenterB);
+  //  box2d.b2Vec2 rB = b2Mul(qB, m_localAnchorB - m_localCenterB);
   box2d.b2Sub_V2_V2(this.m_localAnchorB, this.m_localCenterB, this.m_lalcB);
   var rB = box2d.b2Mul_R_V2(qB, this.m_lalcB, this.m_rB);
-  //	box2d.b2Vec2 d = cB + rB - cA - rA;
+  //  box2d.b2Vec2 d = cB + rB - cA - rA;
   var d = box2d.b2Sub_V2_V2(
     box2d.b2Add_V2_V2(cB, rB, box2d.b2Vec2.s_t0),
     box2d.b2Add_V2_V2(cA, rA, box2d.b2Vec2.s_t1),
@@ -465,11 +465,11 @@ box2d.b2WheelJoint.prototype.InitVelocityConstraints = function(data) {
 
   // Point to line constraint
   {
-    //		m_ay = b2Mul(qA, m_localYAxisA);
+    //    m_ay = b2Mul(qA, m_localYAxisA);
     box2d.b2Mul_R_V2(qA, this.m_localYAxisA, this.m_ay);
-    //		m_sAy = b2Cross(d + rA, m_ay);
+    //    m_sAy = b2Cross(d + rA, m_ay);
     this.m_sAy = box2d.b2Cross_V2_V2(box2d.b2Add_V2_V2(d, rA, box2d.b2Vec2.s_t0), this.m_ay);
-    //		m_sBy = b2Cross(rB, m_ay);
+    //    m_sBy = b2Cross(rB, m_ay);
     this.m_sBy = box2d.b2Cross_V2_V2(rB, this.m_ay);
 
     this.m_mass = mA + mB + iA * this.m_sAy * this.m_sAy + iB * this.m_sBy * this.m_sBy;
@@ -484,11 +484,11 @@ box2d.b2WheelJoint.prototype.InitVelocityConstraints = function(data) {
   this.m_bias = 0;
   this.m_gamma = 0;
   if (this.m_frequencyHz > 0) {
-    //		m_ax = b2Mul(qA, m_localXAxisA);
+    //    m_ax = b2Mul(qA, m_localXAxisA);
     box2d.b2Mul_R_V2(qA, this.m_localXAxisA, this.m_ax);
-    //		m_sAx = b2Cross(d + rA, m_ax);
+    //    m_sAx = b2Cross(d + rA, m_ax);
     this.m_sAx = box2d.b2Cross_V2_V2(box2d.b2Add_V2_V2(d, rA, box2d.b2Vec2.s_t0), this.m_ax);
-    //		m_sBx = b2Cross(rB, m_ax);
+    //    m_sBx = b2Cross(rB, m_ax);
     this.m_sBx = box2d.b2Cross_V2_V2(rB, this.m_ax);
 
     /*float32*/
@@ -548,23 +548,23 @@ box2d.b2WheelJoint.prototype.InitVelocityConstraints = function(data) {
     this.m_springImpulse *= data.step.dtRatio;
     this.m_motorImpulse *= data.step.dtRatio;
 
-    //		box2d.b2Vec2 P = m_impulse * m_ay + m_springImpulse * m_ax;
+    //    box2d.b2Vec2 P = m_impulse * m_ay + m_springImpulse * m_ax;
     var P = box2d.b2Add_V2_V2(
       box2d.b2Mul_S_V2(this.m_impulse, this.m_ay, box2d.b2Vec2.s_t0),
       box2d.b2Mul_S_V2(this.m_springImpulse, this.m_ax, box2d.b2Vec2.s_t1),
       box2d.b2WheelJoint.prototype.InitVelocityConstraints.s_P);
-    //		float32 LA = m_impulse * m_sAy + m_springImpulse * m_sAx + m_motorImpulse;
+    //    float32 LA = m_impulse * m_sAy + m_springImpulse * m_sAx + m_motorImpulse;
     /*float32*/
     var LA = this.m_impulse * this.m_sAy + this.m_springImpulse * this.m_sAx + this.m_motorImpulse;
-    //		float32 LB = m_impulse * m_sBy + m_springImpulse * m_sBx + m_motorImpulse;
+    //    float32 LB = m_impulse * m_sBy + m_springImpulse * m_sBx + m_motorImpulse;
     /*float32*/
     var LB = this.m_impulse * this.m_sBy + this.m_springImpulse * this.m_sBx + this.m_motorImpulse;
 
-    //		vA -= m_invMassA * P;
+    //    vA -= m_invMassA * P;
     vA.SelfMulSub(this.m_invMassA, P);
     wA -= this.m_invIA * LA;
 
-    //		vB += m_invMassB * P;
+    //    vB += m_invMassB * P;
     vB.SelfMulAdd(this.m_invMassB, P);
     wB += this.m_invIB * LB;
   } else {
@@ -573,9 +573,9 @@ box2d.b2WheelJoint.prototype.InitVelocityConstraints = function(data) {
     this.m_motorImpulse = 0;
   }
 
-  //	data.velocities[this.m_indexA].v = vA;
+  //  data.velocities[this.m_indexA].v = vA;
   data.velocities[this.m_indexA].w = wA;
-  //	data.velocities[this.m_indexB].v = vB;
+  //  data.velocities[this.m_indexB].v = vB;
   data.velocities[this.m_indexB].w = wB;
 }
 box2d.b2WheelJoint.prototype.InitVelocityConstraints.s_d = new box2d.b2Vec2();
@@ -611,18 +611,18 @@ box2d.b2WheelJoint.prototype.SolveVelocityConstraints = function(data) {
     var impulse = -this.m_springMass * (Cdot + this.m_bias + this.m_gamma * this.m_springImpulse);
     this.m_springImpulse += impulse;
 
-    //		box2d.b2Vec2 P = impulse * m_ax;
+    //    box2d.b2Vec2 P = impulse * m_ax;
     var P = box2d.b2Mul_S_V2(impulse, this.m_ax, box2d.b2WheelJoint.prototype.SolveVelocityConstraints.s_P);
     /*float32*/
     var LA = impulse * this.m_sAx;
     /*float32*/
     var LB = impulse * this.m_sBx;
 
-    //		vA -= mA * P;
+    //    vA -= mA * P;
     vA.SelfMulSub(mA, P);
     wA -= iA * LA;
 
-    //		vB += mB * P;
+    //    vB += mB * P;
     vB.SelfMulAdd(mB, P);
     wB += iB * LB;
   }
@@ -653,25 +653,25 @@ box2d.b2WheelJoint.prototype.SolveVelocityConstraints = function(data) {
     var impulse = -this.m_mass * Cdot;
     this.m_impulse += impulse;
 
-    //		box2d.b2Vec2 P = impulse * m_ay;
+    //    box2d.b2Vec2 P = impulse * m_ay;
     var P = box2d.b2Mul_S_V2(impulse, this.m_ay, box2d.b2WheelJoint.prototype.SolveVelocityConstraints.s_P);
     /*float32*/
     var LA = impulse * this.m_sAy;
     /*float32*/
     var LB = impulse * this.m_sBy;
 
-    //		vA -= mA * P;
+    //    vA -= mA * P;
     vA.SelfMulSub(mA, P);
     wA -= iA * LA;
 
-    //		vB += mB * P;
+    //    vB += mB * P;
     vB.SelfMulAdd(mB, P);
     wB += iB * LB;
   }
 
-  //	data.velocities[this.m_indexA].v = vA;
+  //  data.velocities[this.m_indexA].v = vA;
   data.velocities[this.m_indexA].w = wA;
-  //	data.velocities[this.m_indexB].v = vB;
+  //  data.velocities[this.m_indexB].v = vB;
   data.velocities[this.m_indexB].w = wB;
 }
 box2d.b2WheelJoint.prototype.SolveVelocityConstraints.s_P = new box2d.b2Vec2();
@@ -695,27 +695,27 @@ box2d.b2WheelJoint.prototype.SolvePositionConstraints = function(data) {
   var qA = this.m_qA.SetAngle(aA),
     qB = this.m_qB.SetAngle(aB);
 
-  //	box2d.b2Vec2 rA = b2Mul(qA, m_localAnchorA - m_localCenterA);
+  //  box2d.b2Vec2 rA = b2Mul(qA, m_localAnchorA - m_localCenterA);
   box2d.b2Sub_V2_V2(this.m_localAnchorA, this.m_localCenterA, this.m_lalcA);
   var rA = box2d.b2Mul_R_V2(qA, this.m_lalcA, this.m_rA);
-  //	box2d.b2Vec2 rB = b2Mul(qB, m_localAnchorB - m_localCenterB);
+  //  box2d.b2Vec2 rB = b2Mul(qB, m_localAnchorB - m_localCenterB);
   box2d.b2Sub_V2_V2(this.m_localAnchorB, this.m_localCenterB, this.m_lalcB);
   var rB = box2d.b2Mul_R_V2(qB, this.m_lalcB, this.m_rB);
-  //	box2d.b2Vec2 d = (cB - cA) + rB - rA;
+  //  box2d.b2Vec2 d = (cB - cA) + rB - rA;
   var d = box2d.b2Add_V2_V2(
     box2d.b2Sub_V2_V2(cB, cA, box2d.b2Vec2.s_t0),
     box2d.b2Sub_V2_V2(rB, rA, box2d.b2Vec2.s_t1),
     box2d.b2WheelJoint.prototype.SolvePositionConstraints.s_d);
 
-  //	box2d.b2Vec2 ay = b2Mul(qA, m_localYAxisA);
+  //  box2d.b2Vec2 ay = b2Mul(qA, m_localYAxisA);
   var ay = box2d.b2Mul_R_V2(qA, this.m_localYAxisA, this.m_ay);
 
-  //	float32 sAy = b2Cross(d + rA, ay);
+  //  float32 sAy = b2Cross(d + rA, ay);
   var sAy = box2d.b2Cross_V2_V2(box2d.b2Add_V2_V2(d, rA, box2d.b2Vec2.s_t0), ay);
-  //	float32 sBy = b2Cross(rB, ay);
+  //  float32 sBy = b2Cross(rB, ay);
   var sBy = box2d.b2Cross_V2_V2(rB, ay);
 
-  //	float32 C = b2Dot(d, ay);
+  //  float32 C = b2Dot(d, ay);
   var C = box2d.b2Dot_V2_V2(d, this.m_ay);
 
   /*float32*/
@@ -729,23 +729,23 @@ box2d.b2WheelJoint.prototype.SolvePositionConstraints = function(data) {
     impulse = 0;
   }
 
-  //	box2d.b2Vec2 P = impulse * ay;
+  //  box2d.b2Vec2 P = impulse * ay;
   var P = box2d.b2Mul_S_V2(impulse, ay, box2d.b2WheelJoint.prototype.SolvePositionConstraints.s_P);
   /*float32*/
   var LA = impulse * sAy;
   /*float32*/
   var LB = impulse * sBy;
 
-  //	cA -= m_invMassA * P;
+  //  cA -= m_invMassA * P;
   cA.SelfMulSub(this.m_invMassA, P);
   aA -= this.m_invIA * LA;
-  //	cB += m_invMassB * P;
+  //  cB += m_invMassB * P;
   cB.SelfMulAdd(this.m_invMassB, P);
   aB += this.m_invIB * LB;
 
-  //	data.positions[this.m_indexA].c = cA;
+  //  data.positions[this.m_indexA].c = cA;
   data.positions[this.m_indexA].a = aA;
-  //	data.positions[this.m_indexB].c = cB;
+  //  data.positions[this.m_indexB].c = cB;
   data.positions[this.m_indexB].a = aB;
 
   return box2d.b2Abs(C) <= box2d.b2_linearSlop;
@@ -790,7 +790,7 @@ box2d.b2WheelJoint.prototype.GetAnchorB = function(out) {
  * @param {box2d.b2Vec2} out
  */
 box2d.b2WheelJoint.prototype.GetReactionForce = function(inv_dt, out) {
-  //	return inv_dt * (m_impulse * m_ay + m_springImpulse * m_ax);
+  //  return inv_dt * (m_impulse * m_ay + m_springImpulse * m_ax);
   out.x = inv_dt * (this.m_impulse * this.m_ay.x + this.m_springImpulse * this.m_ax.x);
   out.y = inv_dt * (this.m_impulse * this.m_ay.y + this.m_springImpulse * this.m_ax.y);
   return out;
@@ -885,19 +885,19 @@ box2d.b2WheelJoint.prototype.GetPrismaticJointSpeed = function() {
   /*box2d.b2Body*/
   var bB = this.m_bodyB;
 
-  //	b2Vec2 rA = b2Mul(bA->m_xf.q, m_localAnchorA - bA->m_sweep.localCenter);
+  //  b2Vec2 rA = b2Mul(bA->m_xf.q, m_localAnchorA - bA->m_sweep.localCenter);
   box2d.b2Sub_V2_V2(this.m_localAnchorA, bA.m_sweep.localCenter, this.m_lalcA);
   var rA = box2d.b2Mul_R_V2(bA.m_xf.q, this.m_lalcA, this.m_rA);
-  //	b2Vec2 rB = b2Mul(bB->m_xf.q, m_localAnchorB - bB->m_sweep.localCenter);
+  //  b2Vec2 rB = b2Mul(bB->m_xf.q, m_localAnchorB - bB->m_sweep.localCenter);
   box2d.b2Sub_V2_V2(this.m_localAnchorB, bB.m_sweep.localCenter, this.m_lalcB);
   var rB = box2d.b2Mul_R_V2(bB.m_xf.q, this.m_lalcB, this.m_rB);
-  //	b2Vec2 pA = bA->m_sweep.c + rA;
+  //  b2Vec2 pA = bA->m_sweep.c + rA;
   var pA = box2d.b2Add_V2_V2(bA.m_sweep.c, rA, box2d.b2Vec2.s_t0); // pA uses s_t0
-  //	b2Vec2 pB = bB->m_sweep.c + rB;
+  //  b2Vec2 pB = bB->m_sweep.c + rB;
   var pB = box2d.b2Add_V2_V2(bB.m_sweep.c, rB, box2d.b2Vec2.s_t1); // pB uses s_t1
-  //	b2Vec2 d = pB - pA;
+  //  b2Vec2 d = pB - pA;
   var d = box2d.b2Sub_V2_V2(pB, pA, box2d.b2Vec2.s_t2); // d uses s_t2
-  //	b2Vec2 axis = b2Mul(bA.m_xf.q, m_localXAxisA);
+  //  b2Vec2 axis = b2Mul(bA.m_xf.q, m_localXAxisA);
   var axis = bA.GetWorldVector(this.m_localXAxisA, new box2d.b2Vec2());
 
   var vA = bA.m_linearVelocity;
@@ -905,7 +905,7 @@ box2d.b2WheelJoint.prototype.GetPrismaticJointSpeed = function() {
   var wA = bA.m_angularVelocity;
   var wB = bB.m_angularVelocity;
 
-  //	float32 speed = b2Dot(d, b2Cross(wA, axis)) + b2Dot(axis, vB + b2Cross(wB, rB) - vA - b2Cross(wA, rA));
+  //  float32 speed = b2Dot(d, b2Cross(wA, axis)) + b2Dot(axis, vB + b2Cross(wB, rB) - vA - b2Cross(wA, rA));
   var speed =
     box2d.b2Dot_V2_V2(d, box2d.b2Cross_S_V2(wA, axis, box2d.b2Vec2.s_t0)) +
     box2d.b2Dot_V2_V2(
@@ -922,9 +922,9 @@ box2d.b2WheelJoint.prototype.GetPrismaticJointSpeed = function() {
  * @return {number}
  */
 box2d.b2WheelJoint.prototype.GetRevoluteJointAngle = function() {
-  //	b2Body* bA = this.m_bodyA;
-  //	b2Body* bB = this.m_bodyB;
-  //	return bB->this.m_sweep.a - bA->this.m_sweep.a;
+  //  b2Body* bA = this.m_bodyA;
+  //  b2Body* bB = this.m_bodyB;
+  //  return bB->this.m_sweep.a - bA->this.m_sweep.a;
   return this.m_bodyB.m_sweep.a - this.m_bodyA.m_sweep.a;
 }
 

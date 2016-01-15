@@ -63,9 +63,9 @@ box2d.Testbed.ParticleVFX = function(particleSystem, origin, size, speed, lifeti
   var pos = this.m_particleSystem.GetPositionBuffer();
   var vel = this.m_particleSystem.GetVelocityBuffer();
   for (var i = bufferIndex; i < bufferIndex + this.m_pg.GetParticleCount(); i++) {
-    ///	vel[i] = pos[i] - origin;
+    ///  vel[i] = pos[i] - origin;
     box2d.b2Sub_V2_V2(pos[i], origin, vel[i]);
-    ///	vel[i] *= speed;
+    ///  vel[i] *= speed;
     box2d.b2Mul_V2_S(vel[i], speed, vel[i]);
   }
 }
@@ -138,7 +138,7 @@ box2d.Testbed.ParticleVFX.prototype.Step = function(dt) {
     // Set particle colors all at once.
     for (var i = bufferIndex; i < bufferIndex + this.m_pg.GetParticleCount(); i++) {
       var c = colors[i];
-      ///	c *= coeff;
+      ///  c *= coeff;
       c.SelfMul_0_1(coeff);
       c.a = this.m_origColor.a;
     }

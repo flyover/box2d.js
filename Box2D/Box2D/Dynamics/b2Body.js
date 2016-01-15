@@ -1468,7 +1468,7 @@ box2d.b2Body.prototype.IsSleepingAllowed = function() {
  * @export
  * @return {void}
  * @param {boolean} flag set to true to wake the body, false to
- *  	  put it to sleep.
+ *      put it to sleep.
  */
 box2d.b2Body.prototype.SetAwake = function(flag) {
   if (flag) {

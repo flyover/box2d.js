@@ -87,9 +87,9 @@ box2d.b2ContactFactory.prototype.AddType = function(createFcn, destroyFcn, type1
 
   if (type1 !== type2)
   {
-  	this.m_registers[type2][type1].createFcn = createFcn;
-  	this.m_registers[type2][type1].destroyFcn = destroyFcn;
-  	this.m_registers[type2][type1].primary = false;
+    this.m_registers[type2][type1].createFcn = createFcn;
+    this.m_registers[type2][type1].destroyFcn = destroyFcn;
+    this.m_registers[type2][type1].primary = false;
   }
   */
 }

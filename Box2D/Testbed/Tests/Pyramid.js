@@ -88,7 +88,7 @@ box2d.Testbed.Pyramid.prototype.Step = function(settings) {
 
   //if (m_stepCount === 400)
   //{
-  //	tree.RebuildBottomUp();
+  //  tree.RebuildBottomUp();
   //}
 }
 

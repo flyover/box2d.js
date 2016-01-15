@@ -193,7 +193,7 @@ box2d.b2FixtureProxy.MakeArray = function(length) {
  * @constructor
  */
 box2d.b2Fixture = function() {
-  //	this.m_proxies = new Array();
+  //  this.m_proxies = new Array();
   this.m_proxyCount = 0;
 
   this.m_filter = new box2d.b2Filter();
@@ -498,13 +498,13 @@ box2d.b2Fixture.prototype.Create = function(body, def) {
   this.m_shape = def.shape.Clone();
 
   // Reserve proxy space
-  //	var childCount = m_shape->GetChildCount();
-  //	m_proxies = (box2d.b2FixtureProxy*)allocator->Allocate(childCount * sizeof(box2d.b2FixtureProxy));
-  //	for (int32 i = 0; i < childCount; ++i)
-  //	{
-  //		m_proxies[i].fixture = NULL;
-  //		m_proxies[i].proxyId = box2d.b2BroadPhase::e_nullProxy;
-  //	}
+  //  var childCount = m_shape->GetChildCount();
+  //  m_proxies = (box2d.b2FixtureProxy*)allocator->Allocate(childCount * sizeof(box2d.b2FixtureProxy));
+  //  for (int32 i = 0; i < childCount; ++i)
+  //  {
+  //    m_proxies[i].fixture = NULL;
+  //    m_proxies[i].proxyId = box2d.b2BroadPhase::e_nullProxy;
+  //  }
   this.m_proxies = box2d.b2FixtureProxy.MakeArray(this.m_shape.GetChildCount());
   this.m_proxyCount = 0;
 
@@ -522,9 +522,9 @@ box2d.b2Fixture.prototype.Destroy = function() {
   }
 
   // Free the proxy array.
-  //	int32 childCount = m_shape->GetChildCount();
-  //	allocator->Free(m_proxies, childCount * sizeof(box2d.b2FixtureProxy));
-  //	m_proxies = NULL;
+  //  int32 childCount = m_shape->GetChildCount();
+  //  allocator->Free(m_proxies, childCount * sizeof(box2d.b2FixtureProxy));
+  //  m_proxies = NULL;
 
   this.m_shape = null;
 }

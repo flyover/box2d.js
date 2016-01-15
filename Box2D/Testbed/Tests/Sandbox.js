@@ -465,7 +465,7 @@ box2d.Testbed.Sandbox.prototype.__ctor__ = function() {
 box2d.Testbed.Sandbox.prototype.__dtor__ = function() {
   // deallocate our emitters
   for (var i = 0; i < this.m_faucetEmitterIndex; i++) {
-    ///	delete this.m_emitters[i];
+    ///  delete this.m_emitters[i];
     this.m_emitters[i] = null;
   }
 }
@@ -506,7 +506,7 @@ box2d.Testbed.Sandbox.prototype.SetupMaze = function() {
   var boxShape = new box2d.b2PolygonShape();
   boxShape.SetAsBox(box2d.Testbed.SandboxParams.k_tileRadius, box2d.Testbed.SandboxParams.k_tileRadius);
 
-  ///	b2Vec2 triangle[3];
+  ///  b2Vec2 triangle[3];
   var triangle = box2d.b2Vec2.MakeArray(3);
   triangle[0].Set(-box2d.Testbed.SandboxParams.k_tileRadius, -box2d.Testbed.SandboxParams.k_tileRadius);
   triangle[1].Set(box2d.Testbed.SandboxParams.k_tileRadius, box2d.Testbed.SandboxParams.k_tileRadius);

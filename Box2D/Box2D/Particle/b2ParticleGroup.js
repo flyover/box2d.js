@@ -487,13 +487,13 @@ box2d.b2ParticleGroup.prototype.GetAngle = function() {
  * @export
  * @return {box2d.b2Vec2} the world velocity of a point.
  * @param {box2d.b2Vec2} worldPoint a point in world
- *  	  coordinates.
+ *      coordinates.
  * @param {box2d.b2Vec2} out
  */
 box2d.b2ParticleGroup.prototype.GetLinearVelocityFromWorldPoint = function(worldPoint, out) {
   var s_t0 = box2d.b2ParticleGroup.prototype.GetLinearVelocityFromWorldPoint.s_t0;
   this.UpdateStatistics();
-  ///	return m_linearVelocity + b2Cross(m_angularVelocity, worldPoint - m_center);
+  ///  return m_linearVelocity + b2Cross(m_angularVelocity, worldPoint - m_center);
   return box2d.b2AddCross_V2_S_V2(this.m_linearVelocity, this.m_angularVelocity, box2d.b2Sub_V2_V2(worldPoint, this.m_center, s_t0), out);
 }
 box2d.b2ParticleGroup.prototype.GetLinearVelocityFromWorldPoint.s_t0 = new box2d.b2Vec2();
@@ -553,8 +553,8 @@ box2d.b2ParticleGroup.prototype.ApplyLinearImpulse = function(impulse) {
  * @export
  * @return {void}
  * @param {boolean=} callDestructionListener Whether to call the
- *  	  world b2DestructionListener for each particle is
- *  	  destroyed.
+ *      world b2DestructionListener for each particle is
+ *      destroyed.
  */
 box2d.b2ParticleGroup.prototype.DestroyParticles = function(callDestructionListener) {
   box2d.b2Assert(this.m_system.m_world.IsLocked() === false);
@@ -576,15 +576,15 @@ box2d.b2ParticleGroup.prototype.UpdateStatistics = function() {
   var v = new box2d.b2Vec2();
   if (this.m_timestamp != this.m_system.m_timestamp) {
     var m = this.m_system.GetParticleMass();
-    ///	this.m_mass = 0;
+    ///  this.m_mass = 0;
     this.m_mass = m * (this.m_lastIndex - this.m_firstIndex);
     this.m_center.SetZero();
     this.m_linearVelocity.SetZero();
     for (var i = this.m_firstIndex; i < this.m_lastIndex; i++) {
-      ///	this.m_mass += m;
-      ///	this.m_center += m * this.m_system.m_positionBuffer.data[i];
+      ///  this.m_mass += m;
+      ///  this.m_center += m * this.m_system.m_positionBuffer.data[i];
       this.m_center.SelfMulAdd(m, this.m_system.m_positionBuffer.data[i]);
-      ///	this.m_linearVelocity += m * this.m_system.m_velocityBuffer.data[i];
+      ///  this.m_linearVelocity += m * this.m_system.m_velocityBuffer.data[i];
       this.m_linearVelocity.SelfMulAdd(m, this.m_system.m_velocityBuffer.data[i]);
     }
     if (this.m_mass > 0) {

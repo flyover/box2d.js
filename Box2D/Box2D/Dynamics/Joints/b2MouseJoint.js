@@ -363,10 +363,10 @@ box2d.b2MouseJoint.prototype.InitVelocityConstraints = function(data) {
 
   K.GetInverse(this.m_mass);
 
-  //	m_C = cB + m_rB - m_targetA;
+  //  m_C = cB + m_rB - m_targetA;
   this.m_C.x = cB.x + this.m_rB.x - this.m_targetA.x;
   this.m_C.y = cB.y + this.m_rB.y - this.m_targetA.y;
-  //	m_C *= m_beta;
+  //  m_C *= m_beta;
   this.m_C.SelfMul(this.m_beta);
 
   // Cheat with some damping
@@ -374,7 +374,7 @@ box2d.b2MouseJoint.prototype.InitVelocityConstraints = function(data) {
 
   if (data.step.warmStarting) {
     this.m_impulse.SelfMul(data.step.dtRatio);
-    //		vB += m_invMassB * m_impulse;
+    //    vB += m_invMassB * m_impulse;
     vB.x += this.m_invMassB * this.m_impulse.x;
     vB.y += this.m_invMassB * this.m_impulse.y;
     wB += this.m_invIB * box2d.b2Cross_V2_V2(this.m_rB, this.m_impulse);
@@ -382,7 +382,7 @@ box2d.b2MouseJoint.prototype.InitVelocityConstraints = function(data) {
     this.m_impulse.SetZero();
   }
 
-  //	data.velocities[this.m_indexB].v = vB;
+  //  data.velocities[this.m_indexB].v = vB;
   data.velocities[this.m_indexB].w = wB;
 }
 
@@ -398,9 +398,9 @@ box2d.b2MouseJoint.prototype.SolveVelocityConstraints = function(data) {
   var wB = data.velocities[this.m_indexB].w;
 
   // Cdot = v + cross(w, r)
-  //	b2Vec2 Cdot = vB + b2Cross(wB, m_rB);
+  //  b2Vec2 Cdot = vB + b2Cross(wB, m_rB);
   var Cdot = box2d.b2AddCross_V2_S_V2(vB, wB, this.m_rB, box2d.b2MouseJoint.prototype.SolveVelocityConstraints.s_Cdot);
-  //	b2Vec2 impulse = b2Mul(m_mass, -(Cdot + m_C + m_gamma * m_impulse));
+  //  b2Vec2 impulse = b2Mul(m_mass, -(Cdot + m_C + m_gamma * m_impulse));
   var impulse = box2d.b2Mul_M22_V2(
     this.m_mass,
     box2d.b2Add_V2_V2(
@@ -411,23 +411,23 @@ box2d.b2MouseJoint.prototype.SolveVelocityConstraints = function(data) {
       box2d.b2Vec2.s_t0).SelfNeg(),
     box2d.b2MouseJoint.prototype.SolveVelocityConstraints.s_impulse);
 
-  //	b2Vec2 oldImpulse = m_impulse;
+  //  b2Vec2 oldImpulse = m_impulse;
   var oldImpulse = box2d.b2MouseJoint.prototype.SolveVelocityConstraints.s_oldImpulse.Copy(this.m_impulse);
-  //	m_impulse += impulse;
+  //  m_impulse += impulse;
   this.m_impulse.SelfAdd(impulse);
   /*float32*/
   var maxImpulse = data.step.dt * this.m_maxForce;
   if (this.m_impulse.LengthSquared() > maxImpulse * maxImpulse) {
     this.m_impulse.SelfMul(maxImpulse / this.m_impulse.Length());
   }
-  //	impulse = m_impulse - oldImpulse;
+  //  impulse = m_impulse - oldImpulse;
   box2d.b2Sub_V2_V2(this.m_impulse, oldImpulse, impulse);
 
-  //	vB += m_invMassB * impulse;
+  //  vB += m_invMassB * impulse;
   vB.SelfMulAdd(this.m_invMassB, impulse);
   wB += this.m_invIB * box2d.b2Cross_V2_V2(this.m_rB, impulse);
 
-  //	data.velocities[this.m_indexB].v = vB;
+  //  data.velocities[this.m_indexB].v = vB;
   data.velocities[this.m_indexB].w = wB;
 }
 box2d.b2MouseJoint.prototype.SolveVelocityConstraints.s_Cdot = new box2d.b2Vec2();

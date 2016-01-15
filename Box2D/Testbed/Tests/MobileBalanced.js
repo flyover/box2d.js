@@ -73,7 +73,7 @@ box2d.Testbed.MobileBalanced.prototype.AddNode = function(parent, localAnchor, d
   var /*float32*/ density = 20.0;
   var /*b2Vec2*/ h = new box2d.b2Vec2(0.0, a);
 
-  //	b2Vec2 p = parent->GetPosition() + localAnchor - h;
+  //  b2Vec2 p = parent->GetPosition() + localAnchor - h;
   var /*b2Vec2*/ p = parent.GetPosition().Clone().SelfAdd(localAnchor).SelfSub(h);
 
   var /*b2BodyDef*/ bodyDef = new box2d.b2BodyDef();

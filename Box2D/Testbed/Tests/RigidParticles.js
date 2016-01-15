@@ -100,10 +100,10 @@ box2d.Testbed.RigidParticles = function(canvas, settings) {
   {
     var shape = new box2d.b2PolygonShape();
     //var vertices = [
-    //	new box2d.b2Vec2(0, 3),
-    //	new box2d.b2Vec2(2, 3),
-    //	new box2d.b2Vec2(2, 3.5),
-    //	new box2d.b2Vec2(0, 3.5)
+    //  new box2d.b2Vec2(0, 3),
+    //  new box2d.b2Vec2(2, 3),
+    //  new box2d.b2Vec2(2, 3.5),
+    //  new box2d.b2Vec2(0, 3.5)
     //];
     //shape.Set(vertices, 4);
     shape.SetAsBox(1, 0.5);

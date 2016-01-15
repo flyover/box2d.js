@@ -180,7 +180,7 @@ box2d.Testbed.Revolute.prototype.Step = function(settings) {
 
   //if (m_stepCount === 360)
   //{
-  //	m_ball.SetTransform(box2d.b2Vec2(0.0, 0.5f), 0.0);
+  //  m_ball.SetTransform(box2d.b2Vec2(0.0, 0.5f), 0.0);
   //}
 
   //var torque1 = this.m_joint1.GetMotorTorque(settings.hz);

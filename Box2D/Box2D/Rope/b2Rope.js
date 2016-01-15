@@ -122,13 +122,13 @@ box2d.b2Rope.prototype.Initialize = function(def) {
     box2d.b2Assert(def.count >= 3);
   }
   this.m_count = def.count;
-  //	this.m_ps = (box2d.b2Vec2*)b2Alloc(this.m_count * sizeof(box2d.b2Vec2));
+  //  this.m_ps = (box2d.b2Vec2*)b2Alloc(this.m_count * sizeof(box2d.b2Vec2));
   this.m_ps = box2d.b2Vec2.MakeArray(this.m_count);
-  //	this.m_p0s = (box2d.b2Vec2*)b2Alloc(this.m_count * sizeof(box2d.b2Vec2));
+  //  this.m_p0s = (box2d.b2Vec2*)b2Alloc(this.m_count * sizeof(box2d.b2Vec2));
   this.m_p0s = box2d.b2Vec2.MakeArray(this.m_count);
-  //	this.m_vs = (box2d.b2Vec2*)b2Alloc(this.m_count * sizeof(box2d.b2Vec2));
+  //  this.m_vs = (box2d.b2Vec2*)b2Alloc(this.m_count * sizeof(box2d.b2Vec2));
   this.m_vs = box2d.b2Vec2.MakeArray(this.m_count);
-  //	this.m_ims = (float32*)b2Alloc(this.m_count * sizeof(float32));
+  //  this.m_ims = (float32*)b2Alloc(this.m_count * sizeof(float32));
   this.m_ims = box2d.b2MakeNumberArray(this.m_count);
 
   for ( /*int32*/ var i = 0; i < this.m_count; ++i) {
@@ -149,9 +149,9 @@ box2d.b2Rope.prototype.Initialize = function(def) {
   var count2 = this.m_count - 1;
   /*int32*/
   var count3 = this.m_count - 2;
-  //	this.m_Ls = (float32*)be2Alloc(count2 * sizeof(float32));
+  //  this.m_Ls = (float32*)be2Alloc(count2 * sizeof(float32));
   this.m_Ls = box2d.b2MakeNumberArray(count2);
-  //	this.m_as = (float32*)b2Alloc(count3 * sizeof(float32));
+  //  this.m_as = (float32*)b2Alloc(count3 * sizeof(float32));
   this.m_as = box2d.b2MakeNumberArray(count3);
 
   for ( /*int32*/ var i = 0; i < count2; ++i) {
@@ -262,8 +262,8 @@ box2d.b2Rope.prototype.SolveC2 = function() {
     p1.SelfMulSub(this.m_k2 * s1 * (this.m_Ls[i] - L), d);
     p2.SelfMulAdd(this.m_k2 * s2 * (this.m_Ls[i] - L), d);
 
-    //		this.m_ps[i] = p1;
-    //		this.m_ps[i + 1] = p2;
+    //    this.m_ps[i] = p1;
+    //    this.m_ps[i + 1] = p2;
   }
 }
 box2d.b2Rope.s_d = new box2d.b2Vec2();
@@ -366,9 +366,9 @@ box2d.b2Rope.prototype.SolveC3 = function() {
     p2.SelfMulAdd((m2 * impulse), J2);
     p3.SelfMulAdd((m3 * impulse), J3);
 
-    //		this.m_ps[i] = p1;
-    //		this.m_ps[i + 1] = p2;
-    //		this.m_ps[i + 2] = p3;
+    //    this.m_ps[i] = p1;
+    //    this.m_ps[i + 1] = p2;
+    //    this.m_ps[i + 2] = p3;
   }
 }
 box2d.b2Rope.s_d1 = new box2d.b2Vec2();

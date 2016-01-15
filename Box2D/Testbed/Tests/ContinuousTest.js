@@ -65,21 +65,21 @@ box2d.Testbed.ContinuousTest = function(canvas, settings) {
   /*
   else
   {
-  	var bd = new box2d.b2BodyDef();
-  	bd.type = box2d.b2BodyType.b2_dynamicBody;
-  	bd.position.Set(0.0, 2.0);
-  	var body = this.m_world.CreateBody(bd);
+    var bd = new box2d.b2BodyDef();
+    bd.type = box2d.b2BodyType.b2_dynamicBody;
+    bd.position.Set(0.0, 2.0);
+    var body = this.m_world.CreateBody(bd);
 
-  	var shape = new box2d.b2CircleShape();
-  	shape.m_p.SetZero();
-  	shape.m_radius = 0.5;
-  	body.CreateFixture(shape, 1.0);
+    var shape = new box2d.b2CircleShape();
+    shape.m_p.SetZero();
+    shape.m_radius = 0.5;
+    body.CreateFixture(shape, 1.0);
 
-  	bd.bullet = true;
-  	bd.position.Set(0.0, 10.0);
-  	body = this.m_world.CreateBody(bd);
-  	body.CreateFixture(shape, 1.0);
-  	body.SetLinearVelocity(new box2d.b2Vec2(0.0, -100.0));
+    bd.bullet = true;
+    bd.position.Set(0.0, 10.0);
+    body = this.m_world.CreateBody(bd);
+    body.CreateFixture(shape, 1.0);
+    body.SetLinearVelocity(new box2d.b2Vec2(0.0, -100.0));
   }
   */
 

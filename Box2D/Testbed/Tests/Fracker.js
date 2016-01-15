@@ -43,9 +43,9 @@ box2d.Testbed.EmitterTracker.prototype.m_emitterLifetime = null;
  * @return {void}
  */
 box2d.Testbed.EmitterTracker.prototype.__dtor__ = function() {
-  ///	for (std.map<RadialEmitter*, float32>.const_iterator it = m_emitterLifetime.begin(); it !== m_emitterLifetime.end(); ++it)
+  ///  for (std.map<RadialEmitter*, float32>.const_iterator it = m_emitterLifetime.begin(); it !== m_emitterLifetime.end(); ++it)
   for (var it = 0; it < this.m_emitterLifetime.length; ++it) {
-    ///	delete it.first;
+    ///  delete it.first;
     this.m_emitterLifetime[it].emitter.__dtor__();
   }
 }
@@ -59,7 +59,7 @@ box2d.Testbed.EmitterTracker.prototype.__dtor__ = function() {
  * @param {number} lifetime
  */
 box2d.Testbed.EmitterTracker.prototype.Add = function(emitter, lifetime) {
-  ///	m_emitterLifetime[emitter] = lifetime;
+  ///  m_emitterLifetime[emitter] = lifetime;
   this.m_emitterLifetime.push({
     emitter: emitter,
     lifetime: lifetime
@@ -72,29 +72,29 @@ box2d.Testbed.EmitterTracker.prototype.Add = function(emitter, lifetime) {
  * @param {number} dt
  */
 box2d.Testbed.EmitterTracker.prototype.Step = function(dt) {
-  ///	std.vector<RadialEmitter*> emittersToDestroy;
+  ///  std.vector<RadialEmitter*> emittersToDestroy;
   var emittersToDestroy = [];
-  ///	for (std.map<RadialEmitter*, float32>.const_iterator it = m_emitterLifetime.begin(); it !== m_emitterLifetime.end(); ++it)
+  ///  for (std.map<RadialEmitter*, float32>.const_iterator it = m_emitterLifetime.begin(); it !== m_emitterLifetime.end(); ++it)
   for (var it = 0; it < this.m_emitterLifetime.length; ++it) {
-    ///	RadialEmitter * const emitter = it.first;
+    ///  RadialEmitter * const emitter = it.first;
     var emitter = this.m_emitterLifetime[it].emitter;
-    ///	const float32 lifetime = it.second - dt;
+    ///  const float32 lifetime = it.second - dt;
     var lifetime = this.m_emitterLifetime[it].lifetime - dt;
     if (lifetime <= 0.0) {
       emittersToDestroy.push(emitter);
     }
-    ///	m_emitterLifetime[emitter] = lifetime;
+    ///  m_emitterLifetime[emitter] = lifetime;
     this.m_emitterLifetime[it].lifetime = lifetime
 
     emitter.Step(dt);
   }
-  ///	for (std.vector<RadialEmitter*>.const_iterator it = emittersToDestroy.begin(); it !== emittersToDestroy.end(); ++it)
+  ///  for (std.vector<RadialEmitter*>.const_iterator it = emittersToDestroy.begin(); it !== emittersToDestroy.end(); ++it)
   for (var it = 0; it < emittersToDestroy.length; ++it) {
-    ///	RadialEmitter *emitter = *it;
+    ///  RadialEmitter *emitter = *it;
     var emitter = emittersToDestroy[it];
     /// delete emitter;
     emitter.__dtor__();
-    ///	m_emitterLifetime.erase(m_emitterLifetime.find(emitter));
+    ///  m_emitterLifetime.erase(m_emitterLifetime.find(emitter));
     this.m_emitterLifetime = this.m_emitterLifetime.filter(function(value) {
       return value.emitter !== emitter;
     });
@@ -468,10 +468,10 @@ box2d.Testbed.Fracker.DestructionListener.prototype.GetOil = function() {
  */
 box2d.Testbed.Fracker.DestructionListener.prototype.SayGoodbyeParticle = function(particleSystem, index) {
   box2d.b2Assert(particleSystem !== null);
-  ///	const void * const userData = particleSystem.GetUserDataBuffer()[index];
+  ///  const void * const userData = particleSystem.GetUserDataBuffer()[index];
   var userData = particleSystem.GetUserDataBuffer()[index];
   if (userData) {
-    ///	const Material material = *((Material*)userData);
+    ///  const Material material = *((Material*)userData);
     var material = userData;
     switch (material) {
       case box2d.Testbed.Fracker.Material.OIL:
@@ -574,7 +574,7 @@ box2d.Testbed.Fracker.prototype.InitializeLayout = function() {
  * @param {number} y
  */
 box2d.Testbed.Fracker.prototype.GetMaterial = function(x, y) {
-  ///	return *const_cast<Fracker*>(this).GetMaterialStorage(x, y);
+  ///  return *const_cast<Fracker*>(this).GetMaterialStorage(x, y);
   return this.m_material[box2d.Testbed.Fracker.TileToArrayOffset(x, y)];
 }
 
@@ -586,7 +586,7 @@ box2d.Testbed.Fracker.prototype.GetMaterial = function(x, y) {
  * @param {box2d.Testbed.Fracker.Material} material
  */
 box2d.Testbed.Fracker.prototype.SetMaterial = function(x, y, material) {
-  ///	*GetMaterialStorage(x, y) = material;
+  ///  *GetMaterialStorage(x, y) = material;
   this.m_material[box2d.Testbed.Fracker.TileToArrayOffset(x, y)] = material;
 }
 
@@ -597,7 +597,7 @@ box2d.Testbed.Fracker.prototype.SetMaterial = function(x, y, material) {
  * @param {number} y
  */
 box2d.Testbed.Fracker.prototype.GetBody = function(x, y) {
-  ///	return *const_cast<Fracker*>(this).GetBodyStorage(x, y);
+  ///  return *const_cast<Fracker*>(this).GetBodyStorage(x, y);
   return this.m_bodies[box2d.Testbed.Fracker.TileToArrayOffset(x, y)];
 }
 
@@ -609,7 +609,7 @@ box2d.Testbed.Fracker.prototype.GetBody = function(x, y) {
  * @param {box2d.b2Body} body
  */
 box2d.Testbed.Fracker.prototype.SetBody = function(x, y, body) {
-  ///	b2Body** const currentBody = GetBodyStorage(x, y);
+  ///  b2Body** const currentBody = GetBodyStorage(x, y);
   var currentBody = this.m_bodies[box2d.Testbed.Fracker.TileToArrayOffset(x, y)];
   if (currentBody) {
     this.m_world.DestroyBody(currentBody);
@@ -735,11 +735,11 @@ box2d.Testbed.Fracker.prototype.CreateReservoirBlock = function(x, y, material) 
 
   // Tag each particle with its type.
   var particleCount = group.GetParticleCount();
-  ///	void** const userDataBuffer = m_particleSystem.GetUserDataBuffer() + group.GetBufferIndex();;
+  ///  void** const userDataBuffer = m_particleSystem.GetUserDataBuffer() + group.GetBufferIndex();;
   var userDataBuffer = this.m_particleSystem.GetUserDataBuffer();
   var index = group.GetBufferIndex();
   for (var i = 0; i < particleCount; ++i) {
-    ///	userDataBuffer[i] = GetMaterialStorage(x, y);
+    ///  userDataBuffer[i] = GetMaterialStorage(x, y);
     userDataBuffer[index + i] = this.m_material[box2d.Testbed.Fracker.TileToArrayOffset(x, y)];
   }
   // Keep track of the total available oil.
@@ -1049,16 +1049,16 @@ box2d.Testbed.Fracker.prototype.Step = function(settings) {
   this.DestroyParticlesInTiles(this.m_wellX, this.m_wellTop, this.m_wellX, this.m_wellTop);
 
   // Only move particles in the groups being tracked.
-  ///	const std.set<b2ParticleGroup*> &particleGroups = m_listener.GetParticleGroups();
+  ///  const std.set<b2ParticleGroup*> &particleGroups = m_listener.GetParticleGroups();
   var particleGroups = this.m_listener.GetParticleGroups();
-  ///	for (std.set<b2ParticleGroup*>.const_iterator it = particleGroups.begin(); it !== particleGroups.end(); ++it)
+  ///  for (std.set<b2ParticleGroup*>.const_iterator it = particleGroups.begin(); it !== particleGroups.end(); ++it)
   for (var it = 0; it < particleGroups.length; ++it) {
-    ///	b2ParticleGroup * const particleGroup = *it;
+    ///  b2ParticleGroup * const particleGroup = *it;
     var particleGroup = particleGroups[it];
     var index = particleGroup.GetBufferIndex();
-    ///	const b2Vec2* const positionBuffer = m_particleSystem.GetPositionBuffer() + index;
+    ///  const b2Vec2* const positionBuffer = m_particleSystem.GetPositionBuffer() + index;
     var positionBuffer = this.m_particleSystem.GetPositionBuffer();
-    ///	b2Vec2* const velocityBuffer = m_particleSystem.GetVelocityBuffer() + index;
+    ///  b2Vec2* const velocityBuffer = m_particleSystem.GetVelocityBuffer() + index;
     var velocityBuffer = this.m_particleSystem.GetVelocityBuffer();
     var particleCount = particleGroup.GetParticleCount();
     for (var i = 0; i < particleCount; ++i) {
@@ -1067,7 +1067,7 @@ box2d.Testbed.Fracker.prototype.Step = function(settings) {
       var wellEnd = box2d.Testbed.Fracker.CenteredPosition(box2d.Testbed.Fracker.TileToWorld(this.m_wellX, this.m_wellBottom - 2));
       var particlePosition = positionBuffer[index + i];
       // Distance from the well's bottom.
-      ///	const b2Vec2 distance = particlePosition - wellEnd;
+      ///  const b2Vec2 distance = particlePosition - wellEnd;
       var distance = box2d.b2Sub_V2_V2(particlePosition, wellEnd, new box2d.b2Vec2())
         // Distance from either well side wall.
       var absDistX = Math.abs(distance.x);
@@ -1076,10 +1076,10 @@ box2d.Testbed.Fracker.prototype.Step = function(settings) {
         distance.y > box2d.Testbed.FrackerSettings.k_tileWidth * -2.0 &&
         distance.y < 0.0) {
         // Suck the particles towards the end of the well.
-        ///	b2Vec2 velocity = wellEnd - particlePosition;
+        ///  b2Vec2 velocity = wellEnd - particlePosition;
         var velocity = box2d.b2Sub_V2_V2(wellEnd, particlePosition, new box2d.b2Vec2());
         velocity.Normalize();
-        ///	velocityBuffer[i] = velocity * box2d.Testbed.FrackerSettings.k_wellSuckSpeedOutside;
+        ///  velocityBuffer[i] = velocity * box2d.Testbed.FrackerSettings.k_wellSuckSpeedOutside;
         velocityBuffer[index + i].Copy(velocity.SelfMul(box2d.Testbed.FrackerSettings.k_wellSuckSpeedOutside));
       } else if (absDistX <= box2d.Testbed.FrackerSettings.k_tileHalfWidth && distance.y > 0.0) {
         // Suck the particles up the well with a random
@@ -1087,7 +1087,7 @@ box2d.Testbed.Fracker.prototype.Step = function(settings) {
         var randomX = (Math.random() * box2d.Testbed.FrackerSettings.k_tileHalfWidth) - distance.x;
         var velocity = new box2d.b2Vec2(randomX, box2d.Testbed.FrackerSettings.k_tileHeight);
         velocity.Normalize();
-        ///	velocityBuffer[i] = velocity * box2d.Testbed.FrackerSettings.k_wellSuckSpeedInside;
+        ///  velocityBuffer[i] = velocity * box2d.Testbed.FrackerSettings.k_wellSuckSpeedInside;
         velocityBuffer[index + i].Copy(velocity.SelfMul(box2d.Testbed.FrackerSettings.k_wellSuckSpeedInside));
       }
     }
@@ -1128,15 +1128,15 @@ box2d.Testbed.Fracker.prototype.DrawPlayer = function() {
  * @return {void}
  */
 box2d.Testbed.Fracker.prototype.DrawScore = function() {
-  ///	char score[512];
-  ///	sprintf(score, "Score: %d, Remaining Oil %d",
-  ///	        m_listener.GetScore(), m_listener.GetOil());
-  ///	const char *lines[] = { score,  "Move: a,s,d,w   Fracking Fluid: e" };
-  ///	for (uint32 i = 0; i < B2_ARRAY_SIZE(lines); ++i)
-  ///	{
-  ///		m_debugDraw.DrawString(5, m_textLine, lines[i]);
-  ///		m_textLine += DRAW_STRING_NEW_LINE;
-  ///	}
+  ///  char score[512];
+  ///  sprintf(score, "Score: %d, Remaining Oil %d",
+  ///          m_listener.GetScore(), m_listener.GetOil());
+  ///  const char *lines[] = { score,  "Move: a,s,d,w   Fracking Fluid: e" };
+  ///  for (uint32 i = 0; i < B2_ARRAY_SIZE(lines); ++i)
+  ///  {
+  ///    m_debugDraw.DrawString(5, m_textLine, lines[i]);
+  ///    m_textLine += DRAW_STRING_NEW_LINE;
+  ///  }
   this.m_debugDraw.DrawString(5, this.m_textLine, "Score: %d, Remaining Oil %d", this.m_listener.GetScore(), this.m_listener.GetOil());
   this.m_textLine += box2d.Testbed.DRAW_STRING_NEW_LINE;
   this.m_debugDraw.DrawString(5, this.m_textLine, "Move: a,s,d,w   Fracking Fluid: e");
@@ -1153,7 +1153,7 @@ box2d.Testbed.Fracker.prototype.DrawScore = function() {
  */
 box2d.Testbed.Fracker.prototype.DrawQuad = function(position, color, fill) {
   fill = fill || false;
-  ///	b2Vec2 verts[4];
+  ///  b2Vec2 verts[4];
   var verts = box2d.b2Vec2.MakeArray(4);
   var maxX = position.x + box2d.Testbed.FrackerSettings.k_tileWidth;
   var maxY = position.y + box2d.Testbed.FrackerSettings.k_tileHeight;
@@ -1168,18 +1168,18 @@ box2d.Testbed.Fracker.prototype.DrawQuad = function(position, color, fill) {
   }
 }
 
-///	// Get a pointer to the material of the tile at the specified position.
-///	Material* GetMaterialStorage(const int32 x, const int32 y)
-///	{
-///		return &m_material[box2d.Testbed.Fracker.TileToArrayOffset(x, y)];
-///	}
+///  // Get a pointer to the material of the tile at the specified position.
+///  Material* GetMaterialStorage(const int32 x, const int32 y)
+///  {
+///    return &m_material[box2d.Testbed.Fracker.TileToArrayOffset(x, y)];
+///  }
 
-///	// A pointer to the body storage associated with the specified tile
-///	// position.
-///	b2Body** GetBodyStorage(const int32 x, const int32 y)
-///	{
-///		return &m_bodies[box2d.Testbed.Fracker.TileToArrayOffset(x, y)];
-///	}
+///  // A pointer to the body storage associated with the specified tile
+///  // position.
+///  b2Body** GetBodyStorage(const int32 x, const int32 y)
+///  {
+///    return &m_bodies[box2d.Testbed.Fracker.TileToArrayOffset(x, y)];
+///  }
 
 /**
  * @export
@@ -1225,7 +1225,7 @@ box2d.Testbed.Fracker.GetExtents = function(bottomLeft, topRight) {
     box2d.Testbed.FrackerSettings.k_worldHalfHeight);
 }
 
-///	// Convert a point in world coordintes to a tile location
+///  // Convert a point in world coordintes to a tile location
 /**
  * @return {void}
  * @param {box2d.b2Vec2} position

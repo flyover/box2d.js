@@ -191,7 +191,7 @@ box2d.Testbed.ParticleParameter.prototype.Reset = function() {
 /**
  * @return {void}
  * @param {Array.<box2d.Testbed.ParticleParameter.Definition>}
- *  	  definition
+ *      definition
  * @param {number=} definitionCount
  */
 box2d.Testbed.ParticleParameter.prototype.SetDefinition = function(definition, definitionCount) {

@@ -528,43 +528,43 @@ box2d.Testbed.RayCast.prototype.Step = function(settings) {
 
   /*
   #if 0
-  	// This case was failing.
-  	{
-  		box2d.b2Vec2 vertices[4];
-  		//vertices[0].Set(-22.875f, -3.0f);
-  		//vertices[1].Set(22.875f, -3.0f);
-  		//vertices[2].Set(22.875f, 3.0f);
-  		//vertices[3].Set(-22.875f, 3.0f);
+    // This case was failing.
+    {
+      box2d.b2Vec2 vertices[4];
+      //vertices[0].Set(-22.875f, -3.0f);
+      //vertices[1].Set(22.875f, -3.0f);
+      //vertices[2].Set(22.875f, 3.0f);
+      //vertices[3].Set(-22.875f, 3.0f);
 
-  		box2d.b2PolygonShape shape;
-  		//shape.Set(vertices, 4);
-  		shape.SetAsBox(22.875f, 3.0f);
+      box2d.b2PolygonShape shape;
+      //shape.Set(vertices, 4);
+      shape.SetAsBox(22.875f, 3.0f);
 
-  		box2d.b2RayCastInput input;
-  		input.p1.Set(10.2725f,1.71372f);
-  		input.p2.Set(10.2353f,2.21807f);
-  		//input.maxFraction = 0.567623f;
-  		input.maxFraction = 0.56762173f;
+      box2d.b2RayCastInput input;
+      input.p1.Set(10.2725f,1.71372f);
+      input.p2.Set(10.2353f,2.21807f);
+      //input.maxFraction = 0.567623f;
+      input.maxFraction = 0.56762173f;
 
-  		box2d.b2Transform xf;
-  		xf.SetIdentity();
-  		xf.p.Set(23.0f, 5.0f);
+      box2d.b2Transform xf;
+      xf.SetIdentity();
+      xf.p.Set(23.0f, 5.0f);
 
-  		box2d.b2RayCastOutput output;
-  		bool hit;
-  		hit = shape.RayCast(&output, input, xf);
-  		hit = false;
+      box2d.b2RayCastOutput output;
+      bool hit;
+      hit = shape.RayCast(&output, input, xf);
+      hit = false;
 
-  		box2d.b2Color color(1.0f, 1.0f, 1.0f);
-  		box2d.b2Vec2 vs[4];
-  		for (int32 i = 0; i < 4; ++i)
-  		{
-  			vs[i] = b2Mul(xf, shape.m_vertices[i]);
-  		}
+      box2d.b2Color color(1.0f, 1.0f, 1.0f);
+      box2d.b2Vec2 vs[4];
+      for (int32 i = 0; i < 4; ++i)
+      {
+        vs[i] = b2Mul(xf, shape.m_vertices[i]);
+      }
 
-  		m_debugDraw.DrawPolygon(vs, 4, color);
-  		m_debugDraw.DrawSegment(input.p1, input.p2, color);
-  	}
+      m_debugDraw.DrawPolygon(vs, 4, color);
+      m_debugDraw.DrawSegment(input.p1, input.p2, color);
+    }
   #endif
   */
 }

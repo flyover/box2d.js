@@ -382,9 +382,9 @@ box2d.b2Island.prototype.Solve = function(profile, step, gravity, allowSleep) {
       w *= 1.0 / (1.0 + h * b.m_angularDamping);
     }
 
-    //		this.m_positions[i].c = c;
+    //    this.m_positions[i].c = c;
     this.m_positions[i].a = a;
-    //		this.m_velocities[i].v = v;
+    //    this.m_velocities[i].v = v;
     this.m_velocities[i].w = w;
   }
 
@@ -468,9 +468,9 @@ box2d.b2Island.prototype.Solve = function(profile, step, gravity, allowSleep) {
     c.y += h * v.y;
     a += h * w;
 
-    //		this.m_positions[i].c = c;
+    //    this.m_positions[i].c = c;
     this.m_positions[i].a = a;
-    //		this.m_velocities[i].v = v;
+    //    this.m_velocities[i].v = v;
     this.m_velocities[i].w = w;
   }
 
@@ -596,36 +596,36 @@ box2d.b2Island.prototype.SolveTOI = function(subStep, toiIndexA, toiIndexB) {
 
   /*
   #if 0
-  	// Is the new position really safe?
-  	for (int32 i = 0; i < this.m_contactCount; ++i)
-  	{
-  		box2d.b2Contact* c = this.m_contacts[i];
-  		box2d.b2Fixture* fA = c.GetFixtureA();
-  		box2d.b2Fixture* fB = c.GetFixtureB();
+    // Is the new position really safe?
+    for (int32 i = 0; i < this.m_contactCount; ++i)
+    {
+      box2d.b2Contact* c = this.m_contacts[i];
+      box2d.b2Fixture* fA = c.GetFixtureA();
+      box2d.b2Fixture* fB = c.GetFixtureB();
 
-  		box2d.b2Body* bA = fA.GetBody();
-  		box2d.b2Body* bB = fB.GetBody();
+      box2d.b2Body* bA = fA.GetBody();
+      box2d.b2Body* bB = fB.GetBody();
 
-  		int32 indexA = c.GetChildIndexA();
-  		int32 indexB = c.GetChildIndexB();
+      int32 indexA = c.GetChildIndexA();
+      int32 indexB = c.GetChildIndexB();
 
-  		box2d.b2DistanceInput input;
-  		input.proxyA.Set(fA.GetShape(), indexA);
-  		input.proxyB.Set(fB.GetShape(), indexB);
-  		input.transformA = bA.GetTransform();
-  		input.transformB = bB.GetTransform();
-  		input.useRadii = false;
+      box2d.b2DistanceInput input;
+      input.proxyA.Set(fA.GetShape(), indexA);
+      input.proxyB.Set(fB.GetShape(), indexB);
+      input.transformA = bA.GetTransform();
+      input.transformB = bB.GetTransform();
+      input.useRadii = false;
 
-  		box2d.b2DistanceOutput output;
-  		box2d.b2SimplexCache cache;
-  		cache.count = 0;
-  		box2d.b2Distance(&output, &cache, &input);
+      box2d.b2DistanceOutput output;
+      box2d.b2SimplexCache cache;
+      cache.count = 0;
+      box2d.b2Distance(&output, &cache, &input);
 
-  		if (output.distance === 0 || cache.count === 3)
-  		{
-  			cache.count += 0;
-  		}
-  	}
+      if (output.distance === 0 || cache.count === 3)
+      {
+        cache.count += 0;
+      }
+    }
   #endif
   */
 
@@ -682,9 +682,9 @@ box2d.b2Island.prototype.SolveTOI = function(subStep, toiIndexA, toiIndexB) {
     c.SelfMulAdd(h, v);
     a += h * w;
 
-    //		this.m_positions[i].c = c;
+    //    this.m_positions[i].c = c;
     this.m_positions[i].a = a;
-    //		this.m_velocities[i].v = v;
+    //    this.m_velocities[i].v = v;
     this.m_velocities[i].w = w;
 
     // Sync bodies
