@@ -183,13 +183,11 @@ default-setup: google-setup
 
 GOOGLE_PATH ?= google
 
-GOOGLE_CLOSURE_COMPILER_URL ?= https://github.com/google/closure-compiler.git
-GOOGLE_CLOSURE_COMPILER_REVISION ?=
+GOOGLE_CLOSURE_COMPILER_PATH ?= node_modules/google-closure-compiler
 
-GOOGLE_CLOSURE_LIBRARY_URL ?= https://github.com/google/closure-library.git
-GOOGLE_CLOSURE_LIBRARY_REVISION ?=
+GOOGLE_CLOSURE_LIBRARY_PATH ?= node_modules/google-closure-library
 
-# $(GOOGLE_PATH)/closure-library/closure/bin/build/depswriter.py --help
+# $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/bin/build/depswriter.py --help
 
 # $(call GOOGLE_DEPSWRITER_SCRIPT, foo/path1 foo/path2, foo/file1.js foo/file2.js, foo.dep.js)
 # $1: SOURCE_JS_PATHS
@@ -197,16 +195,16 @@ GOOGLE_CLOSURE_LIBRARY_REVISION ?=
 # $3: OUTPUT_DEP_JS_FILE
 # depswriter needs the relative path from base.js to working directory
 GOOGLE_DEPSWRITER_SCRIPT = true
-GOOGLE_DEPSWRITER_SCRIPT += && export PREFIX=$$(python -c "import os.path; print os.path.relpath('.', '$(GOOGLE_PATH)/closure-library/closure/goog');")
-#GOOGLE_DEPSWRITER_SCRIPT += && export PREFIX=$$(node -p "var path = require('path'); path.relative('$(GOOGLE_PATH)/closure-library/closure/goog', '.').split(path.sep).join('/');")
-GOOGLE_DEPSWRITER_SCRIPT += && python $(GOOGLE_PATH)/closure-library/closure/bin/build/depswriter.py
+GOOGLE_DEPSWRITER_SCRIPT += && export PREFIX=$$(python -c "import os.path; print os.path.relpath('.', '$(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog');")
+#GOOGLE_DEPSWRITER_SCRIPT += && export PREFIX=$$(node -p "var path = require('path'); path.relative('$(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog', '.').split(path.sep).join('/');")
+GOOGLE_DEPSWRITER_SCRIPT += && python $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/bin/build/depswriter.py
 GOOGLE_DEPSWRITER_SCRIPT += $(foreach path,$1,--root_with_prefix="$(path) $${PREFIX}/$(path)")
 GOOGLE_DEPSWRITER_SCRIPT += $(foreach file,$2,--path_with_depspath="$(file) $${PREFIX}/$(file)")
 GOOGLE_DEPSWRITER_SCRIPT += > $3
 
-GOOGLE_DEPSWRITER_DEPS += $(GOOGLE_PATH)/closure-library/closure/bin/build/depswriter.py
+GOOGLE_DEPSWRITER_DEPS += $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/bin/build/depswriter.py
 
-# java -jar $(GOOGLE_PATH)/closure-compiler/compiler.jar --help
+# java -jar $(GOOGLE_CLOSURE_COMPILER_PATH)/compiler.jar --help
 
 GOOGLE_COMPILER_FLAGS += --generate_exports
 # --language_in: ECMASCRIPT3 | ECMASCRIPT5 | ECMASCRIPT5_STRICT
@@ -218,7 +216,7 @@ GOOGLE_COMPILER_FLAGS += --jscomp_error=accessControls
 GOOGLE_COMPILER_FLAGS += --jscomp_error=ambiguousFunctionDecl
 GOOGLE_COMPILER_FLAGS += --jscomp_error=checkEventfulObjectDisposal
 GOOGLE_COMPILER_FLAGS += --jscomp_error=checkRegExp
-GOOGLE_COMPILER_FLAGS += --jscomp_error=checkStructDictInheritance
+#GOOGLE_COMPILER_FLAGS += --jscomp_error=checkStructDictInheritance
 GOOGLE_COMPILER_FLAGS += --jscomp_error=checkTypes
 #GOOGLE_COMPILER_FLAGS += --jscomp_error=checkVars
 GOOGLE_COMPILER_FLAGS += --jscomp_error=const
@@ -262,7 +260,7 @@ GOOGLE_COMPILER_FLAGS += --jscomp_error=visibility
 # $7: COMPILER_FLAGS
 GOOGLE_CLOSURE_COMPILER_SCRIPT = java
 GOOGLE_CLOSURE_COMPILER_SCRIPT += -client
-GOOGLE_CLOSURE_COMPILER_SCRIPT += -jar $(GOOGLE_PATH)/closure-compiler/compiler.jar
+GOOGLE_CLOSURE_COMPILER_SCRIPT += -jar $(GOOGLE_CLOSURE_COMPILER_PATH)/compiler.jar
 GOOGLE_CLOSURE_COMPILER_SCRIPT += --only_closure_dependencies
 GOOGLE_CLOSURE_COMPILER_SCRIPT += --closure_entry_point $(strip $1)
 GOOGLE_CLOSURE_COMPILER_SCRIPT += $(strip $2)
@@ -275,45 +273,23 @@ GOOGLE_CLOSURE_COMPILER_SCRIPT += --js_output_file=$(strip $6)
 GOOGLE_CLOSURE_COMPILER_SCRIPT += $(strip $7)
 GOOGLE_CLOSURE_COMPILER_SCRIPT += && printf "\n//\# sourceMappingURL=../../../$(strip $5)\n" >> $(strip $6)
 
-GOOGLE_CLOSURE_COMPILER_DEPS += $(GOOGLE_PATH)/closure-compiler/compiler.jar
+GOOGLE_CLOSURE_COMPILER_DEPS += $(GOOGLE_CLOSURE_COMPILER_PATH)/compiler.jar
 
 google-setup: google-closure-compiler-setup
 
-google-closure-compiler-setup: setup-have-git
-google-closure-compiler-setup: setup-have-python
-google-closure-compiler-setup: setup-have-java
-#google-closure-compiler-setup: setup-have-ant
+google-closure-compiler-setup: setup-have-npm
 google-closure-compiler-setup: SCRIPT = $(call SCRIPT_INIT,$@)
-google-closure-compiler-setup: SCRIPT += && $(call NOTE,$@,"download closure compiler")
-google-closure-compiler-setup: SCRIPT += && mkdir -p $(GOOGLE_PATH)/closure-compiler
-google-closure-compiler-setup: SCRIPT += && curl http://dl.google.com/closure-compiler/compiler-latest.tar.gz
-google-closure-compiler-setup: SCRIPT +=      -o $(GOOGLE_PATH)/closure-compiler/compiler-latest.tar.gz
-google-closure-compiler-setup: SCRIPT += && tar -xvf $(GOOGLE_PATH)/closure-compiler/compiler-latest.tar.gz
-google-closure-compiler-setup: SCRIPT +=      -C $(GOOGLE_PATH)/closure-compiler/
-#google-closure-compiler-setup: SCRIPT += && if [ -d $(GOOGLE_PATH)/closure-compiler/.git ]; then
-#google-closure-compiler-setup: SCRIPT +=      ( cd $(GOOGLE_PATH)/closure-compiler && git pull )
-#google-closure-compiler-setup: SCRIPT +=    else
-#google-closure-compiler-setup: SCRIPT +=      rm -rf $(GOOGLE_PATH)/closure-compiler;
-#google-closure-compiler-setup: SCRIPT +=      git clone $(GOOGLE_CLOSURE_COMPILER_URL) $(GOOGLE_PATH)/closure-compiler/;
-#google-closure-compiler-setup: SCRIPT +=    fi
-#google-closure-compiler-setup: SCRIPT += && ( cd $(GOOGLE_PATH)/closure-compiler && git checkout $(GOOGLE_CLOSURE_COMPILER_REVISION) )
-#google-closure-compiler-setup: SCRIPT += && $(call NOTE,$@,"build closure compiler")
-#google-closure-compiler-setup: SCRIPT += && ( cd $(GOOGLE_PATH)/closure-compiler && ant $(if $(V),-verbose,-quiet) jar )
-#google-closure-compiler-setup: SCRIPT += && $(call SCRIPT_EXIT,$@)
+google-closure-compiler-setup: SCRIPT += && $(call NOTE,$@,"install closure compiler")
+google-closure-compiler-setup: SCRIPT += && npm install google-closure-compiler
+google-closure-compiler-setup: SCRIPT += && $(call SCRIPT_EXIT,$@)
 google-closure-compiler-setup: ; $(call SCRIPT_RUN,$@,$(SCRIPT))
 
 google-setup: google-closure-library-setup
 
-google-closure-library-setup: setup-have-git
+google-closure-library-setup: setup-have-npm
 google-closure-library-setup: SCRIPT = $(call SCRIPT_INIT,$@)
-google-closure-library-setup: SCRIPT += && $(call NOTE,$@,"download closure library")
-google-closure-library-setup: SCRIPT += && if [ -d $(GOOGLE_PATH)/closure-library/.git ]; then
-google-closure-library-setup: SCRIPT +=      ( cd $(GOOGLE_PATH)/closure-library && git pull )
-google-closure-library-setup: SCRIPT +=    else
-google-closure-library-setup: SCRIPT +=      rm -rf $(GOOGLE_PATH)/closure-library;
-google-closure-library-setup: SCRIPT +=      git clone $(GOOGLE_CLOSURE_LIBRARY_URL) $(GOOGLE_PATH)/closure-library/;
-google-closure-library-setup: SCRIPT +=    fi
-google-closure-library-setup: SCRIPT += && ( cd $(GOOGLE_PATH)/closure-library && git checkout $(GOOGLE_CLOSURE_LIBRARY_REVISION) )
+google-closure-library-setup: SCRIPT += && $(call NOTE,$@,"install closure library")
+google-closure-library-setup: SCRIPT += && npm install google-closure-library
 google-closure-library-setup: SCRIPT += && $(call SCRIPT_EXIT,$@)
 google-closure-library-setup: ; $(call SCRIPT_RUN,$@,$(SCRIPT))
 
@@ -410,9 +386,9 @@ box2d-build: SCRIPT += && $(call SCRIPT_EXIT,$@)
 box2d-build: ; $(call SCRIPT_RUN,$@,$(SCRIPT))
 
 $(BOX2D_OUTPUT_DEP_JS_FILE): $(GOOGLE_DEPSWRITER_DEPS)
-$(BOX2D_OUTPUT_DEP_JS_FILE): $(GOOGLE_PATH)/closure-library/closure/goog/base.js
+$(BOX2D_OUTPUT_DEP_JS_FILE): $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog/base.js
 $(BOX2D_OUTPUT_DEP_JS_FILE): $(BOX2D_SOURCE_JS_FILES)
-$(BOX2D_OUTPUT_DEP_JS_FILE): SOURCE_JS_FILES += $(GOOGLE_PATH)/closure-library/closure/goog/base.js
+$(BOX2D_OUTPUT_DEP_JS_FILE): SOURCE_JS_FILES += $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog/base.js
 $(BOX2D_OUTPUT_DEP_JS_FILE): SOURCE_JS_FILES += $(BOX2D_SOURCE_JS_FILES)
 $(BOX2D_OUTPUT_DEP_JS_FILE): SCRIPT = $(call SCRIPT_INIT,$@)
 $(BOX2D_OUTPUT_DEP_JS_FILE): SCRIPT += && $(call GOOGLE_DEPSWRITER_SCRIPT,
@@ -422,9 +398,9 @@ $(BOX2D_OUTPUT_DEP_JS_FILE): SCRIPT += && $(call SCRIPT_EXIT,$@)
 $(BOX2D_OUTPUT_DEP_JS_FILE): ; $(call SCRIPT_RUN,$@,$(SCRIPT))
 
 $(BOX2D_OUTPUT_MIN_JS_FILE): $(GOOGLE_CLOSURE_COMPILER_DEPS)
-$(BOX2D_OUTPUT_MIN_JS_FILE): $(GOOGLE_PATH)/closure-library/closure/goog/base.js
+$(BOX2D_OUTPUT_MIN_JS_FILE): $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog/base.js
 $(BOX2D_OUTPUT_MIN_JS_FILE): $(BOX2D_SOURCE_JS_FILES)
-$(BOX2D_OUTPUT_MIN_JS_FILE): SOURCE_JS_FILES += $(GOOGLE_PATH)/closure-library/closure/goog/base.js
+$(BOX2D_OUTPUT_MIN_JS_FILE): SOURCE_JS_FILES += $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog/base.js
 $(BOX2D_OUTPUT_MIN_JS_FILE): SOURCE_JS_FILES += $(BOX2D_SOURCE_JS_FILES)
 $(BOX2D_OUTPUT_MIN_JS_FILE): SCRIPT = $(call SCRIPT_INIT,$@)
 $(BOX2D_OUTPUT_MIN_JS_FILE): SCRIPT += && $(call GOOGLE_CLOSURE_COMPILER_SCRIPT,
@@ -477,10 +453,10 @@ box2d-helloworld-build: SCRIPT += && $(call SCRIPT_EXIT,$@)
 box2d-helloworld-build: ; $(call SCRIPT_RUN,$@,$(SCRIPT))
 
 $(BOX2D_HELLOWORLD_OUTPUT_DEP_JS_FILE): $(GOOGLE_DEPSWRITER_DEPS)
-$(BOX2D_HELLOWORLD_OUTPUT_DEP_JS_FILE): $(GOOGLE_PATH)/closure-library/closure/goog/base.js
+$(BOX2D_HELLOWORLD_OUTPUT_DEP_JS_FILE): $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog/base.js
 $(BOX2D_HELLOWORLD_OUTPUT_DEP_JS_FILE): $(BOX2D_HELLOWORLD_SOURCE_JS_FILES)
 $(BOX2D_HELLOWORLD_OUTPUT_DEP_JS_FILE): $(BOX2D_SOURCE_JS_FILES)
-$(BOX2D_HELLOWORLD_OUTPUT_DEP_JS_FILE): SOURCE_JS_FILES += $(GOOGLE_PATH)/closure-library/closure/goog/base.js
+$(BOX2D_HELLOWORLD_OUTPUT_DEP_JS_FILE): SOURCE_JS_FILES += $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog/base.js
 $(BOX2D_HELLOWORLD_OUTPUT_DEP_JS_FILE): SOURCE_JS_FILES += $(BOX2D_HELLOWORLD_SOURCE_JS_FILES)
 $(BOX2D_HELLOWORLD_OUTPUT_DEP_JS_FILE): SOURCE_JS_FILES += $(BOX2D_SOURCE_JS_FILES)
 $(BOX2D_HELLOWORLD_OUTPUT_DEP_JS_FILE): SCRIPT = $(call SCRIPT_INIT,$@)
@@ -491,10 +467,10 @@ $(BOX2D_HELLOWORLD_OUTPUT_DEP_JS_FILE): SCRIPT += && $(call SCRIPT_EXIT,$@)
 $(BOX2D_HELLOWORLD_OUTPUT_DEP_JS_FILE): ; $(call SCRIPT_RUN,$@,$(SCRIPT))
 
 $(BOX2D_HELLOWORLD_OUTPUT_MIN_JS_FILE): $(GOOGLE_CLOSURE_COMPILER_DEPS)
-$(BOX2D_HELLOWORLD_OUTPUT_MIN_JS_FILE): $(GOOGLE_PATH)/closure-library/closure/goog/base.js
+$(BOX2D_HELLOWORLD_OUTPUT_MIN_JS_FILE): $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog/base.js
 $(BOX2D_HELLOWORLD_OUTPUT_MIN_JS_FILE): $(BOX2D_HELLOWORLD_SOURCE_JS_FILES)
 $(BOX2D_HELLOWORLD_OUTPUT_MIN_JS_FILE): $(BOX2D_SOURCE_JS_FILES)
-$(BOX2D_HELLOWORLD_OUTPUT_MIN_JS_FILE): SOURCE_JS_FILES += $(GOOGLE_PATH)/closure-library/closure/goog/base.js
+$(BOX2D_HELLOWORLD_OUTPUT_MIN_JS_FILE): SOURCE_JS_FILES += $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog/base.js
 $(BOX2D_HELLOWORLD_OUTPUT_MIN_JS_FILE): SOURCE_JS_FILES += $(BOX2D_HELLOWORLD_SOURCE_JS_FILES)
 $(BOX2D_HELLOWORLD_OUTPUT_MIN_JS_FILE): SOURCE_JS_FILES += $(BOX2D_SOURCE_JS_FILES)
 $(BOX2D_HELLOWORLD_OUTPUT_MIN_JS_FILE): SCRIPT = $(call SCRIPT_INIT,$@)
@@ -640,14 +616,14 @@ box2d-testbed-build: SCRIPT += && $(call SCRIPT_EXIT,$@)
 box2d-testbed-build: ; $(call SCRIPT_RUN,$@,$(SCRIPT))
 
 $(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): $(GOOGLE_DEPSWRITER_DEPS)
-$(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): $(GOOGLE_PATH)/closure-library/closure/goog
-$(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): $(GOOGLE_PATH)/closure-library/third_party/closure/goog
-#$(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): $(GOOGLE_PATH)/closure-library/closure/goog/base.js
+$(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog
+$(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): $(GOOGLE_CLOSURE_LIBRARY_PATH)/third_party/closure/goog
+#$(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog/base.js
 $(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): $(BOX2D_TESTBED_SOURCE_JS_FILES)
 $(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): $(BOX2D_SOURCE_JS_FILES)
-$(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): SOURCE_JS_PATHS += $(GOOGLE_PATH)/closure-library/closure/goog
-$(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): SOURCE_JS_PATHS += $(GOOGLE_PATH)/closure-library/third_party/closure/goog
-#$(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): SOURCE_JS_FILES += $(GOOGLE_PATH)/closure-library/closure/goog/base.js
+$(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): SOURCE_JS_PATHS += $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog
+$(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): SOURCE_JS_PATHS += $(GOOGLE_CLOSURE_LIBRARY_PATH)/third_party/closure/goog
+#$(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): SOURCE_JS_FILES += $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog/base.js
 $(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): SOURCE_JS_FILES += $(BOX2D_TESTBED_SOURCE_JS_FILES)
 $(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): SOURCE_JS_FILES += $(BOX2D_SOURCE_JS_FILES)
 $(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): SCRIPT = $(call SCRIPT_INIT,$@)
@@ -658,14 +634,14 @@ $(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): SCRIPT += && $(call SCRIPT_EXIT,$@)
 $(BOX2D_TESTBED_OUTPUT_DEP_JS_FILE): ; $(call SCRIPT_RUN,$@,$(SCRIPT))
 
 $(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): $(GOOGLE_CLOSURE_COMPILER_DEPS)
-$(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): $(GOOGLE_PATH)/closure-library/closure/goog
-$(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): $(GOOGLE_PATH)/closure-library/third_party/closure/goog
-#$(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): $(GOOGLE_PATH)/closure-library/closure/goog/base.js
+$(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog
+$(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): $(GOOGLE_CLOSURE_LIBRARY_PATH)/third_party/closure/goog
+#$(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog/base.js
 $(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): $(BOX2D_TESTBED_SOURCE_JS_FILES)
 $(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): $(BOX2D_SOURCE_JS_FILES)
-$(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): SOURCE_JS_PATHS += $(GOOGLE_PATH)/closure-library/closure/goog
-$(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): SOURCE_JS_PATHS += $(GOOGLE_PATH)/closure-library/third_party/closure/goog
-#$(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): SOURCE_JS_FILES += $(GOOGLE_PATH)/closure-library/closure/goog/base.js
+$(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): SOURCE_JS_PATHS += $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog
+$(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): SOURCE_JS_PATHS += $(GOOGLE_CLOSURE_LIBRARY_PATH)/third_party/closure/goog
+#$(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): SOURCE_JS_FILES += $(GOOGLE_CLOSURE_LIBRARY_PATH)/closure/goog/base.js
 $(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): SOURCE_JS_FILES += $(BOX2D_TESTBED_SOURCE_JS_FILES)
 $(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): SOURCE_JS_FILES += $(BOX2D_SOURCE_JS_FILES)
 $(BOX2D_TESTBED_OUTPUT_MIN_JS_FILE): SCRIPT = $(call SCRIPT_INIT,$@)
