@@ -1,20 +1,20 @@
 /*
-* Copyright (c) 2006-2007 Erin Catto http://www.box2d.org
-*
-* This software is provided 'as-is', without any express or implied
-* warranty.  In no event will the authors be held liable for any damages
-* arising from the use of this software.
-* Permission is granted to anyone to use this software for any purpose,
-* including commercial applications, and to alter it and redistribute it
-* freely, subject to the following restrictions:
-* 1. The origin of this software must not be misrepresented; you must not
-* claim that you wrote the original software. If you use this software
-* in a product, an acknowledgment in the product documentation would be
-* appreciated but is not required.
-* 2. Altered source versions must be plainly marked as such, and must not be
-* misrepresented as being the original software.
-* 3. This notice may not be removed or altered from any source distribution.
-*/
+ * Copyright (c) 2006-2007 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 goog.provide('box2d.b2Joint');
 
@@ -25,59 +25,56 @@ goog.require('box2d.b2Math');
  * @export 
  * @enum
  */
-box2d.b2JointType = 
-{
-	e_unknownJoint		: 0,
-	e_revoluteJoint		: 1,
-	e_prismaticJoint	: 2,
-	e_distanceJoint		: 3,
-	e_pulleyJoint		: 4,
-	e_mouseJoint		: 5,
-	e_gearJoint			: 6,
-	e_wheelJoint		: 7,
-	e_weldJoint			: 8,
-	e_frictionJoint		: 9,
-	e_ropeJoint			: 10,
-	e_motorJoint		: 11,
-	e_areaJoint			: 12
+box2d.b2JointType = {
+  e_unknownJoint: 0,
+  e_revoluteJoint: 1,
+  e_prismaticJoint: 2,
+  e_distanceJoint: 3,
+  e_pulleyJoint: 4,
+  e_mouseJoint: 5,
+  e_gearJoint: 6,
+  e_wheelJoint: 7,
+  e_weldJoint: 8,
+  e_frictionJoint: 9,
+  e_ropeJoint: 10,
+  e_motorJoint: 11,
+  e_areaJoint: 12
 };
-goog.exportProperty(box2d.b2JointType, 'e_unknownJoint'  , box2d.b2JointType.e_unknownJoint  );
-goog.exportProperty(box2d.b2JointType, 'e_revoluteJoint' , box2d.b2JointType.e_revoluteJoint );
+goog.exportProperty(box2d.b2JointType, 'e_unknownJoint', box2d.b2JointType.e_unknownJoint);
+goog.exportProperty(box2d.b2JointType, 'e_revoluteJoint', box2d.b2JointType.e_revoluteJoint);
 goog.exportProperty(box2d.b2JointType, 'e_prismaticJoint', box2d.b2JointType.e_prismaticJoint);
-goog.exportProperty(box2d.b2JointType, 'e_distanceJoint' , box2d.b2JointType.e_distanceJoint );
-goog.exportProperty(box2d.b2JointType, 'e_pulleyJoint'   , box2d.b2JointType.e_pulleyJoint   );
-goog.exportProperty(box2d.b2JointType, 'e_mouseJoint'    , box2d.b2JointType.e_mouseJoint    );
-goog.exportProperty(box2d.b2JointType, 'e_gearJoint'     , box2d.b2JointType.e_gearJoint     );
-goog.exportProperty(box2d.b2JointType, 'e_wheelJoint'    , box2d.b2JointType.e_wheelJoint    );
-goog.exportProperty(box2d.b2JointType, 'e_weldJoint'     , box2d.b2JointType.e_weldJoint     );
-goog.exportProperty(box2d.b2JointType, 'e_frictionJoint' , box2d.b2JointType.e_frictionJoint );
-goog.exportProperty(box2d.b2JointType, 'e_ropeJoint'     , box2d.b2JointType.e_ropeJoint     );
-goog.exportProperty(box2d.b2JointType, 'e_motorJoint'    , box2d.b2JointType.e_motorJoint    );
-goog.exportProperty(box2d.b2JointType, 'e_areaJoint'     , box2d.b2JointType.e_areaJoint     );
+goog.exportProperty(box2d.b2JointType, 'e_distanceJoint', box2d.b2JointType.e_distanceJoint);
+goog.exportProperty(box2d.b2JointType, 'e_pulleyJoint', box2d.b2JointType.e_pulleyJoint);
+goog.exportProperty(box2d.b2JointType, 'e_mouseJoint', box2d.b2JointType.e_mouseJoint);
+goog.exportProperty(box2d.b2JointType, 'e_gearJoint', box2d.b2JointType.e_gearJoint);
+goog.exportProperty(box2d.b2JointType, 'e_wheelJoint', box2d.b2JointType.e_wheelJoint);
+goog.exportProperty(box2d.b2JointType, 'e_weldJoint', box2d.b2JointType.e_weldJoint);
+goog.exportProperty(box2d.b2JointType, 'e_frictionJoint', box2d.b2JointType.e_frictionJoint);
+goog.exportProperty(box2d.b2JointType, 'e_ropeJoint', box2d.b2JointType.e_ropeJoint);
+goog.exportProperty(box2d.b2JointType, 'e_motorJoint', box2d.b2JointType.e_motorJoint);
+goog.exportProperty(box2d.b2JointType, 'e_areaJoint', box2d.b2JointType.e_areaJoint);
 
 /** 
  * @export 
  * @enum
  */
-box2d.b2LimitState = 
-{
-	e_inactiveLimit	: 0,
-	e_atLowerLimit	: 1,
-	e_atUpperLimit	: 2,
-	e_equalLimits	: 3
+box2d.b2LimitState = {
+  e_inactiveLimit: 0,
+  e_atLowerLimit: 1,
+  e_atUpperLimit: 2,
+  e_equalLimits: 3
 };
 goog.exportProperty(box2d.b2LimitState, 'e_inactiveLimit', box2d.b2LimitState.e_inactiveLimit);
-goog.exportProperty(box2d.b2LimitState, 'e_atLowerLimit' , box2d.b2LimitState.e_atLowerLimit );
-goog.exportProperty(box2d.b2LimitState, 'e_atUpperLimit' , box2d.b2LimitState.e_atUpperLimit );
-goog.exportProperty(box2d.b2LimitState, 'e_equalLimits'  , box2d.b2LimitState.e_equalLimits  );
+goog.exportProperty(box2d.b2LimitState, 'e_atLowerLimit', box2d.b2LimitState.e_atLowerLimit);
+goog.exportProperty(box2d.b2LimitState, 'e_atUpperLimit', box2d.b2LimitState.e_atUpperLimit);
+goog.exportProperty(box2d.b2LimitState, 'e_equalLimits', box2d.b2LimitState.e_equalLimits);
 
 /** 
  * @export 
  * @constructor
  */
-box2d.b2Jacobian = function ()
-{
-	this.linear = new box2d.b2Vec2();
+box2d.b2Jacobian = function() {
+  this.linear = new box2d.b2Vec2();
 };
 
 /**
@@ -100,12 +97,11 @@ box2d.b2Jacobian.prototype.angularB = 0;
  * @export 
  * @return {box2d.b2Jacobian}
  */
-box2d.b2Jacobian.prototype.SetZero = function ()
-{
-	this.linear.SetZero();
-	this.angularA = 0;
-	this.angularB = 0;
-	return this;
+box2d.b2Jacobian.prototype.SetZero = function() {
+  this.linear.SetZero();
+  this.angularA = 0;
+  this.angularB = 0;
+  return this;
 }
 
 /** 
@@ -115,12 +111,11 @@ box2d.b2Jacobian.prototype.SetZero = function ()
  * @param {number} a1
  * @param {number} a2
  */
-box2d.b2Jacobian.prototype.Set = function (x, a1, a2)
-{
-	this.linear.Copy(x);
-	this.angularA = a1;
-	this.angularB = a2;
-	return this;
+box2d.b2Jacobian.prototype.Set = function(x, a1, a2) {
+  this.linear.Copy(x);
+  this.angularA = a1;
+  this.angularB = a2;
+  return this;
 }
 
 /** 
@@ -132,9 +127,7 @@ box2d.b2Jacobian.prototype.Set = function (x, a1, a2)
  * @export 
  * @constructor
  */
-box2d.b2JointEdge = function ()
-{
-};
+box2d.b2JointEdge = function() {};
 
 /**
  * @export 
@@ -163,9 +156,8 @@ box2d.b2JointEdge.prototype.next = null; ///< the next joint edge in the body's 
  * @constructor 
  * @param {box2d.b2JointType} type 
  */
-box2d.b2JointDef = function (type)
-{
-	this.type = type;
+box2d.b2JointDef = function(type) {
+  this.type = type;
 }
 
 /** 
@@ -210,19 +202,20 @@ box2d.b2JointDef.prototype.collideConnected = false;
  * @export 
  * @constructor 
  */
-box2d.b2Joint = function (def)
-{
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(def.bodyA !== def.bodyB); }
+box2d.b2Joint = function(def) {
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(def.bodyA !== def.bodyB);
+  }
 
-	this.m_type = def.type;
-	this.m_edgeA = new box2d.b2JointEdge();
-	this.m_edgeB = new box2d.b2JointEdge();
-	this.m_bodyA = def.bodyA;
-	this.m_bodyB = def.bodyB;
+  this.m_type = def.type;
+  this.m_edgeA = new box2d.b2JointEdge();
+  this.m_edgeB = new box2d.b2JointEdge();
+  this.m_bodyA = def.bodyA;
+  this.m_bodyB = def.bodyB;
 
-	this.m_collideConnected = def.collideConnected;
+  this.m_collideConnected = def.collideConnected;
 
-	this.m_userData = def.userData;
+  this.m_userData = def.userData;
 }
 
 /**
@@ -290,9 +283,8 @@ box2d.b2Joint.prototype.m_userData = null;
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} out
  */
-box2d.b2Joint.prototype.GetAnchorA = function (out)
-{
-	return out.SetZero();
+box2d.b2Joint.prototype.GetAnchorA = function(out) {
+  return out.SetZero();
 }
 
 /** 
@@ -301,9 +293,8 @@ box2d.b2Joint.prototype.GetAnchorA = function (out)
  * @return {box2d.b2Vec2} 
  * @param {box2d.b2Vec2} out
  */
-box2d.b2Joint.prototype.GetAnchorB = function (out)
-{
-	return out.SetZero();
+box2d.b2Joint.prototype.GetAnchorB = function(out) {
+  return out.SetZero();
 }
 
 /** 
@@ -314,9 +305,8 @@ box2d.b2Joint.prototype.GetAnchorB = function (out)
  * @param {number} inv_dt 
  * @param {box2d.b2Vec2} out
  */
-box2d.b2Joint.prototype.GetReactionForce = function (inv_dt, out)
-{
-	return out.SetZero();
+box2d.b2Joint.prototype.GetReactionForce = function(inv_dt, out) {
+  return out.SetZero();
 }
 
 /** 
@@ -325,9 +315,8 @@ box2d.b2Joint.prototype.GetReactionForce = function (inv_dt, out)
  * @return {number} 
  * @param {number} inv_dt 
  */
-box2d.b2Joint.prototype.GetReactionTorque = function (inv_dt)
-{
-	return 0;
+box2d.b2Joint.prototype.GetReactionTorque = function(inv_dt) {
+  return 0;
 }
 
 /** 
@@ -335,18 +324,14 @@ box2d.b2Joint.prototype.GetReactionTorque = function (inv_dt)
  * @return {void} 
  * @param {box2d.b2SolverData} data 
  */
-box2d.b2Joint.prototype.InitVelocityConstraints = function (data)
-{
-}
+box2d.b2Joint.prototype.InitVelocityConstraints = function(data) {}
 
 /**
  * @export 
  * @return {void} 
  * @param {box2d.b2SolverData} data 
  */
-box2d.b2Joint.prototype.SolveVelocityConstraints = function (data)
-{
-}
+box2d.b2Joint.prototype.SolveVelocityConstraints = function(data) {}
 
 /** 
  * This returns true if the position errors are within 
@@ -355,9 +340,8 @@ box2d.b2Joint.prototype.SolveVelocityConstraints = function (data)
  * @return {boolean} 
  * @param {box2d.b2SolverData} data 
  */
-box2d.b2Joint.prototype.SolvePositionConstraints = function (data)
-{
-	return false;
+box2d.b2Joint.prototype.SolvePositionConstraints = function(data) {
+  return false;
 }
 
 /** 
@@ -365,9 +349,8 @@ box2d.b2Joint.prototype.SolvePositionConstraints = function (data)
  * @export 
  * @return {box2d.b2JointType} 
  */
-box2d.b2Joint.prototype.GetType = function ()
-{
-	return this.m_type;
+box2d.b2Joint.prototype.GetType = function() {
+  return this.m_type;
 }
 
 /** 
@@ -375,9 +358,8 @@ box2d.b2Joint.prototype.GetType = function ()
  * @export 
  * @return {box2d.b2Body}
  */
-box2d.b2Joint.prototype.GetBodyA = function ()
-{
-	return this.m_bodyA;
+box2d.b2Joint.prototype.GetBodyA = function() {
+  return this.m_bodyA;
 }
 
 /** 
@@ -385,9 +367,8 @@ box2d.b2Joint.prototype.GetBodyA = function ()
  * @export 
  * @return {box2d.b2Body}
  */
-box2d.b2Joint.prototype.GetBodyB = function ()
-{
-	return this.m_bodyB;
+box2d.b2Joint.prototype.GetBodyB = function() {
+  return this.m_bodyB;
 }
 
 /** 
@@ -395,9 +376,8 @@ box2d.b2Joint.prototype.GetBodyB = function ()
  * @export 
  * @return {box2d.b2Joint} 
  */
-box2d.b2Joint.prototype.GetNext = function ()
-{
-	return this.m_next;
+box2d.b2Joint.prototype.GetNext = function() {
+  return this.m_next;
 }
 
 /** 
@@ -405,9 +385,8 @@ box2d.b2Joint.prototype.GetNext = function ()
  * @export 
  * @return {*} 
  */
-box2d.b2Joint.prototype.GetUserData = function ()
-{
-	return this.m_userData;
+box2d.b2Joint.prototype.GetUserData = function() {
+  return this.m_userData;
 }
 
 /** 
@@ -416,9 +395,8 @@ box2d.b2Joint.prototype.GetUserData = function ()
  * @return {void} 
  * @param {*} data 
  */
-box2d.b2Joint.prototype.SetUserData = function (data)
-{
-	this.m_userData = data;
+box2d.b2Joint.prototype.SetUserData = function(data) {
+  this.m_userData = data;
 }
 
 /** 
@@ -429,9 +407,8 @@ box2d.b2Joint.prototype.SetUserData = function (data)
  * @export 
  * @return {boolean}
  */
-box2d.b2Joint.prototype.GetCollideConnected = function ()
-{
-	return this.m_collideConnected;
+box2d.b2Joint.prototype.GetCollideConnected = function() {
+  return this.m_collideConnected;
 }
 
 /** 
@@ -439,12 +416,10 @@ box2d.b2Joint.prototype.GetCollideConnected = function ()
  * @export 
  * @return {void}
  */
-box2d.b2Joint.prototype.Dump = function ()
-{
-	if (box2d.DEBUG)
-	{
-		box2d.b2Log("// Dump is not supported for this joint type.\n");
-	}
+box2d.b2Joint.prototype.Dump = function() {
+  if (box2d.DEBUG) {
+    box2d.b2Log("// Dump is not supported for this joint type.\n");
+  }
 }
 
 /** 
@@ -452,9 +427,8 @@ box2d.b2Joint.prototype.Dump = function ()
  * @export 
  * @return {boolean} 
  */
-box2d.b2Joint.prototype.IsActive = function ()
-{
-	return this.m_bodyA.IsActive() && this.m_bodyB.IsActive();
+box2d.b2Joint.prototype.IsActive = function() {
+  return this.m_bodyA.IsActive() && this.m_bodyB.IsActive();
 }
 
 /** 
@@ -463,7 +437,4 @@ box2d.b2Joint.prototype.IsActive = function ()
  * @return {void} 
  * @param {box2d.b2Vec2} newOrigin
  */
-box2d.b2Joint.prototype.ShiftOrigin = function (newOrigin)
-{
-}
-
+box2d.b2Joint.prototype.ShiftOrigin = function(newOrigin) {}

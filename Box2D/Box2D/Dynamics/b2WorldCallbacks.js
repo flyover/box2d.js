@@ -1,20 +1,20 @@
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
-*
-* This software is provided 'as-is', without any express or implied
-* warranty.  In no event will the authors be held liable for any damages
-* arising from the use of this software.
-* Permission is granted to anyone to use this software for any purpose,
-* including commercial applications, and to alter it and redistribute it
-* freely, subject to the following restrictions:
-* 1. The origin of this software must not be misrepresented; you must not
-* claim that you wrote the original software. If you use this software
-* in a product, an acknowledgment in the product documentation would be
-* appreciated but is not required.
-* 2. Altered source versions must be plainly marked as such, and must not be
-* misrepresented as being the original software.
-* 3. This notice may not be removed or altered from any source distribution.
-*/
+ * Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 goog.provide('box2d.b2WorldCallbacks');
 
@@ -27,9 +27,7 @@ goog.require('box2d.b2Settings');
  * @export 
  * @constructor
  */
-box2d.b2DestructionListener = function ()
-{
-}
+box2d.b2DestructionListener = function() {}
 
 /** 
  * Called when any joint is about to be destroyed due to the 
@@ -38,9 +36,7 @@ box2d.b2DestructionListener = function ()
  * @return {void} 
  * @param {box2d.b2Joint} joint 
  */
-box2d.b2DestructionListener.prototype.SayGoodbyeJoint = function (joint)
-{
-}
+box2d.b2DestructionListener.prototype.SayGoodbyeJoint = function(joint) {}
 
 /** 
  * Called when any fixture is about to be destroyed due to the 
@@ -49,9 +45,7 @@ box2d.b2DestructionListener.prototype.SayGoodbyeJoint = function (joint)
  * @return {void} 
  * @param {box2d.b2Fixture} fixture 
  */
-box2d.b2DestructionListener.prototype.SayGoodbyeFixture = function (fixture)
-{
-}
+box2d.b2DestructionListener.prototype.SayGoodbyeFixture = function(fixture) {}
 
 //#if B2_ENABLE_PARTICLE
 
@@ -60,9 +54,7 @@ box2d.b2DestructionListener.prototype.SayGoodbyeFixture = function (fixture)
  * @return {void} 
  * @param {box2d.b2ParticleGroup} particleGroup 
  */
-box2d.b2DestructionListener.prototype.SayGoodbyeParticleGroup = function (particleGroup)
-{
-}
+box2d.b2DestructionListener.prototype.SayGoodbyeParticleGroup = function(particleGroup) {}
 
 /** 
  * Called when a particle is about to be destroyed. 
@@ -74,9 +66,7 @@ box2d.b2DestructionListener.prototype.SayGoodbyeParticleGroup = function (partic
  * @param {box2d.b2ParticleSystem} particleSystem 
  * @param {number} particleIndex 
  */
-box2d.b2DestructionListener.prototype.SayGoodbyeParticle = function (particleSystem, particleIndex)
-{
-}
+box2d.b2DestructionListener.prototype.SayGoodbyeParticle = function(particleSystem, particleIndex) {}
 
 //#endif
 
@@ -87,9 +77,7 @@ box2d.b2DestructionListener.prototype.SayGoodbyeParticle = function (particleSys
  * @export 
  * @constructor
  */
-box2d.b2ContactFilter = function ()
-{
-}
+box2d.b2ContactFilter = function() {}
 
 /** 
  * Return true if contact calculations should be performed 
@@ -101,33 +89,29 @@ box2d.b2ContactFilter = function ()
  * @param {box2d.b2Fixture} fixtureA 
  * @param {box2d.b2Fixture} fixtureB 
  */
-box2d.b2ContactFilter.prototype.ShouldCollide = function (fixtureA, fixtureB)
-{
-	var bodyA = fixtureA.GetBody();
-	var bodyB = fixtureB.GetBody();
+box2d.b2ContactFilter.prototype.ShouldCollide = function(fixtureA, fixtureB) {
+  var bodyA = fixtureA.GetBody();
+  var bodyB = fixtureB.GetBody();
 
-	// At least one body should be dynamic or kinematic.
-	if (bodyB.GetType() === box2d.b2BodyType.b2_staticBody && bodyA.GetType() === box2d.b2BodyType.b2_staticBody)
-	{
-		return false;
-	}
+  // At least one body should be dynamic or kinematic.
+  if (bodyB.GetType() === box2d.b2BodyType.b2_staticBody && bodyA.GetType() === box2d.b2BodyType.b2_staticBody) {
+    return false;
+  }
 
-	// Does a joint prevent collision?
-	if (bodyB.ShouldCollideConnected(bodyA) === false)
-	{
-		return false;
-	}
+  // Does a joint prevent collision?
+  if (bodyB.ShouldCollideConnected(bodyA) === false) {
+    return false;
+  }
 
-	var filter1 = fixtureA.GetFilterData();
-	var filter2 = fixtureB.GetFilterData();
+  var filter1 = fixtureA.GetFilterData();
+  var filter2 = fixtureB.GetFilterData();
 
-	if (filter1.groupIndex === filter2.groupIndex && filter1.groupIndex !== 0)
-	{
-		return (filter1.groupIndex > 0);
-	}
+  if (filter1.groupIndex === filter2.groupIndex && filter1.groupIndex !== 0) {
+    return (filter1.groupIndex > 0);
+  }
 
-	var collide = (((filter1.maskBits & filter2.categoryBits) !== 0) && ((filter1.categoryBits & filter2.maskBits) !== 0));
-	return collide;
+  var collide = (((filter1.maskBits & filter2.categoryBits) !== 0) && ((filter1.categoryBits & filter2.maskBits) !== 0));
+  return collide;
 }
 
 //#if B2_ENABLE_PARTICLE
@@ -143,9 +127,8 @@ box2d.b2ContactFilter.prototype.ShouldCollide = function (fixtureA, fixtureB)
  * @param {box2d.b2ParticleSystem} particleSystem 
  * @param {number} particleIndex 
  */
-box2d.b2ContactFilter.prototype.ShouldCollideFixtureParticle = function (fixture, particleSystem, particleIndex)
-{
-	return true;
+box2d.b2ContactFilter.prototype.ShouldCollideFixtureParticle = function(fixture, particleSystem, particleIndex) {
+  return true;
 }
 
 /** 
@@ -159,9 +142,8 @@ box2d.b2ContactFilter.prototype.ShouldCollideFixtureParticle = function (fixture
  * @param {number} particleIndexA 
  * @param {number} particleIndexB 
  */
-box2d.b2ContactFilter.prototype.ShouldCollideParticleParticle = function (particleSystem, particleIndexA, particleIndexB)
-{
-	return true;
+box2d.b2ContactFilter.prototype.ShouldCollideParticleParticle = function(particleSystem, particleIndexA, particleIndexB) {
+  return true;
 }
 
 //#endif
@@ -180,10 +162,9 @@ box2d.b2ContactFilter.b2_defaultFilter = new box2d.b2ContactFilter();
  * @export 
  * @constructor
  */
-box2d.b2ContactImpulse = function ()
-{
-	this.normalImpulses = box2d.b2MakeNumberArray(box2d.b2_maxManifoldPoints);
-	this.tangentImpulses = box2d.b2MakeNumberArray(box2d.b2_maxManifoldPoints);
+box2d.b2ContactImpulse = function() {
+  this.normalImpulses = box2d.b2MakeNumberArray(box2d.b2_maxManifoldPoints);
+  this.tangentImpulses = box2d.b2MakeNumberArray(box2d.b2_maxManifoldPoints);
 }
 
 /**
@@ -219,9 +200,7 @@ box2d.b2ContactImpulse.prototype.count = 0;
  * @export 
  * @constructor
  */
-box2d.b2ContactListener = function ()
-{
-}
+box2d.b2ContactListener = function() {}
 
 /** 
  * Called when two fixtures begin to touch. 
@@ -229,9 +208,7 @@ box2d.b2ContactListener = function ()
  * @return {void} 
  * @param {box2d.b2Contact} contact 
  */
-box2d.b2ContactListener.prototype.BeginContact = function (contact)
-{
-}
+box2d.b2ContactListener.prototype.BeginContact = function(contact) {}
 
 /** 
  * Called when two fixtures cease to touch. 
@@ -239,9 +216,7 @@ box2d.b2ContactListener.prototype.BeginContact = function (contact)
  * @return {void} 
  * @param {box2d.b2Contact} contact 
  */
-box2d.b2ContactListener.prototype.EndContact = function (contact)
-{
-}
+box2d.b2ContactListener.prototype.EndContact = function(contact) {}
 
 //#if B2_ENABLE_PARTICLE
 
@@ -253,9 +228,7 @@ box2d.b2ContactListener.prototype.EndContact = function (contact)
  * @param {box2d.b2ParticleSystem} particleSystem 
  * @param {box2d.b2ParticleBodyContact} particleBodyContact 
  */
-box2d.b2ContactListener.prototype.BeginContactFixtureParticle = function (particleSystem, particleBodyContact)
-{
-}
+box2d.b2ContactListener.prototype.BeginContactFixtureParticle = function(particleSystem, particleBodyContact) {}
 
 /** 
  * Called when a fixture and particle stop touching if the 
@@ -266,9 +239,7 @@ box2d.b2ContactListener.prototype.BeginContactFixtureParticle = function (partic
  * @param {box2d.b2ParticleSystem} particleSystem 
  * @param {number} particleIndex 
  */
-box2d.b2ContactListener.prototype.EndContactFixtureParticle = function (fixture, particleSystem, particleIndex)
-{
-}
+box2d.b2ContactListener.prototype.EndContactFixtureParticle = function(fixture, particleSystem, particleIndex) {}
 
 /** 
  * Called when two particles start touching if 
@@ -279,9 +250,7 @@ box2d.b2ContactListener.prototype.EndContactFixtureParticle = function (fixture,
  * @param {box2d.b2ParticleSystem} particleSystem 
  * @param {box2d.b2ParticleContact} particleContact 
  */
-box2d.b2ContactListener.prototype.BeginContactParticleParticle = function (particleSystem, particleContact)
-{
-}
+box2d.b2ContactListener.prototype.BeginContactParticleParticle = function(particleSystem, particleContact) {}
 
 /** 
  * Called when two particles start touching if 
@@ -293,9 +262,7 @@ box2d.b2ContactListener.prototype.BeginContactParticleParticle = function (parti
  * @param {number} particleIndexA 
  * @param {number} particleIndexB 
  */
-box2d.b2ContactListener.prototype.EndContactParticleParticle = function (particleSystem, particleIndexA, particleIndexB)
-{
-}
+box2d.b2ContactListener.prototype.EndContactParticleParticle = function(particleSystem, particleIndexA, particleIndexB) {}
 
 //#endif
 
@@ -318,9 +285,7 @@ box2d.b2ContactListener.prototype.EndContactParticleParticle = function (particl
  * @param {box2d.b2Contact} contact 
  * @param {box2d.b2Manifold} oldManifold 
  */
-box2d.b2ContactListener.prototype.PreSolve = function (contact, oldManifold)
-{
-}
+box2d.b2ContactListener.prototype.PreSolve = function(contact, oldManifold) {}
 
 /** 
  * This lets you inspect a contact after the solver is finished. 
@@ -336,9 +301,7 @@ box2d.b2ContactListener.prototype.PreSolve = function (contact, oldManifold)
  * @param {box2d.b2Contact} contact
  * @param {box2d.b2ContactImpulse} impulse
  */
-box2d.b2ContactListener.prototype.PostSolve = function (contact, impulse)
-{
-}
+box2d.b2ContactListener.prototype.PostSolve = function(contact, impulse) {}
 
 /**
  * @export 
@@ -352,9 +315,7 @@ box2d.b2ContactListener.b2_defaultListener = new box2d.b2ContactListener();
  * @export 
  * @constructor
  */
-box2d.b2QueryCallback = function ()
-{
-}
+box2d.b2QueryCallback = function() {}
 
 /** 
  * Called for each fixture found in the query AABB. 
@@ -362,9 +323,8 @@ box2d.b2QueryCallback = function ()
  * @return {boolean} false to terminate the query.
  * @param {box2d.b2Fixture} fixture 
  */
-box2d.b2QueryCallback.prototype.ReportFixture = function (fixture)
-{
-	return true;
+box2d.b2QueryCallback.prototype.ReportFixture = function(fixture) {
+  return true;
 }
 
 //#if B2_ENABLE_PARTICLE
@@ -376,9 +336,8 @@ box2d.b2QueryCallback.prototype.ReportFixture = function (fixture)
  * @param {box2d.b2ParticleSystem} particleSystem 
  * @param {number} particleIndex 
  */
-box2d.b2QueryCallback.prototype.ReportParticle = function (particleSystem, particleIndex)
-{
-	return false;
+box2d.b2QueryCallback.prototype.ReportParticle = function(particleSystem, particleIndex) {
+  return false;
 }
 
 /** 
@@ -390,9 +349,8 @@ box2d.b2QueryCallback.prototype.ReportParticle = function (particleSystem, parti
  *  	   from the AABB query.
  * @param {box2d.b2ParticleSystem} particleSystem 
  */
-box2d.b2QueryCallback.prototype.ShouldQueryParticleSystem = function (particleSystem)
-{
-	return true;
+box2d.b2QueryCallback.prototype.ShouldQueryParticleSystem = function(particleSystem) {
+  return true;
 }
 
 //#endif
@@ -403,9 +361,7 @@ box2d.b2QueryCallback.prototype.ShouldQueryParticleSystem = function (particleSy
  * @export 
  * @constructor
  */
-box2d.b2RayCastCallback = function ()
-{
-}
+box2d.b2RayCastCallback = function() {}
 
 /** 
  * Called for each fixture found in the query. You control how 
@@ -422,9 +378,8 @@ box2d.b2RayCastCallback = function ()
  *  	  of intersection
  * @param {number} fraction 
  */
-box2d.b2RayCastCallback.prototype.ReportFixture = function (fixture, point, normal, fraction)
-{
-	return fraction;
+box2d.b2RayCastCallback.prototype.ReportFixture = function(fixture, point, normal, fraction) {
+  return fraction;
 }
 
 //#if B2_ENABLE_PARTICLE
@@ -452,9 +407,8 @@ box2d.b2RayCastCallback.prototype.ReportFixture = function (fixture, point, norm
  *  	  'point1' along the ray. Note that 'point1' and
  *  	  'point2' are parameters to b2World::RayCast.
  */
-box2d.b2RayCastCallback.prototype.ReportParticle = function (particleSystem, particleIndex, point, normal, fraction)
-{
-	return 0;
+box2d.b2RayCastCallback.prototype.ReportParticle = function(particleSystem, particleIndex, point, normal, fraction) {
+  return 0;
 }
 
 /** 
@@ -466,10 +420,8 @@ box2d.b2RayCastCallback.prototype.ReportParticle = function (particleSystem, par
  *  	   the RayCast.
  * @param {box2d.b2ParticleSystem} particleSystem 
  */
-box2d.b2RayCastCallback.prototype.ShouldQueryParticleSystem = function (particleSystem)
-{
-	return true;
+box2d.b2RayCastCallback.prototype.ShouldQueryParticleSystem = function(particleSystem) {
+  return true;
 }
 
 //#endif
-

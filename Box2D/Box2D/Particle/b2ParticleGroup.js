@@ -1,20 +1,20 @@
 /*
-* Copyright (c) 2013 Google, Inc.
-*
-* This software is provided 'as-is', without any express or implied
-* warranty.  In no event will the authors be held liable for any damages
-* arising from the use of this software.
-* Permission is granted to anyone to use this software for any purpose,
-* including commercial applications, and to alter it and redistribute it
-* freely, subject to the following restrictions:
-* 1. The origin of this software must not be misrepresented; you must not
-* claim that you wrote the original software. If you use this software
-* in a product, an acknowledgment in the product documentation would be
-* appreciated but is not required.
-* 2. Altered source versions must be plainly marked as such, and must not be
-* misrepresented as being the original software.
-* 3. This notice may not be removed or altered from any source distribution.
-*/
+ * Copyright (c) 2013 Google, Inc.
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 //#if B2_ENABLE_PARTICLE
 
@@ -30,24 +30,23 @@ goog.require('box2d.b2Particle');
  * @export 
  * @enum {number}
  */
-box2d.b2ParticleGroupFlag = 
-{
-	/// Prevents overlapping or leaking.
-	b2_solidParticleGroup : 1 << 0,
-	/// Keeps its shape.
-	b2_rigidParticleGroup : 1 << 1,
-	/// Won't be destroyed if it gets empty.
-	b2_particleGroupCanBeEmpty : 1 << 2,
-	/// Will be destroyed on next simulation step.
-	b2_particleGroupWillBeDestroyed : 1 << 3,
-	/// Updates depth data on next simulation step.
-	b2_particleGroupNeedsUpdateDepth : 1 << 4
+box2d.b2ParticleGroupFlag = {
+  /// Prevents overlapping or leaking.
+  b2_solidParticleGroup: 1 << 0,
+  /// Keeps its shape.
+  b2_rigidParticleGroup: 1 << 1,
+  /// Won't be destroyed if it gets empty.
+  b2_particleGroupCanBeEmpty: 1 << 2,
+  /// Will be destroyed on next simulation step.
+  b2_particleGroupWillBeDestroyed: 1 << 3,
+  /// Updates depth data on next simulation step.
+  b2_particleGroupNeedsUpdateDepth: 1 << 4
 };
 
-goog.exportProperty(box2d.b2ParticleGroupFlag, 'b2_solidParticleGroup'           , box2d.b2ParticleGroupFlag.b2_solidParticleGroup           );
-goog.exportProperty(box2d.b2ParticleGroupFlag, 'b2_rigidParticleGroup'           , box2d.b2ParticleGroupFlag.b2_rigidParticleGroup           );
-goog.exportProperty(box2d.b2ParticleGroupFlag, 'b2_particleGroupCanBeEmpty'      , box2d.b2ParticleGroupFlag.b2_particleGroupCanBeEmpty      );
-goog.exportProperty(box2d.b2ParticleGroupFlag, 'b2_particleGroupWillBeDestroyed' , box2d.b2ParticleGroupFlag.b2_particleGroupWillBeDestroyed );
+goog.exportProperty(box2d.b2ParticleGroupFlag, 'b2_solidParticleGroup', box2d.b2ParticleGroupFlag.b2_solidParticleGroup);
+goog.exportProperty(box2d.b2ParticleGroupFlag, 'b2_rigidParticleGroup', box2d.b2ParticleGroupFlag.b2_rigidParticleGroup);
+goog.exportProperty(box2d.b2ParticleGroupFlag, 'b2_particleGroupCanBeEmpty', box2d.b2ParticleGroupFlag.b2_particleGroupCanBeEmpty);
+goog.exportProperty(box2d.b2ParticleGroupFlag, 'b2_particleGroupWillBeDestroyed', box2d.b2ParticleGroupFlag.b2_particleGroupWillBeDestroyed);
 goog.exportProperty(box2d.b2ParticleGroupFlag, 'b2_particleGroupNeedsUpdateDepth', box2d.b2ParticleGroupFlag.b2_particleGroupNeedsUpdateDepth);
 
 /** 
@@ -64,11 +63,10 @@ box2d.b2ParticleGroupFlag.b2_particleGroupInternalMask = box2d.b2ParticleGroupFl
  * @export 
  * @constructor 
  */
-box2d.b2ParticleGroupDef = function ()
-{
-	this.position = box2d.b2Vec2_zero.Clone();
-	this.linearVelocity = box2d.b2Vec2_zero.Clone();
-	this.color = box2d.b2ParticleColor_zero.Clone();
+box2d.b2ParticleGroupDef = function() {
+  this.position = box2d.b2Vec2_zero.Clone();
+  this.linearVelocity = box2d.b2Vec2_zero.Clone();
+  this.color = box2d.b2ParticleColor_zero.Clone();
 }
 
 /** 
@@ -222,12 +220,11 @@ box2d.b2ParticleGroupDef.prototype.group = null;
  * @export 
  * @constructor 
  */
-box2d.b2ParticleGroup = function ()
-{
-	this.m_center = new box2d.b2Vec2();
-	this.m_linearVelocity = new box2d.b2Vec2();
-	this.m_transform = new box2d.b2Transform();
-	this.m_transform.SetIdentity();
+box2d.b2ParticleGroup = function() {
+  this.m_center = new box2d.b2Vec2();
+  this.m_linearVelocity = new box2d.b2Vec2();
+  this.m_transform = new box2d.b2Transform();
+  this.m_transform.SetIdentity();
 }
 
 /**
@@ -311,9 +308,8 @@ box2d.b2ParticleGroup.prototype.m_userData = null;
  * @export 
  * @return {box2d.b2ParticleGroup}
  */
-box2d.b2ParticleGroup.prototype.GetNext = function ()
-{
-	return this.m_next;
+box2d.b2ParticleGroup.prototype.GetNext = function() {
+  return this.m_next;
 }
 
 /** 
@@ -322,9 +318,8 @@ box2d.b2ParticleGroup.prototype.GetNext = function ()
  * @export 
  * @return {box2d.b2ParticleSystem} 
  */
-box2d.b2ParticleGroup.prototype.GetParticleSystem = function ()
-{
-	return this.m_system;
+box2d.b2ParticleGroup.prototype.GetParticleSystem = function() {
+  return this.m_system;
 }
 
 /** 
@@ -333,9 +328,8 @@ box2d.b2ParticleGroup.prototype.GetParticleSystem = function ()
  * @export 
  * @return {number} 
  */
-box2d.b2ParticleGroup.prototype.GetParticleCount = function ()
-{
-	return this.m_lastIndex - this.m_firstIndex;
+box2d.b2ParticleGroup.prototype.GetParticleCount = function() {
+  return this.m_lastIndex - this.m_firstIndex;
 }
 
 /** 
@@ -344,9 +338,8 @@ box2d.b2ParticleGroup.prototype.GetParticleCount = function ()
  * @export 
  * @return {number} 
  */
-box2d.b2ParticleGroup.prototype.GetBufferIndex = function ()
-{
-	return this.m_firstIndex;
+box2d.b2ParticleGroup.prototype.GetBufferIndex = function() {
+  return this.m_firstIndex;
 }
 
 /** 
@@ -355,9 +348,8 @@ box2d.b2ParticleGroup.prototype.GetBufferIndex = function ()
  * @return {boolean} 
  * @param {number} index 
  */
-box2d.b2ParticleGroup.prototype.ContainsParticle = function (index)
-{
-	return this.m_firstIndex <= index && index < this.m_lastIndex;
+box2d.b2ParticleGroup.prototype.ContainsParticle = function(index) {
+  return this.m_firstIndex <= index && index < this.m_lastIndex;
 }
 
 /** 
@@ -366,14 +358,12 @@ box2d.b2ParticleGroup.prototype.ContainsParticle = function (index)
  * @export 
  * @return {number} 
  */
-box2d.b2ParticleGroup.prototype.GetAllParticleFlags = function ()
-{
-	var flags = 0;
-	for (var i = this.m_firstIndex; i < this.m_lastIndex; i++)
-	{
-		flags |= this.m_system.m_flagsBuffer.data[i];
-	}
-	return flags;
+box2d.b2ParticleGroup.prototype.GetAllParticleFlags = function() {
+  var flags = 0;
+  for (var i = this.m_firstIndex; i < this.m_lastIndex; i++) {
+    flags |= this.m_system.m_flagsBuffer.data[i];
+  }
+  return flags;
 }
 
 /** 
@@ -382,9 +372,8 @@ box2d.b2ParticleGroup.prototype.GetAllParticleFlags = function ()
  * @export 
  * @return {number} 
  */
-box2d.b2ParticleGroup.prototype.GetGroupFlags = function ()
-{
-	return this.m_groupFlags;
+box2d.b2ParticleGroup.prototype.GetGroupFlags = function() {
+  return this.m_groupFlags;
 }
 
 /** 
@@ -394,23 +383,21 @@ box2d.b2ParticleGroup.prototype.GetGroupFlags = function ()
  * @return {void} 
  * @param {number} flags 
  */
-box2d.b2ParticleGroup.prototype.SetGroupFlags = function (flags)
-{
-	box2d.b2Assert((flags & box2d.b2ParticleGroupFlag.b2_particleGroupInternalMask) === 0);
-	flags |= this.m_groupFlags & box2d.b2ParticleGroupFlag.b2_particleGroupInternalMask;
-	this.m_system.SetGroupFlags(this, flags);
-}   		 
-/** 
- * Get the total mass of the group: the sum of all particles in 
- * it. 
- *  
- * @export 
- * @return {number} 
- */
-box2d.b2ParticleGroup.prototype.GetMass = function ()
-{
-	this.UpdateStatistics();
-	return this.m_mass;
+box2d.b2ParticleGroup.prototype.SetGroupFlags = function(flags) {
+    box2d.b2Assert((flags & box2d.b2ParticleGroupFlag.b2_particleGroupInternalMask) === 0);
+    flags |= this.m_groupFlags & box2d.b2ParticleGroupFlag.b2_particleGroupInternalMask;
+    this.m_system.SetGroupFlags(this, flags);
+  }
+  /** 
+   * Get the total mass of the group: the sum of all particles in 
+   * it. 
+   *  
+   * @export 
+   * @return {number} 
+   */
+box2d.b2ParticleGroup.prototype.GetMass = function() {
+  this.UpdateStatistics();
+  return this.m_mass;
 }
 
 /** 
@@ -419,10 +406,9 @@ box2d.b2ParticleGroup.prototype.GetMass = function ()
  * @export 
  * @return {number} 
  */
-box2d.b2ParticleGroup.prototype.GetInertia = function ()
-{
-	this.UpdateStatistics();
-	return this.m_inertia;
+box2d.b2ParticleGroup.prototype.GetInertia = function() {
+  this.UpdateStatistics();
+  return this.m_inertia;
 }
 
 /** 
@@ -431,10 +417,9 @@ box2d.b2ParticleGroup.prototype.GetInertia = function ()
  * @export 
  * @return {box2d.b2Vec2} 
  */
-box2d.b2ParticleGroup.prototype.GetCenter = function ()
-{
-	this.UpdateStatistics();
-	return this.m_center;
+box2d.b2ParticleGroup.prototype.GetCenter = function() {
+  this.UpdateStatistics();
+  return this.m_center;
 }
 
 /** 
@@ -443,10 +428,9 @@ box2d.b2ParticleGroup.prototype.GetCenter = function ()
  * @export 
  * @return {box2d.b2Vec2} 
  */
-box2d.b2ParticleGroup.prototype.GetLinearVelocity = function ()
-{
-	this.UpdateStatistics();
-	return this.m_linearVelocity;
+box2d.b2ParticleGroup.prototype.GetLinearVelocity = function() {
+  this.UpdateStatistics();
+  return this.m_linearVelocity;
 }
 
 /** 
@@ -455,10 +439,9 @@ box2d.b2ParticleGroup.prototype.GetLinearVelocity = function ()
  * @export 
  * @return {number} 
  */
-box2d.b2ParticleGroup.prototype.GetAngularVelocity = function ()
-{
-	this.UpdateStatistics();
-	return this.m_angularVelocity;
+box2d.b2ParticleGroup.prototype.GetAngularVelocity = function() {
+  this.UpdateStatistics();
+  return this.m_angularVelocity;
 }
 
 /** 
@@ -469,9 +452,8 @@ box2d.b2ParticleGroup.prototype.GetAngularVelocity = function ()
  * @export 
  * @return {box2d.b2Transform} 
  */
-box2d.b2ParticleGroup.prototype.GetTransform = function ()
-{
-	return this.m_transform;
+box2d.b2ParticleGroup.prototype.GetTransform = function() {
+  return this.m_transform;
 }
 
 /** 
@@ -482,9 +464,8 @@ box2d.b2ParticleGroup.prototype.GetTransform = function ()
  * @export 
  * @return {box2d.b2Vec2} 
  */
-box2d.b2ParticleGroup.prototype.GetPosition = function ()
-{
-	return this.m_transform.p;
+box2d.b2ParticleGroup.prototype.GetPosition = function() {
+  return this.m_transform.p;
 }
 
 /** 
@@ -495,9 +476,8 @@ box2d.b2ParticleGroup.prototype.GetPosition = function ()
  * @export 
  * @return {number} 
  */
-box2d.b2ParticleGroup.prototype.GetAngle = function ()
-{
-	return this.m_transform.q.GetAngle();
+box2d.b2ParticleGroup.prototype.GetAngle = function() {
+  return this.m_transform.q.GetAngle();
 }
 
 /** 
@@ -510,12 +490,11 @@ box2d.b2ParticleGroup.prototype.GetAngle = function ()
  *  	  coordinates.
  * @param {box2d.b2Vec2} out 
  */
-box2d.b2ParticleGroup.prototype.GetLinearVelocityFromWorldPoint = function (worldPoint, out)
-{
-	var s_t0 = box2d.b2ParticleGroup.prototype.GetLinearVelocityFromWorldPoint.s_t0;
-	this.UpdateStatistics();
-	///	return m_linearVelocity + b2Cross(m_angularVelocity, worldPoint - m_center);
-	return box2d.b2AddCross_V2_S_V2(this.m_linearVelocity, this.m_angularVelocity, box2d.b2Sub_V2_V2(worldPoint, this.m_center, s_t0), out);
+box2d.b2ParticleGroup.prototype.GetLinearVelocityFromWorldPoint = function(worldPoint, out) {
+  var s_t0 = box2d.b2ParticleGroup.prototype.GetLinearVelocityFromWorldPoint.s_t0;
+  this.UpdateStatistics();
+  ///	return m_linearVelocity + b2Cross(m_angularVelocity, worldPoint - m_center);
+  return box2d.b2AddCross_V2_S_V2(this.m_linearVelocity, this.m_angularVelocity, box2d.b2Sub_V2_V2(worldPoint, this.m_center, s_t0), out);
 }
 box2d.b2ParticleGroup.prototype.GetLinearVelocityFromWorldPoint.s_t0 = new box2d.b2Vec2();
 
@@ -526,9 +505,8 @@ box2d.b2ParticleGroup.prototype.GetLinearVelocityFromWorldPoint.s_t0 = new box2d
  * @export 
  * @return {*} 
  */
-box2d.b2ParticleGroup.prototype.GetUserData = function ()
-{
-	return this.m_userData;
+box2d.b2ParticleGroup.prototype.GetUserData = function() {
+  return this.m_userData;
 }
 
 /** 
@@ -539,9 +517,8 @@ box2d.b2ParticleGroup.prototype.GetUserData = function ()
  * @return {void} 
  * @param {*} data 
  */
-box2d.b2ParticleGroup.prototype.SetUserData = function (data)
-{
-	this.m_userData = data;
+box2d.b2ParticleGroup.prototype.SetUserData = function(data) {
+  this.m_userData = data;
 }
 
 /** 
@@ -552,9 +529,8 @@ box2d.b2ParticleGroup.prototype.SetUserData = function (data)
  * @return {void} 
  * @param {box2d.b2Vec2} force 
  */
-box2d.b2ParticleGroup.prototype.ApplyForce = function (force)
-{
-	this.m_system.ApplyForce(this.m_firstIndex, this.m_lastIndex, force);
+box2d.b2ParticleGroup.prototype.ApplyForce = function(force) {
+  this.m_system.ApplyForce(this.m_firstIndex, this.m_lastIndex, force);
 }
 
 /** 
@@ -565,9 +541,8 @@ box2d.b2ParticleGroup.prototype.ApplyForce = function (force)
  * @return {void} 
  * @param {box2d.b2Vec2} impulse 
  */
-box2d.b2ParticleGroup.prototype.ApplyLinearImpulse = function (impulse)
-{
-	this.m_system.ApplyLinearImpulse(this.m_firstIndex, this.m_lastIndex, impulse);
+box2d.b2ParticleGroup.prototype.ApplyLinearImpulse = function(impulse) {
+  this.m_system.ApplyLinearImpulse(this.m_firstIndex, this.m_lastIndex, impulse);
 }
 
 /** 
@@ -581,68 +556,59 @@ box2d.b2ParticleGroup.prototype.ApplyLinearImpulse = function (impulse)
  *  	  world b2DestructionListener for each particle is
  *  	  destroyed.
  */
-box2d.b2ParticleGroup.prototype.DestroyParticles = function (callDestructionListener)
-{
-	box2d.b2Assert(this.m_system.m_world.IsLocked() === false);
-	if (this.m_system.m_world.IsLocked())
-	{
-		return;
-	}
+box2d.b2ParticleGroup.prototype.DestroyParticles = function(callDestructionListener) {
+  box2d.b2Assert(this.m_system.m_world.IsLocked() === false);
+  if (this.m_system.m_world.IsLocked()) {
+    return;
+  }
 
-	for (var i = this.m_firstIndex; i < this.m_lastIndex; i++) {
-		this.m_system.DestroyParticle(i, callDestructionListener);
-	}
+  for (var i = this.m_firstIndex; i < this.m_lastIndex; i++) {
+    this.m_system.DestroyParticle(i, callDestructionListener);
+  }
 }
 
 /**
  * @export 
  * @return {void} 
  */
-box2d.b2ParticleGroup.prototype.UpdateStatistics = function ()
-{
-	var p = new box2d.b2Vec2();
-	var v = new box2d.b2Vec2();
-	if (this.m_timestamp != this.m_system.m_timestamp)
-	{
-		var m = this.m_system.GetParticleMass();
-		///	this.m_mass = 0;
-		this.m_mass = m * (this.m_lastIndex - this.m_firstIndex);
-		this.m_center.SetZero();
-		this.m_linearVelocity.SetZero();
-		for (var i = this.m_firstIndex; i < this.m_lastIndex; i++)
-		{
-			///	this.m_mass += m;
-			///	this.m_center += m * this.m_system.m_positionBuffer.data[i];
-			this.m_center.SelfMulAdd(m, this.m_system.m_positionBuffer.data[i]);
-			///	this.m_linearVelocity += m * this.m_system.m_velocityBuffer.data[i];
-			this.m_linearVelocity.SelfMulAdd(m, this.m_system.m_velocityBuffer.data[i]);
-		}
-		if (this.m_mass > 0)
-		{
-			var inv_mass = 1 / this.m_mass;
-			///this.m_center *= 1 / this.m_mass;
-			this.m_center.SelfMul(inv_mass);
-			///this.m_linearVelocity *= 1 / this.m_mass;
-			this.m_linearVelocity.SelfMul(inv_mass);
-		}
-		this.m_inertia = 0;
-		this.m_angularVelocity = 0;
-		for (var i = this.m_firstIndex; i < this.m_lastIndex; i++)
-		{
-			///b2Vec2 p = this.m_system.m_positionBuffer.data[i] - this.m_center;
-			box2d.b2Sub_V2_V2(this.m_system.m_positionBuffer.data[i], this.m_center, p);
-			///b2Vec2 v = this.m_system.m_velocityBuffer.data[i] - this.m_linearVelocity;
-			box2d.b2Sub_V2_V2(this.m_system.m_velocityBuffer.data[i], this.m_linearVelocity, v);
-			this.m_inertia += m * box2d.b2Dot_V2_V2(p, p);
-			this.m_angularVelocity += m * box2d.b2Cross_V2_V2(p, v);
-		}
-		if (this.m_inertia > 0)
-		{
-			this.m_angularVelocity *= 1 / this.m_inertia;
-		}
-		this.m_timestamp = this.m_system.m_timestamp;
-	}
+box2d.b2ParticleGroup.prototype.UpdateStatistics = function() {
+  var p = new box2d.b2Vec2();
+  var v = new box2d.b2Vec2();
+  if (this.m_timestamp != this.m_system.m_timestamp) {
+    var m = this.m_system.GetParticleMass();
+    ///	this.m_mass = 0;
+    this.m_mass = m * (this.m_lastIndex - this.m_firstIndex);
+    this.m_center.SetZero();
+    this.m_linearVelocity.SetZero();
+    for (var i = this.m_firstIndex; i < this.m_lastIndex; i++) {
+      ///	this.m_mass += m;
+      ///	this.m_center += m * this.m_system.m_positionBuffer.data[i];
+      this.m_center.SelfMulAdd(m, this.m_system.m_positionBuffer.data[i]);
+      ///	this.m_linearVelocity += m * this.m_system.m_velocityBuffer.data[i];
+      this.m_linearVelocity.SelfMulAdd(m, this.m_system.m_velocityBuffer.data[i]);
+    }
+    if (this.m_mass > 0) {
+      var inv_mass = 1 / this.m_mass;
+      ///this.m_center *= 1 / this.m_mass;
+      this.m_center.SelfMul(inv_mass);
+      ///this.m_linearVelocity *= 1 / this.m_mass;
+      this.m_linearVelocity.SelfMul(inv_mass);
+    }
+    this.m_inertia = 0;
+    this.m_angularVelocity = 0;
+    for (var i = this.m_firstIndex; i < this.m_lastIndex; i++) {
+      ///b2Vec2 p = this.m_system.m_positionBuffer.data[i] - this.m_center;
+      box2d.b2Sub_V2_V2(this.m_system.m_positionBuffer.data[i], this.m_center, p);
+      ///b2Vec2 v = this.m_system.m_velocityBuffer.data[i] - this.m_linearVelocity;
+      box2d.b2Sub_V2_V2(this.m_system.m_velocityBuffer.data[i], this.m_linearVelocity, v);
+      this.m_inertia += m * box2d.b2Dot_V2_V2(p, p);
+      this.m_angularVelocity += m * box2d.b2Cross_V2_V2(p, v);
+    }
+    if (this.m_inertia > 0) {
+      this.m_angularVelocity *= 1 / this.m_inertia;
+    }
+    this.m_timestamp = this.m_system.m_timestamp;
+  }
 }
 
 //#endif
-

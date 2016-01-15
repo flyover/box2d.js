@@ -1,20 +1,20 @@
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
-*
-* This software is provided 'as-is', without any express or implied
-* warranty.  In no event will the authors be held liable for any damages
-* arising from the use of this software.
-* Permission is granted to anyone to use this software for any purpose,
-* including commercial applications, and to alter it and redistribute it
-* freely, subject to the following restrictions:
-* 1. The origin of this software must not be misrepresented; you must not
-* claim that you wrote the original software. If you use this software
-* in a product, an acknowledgment in the product documentation would be
-* appreciated but is not required.
-* 2. Altered source versions must be plainly marked as such, and must not be
-* misrepresented as being the original software.
-* 3. This notice may not be removed or altered from any source distribution.
-*/
+ * Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 goog.provide('box2d.b2BroadPhase')
 
@@ -25,9 +25,7 @@ goog.require('box2d.b2DynamicTree')
  * @export 
  * @constructor
  */
-box2d.b2Pair = function ()
-{
-};
+box2d.b2Pair = function() {};
 
 /**
  * @export 
@@ -49,11 +47,10 @@ box2d.b2Pair.prototype.proxyB = null;
  * @export 
  * @constructor
  */
-box2d.b2BroadPhase = function ()
-{
-	this.m_tree = new box2d.b2DynamicTree();
-	this.m_moveBuffer = new Array();
-	this.m_pairBuffer = new Array();
+box2d.b2BroadPhase = function() {
+  this.m_tree = new box2d.b2DynamicTree();
+  this.m_moveBuffer = new Array();
+  this.m_pairBuffer = new Array();
 };
 
 /**
@@ -102,12 +99,11 @@ box2d.b2BroadPhase.prototype.m_pairBuffer = null;
  * @param {box2d.b2AABB} aabb 
  * @param {*} userData 
  */
-box2d.b2BroadPhase.prototype.CreateProxy = function (aabb, userData)
-{
-	var proxy = this.m_tree.CreateProxy(aabb, userData);
-	++this.m_proxyCount;
-	this.BufferMove(proxy);
-	return proxy;
+box2d.b2BroadPhase.prototype.CreateProxy = function(aabb, userData) {
+  var proxy = this.m_tree.CreateProxy(aabb, userData);
+  ++this.m_proxyCount;
+  this.BufferMove(proxy);
+  return proxy;
 }
 
 /** 
@@ -116,11 +112,10 @@ box2d.b2BroadPhase.prototype.CreateProxy = function (aabb, userData)
  * @return {void} 
  * @param {box2d.b2TreeNode} proxy 
  */
-box2d.b2BroadPhase.prototype.DestroyProxy = function (proxy)
-{
-	this.UnBufferMove(proxy);
-	--this.m_proxyCount;
-	this.m_tree.DestroyProxy(proxy);
+box2d.b2BroadPhase.prototype.DestroyProxy = function(proxy) {
+  this.UnBufferMove(proxy);
+  --this.m_proxyCount;
+  this.m_tree.DestroyProxy(proxy);
 }
 
 /** 
@@ -133,13 +128,11 @@ box2d.b2BroadPhase.prototype.DestroyProxy = function (proxy)
  * @param {box2d.b2AABB} aabb 
  * @param {box2d.b2Vec2} displacement 
  */
-box2d.b2BroadPhase.prototype.MoveProxy = function (proxy, aabb, displacement)
-{
-	var buffer = this.m_tree.MoveProxy(proxy, aabb, displacement);
-	if (buffer)
-	{
-		this.BufferMove(proxy);
-	}
+box2d.b2BroadPhase.prototype.MoveProxy = function(proxy, aabb, displacement) {
+  var buffer = this.m_tree.MoveProxy(proxy, aabb, displacement);
+  if (buffer) {
+    this.BufferMove(proxy);
+  }
 }
 
 /** 
@@ -149,9 +142,8 @@ box2d.b2BroadPhase.prototype.MoveProxy = function (proxy, aabb, displacement)
  * @return {void} 
  * @param {box2d.b2TreeNode} proxy 
  */
-box2d.b2BroadPhase.prototype.TouchProxy = function (proxy)
-{
-	this.BufferMove(proxy);
+box2d.b2BroadPhase.prototype.TouchProxy = function(proxy) {
+  this.BufferMove(proxy);
 }
 
 /** 
@@ -160,9 +152,8 @@ box2d.b2BroadPhase.prototype.TouchProxy = function (proxy)
  * @return {box2d.b2AABB}
  * @param {box2d.b2TreeNode} proxy 
  */
-box2d.b2BroadPhase.prototype.GetFatAABB = function (proxy)
-{
-	return this.m_tree.GetFatAABB(proxy);
+box2d.b2BroadPhase.prototype.GetFatAABB = function(proxy) {
+  return this.m_tree.GetFatAABB(proxy);
 }
 
 /** 
@@ -172,9 +163,8 @@ box2d.b2BroadPhase.prototype.GetFatAABB = function (proxy)
  * @return {*} 
  * @param {box2d.b2TreeNode} proxy 
  */
-box2d.b2BroadPhase.prototype.GetUserData = function (proxy)
-{
-	return this.m_tree.GetUserData(proxy);
+box2d.b2BroadPhase.prototype.GetUserData = function(proxy) {
+  return this.m_tree.GetUserData(proxy);
 }
 
 /** 
@@ -184,11 +174,10 @@ box2d.b2BroadPhase.prototype.GetUserData = function (proxy)
  * @param {box2d.b2TreeNode} proxyA
  * @param {box2d.b2TreeNode} proxyB 
  */
-box2d.b2BroadPhase.prototype.TestOverlap = function (proxyA, proxyB)
-{
-	var aabbA = this.m_tree.GetFatAABB(proxyA);
-	var aabbB = this.m_tree.GetFatAABB(proxyB);
-	return box2d.b2TestOverlap_AABB(aabbA, aabbB);
+box2d.b2BroadPhase.prototype.TestOverlap = function(proxyA, proxyB) {
+  var aabbA = this.m_tree.GetFatAABB(proxyA);
+  var aabbB = this.m_tree.GetFatAABB(proxyB);
+  return box2d.b2TestOverlap_AABB(aabbA, aabbB);
 }
 
 /** 
@@ -196,9 +185,8 @@ box2d.b2BroadPhase.prototype.TestOverlap = function (proxyA, proxyB)
  * @export 
  * @return {number} 
  */
-box2d.b2BroadPhase.prototype.GetProxyCount = function ()
-{
-	return this.m_proxyCount;
+box2d.b2BroadPhase.prototype.GetProxyCount = function() {
+  return this.m_proxyCount;
 }
 
 /** 
@@ -206,9 +194,8 @@ box2d.b2BroadPhase.prototype.GetProxyCount = function ()
  * @export 
  * @return {number} 
  */
-box2d.b2BroadPhase.prototype.GetTreeHeight = function ()
-{
-	return this.m_tree.GetHeight();
+box2d.b2BroadPhase.prototype.GetTreeHeight = function() {
+  return this.m_tree.GetHeight();
 }
 
 /** 
@@ -216,9 +203,8 @@ box2d.b2BroadPhase.prototype.GetTreeHeight = function ()
  * @export 
  * @return {number} 
  */
-box2d.b2BroadPhase.prototype.GetTreeBalance = function ()
-{
-	return this.m_tree.GetMaxBalance();
+box2d.b2BroadPhase.prototype.GetTreeBalance = function() {
+  return this.m_tree.GetMaxBalance();
 }
 
 /** 
@@ -226,9 +212,8 @@ box2d.b2BroadPhase.prototype.GetTreeBalance = function ()
  * @export 
  * @return {number} 
  */
-box2d.b2BroadPhase.prototype.GetTreeQuality = function ()
-{
-	return this.m_tree.GetAreaRatio();
+box2d.b2BroadPhase.prototype.GetTreeQuality = function() {
+  return this.m_tree.GetAreaRatio();
 }
 
 /** 
@@ -238,9 +223,8 @@ box2d.b2BroadPhase.prototype.GetTreeQuality = function ()
  * @return {void} 
  * @param {box2d.b2Vec2} newOrigin the new origin with respect to the old origin
  */
-box2d.b2BroadPhase.prototype.ShiftOrigin = function (newOrigin)
-{
-	this.m_tree.ShiftOrigin(newOrigin);
+box2d.b2BroadPhase.prototype.ShiftOrigin = function(newOrigin) {
+  this.m_tree.ShiftOrigin(newOrigin);
 }
 
 /** 
@@ -250,96 +234,84 @@ box2d.b2BroadPhase.prototype.ShiftOrigin = function (newOrigin)
  * @return {void} 
  * @param contactManager 
  */
-box2d.b2BroadPhase.prototype.UpdatePairs = function (contactManager)
-{
-	// Reset pair buffer
-	this.m_pairCount = 0;
+box2d.b2BroadPhase.prototype.UpdatePairs = function(contactManager) {
+  // Reset pair buffer
+  this.m_pairCount = 0;
 
-	// Perform tree queries for all moving proxies.
-	for (var i = 0; i < this.m_moveCount; ++i)
-	{
-		var queryProxy = this.m_moveBuffer[i];
-		if (queryProxy === null)
-		{
-			continue;
-		}
+  // Perform tree queries for all moving proxies.
+  for (var i = 0; i < this.m_moveCount; ++i) {
+    var queryProxy = this.m_moveBuffer[i];
+    if (queryProxy === null) {
+      continue;
+    }
 
-		var that = this;
+    var that = this;
 
-		// This is called from box2d.b2DynamicTree::Query when we are gathering pairs.
-		// bool b2BroadPhase::QueryCallback(int32 proxyId);
-		var QueryCallback = function (proxy)
-		{
-			// A proxy cannot form a pair with itself.
-			if (proxy.m_id === queryProxy.m_id)
-			{
-				return true;
-			}
+    // This is called from box2d.b2DynamicTree::Query when we are gathering pairs.
+    // bool b2BroadPhase::QueryCallback(int32 proxyId);
+    var QueryCallback = function(proxy) {
+      // A proxy cannot form a pair with itself.
+      if (proxy.m_id === queryProxy.m_id) {
+        return true;
+      }
 
-			// Grow the pair buffer as needed.
-			if (that.m_pairCount === that.m_pairBuffer.length)
-			{
-				that.m_pairBuffer[that.m_pairCount] = new box2d.b2Pair();
-			}
+      // Grow the pair buffer as needed.
+      if (that.m_pairCount === that.m_pairBuffer.length) {
+        that.m_pairBuffer[that.m_pairCount] = new box2d.b2Pair();
+      }
 
-			var pair = that.m_pairBuffer[that.m_pairCount];
-			//pair.proxyA = proxy < queryProxy ? proxy : queryProxy;
-			//pair.proxyB = proxy >= queryProxy ? proxy : queryProxy;
-			if (proxy.m_id < queryProxy.m_id)
-			{
-				pair.proxyA = proxy;
-				pair.proxyB = queryProxy;
-			}
-			else
-			{
-				pair.proxyA = queryProxy;
-				pair.proxyB = proxy;
-			}
-			++that.m_pairCount;
+      var pair = that.m_pairBuffer[that.m_pairCount];
+      //pair.proxyA = proxy < queryProxy ? proxy : queryProxy;
+      //pair.proxyB = proxy >= queryProxy ? proxy : queryProxy;
+      if (proxy.m_id < queryProxy.m_id) {
+        pair.proxyA = proxy;
+        pair.proxyB = queryProxy;
+      } else {
+        pair.proxyA = queryProxy;
+        pair.proxyB = proxy;
+      }
+      ++that.m_pairCount;
 
-			return true;
-		};
+      return true;
+    };
 
-		// We have to query the tree with the fat AABB so that
-		// we don't fail to create a pair that may touch later.
-		var fatAABB = this.m_tree.GetFatAABB(queryProxy);
+    // We have to query the tree with the fat AABB so that
+    // we don't fail to create a pair that may touch later.
+    var fatAABB = this.m_tree.GetFatAABB(queryProxy);
 
-		// Query tree, create pairs and add them pair buffer.
-		this.m_tree.Query(QueryCallback, fatAABB);
-	}
+    // Query tree, create pairs and add them pair buffer.
+    this.m_tree.Query(QueryCallback, fatAABB);
+  }
 
-	// Reset move buffer
-	this.m_moveCount = 0;
+  // Reset move buffer
+  this.m_moveCount = 0;
 
-	// Sort the pair buffer to expose duplicates.
-	this.m_pairBuffer.length = this.m_pairCount;
-	this.m_pairBuffer.sort(box2d.b2PairLessThan);
+  // Sort the pair buffer to expose duplicates.
+  this.m_pairBuffer.length = this.m_pairCount;
+  this.m_pairBuffer.sort(box2d.b2PairLessThan);
 
-	// Send the pairs back to the client.
-	var i = 0;
-	while (i < this.m_pairCount)
-	{
-		var primaryPair = this.m_pairBuffer[i];
-		var userDataA = this.m_tree.GetUserData(primaryPair.proxyA);
-		var userDataB = this.m_tree.GetUserData(primaryPair.proxyB);
+  // Send the pairs back to the client.
+  var i = 0;
+  while (i < this.m_pairCount) {
+    var primaryPair = this.m_pairBuffer[i];
+    var userDataA = this.m_tree.GetUserData(primaryPair.proxyA);
+    var userDataB = this.m_tree.GetUserData(primaryPair.proxyB);
 
-		contactManager.AddPair(userDataA, userDataB);
-		++i;
+    contactManager.AddPair(userDataA, userDataB);
+    ++i;
 
-		// Skip any duplicate pairs.
-		while (i < this.m_pairCount)
-		{
-			var pair = this.m_pairBuffer[i];
-			if (pair.proxyA.m_id !== primaryPair.proxyA.m_id || pair.proxyB.m_id !== primaryPair.proxyB.m_id)
-			{
-				break;
-			}
-			++i;
-		}
-	}
+    // Skip any duplicate pairs.
+    while (i < this.m_pairCount) {
+      var pair = this.m_pairBuffer[i];
+      if (pair.proxyA.m_id !== primaryPair.proxyA.m_id || pair.proxyB.m_id !== primaryPair.proxyB.m_id) {
+        break;
+      }
+      ++i;
+    }
+  }
 
-	// Try to keep the tree balanced.
-	//this.m_tree.Rebalance(4);
+  // Try to keep the tree balanced.
+  //this.m_tree.Rebalance(4);
 }
 
 /** 
@@ -350,9 +322,8 @@ box2d.b2BroadPhase.prototype.UpdatePairs = function (contactManager)
  * @param {function(box2d.b2TreeNode):boolean} callback 
  * @param {box2d.b2AABB} aabb 
  */
-box2d.b2BroadPhase.prototype.Query = function (callback, aabb)
-{
-	this.m_tree.Query(callback, aabb);
+box2d.b2BroadPhase.prototype.Query = function(callback, aabb) {
+  this.m_tree.Query(callback, aabb);
 }
 
 /** 
@@ -372,9 +343,8 @@ box2d.b2BroadPhase.prototype.Query = function (callback, aabb)
  *  	  The ray extends from p1 to p1 + maxFraction * (p2 -
  *  	  p1).
  */
-box2d.b2BroadPhase.prototype.RayCast = function (callback, input)
-{
-	this.m_tree.RayCast(callback, input);
+box2d.b2BroadPhase.prototype.RayCast = function(callback, input) {
+  this.m_tree.RayCast(callback, input);
 }
 
 /**
@@ -382,10 +352,9 @@ box2d.b2BroadPhase.prototype.RayCast = function (callback, input)
  * @return {void} 
  * @param {box2d.b2TreeNode} proxy 
  */
-box2d.b2BroadPhase.prototype.BufferMove = function (proxy)
-{
-	this.m_moveBuffer[this.m_moveCount] = proxy;
-	++this.m_moveCount;
+box2d.b2BroadPhase.prototype.BufferMove = function(proxy) {
+  this.m_moveBuffer[this.m_moveCount] = proxy;
+  ++this.m_moveCount;
 }
 
 /**
@@ -393,10 +362,9 @@ box2d.b2BroadPhase.prototype.BufferMove = function (proxy)
  * @return {void} 
  * @param {box2d.b2TreeNode} proxy 
  */
-box2d.b2BroadPhase.prototype.UnBufferMove = function (proxy)
-{
-	var i = this.m_moveBuffer.indexOf(proxy);
-	this.m_moveBuffer[i] = null;
+box2d.b2BroadPhase.prototype.UnBufferMove = function(proxy) {
+  var i = this.m_moveBuffer.indexOf(proxy);
+  this.m_moveBuffer[i] = null;
 }
 
 /** 
@@ -405,13 +373,10 @@ box2d.b2BroadPhase.prototype.UnBufferMove = function (proxy)
  * @param {box2d.b2Pair} pair1 
  * @param {box2d.b2Pair} pair2 
  */
-box2d.b2PairLessThan = function (pair1, pair2)
-{
-	if (pair1.proxyA.m_id === pair2.proxyA.m_id)
-	{
-		return pair1.proxyB.m_id - pair2.proxyB.m_id;
-	}
+box2d.b2PairLessThan = function(pair1, pair2) {
+  if (pair1.proxyA.m_id === pair2.proxyA.m_id) {
+    return pair1.proxyB.m_id - pair2.proxyB.m_id;
+  }
 
-	return pair1.proxyA.m_id - pair2.proxyA.m_id;
+  return pair1.proxyA.m_id - pair2.proxyA.m_id;
 }
-

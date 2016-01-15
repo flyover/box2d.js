@@ -1,20 +1,20 @@
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
-*
-* This software is provided 'as-is', without any express or implied
-* warranty.  In no event will the authors be held liable for any damages
-* arising from the use of this software.
-* Permission is granted to anyone to use this software for any purpose,
-* including commercial applications, and to alter it and redistribute it
-* freely, subject to the following restrictions:
-* 1. The origin of this software must not be misrepresented; you must not
-* claim that you wrote the original software. If you use this software
-* in a product, an acknowledgment in the product documentation would be
-* appreciated but is not required.
-* 2. Altered source versions must be plainly marked as such, and must not be
-* misrepresented as being the original software.
-* 3. This notice may not be removed or altered from any source distribution.
-*/
+ * Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 goog.provide('box2d.b2Body');
 
@@ -30,19 +30,18 @@ goog.require('box2d.b2Fixture');
  * @export 
  * @enum
  */
-box2d.b2BodyType = 
-{
-	b2_unknown			: -1,
-	b2_staticBody		: 0,
-	b2_kinematicBody	: 1,
-	b2_dynamicBody		: 2,
-	b2_bulletBody		: 3 // TODO_ERIN
+box2d.b2BodyType = {
+  b2_unknown: -1,
+  b2_staticBody: 0,
+  b2_kinematicBody: 1,
+  b2_dynamicBody: 2,
+  b2_bulletBody: 3 // TODO_ERIN
 };
-goog.exportProperty(box2d.b2BodyType, 'b2_unknown'      , box2d.b2BodyType.b2_unknown      );
-goog.exportProperty(box2d.b2BodyType, 'b2_staticBody'   , box2d.b2BodyType.b2_staticBody   );
+goog.exportProperty(box2d.b2BodyType, 'b2_unknown', box2d.b2BodyType.b2_unknown);
+goog.exportProperty(box2d.b2BodyType, 'b2_staticBody', box2d.b2BodyType.b2_staticBody);
 goog.exportProperty(box2d.b2BodyType, 'b2_kinematicBody', box2d.b2BodyType.b2_kinematicBody);
-goog.exportProperty(box2d.b2BodyType, 'b2_dynamicBody'  , box2d.b2BodyType.b2_dynamicBody  );
-goog.exportProperty(box2d.b2BodyType, 'b2_bulletBody'   , box2d.b2BodyType.b2_bulletBody   );
+goog.exportProperty(box2d.b2BodyType, 'b2_dynamicBody', box2d.b2BodyType.b2_dynamicBody);
+goog.exportProperty(box2d.b2BodyType, 'b2_bulletBody', box2d.b2BodyType.b2_bulletBody);
 
 /** 
  * A body definition holds all the data needed to construct a 
@@ -52,10 +51,9 @@ goog.exportProperty(box2d.b2BodyType, 'b2_bulletBody'   , box2d.b2BodyType.b2_bu
  * @export 
  * @constructor
  */
-box2d.b2BodyDef = function ()
-{
-	this.position = new box2d.b2Vec2(0, 0);
-	this.linearVelocity = new box2d.b2Vec2(0, 0);
+box2d.b2BodyDef = function() {
+  this.position = new box2d.b2Vec2(0, 0);
+  this.linearVelocity = new box2d.b2Vec2(0, 0);
 }
 
 /** 
@@ -64,7 +62,7 @@ box2d.b2BodyDef = function ()
  * to one. 
  * @export
  * @type {box2d.b2BodyType} 
- */ 
+ */
 box2d.b2BodyDef.prototype.type = box2d.b2BodyType.b2_staticBody;
 
 /** 
@@ -181,100 +179,105 @@ box2d.b2BodyDef.prototype.gravityScale = 1;
  * @param {box2d.b2BodyDef} bd
  * @param {box2d.b2World} world
  */
-box2d.b2Body = function (bd, world)
-{
-	this.m_xf = new box2d.b2Transform();
-	this.m_out_xf = new box2d.b2Transform();
-//#if B2_ENABLE_PARTICLE
-	this.m_xf0 = new box2d.b2Transform();
-//#endif
-	this.m_sweep = new box2d.b2Sweep();
-	this.m_out_sweep = new box2d.b2Sweep();
-	this.m_linearVelocity = new box2d.b2Vec2();
-	this.m_out_linearVelocity = new box2d.b2Vec2();
-	this.m_force = new box2d.b2Vec2();
+box2d.b2Body = function(bd, world) {
+  this.m_xf = new box2d.b2Transform();
+  this.m_out_xf = new box2d.b2Transform();
+  //#if B2_ENABLE_PARTICLE
+  this.m_xf0 = new box2d.b2Transform();
+  //#endif
+  this.m_sweep = new box2d.b2Sweep();
+  this.m_out_sweep = new box2d.b2Sweep();
+  this.m_linearVelocity = new box2d.b2Vec2();
+  this.m_out_linearVelocity = new box2d.b2Vec2();
+  this.m_force = new box2d.b2Vec2();
 
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(bd.position.IsValid()); }
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(bd.linearVelocity.IsValid()); }
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(box2d.b2IsValid(bd.angle)); }
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(box2d.b2IsValid(bd.angularVelocity)); }
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(box2d.b2IsValid(bd.gravityScale) && bd.gravityScale >= 0); }
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(box2d.b2IsValid(bd.angularDamping) && bd.angularDamping >= 0); }
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(box2d.b2IsValid(bd.linearDamping) && bd.linearDamping >= 0); }
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(bd.position.IsValid());
+  }
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(bd.linearVelocity.IsValid());
+  }
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(box2d.b2IsValid(bd.angle));
+  }
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(box2d.b2IsValid(bd.angularVelocity));
+  }
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(box2d.b2IsValid(bd.gravityScale) && bd.gravityScale >= 0);
+  }
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(box2d.b2IsValid(bd.angularDamping) && bd.angularDamping >= 0);
+  }
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(box2d.b2IsValid(bd.linearDamping) && bd.linearDamping >= 0);
+  }
 
-	if (bd.bullet)
-	{
-		this.m_flag_bulletFlag = true;
-	}
-	if (bd.fixedRotation)
-	{
-		this.m_flag_fixedRotationFlag = true;
-	}
-	if (bd.allowSleep)
-	{
-		this.m_flag_autoSleepFlag = true;
-	}
-	if (bd.awake)
-	{
-		this.m_flag_awakeFlag = true;
-	}
-	if (bd.active)
-	{
-		this.m_flag_activeFlag = true;
-	}
+  if (bd.bullet) {
+    this.m_flag_bulletFlag = true;
+  }
+  if (bd.fixedRotation) {
+    this.m_flag_fixedRotationFlag = true;
+  }
+  if (bd.allowSleep) {
+    this.m_flag_autoSleepFlag = true;
+  }
+  if (bd.awake) {
+    this.m_flag_awakeFlag = true;
+  }
+  if (bd.active) {
+    this.m_flag_activeFlag = true;
+  }
 
-	this.m_world = world;
+  this.m_world = world;
 
-	this.m_xf.p.Copy(bd.position);
-	this.m_xf.q.SetAngle(bd.angle);
-//#if B2_ENABLE_PARTICLE
-	this.m_xf0.Copy(this.m_xf);
-//#endif
+  this.m_xf.p.Copy(bd.position);
+  this.m_xf.q.SetAngle(bd.angle);
+  //#if B2_ENABLE_PARTICLE
+  this.m_xf0.Copy(this.m_xf);
+  //#endif
 
-	this.m_sweep.localCenter.SetZero();
-	this.m_sweep.c0.Copy(this.m_xf.p);
-	this.m_sweep.c.Copy(this.m_xf.p);
-	this.m_sweep.a0 = bd.angle;
-	this.m_sweep.a = bd.angle;
-	this.m_sweep.alpha0 = 0;
+  this.m_sweep.localCenter.SetZero();
+  this.m_sweep.c0.Copy(this.m_xf.p);
+  this.m_sweep.c.Copy(this.m_xf.p);
+  this.m_sweep.a0 = bd.angle;
+  this.m_sweep.a = bd.angle;
+  this.m_sweep.alpha0 = 0;
 
-	this.m_linearVelocity.Copy(bd.linearVelocity);
-	this.m_angularVelocity = bd.angularVelocity;
+  this.m_linearVelocity.Copy(bd.linearVelocity);
+  this.m_angularVelocity = bd.angularVelocity;
 
-	this.m_linearDamping = bd.linearDamping;
-	this.m_angularDamping = bd.angularDamping;
-	this.m_gravityScale = bd.gravityScale;
+  this.m_linearDamping = bd.linearDamping;
+  this.m_angularDamping = bd.angularDamping;
+  this.m_gravityScale = bd.gravityScale;
 
-	this.m_force.SetZero();
-	this.m_torque = 0;
+  this.m_force.SetZero();
+  this.m_torque = 0;
 
-	this.m_sleepTime = 0;
+  this.m_sleepTime = 0;
 
-	this.m_type = bd.type;
+  this.m_type = bd.type;
 
-	if (bd.type === box2d.b2BodyType.b2_dynamicBody)
-	{
-		this.m_mass = 1;
-		this.m_invMass = 1;
-	}
-	else
-	{
-		this.m_mass = 0;
-		this.m_invMass = 0;
-	}
+  if (bd.type === box2d.b2BodyType.b2_dynamicBody) {
+    this.m_mass = 1;
+    this.m_invMass = 1;
+  } else {
+    this.m_mass = 0;
+    this.m_invMass = 0;
+  }
 
-	this.m_I = 0;
-	this.m_invI = 0;
+  this.m_I = 0;
+  this.m_invI = 0;
 
-	this.m_userData = bd.userData;
+  this.m_userData = bd.userData;
 
-	this.m_fixtureList = null;
-	this.m_fixtureCount = 0;
+  this.m_fixtureList = null;
+  this.m_fixtureCount = 0;
 
-//#if B2_ENABLE_CONTROLLER
-	this.m_controllerList = null;
-	this.m_controllerCount = 0;
-//#endif
+  //#if B2_ENABLE_CONTROLLER
+  this.m_controllerList = null;
+  this.m_controllerCount = 0;
+  //#endif
 }
 
 /**
@@ -478,20 +481,14 @@ box2d.b2Body.prototype.m_controllerCount = 0;
  * @param {box2d.b2FixtureDef|box2d.b2Shape} a
  * @param {number=} b
  */
-box2d.b2Body.prototype.CreateFixture = function (a, b)
-{
-	if (a instanceof box2d.b2FixtureDef)
-	{
-		return this.CreateFixture_Def(a);
-	}
-	else if ((a instanceof box2d.b2Shape) && (typeof(b) === 'number'))
-	{
-		return this.CreateFixture_Shape_Density(a, b);
-	}
-	else
-	{
-		throw new Error();
-	}
+box2d.b2Body.prototype.CreateFixture = function(a, b) {
+  if (a instanceof box2d.b2FixtureDef) {
+    return this.CreateFixture_Def(a);
+  } else if ((a instanceof box2d.b2Shape) && (typeof(b) === 'number')) {
+    return this.CreateFixture_Shape_Density(a, b);
+  } else {
+    throw new Error();
+  }
 }
 
 /** 
@@ -507,40 +504,38 @@ box2d.b2Body.prototype.CreateFixture = function (a, b)
  * @return {box2d.b2Fixture}
  * @param {box2d.b2FixtureDef} def the fixture definition.
  */
-box2d.b2Body.prototype.CreateFixture_Def = function (def)
-{
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(!this.m_world.IsLocked()); }
-	if (this.m_world.IsLocked())
-	{
-		return null;
-	}
+box2d.b2Body.prototype.CreateFixture_Def = function(def) {
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(!this.m_world.IsLocked());
+  }
+  if (this.m_world.IsLocked()) {
+    return null;
+  }
 
-	var fixture = new box2d.b2Fixture();
-	fixture.Create(this, def);
+  var fixture = new box2d.b2Fixture();
+  fixture.Create(this, def);
 
-	if (this.m_flag_activeFlag)
-	{
-		var broadPhase = this.m_world.m_contactManager.m_broadPhase;
-		fixture.CreateProxies(broadPhase, this.m_xf);
-	}
+  if (this.m_flag_activeFlag) {
+    var broadPhase = this.m_world.m_contactManager.m_broadPhase;
+    fixture.CreateProxies(broadPhase, this.m_xf);
+  }
 
-	fixture.m_next = this.m_fixtureList;
-	this.m_fixtureList = fixture;
-	++this.m_fixtureCount;
+  fixture.m_next = this.m_fixtureList;
+  this.m_fixtureList = fixture;
+  ++this.m_fixtureCount;
 
-	fixture.m_body = this;
+  fixture.m_body = this;
 
-	// Adjust mass properties if needed.
-	if (fixture.m_density > 0)
-	{
-		this.ResetMassData();
-	}
+  // Adjust mass properties if needed.
+  if (fixture.m_density > 0) {
+    this.ResetMassData();
+  }
 
-	// Let the world know we have a new fixture. This will cause new contacts
-	// to be created at the beginning of the next time step.
-	this.m_world.m_flag_newFixture = true;
+  // Let the world know we have a new fixture. This will cause new contacts
+  // to be created at the beginning of the next time step.
+  this.m_world.m_flag_newFixture = true;
 
-	return fixture;
+  return fixture;
 }
 
 /** 
@@ -556,14 +551,13 @@ box2d.b2Body.prototype.CreateFixture_Def = function (def)
  * @param {box2d.b2Shape} shape the shape to be cloned.
  * @param {number} density the shape density (set to zero for static bodies).
  */
-box2d.b2Body.prototype.CreateFixture_Shape_Density = function (shape, density)
-{
-	density = (typeof(density) === 'number')?(density):(0);
+box2d.b2Body.prototype.CreateFixture_Shape_Density = function(shape, density) {
+  density = (typeof(density) === 'number') ? (density) : (0);
 
-	var def = box2d.b2Body.prototype.CreateFixture_Shape_Density.s_def;
-	def.shape = shape;
-	def.density = density;
-	return this.CreateFixture_Def(def);
+  var def = box2d.b2Body.prototype.CreateFixture_Shape_Density.s_def;
+  def.shape = shape;
+  def.density = density;
+  return this.CreateFixture_Def(def);
 }
 box2d.b2Body.prototype.CreateFixture_Shape_Density.s_def = new box2d.b2FixtureDef();
 
@@ -579,72 +573,73 @@ box2d.b2Body.prototype.CreateFixture_Shape_Density.s_def = new box2d.b2FixtureDe
  * @return {void} 
  * @param {box2d.b2Fixture} fixture the fixture to be removed.
  */
-box2d.b2Body.prototype.DestroyFixture = function (fixture)
-{
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(!this.m_world.IsLocked()); }
-	if (this.m_world.IsLocked())
-	{
-		return;
-	}
+box2d.b2Body.prototype.DestroyFixture = function(fixture) {
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(!this.m_world.IsLocked());
+  }
+  if (this.m_world.IsLocked()) {
+    return;
+  }
 
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(fixture.m_body === this); }
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(fixture.m_body === this);
+  }
 
-	// Remove the fixture from this body's singly linked list.
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(this.m_fixtureCount > 0); }
-	var node = this.m_fixtureList;
-	var ppF = null;
-	var found = false;
-	while (node !== null)
-	{
-		if (node === fixture)
-		{
-			if (ppF)
-				ppF.m_next = fixture.m_next;
-			else
-				this.m_fixtureList = fixture.m_next;
-			found = true;
-			break;
-		}
+  // Remove the fixture from this body's singly linked list.
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(this.m_fixtureCount > 0);
+  }
+  var node = this.m_fixtureList;
+  var ppF = null;
+  var found = false;
+  while (node !== null) {
+    if (node === fixture) {
+      if (ppF)
+        ppF.m_next = fixture.m_next;
+      else
+        this.m_fixtureList = fixture.m_next;
+      found = true;
+      break;
+    }
 
-		ppF = node;
-		node = node.m_next;
-	}
+    ppF = node;
+    node = node.m_next;
+  }
 
-	// You tried to remove a shape that is not attached to this body.
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(found); }
+  // You tried to remove a shape that is not attached to this body.
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(found);
+  }
 
-	// Destroy any contacts associated with the fixture.
-	var edge = this.m_contactList;
-	while (edge)
-	{
-		var c = edge.contact;
-		edge = edge.next;
+  // Destroy any contacts associated with the fixture.
+  var edge = this.m_contactList;
+  while (edge) {
+    var c = edge.contact;
+    edge = edge.next;
 
-		var fixtureA = c.GetFixtureA();
-		var fixtureB = c.GetFixtureB();
+    var fixtureA = c.GetFixtureA();
+    var fixtureB = c.GetFixtureB();
 
-		if (fixture === fixtureA || fixture === fixtureB)
-		{
-			// This destroys the contact and removes it from
-			// this body's contact list.
-			this.m_world.m_contactManager.Destroy(c);
-		}
-	}
+    if (fixture === fixtureA || fixture === fixtureB) {
+      // This destroys the contact and removes it from
+      // this body's contact list.
+      this.m_world.m_contactManager.Destroy(c);
+    }
+  }
 
-	if (this.m_flag_activeFlag)
-	{
-		var broadPhase = this.m_world.m_contactManager.m_broadPhase;
-		fixture.DestroyProxies(broadPhase);
-	}
+  if (this.m_flag_activeFlag) {
+    var broadPhase = this.m_world.m_contactManager.m_broadPhase;
+    fixture.DestroyProxies(broadPhase);
+  }
 
-	fixture.Destroy();
-	fixture.m_body = null;
-	fixture.m_next = null;
+  fixture.Destroy();
+  fixture.m_body = null;
+  fixture.m_next = null;
 
-	--this.m_fixtureCount;
+  --this.m_fixtureCount;
 
-	// Reset the mass data.
-	this.ResetMassData();
+  // Reset the mass data.
+  this.ResetMassData();
 }
 
 /** 
@@ -654,24 +649,16 @@ box2d.b2Body.prototype.DestroyFixture = function (fixture)
  * @param {number=} b
  * @param {number=} c
  */
-box2d.b2Body.prototype.SetTransform = function (a, b, c)
-{
-	if ((a instanceof box2d.b2Vec2) && (typeof(b) === 'number'))
-	{
-		this.SetTransform_X_Y_A(a.x, a.y, b);
-	}
-	else if (a instanceof box2d.b2Transform)
-	{
-		this.SetTransform_X_Y_A(a.p.x, a.p.y, a.GetAngle());
-	}
-	else if ((typeof(a) === 'number') && (typeof(b) === 'number') && (typeof(c) === 'number'))
-	{
-		this.SetTransform_X_Y_A(a, b, c);		
-	}
-	else
-	{
-		throw new Error();
-	}
+box2d.b2Body.prototype.SetTransform = function(a, b, c) {
+  if ((a instanceof box2d.b2Vec2) && (typeof(b) === 'number')) {
+    this.SetTransform_X_Y_A(a.x, a.y, b);
+  } else if (a instanceof box2d.b2Transform) {
+    this.SetTransform_X_Y_A(a.p.x, a.p.y, a.GetAngle());
+  } else if ((typeof(a) === 'number') && (typeof(b) === 'number') && (typeof(c) === 'number')) {
+    this.SetTransform_X_Y_A(a, b, c);
+  } else {
+    throw new Error();
+  }
 }
 
 /** 
@@ -684,9 +671,8 @@ box2d.b2Body.prototype.SetTransform = function (a, b, c)
  * @param {box2d.b2Vec2} position the world position of the body's local origin.
  * @param {number} angle the world rotation in radians.
  */
-box2d.b2Body.prototype.SetTransform_V2_A = function (position, angle)
-{
-	this.SetTransform_X_Y_A(position.x, position.y, angle);
+box2d.b2Body.prototype.SetTransform_V2_A = function(position, angle) {
+  this.SetTransform_X_Y_A(position.x, position.y, angle);
 }
 
 /**
@@ -696,38 +682,36 @@ box2d.b2Body.prototype.SetTransform_V2_A = function (position, angle)
  * @param {number} y 
  * @param {number} angle 
  */
-box2d.b2Body.prototype.SetTransform_X_Y_A = function (x, y, angle)
-{
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(!this.m_world.IsLocked()); }
-	if (this.m_world.IsLocked())
-	{
-		return;
-	}
+box2d.b2Body.prototype.SetTransform_X_Y_A = function(x, y, angle) {
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(!this.m_world.IsLocked());
+  }
+  if (this.m_world.IsLocked()) {
+    return;
+  }
 
-	if ((this.m_xf.p.x === x) && 
-		(this.m_xf.p.y === y) && 
-		(this.m_xf.q.GetAngle()) === angle)
-	{
-		return;
-	}
+  if ((this.m_xf.p.x === x) &&
+    (this.m_xf.p.y === y) &&
+    (this.m_xf.q.GetAngle()) === angle) {
+    return;
+  }
 
-	this.m_xf.q.SetAngle(angle);
-	this.m_xf.p.Set(x, y);
-//#if B2_ENABLE_PARTICLE
-	this.m_xf0.Copy(this.m_xf);
-//#endif
+  this.m_xf.q.SetAngle(angle);
+  this.m_xf.p.Set(x, y);
+  //#if B2_ENABLE_PARTICLE
+  this.m_xf0.Copy(this.m_xf);
+  //#endif
 
-	box2d.b2Mul_X_V2(this.m_xf, this.m_sweep.localCenter, this.m_sweep.c);
-	this.m_sweep.a = angle;
+  box2d.b2Mul_X_V2(this.m_xf, this.m_sweep.localCenter, this.m_sweep.c);
+  this.m_sweep.a = angle;
 
-	this.m_sweep.c0.Copy(this.m_sweep.c);
-	this.m_sweep.a0 = angle;
+  this.m_sweep.c0.Copy(this.m_sweep.c);
+  this.m_sweep.a0 = angle;
 
-	var broadPhase = this.m_world.m_contactManager.m_broadPhase;
-	for (var f = this.m_fixtureList; f; f = f.m_next)
-	{
-		f.Synchronize(broadPhase, this.m_xf, this.m_xf);
-	}
+  var broadPhase = this.m_world.m_contactManager.m_broadPhase;
+  for (var f = this.m_fixtureList; f; f = f.m_next) {
+    f.Synchronize(broadPhase, this.m_xf, this.m_xf);
+  }
 }
 
 /**
@@ -735,9 +719,8 @@ box2d.b2Body.prototype.SetTransform_X_Y_A = function (x, y, angle)
  * @return {void} 
  * @param {box2d.b2Transform} xf 
  */
-box2d.b2Body.prototype.SetTransform_X = function (xf)
-{
-	this.SetTransform_X_Y_A(xf.p.x, xf.p.y, xf.GetAngle());
+box2d.b2Body.prototype.SetTransform_X = function(xf) {
+  this.SetTransform_X_Y_A(xf.p.x, xf.p.y, xf.GetAngle());
 }
 
 /** 
@@ -746,10 +729,9 @@ box2d.b2Body.prototype.SetTransform_X = function (xf)
  * @return {box2d.b2Transform} the world transform of the body's origin.
  * @param {box2d.b2Transform=} out 
  */
-box2d.b2Body.prototype.GetTransform = function (out)
-{
-	out = out || this.m_out_xf;
-	return out.Copy(this.m_xf);
+box2d.b2Body.prototype.GetTransform = function(out) {
+  out = out || this.m_out_xf;
+  return out.Copy(this.m_xf);
 }
 
 /** 
@@ -758,10 +740,9 @@ box2d.b2Body.prototype.GetTransform = function (out)
  * @return {box2d.b2Vec2} the world position of the body's origin.
  * @param {box2d.b2Vec2=} out 
  */
-box2d.b2Body.prototype.GetPosition = function (out)
-{
-	out = out || this.m_out_xf.p;
-	return out.Copy(this.m_xf.p);
+box2d.b2Body.prototype.GetPosition = function(out) {
+  out = out || this.m_out_xf.p;
+  return out.Copy(this.m_xf.p);
 }
 
 /**
@@ -769,9 +750,8 @@ box2d.b2Body.prototype.GetPosition = function (out)
  * @return {void} 
  * @param {box2d.b2Vec2} position 
  */
-box2d.b2Body.prototype.SetPosition = function (position)
-{
-	this.SetTransform_V2_A(position, this.GetAngle());
+box2d.b2Body.prototype.SetPosition = function(position) {
+  this.SetTransform_V2_A(position, this.GetAngle());
 }
 
 /**
@@ -780,9 +760,8 @@ box2d.b2Body.prototype.SetPosition = function (position)
  * @param {number} x
  * @param {number} y 
  */
-box2d.b2Body.prototype.SetPositionXY = function (x, y)
-{
-	this.SetTransform_X_Y_A(x, y, this.GetAngle());
+box2d.b2Body.prototype.SetPositionXY = function(x, y) {
+  this.SetTransform_X_Y_A(x, y, this.GetAngle());
 }
 
 /** 
@@ -791,10 +770,9 @@ box2d.b2Body.prototype.SetPositionXY = function (x, y)
  * @return {box2d.b2Rot} the world rotation of the body's origin.
  * @param {box2d.b2Rot=} out 
  */
-box2d.b2Body.prototype.GetRotation = function (out)
-{
-	out = out || this.m_out_xf.q;
-	return out.Copy(this.m_xf.q);
+box2d.b2Body.prototype.GetRotation = function(out) {
+  out = out || this.m_out_xf.q;
+  return out.Copy(this.m_xf.q);
 }
 
 /**
@@ -802,9 +780,8 @@ box2d.b2Body.prototype.GetRotation = function (out)
  * @return {void} 
  * @param {box2d.b2Rot} rotation 
  */
-box2d.b2Body.prototype.SetRotation = function (rotation)
-{
-	this.SetTransform_V2_A(this.GetPosition(), rotation.GetAngle());
+box2d.b2Body.prototype.SetRotation = function(rotation) {
+  this.SetTransform_V2_A(this.GetPosition(), rotation.GetAngle());
 }
 
 /** 
@@ -812,9 +789,8 @@ box2d.b2Body.prototype.SetRotation = function (rotation)
  * @export 
  * @return {number} the current world rotation angle in radians.
  */
-box2d.b2Body.prototype.GetAngle = function ()
-{
-	return this.m_sweep.a;
+box2d.b2Body.prototype.GetAngle = function() {
+  return this.m_sweep.a;
 }
 
 /**
@@ -822,9 +798,8 @@ box2d.b2Body.prototype.GetAngle = function ()
  * @return {void} 
  * @param {number} angle 
  */
-box2d.b2Body.prototype.SetAngle = function (angle)
-{
-	this.SetTransform_V2_A(this.GetPosition(), angle);
+box2d.b2Body.prototype.SetAngle = function(angle) {
+  this.SetTransform_V2_A(this.GetPosition(), angle);
 }
 
 /** 
@@ -833,10 +808,9 @@ box2d.b2Body.prototype.SetAngle = function (angle)
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2=} out 
  */
-box2d.b2Body.prototype.GetWorldCenter = function (out)
-{
-	out = out || this.m_out_sweep.c;
-	return out.Copy(this.m_sweep.c);
+box2d.b2Body.prototype.GetWorldCenter = function(out) {
+  out = out || this.m_out_sweep.c;
+  return out.Copy(this.m_sweep.c);
 }
 
 /** 
@@ -845,10 +819,9 @@ box2d.b2Body.prototype.GetWorldCenter = function (out)
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2=} out 
  */
-box2d.b2Body.prototype.GetLocalCenter = function (out)
-{
-	out = out || this.m_out_sweep.localCenter;
-	return out.Copy(this.m_sweep.localCenter);
+box2d.b2Body.prototype.GetLocalCenter = function(out) {
+  out = out || this.m_out_sweep.localCenter;
+  return out.Copy(this.m_sweep.localCenter);
 }
 
 /** 
@@ -857,19 +830,16 @@ box2d.b2Body.prototype.GetLocalCenter = function (out)
  * @return {void} 
  * @param {box2d.b2Vec2} v the new linear velocity of the center of mass.
  */
-box2d.b2Body.prototype.SetLinearVelocity = function (v)
-{
-	if (this.m_type === box2d.b2BodyType.b2_staticBody)
-	{
-		return;
-	}
+box2d.b2Body.prototype.SetLinearVelocity = function(v) {
+  if (this.m_type === box2d.b2BodyType.b2_staticBody) {
+    return;
+  }
 
-	if (box2d.b2Dot_V2_V2(v,v) > 0)
-	{
-		this.SetAwake(true);
-	}
+  if (box2d.b2Dot_V2_V2(v, v) > 0) {
+    this.SetAwake(true);
+  }
 
-	this.m_linearVelocity.Copy(v);
+  this.m_linearVelocity.Copy(v);
 }
 
 /** 
@@ -878,10 +848,9 @@ box2d.b2Body.prototype.SetLinearVelocity = function (v)
  * @return {box2d.b2Vec2} the linear velocity of the center of mass.
  * @param {box2d.b2Vec2=} out 
  */
-box2d.b2Body.prototype.GetLinearVelocity = function (out)
-{
-	out = out || this.m_out_linearVelocity;
-	return out.Copy(this.m_linearVelocity);
+box2d.b2Body.prototype.GetLinearVelocity = function(out) {
+  out = out || this.m_out_linearVelocity;
+  return out.Copy(this.m_linearVelocity);
 }
 
 /** 
@@ -890,19 +859,16 @@ box2d.b2Body.prototype.GetLinearVelocity = function (out)
  * @return {void} 
  * @param {number} w the new angular velocity in radians/second.
  */
-box2d.b2Body.prototype.SetAngularVelocity = function (w)
-{
-	if (this.m_type === box2d.b2BodyType.b2_staticBody)
-	{
-		return;
-	}
+box2d.b2Body.prototype.SetAngularVelocity = function(w) {
+  if (this.m_type === box2d.b2BodyType.b2_staticBody) {
+    return;
+  }
 
-	if (w * w > 0)
-	{
-		this.SetAwake(true);
-	}
+  if (w * w > 0) {
+    this.SetAwake(true);
+  }
 
-	this.m_angularVelocity = w;
+  this.m_angularVelocity = w;
 }
 
 /** 
@@ -910,9 +876,8 @@ box2d.b2Body.prototype.SetAngularVelocity = function (w)
  * @export 
  * @return {number} the angular velocity in radians/second.
  */
-box2d.b2Body.prototype.GetAngularVelocity = function ()
-{
-	return this.m_angularVelocity;
+box2d.b2Body.prototype.GetAngularVelocity = function() {
+  return this.m_angularVelocity;
 }
 
 /**
@@ -920,22 +885,21 @@ box2d.b2Body.prototype.GetAngularVelocity = function ()
  * @return {box2d.b2BodyDef} 
  * @param {box2d.b2BodyDef} bd
  */
-box2d.b2Body.prototype.GetDefinition = function (bd)
-{
-	bd.type = this.GetType();
-	bd.allowSleep = this.m_flag_autoSleepFlag;
-	bd.angle = this.GetAngle();
-	bd.angularDamping = this.m_angularDamping;
-	bd.gravityScale = this.m_gravityScale;
-	bd.angularVelocity = this.m_angularVelocity;
-	bd.fixedRotation = this.m_flag_fixedRotationFlag;
-	bd.bullet = this.m_flag_bulletFlag;
-	bd.awake = this.m_flag_awakeFlag;
-	bd.linearDamping = this.m_linearDamping;
-	bd.linearVelocity.Copy(this.GetLinearVelocity());
-	bd.position.Copy(this.GetPosition());
-	bd.userData = this.GetUserData();
-	return bd;
+box2d.b2Body.prototype.GetDefinition = function(bd) {
+  bd.type = this.GetType();
+  bd.allowSleep = this.m_flag_autoSleepFlag;
+  bd.angle = this.GetAngle();
+  bd.angularDamping = this.m_angularDamping;
+  bd.gravityScale = this.m_gravityScale;
+  bd.angularVelocity = this.m_angularVelocity;
+  bd.fixedRotation = this.m_flag_fixedRotationFlag;
+  bd.bullet = this.m_flag_bulletFlag;
+  bd.awake = this.m_flag_awakeFlag;
+  bd.linearDamping = this.m_linearDamping;
+  bd.linearVelocity.Copy(this.GetLinearVelocity());
+  bd.position.Copy(this.GetPosition());
+  bd.userData = this.GetUserData();
+  return bd;
 }
 
 /** 
@@ -948,27 +912,23 @@ box2d.b2Body.prototype.GetDefinition = function (bd)
  * @param {box2d.b2Vec2} point the world position of the point of application. 
  * @param {boolean=} wake also wake up the body 
  */
-box2d.b2Body.prototype.ApplyForce = function (force, point, wake)
-{
-	wake = wake || true;
+box2d.b2Body.prototype.ApplyForce = function(force, point, wake) {
+  wake = wake || true;
 
-	if (this.m_type !== box2d.b2BodyType.b2_dynamicBody)
-	{
-		return;
-	}
+  if (this.m_type !== box2d.b2BodyType.b2_dynamicBody) {
+    return;
+  }
 
-	if (wake && !this.m_flag_awakeFlag)
-	{
-		this.SetAwake(true);
-	}
+  if (wake && !this.m_flag_awakeFlag) {
+    this.SetAwake(true);
+  }
 
-	// Don't accumulate a force if the body is sleeping.
-	if (this.m_flag_awakeFlag)
-	{
-		this.m_force.x += force.x;
-		this.m_force.y += force.y;
-		this.m_torque += ((point.x - this.m_sweep.c.x) * force.y - (point.y - this.m_sweep.c.y) * force.x);
-	}
+  // Don't accumulate a force if the body is sleeping.
+  if (this.m_flag_awakeFlag) {
+    this.m_force.x += force.x;
+    this.m_force.y += force.y;
+    this.m_torque += ((point.x - this.m_sweep.c.x) * force.y - (point.y - this.m_sweep.c.y) * force.x);
+  }
 }
 
 /** 
@@ -978,26 +938,22 @@ box2d.b2Body.prototype.ApplyForce = function (force, point, wake)
  * @param {box2d.b2Vec2} force the world force vector, usually in Newtons (N).
  * @param {boolean=} wake also wake up the body 
  */
-box2d.b2Body.prototype.ApplyForceToCenter = function (force, wake)
-{
-	wake = (typeof(wake) === 'boolean')?(wake):(true);
+box2d.b2Body.prototype.ApplyForceToCenter = function(force, wake) {
+  wake = (typeof(wake) === 'boolean') ? (wake) : (true);
 
-	if (this.m_type !== box2d.b2BodyType.b2_dynamicBody)
-	{
-		return;
-	}
+  if (this.m_type !== box2d.b2BodyType.b2_dynamicBody) {
+    return;
+  }
 
-	if (wake && !this.m_flag_awakeFlag)
-	{
-		this.SetAwake(true);
-	}
+  if (wake && !this.m_flag_awakeFlag) {
+    this.SetAwake(true);
+  }
 
-	// Don't accumulate a force if the body is sleeping.
-	if (this.m_flag_awakeFlag)
-	{
-		this.m_force.x += force.x;
-		this.m_force.y += force.y;
-	}
+  // Don't accumulate a force if the body is sleeping.
+  if (this.m_flag_awakeFlag) {
+    this.m_force.x += force.x;
+    this.m_force.y += force.y;
+  }
 }
 
 /** 
@@ -1009,25 +965,21 @@ box2d.b2Body.prototype.ApplyForceToCenter = function (force, wake)
  * @param {number} torque about the z-axis (out of the screen), usually in N-m.
  * @param {boolean=} wake also wake up the body 
  */
-box2d.b2Body.prototype.ApplyTorque = function (torque, wake)
-{
-	wake = (typeof(wake) === 'boolean')?(wake):(true);
+box2d.b2Body.prototype.ApplyTorque = function(torque, wake) {
+  wake = (typeof(wake) === 'boolean') ? (wake) : (true);
 
-	if (this.m_type !== box2d.b2BodyType.b2_dynamicBody)
-	{
-		return;
-	}
+  if (this.m_type !== box2d.b2BodyType.b2_dynamicBody) {
+    return;
+  }
 
-	if (wake && !this.m_flag_awakeFlag)
-	{
-		this.SetAwake(true);
-	}
+  if (wake && !this.m_flag_awakeFlag) {
+    this.SetAwake(true);
+  }
 
-	// Don't accumulate a force if the body is sleeping.
-	if (this.m_flag_awakeFlag)
-	{
-		this.m_torque += torque;
-	}
+  // Don't accumulate a force if the body is sleeping.
+  if (this.m_flag_awakeFlag) {
+    this.m_torque += torque;
+  }
 }
 
 /** 
@@ -1041,27 +993,23 @@ box2d.b2Body.prototype.ApplyTorque = function (torque, wake)
  * @param {box2d.b2Vec2} point the world position of the point of application.
  * @param {boolean=} wake also wake up the body 
  */
-box2d.b2Body.prototype.ApplyLinearImpulse = function (impulse, point, wake)
-{
-	wake = (typeof(wake) === 'boolean')?(wake):(true);
+box2d.b2Body.prototype.ApplyLinearImpulse = function(impulse, point, wake) {
+  wake = (typeof(wake) === 'boolean') ? (wake) : (true);
 
-	if (this.m_type !== box2d.b2BodyType.b2_dynamicBody)
-	{
-		return;
-	}
+  if (this.m_type !== box2d.b2BodyType.b2_dynamicBody) {
+    return;
+  }
 
-	if (wake && !this.m_flag_awakeFlag)
-	{
-		this.SetAwake(true);
-	}
+  if (wake && !this.m_flag_awakeFlag) {
+    this.SetAwake(true);
+  }
 
-	// Don't accumulate a force if the body is sleeping.
-	if (this.m_flag_awakeFlag)
-	{
-		this.m_linearVelocity.x += this.m_invMass * impulse.x;
-		this.m_linearVelocity.y += this.m_invMass * impulse.y;
-		this.m_angularVelocity += this.m_invI * ((point.x - this.m_sweep.c.x) * impulse.y - (point.y - this.m_sweep.c.y) * impulse.x);
-	}
+  // Don't accumulate a force if the body is sleeping.
+  if (this.m_flag_awakeFlag) {
+    this.m_linearVelocity.x += this.m_invMass * impulse.x;
+    this.m_linearVelocity.y += this.m_invMass * impulse.y;
+    this.m_angularVelocity += this.m_invI * ((point.x - this.m_sweep.c.x) * impulse.y - (point.y - this.m_sweep.c.y) * impulse.x);
+  }
 }
 
 /** 
@@ -1071,26 +1019,22 @@ box2d.b2Body.prototype.ApplyLinearImpulse = function (impulse, point, wake)
  * @param {box2d.b2Vec2} impulse the world impulse vector, usually in N-seconds or kg-m/s.
  * @param {boolean=} wake also wake up the body 
  */
-box2d.b2Body.prototype.ApplyLinearImpulseToCenter = function (impulse, wake)
-{
-	wake = (typeof(wake) === 'boolean')?(wake):(true);
+box2d.b2Body.prototype.ApplyLinearImpulseToCenter = function(impulse, wake) {
+  wake = (typeof(wake) === 'boolean') ? (wake) : (true);
 
-	if (this.m_type !== box2d.b2BodyType.b2_dynamicBody)
-	{
-		return;
-	}
+  if (this.m_type !== box2d.b2BodyType.b2_dynamicBody) {
+    return;
+  }
 
-	if (wake && !this.m_flag_awakeFlag)
-	{
-		this.SetAwake(true);
-	}
+  if (wake && !this.m_flag_awakeFlag) {
+    this.SetAwake(true);
+  }
 
-	// Don't accumulate a force if the body is sleeping.
-	if (this.m_flag_awakeFlag)
-	{
-		this.m_linearVelocity.x += this.m_invMass * impulse.x;
-		this.m_linearVelocity.y += this.m_invMass * impulse.y;
-	}
+  // Don't accumulate a force if the body is sleeping.
+  if (this.m_flag_awakeFlag) {
+    this.m_linearVelocity.x += this.m_invMass * impulse.x;
+    this.m_linearVelocity.y += this.m_invMass * impulse.y;
+  }
 }
 
 /** 
@@ -1100,25 +1044,21 @@ box2d.b2Body.prototype.ApplyLinearImpulseToCenter = function (impulse, wake)
  * @param {number} impulse the angular impulse in units of kg*m*m/s
  * @param {boolean=} wake also wake up the body 
  */
-box2d.b2Body.prototype.ApplyAngularImpulse = function (impulse, wake)
-{
-	wake = (typeof(wake) === 'boolean')?(wake):(true);
+box2d.b2Body.prototype.ApplyAngularImpulse = function(impulse, wake) {
+  wake = (typeof(wake) === 'boolean') ? (wake) : (true);
 
-	if (this.m_type !== box2d.b2BodyType.b2_dynamicBody)
-	{
-		return;
-	}
+  if (this.m_type !== box2d.b2BodyType.b2_dynamicBody) {
+    return;
+  }
 
-	if (wake && !this.m_flag_awakeFlag)
-	{
-		this.SetAwake(true);
-	}
+  if (wake && !this.m_flag_awakeFlag) {
+    this.SetAwake(true);
+  }
 
-	// Don't accumulate a force if the body is sleeping.
-	if (this.m_flag_awakeFlag)
-	{
-		this.m_angularVelocity += this.m_invI * impulse;
-	}
+  // Don't accumulate a force if the body is sleeping.
+  if (this.m_flag_awakeFlag) {
+    this.m_angularVelocity += this.m_invI * impulse;
+  }
 }
 
 /** 
@@ -1126,9 +1066,8 @@ box2d.b2Body.prototype.ApplyAngularImpulse = function (impulse, wake)
  * @export 
  * @return {number} the mass, usually in kilograms (kg).
  */
-box2d.b2Body.prototype.GetMass = function ()
-{
-	return this.m_mass;
+box2d.b2Body.prototype.GetMass = function() {
+  return this.m_mass;
 }
 
 /** 
@@ -1137,9 +1076,8 @@ box2d.b2Body.prototype.GetMass = function ()
  * @export 
  * @return {number} the rotational inertia, usually in kg-m^2.
  */
-box2d.b2Body.prototype.GetInertia = function ()
-{
-	return this.m_I + this.m_mass * box2d.b2Dot_V2_V2(this.m_sweep.localCenter, this.m_sweep.localCenter);
+box2d.b2Body.prototype.GetInertia = function() {
+  return this.m_I + this.m_mass * box2d.b2Dot_V2_V2(this.m_sweep.localCenter, this.m_sweep.localCenter);
 }
 
 /** 
@@ -1148,12 +1086,11 @@ box2d.b2Body.prototype.GetInertia = function ()
  * @return {box2d.b2MassData} a struct containing the mass, inertia and center of the body.
  * @param {box2d.b2MassData} data
  */
-box2d.b2Body.prototype.GetMassData = function (data)
-{
-	data.mass = this.m_mass;
-	data.I = this.m_I + this.m_mass * box2d.b2Dot_V2_V2(this.m_sweep.localCenter, this.m_sweep.localCenter);
-	data.center.Copy(this.m_sweep.localCenter);
-	return data;
+box2d.b2Body.prototype.GetMassData = function(data) {
+  data.mass = this.m_mass;
+  data.I = this.m_I + this.m_mass * box2d.b2Dot_V2_V2(this.m_sweep.localCenter, this.m_sweep.localCenter);
+  data.center.Copy(this.m_sweep.localCenter);
+  return data;
 }
 
 /** 
@@ -1167,46 +1104,45 @@ box2d.b2Body.prototype.GetMassData = function (data)
  * @return {void} 
  * @param {box2d.b2MassData} massData the mass properties.
  */
-box2d.b2Body.prototype.SetMassData = function (massData)
-{
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(!this.m_world.IsLocked()); }
-	if (this.m_world.IsLocked())
-	{
-		return;
-	}
+box2d.b2Body.prototype.SetMassData = function(massData) {
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(!this.m_world.IsLocked());
+  }
+  if (this.m_world.IsLocked()) {
+    return;
+  }
 
-	if (this.m_type !== box2d.b2BodyType.b2_dynamicBody)
-	{
-		return;
-	}
+  if (this.m_type !== box2d.b2BodyType.b2_dynamicBody) {
+    return;
+  }
 
-	this.m_invMass = 0;
-	this.m_I = 0;
-	this.m_invI = 0;
+  this.m_invMass = 0;
+  this.m_I = 0;
+  this.m_invI = 0;
 
-	this.m_mass = massData.mass;
-	if (this.m_mass <= 0)
-	{
-		this.m_mass = 1;
-	}
+  this.m_mass = massData.mass;
+  if (this.m_mass <= 0) {
+    this.m_mass = 1;
+  }
 
-	this.m_invMass = 1 / this.m_mass;
+  this.m_invMass = 1 / this.m_mass;
 
-	if (massData.I > 0 && !this.m_flag_fixedRotationFlag)
-	{
-		this.m_I = massData.I - this.m_mass * box2d.b2Dot_V2_V2(massData.center, massData.center);
-		if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(this.m_I > 0); }
-		this.m_invI = 1 / this.m_I;
-	}
+  if (massData.I > 0 && !this.m_flag_fixedRotationFlag) {
+    this.m_I = massData.I - this.m_mass * box2d.b2Dot_V2_V2(massData.center, massData.center);
+    if (box2d.ENABLE_ASSERTS) {
+      box2d.b2Assert(this.m_I > 0);
+    }
+    this.m_invI = 1 / this.m_I;
+  }
 
-	// Move center of mass.
-	var oldCenter = box2d.b2Body.prototype.SetMassData.s_oldCenter.Copy(this.m_sweep.c);
-	this.m_sweep.localCenter.Copy(massData.center);
-	box2d.b2Mul_X_V2(this.m_xf, this.m_sweep.localCenter, this.m_sweep.c);
-	this.m_sweep.c0.Copy(this.m_sweep.c);
+  // Move center of mass.
+  var oldCenter = box2d.b2Body.prototype.SetMassData.s_oldCenter.Copy(this.m_sweep.c);
+  this.m_sweep.localCenter.Copy(massData.center);
+  box2d.b2Mul_X_V2(this.m_xf, this.m_sweep.localCenter, this.m_sweep.c);
+  this.m_sweep.c0.Copy(this.m_sweep.c);
 
-	// Update center of mass velocity.
-	box2d.b2AddCross_V2_S_V2(this.m_linearVelocity, this.m_angularVelocity, box2d.b2Sub_V2_V2(this.m_sweep.c, oldCenter, box2d.b2Vec2.s_t0), this.m_linearVelocity);
+  // Update center of mass velocity.
+  box2d.b2AddCross_V2_S_V2(this.m_linearVelocity, this.m_angularVelocity, box2d.b2Sub_V2_V2(this.m_sweep.c, oldCenter, box2d.b2Vec2.s_t0), this.m_linearVelocity);
 }
 box2d.b2Body.prototype.SetMassData.s_oldCenter = new box2d.b2Vec2();
 
@@ -1218,77 +1154,71 @@ box2d.b2Body.prototype.SetMassData.s_oldCenter = new box2d.b2Vec2();
  * @export 
  * @return {void} 
  */
-box2d.b2Body.prototype.ResetMassData = function ()
-{
-	// Compute mass data from shapes. Each shape has its own density.
-	this.m_mass = 0;
-	this.m_invMass = 0;
-	this.m_I = 0;
-	this.m_invI = 0;
-	this.m_sweep.localCenter.SetZero();
+box2d.b2Body.prototype.ResetMassData = function() {
+  // Compute mass data from shapes. Each shape has its own density.
+  this.m_mass = 0;
+  this.m_invMass = 0;
+  this.m_I = 0;
+  this.m_invI = 0;
+  this.m_sweep.localCenter.SetZero();
 
-	// Static and kinematic bodies have zero mass.
-	if (this.m_type === box2d.b2BodyType.b2_staticBody || this.m_type === box2d.b2BodyType.b2_kinematicBody)
-	{
-		this.m_sweep.c0.Copy(this.m_xf.p);
-		this.m_sweep.c.Copy(this.m_xf.p);
-		this.m_sweep.a0 = this.m_sweep.a;
-		return;
-	}
+  // Static and kinematic bodies have zero mass.
+  if (this.m_type === box2d.b2BodyType.b2_staticBody || this.m_type === box2d.b2BodyType.b2_kinematicBody) {
+    this.m_sweep.c0.Copy(this.m_xf.p);
+    this.m_sweep.c.Copy(this.m_xf.p);
+    this.m_sweep.a0 = this.m_sweep.a;
+    return;
+  }
 
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(this.m_type === box2d.b2BodyType.b2_dynamicBody); }
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(this.m_type === box2d.b2BodyType.b2_dynamicBody);
+  }
 
-	// Accumulate mass over all fixtures.
-	var localCenter = box2d.b2Body.prototype.ResetMassData.s_localCenter.SetZero();
-	for (var f = this.m_fixtureList; f; f = f.m_next)
-	{
-		if (f.m_density === 0)
-		{
-			continue;
-		}
+  // Accumulate mass over all fixtures.
+  var localCenter = box2d.b2Body.prototype.ResetMassData.s_localCenter.SetZero();
+  for (var f = this.m_fixtureList; f; f = f.m_next) {
+    if (f.m_density === 0) {
+      continue;
+    }
 
-		var massData = f.GetMassData(box2d.b2Body.prototype.ResetMassData.s_massData);
-		this.m_mass += massData.mass;
-		localCenter.x += massData.center.x * massData.mass;
-		localCenter.y += massData.center.y * massData.mass;
-		this.m_I += massData.I;
-	}
+    var massData = f.GetMassData(box2d.b2Body.prototype.ResetMassData.s_massData);
+    this.m_mass += massData.mass;
+    localCenter.x += massData.center.x * massData.mass;
+    localCenter.y += massData.center.y * massData.mass;
+    this.m_I += massData.I;
+  }
 
-	// Compute center of mass.
-	if (this.m_mass > 0)
-	{
-		this.m_invMass = 1 / this.m_mass;
-		localCenter.x *= this.m_invMass;
-		localCenter.y *= this.m_invMass;
-	}
-	else
-	{
-		// Force all dynamic bodies to have a positive mass.
-		this.m_mass = 1;
-		this.m_invMass = 1;
-	}
+  // Compute center of mass.
+  if (this.m_mass > 0) {
+    this.m_invMass = 1 / this.m_mass;
+    localCenter.x *= this.m_invMass;
+    localCenter.y *= this.m_invMass;
+  } else {
+    // Force all dynamic bodies to have a positive mass.
+    this.m_mass = 1;
+    this.m_invMass = 1;
+  }
 
-	if (this.m_I > 0 && !this.m_flag_fixedRotationFlag)
-	{
-		// Center the inertia about the center of mass.
-		this.m_I -= this.m_mass * box2d.b2Dot_V2_V2(localCenter, localCenter);
-		if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(this.m_I > 0); }
-		this.m_invI = 1 / this.m_I;
-	}
-	else
-	{
-		this.m_I = 0;
-		this.m_invI = 0;
-	}
+  if (this.m_I > 0 && !this.m_flag_fixedRotationFlag) {
+    // Center the inertia about the center of mass.
+    this.m_I -= this.m_mass * box2d.b2Dot_V2_V2(localCenter, localCenter);
+    if (box2d.ENABLE_ASSERTS) {
+      box2d.b2Assert(this.m_I > 0);
+    }
+    this.m_invI = 1 / this.m_I;
+  } else {
+    this.m_I = 0;
+    this.m_invI = 0;
+  }
 
-	// Move center of mass.
-	var oldCenter = box2d.b2Body.prototype.ResetMassData.s_oldCenter.Copy(this.m_sweep.c);
-	this.m_sweep.localCenter.Copy(localCenter);
-	box2d.b2Mul_X_V2(this.m_xf, this.m_sweep.localCenter, this.m_sweep.c);
-	this.m_sweep.c0.Copy(this.m_sweep.c);
+  // Move center of mass.
+  var oldCenter = box2d.b2Body.prototype.ResetMassData.s_oldCenter.Copy(this.m_sweep.c);
+  this.m_sweep.localCenter.Copy(localCenter);
+  box2d.b2Mul_X_V2(this.m_xf, this.m_sweep.localCenter, this.m_sweep.c);
+  this.m_sweep.c0.Copy(this.m_sweep.c);
 
-	// Update center of mass velocity.
-	box2d.b2AddCross_V2_S_V2(this.m_linearVelocity, this.m_angularVelocity, box2d.b2Sub_V2_V2(this.m_sweep.c, oldCenter, box2d.b2Vec2.s_t0), this.m_linearVelocity);
+  // Update center of mass velocity.
+  box2d.b2AddCross_V2_S_V2(this.m_linearVelocity, this.m_angularVelocity, box2d.b2Sub_V2_V2(this.m_sweep.c, oldCenter, box2d.b2Vec2.s_t0), this.m_linearVelocity);
 }
 box2d.b2Body.prototype.ResetMassData.s_localCenter = new box2d.b2Vec2();
 box2d.b2Body.prototype.ResetMassData.s_oldCenter = new box2d.b2Vec2();
@@ -1302,9 +1232,8 @@ box2d.b2Body.prototype.ResetMassData.s_massData = new box2d.b2MassData();
  * @param {box2d.b2Vec2} localPoint a point on the body measured relative the the body's origin.
  * @param {box2d.b2Vec2} out 
  */
-box2d.b2Body.prototype.GetWorldPoint = function (localPoint, out)
-{
-	return box2d.b2Mul_X_V2(this.m_xf, localPoint, out);
+box2d.b2Body.prototype.GetWorldPoint = function(localPoint, out) {
+  return box2d.b2Mul_X_V2(this.m_xf, localPoint, out);
 }
 
 /** 
@@ -1315,9 +1244,8 @@ box2d.b2Body.prototype.GetWorldPoint = function (localPoint, out)
  * @param {box2d.b2Vec2} localVector a vector fixed in the body.
  * @param {box2d.b2Vec2} out 
  */
-box2d.b2Body.prototype.GetWorldVector = function (localVector, out)
-{
-	return box2d.b2Mul_R_V2(this.m_xf.q, localVector, out);
+box2d.b2Body.prototype.GetWorldVector = function(localVector, out) {
+  return box2d.b2Mul_R_V2(this.m_xf.q, localVector, out);
 }
 
 /** 
@@ -1328,9 +1256,8 @@ box2d.b2Body.prototype.GetWorldVector = function (localVector, out)
  * @param {box2d.b2Vec2} worldPoint a point in world coordinates.
  * @param {box2d.b2Vec2} out 
  */
-box2d.b2Body.prototype.GetLocalPoint = function (worldPoint, out)
-{
-	return box2d.b2MulT_X_V2(this.m_xf, worldPoint, out);
+box2d.b2Body.prototype.GetLocalPoint = function(worldPoint, out) {
+  return box2d.b2MulT_X_V2(this.m_xf, worldPoint, out);
 }
 
 /** 
@@ -1340,9 +1267,8 @@ box2d.b2Body.prototype.GetLocalPoint = function (worldPoint, out)
  * @param {box2d.b2Vec2} worldVector a vector in world coordinates.
  * @param {box2d.b2Vec2} out 
  */
-box2d.b2Body.prototype.GetLocalVector = function (worldVector, out)
-{
-	return box2d.b2MulT_R_V2(this.m_xf.q, worldVector, out);
+box2d.b2Body.prototype.GetLocalVector = function(worldVector, out) {
+  return box2d.b2MulT_R_V2(this.m_xf.q, worldVector, out);
 }
 
 /** 
@@ -1353,9 +1279,8 @@ box2d.b2Body.prototype.GetLocalVector = function (worldVector, out)
  * @param {box2d.b2Vec2} worldPoint a point in world coordinates.
  * @param {box2d.b2Vec2} out 
  */
-box2d.b2Body.prototype.GetLinearVelocityFromWorldPoint = function (worldPoint, out)
-{
-	return box2d.b2AddCross_V2_S_V2(this.m_linearVelocity, this.m_angularVelocity, box2d.b2Sub_V2_V2(worldPoint, this.m_sweep.c, box2d.b2Vec2.s_t0), out);
+box2d.b2Body.prototype.GetLinearVelocityFromWorldPoint = function(worldPoint, out) {
+  return box2d.b2AddCross_V2_S_V2(this.m_linearVelocity, this.m_angularVelocity, box2d.b2Sub_V2_V2(worldPoint, this.m_sweep.c, box2d.b2Vec2.s_t0), out);
 }
 
 /** 
@@ -1365,9 +1290,8 @@ box2d.b2Body.prototype.GetLinearVelocityFromWorldPoint = function (worldPoint, o
  * @param {box2d.b2Vec2} localPoint a point in local coordinates.
  * @param {box2d.b2Vec2} out 
  */
-box2d.b2Body.prototype.GetLinearVelocityFromLocalPoint = function (localPoint, out)
-{
-	return this.GetLinearVelocityFromWorldPoint(this.GetWorldPoint(localPoint, out), out);
+box2d.b2Body.prototype.GetLinearVelocityFromLocalPoint = function(localPoint, out) {
+  return this.GetLinearVelocityFromWorldPoint(this.GetWorldPoint(localPoint, out), out);
 }
 
 /** 
@@ -1375,9 +1299,8 @@ box2d.b2Body.prototype.GetLinearVelocityFromLocalPoint = function (localPoint, o
  * @export 
  * @return {number}
  */
-box2d.b2Body.prototype.GetLinearDamping = function ()
-{
-	return this.m_linearDamping;
+box2d.b2Body.prototype.GetLinearDamping = function() {
+  return this.m_linearDamping;
 }
 
 /** 
@@ -1385,9 +1308,8 @@ box2d.b2Body.prototype.GetLinearDamping = function ()
  * @export 
  * @param {number} linearDamping
  */
-box2d.b2Body.prototype.SetLinearDamping = function (linearDamping)
-{
-	this.m_linearDamping = linearDamping;
+box2d.b2Body.prototype.SetLinearDamping = function(linearDamping) {
+  this.m_linearDamping = linearDamping;
 }
 
 /** 
@@ -1395,9 +1317,8 @@ box2d.b2Body.prototype.SetLinearDamping = function (linearDamping)
  * @export 
  * @return {number}
  */
-box2d.b2Body.prototype.GetAngularDamping = function ()
-{
-	return this.m_angularDamping;
+box2d.b2Body.prototype.GetAngularDamping = function() {
+  return this.m_angularDamping;
 }
 
 /** 
@@ -1406,9 +1327,8 @@ box2d.b2Body.prototype.GetAngularDamping = function ()
  * @return {void} 
  * @param {number} angularDamping 
  */
-box2d.b2Body.prototype.SetAngularDamping = function (angularDamping)
-{
-	this.m_angularDamping = angularDamping;
+box2d.b2Body.prototype.SetAngularDamping = function(angularDamping) {
+  this.m_angularDamping = angularDamping;
 }
 
 /** 
@@ -1416,9 +1336,8 @@ box2d.b2Body.prototype.SetAngularDamping = function (angularDamping)
  * @export 
  * @return {number}
  */
-box2d.b2Body.prototype.GetGravityScale = function ()
-{
-	return this.m_gravityScale;
+box2d.b2Body.prototype.GetGravityScale = function() {
+  return this.m_gravityScale;
 }
 
 /** 
@@ -1427,9 +1346,8 @@ box2d.b2Body.prototype.GetGravityScale = function ()
  * @return {void} 
  * @param {number} scale 
  */
-box2d.b2Body.prototype.SetGravityScale = function (scale)
-{
-	this.m_gravityScale = scale;
+box2d.b2Body.prototype.SetGravityScale = function(scale) {
+  this.m_gravityScale = scale;
 }
 
 /** 
@@ -1439,57 +1357,55 @@ box2d.b2Body.prototype.SetGravityScale = function (scale)
  * @return {void} 
  * @param {box2d.b2BodyType} type 
  */
-box2d.b2Body.prototype.SetType = function (type)
-{
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(!this.m_world.IsLocked()); }
-	if (this.m_world.IsLocked())
-	{
-		return;
-	}
+box2d.b2Body.prototype.SetType = function(type) {
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(!this.m_world.IsLocked());
+  }
+  if (this.m_world.IsLocked()) {
+    return;
+  }
 
-	if (this.m_type === type)
-	{
-		return;
-	}
+  if (this.m_type === type) {
+    return;
+  }
 
-	this.m_type = type;
+  this.m_type = type;
 
-	this.ResetMassData();
+  this.ResetMassData();
 
-	if (this.m_type === box2d.b2BodyType.b2_staticBody)
-	{
-		this.m_linearVelocity.SetZero();
-		this.m_angularVelocity = 0;
-		this.m_sweep.a0 = this.m_sweep.a;
-		this.m_sweep.c0.Copy(this.m_sweep.c);
-		this.SynchronizeFixtures();
-	}
+  if (this.m_type === box2d.b2BodyType.b2_staticBody) {
+    this.m_linearVelocity.SetZero();
+    this.m_angularVelocity = 0;
+    this.m_sweep.a0 = this.m_sweep.a;
+    this.m_sweep.c0.Copy(this.m_sweep.c);
+    this.SynchronizeFixtures();
+  }
 
-	this.SetAwake(true);
+  this.SetAwake(true);
 
-	this.m_force.SetZero();
-	this.m_torque = 0;
+  this.m_force.SetZero();
+  this.m_torque = 0;
 
-	// Delete the attached contacts.
-	/** @type {box2d.b2ContactEdge} */ var ce = this.m_contactList;
-	while (ce)
-	{
-		/** @type {box2d.b2ContactEdge} */ var ce0 = ce;
-		ce = ce.next;
-		this.m_world.m_contactManager.Destroy(ce0.contact);
-	}
-	this.m_contactList = null;
+  // Delete the attached contacts.
+  /** @type {box2d.b2ContactEdge} */
+  var ce = this.m_contactList;
+  while (ce) {
+    /** @type {box2d.b2ContactEdge} */
+    var ce0 = ce;
+    ce = ce.next;
+    this.m_world.m_contactManager.Destroy(ce0.contact);
+  }
+  this.m_contactList = null;
 
-	// Touch the proxies so that new contacts will be created (when appropriate)
-	/** @type {box2d.b2BroadPhase} */ var broadPhase = this.m_world.m_contactManager.m_broadPhase;
-	for (/** @type {box2d.b2Fixture} */ var f = this.m_fixtureList; f; f = f.m_next)
-	{
-		var proxyCount = f.m_proxyCount;
-		for (var i = 0; i < proxyCount; ++i)
-		{
-			broadPhase.TouchProxy(f.m_proxies[i].proxy);
-		}
-	}
+  // Touch the proxies so that new contacts will be created (when appropriate)
+  /** @type {box2d.b2BroadPhase} */
+  var broadPhase = this.m_world.m_contactManager.m_broadPhase;
+  for ( /** @type {box2d.b2Fixture} */ var f = this.m_fixtureList; f; f = f.m_next) {
+    var proxyCount = f.m_proxyCount;
+    for (var i = 0; i < proxyCount; ++i) {
+      broadPhase.TouchProxy(f.m_proxies[i].proxy);
+    }
+  }
 }
 
 /** 
@@ -1497,9 +1413,8 @@ box2d.b2Body.prototype.SetType = function (type)
  * @export 
  * @return {box2d.b2BodyType}
  */
-box2d.b2Body.prototype.GetType = function ()
-{
-	return this.m_type;
+box2d.b2Body.prototype.GetType = function() {
+  return this.m_type;
 }
 
 /** 
@@ -1509,9 +1424,8 @@ box2d.b2Body.prototype.GetType = function ()
  * @return {void} 
  * @param {boolean} flag 
  */
-box2d.b2Body.prototype.SetBullet = function (flag)
-{
-	this.m_flag_bulletFlag = flag;
+box2d.b2Body.prototype.SetBullet = function(flag) {
+  this.m_flag_bulletFlag = flag;
 }
 
 /** 
@@ -1520,9 +1434,8 @@ box2d.b2Body.prototype.SetBullet = function (flag)
  * @export 
  * @return {boolean}
  */
-box2d.b2Body.prototype.IsBullet = function ()
-{
-	return this.m_flag_bulletFlag;
+box2d.b2Body.prototype.IsBullet = function() {
+  return this.m_flag_bulletFlag;
 }
 
 /** 
@@ -1532,17 +1445,13 @@ box2d.b2Body.prototype.IsBullet = function ()
  * @return {void} 
  * @param {boolean} flag 
  */
-box2d.b2Body.prototype.SetSleepingAllowed = function (flag)
-{
-	if (flag)
-	{
-		this.m_flag_autoSleepFlag = true;
-	}
-	else
-	{
-		this.m_flag_autoSleepFlag = false;
-		this.SetAwake(true);
-	}
+box2d.b2Body.prototype.SetSleepingAllowed = function(flag) {
+  if (flag) {
+    this.m_flag_autoSleepFlag = true;
+  } else {
+    this.m_flag_autoSleepFlag = false;
+    this.SetAwake(true);
+  }
 }
 
 /** 
@@ -1550,9 +1459,8 @@ box2d.b2Body.prototype.SetSleepingAllowed = function (flag)
  * @export 
  * @return {boolean}
  */
-box2d.b2Body.prototype.IsSleepingAllowed = function ()
-{
-	return this.m_flag_autoSleepFlag;
+box2d.b2Body.prototype.IsSleepingAllowed = function() {
+  return this.m_flag_autoSleepFlag;
 }
 
 /** 
@@ -1562,25 +1470,20 @@ box2d.b2Body.prototype.IsSleepingAllowed = function ()
  * @param {boolean} flag set to true to wake the body, false to 
  *  	  put it to sleep.
  */
-box2d.b2Body.prototype.SetAwake = function (flag)
-{
-	if (flag)
-	{
-		if (!this.m_flag_awakeFlag)
-		{
-			this.m_flag_awakeFlag = true;
-			this.m_sleepTime = 0;
-		}
-	}
-	else
-	{
-		this.m_flag_awakeFlag = false;
-		this.m_sleepTime = 0;
-		this.m_linearVelocity.SetZero();
-		this.m_angularVelocity = 0;
-		this.m_force.SetZero();
-		this.m_torque = 0;
-	}
+box2d.b2Body.prototype.SetAwake = function(flag) {
+  if (flag) {
+    if (!this.m_flag_awakeFlag) {
+      this.m_flag_awakeFlag = true;
+      this.m_sleepTime = 0;
+    }
+  } else {
+    this.m_flag_awakeFlag = false;
+    this.m_sleepTime = 0;
+    this.m_linearVelocity.SetZero();
+    this.m_angularVelocity = 0;
+    this.m_force.SetZero();
+    this.m_torque = 0;
+  }
 }
 
 /** 
@@ -1588,9 +1491,8 @@ box2d.b2Body.prototype.SetAwake = function (flag)
  * @export 
  * @return {boolean} true if the body is awake.
  */
-box2d.b2Body.prototype.IsAwake = function ()
-{
-	return this.m_flag_awakeFlag;
+box2d.b2Body.prototype.IsAwake = function() {
+  return this.m_flag_awakeFlag;
 }
 
 /**
@@ -1611,49 +1513,43 @@ box2d.b2Body.prototype.IsAwake = function ()
  * @return {void} 
  * @param {boolean} flag 
  */
-box2d.b2Body.prototype.SetActive = function (flag)
-{
-	if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(!this.m_world.IsLocked()); }
+box2d.b2Body.prototype.SetActive = function(flag) {
+  if (box2d.ENABLE_ASSERTS) {
+    box2d.b2Assert(!this.m_world.IsLocked());
+  }
 
-	if (flag === this.IsActive())
-	{
-		return;
-	}
+  if (flag === this.IsActive()) {
+    return;
+  }
 
-	if (flag)
-	{
-		this.m_flag_activeFlag = true;
+  if (flag) {
+    this.m_flag_activeFlag = true;
 
-		// Create all proxies.
-		var broadPhase = this.m_world.m_contactManager.m_broadPhase;
-		for (var f = this.m_fixtureList; f; f = f.m_next)
-		{
-			f.CreateProxies(broadPhase, this.m_xf);
-		}
+    // Create all proxies.
+    var broadPhase = this.m_world.m_contactManager.m_broadPhase;
+    for (var f = this.m_fixtureList; f; f = f.m_next) {
+      f.CreateProxies(broadPhase, this.m_xf);
+    }
 
-		// Contacts are created the next time step.
-	}
-	else
-	{
-		this.m_flag_activeFlag = false;
+    // Contacts are created the next time step.
+  } else {
+    this.m_flag_activeFlag = false;
 
-		// Destroy all proxies.
-		var broadPhase = this.m_world.m_contactManager.m_broadPhase;
-		for (var f = this.m_fixtureList; f; f = f.m_next)
-		{
-			f.DestroyProxies(broadPhase);
-		}
+    // Destroy all proxies.
+    var broadPhase = this.m_world.m_contactManager.m_broadPhase;
+    for (var f = this.m_fixtureList; f; f = f.m_next) {
+      f.DestroyProxies(broadPhase);
+    }
 
-		// Destroy the attached contacts.
-		var ce = this.m_contactList;
-		while (ce)
-		{
-			var ce0 = ce;
-			ce = ce.next;
-			this.m_world.m_contactManager.Destroy(ce0.contact);
-		}
-		this.m_contactList = null;
-	}
+    // Destroy the attached contacts.
+    var ce = this.m_contactList;
+    while (ce) {
+      var ce0 = ce;
+      ce = ce.next;
+      this.m_world.m_contactManager.Destroy(ce0.contact);
+    }
+    this.m_contactList = null;
+  }
 }
 
 /** 
@@ -1661,9 +1557,8 @@ box2d.b2Body.prototype.SetActive = function (flag)
  * @export 
  * @return {boolean}
  */
-box2d.b2Body.prototype.IsActive = function ()
-{
-	return this.m_flag_activeFlag;
+box2d.b2Body.prototype.IsActive = function() {
+  return this.m_flag_activeFlag;
 }
 
 /** 
@@ -1673,19 +1568,17 @@ box2d.b2Body.prototype.IsActive = function ()
  * @return {void} 
  * @param {boolean} flag 
  */
-box2d.b2Body.prototype.SetFixedRotation = function (flag)
-{
-	var status = this.m_flag_fixedRotationFlag;
-	if (status === flag)
-	{
-		return;
-	}
+box2d.b2Body.prototype.SetFixedRotation = function(flag) {
+  var status = this.m_flag_fixedRotationFlag;
+  if (status === flag) {
+    return;
+  }
 
-	this.m_flag_fixedRotationFlag = flag;
+  this.m_flag_fixedRotationFlag = flag;
 
-	this.m_angularVelocity = 0;
+  this.m_angularVelocity = 0;
 
-	this.ResetMassData();
+  this.ResetMassData();
 }
 
 /** 
@@ -1693,9 +1586,8 @@ box2d.b2Body.prototype.SetFixedRotation = function (flag)
  * @export 
  * @return {boolean}
  */
-box2d.b2Body.prototype.IsFixedRotation = function ()
-{
-	return this.m_flag_fixedRotationFlag;
+box2d.b2Body.prototype.IsFixedRotation = function() {
+  return this.m_flag_fixedRotationFlag;
 }
 
 /** 
@@ -1703,9 +1595,8 @@ box2d.b2Body.prototype.IsFixedRotation = function ()
  * @export 
  * @return {box2d.b2Fixture}
  */
-box2d.b2Body.prototype.GetFixtureList = function ()
-{
-	return this.m_fixtureList;
+box2d.b2Body.prototype.GetFixtureList = function() {
+  return this.m_fixtureList;
 }
 
 /** 
@@ -1713,9 +1604,8 @@ box2d.b2Body.prototype.GetFixtureList = function ()
  * @export 
  * @return {box2d.b2JointEdge}
  */
-box2d.b2Body.prototype.GetJointList = function ()
-{
-	return this.m_jointList;
+box2d.b2Body.prototype.GetJointList = function() {
+  return this.m_jointList;
 }
 
 /** 
@@ -1725,9 +1615,8 @@ box2d.b2Body.prototype.GetJointList = function ()
  * @export 
  * @return {box2d.b2ContactEdge}
  */
-box2d.b2Body.prototype.GetContactList = function ()
-{
-	return this.m_contactList;
+box2d.b2Body.prototype.GetContactList = function() {
+  return this.m_contactList;
 }
 
 /** 
@@ -1735,9 +1624,8 @@ box2d.b2Body.prototype.GetContactList = function ()
  * @export 
  * @return {box2d.b2Body}
  */
-box2d.b2Body.prototype.GetNext = function ()
-{
-	return this.m_next;
+box2d.b2Body.prototype.GetNext = function() {
+  return this.m_next;
 }
 
 /** 
@@ -1746,9 +1634,8 @@ box2d.b2Body.prototype.GetNext = function ()
  * @export 
  * @return {*} 
  */
-box2d.b2Body.prototype.GetUserData = function ()
-{
-	return this.m_userData;
+box2d.b2Body.prototype.GetUserData = function() {
+  return this.m_userData;
 }
 
 /** 
@@ -1758,9 +1645,8 @@ box2d.b2Body.prototype.GetUserData = function ()
  * @return {void} 
  * @param {*} data 
  */
-box2d.b2Body.prototype.SetUserData = function (data)
-{
-	this.m_userData = data;
+box2d.b2Body.prototype.SetUserData = function(data) {
+  this.m_userData = data;
 }
 
 /** 
@@ -1768,27 +1654,24 @@ box2d.b2Body.prototype.SetUserData = function (data)
  * @export 
  * @return {box2d.b2World}
  */
-box2d.b2Body.prototype.GetWorld = function ()
-{
-	return this.m_world;
+box2d.b2Body.prototype.GetWorld = function() {
+  return this.m_world;
 }
 
 /**
  * @export 
  * @return {void} 
  */
-box2d.b2Body.prototype.SynchronizeFixtures = function ()
-{
-	var xf1 = box2d.b2Body.prototype.SynchronizeFixtures.s_xf1;
-	xf1.q.SetAngle(this.m_sweep.a0);
-	box2d.b2Mul_R_V2(xf1.q, this.m_sweep.localCenter, xf1.p);
-	box2d.b2Sub_V2_V2(this.m_sweep.c0, xf1.p, xf1.p);
+box2d.b2Body.prototype.SynchronizeFixtures = function() {
+  var xf1 = box2d.b2Body.prototype.SynchronizeFixtures.s_xf1;
+  xf1.q.SetAngle(this.m_sweep.a0);
+  box2d.b2Mul_R_V2(xf1.q, this.m_sweep.localCenter, xf1.p);
+  box2d.b2Sub_V2_V2(this.m_sweep.c0, xf1.p, xf1.p);
 
-	var broadPhase = this.m_world.m_contactManager.m_broadPhase;
-	for (var f = this.m_fixtureList; f; f = f.m_next)
-	{
-		f.Synchronize(broadPhase, xf1, this.m_xf);
-	}
+  var broadPhase = this.m_world.m_contactManager.m_broadPhase;
+  for (var f = this.m_fixtureList; f; f = f.m_next) {
+    f.Synchronize(broadPhase, xf1, this.m_xf);
+  }
 }
 box2d.b2Body.prototype.SynchronizeFixtures.s_xf1 = new box2d.b2Transform();
 
@@ -1796,11 +1679,10 @@ box2d.b2Body.prototype.SynchronizeFixtures.s_xf1 = new box2d.b2Transform();
  * @export 
  * @return {void} 
  */
-box2d.b2Body.prototype.SynchronizeTransform = function ()
-{
-	this.m_xf.q.SetAngle(this.m_sweep.a);
-	box2d.b2Mul_R_V2(this.m_xf.q, this.m_sweep.localCenter, this.m_xf.p);
-	box2d.b2Sub_V2_V2(this.m_sweep.c, this.m_xf.p, this.m_xf.p);
+box2d.b2Body.prototype.SynchronizeTransform = function() {
+  this.m_xf.q.SetAngle(this.m_sweep.a);
+  box2d.b2Mul_R_V2(this.m_xf.q, this.m_sweep.localCenter, this.m_xf.p);
+  box2d.b2Sub_V2_V2(this.m_sweep.c, this.m_xf.p, this.m_xf.p);
 }
 
 /** 
@@ -1810,15 +1692,13 @@ box2d.b2Body.prototype.SynchronizeTransform = function ()
  * @return {boolean} 
  * @param {box2d.b2Body} other 
  */
-box2d.b2Body.prototype.ShouldCollide = function (other)
-{
-	// At least one body should be dynamic or kinematic.
-	if (this.m_type === box2d.b2BodyType.b2_staticBody && other.m_type === box2d.b2BodyType.b2_staticBody)
-	{
-		return false;
-	}
+box2d.b2Body.prototype.ShouldCollide = function(other) {
+  // At least one body should be dynamic or kinematic.
+  if (this.m_type === box2d.b2BodyType.b2_staticBody && other.m_type === box2d.b2BodyType.b2_staticBody) {
+    return false;
+  }
 
-	return this.ShouldCollideConnected(other);
+  return this.ShouldCollideConnected(other);
 }
 
 /** 
@@ -1826,21 +1706,17 @@ box2d.b2Body.prototype.ShouldCollide = function (other)
  * @return {boolean} 
  * @param {box2d.b2Body} other 
  */
-box2d.b2Body.prototype.ShouldCollideConnected = function (other)
-{
-	// Does a joint prevent collision?
-	for (var jn = this.m_jointList; jn; jn = jn.next)
-	{
-		if (jn.other === other)
-		{
-			if (!jn.joint.m_collideConnected)
-			{
-				return false;
-			}
-		}
-	}
+box2d.b2Body.prototype.ShouldCollideConnected = function(other) {
+  // Does a joint prevent collision?
+  for (var jn = this.m_jointList; jn; jn = jn.next) {
+    if (jn.other === other) {
+      if (!jn.joint.m_collideConnected) {
+        return false;
+      }
+    }
+  }
 
-	return true;
+  return true;
 }
 
 /**
@@ -1848,15 +1724,14 @@ box2d.b2Body.prototype.ShouldCollideConnected = function (other)
  * @return {void} 
  * @param {number} alpha 
  */
-box2d.b2Body.prototype.Advance = function (alpha)
-{
-	// Advance to the new safe time. This doesn't sync the broad-phase.
-	this.m_sweep.Advance(alpha);
-	this.m_sweep.c.Copy(this.m_sweep.c0);
-	this.m_sweep.a = this.m_sweep.a0;
-	this.m_xf.q.SetAngle(this.m_sweep.a);
-	box2d.b2Mul_R_V2(this.m_xf.q, this.m_sweep.localCenter, this.m_xf.p);
-	box2d.b2Sub_V2_V2(this.m_sweep.c, this.m_xf.p, this.m_xf.p);
+box2d.b2Body.prototype.Advance = function(alpha) {
+  // Advance to the new safe time. This doesn't sync the broad-phase.
+  this.m_sweep.Advance(alpha);
+  this.m_sweep.c.Copy(this.m_sweep.c0);
+  this.m_sweep.a = this.m_sweep.a0;
+  this.m_xf.q.SetAngle(this.m_sweep.a);
+  box2d.b2Mul_R_V2(this.m_xf.q, this.m_sweep.localCenter, this.m_xf.p);
+  box2d.b2Sub_V2_V2(this.m_sweep.c, this.m_xf.p, this.m_xf.p);
 }
 
 /** 
@@ -1864,54 +1739,52 @@ box2d.b2Body.prototype.Advance = function (alpha)
  * @export 
  * @return {void}
  */
-box2d.b2Body.prototype.Dump = function ()
-{
-	if (box2d.DEBUG)
-	{
-		var bodyIndex = this.m_islandIndex;
-	
-		box2d.b2Log("{\n");
-		box2d.b2Log("  /*box2d.b2BodyDef*/ var bd = new box2d.b2BodyDef();\n");
-		var type_str = '';
-		switch (this.m_type)
-		{
-		case box2d.b2BodyType.b2_staticBody:
-			type_str = 'box2d.b2BodyType.b2_staticBody';
-			break;
-		case box2d.b2BodyType.b2_kinematicBody:
-			type_str = 'box2d.b2BodyType.b2_kinematicBody';
-			break;
-		case box2d.b2BodyType.b2_dynamicBody:
-			type_str = 'box2d.b2BodyType.b2_dynamicBody';
-			break;
-		default:
-			if (box2d.ENABLE_ASSERTS) { box2d.b2Assert(false); }
-			break;
-		}
-		box2d.b2Log("  bd.type = %s;\n", type_str);
-		box2d.b2Log("  bd.position.Set(%.15f, %.15f);\n", this.m_xf.p.x, this.m_xf.p.y);
-		box2d.b2Log("  bd.angle = %.15f;\n", this.m_sweep.a);
-		box2d.b2Log("  bd.linearVelocity.Set(%.15f, %.15f);\n", this.m_linearVelocity.x, this.m_linearVelocity.y);
-		box2d.b2Log("  bd.angularVelocity = %.15f;\n", this.m_angularVelocity);
-		box2d.b2Log("  bd.linearDamping = %.15f;\n", this.m_linearDamping);
-		box2d.b2Log("  bd.angularDamping = %.15f;\n", this.m_angularDamping);
-		box2d.b2Log("  bd.allowSleep = %s;\n", (this.m_flag_autoSleepFlag)?('true'):('false'));
-		box2d.b2Log("  bd.awake = %s;\n", (this.m_flag_awakeFlag)?('true'):('false'));
-		box2d.b2Log("  bd.fixedRotation = %s;\n", (this.m_flag_fixedRotationFlag)?('true'):('false'));
-		box2d.b2Log("  bd.bullet = %s;\n", (this.m_flag_bulletFlag)?('true'):('false'));
-		box2d.b2Log("  bd.active = %s;\n", (this.m_flag_activeFlag)?('true'):('false'));
-		box2d.b2Log("  bd.gravityScale = %.15f;\n", this.m_gravityScale);
-		box2d.b2Log("\n");
-		box2d.b2Log("  bodies[%d] = this.m_world.CreateBody(bd);\n", this.m_islandIndex);
-		box2d.b2Log("\n");
-		for (/** @type {box2d.b2Fixture} */ var f = this.m_fixtureList; f; f = f.m_next)
-		{
-			box2d.b2Log("  {\n");
-			f.Dump(bodyIndex);
-			box2d.b2Log("  }\n");
-		}
-		box2d.b2Log("}\n");
-	}
+box2d.b2Body.prototype.Dump = function() {
+  if (box2d.DEBUG) {
+    var bodyIndex = this.m_islandIndex;
+
+    box2d.b2Log("{\n");
+    box2d.b2Log("  /*box2d.b2BodyDef*/ var bd = new box2d.b2BodyDef();\n");
+    var type_str = '';
+    switch (this.m_type) {
+      case box2d.b2BodyType.b2_staticBody:
+        type_str = 'box2d.b2BodyType.b2_staticBody';
+        break;
+      case box2d.b2BodyType.b2_kinematicBody:
+        type_str = 'box2d.b2BodyType.b2_kinematicBody';
+        break;
+      case box2d.b2BodyType.b2_dynamicBody:
+        type_str = 'box2d.b2BodyType.b2_dynamicBody';
+        break;
+      default:
+        if (box2d.ENABLE_ASSERTS) {
+          box2d.b2Assert(false);
+        }
+        break;
+    }
+    box2d.b2Log("  bd.type = %s;\n", type_str);
+    box2d.b2Log("  bd.position.Set(%.15f, %.15f);\n", this.m_xf.p.x, this.m_xf.p.y);
+    box2d.b2Log("  bd.angle = %.15f;\n", this.m_sweep.a);
+    box2d.b2Log("  bd.linearVelocity.Set(%.15f, %.15f);\n", this.m_linearVelocity.x, this.m_linearVelocity.y);
+    box2d.b2Log("  bd.angularVelocity = %.15f;\n", this.m_angularVelocity);
+    box2d.b2Log("  bd.linearDamping = %.15f;\n", this.m_linearDamping);
+    box2d.b2Log("  bd.angularDamping = %.15f;\n", this.m_angularDamping);
+    box2d.b2Log("  bd.allowSleep = %s;\n", (this.m_flag_autoSleepFlag) ? ('true') : ('false'));
+    box2d.b2Log("  bd.awake = %s;\n", (this.m_flag_awakeFlag) ? ('true') : ('false'));
+    box2d.b2Log("  bd.fixedRotation = %s;\n", (this.m_flag_fixedRotationFlag) ? ('true') : ('false'));
+    box2d.b2Log("  bd.bullet = %s;\n", (this.m_flag_bulletFlag) ? ('true') : ('false'));
+    box2d.b2Log("  bd.active = %s;\n", (this.m_flag_activeFlag) ? ('true') : ('false'));
+    box2d.b2Log("  bd.gravityScale = %.15f;\n", this.m_gravityScale);
+    box2d.b2Log("\n");
+    box2d.b2Log("  bodies[%d] = this.m_world.CreateBody(bd);\n", this.m_islandIndex);
+    box2d.b2Log("\n");
+    for ( /** @type {box2d.b2Fixture} */ var f = this.m_fixtureList; f; f = f.m_next) {
+      box2d.b2Log("  {\n");
+      f.Dump(bodyIndex);
+      box2d.b2Log("  }\n");
+    }
+    box2d.b2Log("}\n");
+  }
 }
 
 //#if B2_ENABLE_CONTROLLER
@@ -1921,9 +1794,8 @@ box2d.b2Body.prototype.Dump = function ()
  * @export 
  * @return {box2d.b2ControllerEdge}
  */
-box2d.b2Body.prototype.GetControllerList = function ()
-{
-	return this.m_controllerList;
+box2d.b2Body.prototype.GetControllerList = function() {
+  return this.m_controllerList;
 }
 
 /** 
@@ -1931,10 +1803,8 @@ box2d.b2Body.prototype.GetControllerList = function ()
  * @export 
  * @return {number}
  */
-box2d.b2Body.prototype.GetControllerCount = function ()
-{
-	return this.m_controllerCount;
+box2d.b2Body.prototype.GetControllerCount = function() {
+  return this.m_controllerCount;
 }
 
 //#endif
-

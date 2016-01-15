@@ -1,54 +1,45 @@
 /*
-* Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
-*
-* This software is provided 'as-is', without any express or implied
-* warranty.  In no event will the authors be held liable for any damages
-* arising from the use of this software.
-* Permission is granted to anyone to use this software for any purpose,
-* including commercial applications, and to alter it and redistribute it
-* freely, subject to the following restrictions:
-* 1. The origin of this software must not be misrepresented; you must not
-* claim that you wrote the original software. If you use this software
-* in a product, an acknowledgment in the product documentation would be
-* appreciated but is not required.
-* 2. Altered source versions must be plainly marked as such, and must not be
-* misrepresented as being the original software.
-* 3. This notice may not be removed or altered from any source distribution.
-*/
+ * Copyright (c) 2006-2009 Erin Catto http://www.box2d.org
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty.  In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ * 1. The origin of this software must not be misrepresented; you must not
+ * claim that you wrote the original software. If you use this software
+ * in a product, an acknowledgment in the product documentation would be
+ * appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ * misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ */
 
 goog.provide('box2d.b2Settings');
 
 //goog.require('goog.asserts');
 //goog.require('goog.string.format');
 
-if (!Object.defineProperty)
-{
-	Object.defineProperty = function (obj, name, options)
-	{
-		if (Object.__defineGetter__)
-		{
-			if ('get' in options)
-			{
-				obj.__defineGetter__(name, options.get);
-			}
-			else if ('value' in options)
-			{
-				obj.__defineGetter__(name, options.value);
-			}
-		}
+if (!Object.defineProperty) {
+  Object.defineProperty = function(obj, name, options) {
+    if (Object.__defineGetter__) {
+      if ('get' in options) {
+        obj.__defineGetter__(name, options.get);
+      } else if ('value' in options) {
+        obj.__defineGetter__(name, options.value);
+      }
+    }
 
-		if (Object.__defineSetter__)
-		{
-			if ('set' in options)
-			{
-				obj.__defineSetter__(name, options.set);
-			}
-			else if ('value' in options)
-			{
-				obj.__defineSetter__(name, options.value);
-			}
-		}
-	}
+    if (Object.__defineSetter__) {
+      if ('set' in options) {
+        obj.__defineSetter__(name, options.set);
+      } else if ('value' in options) {
+        obj.__defineSetter__(name, options.value);
+      }
+    }
+    return obj;
+  }
 }
 
 /** 
@@ -70,17 +61,14 @@ box2d.ENABLE_ASSERTS = box2d.DEBUG;
  * @param {string=} opt_message 
  * @param {...} var_args 
  */
-box2d.b2Assert = function (condition, opt_message, var_args)
-{
-	if (box2d.DEBUG)
-	{
-		if (!condition)
-		{
-			debugger;
-		}
-	
-		//goog.asserts.assert(condition, opt_message, var_args);
-	}
+box2d.b2Assert = function(condition, opt_message, var_args) {
+  if (box2d.DEBUG) {
+    if (!condition) {
+      throw new Error();
+    }
+
+    //goog.asserts.assert(condition, opt_message, var_args);
+  }
 }
 
 /**
@@ -422,9 +410,8 @@ box2d.b2_angularSleepTolerance = 2 / 180 * box2d.b2_pi;
  * @return {*} 
  * @param {number} size 
  */
-box2d.b2Alloc = function (size)
-{
-	return null;
+box2d.b2Alloc = function(size) {
+  return null;
 }
 
 /** 
@@ -434,9 +421,7 @@ box2d.b2Alloc = function (size)
  * @return {void} 
  * @param {*} mem 
  */
-box2d.b2Free = function (mem)
-{
-}
+box2d.b2Free = function(mem) {}
 
 /** 
  * Logging function. 
@@ -445,9 +430,8 @@ box2d.b2Free = function (mem)
  * @return {void} 
  * @param {...string|number|boolean} var_args 
  */
-box2d.b2Log = function (var_args)
-{
-	goog.global.console.log.apply(null, arguments);
+box2d.b2Log = function(var_args) {
+  goog.global.console.log.apply(null, arguments);
 }
 
 /** 
@@ -459,11 +443,10 @@ box2d.b2Log = function (var_args)
  * @param {number=} minor 
  * @param {number=} revision 
  */
-box2d.b2Version = function (major, minor, revision)
-{
-	this.major = major || 0;
-	this.minor = minor || 0;
-	this.revision = revision || 0;
+box2d.b2Version = function(major, minor, revision) {
+  this.major = major || 0;
+  this.minor = minor || 0;
+  this.revision = revision || 0;
 };
 
 /**
@@ -486,9 +469,8 @@ box2d.b2Version.prototype.revision = 0; ///< bug fixes
  * @export 
  * @return {string}
  */
-box2d.b2Version.prototype.toString = function ()
-{
-	return this.major + "." + this.minor + "." + this.revision;
+box2d.b2Version.prototype.toString = function() {
+  return this.major + "." + this.minor + "." + this.revision;
 }
 
 /** 
@@ -510,9 +492,8 @@ box2d.b2_changelist = 313;
  * @return {number} 
  * @param {string} v 
  */
-box2d.b2ParseInt = function (v)
-{
-	return parseInt(v, 10);
+box2d.b2ParseInt = function(v) {
+  return parseInt(v, 10);
 }
 
 /**
@@ -520,9 +501,8 @@ box2d.b2ParseInt = function (v)
  * @return {number} 
  * @param {string} v 
  */
-box2d.b2ParseUInt = function (v)
-{
-	return box2d.b2Abs(parseInt(v, 10));
+box2d.b2ParseUInt = function(v) {
+  return box2d.b2Abs(parseInt(v, 10));
 }
 
 /** 
@@ -531,25 +511,19 @@ box2d.b2ParseUInt = function (v)
  * @param {number=} length 
  * @param {function(number): *=} init 
  */
-box2d.b2MakeArray = function (length, init)
-{
-	length = (typeof(length) === 'number')?(length):(0);
-	var a = [];
-	if (typeof(init) === 'function')
-	{
-		for (var i = 0; i < length; ++i)
-		{
-			a.push(init(i));
-		}
-	}
-	else
-	{
-		for (var i = 0; i < length; ++i)
-		{
-			a.push(null);
-		}
-	}
-	return a;
+box2d.b2MakeArray = function(length, init) {
+  length = (typeof(length) === 'number') ? (length) : (0);
+  var a = [];
+  if (typeof(init) === 'function') {
+    for (var i = 0; i < length; ++i) {
+      a.push(init(i));
+    }
+  } else {
+    for (var i = 0; i < length; ++i) {
+      a.push(null);
+    }
+  }
+  return a;
 }
 
 /** 
@@ -557,8 +531,8 @@ box2d.b2MakeArray = function (length, init)
  * @return {Array.<number>} 
  * @param {number=} length
  */
-box2d.b2MakeNumberArray = function (length)
-{
-	return box2d.b2MakeArray(length, function (i) { return 0; });
+box2d.b2MakeNumberArray = function(length) {
+  return box2d.b2MakeArray(length, function(i) {
+    return 0;
+  });
 }
-
