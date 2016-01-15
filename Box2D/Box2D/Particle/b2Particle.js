@@ -23,10 +23,10 @@ goog.provide('box2d.b2ParticleFlag');
 goog.provide('box2d.b2ParticleColor');
 goog.provide('box2d.b2ParticleDef');
 
-/** 
- * The particle type. Can be combined with the | operator. 
- *  
- * @export 
+/**
+ * The particle type. Can be combined with the | operator.
+ *
+ * @export
  * @enum {number}
  */
 box2d.b2ParticleFlag = {
@@ -96,17 +96,17 @@ goog.exportProperty(box2d.b2ParticleFlag, 'b2_particleContactListenerParticle', 
 goog.exportProperty(box2d.b2ParticleFlag, 'b2_fixtureContactFilterParticle', box2d.b2ParticleFlag.b2_fixtureContactFilterParticle);
 goog.exportProperty(box2d.b2ParticleFlag, 'b2_particleContactFilterParticle', box2d.b2ParticleFlag.b2_particleContactFilterParticle);
 
-/** 
- * Small color object for each particle 
- * Constructor with four elements: r (red), g (green), b (blue), and a (opacity). 
- * Each element can be specified 0 to 255. 
- *  
- * @export 
- * @constructor 
- * @param {number|box2d.b2Color=} a0 
- * @param {number=} a1 
- * @param {number=} a2 
- * @param {number=} a3 
+/**
+ * Small color object for each particle
+ * Constructor with four elements: r (red), g (green), b (blue), and a (opacity).
+ * Each element can be specified 0 to 255.
+ *
+ * @export
+ * @constructor
+ * @param {number|box2d.b2Color=} a0
+ * @param {number=} a1
+ * @param {number=} a2
+ * @param {number=} a3
  */
 box2d.b2ParticleColor = function(a0, a1, a2, a3) {
   if (arguments.length === 0) {
@@ -127,46 +127,46 @@ box2d.b2ParticleColor = function(a0, a1, a2, a3) {
 }
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleColor.prototype.r = 0;
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleColor.prototype.g = 0;
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleColor.prototype.b = 0;
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleColor.prototype.a = 0;
 
-/** 
- * True when all four color elements equal 0. When true, a 
- * particle color buffer isn't allocated by CreateParticle(). 
- *  
- * @export 
- * @return {boolean} 
+/**
+ * True when all four color elements equal 0. When true, a
+ * particle color buffer isn't allocated by CreateParticle().
+ *
+ * @export
+ * @return {boolean}
  */
 box2d.b2ParticleColor.prototype.IsZero = function() {
   return (this.r === 0) && (this.g === 0) && (this.b === 0) && (this.a === 0);
 }
 
-/** 
- * Used internally to convert the value of b2Color. 
- *  
- * @export 
- * @return {box2d.b2Color} 
- * @param {box2d.b2Color} out 
+/**
+ * Used internally to convert the value of b2Color.
+ *
+ * @export
+ * @return {box2d.b2Color}
+ * @param {box2d.b2Color} out
  */
 box2d.b2ParticleColor.prototype.GetColor = function(out) {
   out.r = this.r / 255.0;
@@ -177,12 +177,12 @@ box2d.b2ParticleColor.prototype.GetColor = function(out) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number|box2d.b2Color} a0 
- * @param {number=} a1 
- * @param {number=} a2 
- * @param {number=} a3 
+ * @export
+ * @return {void}
+ * @param {number|box2d.b2Color} a0
+ * @param {number=} a1
+ * @param {number=} a2
+ * @param {number=} a3
  */
 box2d.b2ParticleColor.prototype.Set = function(a0, a1, a2, a3) {
   if (a0 instanceof box2d.b2Color) {
@@ -194,16 +194,16 @@ box2d.b2ParticleColor.prototype.Set = function(a0, a1, a2, a3) {
   }
 }
 
-/** 
- * Sets color for current object using the four elements 
- * described above. 
- *  
- * @export 
- * @return {void} 
- * @param {number} r 
- * @param {number} g 
- * @param {number} b 
- * @param {number=} a 
+/**
+ * Sets color for current object using the four elements
+ * described above.
+ *
+ * @export
+ * @return {void}
+ * @param {number} r
+ * @param {number} g
+ * @param {number} b
+ * @param {number=} a
  */
 box2d.b2ParticleColor.prototype.SetRGBA = function(r, g, b, a) {
   a = (typeof(a) === 'number') ? (a) : (255);
@@ -213,12 +213,12 @@ box2d.b2ParticleColor.prototype.SetRGBA = function(r, g, b, a) {
   this.a = a;
 }
 
-/** 
- * Initializes the object with the value of the b2Color. 
- *  
- * @export 
- * @return {void} 
- * @param {box2d.b2Color} color 
+/**
+ * Initializes the object with the value of the b2Color.
+ *
+ * @export
+ * @return {void}
+ * @param {box2d.b2Color} color
  */
 box2d.b2ParticleColor.prototype.SetColor = function(color) {
   this.r = (255 * color.r);
@@ -227,12 +227,12 @@ box2d.b2ParticleColor.prototype.SetColor = function(color) {
   this.a = (255 * color.a);
 }
 
-/** 
- * Assign a b2ParticleColor to this instance. 
- *  
- * @export 
- * @return {box2d.b2ParticleColor} 
- * @param {box2d.b2ParticleColor} color 
+/**
+ * Assign a b2ParticleColor to this instance.
+ *
+ * @export
+ * @return {box2d.b2ParticleColor}
+ * @param {box2d.b2ParticleColor} color
  */
 box2d.b2ParticleColor.prototype.Copy = function(color) {
   this.r = color.r;
@@ -249,12 +249,12 @@ box2d.b2ParticleColor.prototype.Clone = function() {
   return new box2d.b2ParticleColor(this.r, this.g, this.b, this.a);
 }
 
-/** 
- * Multiplies r, g, b, a members by s where s is a value between 0.0 and 1.0. 
- *  
- * @export 
- * @return {box2d.b2ParticleColor} 
- * @param {number} s 
+/**
+ * Multiplies r, g, b, a members by s where s is a value between 0.0 and 1.0.
+ *
+ * @export
+ * @return {box2d.b2ParticleColor}
+ * @param {number} s
  */
 box2d.b2ParticleColor.prototype.SelfMul_0_1 = function(s) {
   this.r *= s;
@@ -264,13 +264,13 @@ box2d.b2ParticleColor.prototype.SelfMul_0_1 = function(s) {
   return this;
 }
 
-/** 
- * Scales r, g, b, a members by s where s is a value between 0 
- * and 255. 
- *  
- * @export 
- * @return {box2d.b2ParticleColor} 
- * @param {number} s 
+/**
+ * Scales r, g, b, a members by s where s is a value between 0
+ * and 255.
+ *
+ * @export
+ * @return {box2d.b2ParticleColor}
+ * @param {number} s
  */
 box2d.b2ParticleColor.prototype.SelfMul_0_255 = function(s) {
   // 1..256 to maintain the complete dynamic range.
@@ -282,39 +282,39 @@ box2d.b2ParticleColor.prototype.SelfMul_0_255 = function(s) {
   return this;
 }
 
-/** 
- * Scales r, g, b, a members by s returning the modified 
- * b2ParticleColor. 
- *  
- * @export 
- * @return {box2d.b2ParticleColor} 
- * @param {number} s 
- * @param {box2d.b2ParticleColor} out 
+/**
+ * Scales r, g, b, a members by s returning the modified
+ * b2ParticleColor.
+ *
+ * @export
+ * @return {box2d.b2ParticleColor}
+ * @param {number} s
+ * @param {box2d.b2ParticleColor} out
  */
 box2d.b2ParticleColor.prototype.Mul_0_1 = function(s, out) {
   return out.Copy(this).SelfMul_0_1(s);
 }
 
-/** 
- * Scales r, g, b, a members by s returning the modified 
- * b2ParticleColor. 
- *  
- * @export 
- * @return {box2d.b2ParticleColor} 
- * @param {number} s 
- * @param {box2d.b2ParticleColor} out 
+/**
+ * Scales r, g, b, a members by s returning the modified
+ * b2ParticleColor.
+ *
+ * @export
+ * @return {box2d.b2ParticleColor}
+ * @param {number} s
+ * @param {box2d.b2ParticleColor} out
  */
 box2d.b2ParticleColor.prototype.Mul_0_255 = function(s, out) {
   return out.Copy(this).SelfMul_0_255(s);
 }
 
-/** 
- * Add two colors.  This is a non-saturating addition so values 
- * overflows will wrap. 
- *  
- * @export 
- * @return {box2d.b2ParticleColor} 
- * @param {box2d.b2ParticleColor} color 
+/**
+ * Add two colors.  This is a non-saturating addition so values
+ * overflows will wrap.
+ *
+ * @export
+ * @return {box2d.b2ParticleColor}
+ * @param {box2d.b2ParticleColor} color
  */
 box2d.b2ParticleColor.prototype.SelfAdd = function(color) {
   this.r += color.r;
@@ -324,14 +324,14 @@ box2d.b2ParticleColor.prototype.SelfAdd = function(color) {
   return this;
 }
 
-/** 
- * Add two colors.  This is a non-saturating addition so values 
- * overflows will wrap. 
- *  
- * @export 
- * @return {box2d.b2ParticleColor} 
- * @param {box2d.b2ParticleColor} color 
- * @param {box2d.b2ParticleColor} out 
+/**
+ * Add two colors.  This is a non-saturating addition so values
+ * overflows will wrap.
+ *
+ * @export
+ * @return {box2d.b2ParticleColor}
+ * @param {box2d.b2ParticleColor} color
+ * @param {box2d.b2ParticleColor} out
  */
 box2d.b2ParticleColor.prototype.Add = function(color, out) {
   out.r = this.r + color.r;
@@ -341,13 +341,13 @@ box2d.b2ParticleColor.prototype.Add = function(color, out) {
   return out;
 }
 
-/** 
- * Subtract a color from this color.  This is a subtraction 
- * without saturation so underflows will wrap. 
- *  
- * @export 
- * @return {box2d.b2ParticleColor} 
- * @param {box2d.b2ParticleColor} color 
+/**
+ * Subtract a color from this color.  This is a subtraction
+ * without saturation so underflows will wrap.
+ *
+ * @export
+ * @return {box2d.b2ParticleColor}
+ * @param {box2d.b2ParticleColor} color
  */
 box2d.b2ParticleColor.prototype.SelfSub = function(color) {
   this.r -= color.r;
@@ -357,14 +357,14 @@ box2d.b2ParticleColor.prototype.SelfSub = function(color) {
   return this;
 }
 
-/** 
- * Subtract a color from this color returning the result.  This 
- * is a subtraction without saturation so underflows will wrap. 
- *  
- * @export 
- * @return {box2d.b2ParticleColor} 
- * @param {box2d.b2ParticleColor} color 
- * @param {box2d.b2ParticleColor} out 
+/**
+ * Subtract a color from this color returning the result.  This
+ * is a subtraction without saturation so underflows will wrap.
+ *
+ * @export
+ * @return {box2d.b2ParticleColor}
+ * @param {box2d.b2ParticleColor} color
+ * @param {box2d.b2ParticleColor} out
  */
 box2d.b2ParticleColor.prototype.Sub = function(color, out) {
   out.r = this.r - color.r;
@@ -374,46 +374,46 @@ box2d.b2ParticleColor.prototype.Sub = function(color, out) {
   return out;
 }
 
-/** 
- * Compare this color with the specified color. 
- *  
- * @export 
- * @return {boolean} 
- * @param {box2d.b2ParticleColor} color 
+/**
+ * Compare this color with the specified color.
+ *
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2ParticleColor} color
  */
 box2d.b2ParticleColor.prototype.IsEqual = function(color) {
   return (this.r === color.r) && (this.g === color.g) && (this.b === color.b) && (this.a === color.a);
 }
 
 /**
- * Mix mixColor with this color using strength to control how 
- * much of mixColor is mixed with this color and vice versa. 
- * The range of strength is 0..128 where 0 results in no color 
- * mixing and 128 results in an equal mix of both colors. 
- * strength 0..128 is analogous to an alpha channel value 
- * between 0.0f..0.5f. 
- *  
- * @export 
- * @return {void} 
- * @param {box2d.b2ParticleColor} mixColor 
- * @param {number} strength 
+ * Mix mixColor with this color using strength to control how
+ * much of mixColor is mixed with this color and vice versa.
+ * The range of strength is 0..128 where 0 results in no color
+ * mixing and 128 results in an equal mix of both colors.
+ * strength 0..128 is analogous to an alpha channel value
+ * between 0.0f..0.5f.
+ *
+ * @export
+ * @return {void}
+ * @param {box2d.b2ParticleColor} mixColor
+ * @param {number} strength
  */
 box2d.b2ParticleColor.prototype.Mix = function(mixColor, strength) {
   box2d.b2ParticleColor.MixColors(this, mixColor, strength);
 }
 
-/** 
- * Mix colorA with colorB using strength to control how much of 
- * colorA is mixed with colorB and vice versa.  The range of 
- * strength is 0..128 where 0 results in no color mixing and 128 
- * results in an equal mix of both colors.  strength 0..128 is 
- * analogous to an alpha channel value between 0.0f..0.5f. 
- *  
- * @export 
- * @return {void} 
- * @param {box2d.b2ParticleColor} colorA 
- * @param {box2d.b2ParticleColor} colorB 
- * @param {number} strength 
+/**
+ * Mix colorA with colorB using strength to control how much of
+ * colorA is mixed with colorB and vice versa.  The range of
+ * strength is 0..128 where 0 results in no color mixing and 128
+ * results in an equal mix of both colors.  strength 0..128 is
+ * analogous to an alpha channel value between 0.0f..0.5f.
+ *
+ * @export
+ * @return {void}
+ * @param {box2d.b2ParticleColor} colorA
+ * @param {box2d.b2ParticleColor} colorB
+ * @param {number} strength
  */
 box2d.b2ParticleColor.MixColors = function(colorA, colorB, strength) {
   var dr = (strength * (colorB.r - colorA.r)) >> box2d.b2ParticleColor.k_bitsPerComponent;
@@ -430,53 +430,53 @@ box2d.b2ParticleColor.MixColors = function(colorA, colorB, strength) {
   colorB.a -= da;
 }
 
-/** 
- * @type {number} 
+/**
+ * @type {number}
  */
 box2d.B2PARTICLECOLOR_BITS_PER_COMPONENT = (1 << 3);
 
-/** 
- * @type {number} 
+/**
+ * @type {number}
  */
 box2d.B2PARTICLECOLOR_MAX_VALUE = ((1 << box2d.B2PARTICLECOLOR_BITS_PER_COMPONENT) - 1);
 
-/** 
- * Maximum value of a b2ParticleColor component. 
- *  
- * @export 
- * @type {number} 
+/**
+ * Maximum value of a b2ParticleColor component.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleColor.k_maxValue = +box2d.B2PARTICLECOLOR_MAX_VALUE;
 
-/** 
- * 1.0 / k_maxValue. 
- *  
- * @export 
- * @type {number} 
+/**
+ * 1.0 / k_maxValue.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleColor.k_inverseMaxValue = 1.0 / +box2d.B2PARTICLECOLOR_MAX_VALUE;
 
-/** 
- * Number of bits used to store each b2ParticleColor component. 
- *  
- * @export 
- * @type {number} 
+/**
+ * Number of bits used to store each b2ParticleColor component.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleColor.k_bitsPerComponent = box2d.B2PARTICLECOLOR_BITS_PER_COMPONENT;
 
 /**
- * @const 
- * @type {box2d.b2ParticleColor} 
+ * @const
+ * @type {box2d.b2ParticleColor}
  */
 box2d.b2ParticleColor_zero = new box2d.b2ParticleColor();
 
-/** 
- * A particle definition holds all the data needed to construct 
- * a particle. 
- * You can safely re-use these definitions. 
- *  
- * @export 
- * @constructor 
+/**
+ * A particle definition holds all the data needed to construct
+ * a particle.
+ * You can safely re-use these definitions.
+ *
+ * @export
+ * @constructor
  */
 box2d.b2ParticleDef = function() {
   this.position = box2d.b2Vec2_zero.Clone();
@@ -484,77 +484,77 @@ box2d.b2ParticleDef = function() {
   this.color = box2d.b2ParticleColor_zero.Clone();
 }
 
-/** 
- * \brief Specifies the type of particle (see #b2ParticleFlag). 
- *  
- * A particle may be more than one type. 
- * Multiple types are chained by logical sums, for example: 
- * pd.flags = b2_elasticParticle | b2_viscousParticle 
- *  
- * @export 
+/**
+ * \brief Specifies the type of particle (see #b2ParticleFlag).
+ *
+ * A particle may be more than one type.
+ * Multiple types are chained by logical sums, for example:
+ * pd.flags = b2_elasticParticle | b2_viscousParticle
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleDef.prototype.flags = 0;
 
-/** 
- * The world position of the particle. 
- *  
- * @export 
+/**
+ * The world position of the particle.
+ *
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2ParticleDef.prototype.position = null;
 
-/** 
- * The linear velocity of the particle in world co-ordinates. 
- *  
- * @export 
+/**
+ * The linear velocity of the particle in world co-ordinates.
+ *
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2ParticleDef.prototype.velocity = null;
 
-/** 
- * The color of the particle. 
- *  
- * @export 
+/**
+ * The color of the particle.
+ *
+ * @export
  * @type {box2d.b2ParticleColor}
  */
 box2d.b2ParticleDef.prototype.color = null;
 
-/** 
- * Lifetime of the particle in seconds.  A value <= 0.0f 
- * indicates a particle with infinite lifetime. 
- *  
- * @export 
+/**
+ * Lifetime of the particle in seconds.  A value <= 0.0f
+ * indicates a particle with infinite lifetime.
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleDef.prototype.lifetime = 0.0;
 
-/** 
- * Use this to store application-specific body data. 
- *  
- * @export 
+/**
+ * Use this to store application-specific body data.
+ *
+ * @export
  * @type {*}
  */
 box2d.b2ParticleDef.prototype.userData = null;
 
-/** 
- * An existing particle group to which the particle will be 
- * added. 
- *  
- * @export 
+/**
+ * An existing particle group to which the particle will be
+ * added.
+ *
+ * @export
  * @type {box2d.b2ParticleGroup}
  */
 box2d.b2ParticleDef.prototype.group = null;
 
-/** 
- * A helper function to calculate the optimal number of 
- * iterations. 
- *  
- * @export 
- * @return {number} 
- * @param {number} gravity 
- * @param {number} radius 
- * @param {number} timeStep 
+/**
+ * A helper function to calculate the optimal number of
+ * iterations.
+ *
+ * @export
+ * @return {number}
+ * @param {number} gravity
+ * @param {number} radius
+ * @param {number} timeStep
  */
 box2d.b2CalculateParticleIterations = function(gravity, radius, timeStep) {
   // In some situations you may want more particle iterations than this,
@@ -565,17 +565,17 @@ box2d.b2CalculateParticleIterations = function(gravity, radius, timeStep) {
   return box2d.b2Clamp(iterations, 1, B2_MAX_RECOMMENDED_PARTICLE_ITERATIONS);
 }
 
-/** 
- * Handle to a particle. Particle indices are ephemeral: the 
- * same index might refer to a different particle, from 
- * frame-to-frame. If you need to keep a reference to a 
- * particular particle across frames, you should acquire a 
- * b2ParticleHandle. Use 
- * #b2ParticleSystem::GetParticleHandleFromIndex() to retrieve 
- * the b2ParticleHandle of a particle from the particle system. 
- *  
- * @export 
- * @constructor 
+/**
+ * Handle to a particle. Particle indices are ephemeral: the
+ * same index might refer to a different particle, from
+ * frame-to-frame. If you need to keep a reference to a
+ * particular particle across frames, you should acquire a
+ * b2ParticleHandle. Use
+ * #b2ParticleSystem::GetParticleHandleFromIndex() to retrieve
+ * the b2ParticleHandle of a particle from the particle system.
+ *
+ * @export
+ * @constructor
  */
 box2d.b2ParticleHandle = function() {}
 
@@ -585,16 +585,16 @@ box2d.b2ParticleHandle = function() {}
 box2d.b2ParticleHandle.prototype.m_index = box2d.b2_invalidParticleIndex;
 
 /**
- * @export 
- * @return {number} 
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleHandle.prototype.GetIndex = function() {
   return this.m_index;
 }
 
 /**
- * @return {void} 
- * @param {number} index 
+ * @return {void}
+ * @param {number} index
  */
 box2d.b2ParticleHandle.prototype.SetIndex = function(index) {
   this.m_index = index;

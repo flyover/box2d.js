@@ -22,18 +22,18 @@ goog.provide('box2d.Testbed.SoupStirrer');
 
 goog.require('box2d.Testbed.Soup');
 
-/** 
- * Soup stirred by a circular dynamic body. 
- *  
- * A force vector (following a circle) is continuously applied 
- * to the body while by default the body is attached to a joint 
- * restricting motion to the x-axis. 
- *  
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Soup} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * Soup stirred by a circular dynamic body.
+ *
+ * A force vector (following a circle) is continuously applied
+ * to the body while by default the body is attached to a joint
+ * restricting motion to the x-axis.
+ *
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Soup}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.SoupStirrer = function(canvas, settings) {
   box2d.Testbed.Soup.call(this, canvas, settings); // base class constructor
@@ -75,9 +75,9 @@ box2d.Testbed.SoupStirrer.prototype.m_joint = null;
  */
 box2d.Testbed.SoupStirrer.prototype.m_oscillationOffset = 0.0;
 
-/** 
- * Create a joint to fix the stirrer to a single axis of 
- * movement. 
+/**
+ * Create a joint to fix the stirrer to a single axis of
+ * movement.
  * @return {void}
  */
 box2d.Testbed.SoupStirrer.prototype.CreateJoint = function() {
@@ -94,9 +94,9 @@ box2d.Testbed.SoupStirrer.prototype.CreateJoint = function() {
   this.m_joint = this.m_world.CreateJoint(prismaticJointDef);
 }
 
-/** 
- * Enable the joint if it's disabled, disable it if it's 
- * enabled. 
+/**
+ * Enable the joint if it's disabled, disable it if it's
+ * enabled.
  * @return {void}
  */
 box2d.Testbed.SoupStirrer.prototype.ToggleJoint = function() {
@@ -108,12 +108,12 @@ box2d.Testbed.SoupStirrer.prototype.ToggleJoint = function() {
   }
 }
 
-/** 
- * Press "t" to enable / disable the joint restricting the 
- * stirrer's movement. 
- * @export 
- * @return {void} 
- * @param {number} key 
+/**
+ * Press "t" to enable / disable the joint restricting the
+ * stirrer's movement.
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.SoupStirrer.prototype.Keyboard = function(key) {
   switch (key) {
@@ -126,12 +126,12 @@ box2d.Testbed.SoupStirrer.prototype.Keyboard = function(key) {
   }
 }
 
-/** 
- * Click the soup to toggle between enabling / disabling the 
- * joint. 
+/**
+ * Click the soup to toggle between enabling / disabling the
+ * joint.
  * @export
- * @return {void} 
- * @param {box2d.b2Vec2} p 
+ * @return {void}
+ * @param {box2d.b2Vec2} p
  */
 box2d.Testbed.SoupStirrer.prototype.MouseUp = function(p) {
   box2d.Testbed.Test.prototype.MouseUp.call(this, p);
@@ -140,10 +140,10 @@ box2d.Testbed.SoupStirrer.prototype.MouseUp = function(p) {
   }
 }
 
-/** 
- * Determine whether a point is in the soup. 
- * @return {boolean} 
- * @param {box2d.b2Vec2} pos 
+/**
+ * Determine whether a point is in the soup.
+ * @return {boolean}
+ * @param {box2d.b2Vec2} pos
  */
 box2d.Testbed.SoupStirrer.prototype.InSoup = function(pos) {
   // The soup dimensions are from the container initialization in the
@@ -151,11 +151,11 @@ box2d.Testbed.SoupStirrer.prototype.InSoup = function(pos) {
   return pos.y > -1.0 && pos.y < 2.0 && pos.x > -3.0 && pos.x < 3.0;
 }
 
-/** 
- * Apply a force to the stirrer. 
+/**
+ * Apply a force to the stirrer.
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.SoupStirrer.prototype.Step = function(settings) {
   // Magnitude of the force applied to the body.
@@ -183,11 +183,11 @@ box2d.Testbed.SoupStirrer.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.SoupStirrer.Create = function(canvas, settings) {
   return new box2d.Testbed.SoupStirrer(canvas, settings);

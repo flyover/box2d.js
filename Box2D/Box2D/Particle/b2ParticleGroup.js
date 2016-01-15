@@ -23,11 +23,11 @@ goog.provide('box2d.b2ParticleGroupDef');
 
 goog.require('box2d.b2Particle');
 
-/** 
- * The particle group type.  Can be combined with the | 
- * operator. 
- *  
- * @export 
+/**
+ * The particle group type.  Can be combined with the |
+ * operator.
+ *
+ * @export
  * @enum {number}
  */
 box2d.b2ParticleGroupFlag = {
@@ -49,19 +49,19 @@ goog.exportProperty(box2d.b2ParticleGroupFlag, 'b2_particleGroupCanBeEmpty', box
 goog.exportProperty(box2d.b2ParticleGroupFlag, 'b2_particleGroupWillBeDestroyed', box2d.b2ParticleGroupFlag.b2_particleGroupWillBeDestroyed);
 goog.exportProperty(box2d.b2ParticleGroupFlag, 'b2_particleGroupNeedsUpdateDepth', box2d.b2ParticleGroupFlag.b2_particleGroupNeedsUpdateDepth);
 
-/** 
- * @const 
+/**
+ * @const
  * @type {number}
  */
 box2d.b2ParticleGroupFlag.b2_particleGroupInternalMask = box2d.b2ParticleGroupFlag.b2_particleGroupWillBeDestroyed | box2d.b2ParticleGroupFlag.b2_particleGroupNeedsUpdateDepth;
 
-/** 
- * A particle group definition holds all the data needed to 
- * construct a particle group.  You can safely re-use these 
- * definitions. 
- *  
- * @export 
- * @constructor 
+/**
+ * A particle group definition holds all the data needed to
+ * construct a particle group.  You can safely re-use these
+ * definitions.
+ *
+ * @export
+ * @constructor
  */
 box2d.b2ParticleGroupDef = function() {
   this.position = box2d.b2Vec2_zero.Clone();
@@ -69,156 +69,156 @@ box2d.b2ParticleGroupDef = function() {
   this.color = box2d.b2ParticleColor_zero.Clone();
 }
 
-/** 
- * The particle-behavior flags (See #b2ParticleFlag). 
- *  
- * @export 
+/**
+ * The particle-behavior flags (See #b2ParticleFlag).
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleGroupDef.prototype.flags = 0;
 
-/** 
- * The group-construction flags (See #b2ParticleGroupFlag). 
- *  
- * @export 
+/**
+ * The group-construction flags (See #b2ParticleGroupFlag).
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleGroupDef.prototype.groupFlags = 0;
 
-/** 
- * The world position of the group. 
- * Moves the group's shape a distance equal to the value of position. 
- *  
- * @export 
- * @type {box2d.b2Vec2} 
+/**
+ * The world position of the group.
+ * Moves the group's shape a distance equal to the value of position.
+ *
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2ParticleGroupDef.prototype.position = null;
 
-/** 
- * The world angle of the group in radians. 
- * Rotates the shape by an angle equal to the value of angle. 
- *  
- * @export 
- * @type {number} 
+/**
+ * The world angle of the group in radians.
+ * Rotates the shape by an angle equal to the value of angle.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleGroupDef.prototype.angle = 0.0;
 
-/** 
- * The linear velocity of the group's origin in world co-ordinates. 
- *  
- * @export 
- * @type {box2d.b2Vec2} 
+/**
+ * The linear velocity of the group's origin in world co-ordinates.
+ *
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2ParticleGroupDef.prototype.linearVelocity = null;
 
-/** 
- * The angular velocity of the group. 
- *  
- * @export 
- * @type {number} 
+/**
+ * The angular velocity of the group.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleGroupDef.prototype.angularVelocity = 0.0;
 
-/** 
- * The color of all particles in the group. 
- *  
- * @export 
- * @type {box2d.b2ParticleColor} 
+/**
+ * The color of all particles in the group.
+ *
+ * @export
+ * @type {box2d.b2ParticleColor}
  */
 box2d.b2ParticleGroupDef.prototype.color = null;
 
-/** 
- * The strength of cohesion among the particles in a group with 
- * flag b2_elasticParticle or b2_springParticle. 
- *  
- * @export 
- * @type {number} 
+/**
+ * The strength of cohesion among the particles in a group with
+ * flag b2_elasticParticle or b2_springParticle.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleGroupDef.prototype.strength = 1.0;
 
-/** 
- * The shape where particles will be added. 
- *  
- * @export 
+/**
+ * The shape where particles will be added.
+ *
+ * @export
  * @type {box2d.b2Shape}
  */
 box2d.b2ParticleGroupDef.prototype.shape = null;
 
-/** 
- * A array of shapes where particles will be added. 
- *  
- * @export 
+/**
+ * A array of shapes where particles will be added.
+ *
+ * @export
  * @type {Array.<box2d.b2Shape>}
  */
 box2d.b2ParticleGroupDef.prototype.shapes = null;
 
-/** 
- * The number of shapes. 
- *  
- * @export 
- * @type {number} 
+/**
+ * The number of shapes.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleGroupDef.prototype.shapeCount = 0;
 
-/** 
- * The interval of particles in the shape. 
- * If it is 0, b2_particleStride * particleDiameter is used 
- * instead. 
- *  
- * @export 
- * @type {number} 
+/**
+ * The interval of particles in the shape.
+ * If it is 0, b2_particleStride * particleDiameter is used
+ * instead.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleGroupDef.prototype.stride = 0.0;
 
-/** 
- * The number of particles in addition to ones added in the 
- * shape. 
- *  
- * @export 
- * @type {number} 
+/**
+ * The number of particles in addition to ones added in the
+ * shape.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleGroupDef.prototype.particleCount = 0;
 
-/** 
- * The initial positions of the particleCount particles. 
- *  
- * @export 
- * @type {Array.<box2d.b2Vec2>} 
+/**
+ * The initial positions of the particleCount particles.
+ *
+ * @export
+ * @type {Array.<box2d.b2Vec2>}
  */
 box2d.b2ParticleGroupDef.prototype.positionData = null;
 
-/** 
- * Lifetime of the particle group in seconds.  A value <= 0.0f 
- * indicates a particle group with infinite lifetime. 
- *  
- * @export 
- * @type {number} 
+/**
+ * Lifetime of the particle group in seconds.  A value <= 0.0f
+ * indicates a particle group with infinite lifetime.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleGroupDef.prototype.lifetime = 0.0;
 
-/** 
- * Use this to store application-specific group data. 
- *  
- * @export 
- * @type {*} 
+/**
+ * Use this to store application-specific group data.
+ *
+ * @export
+ * @type {*}
  */
 box2d.b2ParticleGroupDef.prototype.userData = null;
 
-/** 
- * An existing particle group to which the particles will be 
- * added. 
- *  
- * @export 
- * @type {box2d.b2ParticleGroup} 
+/**
+ * An existing particle group to which the particles will be
+ * added.
+ *
+ * @export
+ * @type {box2d.b2ParticleGroup}
  */
 box2d.b2ParticleGroupDef.prototype.group = null;
 
-/** 
- * A group of particles. b2ParticleSystem::CreateParticleGroup 
- * creates these. 
- *  
- * @export 
- * @constructor 
+/**
+ * A group of particles. b2ParticleSystem::CreateParticleGroup
+ * creates these.
+ *
+ * @export
+ * @constructor
  */
 box2d.b2ParticleGroup = function() {
   this.m_center = new box2d.b2Vec2();
@@ -302,61 +302,61 @@ box2d.b2ParticleGroup.prototype.m_transform = null;
  */
 box2d.b2ParticleGroup.prototype.m_userData = null;
 
-/** 
- * Get the next particle group from the list in b2_World. 
- *  
- * @export 
+/**
+ * Get the next particle group from the list in b2_World.
+ *
+ * @export
  * @return {box2d.b2ParticleGroup}
  */
 box2d.b2ParticleGroup.prototype.GetNext = function() {
   return this.m_next;
 }
 
-/** 
- * Get the particle system that holds this particle group. 
- *  
- * @export 
- * @return {box2d.b2ParticleSystem} 
+/**
+ * Get the particle system that holds this particle group.
+ *
+ * @export
+ * @return {box2d.b2ParticleSystem}
  */
 box2d.b2ParticleGroup.prototype.GetParticleSystem = function() {
   return this.m_system;
 }
 
-/** 
- * Get the number of particles. 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get the number of particles.
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleGroup.prototype.GetParticleCount = function() {
   return this.m_lastIndex - this.m_firstIndex;
 }
 
-/** 
- * Get the offset of this group in the global particle buffer 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get the offset of this group in the global particle buffer
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleGroup.prototype.GetBufferIndex = function() {
   return this.m_firstIndex;
 }
 
-/** 
- * Does this group contain the particle. 
- *  
- * @return {boolean} 
- * @param {number} index 
+/**
+ * Does this group contain the particle.
+ *
+ * @return {boolean}
+ * @param {number} index
  */
 box2d.b2ParticleGroup.prototype.ContainsParticle = function(index) {
   return this.m_firstIndex <= index && index < this.m_lastIndex;
 }
 
-/** 
- * Get the logical sum of particle flags. 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get the logical sum of particle flags.
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleGroup.prototype.GetAllParticleFlags = function() {
   var flags = 0;
@@ -366,129 +366,129 @@ box2d.b2ParticleGroup.prototype.GetAllParticleFlags = function() {
   return flags;
 }
 
-/** 
- * Get the construction flags for the group. 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get the construction flags for the group.
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleGroup.prototype.GetGroupFlags = function() {
   return this.m_groupFlags;
 }
 
-/** 
- * Set the construction flags for the group. 
- *  
- * @export 
- * @return {void} 
- * @param {number} flags 
+/**
+ * Set the construction flags for the group.
+ *
+ * @export
+ * @return {void}
+ * @param {number} flags
  */
 box2d.b2ParticleGroup.prototype.SetGroupFlags = function(flags) {
     box2d.b2Assert((flags & box2d.b2ParticleGroupFlag.b2_particleGroupInternalMask) === 0);
     flags |= this.m_groupFlags & box2d.b2ParticleGroupFlag.b2_particleGroupInternalMask;
     this.m_system.SetGroupFlags(this, flags);
   }
-  /** 
-   * Get the total mass of the group: the sum of all particles in 
-   * it. 
-   *  
-   * @export 
-   * @return {number} 
+  /**
+   * Get the total mass of the group: the sum of all particles in
+   * it.
+   *
+   * @export
+   * @return {number}
    */
 box2d.b2ParticleGroup.prototype.GetMass = function() {
   this.UpdateStatistics();
   return this.m_mass;
 }
 
-/** 
- * Get the moment of inertia for the group. 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get the moment of inertia for the group.
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleGroup.prototype.GetInertia = function() {
   this.UpdateStatistics();
   return this.m_inertia;
 }
 
-/** 
- * Get the center of gravity for the group. 
- *  
- * @export 
- * @return {box2d.b2Vec2} 
+/**
+ * Get the center of gravity for the group.
+ *
+ * @export
+ * @return {box2d.b2Vec2}
  */
 box2d.b2ParticleGroup.prototype.GetCenter = function() {
   this.UpdateStatistics();
   return this.m_center;
 }
 
-/** 
- * Get the linear velocity of the group. 
- *  
- * @export 
- * @return {box2d.b2Vec2} 
+/**
+ * Get the linear velocity of the group.
+ *
+ * @export
+ * @return {box2d.b2Vec2}
  */
 box2d.b2ParticleGroup.prototype.GetLinearVelocity = function() {
   this.UpdateStatistics();
   return this.m_linearVelocity;
 }
 
-/** 
- * Get the angular velocity of the group. 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get the angular velocity of the group.
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleGroup.prototype.GetAngularVelocity = function() {
   this.UpdateStatistics();
   return this.m_angularVelocity;
 }
 
-/** 
- * Get the position of the group's origin and rotation. 
- *  
- * Used only with groups of rigid particles. 
- *  
- * @export 
- * @return {box2d.b2Transform} 
+/**
+ * Get the position of the group's origin and rotation.
+ *
+ * Used only with groups of rigid particles.
+ *
+ * @export
+ * @return {box2d.b2Transform}
  */
 box2d.b2ParticleGroup.prototype.GetTransform = function() {
   return this.m_transform;
 }
 
-/** 
- * Get position of the particle group as a whole. 
- *  
- * Used only with groups of rigid particles. 
- *  
- * @export 
- * @return {box2d.b2Vec2} 
+/**
+ * Get position of the particle group as a whole.
+ *
+ * Used only with groups of rigid particles.
+ *
+ * @export
+ * @return {box2d.b2Vec2}
  */
 box2d.b2ParticleGroup.prototype.GetPosition = function() {
   return this.m_transform.p;
 }
 
-/** 
- * Get the rotational angle of the particle group as a whole. 
- *  
- * Used only with groups of rigid particles. 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get the rotational angle of the particle group as a whole.
+ *
+ * Used only with groups of rigid particles.
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleGroup.prototype.GetAngle = function() {
   return this.m_transform.q.GetAngle();
 }
 
-/** 
- * Get the world linear velocity of a world point, from the 
+/**
+ * Get the world linear velocity of a world point, from the
  * average linear and angular velocities of the particle group.
- *  
- * @export 
+ *
+ * @export
  * @return {box2d.b2Vec2} the world velocity of a point.
- * @param {box2d.b2Vec2} worldPoint a point in world 
+ * @param {box2d.b2Vec2} worldPoint a point in world
  *  	  coordinates.
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2ParticleGroup.prototype.GetLinearVelocityFromWorldPoint = function(worldPoint, out) {
   var s_t0 = box2d.b2ParticleGroup.prototype.GetLinearVelocityFromWorldPoint.s_t0;
@@ -498,61 +498,61 @@ box2d.b2ParticleGroup.prototype.GetLinearVelocityFromWorldPoint = function(world
 }
 box2d.b2ParticleGroup.prototype.GetLinearVelocityFromWorldPoint.s_t0 = new box2d.b2Vec2();
 
-/** 
- * Get the user data pointer that was provided in the group 
- * definition. 
- *  
- * @export 
- * @return {*} 
+/**
+ * Get the user data pointer that was provided in the group
+ * definition.
+ *
+ * @export
+ * @return {*}
  */
 box2d.b2ParticleGroup.prototype.GetUserData = function() {
   return this.m_userData;
 }
 
-/** 
- * Set the user data. Use this to store your application 
- * specific data. 
- *  
- * @export 
- * @return {void} 
- * @param {*} data 
+/**
+ * Set the user data. Use this to store your application
+ * specific data.
+ *
+ * @export
+ * @return {void}
+ * @param {*} data
  */
 box2d.b2ParticleGroup.prototype.SetUserData = function(data) {
   this.m_userData = data;
 }
 
-/** 
- * Call b2ParticleSystem::ApplyForce for every particle in the 
- * group. 
- *  
- * @export 
- * @return {void} 
- * @param {box2d.b2Vec2} force 
+/**
+ * Call b2ParticleSystem::ApplyForce for every particle in the
+ * group.
+ *
+ * @export
+ * @return {void}
+ * @param {box2d.b2Vec2} force
  */
 box2d.b2ParticleGroup.prototype.ApplyForce = function(force) {
   this.m_system.ApplyForce(this.m_firstIndex, this.m_lastIndex, force);
 }
 
-/** 
- * Call b2ParticleSystem::ApplyLinearImpulse for every particle 
- * in the group. 
- *  
- * @export 
- * @return {void} 
- * @param {box2d.b2Vec2} impulse 
+/**
+ * Call b2ParticleSystem::ApplyLinearImpulse for every particle
+ * in the group.
+ *
+ * @export
+ * @return {void}
+ * @param {box2d.b2Vec2} impulse
  */
 box2d.b2ParticleGroup.prototype.ApplyLinearImpulse = function(impulse) {
   this.m_system.ApplyLinearImpulse(this.m_firstIndex, this.m_lastIndex, impulse);
 }
 
-/** 
- * Destroy all the particles in this group. 
- *  
- * warning: This function is locked during callbacks. 
- *  
- * @export 
- * @return {void} 
- * @param {boolean=} callDestructionListener Whether to call the 
+/**
+ * Destroy all the particles in this group.
+ *
+ * warning: This function is locked during callbacks.
+ *
+ * @export
+ * @return {void}
+ * @param {boolean=} callDestructionListener Whether to call the
  *  	  world b2DestructionListener for each particle is
  *  	  destroyed.
  */
@@ -568,8 +568,8 @@ box2d.b2ParticleGroup.prototype.DestroyParticles = function(callDestructionListe
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.b2ParticleGroup.prototype.UpdateStatistics = function() {
   var p = new box2d.b2Vec2();

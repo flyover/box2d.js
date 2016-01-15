@@ -142,9 +142,9 @@ This might be faster than computing sin+cos.
 However, we can compute sin+cos of the same angle fast.
 */
 
-/** 
- * This is an internal class. 
- * @export 
+/**
+ * This is an internal class.
+ * @export
  * @constructor
  */
 box2d.b2Island = function() {
@@ -157,83 +157,83 @@ box2d.b2Island = function() {
 }
 
 /**
- * @export 
+ * @export
  * @type {*}
  */
 box2d.b2Island.prototype.m_allocator = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2ContactListener}
  */
 box2d.b2Island.prototype.m_listener = null;
 
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2Body>}
  */
 box2d.b2Island.prototype.m_bodies = null;
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2Contact>}
  */
 box2d.b2Island.prototype.m_contacts = null;
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2Joint>}
  */
 box2d.b2Island.prototype.m_joints = null;
 
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2Position>}
  */
 box2d.b2Island.prototype.m_positions = null;
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2Velocity>}
  */
 box2d.b2Island.prototype.m_velocities = null;
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Island.prototype.m_bodyCount = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Island.prototype.m_jointCount = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Island.prototype.m_contactCount = 0;
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Island.prototype.m_bodyCapacity = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Island.prototype.m_contactCapacity = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Island.prototype.m_jointCapacity = 0;
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {number} bodyCapacity
  * @param {number} contactCapacity
- * @param {number} jointCapacity 
- * @param allocator 
- * @param {box2d.b2ContactListener} listener 
+ * @param {number} jointCapacity
+ * @param allocator
+ * @param {box2d.b2ContactListener} listener
  */
 box2d.b2Island.prototype.Initialize = function(bodyCapacity, contactCapacity, jointCapacity, allocator, listener) {
   this.m_bodyCapacity = bodyCapacity;
@@ -286,8 +286,8 @@ box2d.b2Island.prototype.Initialize = function(bodyCapacity, contactCapacity, jo
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.b2Island.prototype.Clear = function() {
   this.m_bodyCount = 0;
@@ -295,9 +295,9 @@ box2d.b2Island.prototype.Clear = function() {
   this.m_jointCount = 0;
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2Body} body
  */
 box2d.b2Island.prototype.AddBody = function(body) {
@@ -309,8 +309,8 @@ box2d.b2Island.prototype.AddBody = function(body) {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2Contact} contact
  */
 box2d.b2Island.prototype.AddContact = function(contact) {
@@ -321,8 +321,8 @@ box2d.b2Island.prototype.AddContact = function(contact) {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2Joint} joint
  */
 box2d.b2Island.prototype.AddJoint = function(joint) {
@@ -332,13 +332,13 @@ box2d.b2Island.prototype.AddJoint = function(joint) {
   this.m_joints[this.m_jointCount++] = joint;
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2Profile} profile 
- * @param {box2d.b2TimeStep} step 
- * @param {box2d.b2Vec2} gravity 
- * @param {boolean} allowSleep 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2Profile} profile
+ * @param {box2d.b2TimeStep} step
+ * @param {box2d.b2Vec2} gravity
+ * @param {boolean} allowSleep
  */
 box2d.b2Island.prototype.Solve = function(profile, step, gravity, allowSleep) {
   /*box2d.b2Timer*/
@@ -550,11 +550,11 @@ box2d.b2Island.prototype.Solve = function(profile, step, gravity, allowSleep) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2TimeStep} subStep 
- * @param {number} toiIndexA 
- * @param {number} toiIndexB 
+ * @export
+ * @return {void}
+ * @param {box2d.b2TimeStep} subStep
+ * @param {number} toiIndexA
+ * @param {number} toiIndexB
  */
 box2d.b2Island.prototype.SolveTOI = function(subStep, toiIndexA, toiIndexB) {
   if (box2d.ENABLE_ASSERTS) {
@@ -701,8 +701,8 @@ box2d.b2Island.prototype.SolveTOI = function(subStep, toiIndexA, toiIndexB) {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {Array.<box2d.b2ContactVelocityConstraint>} constraints
  */
 box2d.b2Island.prototype.Report = function(constraints) {

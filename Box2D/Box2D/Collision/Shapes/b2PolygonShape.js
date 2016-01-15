@@ -20,15 +20,15 @@ goog.provide('box2d.b2PolygonShape');
 
 goog.require('box2d.b2Shape');
 
-/** 
- * A convex polygon. It is assumed that the interior of the 
- * polygon is to the left of each edge. 
- * Polygons have a maximum number of vertices equal to 
- * box2d.b2_maxPolygonVertices. In most cases you should not 
- * need many vertices for a convex polygon. 
- * @export 
+/**
+ * A convex polygon. It is assumed that the interior of the
+ * polygon is to the left of each edge.
+ * Polygons have a maximum number of vertices equal to
+ * box2d.b2_maxPolygonVertices. In most cases you should not
+ * need many vertices for a convex polygon.
+ * @export
  * @constructor
- * @extends {box2d.b2Shape} 
+ * @extends {box2d.b2Shape}
  */
 box2d.b2PolygonShape = function() {
   box2d.b2Shape.call(this, box2d.b2ShapeType.e_polygonShape, box2d.b2_polygonRadius); // base class constructor
@@ -41,38 +41,38 @@ box2d.b2PolygonShape = function() {
 goog.inherits(box2d.b2PolygonShape, box2d.b2Shape);
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PolygonShape.prototype.m_centroid = null;
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2Vec2>}
  */
 box2d.b2PolygonShape.prototype.m_vertices = null;
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2Vec2>}
  */
 box2d.b2PolygonShape.prototype.m_normals = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PolygonShape.prototype.m_count = 0;
 
-/** 
- * Implement box2d.b2Shape. 
- * @export 
- * @return {box2d.b2Shape} 
+/**
+ * Implement box2d.b2Shape.
+ * @export
+ * @return {box2d.b2Shape}
  */
 box2d.b2PolygonShape.prototype.Clone = function() {
   return new box2d.b2PolygonShape().Copy(this);
 }
 
 /**
- * @export 
- * @return {box2d.b2Shape} 
+ * @export
+ * @return {box2d.b2Shape}
  * @param {box2d.b2Shape} other
  */
 box2d.b2PolygonShape.prototype.Copy = function(other) {
@@ -91,11 +91,11 @@ box2d.b2PolygonShape.prototype.Copy = function(other) {
   return this;
 }
 
-/** 
- * Build vertices to represent an axis-aligned box centered on 
- * the local origin. 
- * @export 
- * @return {box2d.b2PolygonShape} 
+/**
+ * Build vertices to represent an axis-aligned box centered on
+ * the local origin.
+ * @export
+ * @return {box2d.b2PolygonShape}
  * @param {number} hx the half-width.
  * @param {number} hy the half-height.
  * @param {box2d.b2Vec2=} center the center of the box in local coordinates.
@@ -135,12 +135,12 @@ box2d.b2PolygonShape.prototype.SetAsBox = function(hx, hy, center, angle) {
 /**
  * Create a convex hull from the given array of local points.
  * The count must be in the range [3, b2_maxPolygonVertices].
- * warning the points may be re-ordered, even if they form a 
- * convex polygon 
- * warning collinear points are handled but not removed. 
- * Collinear points may lead to poor stacking behavior. 
- * @export 
- * @return {box2d.b2PolygonShape} 
+ * warning the points may be re-ordered, even if they form a
+ * convex polygon
+ * warning collinear points are handled but not removed.
+ * Collinear points may lead to poor stacking behavior.
+ * @export
+ * @return {box2d.b2PolygonShape}
  * @param {Array.<box2d.b2Vec2>} vertices
  * @param {number=} count
  * @param {number=} start
@@ -271,18 +271,18 @@ box2d.b2PolygonShape.prototype.Set.s_hull = box2d.b2MakeNumberArray(box2d.b2_max
 box2d.b2PolygonShape.prototype.Set.s_r = new box2d.b2Vec2();
 box2d.b2PolygonShape.prototype.Set.s_v = new box2d.b2Vec2();
 
-/** 
- * Implement box2d.b2Shape. 
- * @export 
+/**
+ * Implement box2d.b2Shape.
+ * @export
  * @return {number}
  */
 box2d.b2PolygonShape.prototype.GetChildCount = function() {
   return 1;
 }
 
-/** 
- * @see box2d.b2Shape::TestPoint 
- * @export 
+/**
+ * @see box2d.b2Shape::TestPoint
+ * @export
  * @return {boolean}
  * @param {box2d.b2Transform} xf
  * @param {box2d.b2Vec2} p
@@ -303,14 +303,14 @@ box2d.b2PolygonShape.prototype.TestPoint.s_pLocal = new box2d.b2Vec2();
 
 //#if B2_ENABLE_PARTICLE
 
-/** 
- * @see b2Shape::ComputeDistance 
- * @export 
- * @return {number} 
- * @param {box2d.b2Transform} xf 
- * @param {box2d.b2Vec2} p 
- * @param {box2d.b2Vec2} normal 
- * @param {number} childIndex 
+/**
+ * @see b2Shape::ComputeDistance
+ * @export
+ * @return {number}
+ * @param {box2d.b2Transform} xf
+ * @param {box2d.b2Vec2} p
+ * @param {box2d.b2Vec2} normal
+ * @param {number} childIndex
  */
 box2d.b2PolygonShape.prototype.ComputeDistance = function(xf, p, normal, childIndex) {
   var pLocal = box2d.b2MulT_X_V2(xf, p, box2d.b2PolygonShape.prototype.ComputeDistance.s_pLocal);
@@ -352,14 +352,14 @@ box2d.b2PolygonShape.prototype.ComputeDistance.s_distance = new box2d.b2Vec2();
 
 //#endif
 
-/** 
- * Implement box2d.b2Shape. 
- * @export 
- * @return {boolean} 
- * @param {box2d.b2RayCastOutput} output 
- * @param {box2d.b2RayCastInput} input 
- * @param {box2d.b2Transform} xf 
- * @param {number} childIndex 
+/**
+ * Implement box2d.b2Shape.
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2RayCastOutput} output
+ * @param {box2d.b2RayCastInput} input
+ * @param {box2d.b2Transform} xf
+ * @param {number} childIndex
  */
 box2d.b2PolygonShape.prototype.RayCast = function(output, input, xf, childIndex) {
   // Put the ray into the polygon's frame of reference.
@@ -425,13 +425,13 @@ box2d.b2PolygonShape.prototype.RayCast.s_p1 = new box2d.b2Vec2();
 box2d.b2PolygonShape.prototype.RayCast.s_p2 = new box2d.b2Vec2();
 box2d.b2PolygonShape.prototype.RayCast.s_d = new box2d.b2Vec2();
 
-/** 
- * @see box2d.b2Shape::ComputeAABB 
- * @export 
- * @return {void} 
- * @param {box2d.b2AABB} aabb 
- * @param {box2d.b2Transform} xf 
- * @param {number} childIndex 
+/**
+ * @see box2d.b2Shape::ComputeAABB
+ * @export
+ * @return {void}
+ * @param {box2d.b2AABB} aabb
+ * @param {box2d.b2Transform} xf
+ * @param {number} childIndex
  */
 box2d.b2PolygonShape.prototype.ComputeAABB = function(aabb, xf, childIndex) {
   var lower = box2d.b2Mul_X_V2(xf, this.m_vertices[0], aabb.lowerBound);
@@ -449,12 +449,12 @@ box2d.b2PolygonShape.prototype.ComputeAABB = function(aabb, xf, childIndex) {
 }
 box2d.b2PolygonShape.prototype.ComputeAABB.s_v = new box2d.b2Vec2();
 
-/** 
- * @see box2d.b2Shape::ComputeMass 
- * @export 
- * @return {void} 
- * @param {box2d.b2MassData} massData 
- * @param {number} density 
+/**
+ * @see box2d.b2Shape::ComputeMass
+ * @export
+ * @return {void}
+ * @param {box2d.b2MassData} massData
+ * @param {number} density
  */
 box2d.b2PolygonShape.prototype.ComputeMass = function(massData, density) {
   // Polygon mass, centroid, and inertia.
@@ -546,9 +546,9 @@ box2d.b2PolygonShape.prototype.ComputeMass.s_s = new box2d.b2Vec2();
 box2d.b2PolygonShape.prototype.ComputeMass.s_e1 = new box2d.b2Vec2();
 box2d.b2PolygonShape.prototype.ComputeMass.s_e2 = new box2d.b2Vec2();
 
-/** 
- * Validate convexity. This is a very time consuming operation. 
- * @export 
+/**
+ * Validate convexity. This is a very time consuming operation.
+ * @export
  * @return {boolean} true if valid
  */
 box2d.b2PolygonShape.prototype.Validate = function() {
@@ -577,9 +577,9 @@ box2d.b2PolygonShape.prototype.Validate.s_e = new box2d.b2Vec2();
 box2d.b2PolygonShape.prototype.Validate.s_v = new box2d.b2Vec2();
 
 /**
- * @return {void} 
- * @param {box2d.b2DistanceProxy} proxy 
- * @param {number} index 
+ * @return {void}
+ * @param {box2d.b2DistanceProxy} proxy
+ * @param {number} index
  */
 box2d.b2PolygonShape.prototype.SetupDistanceProxy = function(proxy, index) {
   proxy.m_vertices = this.m_vertices;
@@ -588,7 +588,7 @@ box2d.b2PolygonShape.prototype.SetupDistanceProxy = function(proxy, index) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {box2d.b2Vec2} normal
  * @param {number} offset
@@ -694,9 +694,9 @@ box2d.b2PolygonShape.prototype.ComputeSubmergedArea.s_intoVec = new box2d.b2Vec2
 box2d.b2PolygonShape.prototype.ComputeSubmergedArea.s_outoVec = new box2d.b2Vec2();
 box2d.b2PolygonShape.prototype.ComputeSubmergedArea.s_center = new box2d.b2Vec2();
 
-/** 
- * Dump this shape to the log file. 
- * @export 
+/**
+ * Dump this shape to the log file.
+ * @export
  * @return {void}
  */
 box2d.b2PolygonShape.prototype.Dump = function() {
@@ -709,11 +709,11 @@ box2d.b2PolygonShape.prototype.Dump = function() {
 }
 
 /**
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {Array.<box2d.b2Vec2>} vs 
- * @param {number} count 
- * @param {box2d.b2Vec2} out 
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {Array.<box2d.b2Vec2>} vs
+ * @param {number} count
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2PolygonShape.ComputeCentroid = function(vs, count, out) {
   if (box2d.ENABLE_ASSERTS) {

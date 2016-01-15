@@ -20,10 +20,10 @@ goog.provide('box2d.b2Timer');
 
 goog.require('box2d.b2Settings');
 
-/** 
- * Timer for profiling. This has platform specific code and may 
- * not work on every platform. 
- * @export 
+/**
+ * Timer for profiling. This has platform specific code and may
+ * not work on every platform.
+ * @export
  * @constructor
  */
 box2d.b2Timer = function() {
@@ -31,13 +31,13 @@ box2d.b2Timer = function() {
 }
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Timer.prototype.m_start = 0;
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Timer}
  */
 box2d.b2Timer.prototype.Reset = function() {
@@ -46,7 +46,7 @@ box2d.b2Timer.prototype.Reset = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2Timer.prototype.GetMilliseconds = function() {
@@ -54,54 +54,54 @@ box2d.b2Timer.prototype.GetMilliseconds = function() {
 }
 
 /**
- * @export 
+ * @export
  * @constructor
  */
 box2d.b2Counter = function() {}
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Counter.prototype.m_count = 0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Counter.prototype.m_min_count = 0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Counter.prototype.m_max_count = 0;
 
 /**
- * @export 
- * @return {number} 
+ * @export
+ * @return {number}
  */
 box2d.b2Counter.prototype.GetCount = function() {
   return this.m_count;
 }
 
 /**
- * @export 
- * @return {number} 
+ * @export
+ * @return {number}
  */
 box2d.b2Counter.prototype.GetMinCount = function() {
   return this.m_min_count;
 }
 
-/** 
- * @export 
- * @return {number} 
+/**
+ * @export
+ * @return {number}
  */
 box2d.b2Counter.prototype.GetMaxCount = function() {
   return this.m_max_count;
 }
 
-/** 
- * @export 
- * @return {number} 
+/**
+ * @export
+ * @return {number}
  */
 box2d.b2Counter.prototype.ResetCount = function() {
   var count = this.m_count;
@@ -110,24 +110,24 @@ box2d.b2Counter.prototype.ResetCount = function() {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.b2Counter.prototype.ResetMinCount = function() {
   this.m_min_count = 0;
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.b2Counter.prototype.ResetMaxCount = function() {
   this.m_max_count = 0;
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.b2Counter.prototype.Increment = function() {
   this.m_count++;
@@ -138,8 +138,8 @@ box2d.b2Counter.prototype.Increment = function() {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.b2Counter.prototype.Decrement = function() {
   this.m_count--;

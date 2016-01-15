@@ -26,9 +26,9 @@ goog.require('box2d.Testbed.Test');
 
 // This callback finds the closest hit. Polygon 0 is filtered.
 /**
- * @export 
- * @constructor 
- * @extends {box2d.b2RayCastCallback} 
+ * @export
+ * @constructor
+ * @extends {box2d.b2RayCastCallback}
  */
 box2d.Testbed.RayCastClosestCallback = function() {
   box2d.b2RayCastCallback.call(this); // base class constructor
@@ -40,28 +40,28 @@ box2d.Testbed.RayCastClosestCallback = function() {
 goog.inherits(box2d.Testbed.RayCastClosestCallback, box2d.b2RayCastCallback);
 
 /**
- * @export 
- * @type {boolean} 
+ * @export
+ * @type {boolean}
  */
 box2d.Testbed.RayCastClosestCallback.prototype.m_hit = false;
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.Testbed.RayCastClosestCallback.prototype.m_point = null;
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.Testbed.RayCastClosestCallback.prototype.m_normal = null;
 
 /**
- * @export 
- * @return {number} 
- * @param {box2d.b2Fixture} fixture 
- * @param {box2d.b2Vec2} point 
- * @param {box2d.b2Vec2} normal 
- * @param {number} fraction 
+ * @export
+ * @return {number}
+ * @param {box2d.b2Fixture} fixture
+ * @param {box2d.b2Vec2} point
+ * @param {box2d.b2Vec2} normal
+ * @param {number} fraction
  */
 box2d.Testbed.RayCastClosestCallback.prototype.ReportFixture = function(fixture, point, normal, fraction) {
   var body = fixture.GetBody();
@@ -86,11 +86,11 @@ box2d.Testbed.RayCastClosestCallback.prototype.ReportFixture = function(fixture,
 }
 
 // This callback finds any hit. Polygon 0 is filtered. For this type of query we are usually
-// just checking for obstruction, so the actual fixture and hit point are irrelevant. 
+// just checking for obstruction, so the actual fixture and hit point are irrelevant.
 /**
- * @export 
- * @constructor 
- * @extends {box2d.b2RayCastCallback} 
+ * @export
+ * @constructor
+ * @extends {box2d.b2RayCastCallback}
  */
 box2d.Testbed.RayCastAnyCallback = function() {
   box2d.b2RayCastCallback.call(this); // base class constructor
@@ -102,28 +102,28 @@ box2d.Testbed.RayCastAnyCallback = function() {
 goog.inherits(box2d.Testbed.RayCastAnyCallback, box2d.b2RayCastCallback);
 
 /**
- * @export 
- * @type {boolean} 
+ * @export
+ * @type {boolean}
  */
 box2d.Testbed.RayCastAnyCallback.prototype.m_hit = false;
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.Testbed.RayCastAnyCallback.prototype.m_point = null;
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.Testbed.RayCastAnyCallback.prototype.m_normal = null;
 
 /**
- * @export 
- * @return {number} 
- * @param {box2d.b2Fixture} fixture 
- * @param {box2d.b2Vec2} point 
- * @param {box2d.b2Vec2} normal 
- * @param {number} fraction 
+ * @export
+ * @return {number}
+ * @param {box2d.b2Fixture} fixture
+ * @param {box2d.b2Vec2} point
+ * @param {box2d.b2Vec2} normal
+ * @param {number} fraction
  */
 box2d.Testbed.RayCastAnyCallback.prototype.ReportFixture = function(fixture, point, normal, fraction) {
   var body = fixture.GetBody();
@@ -150,9 +150,9 @@ box2d.Testbed.RayCastAnyCallback.prototype.ReportFixture = function(fixture, poi
 // The fixtures are not necessary reported in order, so we might not capture
 // the closest fixture.
 /**
- * @export 
+ * @export
  * @constructor
- * @extends {box2d.b2RayCastCallback} 
+ * @extends {box2d.b2RayCastCallback}
  */
 box2d.Testbed.RayCastMultipleCallback = function() {
   box2d.b2RayCastCallback.call(this); // base class constructor
@@ -164,35 +164,35 @@ box2d.Testbed.RayCastMultipleCallback = function() {
 goog.inherits(box2d.Testbed.RayCastMultipleCallback, box2d.b2RayCastCallback);
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.Testbed.RayCastMultipleCallback.e_maxCount = 3;
 
 /**
- * @export 
- * @type {Array.<box2d.b2Vec2>} 
+ * @export
+ * @type {Array.<box2d.b2Vec2>}
  */
 box2d.Testbed.RayCastMultipleCallback.prototype.m_points = null;
 /**
- * @export 
- * @type {Array.<box2d.b2Vec2>} 
+ * @export
+ * @type {Array.<box2d.b2Vec2>}
  */
 box2d.Testbed.RayCastMultipleCallback.prototype.m_normals = null;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.RayCastMultipleCallback.prototype.m_count = 0;
 
 /**
- * @export 
- * @return {number} 
- * @param {box2d.b2Fixture} fixture 
- * @param {box2d.b2Vec2} point 
- * @param {box2d.b2Vec2} normal 
- * @param {number} fraction 
+ * @export
+ * @return {number}
+ * @param {box2d.b2Fixture} fixture
+ * @param {box2d.b2Vec2} point
+ * @param {box2d.b2Vec2} normal
+ * @param {number} fraction
  */
 box2d.Testbed.RayCastMultipleCallback.prototype.ReportFixture = function(fixture, point, normal, fraction) {
   var body = fixture.GetBody();
@@ -224,8 +224,8 @@ box2d.Testbed.RayCastMultipleCallback.prototype.ReportFixture = function(fixture
   return 1;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @enum
  */
 box2d.Testbed.RayCastMode = {
@@ -238,11 +238,11 @@ goog.exportProperty(box2d.Testbed.RayCastMode, 'e_any', box2d.Testbed.RayCastMod
 goog.exportProperty(box2d.Testbed.RayCastMode, 'e_multiple', box2d.Testbed.RayCastMode.e_multiple);
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.RayCast = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -324,42 +324,42 @@ box2d.Testbed.RayCast = function(canvas, settings) {
 goog.inherits(box2d.Testbed.RayCast, box2d.Testbed.Test);
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.Testbed.RayCast.e_maxBodies = 256;
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.RayCast.prototype.m_bodyIndex = 0;
 /**
- * @export 
- * @type {Array.<box2d.b2Body>} 
+ * @export
+ * @type {Array.<box2d.b2Body>}
  */
 box2d.Testbed.RayCast.prototype.m_bodies = null;
 /**
- * @export 
- * @type {Array.<box2d.b2PolygonShape>} 
+ * @export
+ * @type {Array.<box2d.b2PolygonShape>}
  */
 box2d.Testbed.RayCast.prototype.m_polygons = null;
 /**
- * @export 
- * @type {box2d.b2CircleShape} 
+ * @export
+ * @type {box2d.b2CircleShape}
  */
 box2d.Testbed.RayCast.prototype.m_circle = null;
 /**
- * @export 
- * @type {box2d.b2EdgeShape} 
+ * @export
+ * @type {box2d.b2EdgeShape}
  */
 box2d.Testbed.RayCast.prototype.m_edge = null;
 
-/** 
- * @export 
- * @return {void} 
- * @param {number} index 
+/**
+ * @export
+ * @return {void}
+ * @param {number} index
  */
 box2d.Testbed.RayCast.prototype.CreateBody = function(index) {
   if (this.m_bodies[this.m_bodyIndex] !== null) {
@@ -406,8 +406,8 @@ box2d.Testbed.RayCast.prototype.CreateBody = function(index) {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.Testbed.RayCast.prototype.DestroyBody = function() {
   for (var i = 0; i < box2d.Testbed.RayCast.e_maxBodies; ++i) {
@@ -420,9 +420,9 @@ box2d.Testbed.RayCast.prototype.DestroyBody = function() {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.RayCast.prototype.Keyboard = function(key) {
   switch (key) {
@@ -452,8 +452,8 @@ box2d.Testbed.RayCast.prototype.Keyboard = function(key) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.RayCast.prototype.Step = function(settings) {
   var advanceRay = !settings.pause || settings.singleStep;
@@ -569,11 +569,11 @@ box2d.Testbed.RayCast.prototype.Step = function(settings) {
   */
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.RayCast.Create = function(canvas, settings) {
   return new box2d.Testbed.RayCast(canvas, settings);

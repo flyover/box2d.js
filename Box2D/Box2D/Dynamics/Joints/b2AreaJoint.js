@@ -22,13 +22,13 @@ goog.require('box2d.b2Settings');
 goog.require('box2d.b2Joint');
 goog.require('box2d.b2Math');
 
-/** 
- * Definition for a {@link box2d.b2AreaJoint}, which connects a 
- * group a bodies together so they maintain a constant area 
- * within them. 
- * @export 
- * @constructor 
- * @extends {box2d.b2JointDef} 
+/**
+ * Definition for a {@link box2d.b2AreaJoint}, which connects a
+ * group a bodies together so they maintain a constant area
+ * within them.
+ * @export
+ * @constructor
+ * @extends {box2d.b2JointDef}
  */
 box2d.b2AreaJointDef = function() {
   box2d.b2JointDef.call(this, box2d.b2JointType.e_areaJoint); // base class constructor
@@ -39,35 +39,35 @@ box2d.b2AreaJointDef = function() {
 goog.inherits(box2d.b2AreaJointDef, box2d.b2JointDef);
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2World}
  */
 box2d.b2AreaJointDef.prototype.world = null;
 
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2Body>}
  */
 box2d.b2AreaJointDef.prototype.bodies = null;
 
-/** 
- * The mass-spring-damper frequency in Hertz. A value of 0 
- * disables softness. 
- * @export 
+/**
+ * The mass-spring-damper frequency in Hertz. A value of 0
+ * disables softness.
+ * @export
  * @type {number}
  */
 box2d.b2AreaJointDef.prototype.frequencyHz = 0;
 
-/** 
- * The damping ratio. 0 = no damping, 1 = critical damping. 
- * @export 
+/**
+ * The damping ratio. 0 = no damping, 1 = critical damping.
+ * @export
  * @type {number}
  */
 box2d.b2AreaJointDef.prototype.dampingRatio = 0;
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2Body} body
  */
 box2d.b2AreaJointDef.prototype.AddBody = function(body) {
@@ -80,14 +80,14 @@ box2d.b2AreaJointDef.prototype.AddBody = function(body) {
   }
 }
 
-/** 
- * A distance joint constrains two points on two bodies to 
- * remain at a fixed distance from each other. You can view this 
- * as a massless, rigid rod. 
- * @export 
- * @constructor 
- * @extends {box2d.b2Joint} 
- * @param {box2d.b2AreaJointDef} def 
+/**
+ * A distance joint constrains two points on two bodies to
+ * remain at a fixed distance from each other. You can view this
+ * as a massless, rigid rod.
+ * @export
+ * @constructor
+ * @extends {box2d.b2Joint}
+ * @param {box2d.b2AreaJointDef} def
  */
 box2d.b2AreaJoint = function(def) {
   box2d.b2Joint.call(this, def); // base class constructor
@@ -133,24 +133,24 @@ box2d.b2AreaJoint = function(def) {
 goog.inherits(box2d.b2AreaJoint, box2d.b2Joint);
 
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2Body>}
  */
 box2d.b2AreaJoint.prototype.m_bodies = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2AreaJoint.prototype.m_frequencyHz = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2AreaJoint.prototype.m_dampingRatio = 0;
 
 // Solver shared
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2AreaJoint.prototype.m_impulse = 0;
@@ -163,51 +163,51 @@ box2d.b2AreaJoint.prototype.m_joints = null;
 box2d.b2AreaJoint.prototype.m_deltas = null;
 box2d.b2AreaJoint.prototype.m_delta = null;
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2AreaJoint.prototype.GetAnchorA = function(out) {
   return out.SetZero();
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2AreaJoint.prototype.GetAnchorB = function(out) {
   return out.SetZero();
 }
 
-/** 
- * Get the reaction force given the inverse time step. 
+/**
+ * Get the reaction force given the inverse time step.
  * Unit is N.
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {number} inv_dt 
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {number} inv_dt
  * @param {box2d.b2Vec2} out
  */
 box2d.b2AreaJoint.prototype.GetReactionForce = function(inv_dt, out) {
   return out.SetZero();
 }
 
-/** 
- * Get the reaction torque given the inverse time step. 
+/**
+ * Get the reaction torque given the inverse time step.
  * Unit is N*m. This is always zero for a distance joint.
- * @export 
- * @return {number} 
- * @param {number} inv_dt 
+ * @export
+ * @return {number}
+ * @param {number} inv_dt
  */
 box2d.b2AreaJoint.prototype.GetReactionTorque = function(inv_dt) {
   return 0;
 }
 
-/** 
- * Set/get frequency in Hz. 
- * @export 
- * @return {void} 
+/**
+ * Set/get frequency in Hz.
+ * @export
+ * @return {void}
  * @param {number} hz
  */
 box2d.b2AreaJoint.prototype.SetFrequency = function(hz) {
@@ -218,18 +218,18 @@ box2d.b2AreaJoint.prototype.SetFrequency = function(hz) {
   }
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2AreaJoint.prototype.GetFrequency = function() {
   return this.m_frequencyHz;
 }
 
-/** 
- * Set/get damping ratio. 
- * @export 
- * @return {void} 
+/**
+ * Set/get damping ratio.
+ * @export
+ * @return {void}
  * @param {number} ratio
  */
 box2d.b2AreaJoint.prototype.SetDampingRatio = function(ratio) {
@@ -240,17 +240,17 @@ box2d.b2AreaJoint.prototype.SetDampingRatio = function(ratio) {
   }
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2AreaJoint.prototype.GetDampingRatio = function() {
   return this.m_dampingRatio;
 }
 
-/** 
- * Dump joint to dmLog 
- * @export 
+/**
+ * Dump joint to dmLog
+ * @export
  * @return {void}
  */
 box2d.b2AreaJoint.prototype.Dump = function() {
@@ -259,9 +259,9 @@ box2d.b2AreaJoint.prototype.Dump = function() {
   }
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2AreaJoint.prototype.InitVelocityConstraints = function(data) {
@@ -291,9 +291,9 @@ box2d.b2AreaJoint.prototype.InitVelocityConstraints = function(data) {
   }
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2AreaJoint.prototype.SolveVelocityConstraints = function(data) {
@@ -324,10 +324,10 @@ box2d.b2AreaJoint.prototype.SolveVelocityConstraints = function(data) {
   }
 }
 
-/** 
- * @export 
- * @return {boolean} 
- * @param {box2d.b2SolverData} data 
+/**
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2SolverData} data
  */
 box2d.b2AreaJoint.prototype.SolvePositionConstraints = function(data) {
   var perimeter = 0;

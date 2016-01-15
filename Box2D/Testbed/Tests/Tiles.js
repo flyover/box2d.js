@@ -27,11 +27,11 @@ goog.require('box2d.Testbed.Test');
  */
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Tiles = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -142,27 +142,27 @@ box2d.Testbed.Tiles = function(canvas, settings) {
 goog.inherits(box2d.Testbed.Tiles, box2d.Testbed.Test);
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Tiles.e_count = 20;
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.Tiles.prototype.m_fixtureCount = 0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.Tiles.prototype.m_createTime = 0.0;
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Tiles.prototype.Step = function(settings) {
   /*const box2d.b2ContactManager*/
@@ -192,11 +192,11 @@ box2d.Testbed.Tiles.prototype.Step = function(settings) {
   //}
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Tiles.Create = function(canvas, settings) {
   return new box2d.Testbed.Tiles(canvas, settings);

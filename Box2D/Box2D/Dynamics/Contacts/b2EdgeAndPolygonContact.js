@@ -22,9 +22,9 @@ goog.require('box2d.b2Settings');
 goog.require('box2d.b2Contact');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.b2Contact} 
+ * @export
+ * @constructor
+ * @extends {box2d.b2Contact}
  */
 box2d.b2EdgeAndPolygonContact = function() {
   box2d.b2Contact.call(this); // base class constructor
@@ -33,28 +33,28 @@ box2d.b2EdgeAndPolygonContact = function() {
 goog.inherits(box2d.b2EdgeAndPolygonContact, box2d.b2Contact);
 
 /**
- * @export 
- * @return {box2d.b2Contact} 
- * @param allocator 
+ * @export
+ * @return {box2d.b2Contact}
+ * @param allocator
  */
 box2d.b2EdgeAndPolygonContact.Create = function(allocator) {
   return new box2d.b2EdgeAndPolygonContact();
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2Contact} contact 
- * @param allocator 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Contact} contact
+ * @param allocator
  */
 box2d.b2EdgeAndPolygonContact.Destroy = function(contact, allocator) {}
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2Manifold} manifold 
- * @param {box2d.b2Transform} xfA 
- * @param {box2d.b2Transform} xfB 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Manifold} manifold
+ * @param {box2d.b2Transform} xfA
+ * @param {box2d.b2Transform} xfB
  */
 box2d.b2EdgeAndPolygonContact.prototype.Evaluate = function(manifold, xfA, xfB) {
   var shapeA = this.m_fixtureA.GetShape();

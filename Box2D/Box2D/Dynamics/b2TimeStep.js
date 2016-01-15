@@ -20,56 +20,56 @@ goog.provide('box2d.b2TimeStep');
 
 goog.require('box2d.b2Settings');
 
-/** 
- * Profiling data. Times are in milliseconds. 
- * @export 
+/**
+ * Profiling data. Times are in milliseconds.
+ * @export
  * @constructor
  */
 box2d.b2Profile = function() {};
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Profile.prototype.step = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Profile.prototype.collide = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Profile.prototype.solve = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Profile.prototype.solveInit = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Profile.prototype.solveVelocity = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Profile.prototype.solvePosition = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Profile.prototype.broadphase = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Profile.prototype.solveTOI = 0;
 
-/** 
- * @export 
+/**
+ * @export
  * @return {box2d.b2Profile}
  */
 box2d.b2Profile.prototype.Reset = function() {
@@ -84,58 +84,58 @@ box2d.b2Profile.prototype.Reset = function() {
   return this;
 }
 
-/** 
- * This is an internal structure. 
- * @export 
+/**
+ * This is an internal structure.
+ * @export
  * @constructor
  */
 box2d.b2TimeStep = function() {};
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2TimeStep.prototype.dt = 0; // time step
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2TimeStep.prototype.inv_dt = 0; // inverse time step (0 if dt === 0).
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2TimeStep.prototype.dtRatio = 0; // dt * inv_dt0
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2TimeStep.prototype.velocityIterations = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2TimeStep.prototype.positionIterations = 0;
 //#if B2_ENABLE_PARTICLE
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2TimeStep.prototype.particleIterations = 0;
 //#endif
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2TimeStep.prototype.warmStarting = false;
 
-/** 
- * @export 
- * @return {box2d.b2TimeStep} 
- * @param {box2d.b2TimeStep} step 
+/**
+ * @export
+ * @return {box2d.b2TimeStep}
+ * @param {box2d.b2TimeStep} step
  */
 box2d.b2TimeStep.prototype.Copy = function(step) {
-  this.dt = step.dt; // time step                        
+  this.dt = step.dt; // time step
   this.inv_dt = step.inv_dt; // inverse time step (0 if dt === 0).
   this.dtRatio = step.dtRatio; // dt * inv_dt0
   this.positionIterations = step.positionIterations;
@@ -147,30 +147,30 @@ box2d.b2TimeStep.prototype.Copy = function(step) {
   return this;
 }
 
-/** 
- * This is an internal structure. 
- * @export 
- * @constructor 
+/**
+ * This is an internal structure.
+ * @export
+ * @constructor
  */
 box2d.b2Position = function() {
   this.c = new box2d.b2Vec2();
 };
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2Position.prototype.c = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Position.prototype.a = 0;
 
-/** 
- * @export 
+/**
+ * @export
  * @return {Array.<box2d.b2Position>}
- * @param {number} length 
+ * @param {number} length
  */
 box2d.b2Position.MakeArray = function(length) {
   return box2d.b2MakeArray(length, function(i) {
@@ -178,30 +178,30 @@ box2d.b2Position.MakeArray = function(length) {
   });
 }
 
-/** 
- * This is an internal structure. 
- * @export 
- * @constructor 
+/**
+ * This is an internal structure.
+ * @export
+ * @constructor
  */
 box2d.b2Velocity = function() {
   this.v = new box2d.b2Vec2();
 };
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2Velocity.prototype.v = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Velocity.prototype.w = 0;
 
-/** 
- * @export 
+/**
+ * @export
  * @return {Array.<box2d.b2Velocity>}
- * @param {number} length 
+ * @param {number} length
  */
 box2d.b2Velocity.MakeArray = function(length) {
   return box2d.b2MakeArray(length, function(i) {
@@ -209,9 +209,9 @@ box2d.b2Velocity.MakeArray = function(length) {
   });
 }
 
-/** 
- * Solver Data 
- * @export 
+/**
+ * Solver Data
+ * @export
  * @constructor
  */
 box2d.b2SolverData = function() {
@@ -219,17 +219,17 @@ box2d.b2SolverData = function() {
 };
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2TimeStep}
  */
 box2d.b2SolverData.prototype.step = null;
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2Position>}
  */
 box2d.b2SolverData.prototype.positions = null;
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2Velocity>}
  */
 box2d.b2SolverData.prototype.velocities = null;

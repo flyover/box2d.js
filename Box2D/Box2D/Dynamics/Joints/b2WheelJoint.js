@@ -21,17 +21,17 @@ goog.provide('box2d.b2WheelJoint');
 goog.require('box2d.b2Settings');
 goog.require('box2d.b2Math');
 
-/** 
- * Wheel joint definition. This requires defining a line of 
- * motion using an axis and an anchor point. The definition uses 
- * local anchor points and a local axis so that the initial 
- * configuration can violate the constraint slightly. The joint 
- * translation is zero when the local anchor points coincide in 
- * world space. Using local anchors and a local axis helps when 
- * saving and loading a game. 
- * @export 
- * @constructor 
- * @extends {box2d.b2JointDef} 
+/**
+ * Wheel joint definition. This requires defining a line of
+ * motion using an axis and an anchor point. The definition uses
+ * local anchor points and a local axis so that the initial
+ * configuration can violate the constraint slightly. The joint
+ * translation is zero when the local anchor points coincide in
+ * world space. Using local anchors and a local axis helps when
+ * saving and loading a game.
+ * @export
+ * @constructor
+ * @extends {box2d.b2JointDef}
  */
 box2d.b2WheelJointDef = function() {
   box2d.b2JointDef.call(this, box2d.b2JointType.e_wheelJoint); // base class constructor
@@ -43,69 +43,69 @@ box2d.b2WheelJointDef = function() {
 
 goog.inherits(box2d.b2WheelJointDef, box2d.b2JointDef);
 
-/** 
- * The local anchor point relative to bodyA's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyA's origin.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WheelJointDef.prototype.localAnchorA = null;
 
-/** 
- * The local anchor point relative to bodyB's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyB's origin.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WheelJointDef.prototype.localAnchorB = null;
 
-/** 
- * The local translation axis in bodyA. 
- * @export 
+/**
+ * The local translation axis in bodyA.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WheelJointDef.prototype.localAxisA = null;
 
-/** 
- * Enable/disable the joint motor. 
- * @export 
+/**
+ * Enable/disable the joint motor.
+ * @export
  * @type {boolean}
  */
 box2d.b2WheelJointDef.prototype.enableMotor = false;
 
-/** 
- * The maximum motor torque, usually in N-m. 
- * @export 
+/**
+ * The maximum motor torque, usually in N-m.
+ * @export
  * @type {number}
  */
 box2d.b2WheelJointDef.prototype.maxMotorTorque = 0;
 
-/** 
- * The desired motor speed in radians per second. 
- * @export 
+/**
+ * The desired motor speed in radians per second.
+ * @export
  * @type {number}
  */
 box2d.b2WheelJointDef.prototype.motorSpeed = 0;
 
-/** 
- * Suspension frequency, zero indicates no suspension 
- * @export 
+/**
+ * Suspension frequency, zero indicates no suspension
+ * @export
  * @type {number}
  */
 box2d.b2WheelJointDef.prototype.frequencyHz = 2;
 
-/** 
- * Suspension damping ratio, one indicates critical damping 
- * @export 
+/**
+ * Suspension damping ratio, one indicates critical damping
+ * @export
  * @type {number}
  */
 box2d.b2WheelJointDef.prototype.dampingRatio = 0.7;
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2Body} bA 
- * @param {box2d.b2Body} bB 
- * @param {box2d.b2Vec2} anchor 
- * @param {box2d.b2Vec2} axis 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2Body} bA
+ * @param {box2d.b2Body} bB
+ * @param {box2d.b2Vec2} anchor
+ * @param {box2d.b2Vec2} axis
  */
 box2d.b2WheelJointDef.prototype.Initialize = function(bA, bB, anchor, axis) {
   this.bodyA = bA;
@@ -115,16 +115,16 @@ box2d.b2WheelJointDef.prototype.Initialize = function(bA, bB, anchor, axis) {
   this.bodyA.GetLocalVector(axis, this.localAxisA);
 }
 
-/** 
- * A wheel joint. This joint provides two degrees of freedom: 
- * translation along an axis fixed in bodyA and rotation in the 
- * plane. In other words, it is a point to line constraint with 
- * a rotational motor and a linear spring/damper. 
+/**
+ * A wheel joint. This joint provides two degrees of freedom:
+ * translation along an axis fixed in bodyA and rotation in the
+ * plane. In other words, it is a point to line constraint with
+ * a rotational motor and a linear spring/damper.
  * This joint is designed for vehicle suspensions.
- * @export 
- * @constructor 
- * @extends {box2d.b2Joint} 
- * @param {box2d.b2WheelJointDef} def 
+ * @export
+ * @constructor
+ * @extends {box2d.b2Joint}
+ * @param {box2d.b2WheelJointDef} def
  */
 box2d.b2WheelJoint = function(def) {
   box2d.b2Joint.call(this, def); // base class constructor
@@ -160,204 +160,204 @@ box2d.b2WheelJoint = function(def) {
 goog.inherits(box2d.b2WheelJoint, box2d.b2Joint);
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_frequencyHz = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_dampingRatio = 0;
 
 // Solver shared
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WheelJoint.prototype.m_localAnchorA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WheelJoint.prototype.m_localAnchorB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WheelJoint.prototype.m_localXAxisA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WheelJoint.prototype.m_localYAxisA = null;
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_impulse = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_motorImpulse = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_springImpulse = 0;
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_maxMotorTorque = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_motorSpeed = 0;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2WheelJoint.prototype.m_enableMotor = false;
 
 // Solver temp
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_indexA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_indexB = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WheelJoint.prototype.m_localCenterA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WheelJoint.prototype.m_localCenterB = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_invMassA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_invMassB = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_invIA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_invIB = 0;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WheelJoint.prototype.m_ax = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WheelJoint.prototype.m_ay = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_sAx = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_sBx = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_sAy = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_sBy = 0;
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_mass = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_motorMass = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_springMass = 0;
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_bias = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WheelJoint.prototype.m_gamma = 0;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2WheelJoint.prototype.m_qA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2WheelJoint.prototype.m_qB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WheelJoint.prototype.m_lalcA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WheelJoint.prototype.m_lalcB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WheelJoint.prototype.m_rA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WheelJoint.prototype.m_rB = null;
 
-/** 
- * Get the motor speed, usually in radians per second. 
- * @export 
+/**
+ * Get the motor speed, usually in radians per second.
+ * @export
  * @return {number}
  */
 box2d.b2WheelJoint.prototype.GetMotorSpeed = function() {
@@ -365,7 +365,7 @@ box2d.b2WheelJoint.prototype.GetMotorSpeed = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2WheelJoint.prototype.GetMaxMotorTorque = function() {
@@ -373,8 +373,8 @@ box2d.b2WheelJoint.prototype.GetMaxMotorTorque = function() {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {number} hz
  */
 box2d.b2WheelJoint.prototype.SetSpringFrequencyHz = function(hz) {
@@ -382,7 +382,7 @@ box2d.b2WheelJoint.prototype.SetSpringFrequencyHz = function(hz) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2WheelJoint.prototype.GetSpringFrequencyHz = function() {
@@ -390,8 +390,8 @@ box2d.b2WheelJoint.prototype.GetSpringFrequencyHz = function() {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {number} ratio
  */
 box2d.b2WheelJoint.prototype.SetSpringDampingRatio = function(ratio) {
@@ -399,7 +399,7 @@ box2d.b2WheelJoint.prototype.SetSpringDampingRatio = function(ratio) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2WheelJoint.prototype.GetSpringDampingRatio = function() {
@@ -407,8 +407,8 @@ box2d.b2WheelJoint.prototype.GetSpringDampingRatio = function() {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2WheelJoint.prototype.InitVelocityConstraints = function(data) {
@@ -582,8 +582,8 @@ box2d.b2WheelJoint.prototype.InitVelocityConstraints.s_d = new box2d.b2Vec2();
 box2d.b2WheelJoint.prototype.InitVelocityConstraints.s_P = new box2d.b2Vec2();
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2WheelJoint.prototype.SolveVelocityConstraints = function(data) {
@@ -677,9 +677,9 @@ box2d.b2WheelJoint.prototype.SolveVelocityConstraints = function(data) {
 box2d.b2WheelJoint.prototype.SolveVelocityConstraints.s_P = new box2d.b2Vec2();
 
 /**
- * @export 
- * @return {boolean} 
- * @param {box2d.b2SolverData} data 
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2SolverData} data
  */
 box2d.b2WheelJoint.prototype.SolvePositionConstraints = function(data) {
   /*box2d.b2Vec2&*/
@@ -754,9 +754,9 @@ box2d.b2WheelJoint.prototype.SolvePositionConstraints.s_d = new box2d.b2Vec2();
 box2d.b2WheelJoint.prototype.SolvePositionConstraints.s_P = new box2d.b2Vec2();
 
 /**
- * @export 
- * @return {box2d.b2WheelJointDef} 
- * @param {box2d.b2WheelJointDef} def 
+ * @export
+ * @return {box2d.b2WheelJointDef}
+ * @param {box2d.b2WheelJointDef} def
  */
 box2d.b2WheelJoint.prototype.GetDefinition = function(def) {
   if (box2d.ENABLE_ASSERTS) {
@@ -765,28 +765,28 @@ box2d.b2WheelJoint.prototype.GetDefinition = function(def) {
   return def;
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2WheelJoint.prototype.GetAnchorA = function(out) {
   return this.m_bodyA.GetWorldPoint(this.m_localAnchorA, out);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2WheelJoint.prototype.GetAnchorB = function(out) {
   return this.m_bodyB.GetWorldPoint(this.m_localAnchorB, out);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {number} inv_dt 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {number} inv_dt
  * @param {box2d.b2Vec2} out
  */
 box2d.b2WheelJoint.prototype.GetReactionForce = function(inv_dt, out) {
@@ -796,47 +796,47 @@ box2d.b2WheelJoint.prototype.GetReactionForce = function(inv_dt, out) {
   return out;
 }
 
-/** 
- * @export 
- * @return {number} 
- * @param {number} inv_dt 
+/**
+ * @export
+ * @return {number}
+ * @param {number} inv_dt
  */
 box2d.b2WheelJoint.prototype.GetReactionTorque = function(inv_dt) {
   return inv_dt * this.m_motorImpulse;
 }
 
-/** 
- * The local anchor point relative to bodyA's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyA's origin.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2WheelJoint.prototype.GetLocalAnchorA = function(out) {
   return out.Copy(this.m_localAnchorA);
 }
 
-/** 
- * The local anchor point relative to bodyB's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyB's origin.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2WheelJoint.prototype.GetLocalAnchorB = function(out) {
   return out.Copy(this.m_localAnchorB);
 }
 
-/** 
- * The local joint axis relative to bodyA. 
- * @export 
+/**
+ * The local joint axis relative to bodyA.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2WheelJoint.prototype.GetLocalAxisA = function(out) {
   return out.Copy(this.m_localXAxisA);
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2WheelJoint.prototype.GetJointTranslation = function() {
@@ -844,7 +844,7 @@ box2d.b2WheelJoint.prototype.GetJointTranslation = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2WheelJoint.prototype.GetJointSpeed = function() {
@@ -852,7 +852,7 @@ box2d.b2WheelJoint.prototype.GetJointSpeed = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2WheelJoint.prototype.GetPrismaticJointTranslation = function() {
@@ -876,7 +876,7 @@ box2d.b2WheelJoint.prototype.GetPrismaticJointTranslation = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2WheelJoint.prototype.GetPrismaticJointSpeed = function() {
@@ -918,7 +918,7 @@ box2d.b2WheelJoint.prototype.GetPrismaticJointSpeed = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2WheelJoint.prototype.GetRevoluteJointAngle = function() {
@@ -929,7 +929,7 @@ box2d.b2WheelJoint.prototype.GetRevoluteJointAngle = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2WheelJoint.prototype.GetRevoluteJointSpeed = function() {
@@ -941,7 +941,7 @@ box2d.b2WheelJoint.prototype.GetRevoluteJointSpeed = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {boolean}
  */
 box2d.b2WheelJoint.prototype.IsMotorEnabled = function() {
@@ -949,8 +949,8 @@ box2d.b2WheelJoint.prototype.IsMotorEnabled = function() {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {boolean} flag
  */
 box2d.b2WheelJoint.prototype.EnableMotor = function(flag) {
@@ -959,10 +959,10 @@ box2d.b2WheelJoint.prototype.EnableMotor = function(flag) {
   this.m_enableMotor = flag;
 }
 
-/** 
- * Set the motor speed, usually in radians per second. 
- * @export 
- * @return {void} 
+/**
+ * Set the motor speed, usually in radians per second.
+ * @export
+ * @return {void}
  * @param {number} speed
  */
 box2d.b2WheelJoint.prototype.SetMotorSpeed = function(speed) {
@@ -971,10 +971,10 @@ box2d.b2WheelJoint.prototype.SetMotorSpeed = function(speed) {
   this.m_motorSpeed = speed;
 }
 
-/** 
- * Set/Get the maximum motor force, usually in N-m. 
- * @export 
- * @return {void} 
+/**
+ * Set/Get the maximum motor force, usually in N-m.
+ * @export
+ * @return {void}
  * @param {number} force
  */
 box2d.b2WheelJoint.prototype.SetMaxMotorTorque = function(force) {
@@ -983,20 +983,20 @@ box2d.b2WheelJoint.prototype.SetMaxMotorTorque = function(force) {
   this.m_maxMotorTorque = force;
 }
 
-/** 
- * Get the current motor torque given the inverse time step, 
- * usually in N-m. 
- * @export 
+/**
+ * Get the current motor torque given the inverse time step,
+ * usually in N-m.
+ * @export
  * @return {number}
- * @param {number} inv_dt 
+ * @param {number} inv_dt
  */
 box2d.b2WheelJoint.prototype.GetMotorTorque = function(inv_dt) {
   return inv_dt * this.m_motorImpulse;
 }
 
-/** 
- * Dump to b2Log 
- * @export 
+/**
+ * Dump to b2Log
+ * @export
  * @return {void}
  */
 box2d.b2WheelJoint.prototype.Dump = function() {

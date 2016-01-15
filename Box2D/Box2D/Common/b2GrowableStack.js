@@ -20,31 +20,31 @@ goog.provide('box2d.b2GrowableStack');
 
 goog.require('box2d.b2Settings');
 
-/** 
- * This is a growable LIFO stack with an initial capacity of N. 
- * If the stack size exceeds the initial capacity, the heap is 
- * used to increase the size of the stack. 
- * @export 
- * @constructor 
- * @param {number} N 
+/**
+ * This is a growable LIFO stack with an initial capacity of N.
+ * If the stack size exceeds the initial capacity, the heap is
+ * used to increase the size of the stack.
+ * @export
+ * @constructor
+ * @param {number} N
  */
 box2d.b2GrowableStack = function(N) {
   this.m_stack = new Array(N);
 }
 
 /**
- * @export 
+ * @export
  * @type {Array.<*>}
  */
 box2d.b2GrowableStack.prototype.m_stack = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GrowableStack.prototype.m_count = 0;
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2GrowableStack}
  */
 box2d.b2GrowableStack.prototype.Reset = function() {
@@ -53,9 +53,9 @@ box2d.b2GrowableStack.prototype.Reset = function() {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {*} element 
+ * @export
+ * @return {void}
+ * @param {*} element
  */
 box2d.b2GrowableStack.prototype.Push = function(element) {
   this.m_stack[this.m_count] = element;
@@ -63,7 +63,7 @@ box2d.b2GrowableStack.prototype.Push = function(element) {
 }
 
 /**
- * @export 
+ * @export
  * @return {*}
  */
 box2d.b2GrowableStack.prototype.Pop = function() {
@@ -77,7 +77,7 @@ box2d.b2GrowableStack.prototype.Pop = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2GrowableStack.prototype.GetCount = function() {

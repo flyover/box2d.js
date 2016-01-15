@@ -22,12 +22,12 @@ goog.require('box2d.b2Settings');
 goog.require('box2d.b2Joint');
 goog.require('box2d.b2Math');
 
-/** 
- * Mouse joint definition. This requires a world target point, 
- * tuning parameters, and the time step. 
- * @export 
- * @constructor 
- * @extends {box2d.b2JointDef} 
+/**
+ * Mouse joint definition. This requires a world target point,
+ * tuning parameters, and the time step.
+ * @export
+ * @constructor
+ * @extends {box2d.b2JointDef}
  */
 box2d.b2MouseJointDef = function() {
   box2d.b2JointDef.call(this, box2d.b2JointType.e_mouseJoint); // base class constructor
@@ -37,49 +37,49 @@ box2d.b2MouseJointDef = function() {
 
 goog.inherits(box2d.b2MouseJointDef, box2d.b2JointDef);
 
-/** 
- * The initial world target point. This is assumed to coincide 
- * with the body anchor initially. 
- * @export 
- * @type {box2d.b2Vec2} 
+/**
+ * The initial world target point. This is assumed to coincide
+ * with the body anchor initially.
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2MouseJointDef.prototype.target = null;
 
-/** 
- * The maximum constraint force that can be exerted to move the 
- * candidate body. Usually you will express as some multiple of 
- * the weight (multiplier * mass * gravity). 
- * @export 
- * @type {number} 
+/**
+ * The maximum constraint force that can be exerted to move the
+ * candidate body. Usually you will express as some multiple of
+ * the weight (multiplier * mass * gravity).
+ * @export
+ * @type {number}
  */
 box2d.b2MouseJointDef.prototype.maxForce = 0;
 
-/** 
- * The response speed. 
- * @export 
- * @type {number} 
+/**
+ * The response speed.
+ * @export
+ * @type {number}
  */
 box2d.b2MouseJointDef.prototype.frequencyHz = 5;
 
-/** 
- * The damping ratio. 0 = no damping, 1 = critical damping. 
- * @export 
- * @type {number} 
+/**
+ * The damping ratio. 0 = no damping, 1 = critical damping.
+ * @export
+ * @type {number}
  */
 box2d.b2MouseJointDef.prototype.dampingRatio = 0.7;
 
-/** 
- * A mouse joint is used to make a point on a body track a 
- * specified world point. This a soft constraint with a maximum 
- * force. This allows the constraint to stretch and without 
- * applying huge forces. 
- * NOTE: this joint is not documented in the manual because it 
- * was developed to be used in the testbed. If you want to learn 
- * how to use the mouse joint, look at the testbed. 
- * @export 
- * @constructor 
- * @extends {box2d.b2Joint} 
- * @param {box2d.b2MouseJointDef} def 
+/**
+ * A mouse joint is used to make a point on a body track a
+ * specified world point. This a soft constraint with a maximum
+ * force. This allows the constraint to stretch and without
+ * applying huge forces.
+ * NOTE: this joint is not documented in the manual because it
+ * was developed to be used in the testbed. If you want to learn
+ * how to use the mouse joint, look at the testbed.
+ * @export
+ * @constructor
+ * @extends {box2d.b2Joint}
+ * @param {box2d.b2MouseJointDef} def
  */
 box2d.b2MouseJoint = function(def) {
   box2d.b2Joint.call(this, def); // base class constructor
@@ -126,108 +126,108 @@ box2d.b2MouseJoint = function(def) {
 goog.inherits(box2d.b2MouseJoint, box2d.b2Joint);
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2MouseJoint.prototype.m_localAnchorB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2MouseJoint.prototype.m_targetA = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2MouseJoint.prototype.m_frequencyHz = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2MouseJoint.prototype.m_dampingRatio = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2MouseJoint.prototype.m_beta = 0;
 
 // Solver shared
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2MouseJoint.prototype.m_impulse = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2MouseJoint.prototype.m_maxForce = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2MouseJoint.prototype.m_gamma = 0;
 
 // Solver temp
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2MouseJoint.prototype.m_indexA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2MouseJoint.prototype.m_indexB = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2MouseJoint.prototype.m_rB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2MouseJoint.prototype.m_localCenterB = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2MouseJoint.prototype.m_invMassB = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2MouseJoint.prototype.m_invIB = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Mat22}
  */
 box2d.b2MouseJoint.prototype.m_mass = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2MouseJoint.prototype.m_C = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2MouseJoint.prototype.m_qB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2MouseJoint.prototype.m_lalcB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Mat22}
  */
 box2d.b2MouseJoint.prototype.m_K = null;
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2Vec2} target
  */
 box2d.b2MouseJoint.prototype.SetTarget = function(target) {
@@ -238,17 +238,17 @@ box2d.b2MouseJoint.prototype.SetTarget = function(target) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2MouseJoint.prototype.GetTarget = function(out) {
   return out.Copy(this.m_targetA);
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {number} maxForce
  */
 box2d.b2MouseJoint.prototype.SetMaxForce = function(maxForce) {
@@ -256,7 +256,7 @@ box2d.b2MouseJoint.prototype.SetMaxForce = function(maxForce) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2MouseJoint.prototype.GetMaxForce = function() {
@@ -264,8 +264,8 @@ box2d.b2MouseJoint.prototype.GetMaxForce = function() {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {number} hz
  */
 box2d.b2MouseJoint.prototype.SetFrequency = function(hz) {
@@ -273,7 +273,7 @@ box2d.b2MouseJoint.prototype.SetFrequency = function(hz) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2MouseJoint.prototype.GetFrequency = function() {
@@ -281,8 +281,8 @@ box2d.b2MouseJoint.prototype.GetFrequency = function() {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {number} ratio
  */
 box2d.b2MouseJoint.prototype.SetDampingRatio = function(ratio) {
@@ -290,7 +290,7 @@ box2d.b2MouseJoint.prototype.SetDampingRatio = function(ratio) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2MouseJoint.prototype.GetDampingRatio = function() {
@@ -298,8 +298,8 @@ box2d.b2MouseJoint.prototype.GetDampingRatio = function() {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2MouseJoint.prototype.InitVelocityConstraints = function(data) {
@@ -387,8 +387,8 @@ box2d.b2MouseJoint.prototype.InitVelocityConstraints = function(data) {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2MouseJoint.prototype.SolveVelocityConstraints = function(data) {
@@ -435,53 +435,53 @@ box2d.b2MouseJoint.prototype.SolveVelocityConstraints.s_impulse = new box2d.b2Ve
 box2d.b2MouseJoint.prototype.SolveVelocityConstraints.s_oldImpulse = new box2d.b2Vec2();
 
 /**
- * @export 
- * @return {boolean} 
- * @param {box2d.b2SolverData} data 
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2SolverData} data
  */
 box2d.b2MouseJoint.prototype.SolvePositionConstraints = function(data) {
   return true;
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} out
  */
 box2d.b2MouseJoint.prototype.GetAnchorA = function(out) {
   return out.Copy(this.m_targetA);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2MouseJoint.prototype.GetAnchorB = function(out) {
   return this.m_bodyB.GetWorldPoint(this.m_localAnchorB, out);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {number} inv_dt 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {number} inv_dt
  * @param {box2d.b2Vec2} out
  */
 box2d.b2MouseJoint.prototype.GetReactionForce = function(inv_dt, out) {
   return box2d.b2Mul_S_V2(inv_dt, this.m_impulse, out);
 }
 
-/** 
- * @export 
- * @return {number} 
- * @param {number} inv_dt 
+/**
+ * @export
+ * @return {number}
+ * @param {number} inv_dt
  */
 box2d.b2MouseJoint.prototype.GetReactionTorque = function(inv_dt) {
   return 0;
 }
 
-/** 
- * The mouse joint does not support dumping. 
+/**
+ * The mouse joint does not support dumping.
  * @export
  */
 box2d.b2MouseJoint.prototype.Dump = function() {
@@ -490,10 +490,10 @@ box2d.b2MouseJoint.prototype.Dump = function() {
   }
 }
 
-/** 
- * Implement b2Joint::ShiftOrigin 
- * @export 
- * @return {void} 
+/**
+ * Implement b2Joint::ShiftOrigin
+ * @export
+ * @return {void}
  * @param {box2d.b2Vec2} newOrigin
  */
 box2d.b2MouseJoint.prototype.ShiftOrigin = function(newOrigin) {

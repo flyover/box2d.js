@@ -23,23 +23,23 @@ goog.provide('box2d.Testbed.Fracker');
 goog.require('box2d.Testbed.Test');
 goog.require('box2d.Testbed.RadialEmitter');
 
-/** 
- * Tracks instances of RadialEmitter and destroys them after a 
- * specified period of time. 
+/**
+ * Tracks instances of RadialEmitter and destroys them after a
+ * specified period of time.
  * @constructor
  */
 box2d.Testbed.EmitterTracker = function() {
   this.m_emitterLifetime = [];
 }
 
-/** 
- * std.map<RadialEmitter*,float32> 
+/**
+ * std.map<RadialEmitter*,float32>
  * @type {Array.<Object>}
  */
 box2d.Testbed.EmitterTracker.prototype.m_emitterLifetime = null;
 
-/** 
- * Delete all emitters. 
+/**
+ * Delete all emitters.
  * @return {void}
  */
 box2d.Testbed.EmitterTracker.prototype.__dtor__ = function() {
@@ -50,13 +50,13 @@ box2d.Testbed.EmitterTracker.prototype.__dtor__ = function() {
   }
 }
 
-/** 
- * Add an emitter to the tracker. 
- * This assumes emitter was allocated using "new" and ownership 
- * of the object is handed to this class. 
- * @return {void} 
- * @param {box2d.Testbed.RadialEmitter} emitter 
- * @param {number} lifetime 
+/**
+ * Add an emitter to the tracker.
+ * This assumes emitter was allocated using "new" and ownership
+ * of the object is handed to this class.
+ * @return {void}
+ * @param {box2d.Testbed.RadialEmitter} emitter
+ * @param {number} lifetime
  */
 box2d.Testbed.EmitterTracker.prototype.Add = function(emitter, lifetime) {
   ///	m_emitterLifetime[emitter] = lifetime;
@@ -66,10 +66,10 @@ box2d.Testbed.EmitterTracker.prototype.Add = function(emitter, lifetime) {
   });
 }
 
-/** 
- * Update all emitters destroying those who are too old. 
- * @return {void} 
- * @param {number} dt 
+/**
+ * Update all emitters destroying those who are too old.
+ * @return {void}
+ * @param {number} dt
  */
 box2d.Testbed.EmitterTracker.prototype.Step = function(dt) {
   ///	std.vector<RadialEmitter*> emittersToDestroy;
@@ -101,11 +101,11 @@ box2d.Testbed.EmitterTracker.prototype.Step = function(dt) {
   }
 }
 
-/** 
- * Keep track of particle groups in a set, removing them when 
- * they're destroyed. 
- * @constructor 
- * @extends {box2d.b2DestructionListener} 
+/**
+ * Keep track of particle groups in a set, removing them when
+ * they're destroyed.
+ * @constructor
+ * @extends {box2d.b2DestructionListener}
  */
 box2d.Testbed.ParticleGroupTracker = function() {
   box2d.b2DestructionListener.call(this);
@@ -120,28 +120,28 @@ goog.inherits(box2d.Testbed.ParticleGroupTracker, box2d.b2DestructionListener);
  */
 box2d.Testbed.ParticleGroupTracker.prototype.m_particleGroups = null;
 
-/** 
- * Called when any particle group is about to be destroyed. 
- * @return {void} 
- * @param {box2d.b2ParticleGroup} group 
+/**
+ * Called when any particle group is about to be destroyed.
+ * @return {void}
+ * @param {box2d.b2ParticleGroup} group
  */
 box2d.Testbed.ParticleGroupTracker.prototype.SayGoodbyeParticleGroup = function(group) {
   this.RemoveParticleGroup(group);
 }
 
-/** 
- * Add a particle group to the tracker. 
+/**
+ * Add a particle group to the tracker.
  * @return {void}
- * @param {box2d.b2ParticleGroup} group 
+ * @param {box2d.b2ParticleGroup} group
  */
 box2d.Testbed.ParticleGroupTracker.prototype.AddParticleGroup = function(group) {
   this.m_particleGroups.push(group);
 }
 
-/** 
- * Remove a particle group from the tracker. 
+/**
+ * Remove a particle group from the tracker.
  * @return {void}
- * @param {box2d.b2ParticleGroup} group 
+ * @param {box2d.b2ParticleGroup} group
  */
 box2d.Testbed.ParticleGroupTracker.prototype.RemoveParticleGroup = function(group) {
   this.m_particleGroups.splice(this.m_particleGroups.indexOf(group), 1);
@@ -156,200 +156,200 @@ box2d.Testbed.ParticleGroupTracker.prototype.GetParticleGroups = function() {
 
 box2d.Testbed.FrackerSettings = {};
 
-/** 
- * Width and height of the world in tiles. 
- * @const 
- * @type {number} 
+/**
+ * Width and height of the world in tiles.
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_worldWidthTiles = 24;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_worldHeightTiles = 16;
-/** 
- * Total number of tiles. 
- * @const 
- * @type {number} 
+/**
+ * Total number of tiles.
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_worldTiles = box2d.Testbed.FrackerSettings.k_worldWidthTiles * box2d.Testbed.FrackerSettings.k_worldHeightTiles;
-/** 
- * Center of the world in world coordinates. 
- * @const 
- * @type {number} 
+/**
+ * Center of the world in world coordinates.
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_worldCenterX = 0.0;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_worldCenterY = 2.0;
-/** 
- * Size of each tile in world units. 
- * @const 
- * @type {number} 
+/**
+ * Size of each tile in world units.
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_tileWidth = 0.2;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_tileHeight = 0.2;
-/** 
- * Half width and height of tiles in world units. 
- * @const 
- * @type {number} 
+/**
+ * Half width and height of tiles in world units.
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_tileHalfWidth = box2d.Testbed.FrackerSettings.k_tileWidth * 0.5;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_tileHalfHeight = box2d.Testbed.FrackerSettings.k_tileHeight * 0.5;
-/** 
- * Half width and height of the world in world coordinates. 
- * @const 
- * @type {number} 
+/**
+ * Half width and height of the world in world coordinates.
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_worldHalfWidth = (box2d.Testbed.FrackerSettings.k_worldWidthTiles * box2d.Testbed.FrackerSettings.k_tileWidth) * 0.5;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_worldHalfHeight = (box2d.Testbed.FrackerSettings.k_worldHeightTiles * box2d.Testbed.FrackerSettings.k_tileHeight) * 0.5;
 
-/** 
- * Colors of tiles. 
- * @const 
- * @type {box2d.b2Color} 
+/**
+ * Colors of tiles.
+ * @const
+ * @type {box2d.b2Color}
  */
 box2d.Testbed.FrackerSettings.k_playerColor = new box2d.b2Color(1.0, 1.0, 1.0);
 /**
- * @const 
- * @type {box2d.b2Color} 
+ * @const
+ * @type {box2d.b2Color}
  */
 box2d.Testbed.FrackerSettings.k_playerFrackColor = new box2d.b2Color(1.0, 0.5, 0.5);
 /**
- * @const 
- * @type {box2d.b2Color} 
+ * @const
+ * @type {box2d.b2Color}
  */
 box2d.Testbed.FrackerSettings.k_wellColor = new box2d.b2Color(0.5, 0.5, 0.5);
 /**
- * @const 
- * @type {box2d.b2ParticleColor} 
+ * @const
+ * @type {box2d.b2ParticleColor}
  */
 box2d.Testbed.FrackerSettings.k_oilColor = new box2d.b2ParticleColor(new box2d.b2Color(1.0, 0.0, 0.0));
 /**
- * @const 
- * @type {box2d.b2ParticleColor} 
+ * @const
+ * @type {box2d.b2ParticleColor}
  */
 box2d.Testbed.FrackerSettings.k_waterColor = new box2d.b2ParticleColor(new box2d.b2Color(0.0, 0.2, 1.0));
 /**
- * @const 
- * @type {box2d.b2ParticleColor} 
+ * @const
+ * @type {box2d.b2ParticleColor}
  */
 box2d.Testbed.FrackerSettings.k_frackingFluidColor = new box2d.b2ParticleColor(new box2d.b2Color(0.8, 0.4, 0.0));
 
-/** 
- * Default density of each body. 
- * @const 
- * @type {number} 
+/**
+ * Default density of each body.
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_density = 0.1;
 
-/** 
- * Radius of oil / water / fracking fluid particles. 
- * @const 
- * @type {number} 
+/**
+ * Radius of oil / water / fracking fluid particles.
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_particleRadius = ((box2d.Testbed.FrackerSettings.k_tileWidth + box2d.Testbed.FrackerSettings.k_tileHeight) * 0.5) * 0.2;
 
-/** 
- * Probability (0..100%) of generating each tile (must sum to 
- * 1.0). 
- * @const 
- * @type {number} 
+/**
+ * Probability (0..100%) of generating each tile (must sum to
+ * 1.0).
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_dirtProbability = 80;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_emptyProbability = 10;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_oilProbability = 7;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_waterProbability = 3;
 
-/** 
- * Lifetime of a fracking fluid emitter in seconds. 
- * @const 
- * @type {number} 
+/**
+ * Lifetime of a fracking fluid emitter in seconds.
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_frackingFluidEmitterLifetime = 5.0;
 
-/** 
- * Speed particles are sucked up the well. 
- * @const 
- * @type {number} 
+/**
+ * Speed particles are sucked up the well.
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_wellSuckSpeedInside = box2d.Testbed.FrackerSettings.k_tileHeight * 5.0;
-/** 
- * Speed particle are sucket towards the well bottom. 
- * @const 
- * @type {number} 
+/**
+ * Speed particle are sucket towards the well bottom.
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_wellSuckSpeedOutside = box2d.Testbed.FrackerSettings.k_tileWidth * 1.0;
 
-/** 
- * Time mouse button must be held before emitting fracking 
- * fluid. 
- * @const 
- * @type {number} 
+/**
+ * Time mouse button must be held before emitting fracking
+ * fluid.
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_frackingFluidChargeTime = 1.0;
 
-/** 
- * Scores. 
- * @const 
- * @type {number} 
+/**
+ * Scores.
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_scorePerOilParticle = 1;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_scorePerWaterParticle = -1;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_scorePerFrackingParticle = 0;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.FrackerSettings.k_scorePerFrackingDeployment = -10;
 
-/** 
- * Oil Fracking simulator. 
- *  
- * Dig down to move the oil (red) to the well (gray). Try not to 
- * contaminate the ground water (blue). To deploy fracking fluid 
- * press 'space'.  Fracking fluid can be used to push other 
- * fluids to the well head and ultimately score points. 
- *  
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * Oil Fracking simulator.
+ *
+ * Dig down to move the oil (red) to the well (gray). Try not to
+ * contaminate the ground water (blue). To deploy fracking fluid
+ * press 'space'.  Fracking fluid can be used to push other
+ * fluids to the well head and ultimately score points.
+ *
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Fracker = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -358,8 +358,8 @@ box2d.Testbed.Fracker = function(canvas, settings) {
 
 goog.inherits(box2d.Testbed.Fracker, box2d.Testbed.Test);
 
-/** 
- * Type of material in a tile. 
+/**
+ * Type of material in a tile.
  * @enum {number}
  */
 box2d.Testbed.Fracker.Material = {
@@ -372,11 +372,11 @@ box2d.Testbed.Fracker.Material = {
   PUMP: 6
 };
 
-/** 
- * Keep track of particle groups which are drawn up the well and 
- * tracks the score of the game. 
- * @constructor 
- * @extends {box2d.Testbed.ParticleGroupTracker} 
+/**
+ * Keep track of particle groups which are drawn up the well and
+ * tracks the score of the game.
+ * @constructor
+ * @extends {box2d.Testbed.ParticleGroupTracker}
  */
 box2d.Testbed.Fracker.DestructionListener = function() {
   box2d.Testbed.ParticleGroupTracker.call(this);
@@ -402,8 +402,8 @@ box2d.Testbed.Fracker.DestructionListener.prototype.m_world = null;
  */
 box2d.Testbed.Fracker.DestructionListener.prototype.m_previousListener = null;
 
-/** 
- * Initialize the score. 
+/**
+ * Initialize the score.
  * @return {void}
  */
 box2d.Testbed.Fracker.DestructionListener.prototype.__ctor__ = function() {}
@@ -414,11 +414,11 @@ box2d.Testbed.Fracker.DestructionListener.prototype.__dtor__ = function() {
   }
 }
 
-/** 
- * Initialize the particle system and world, setting this class 
- * as a destruction listener for the world. 
- * @return {void} 
- * @param {box2d.b2World} world 
+/**
+ * Initialize the particle system and world, setting this class
+ * as a destruction listener for the world.
+ * @return {void}
+ * @param {box2d.b2World} world
  */
 box2d.Testbed.Fracker.DestructionListener.prototype.Initialize = function(world) {
   box2d.b2Assert(world !== null);
@@ -426,45 +426,45 @@ box2d.Testbed.Fracker.DestructionListener.prototype.Initialize = function(world)
   this.m_world.SetDestructionListener(this);
 }
 
-/** 
- * Add to the current score. 
- * @return {void} 
- * @param {number} score 
+/**
+ * Add to the current score.
+ * @return {void}
+ * @param {number} score
  */
 box2d.Testbed.Fracker.DestructionListener.prototype.AddScore = function(score) {
   this.m_score += score;
 }
 
-/** 
- * Get the current score. 
- * @return {number} 
+/**
+ * Get the current score.
+ * @return {number}
  */
 box2d.Testbed.Fracker.DestructionListener.prototype.GetScore = function() {
   return this.m_score;
 }
 
-/** 
- * Add to the remaining oil. 
- * @return {void} 
- * @param {number} oil 
+/**
+ * Add to the remaining oil.
+ * @return {void}
+ * @param {number} oil
  */
 box2d.Testbed.Fracker.DestructionListener.prototype.AddOil = function(oil) {
   this.m_oil += oil;
 }
 
-/** 
- * Get the total oil. 
- * @return {number} 
+/**
+ * Get the total oil.
+ * @return {number}
  */
 box2d.Testbed.Fracker.DestructionListener.prototype.GetOil = function() {
   return this.m_oil;
 }
 
-/** 
- * Update the score when certain particles are destroyed. 
- * @return {void} 
- * @param {box2d.b2ParticleSystem} particleSystem 
- * @param {number} index 
+/**
+ * Update the score when certain particles are destroyed.
+ * @return {void}
+ * @param {box2d.b2ParticleSystem} particleSystem
+ * @param {number} index
  */
 box2d.Testbed.Fracker.DestructionListener.prototype.SayGoodbyeParticle = function(particleSystem, index) {
   box2d.b2Assert(particleSystem !== null);
@@ -523,8 +523,8 @@ box2d.Testbed.Fracker.prototype.m_material = null;
  * @type {Array.<box2d.b2Body>}
  */
 box2d.Testbed.Fracker.prototype.m_bodies = null;
-/** 
- * Set of particle groups the well has influence over. 
+/**
+ * Set of particle groups the well has influence over.
  * @type {box2d.Testbed.Fracker.DestructionListener}
  */
 box2d.Testbed.Fracker.prototype.m_listener = null;
@@ -555,9 +555,9 @@ box2d.Testbed.Fracker.prototype.__dtor__ = function() {
   this.m_listener.__dtor__();
 }
 
-/** 
- * Initialize the data structures used to track the material in 
- * each tile and the bodies associated with each tile. 
+/**
+ * Initialize the data structures used to track the material in
+ * each tile and the bodies associated with each tile.
  * @return {void}
  */
 box2d.Testbed.Fracker.prototype.InitializeLayout = function() {
@@ -567,46 +567,46 @@ box2d.Testbed.Fracker.prototype.InitializeLayout = function() {
   }
 }
 
-/** 
- * Get the material of the tile at the specified tile position. 
- * @return {box2d.Testbed.Fracker.Material} 
- * @param {number} x 
- * @param {number} y 
+/**
+ * Get the material of the tile at the specified tile position.
+ * @return {box2d.Testbed.Fracker.Material}
+ * @param {number} x
+ * @param {number} y
  */
 box2d.Testbed.Fracker.prototype.GetMaterial = function(x, y) {
   ///	return *const_cast<Fracker*>(this).GetMaterialStorage(x, y);
   return this.m_material[box2d.Testbed.Fracker.TileToArrayOffset(x, y)];
 }
 
-/** 
- * Set the material of the tile at the specified tile position. 
- * @return {void} 
- * @param {number} x 
- * @param {number} y 
- * @param {box2d.Testbed.Fracker.Material} material 
+/**
+ * Set the material of the tile at the specified tile position.
+ * @return {void}
+ * @param {number} x
+ * @param {number} y
+ * @param {box2d.Testbed.Fracker.Material} material
  */
 box2d.Testbed.Fracker.prototype.SetMaterial = function(x, y, material) {
   ///	*GetMaterialStorage(x, y) = material;
   this.m_material[box2d.Testbed.Fracker.TileToArrayOffset(x, y)] = material;
 }
 
-/** 
- * Get the body associated with the specified tile position. 
- * @return {box2d.b2Body} 
- * @param {number} x 
- * @param {number} y 
+/**
+ * Get the body associated with the specified tile position.
+ * @return {box2d.b2Body}
+ * @param {number} x
+ * @param {number} y
  */
 box2d.Testbed.Fracker.prototype.GetBody = function(x, y) {
   ///	return *const_cast<Fracker*>(this).GetBodyStorage(x, y);
   return this.m_bodies[box2d.Testbed.Fracker.TileToArrayOffset(x, y)];
 }
 
-/** 
- * Set the body associated with the specified tile position. 
- * @return {void} 
- * @param {number} x 
- * @param {number} y 
- * @param {box2d.b2Body} body 
+/**
+ * Set the body associated with the specified tile position.
+ * @return {void}
+ * @param {number} x
+ * @param {number} y
+ * @param {box2d.b2Body} body
  */
 box2d.Testbed.Fracker.prototype.SetBody = function(x, y, body) {
   ///	b2Body** const currentBody = GetBodyStorage(x, y);
@@ -617,8 +617,8 @@ box2d.Testbed.Fracker.prototype.SetBody = function(x, y, body) {
   this.m_bodies[box2d.Testbed.Fracker.TileToArrayOffset(x, y)] = body;
 }
 
-/** 
- * Create the player. 
+/**
+ * Create the player.
  * @return {void}
  */
 box2d.Testbed.Fracker.prototype.CreatePlayer = function() {
@@ -638,8 +638,8 @@ box2d.Testbed.Fracker.prototype.CreatePlayer = function() {
     0);
 }
 
-/** 
- * Create the geography / features of the world. 
+/**
+ * Create the geography / features of the world.
  * @return {void}
  */
 box2d.Testbed.Fracker.prototype.CreateGeo = function() {
@@ -671,8 +671,8 @@ box2d.Testbed.Fracker.prototype.CreateGeo = function() {
   }
 }
 
-/** 
- * Create the boundary of the world. 
+/**
+ * Create the boundary of the world.
  * @return {void}
  */
 box2d.Testbed.Fracker.prototype.CreateGround = function() {
@@ -692,11 +692,11 @@ box2d.Testbed.Fracker.prototype.CreateGround = function() {
   ground.CreateFixture(shape, 0.0);
 }
 
-/** 
- * Create a dirt block at the specified world position. 
- * @return {void} 
- * @param {number} x 
- * @param {number} y 
+/**
+ * Create a dirt block at the specified world position.
+ * @return {void}
+ * @param {number} x
+ * @param {number} y
  */
 box2d.Testbed.Fracker.prototype.CreateDirtBlock = function(x, y) {
   var position = box2d.Testbed.Fracker.TileToWorld(x, y);
@@ -711,12 +711,12 @@ box2d.Testbed.Fracker.prototype.CreateDirtBlock = function(x, y) {
   this.SetMaterial(x, y, box2d.Testbed.Fracker.Material.DIRT);
 }
 
-/** 
- * Create particles in a tile with resources. 
- * @return {void} 
- * @param {number} x 
- * @param {number} y 
- * @param {box2d.Testbed.Fracker.Material} material 
+/**
+ * Create particles in a tile with resources.
+ * @return {void}
+ * @param {number} x
+ * @param {number} y
+ * @param {box2d.Testbed.Fracker.Material} material
  */
 box2d.Testbed.Fracker.prototype.CreateReservoirBlock = function(x, y, material) {
   var position = box2d.Testbed.Fracker.TileToWorld(x, y);
@@ -748,9 +748,9 @@ box2d.Testbed.Fracker.prototype.CreateReservoirBlock = function(x, y, material) 
   }
 }
 
-/** 
- * Create a well and the region which applies negative pressure 
- * to suck out fluid. 
+/**
+ * Create a well and the region which applies negative pressure
+ * to suck out fluid.
  * @return {void}
  */
 box2d.Testbed.Fracker.prototype.CreateWell = function() {
@@ -759,10 +759,10 @@ box2d.Testbed.Fracker.prototype.CreateWell = function() {
   }
 }
 
-/** 
- * Create a fracking fluid emitter. 
- * @return {void} 
- * @param {box2d.b2Vec2} position 
+/**
+ * Create a fracking fluid emitter.
+ * @return {void}
+ * @param {box2d.b2Vec2} position
  */
 box2d.Testbed.Fracker.prototype.CreateFrackingFluidEmitter = function(position) {
   var groupDef = new box2d.b2ParticleGroupDef();
@@ -783,11 +783,11 @@ box2d.Testbed.Fracker.prototype.CreateFrackingFluidEmitter = function(position) 
   this.m_listener.AddScore(box2d.Testbed.FrackerSettings.k_scorePerFrackingDeployment);
 }
 
-/** 
- * Update the player's position. 
- * @return {void} 
- * @param {number} playerX 
- * @param {number} playerY 
+/**
+ * Update the player's position.
+ * @return {void}
+ * @param {number} playerX
+ * @param {number} playerY
  */
 box2d.Testbed.Fracker.prototype.SetPlayerPosition = function(playerX, playerY) {
   var playerPosition = this.m_player.GetTransform().p;
@@ -810,9 +810,9 @@ box2d.Testbed.Fracker.prototype.SetPlayerPosition = function(playerX, playerY) {
   }
 }
 
-/** 
- * Try to deploy fracking fluid at the player's position, 
- * returning true if successful. 
+/**
+ * Try to deploy fracking fluid at the player's position,
+ * returning true if successful.
  * @return {boolean}
  */
 box2d.Testbed.Fracker.prototype.DeployFrackingFluid = function() {
@@ -826,14 +826,14 @@ box2d.Testbed.Fracker.prototype.DeployFrackingFluid = function() {
   return deployed;
 }
 
-/** 
- * Destroy all particles in the box specified by a set of tile 
- * coordinates. 
- * @return {void} 
- * @param {number} startX 
- * @param {number} startY 
- * @param {number} endX 
- * @param {number} endY 
+/**
+ * Destroy all particles in the box specified by a set of tile
+ * coordinates.
+ * @return {void}
+ * @param {number} startX
+ * @param {number} startY
+ * @param {number} endX
+ * @param {number} endY
  */
 box2d.Testbed.Fracker.prototype.DestroyParticlesInTiles = function(startX, startY, endX, endY) {
   var shape = new box2d.b2PolygonShape();
@@ -849,28 +849,28 @@ box2d.Testbed.Fracker.prototype.DestroyParticlesInTiles = function(startX, start
   this.m_particleSystem.DestroyParticlesInShape(shape, killLocation);
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2Joint} joint 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2Joint} joint
  */
 box2d.Testbed.Fracker.prototype.JointDestroyed = function(joint) {
   box2d.Testbed.Test.prototype.JointDestroyed.call(this, joint);
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2ParticleGroup} group 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2ParticleGroup} group
  */
 box2d.Testbed.Fracker.prototype.ParticleGroupDestroyed = function(group) {
   box2d.Testbed.Test.prototype.ParticleGroupDestroyed.call(this, group);
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2Contact} contact 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2Contact} contact
  */
 box2d.Testbed.Fracker.prototype.BeginContact = function(contact) {
   box2d.Testbed.Test.prototype.BeginContact.call(this, contact);
@@ -878,8 +878,8 @@ box2d.Testbed.Fracker.prototype.BeginContact = function(contact) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Contact} contact 
+ * @return {void}
+ * @param {box2d.b2Contact} contact
  */
 box2d.Testbed.Fracker.prototype.EndContact = function(contact) {
   box2d.Testbed.Test.prototype.EndContact.call(this, contact);
@@ -887,9 +887,9 @@ box2d.Testbed.Fracker.prototype.EndContact = function(contact) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Contact} contact 
- * @param {box2d.b2Manifold} oldManifold 
+ * @return {void}
+ * @param {box2d.b2Contact} contact
+ * @param {box2d.b2Manifold} oldManifold
  */
 box2d.Testbed.Fracker.prototype.PreSolve = function(contact, oldManifold) {
   box2d.Testbed.Test.prototype.PreSolve.call(this, contact, oldManifold);
@@ -897,20 +897,20 @@ box2d.Testbed.Fracker.prototype.PreSolve = function(contact, oldManifold) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Contact} contact 
- * @param {box2d.b2ContactImpulse} impulse 
+ * @return {void}
+ * @param {box2d.b2Contact} contact
+ * @param {box2d.b2ContactImpulse} impulse
  */
 box2d.Testbed.Fracker.prototype.PostSolve = function(contact, impulse) {
   box2d.Testbed.Test.prototype.PostSolve.call(this, contact, impulse);
 }
 
-/** 
- * a = left, d = right, a = up, s = down, e = deploy fracking 
- * fluid. 
- * @export 
- * @return {void} 
- * @param {number} key 
+/**
+ * a = left, d = right, a = up, s = down, e = deploy fracking
+ * fluid.
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.Fracker.prototype.Keyboard = function(key) {
   // Only allow 1 move per simulation step.
@@ -958,29 +958,29 @@ box2d.Testbed.Fracker.prototype.Keyboard = function(key) {
 
 /**
  * @export
- * @return {void} 
- * @param {number} key 
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.Fracker.prototype.KeyboardUp = function(key) {
   box2d.Testbed.Test.prototype.KeyboardUp.call(this, key);
 }
 
-/** 
- * Start preparing the fracking fluid. 
- * @export 
- * @return {void} 
- * @param {box2d.b2Vec2} p 
+/**
+ * Start preparing the fracking fluid.
+ * @export
+ * @return {void}
+ * @param {box2d.b2Vec2} p
  */
 box2d.Testbed.Fracker.prototype.MouseDown = function(p) {
   box2d.Testbed.Test.prototype.MouseDown.call(this, p);
   this.m_frackingFluidChargeTime = 0.0;
 }
 
-/** 
- * Try to deploy the fracking fluid or move the player. 
+/**
+ * Try to deploy the fracking fluid or move the player.
  * @export
- * @return {void} 
- * @param {box2d.b2Vec2} p 
+ * @return {void}
+ * @param {box2d.b2Vec2} p
  */
 box2d.Testbed.Fracker.prototype.MouseUp = function(p) {
   box2d.Testbed.Test.prototype.MouseUp.call(this, p);
@@ -1012,8 +1012,8 @@ box2d.Testbed.Fracker.prototype.MouseUp = function(p) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Vec2} p 
+ * @return {void}
+ * @param {box2d.b2Vec2} p
  */
 box2d.Testbed.Fracker.prototype.MouseMove = function(p) {
   box2d.Testbed.Test.prototype.MouseMove.call(this, p);
@@ -1021,8 +1021,8 @@ box2d.Testbed.Fracker.prototype.MouseMove = function(p) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Fracker.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
@@ -1099,8 +1099,8 @@ box2d.Testbed.Fracker.prototype.Step = function(settings) {
   this.DrawScore();
 }
 
-/** 
- * Render the well. 
+/**
+ * Render the well.
  * @return {void}
  */
 box2d.Testbed.Fracker.prototype.DrawWell = function() {
@@ -1109,8 +1109,8 @@ box2d.Testbed.Fracker.prototype.DrawWell = function() {
   }
 }
 
-/** 
- * Render the player / fracker. 
+/**
+ * Render the player / fracker.
  * @return {void}
  */
 box2d.Testbed.Fracker.prototype.DrawPlayer = function() {
@@ -1123,8 +1123,8 @@ box2d.Testbed.Fracker.prototype.DrawPlayer = function() {
     true);
 }
 
-/** 
- * Render the score and the instructions / keys. 
+/**
+ * Render the score and the instructions / keys.
  * @return {void}
  */
 box2d.Testbed.Fracker.prototype.DrawScore = function() {
@@ -1143,13 +1143,13 @@ box2d.Testbed.Fracker.prototype.DrawScore = function() {
   this.m_textLine += box2d.Testbed.DRAW_STRING_NEW_LINE;
 }
 
-/** 
- * Draw a quad at position of color that is either just an 
- * outline (fill = false) or solid (fill = true). 
- * @return {void} 
- * @param {box2d.b2Vec2} position 
- * @param {box2d.b2Color} color 
- * @param {boolean=} fill 
+/**
+ * Draw a quad at position of color that is either just an
+ * outline (fill = false) or solid (fill = true).
+ * @return {void}
+ * @param {box2d.b2Vec2} position
+ * @param {box2d.b2Color} color
+ * @param {boolean=} fill
  */
 box2d.Testbed.Fracker.prototype.DrawQuad = function(position, color, fill) {
   fill = fill || false;
@@ -1182,27 +1182,27 @@ box2d.Testbed.Fracker.prototype.DrawQuad = function(position, color, fill) {
 ///	}
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.Testbed.Fracker.prototype.GetDefaultViewZoom = function() {
   return 0.1;
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Fracker.Create = function(canvas, settings) {
   return new box2d.Testbed.Fracker(canvas, settings);
 }
 
-/** 
- * Get the bottom left position of the world in world units. 
- * @return {void} 
- * @param {box2d.b2Vec2} bottomLeft 
+/**
+ * Get the bottom left position of the world in world units.
+ * @return {void}
+ * @param {box2d.b2Vec2} bottomLeft
  */
 box2d.Testbed.Fracker.GetBottomLeft = function(bottomLeft) {
   bottomLeft.Set(box2d.Testbed.FrackerSettings.k_worldCenterX -
@@ -1211,11 +1211,11 @@ box2d.Testbed.Fracker.GetBottomLeft = function(bottomLeft) {
     box2d.Testbed.FrackerSettings.k_worldHalfHeight);
 }
 
-/** 
- * Get the extents of the world in world units. 
- * @return {void} 
- * @param {box2d.b2Vec2} bottomLeft 
- * @param {box2d.b2Vec2} topRight 
+/**
+ * Get the extents of the world in world units.
+ * @return {void}
+ * @param {box2d.b2Vec2} bottomLeft
+ * @param {box2d.b2Vec2} topRight
  */
 box2d.Testbed.Fracker.GetExtents = function(bottomLeft, topRight) {
   box2d.Testbed.Fracker.GetBottomLeft(bottomLeft);
@@ -1227,10 +1227,10 @@ box2d.Testbed.Fracker.GetExtents = function(bottomLeft, topRight) {
 
 ///	// Convert a point in world coordintes to a tile location
 /**
- * @return {void} 
- * @param {box2d.b2Vec2} position 
- * @param {Array.<number>} x 
- * @param {Array.<number>} y 
+ * @return {void}
+ * @param {box2d.b2Vec2} position
+ * @param {Array.<number>} x
+ * @param {Array.<number>} y
  */
 box2d.Testbed.Fracker.WorldToTile = function(position, x, y) {
   // Translate relative to the world center and scale based upon the
@@ -1245,12 +1245,12 @@ box2d.Testbed.Fracker.WorldToTile = function(position, x, y) {
     box2d.Testbed.FrackerSettings.k_tileHalfHeight);
 }
 
-/** 
- * Convert a tile position to a point  in world coordinates. 
- * @return {box2d.b2Vec2} 
- * @param {number} x 
- * @param {number} y 
- * @param {box2d.b2Vec2=} out 
+/**
+ * Convert a tile position to a point  in world coordinates.
+ * @return {box2d.b2Vec2}
+ * @param {number} x
+ * @param {number} y
+ * @param {box2d.b2Vec2=} out
  */
 box2d.Testbed.Fracker.TileToWorld = function(x, y, out) {
   out = out || new box2d.b2Vec2();
@@ -1262,12 +1262,12 @@ box2d.Testbed.Fracker.TileToWorld = function(x, y, out) {
     (x * box2d.Testbed.FrackerSettings.k_tileWidth) + bottomLeft.x, (y * box2d.Testbed.FrackerSettings.k_tileHeight) + bottomLeft.y);
 }
 
-/** 
- * Calculate the offset within an array of all world tiles using 
- * the specified tile coordinates. 
- * @return {number} 
- * @param {number} x 
- * @param {number} y 
+/**
+ * Calculate the offset within an array of all world tiles using
+ * the specified tile coordinates.
+ * @return {number}
+ * @param {number} x
+ * @param {number} y
  */
 box2d.Testbed.Fracker.TileToArrayOffset = function(x, y) {
   box2d.b2Assert(x >= 0);
@@ -1277,11 +1277,11 @@ box2d.Testbed.Fracker.TileToArrayOffset = function(x, y) {
   return x + (y * box2d.Testbed.FrackerSettings.k_worldWidthTiles);
 }
 
-/** 
- * Calculate the center of a tile position in world units. 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} position 
- * @param {box2d.b2Vec2=} out 
+/**
+ * Calculate the center of a tile position in world units.
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} position
+ * @param {box2d.b2Vec2=} out
  */
 box2d.Testbed.Fracker.CenteredPosition = function(position, out) {
   out = out || new box2d.b2Vec2();
@@ -1289,12 +1289,12 @@ box2d.Testbed.Fracker.CenteredPosition = function(position, out) {
     position.y + box2d.Testbed.FrackerSettings.k_tileHalfHeight);
 }
 
-/** 
- * Interpolate between color a and b using t. 
- * @return {box2d.b2Color} 
- * @param {box2d.b2Color} a 
- * @param {box2d.b2Color} b 
- * @param {number} t 
+/**
+ * Interpolate between color a and b using t.
+ * @return {box2d.b2Color}
+ * @param {box2d.b2Color} a
+ * @param {box2d.b2Color} b
+ * @param {number} t
  */
 box2d.Testbed.Fracker.LerpColor = function(a, b, t) {
   return new box2d.b2Color(box2d.Testbed.Fracker.Lerp(a.r, b.r, t),
@@ -1302,12 +1302,12 @@ box2d.Testbed.Fracker.LerpColor = function(a, b, t) {
     box2d.Testbed.Fracker.Lerp(a.b, b.b, t));
 }
 
-/** 
- * Interpolate between a and b using t. 
- * @return {number} 
- * @param {number} a 
- * @param {number} b 
- * @param {number} t 
+/**
+ * Interpolate between a and b using t.
+ * @return {number}
+ * @param {number} a
+ * @param {number} b
+ * @param {number} t
  */
 box2d.Testbed.Fracker.Lerp = function(a, b, t) {
   return a * (1.0 - t) + b * t;

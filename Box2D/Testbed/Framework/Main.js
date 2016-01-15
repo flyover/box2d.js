@@ -41,7 +41,7 @@ box2d.Testbed.TestMain.particleParameter = new box2d.Testbed.ParticleParameter()
 //#endif
 
 /**
- * @export 
+ * @export
  * @constructor
  */
 box2d.Testbed.Main = function() {
@@ -161,14 +161,14 @@ box2d.Testbed.Main = function() {
   // simulation number inputs
 
   /**
-   * @return {Node} 
-   * @param {Node} parent 
-   * @param {string} label 
-   * @param {number} number 
-   * @param {number} min 
-   * @param {number} max 
-   * @param {number} step 
-   * @param {function(number):void} callback 
+   * @return {Node}
+   * @param {Node} parent
+   * @param {string} label
+   * @param {number} number
+   * @param {number} min
+   * @param {number} max
+   * @param {number} step
+   * @param {function(number):void} callback
    */
   var connect_number_input = function(parent, label, number, min, max, step, callback) {
     var number_input_tr = parent.appendChild(document.createElement('tr'));
@@ -212,11 +212,11 @@ box2d.Testbed.Main = function() {
   // simulation checkbox inputs
 
   /**
-   * @return {Node} 
-   * @param {Node} parent 
-   * @param {string} label 
-   * @param {boolean} checked 
-   * @param {function(boolean):void} callback 
+   * @return {Node}
+   * @param {Node} parent
+   * @param {string} label
+   * @param {boolean} checked
+   * @param {function(boolean):void} callback
    */
   var connect_checkbox_input = function(parent, label, checked, callback) {
     var checkbox_input = document.createElement('input');
@@ -360,126 +360,126 @@ box2d.Testbed.Main = function() {
 }
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.Main.prototype.m_time_last = 0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.Main.prototype.m_fps_time = 0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.Main.prototype.m_fps_frames = 0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.Main.prototype.m_fps = 0;
 /**
- * @export 
- * @type {HTMLDivElement} 
+ * @export
+ * @type {HTMLDivElement}
  */
 box2d.Testbed.Main.prototype.m_fps_div = null;
 /**
- * @export 
- * @type {HTMLDivElement} 
+ * @export
+ * @type {HTMLDivElement}
  */
 box2d.Testbed.Main.prototype.m_debug_div = null;
 /**
- * @export 
- * @type {box2d.Testbed.Settings} 
+ * @export
+ * @type {box2d.Testbed.Settings}
  */
 box2d.Testbed.Main.prototype.m_settings = null;
 /**
- * @export 
- * @type {box2d.Testbed.Test} 
+ * @export
+ * @type {box2d.Testbed.Test}
  */
 box2d.Testbed.Main.prototype.m_test = null;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.Main.prototype.m_test_index = 0;
 /**
- * @export 
- * @type {Array.<box2d.Testbed.TestEntry>} 
+ * @export
+ * @type {Array.<box2d.Testbed.TestEntry>}
  */
 box2d.Testbed.Main.prototype.m_test_entries = null;
 /**
- * @export 
- * @type {boolean} 
+ * @export
+ * @type {boolean}
  */
 box2d.Testbed.Main.prototype.m_shift = false;
 /**
- * @export 
- * @type {boolean} 
+ * @export
+ * @type {boolean}
  */
 box2d.Testbed.Main.prototype.m_ctrl = false;
 /**
- * @export 
- * @type {boolean} 
+ * @export
+ * @type {boolean}
  */
 box2d.Testbed.Main.prototype.m_lMouseDown = false;
 /**
- * @export 
- * @type {boolean} 
+ * @export
+ * @type {boolean}
  */
 box2d.Testbed.Main.prototype.m_rMouseDown = false;
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.Testbed.Main.prototype.m_projection0 = null;
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.Testbed.Main.prototype.m_viewCenter0 = null;
 /**
- * @export 
- * @type {boolean} 
+ * @export
+ * @type {boolean}
  */
 box2d.Testbed.Main.prototype.m_demo_mode = false;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.Main.prototype.m_demo_time = 0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.Main.prototype.m_max_demo_time = 1000 * 10;
 /**
- * @export 
- * @type {HTMLDivElement} 
+ * @export
+ * @type {HTMLDivElement}
  */
 box2d.Testbed.Main.prototype.m_canvas_div = null;
 /**
- * @export 
- * @type {HTMLCanvasElement} 
+ * @export
+ * @type {HTMLCanvasElement}
  */
 box2d.Testbed.Main.prototype.m_canvas = null;
 /**
- * @export 
- * @type {CanvasRenderingContext2D} 
+ * @export
+ * @type {CanvasRenderingContext2D}
  */
 box2d.Testbed.Main.prototype.m_ctx = null;
 /**
- * @export 
- * @type {HTMLButtonElement} 
+ * @export
+ * @type {HTMLButtonElement}
  */
 box2d.Testbed.Main.prototype.m_demo_button = null;
 
 /**
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} viewport 
- * @param {box2d.b2Vec2} out 
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} viewport
+ * @param {box2d.b2Vec2} out
  */
 box2d.Testbed.Main.prototype.ConvertViewportToElement = function(viewport, out) {
   // 0,0 at center of canvas, x right and y up
@@ -491,10 +491,10 @@ box2d.Testbed.Main.prototype.ConvertViewportToElement = function(viewport, out) 
 }
 
 /**
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} element 
- * @param {box2d.b2Vec2} out 
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} element
+ * @param {box2d.b2Vec2} out
  */
 box2d.Testbed.Main.prototype.ConvertElementToViewport = function(element, out) {
   // 0,0 at center of canvas, x right and y up
@@ -506,10 +506,10 @@ box2d.Testbed.Main.prototype.ConvertElementToViewport = function(element, out) {
 }
 
 /**
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} projection 
- * @param {box2d.b2Vec2} out 
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} projection
+ * @param {box2d.b2Vec2} out
  */
 box2d.Testbed.Main.prototype.ConvertProjectionToViewport = function(projection, out) {
   var viewport = out.Copy(projection);
@@ -519,10 +519,10 @@ box2d.Testbed.Main.prototype.ConvertProjectionToViewport = function(projection, 
 }
 
 /**
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} viewport 
- * @param {box2d.b2Vec2} out 
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} viewport
+ * @param {box2d.b2Vec2} out
  */
 box2d.Testbed.Main.prototype.ConvertViewportToProjection = function(viewport, out) {
   var projection = out.Copy(viewport);
@@ -532,10 +532,10 @@ box2d.Testbed.Main.prototype.ConvertViewportToProjection = function(viewport, ou
 }
 
 /**
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} world 
- * @param {box2d.b2Vec2} out 
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} world
+ * @param {box2d.b2Vec2} out
  */
 box2d.Testbed.Main.prototype.ConvertWorldToProjection = function(world, out) {
     var projection = out.Copy(world);
@@ -544,10 +544,10 @@ box2d.Testbed.Main.prototype.ConvertWorldToProjection = function(world, out) {
     return projection;
   }
   /**
-   * @export 
-   * @return {box2d.b2Vec2} 
-   * @param {box2d.b2Vec2} projection 
-   * @param {box2d.b2Vec2} out 
+   * @export
+   * @return {box2d.b2Vec2}
+   * @param {box2d.b2Vec2} projection
+   * @param {box2d.b2Vec2} out
    */
 box2d.Testbed.Main.prototype.ConvertProjectionToWorld = function(projection, out) {
   var world = out.Copy(projection);
@@ -557,10 +557,10 @@ box2d.Testbed.Main.prototype.ConvertProjectionToWorld = function(projection, out
 }
 
 /**
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} element 
- * @param {box2d.b2Vec2} out 
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} element
+ * @param {box2d.b2Vec2} out
  */
 box2d.Testbed.Main.prototype.ConvertElementToWorld = function(element, out) {
   var viewport = this.ConvertElementToViewport(element, out);
@@ -569,10 +569,10 @@ box2d.Testbed.Main.prototype.ConvertElementToWorld = function(element, out) {
 }
 
 /**
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} element 
- * @param {box2d.b2Vec2} out 
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} element
+ * @param {box2d.b2Vec2} out
  */
 box2d.Testbed.Main.prototype.ConvertElementToProjection = function(element, out) {
   var viewport = this.ConvertElementToViewport(element, out);
@@ -580,9 +580,9 @@ box2d.Testbed.Main.prototype.ConvertElementToProjection = function(element, out)
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2Vec2} move 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Vec2} move
  */
 box2d.Testbed.Main.prototype.MoveCamera = function(move) {
   var position = this.m_settings.viewCenter.Clone();
@@ -593,9 +593,9 @@ box2d.Testbed.Main.prototype.MoveCamera = function(move) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} roll 
+ * @export
+ * @return {void}
+ * @param {number} roll
  */
 box2d.Testbed.Main.prototype.RollCamera = function(roll) {
   var angle = this.m_settings.viewRotation.GetAngle();
@@ -603,9 +603,9 @@ box2d.Testbed.Main.prototype.RollCamera = function(roll) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} zoom 
+ * @export
+ * @return {void}
+ * @param {number} zoom
  */
 box2d.Testbed.Main.prototype.ZoomCamera = function(zoom) {
   this.m_settings.viewZoom *= zoom;
@@ -613,8 +613,8 @@ box2d.Testbed.Main.prototype.ZoomCamera = function(zoom) {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.Testbed.Main.prototype.HomeCamera = function() {
   this.m_settings.viewZoom = (this.m_test) ? (this.m_test.GetDefaultViewZoom()) : (1.0);
@@ -623,9 +623,9 @@ box2d.Testbed.Main.prototype.HomeCamera = function() {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {MouseEvent} e 
+ * @export
+ * @return {void}
+ * @param {MouseEvent} e
  */
 box2d.Testbed.Main.prototype.HandleMouseMove = function(e) {
   var element = new box2d.b2Vec2(e.clientX, e.clientY);
@@ -645,9 +645,9 @@ box2d.Testbed.Main.prototype.HandleMouseMove = function(e) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {MouseEvent} e 
+ * @export
+ * @return {void}
+ * @param {MouseEvent} e
  */
 box2d.Testbed.Main.prototype.HandleMouseDown = function(e) {
   var element = new box2d.b2Vec2(e.clientX, e.clientY);
@@ -672,9 +672,9 @@ box2d.Testbed.Main.prototype.HandleMouseDown = function(e) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {MouseEvent} e 
+ * @export
+ * @return {void}
+ * @param {MouseEvent} e
  */
 box2d.Testbed.Main.prototype.HandleMouseUp = function(e) {
   var element = new box2d.b2Vec2(e.clientX, e.clientY);
@@ -692,9 +692,9 @@ box2d.Testbed.Main.prototype.HandleMouseUp = function(e) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {TouchEvent} e 
+ * @export
+ * @return {void}
+ * @param {TouchEvent} e
  */
 box2d.Testbed.Main.prototype.HandleTouchMove = function(e) {
   var element = new box2d.b2Vec2(e.touches[0].clientX, e.touches[0].clientY);
@@ -704,9 +704,9 @@ box2d.Testbed.Main.prototype.HandleTouchMove = function(e) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {TouchEvent} e 
+ * @export
+ * @return {void}
+ * @param {TouchEvent} e
  */
 box2d.Testbed.Main.prototype.HandleTouchStart = function(e) {
   var element = new box2d.b2Vec2(e.touches[0].clientX, e.touches[0].clientY);
@@ -716,9 +716,9 @@ box2d.Testbed.Main.prototype.HandleTouchStart = function(e) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {TouchEvent} e 
+ * @export
+ * @return {void}
+ * @param {TouchEvent} e
  */
 box2d.Testbed.Main.prototype.HandleTouchEnd = function(e) {
   this.m_test.MouseUp(this.m_test.m_mouseWorld);
@@ -726,9 +726,9 @@ box2d.Testbed.Main.prototype.HandleTouchEnd = function(e) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {MouseEvent} e 
+ * @export
+ * @return {void}
+ * @param {MouseEvent} e
  */
 box2d.Testbed.Main.prototype.HandleMouseWheel = function(e) {
   if (e.wheelDelta > 0) {
@@ -740,9 +740,9 @@ box2d.Testbed.Main.prototype.HandleMouseWheel = function(e) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {KeyboardEvent} e 
+ * @export
+ * @return {void}
+ * @param {KeyboardEvent} e
  */
 box2d.Testbed.Main.prototype.HandleKeyDown = function(e) {
   switch (e.keyCode) {
@@ -848,9 +848,9 @@ box2d.Testbed.Main.prototype.HandleKeyDown = function(e) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {KeyboardEvent} e 
+ * @export
+ * @return {void}
+ * @param {KeyboardEvent} e
  */
 box2d.Testbed.Main.prototype.HandleKeyUp = function(e) {
   switch (e.keyCode) {
@@ -871,9 +871,9 @@ box2d.Testbed.Main.prototype.HandleKeyUp = function(e) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} time_elapsed 
+ * @export
+ * @return {void}
+ * @param {number} time_elapsed
  */
 box2d.Testbed.Main.prototype.UpdateTest = function(time_elapsed) {
   if (this.m_demo_mode) {
@@ -891,8 +891,8 @@ box2d.Testbed.Main.prototype.UpdateTest = function(time_elapsed) {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.Testbed.Main.prototype.DecrementTest = function() {
   if (this.m_test_index <= 0) {
@@ -904,8 +904,8 @@ box2d.Testbed.Main.prototype.DecrementTest = function() {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.Testbed.Main.prototype.IncrementTest = function() {
   this.m_test_index++;
@@ -917,9 +917,9 @@ box2d.Testbed.Main.prototype.IncrementTest = function() {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {boolean=} restartTest 
+ * @export
+ * @return {void}
+ * @param {boolean=} restartTest
  */
 box2d.Testbed.Main.prototype.LoadTest = function(restartTest) {
   //#if B2_ENABLE_PARTICLE
@@ -940,16 +940,16 @@ box2d.Testbed.Main.prototype.LoadTest = function(restartTest) {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.Testbed.Main.prototype.Pause = function() {
   this.m_settings.pause = !this.m_settings.pause;
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.Testbed.Main.prototype.SingleStep = function() {
   this.m_settings.pause = true;
@@ -957,16 +957,16 @@ box2d.Testbed.Main.prototype.SingleStep = function() {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.Testbed.Main.prototype.ToggleDemo = function() {
   this.m_demo_mode = !this.m_demo_mode;
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.Testbed.Main.prototype.SimulationLoop = function() {
   var time = new Date().getTime();
@@ -1044,25 +1044,25 @@ box2d.Testbed.Main.prototype.SimulationLoop = function() {
 
 //#if B2_ENABLE_PARTICLE
 
-/** 
- * Set whether to restart the test on particle parameter 
+/**
+ * Set whether to restart the test on particle parameter
  * changes. This parameter is re-enabled when the test changes.
- * @export 
- * @return {void} 
- * @param {boolean} enable 
+ * @export
+ * @return {void}
+ * @param {boolean} enable
  */
 box2d.Testbed.TestMain.SetRestartOnParticleParameterChange = function(enable) {
   box2d.Testbed.TestMain.particleParameter.SetRestartOnChange(enable);
 }
 
-/** 
- * Set the currently selected particle parameter value.  This 
- * value must match one of the values in 
- * TestMain::k_particleTypes or one of the values referenced by 
- * particleParameterDef passed to SetParticleParameters(). 
- * @export 
- * @return {number} 
- * @param {number} value 
+/**
+ * Set the currently selected particle parameter value.  This
+ * value must match one of the values in
+ * TestMain::k_particleTypes or one of the values referenced by
+ * particleParameterDef passed to SetParticleParameters().
+ * @export
+ * @return {number}
+ * @param {number} value
  */
 box2d.Testbed.TestMain.SetParticleParameterValue = function(value) {
   var index = box2d.Testbed.TestMain.particleParameter.FindIndexByValue(value);
@@ -1072,11 +1072,11 @@ box2d.Testbed.TestMain.SetParticleParameterValue = function(value) {
   return box2d.Testbed.TestMain.particleParameter.GetValue();
 }
 
-/** 
- * Get the currently selected particle parameter value and 
+/**
+ * Get the currently selected particle parameter value and
  * enable particle parameter selection arrows on Android.
- * @export 
- * @return {number} 
+ * @export
+ * @return {number}
  */
 box2d.Testbed.TestMain.GetParticleParameterValue = function() {
   // Enable display of particle type selection arrows.
@@ -1084,12 +1084,12 @@ box2d.Testbed.TestMain.GetParticleParameterValue = function() {
   return box2d.Testbed.TestMain.particleParameter.GetValue();
 }
 
-/** 
- * Override the default particle parameters for the test. 
- * @export 
- * @return {void} 
- * @param {Array.<?>} particleParameterDef 
- * @param {number=} particleParameterDefCount 
+/**
+ * Override the default particle parameters for the test.
+ * @export
+ * @return {void}
+ * @param {Array.<?>} particleParameterDef
+ * @param {number=} particleParameterDefCount
  */
 box2d.Testbed.TestMain.SetParticleParameters = function(particleParameterDef, particleParameterDefCount) {
   box2d.Testbed.TestMain.particleParameter.SetDefinition(particleParameterDef, particleParameterDefCount);

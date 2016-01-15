@@ -21,10 +21,10 @@ goog.provide('box2d.b2ShapeDistance');
 goog.require('box2d.b2Settings');
 goog.require('box2d.b2Math');
 
-/** 
- * A distance proxy is used by the GJK algorithm. 
+/**
+ * A distance proxy is used by the GJK algorithm.
  * It encapsulates any shape.
- * @export 
+ * @export
  * @constructor
  */
 box2d.b2DistanceProxy = function() {
@@ -32,29 +32,29 @@ box2d.b2DistanceProxy = function() {
 };
 
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2Vec2>}
  */
 box2d.b2DistanceProxy.prototype.m_buffer = null;
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2Vec2>}
  */
 box2d.b2DistanceProxy.prototype.m_vertices = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DistanceProxy.prototype.m_count = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DistanceProxy.prototype.m_radius = 0;
 
 /**
- * @export 
- * @return {box2d.b2DistanceProxy} 
+ * @export
+ * @return {box2d.b2DistanceProxy}
  */
 box2d.b2DistanceProxy.prototype.Reset = function() {
   this.m_vertices = null;
@@ -63,23 +63,23 @@ box2d.b2DistanceProxy.prototype.Reset = function() {
   return this;
 }
 
-/** 
- * Initialize the proxy using the given shape. The shape must 
- * remain in scope while the proxy is in use. 
- * @export 
- * @return {void} 
- * @param {box2d.b2Shape} shape 
+/**
+ * Initialize the proxy using the given shape. The shape must
+ * remain in scope while the proxy is in use.
+ * @export
+ * @return {void}
+ * @param {box2d.b2Shape} shape
  * @param {number} index
  */
 box2d.b2DistanceProxy.prototype.SetShape = function(shape, index) {
   shape.SetupDistanceProxy(this, index);
 }
 
-/** 
- * Get the supporting vertex index in the given direction. 
- * @export 
- * @return {number} 
- * @param {box2d.b2Vec2} d 
+/**
+ * Get the supporting vertex index in the given direction.
+ * @export
+ * @return {number}
+ * @param {box2d.b2Vec2} d
  */
 box2d.b2DistanceProxy.prototype.GetSupport = function(d) {
   /** @type {number} */
@@ -98,12 +98,12 @@ box2d.b2DistanceProxy.prototype.GetSupport = function(d) {
   return bestIndex;
 }
 
-/** 
- * Get the supporting vertex in the given direction. 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} d 
- * @param {box2d.b2Vec2} out 
+/**
+ * Get the supporting vertex in the given direction.
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} d
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2DistanceProxy.prototype.GetSupportVertex = function(d, out) {
   /** @type {number} */
@@ -122,20 +122,20 @@ box2d.b2DistanceProxy.prototype.GetSupportVertex = function(d, out) {
   return out.Copy(this.m_vertices[bestIndex]);
 }
 
-/** 
- * Get the vertex count. 
- * @export 
+/**
+ * Get the vertex count.
+ * @export
  * @return {number}
  */
 box2d.b2DistanceProxy.prototype.GetVertexCount = function() {
   return this.m_count;
 }
 
-/** 
- * Get a vertex by index. Used by box2d.b2Distance. 
- * @export 
+/**
+ * Get a vertex by index. Used by box2d.b2Distance.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {number} index 
+ * @param {number} index
  */
 box2d.b2DistanceProxy.prototype.GetVertex = function(index) {
   if (box2d.ENABLE_ASSERTS) {
@@ -144,10 +144,10 @@ box2d.b2DistanceProxy.prototype.GetVertex = function(index) {
   return this.m_vertices[index];
 }
 
-/** 
- * Used to warm start box2d.b2Distance. 
+/**
+ * Used to warm start box2d.b2Distance.
  * Set count to zero on first call.
- * @export 
+ * @export
  * @constructor
  */
 box2d.b2SimplexCache = function() {
@@ -156,29 +156,29 @@ box2d.b2SimplexCache = function() {
 };
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2SimplexCache.prototype.metric = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2SimplexCache.prototype.count = 0;
 /**
- * @export 
+ * @export
  * @type {Array.<number>}
  */
 box2d.b2SimplexCache.prototype.indexA = null;
 /**
- * @export 
+ * @export
  * @type {Array.<number>}
  */
 box2d.b2SimplexCache.prototype.indexB = null;
 
 /**
- * @export 
- * @return {box2d.b2SimplexCache} 
+ * @export
+ * @return {box2d.b2SimplexCache}
  */
 box2d.b2SimplexCache.prototype.Reset = function() {
   this.metric = 0;
@@ -186,10 +186,10 @@ box2d.b2SimplexCache.prototype.Reset = function() {
   return this;
 }
 
-/** 
- * Input for box2d.b2Distance. 
- * You have to option to use the shape radii in the computation. 
- * @export 
+/**
+ * Input for box2d.b2Distance.
+ * You have to option to use the shape radii in the computation.
+ * @export
  * @constructor
  */
 box2d.b2DistanceInput = function() {
@@ -200,34 +200,34 @@ box2d.b2DistanceInput = function() {
 };
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2DistanceProxy}
  */
 box2d.b2DistanceInput.prototype.proxyA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2DistanceProxy}
  */
 box2d.b2DistanceInput.prototype.proxyB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Transform}
  */
 box2d.b2DistanceInput.prototype.transformA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Transform}
  */
 box2d.b2DistanceInput.prototype.transformB = null;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2DistanceInput.prototype.useRadii = false;
 
 /**
- * @export 
- * @return {box2d.b2DistanceInput} 
+ * @export
+ * @return {box2d.b2DistanceInput}
  */
 box2d.b2DistanceInput.prototype.Reset = function() {
   this.proxyA.Reset();
@@ -238,10 +238,10 @@ box2d.b2DistanceInput.prototype.Reset = function() {
   return this;
 }
 
-/** 
- * Output for box2d.b2Distance. 
- * @export 
- * @constructor 
+/**
+ * Output for box2d.b2Distance.
+ * @export
+ * @constructor
  */
 box2d.b2DistanceOutput = function() {
   this.pointA = new box2d.b2Vec2();
@@ -249,29 +249,29 @@ box2d.b2DistanceOutput = function() {
 };
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2DistanceOutput.prototype.pointA = null; ///< closest point on shapeA
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2DistanceOutput.prototype.pointB = null; ///< closest point on shapeB
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DistanceOutput.prototype.distance = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DistanceOutput.prototype.iterations = 0; ///< number of GJK iterations used
 
 /**
- * @export 
- * @return {box2d.b2DistanceOutput} 
+ * @export
+ * @return {box2d.b2DistanceOutput}
  */
 box2d.b2DistanceOutput.prototype.Reset = function() {
   this.pointA.SetZero();
@@ -282,28 +282,28 @@ box2d.b2DistanceOutput.prototype.Reset = function() {
 }
 
 /**
- * GJK using Voronoi regions (Christer Ericson) and Barycentric 
- * coordinates. 
+ * GJK using Voronoi regions (Christer Ericson) and Barycentric
+ * coordinates.
  */
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2_gjkCalls = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2_gjkIters = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2_gjkMaxIters = 0;
 
 /**
- * @export 
+ * @export
  * @constructor
  */
 box2d.b2SimplexVertex = function() {
@@ -313,40 +313,40 @@ box2d.b2SimplexVertex = function() {
 };
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2SimplexVertex.prototype.wA = null; // support point in proxyA
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2SimplexVertex.prototype.wB = null; // support point in proxyB
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2SimplexVertex.prototype.w = null; // wB - wA
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2SimplexVertex.prototype.a = 0; // barycentric coordinate for closest point
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2SimplexVertex.prototype.indexA = 0; // wA index
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2SimplexVertex.prototype.indexB = 0; // wB index
 
 /**
- * @export 
- * @return {box2d.b2SimplexVertex} 
- * @param {box2d.b2SimplexVertex} other 
+ * @export
+ * @return {box2d.b2SimplexVertex}
+ * @param {box2d.b2SimplexVertex} other
  */
 box2d.b2SimplexVertex.prototype.Copy = function(other) {
   this.wA.Copy(other.wA); // support point in proxyA
@@ -359,7 +359,7 @@ box2d.b2SimplexVertex.prototype.Copy = function(other) {
 }
 
 /**
- * @export 
+ * @export
  * @constructor
  */
 box2d.b2Simplex = function() {
@@ -373,39 +373,39 @@ box2d.b2Simplex = function() {
 }
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2SimplexVertex}
  */
 box2d.b2Simplex.prototype.m_v1 = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2SimplexVertex}
  */
 box2d.b2Simplex.prototype.m_v2 = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2SimplexVertex}
  */
 box2d.b2Simplex.prototype.m_v3 = null;
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2SimplexVertex>}
  */
 box2d.b2Simplex.prototype.m_vertices = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Simplex.prototype.m_count = 0;
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2SimplexCache} cache 
- * @param {box2d.b2DistanceProxy} proxyA 
- * @param {box2d.b2Transform} transformA 
- * @param {box2d.b2DistanceProxy} proxyB 
- * @param {box2d.b2Transform} transformB 
+ * @export
+ * @return {void}
+ * @param {box2d.b2SimplexCache} cache
+ * @param {box2d.b2DistanceProxy} proxyA
+ * @param {box2d.b2Transform} transformA
+ * @param {box2d.b2DistanceProxy} proxyB
+ * @param {box2d.b2Transform} transformB
  */
 box2d.b2Simplex.prototype.ReadCache = function(cache, proxyA, transformA, proxyB, transformB) {
   if (box2d.ENABLE_ASSERTS) {
@@ -463,9 +463,9 @@ box2d.b2Simplex.prototype.ReadCache = function(cache, proxyA, transformA, proxyB
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2SimplexCache} cache 
+ * @export
+ * @return {void}
+ * @param {box2d.b2SimplexCache} cache
  */
 box2d.b2Simplex.prototype.WriteCache = function(cache) {
   cache.metric = this.GetMetric();
@@ -478,10 +478,10 @@ box2d.b2Simplex.prototype.WriteCache = function(cache) {
   }
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Simplex.prototype.GetSearchDirection = function(out) {
   switch (this.m_count) {
@@ -510,9 +510,9 @@ box2d.b2Simplex.prototype.GetSearchDirection = function(out) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Simplex.prototype.GetClosestPoint = function(out) {
   switch (this.m_count) {
@@ -542,10 +542,10 @@ box2d.b2Simplex.prototype.GetClosestPoint = function(out) {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2Vec2} pA
- * @param {box2d.b2Vec2} pB 
+ * @param {box2d.b2Vec2} pB
  */
 box2d.b2Simplex.prototype.GetWitnessPoints = function(pA, pB) {
   switch (this.m_count) {
@@ -581,7 +581,7 @@ box2d.b2Simplex.prototype.GetWitnessPoints = function(pA, pB) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2Simplex.prototype.GetMetric = function() {
@@ -609,7 +609,7 @@ box2d.b2Simplex.prototype.GetMetric = function() {
   }
 }
 
-/** 
+/**
  * Solve a line segment using barycentric coordinates.
  *
  * p = a1 * w1 + a2 * w2
@@ -633,9 +633,9 @@ box2d.b2Simplex.prototype.GetMetric = function() {
  * Solution
  * a1 = d12_1 / d12
  * a2 = d12_2 / d12
- *  
- * @export 
- * @return {void} 
+ *
+ * @export
+ * @return {void}
  */
 box2d.b2Simplex.prototype.Solve2 = function() {
   /** @type {box2d.b2Vec2} */
@@ -680,8 +680,8 @@ box2d.b2Simplex.prototype.Solve2 = function() {
  * - edge points[0]-points[2]
  * - edge points[1]-points[2]
  * - inside the triangle
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.b2Simplex.prototype.Solve3 = function() {
   /** @type {box2d.b2Vec2} */
@@ -814,15 +814,15 @@ box2d.b2Simplex.s_e12 = new box2d.b2Vec2();
 box2d.b2Simplex.s_e13 = new box2d.b2Vec2();
 box2d.b2Simplex.s_e23 = new box2d.b2Vec2();
 
-/** 
+/**
  * Compute the closest points between two shapes. Supports any combination of:
  * box2d.b2CircleShape, box2d.b2PolygonShape, box2d.b2EdgeShape. The simplex cache is input/output.
  * On the first call set box2d.b2SimplexCache.count to zero.
- * @export 
- * @param {box2d.b2DistanceOutput} output 
- * @param {box2d.b2SimplexCache} cache 
- * @param {box2d.b2DistanceInput} input 
- * @return {void} 
+ * @export
+ * @param {box2d.b2DistanceOutput} output
+ * @param {box2d.b2SimplexCache} cache
+ * @param {box2d.b2DistanceInput} input
+ * @return {void}
  */
 box2d.b2ShapeDistance = function(output, cache, input) {
   ++box2d.b2_gjkCalls;

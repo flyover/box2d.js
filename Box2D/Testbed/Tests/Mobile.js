@@ -21,11 +21,11 @@ goog.provide('box2d.Testbed.Mobile');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Mobile = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -55,19 +55,19 @@ box2d.Testbed.Mobile = function(canvas, settings) {
 goog.inherits(box2d.Testbed.Mobile, box2d.Testbed.Test);
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Mobile.e_depth = 4;
 
 /**
- * @param {box2d.b2Body} parent 
- * @param {box2d.b2Vec2} localAnchor 
- * @param {number} depth 
- * @param {number} offset 
- * @param {number} a 
- * @return {box2d.b2Body} 
+ * @param {box2d.b2Body} parent
+ * @param {box2d.b2Vec2} localAnchor
+ * @param {number} depth
+ * @param {number} offset
+ * @param {number} a
+ * @return {box2d.b2Body}
  */
 box2d.Testbed.Mobile.prototype.AddNode = function(parent, localAnchor, depth, offset, a) {
   var /*float32*/ density = 20.0;
@@ -109,11 +109,11 @@ box2d.Testbed.Mobile.prototype.AddNode = function(parent, localAnchor, depth, of
   return body;
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Mobile.Create = function(canvas, settings) {
   return new box2d.Testbed.Mobile(canvas, settings);

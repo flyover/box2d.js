@@ -23,11 +23,11 @@ goog.provide('box2d.Testbed.DrawingParticles');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.DrawingParticles = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -100,8 +100,8 @@ box2d.Testbed.DrawingParticles = function(canvas, settings) {
 
 goog.inherits(box2d.Testbed.DrawingParticles, box2d.Testbed.Test);
 
-/** 
- * Set bit 31 to distiguish these values from particle flags. 
+/**
+ * Set bit 31 to distiguish these values from particle flags.
  * @enum {number}
  */
 box2d.Testbed.DrawingParticles.Parameters = {
@@ -176,9 +176,9 @@ box2d.Testbed.DrawingParticles.prototype.DetermineParticleParameter = function()
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.DrawingParticles.prototype.Keyboard = function(key) {
   this.m_drawing = key !== goog.events.KeyCodes.X;
@@ -241,8 +241,8 @@ box2d.Testbed.DrawingParticles.prototype.Keyboard = function(key) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Vec2} p 
+ * @return {void}
+ * @param {box2d.b2Vec2} p
  */
 box2d.Testbed.DrawingParticles.prototype.MouseMove = function(p) {
   box2d.Testbed.Test.prototype.MouseMove.call(this, p);
@@ -277,18 +277,18 @@ box2d.Testbed.DrawingParticles.prototype.MouseMove = function(p) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Vec2} p 
+ * @return {void}
+ * @param {box2d.b2Vec2} p
  */
 box2d.Testbed.DrawingParticles.prototype.MouseUp = function(p) {
   box2d.Testbed.Test.prototype.MouseUp.call(this, p);
   this.m_lastGroup = null;
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2ParticleGroup} group 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2ParticleGroup} group
  */
 box2d.Testbed.DrawingParticles.prototype.ParticleGroupDestroyed = function(group) {
   box2d.Testbed.Test.prototype.ParticleGroupDestroyed.call(this, group);
@@ -311,8 +311,8 @@ box2d.Testbed.DrawingParticles.prototype.SplitParticleGroups = function() {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.DrawingParticles.prototype.Step = function(settings) {
   var parameterValue = box2d.Testbed.TestMain.GetParticleParameterValue();
@@ -372,18 +372,18 @@ box2d.Testbed.DrawingParticles.prototype.Step = function(settings) {
 }
 
 /**
- * @export 
- * @return {number} 
+ * @export
+ * @return {number}
  */
 box2d.Testbed.DrawingParticles.prototype.GetDefaultViewZoom = function() {
   return 0.1;
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.DrawingParticles.Create = function(canvas, settings) {
   return new box2d.Testbed.DrawingParticles(canvas, settings);

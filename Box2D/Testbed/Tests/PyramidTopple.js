@@ -3,11 +3,11 @@ goog.provide('box2d.Testbed.PyramidTopple');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.PyramidTopple = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -79,18 +79,18 @@ box2d.Testbed.PyramidTopple = function(canvas, settings) {
 goog.inherits(box2d.Testbed.PyramidTopple, box2d.Testbed.Test);
 
 /**
- * @export 
- * @return {number} 
+ * @export
+ * @return {number}
  */
 box2d.Testbed.PyramidTopple.prototype.GetDefaultViewZoom = function() {
   return 10.0;
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.PyramidTopple.Create = function(canvas, settings) {
   return new box2d.Testbed.PyramidTopple(canvas, settings);

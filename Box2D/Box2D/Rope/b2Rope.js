@@ -24,7 +24,7 @@ goog.require('box2d.b2Math');
 goog.require('box2d.b2Draw');
 
 /**
- * @export 
+ * @export
  * @constructor
  */
 box2d.b2RopeDef = function() {
@@ -55,14 +55,14 @@ box2d.b2RopeDef.prototype.damping = 0.1;
 box2d.b2RopeDef.prototype.k2 = 0.9;
 
 /**
- * Bending stiffness. Values above 0.5 can make the simulation 
- * blow up. 
+ * Bending stiffness. Values above 0.5 can make the simulation
+ * blow up.
  */
 /*float32*/
 box2d.b2RopeDef.prototype.k3 = 0.1;
 
 /**
- * @export 
+ * @export
  * @constructor
  */
 box2d.b2Rope = function() {
@@ -96,8 +96,8 @@ box2d.b2Rope.prototype.m_k2 = 1;
 /*float32*/
 box2d.b2Rope.prototype.m_k3 = 0.1;
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2Rope.prototype.GetVertexCount = function() {
@@ -105,7 +105,7 @@ box2d.b2Rope.prototype.GetVertexCount = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {Array.<box2d.b2Vec2>}
  */
 box2d.b2Rope.prototype.GetVertices = function() {
@@ -113,8 +113,8 @@ box2d.b2Rope.prototype.GetVertices = function() {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2RopeDef} def
  */
 box2d.b2Rope.prototype.Initialize = function(def) {
@@ -190,10 +190,10 @@ box2d.b2Rope.prototype.Initialize = function(def) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} h 
- * @param {number} iterations 
+ * @export
+ * @return {void}
+ * @param {number} h
+ * @param {number} iterations
  */
 box2d.b2Rope.prototype.Step = function( /*float32*/ h, /*int32*/ iterations) {
   if (h === 0) {
@@ -227,7 +227,7 @@ box2d.b2Rope.prototype.Step = function( /*float32*/ h, /*int32*/ iterations) {
 }
 
 /**
- * @export 
+ * @export
  * @return {void}
  */
 box2d.b2Rope.prototype.SolveC2 = function() {
@@ -269,7 +269,7 @@ box2d.b2Rope.prototype.SolveC2 = function() {
 box2d.b2Rope.s_d = new box2d.b2Vec2();
 
 /**
- * @export 
+ * @export
  * @return {void}
  * @param {number} angle
  */
@@ -282,7 +282,7 @@ box2d.b2Rope.prototype.SetAngle = function(angle) {
 }
 
 /**
- * @export 
+ * @export
  * @return {void}
  */
 box2d.b2Rope.prototype.SolveC3 = function() {
@@ -378,8 +378,8 @@ box2d.b2Rope.s_Jd2 = new box2d.b2Vec2();
 box2d.b2Rope.s_J1 = new box2d.b2Vec2();
 box2d.b2Rope.s_J2 = new box2d.b2Vec2();
 
-/** 
- * @export 
+/**
+ * @export
  * @return {void}
  * @param {box2d.b2Draw} draw
  */

@@ -26,9 +26,9 @@ goog.require('box2d.Testbed.Test');
  * b2TestOverlap to determine which fixtures overlap a circle.
  * Up to 4 overlapped fixtures will be highlighted with a yellow
  * border.
- * @export 
- * @constructor 
- * @extends {box2d.b2QueryCallback} 
+ * @export
+ * @constructor
+ * @extends {box2d.b2QueryCallback}
  */
 box2d.Testbed.PolyShapesCallback = function() {
   this.m_circle = new box2d.b2CircleShape();
@@ -38,35 +38,35 @@ box2d.Testbed.PolyShapesCallback = function() {
 goog.inherits(box2d.Testbed.PolyShapesCallback, box2d.b2QueryCallback);
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.Testbed.PolyShapesCallback.e_maxCount = 4;
 
 /**
- * @export 
- * @type {box2d.b2CircleShape} 
+ * @export
+ * @type {box2d.b2CircleShape}
  */
 box2d.Testbed.PolyShapesCallback.prototype.m_circle = null;
 /**
- * @export 
- * @type {box2d.b2Transform} 
+ * @export
+ * @type {box2d.b2Transform}
  */
 box2d.Testbed.PolyShapesCallback.prototype.m_transform = null;
 /**
- * @export 
- * @type {box2d.b2Draw} 
+ * @export
+ * @type {box2d.b2Draw}
  */
 box2d.Testbed.PolyShapesCallback.prototype.m_debug_draw = null;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.PolyShapesCallback.prototype.m_count = 0;
 
-/** 
- * @param {box2d.b2Fixture} fixture 
+/**
+ * @param {box2d.b2Fixture} fixture
  */
 box2d.Testbed.PolyShapesCallback.prototype.DrawFixture = function(fixture) {
   var color = new box2d.b2Color(0.95, 0.95, 0.6);
@@ -108,10 +108,10 @@ box2d.Testbed.PolyShapesCallback.prototype.DrawFixture = function(fixture) {
   }
 }
 
-/** 
- * Called for each fixture found in the query AABB. 
+/**
+ * Called for each fixture found in the query AABB.
  * @return {boolean} false to terminate the query.
- * @param {box2d.b2Fixture} fixture 
+ * @param {box2d.b2Fixture} fixture
  */
 box2d.Testbed.PolyShapesCallback.prototype.ReportFixture = function(fixture) {
   if (this.m_count === box2d.Testbed.PolyShapesCallback.e_maxCount) {
@@ -132,11 +132,11 @@ box2d.Testbed.PolyShapesCallback.prototype.ReportFixture = function(fixture) {
 }
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.PolyShapes = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -209,16 +209,16 @@ box2d.Testbed.PolyShapes = function(canvas, settings) {
 goog.inherits(box2d.Testbed.PolyShapes, box2d.Testbed.Test);
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.Testbed.PolyShapes.e_maxBodies = 256;
 
-/** 
- * @export 
- * @return {void} 
- * @param {number} index 
+/**
+ * @export
+ * @return {void}
+ * @param {number} index
  */
 box2d.Testbed.PolyShapes.prototype.CreateBody = function(index) {
   if (this.m_bodies[this.m_bodyIndex] !== null) {
@@ -257,9 +257,9 @@ box2d.Testbed.PolyShapes.prototype.CreateBody = function(index) {
   this.m_bodyIndex = (this.m_bodyIndex + 1) % box2d.Testbed.PolyShapes.e_maxBodies;
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  */
 box2d.Testbed.PolyShapes.prototype.DestroyBody = function() {
   for (var i = 0; i < box2d.Testbed.PolyShapes.e_maxBodies; ++i) {
@@ -272,9 +272,9 @@ box2d.Testbed.PolyShapes.prototype.DestroyBody = function() {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.PolyShapes.prototype.Keyboard = function(key) {
   switch (key) {
@@ -303,8 +303,8 @@ box2d.Testbed.PolyShapes.prototype.Keyboard = function(key) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.PolyShapes.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
@@ -331,11 +331,11 @@ box2d.Testbed.PolyShapes.prototype.Step = function(settings) {
   this.m_textLine += box2d.Testbed.DRAW_STRING_NEW_LINE;
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.PolyShapes.Create = function(canvas, settings) {
   return new box2d.Testbed.PolyShapes(canvas, settings);

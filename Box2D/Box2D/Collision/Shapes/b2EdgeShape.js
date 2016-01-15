@@ -20,13 +20,13 @@ goog.provide('box2d.b2EdgeShape');
 
 goog.require('box2d.b2Shape');
 
-/** 
- * A line segment (edge) shape. These can be connected in chains 
- * or loops to other edge shapes. The connectivity information 
- * is used to ensure correct contact normals. 
- * @export 
+/**
+ * A line segment (edge) shape. These can be connected in chains
+ * or loops to other edge shapes. The connectivity information
+ * is used to ensure correct contact normals.
+ * @export
  * @constructor
- * @extends {box2d.b2Shape} 
+ * @extends {box2d.b2Shape}
  */
 box2d.b2EdgeShape = function() {
   box2d.b2Shape.call(this, box2d.b2ShapeType.e_edgeShape, box2d.b2_polygonRadius); // base class constructor
@@ -40,47 +40,47 @@ box2d.b2EdgeShape = function() {
 
 goog.inherits(box2d.b2EdgeShape, box2d.b2Shape);
 
-/** 
- * These are the edge vertices 
- * @export 
+/**
+ * These are the edge vertices
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2EdgeShape.prototype.m_vertex1 = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2EdgeShape.prototype.m_vertex2 = null;
 
-/** 
- * Optional adjacent vertices. These are used for smooth 
- * collision. 
- * @export 
+/**
+ * Optional adjacent vertices. These are used for smooth
+ * collision.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2EdgeShape.prototype.m_vertex0 = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2EdgeShape.prototype.m_vertex3 = null;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2EdgeShape.prototype.m_hasVertex0 = false;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2EdgeShape.prototype.m_hasVertex3 = false;
 
-/** 
- * Set this as an isolated edge. 
- * @export 
- * @return {box2d.b2EdgeShape} 
+/**
+ * Set this as an isolated edge.
+ * @export
+ * @return {box2d.b2EdgeShape}
  * @param {box2d.b2Vec2} v1
- * @param {box2d.b2Vec2} v2 
+ * @param {box2d.b2Vec2} v2
  */
 box2d.b2EdgeShape.prototype.Set = function(v1, v2) {
   this.m_vertex1.Copy(v1);
@@ -92,18 +92,18 @@ box2d.b2EdgeShape.prototype.Set = function(v1, v2) {
 
 box2d.b2EdgeShape.prototype.SetAsEdge = box2d.b2EdgeShape.prototype.Set;
 
-/** 
- * Implement box2d.b2Shape. 
- * @export 
- * @return {box2d.b2Shape} 
+/**
+ * Implement box2d.b2Shape.
+ * @export
+ * @return {box2d.b2Shape}
  */
 box2d.b2EdgeShape.prototype.Clone = function() {
   return new box2d.b2EdgeShape().Copy(this);
 }
 
 /**
- * @export 
- * @return {box2d.b2Shape} 
+ * @export
+ * @return {box2d.b2Shape}
  * @param {box2d.b2Shape} other
  */
 box2d.b2EdgeShape.prototype.Copy = function(other) {
@@ -123,18 +123,18 @@ box2d.b2EdgeShape.prototype.Copy = function(other) {
   return this;
 }
 
-/** 
- * @see box2d.b2Shape::GetChildCount 
- * @export 
+/**
+ * @see box2d.b2Shape::GetChildCount
+ * @export
  * @return {number}
  */
 box2d.b2EdgeShape.prototype.GetChildCount = function() {
   return 1;
 }
 
-/** 
- * @see box2d.b2Shape::TestPoint 
- * @export 
+/**
+ * @see box2d.b2Shape::TestPoint
+ * @export
  * @return {boolean}
  * @param {box2d.b2Transform} xf
  * @param {box2d.b2Vec2} p
@@ -145,14 +145,14 @@ box2d.b2EdgeShape.prototype.TestPoint = function(xf, p) {
 
 //#if B2_ENABLE_PARTICLE
 
-/** 
- * @see b2Shape::ComputeDistance 
- * @export 
- * @return {number} 
- * @param {box2d.b2Transform} xf 
- * @param {box2d.b2Vec2} p 
- * @param {box2d.b2Vec2} normal 
- * @param {number} childIndex 
+/**
+ * @see b2Shape::ComputeDistance
+ * @export
+ * @return {number}
+ * @param {box2d.b2Transform} xf
+ * @param {box2d.b2Vec2} p
+ * @param {box2d.b2Vec2} normal
+ * @param {number} childIndex
  */
 box2d.b2EdgeShape.prototype.ComputeDistance = function(xf, p, normal, childIndex) {
   var v1 = box2d.b2Mul_X_V2(xf, this.m_vertex1, box2d.b2EdgeShape.prototype.ComputeDistance.s_v1);
@@ -179,18 +179,18 @@ box2d.b2EdgeShape.prototype.ComputeDistance.s_s = new box2d.b2Vec2();
 
 //#endif
 
-/** 
+/**
  * Implement box2d.b2Shape.
  * p = p1 + t * d
  * v = v1 + s * e
  * p1 + t * d = v1 + s * e
  * s * e - t * d = p1 - v1
- * @export 
- * @return {boolean} 
- * @param {box2d.b2RayCastOutput} output 
- * @param {box2d.b2RayCastInput} input 
- * @param {box2d.b2Transform} xf 
- * @param {number} childIndex 
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2RayCastOutput} output
+ * @param {box2d.b2RayCastInput} input
+ * @param {box2d.b2Transform} xf
+ * @param {number} childIndex
  */
 box2d.b2EdgeShape.prototype.RayCast = function(output, input, xf, childIndex) {
   // Put the ray into the edge's frame of reference.
@@ -247,13 +247,13 @@ box2d.b2EdgeShape.prototype.RayCast.s_e = new box2d.b2Vec2();
 box2d.b2EdgeShape.prototype.RayCast.s_q = new box2d.b2Vec2();
 box2d.b2EdgeShape.prototype.RayCast.s_r = new box2d.b2Vec2();
 
-/** 
- * @see box2d.b2Shape::ComputeAABB 
- * @export 
- * @return {void} 
- * @param {box2d.b2AABB} aabb 
- * @param {box2d.b2Transform} xf 
- * @param {number} childIndex 
+/**
+ * @see box2d.b2Shape::ComputeAABB
+ * @export
+ * @return {void}
+ * @param {box2d.b2AABB} aabb
+ * @param {box2d.b2Transform} xf
+ * @param {number} childIndex
  */
 box2d.b2EdgeShape.prototype.ComputeAABB = function(aabb, xf, childIndex) {
   var v1 = box2d.b2Mul_X_V2(xf, this.m_vertex1, box2d.b2EdgeShape.prototype.ComputeAABB.s_v1);
@@ -269,12 +269,12 @@ box2d.b2EdgeShape.prototype.ComputeAABB = function(aabb, xf, childIndex) {
 box2d.b2EdgeShape.prototype.ComputeAABB.s_v1 = new box2d.b2Vec2();
 box2d.b2EdgeShape.prototype.ComputeAABB.s_v2 = new box2d.b2Vec2();
 
-/** 
- * @see box2d.b2Shape::ComputeMass 
- * @export 
- * @return {void} 
- * @param {box2d.b2MassData} massData 
- * @param {number} density 
+/**
+ * @see box2d.b2Shape::ComputeMass
+ * @export
+ * @return {void}
+ * @param {box2d.b2MassData} massData
+ * @param {number} density
  */
 box2d.b2EdgeShape.prototype.ComputeMass = function(massData, density) {
   massData.mass = 0;
@@ -283,9 +283,9 @@ box2d.b2EdgeShape.prototype.ComputeMass = function(massData, density) {
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2DistanceProxy} proxy 
- * @param {number} index 
+ * @return {void}
+ * @param {box2d.b2DistanceProxy} proxy
+ * @param {number} index
  */
 box2d.b2EdgeShape.prototype.SetupDistanceProxy = function(proxy, index) {
   proxy.m_vertices = proxy.m_buffer;
@@ -296,7 +296,7 @@ box2d.b2EdgeShape.prototype.SetupDistanceProxy = function(proxy, index) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {box2d.b2Vec2} normal
  * @param {number} offset
@@ -308,9 +308,9 @@ box2d.b2EdgeShape.prototype.ComputeSubmergedArea = function(normal, offset, xf, 
   return 0;
 }
 
-/** 
- * Dump this shape to the log file. 
- * @export 
+/**
+ * Dump this shape to the log file.
+ * @export
  * @return {void}
  */
 box2d.b2EdgeShape.prototype.Dump = function() {

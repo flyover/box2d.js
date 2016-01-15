@@ -24,115 +24,115 @@ goog.require('box2d.Testbed.Test');
 goog.require('box2d.Testbed.RadialEmitter');
 
 /**
- * The following parameters are not static const members of the 
- * Sandbox class with values assigned inline as it can result in 
- * link errors when using gcc. 
+ * The following parameters are not static const members of the
+ * Sandbox class with values assigned inline as it can result in
+ * link errors when using gcc.
  */
 box2d.Testbed.SandboxParams = {};
 
-/** 
- * Total possible pump squares 
- * @const 
+/**
+ * Total possible pump squares
+ * @const
  * @type {number}
  */
 box2d.Testbed.SandboxParams.k_maxPumps = 5;
-/** 
- * Total possible emitters 
- * @const 
+/**
+ * Total possible emitters
+ * @const
  * @type {number}
  */
 box2d.Testbed.SandboxParams.k_maxEmitters = 5;
-/** 
- * Number of seconds to push one direction or the other on the 
- * pumps 
- * @const 
+/**
+ * Number of seconds to push one direction or the other on the
+ * pumps
+ * @const
  * @type {number}
  */
 box2d.Testbed.SandboxParams.k_flipTime = 6;
-/** 
- * Radius of a tile 
- * @const 
+/**
+ * Radius of a tile
+ * @const
  * @type {number}
  */
 box2d.Testbed.SandboxParams.k_tileRadius = 2;
-/** 
- * Diameter of a tile 
- * @const 
+/**
+ * Diameter of a tile
+ * @const
  * @type {number}
  */
 box2d.Testbed.SandboxParams.k_tileDiameter = 4;
-/** 
- * Pump radius; slightly smaller than a tile 
- * @const 
+/**
+ * Pump radius; slightly smaller than a tile
+ * @const
  * @type {number}
  */
 box2d.Testbed.SandboxParams.k_pumpRadius = 2.0 - 0.05;
 
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.SandboxParams.k_playfieldLeftEdge = -20;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.SandboxParams.k_playfieldRightEdge = 20;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.SandboxParams.k_playfieldBottomEdge = 40;
 
-/** 
- * The world size in the TILE 
- * @const 
+/**
+ * The world size in the TILE
+ * @const
  * @type {number}
  */
 box2d.Testbed.SandboxParams.k_tileWidth = 10;
-/** 
- * @const 
+/**
+ * @const
  * @type {number}
  */
 box2d.Testbed.SandboxParams.k_tileHeight = 11;
 
-/** 
- * Particles/second 
- * @const 
+/**
+ * Particles/second
+ * @const
  * @type {number}
  */
 box2d.Testbed.SandboxParams.k_defaultEmitterRate = 30;
-/** 
- * Fit cleanly inside one block 
- * @const 
+/**
+ * Fit cleanly inside one block
+ * @const
  * @type {number}
  */
 box2d.Testbed.SandboxParams.k_defaultEmitterSize = 3;
-/** 
- * How fast particles coming out of the particles should drop 
- * @const 
+/**
+ * How fast particles coming out of the particles should drop
+ * @const
  * @type {number}
  */
 box2d.Testbed.SandboxParams.k_particleExitSpeedY = -9.8;
-/** 
- * How hard the pumps can push 
- * @const 
+/**
+ * How hard the pumps can push
+ * @const
  * @type {number}
  */
 box2d.Testbed.SandboxParams.k_pumpForce = 600;
 
-/** 
- * Number of *special* particles. 
- * @const 
+/**
+ * Number of *special* particles.
+ * @const
  * @type {number}
  */
 box2d.Testbed.SandboxParams.k_numberOfSpecialParticles = 256;
 
-/** 
- * Class which tracks a set of particles and applies a special 
- * effect to them. 
- * @constructor 
- * @extends {box2d.b2DestructionListener} 
+/**
+ * Class which tracks a set of particles and applies a special
+ * effect to them.
+ * @constructor
+ * @extends {box2d.b2DestructionListener}
  */
 box2d.Testbed.SpecialParticleTracker = function() {
   box2d.b2DestructionListener.call(this);
@@ -141,37 +141,37 @@ box2d.Testbed.SpecialParticleTracker = function() {
 
 goog.inherits(box2d.Testbed.SpecialParticleTracker, box2d.b2DestructionListener);
 
-/** 
- * Set of particle handles used to track special particles. 
+/**
+ * Set of particle handles used to track special particles.
  * @type {Array.<box2d.b2ParticleHandle>}
  */
 box2d.Testbed.SpecialParticleTracker.prototype.m_particles = null;
 
-/** 
- * Pointer to the world used to enable / disable this class as a 
- * destruction listener. 
+/**
+ * Pointer to the world used to enable / disable this class as a
+ * destruction listener.
  * @type {box2d.b2World}
  */
 box2d.Testbed.SpecialParticleTracker.prototype.m_world = null;
-/** 
- * Pointer to the particle system used to retrieve particle 
- * handles. 
+/**
+ * Pointer to the particle system used to retrieve particle
+ * handles.
  * @type {box2d.b2ParticleSystem}
  */
 box2d.Testbed.SpecialParticleTracker.prototype.m_particleSystem = null;
-/** 
- * Current offset into this.m_colorOscillationPeriod. 
+/**
+ * Current offset into this.m_colorOscillationPeriod.
  * @type {number}
  */
 box2d.Testbed.SpecialParticleTracker.prototype.m_colorOscillationTime = 0.0;
-/** 
- * Color oscillation period in seconds. 
+/**
+ * Color oscillation period in seconds.
  * @type {number}
  */
 box2d.Testbed.SpecialParticleTracker.prototype.m_colorOscillationPeriod = 2.0;
 
-/** 
- * Initialize 
+/**
+ * Initialize
  * @return {void}
  */
 box2d.Testbed.SpecialParticleTracker.prototype.__ctor__ = function() {
@@ -185,12 +185,12 @@ box2d.Testbed.SpecialParticleTracker.prototype.__dtor__ = function() {
   this.m_world.SetDestructionListener(null);
 }
 
-/** 
- * Register this class as a destruction listener so that it's 
- * possible to keep track of special particles. 
- * @return {void} 
- * @param {box2d.b2World} world 
- * @param {box2d.b2ParticleSystem} system 
+/**
+ * Register this class as a destruction listener so that it's
+ * possible to keep track of special particles.
+ * @return {void}
+ * @param {box2d.b2World} world
+ * @param {box2d.b2ParticleSystem} system
  */
 box2d.Testbed.SpecialParticleTracker.prototype.Init = function(world, system) {
   box2d.b2Assert(world !== null);
@@ -200,9 +200,9 @@ box2d.Testbed.SpecialParticleTracker.prototype.Init = function(world, system) {
   this.m_world.SetDestructionListener(this);
 }
 
-/** 
- * Add as many of the specified particles to the set of special 
- * particles. 
+/**
+ * Add as many of the specified particles to the set of special
+ * particles.
  * @return {void}
  * @param {Array.<number>} particleIndices
  * @param {number} numberOfParticles
@@ -216,10 +216,10 @@ box2d.Testbed.SpecialParticleTracker.prototype.Add = function(particleIndices, n
   }
 }
 
-/** 
- * Apply effects to special particles. 
- * @return {void} 
- * @param {number} dt 
+/**
+ * Apply effects to special particles.
+ * @return {void}
+ * @param {number} dt
  */
 box2d.Testbed.SpecialParticleTracker.prototype.Step = function(dt) {
   function fmod(a, b) {
@@ -241,29 +241,29 @@ box2d.Testbed.SpecialParticleTracker.prototype.Step = function(dt) {
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2Joint} joint 
+ * @return {void}
+ * @param {box2d.b2Joint} joint
  */
 box2d.Testbed.SpecialParticleTracker.prototype.SayGoodbyeJoint = function(joint) {}
 
 /**
- * @return {void} 
- * @param {box2d.b2Fixture} fixture 
+ * @return {void}
+ * @param {box2d.b2Fixture} fixture
  */
 box2d.Testbed.SpecialParticleTracker.prototype.SayGoodbyeFixture = function(fixture) {}
 
 /**
- * @return {void} 
- * @param {box2d.b2ParticleGroup} group 
+ * @return {void}
+ * @param {box2d.b2ParticleGroup} group
  */
 box2d.Testbed.SpecialParticleTracker.prototype.SayGoodbyeParticleGroup = function(group) {}
 
 /**
- * When a particle is about to be destroyed, remove it from the 
- * list of special particles as the handle will become invalid. 
- * @return {void} 
- * @param {box2d.b2ParticleSystem} particleSystem 
- * @param {number} index 
+ * When a particle is about to be destroyed, remove it from the
+ * list of special particles as the handle will become invalid.
+ * @return {void}
+ * @param {box2d.b2ParticleSystem} particleSystem
+ * @param {number} index
  */
 box2d.Testbed.SpecialParticleTracker.prototype.SayGoodbyeParticle = function(particleSystem, index) {
   if (particleSystem !== this.m_particleSystem)
@@ -278,17 +278,17 @@ box2d.Testbed.SpecialParticleTracker.prototype.SayGoodbyeParticle = function(par
   box2d.b2Assert((length - this.m_particles.length) === 1);
 }
 
-/** 
- * Sandbox test creates a maze of faucets, pumps, ramps, 
- * circles, and blocks based on a string constant.  Please 
- * modify and play with this string to make new mazes, and also 
- * add new maze elements! 
- *  
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * Sandbox test creates a maze of faucets, pumps, ramps,
+ * circles, and blocks based on a string constant.  Please
+ * modify and play with this string to make new mazes, and also
+ * add new maze elements!
+ *
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Sandbox = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -297,47 +297,47 @@ box2d.Testbed.Sandbox = function(canvas, settings) {
 
 goog.inherits(box2d.Testbed.Sandbox, box2d.Testbed.Test);
 
-/** 
- * Count of faucets in the world 
+/**
+ * Count of faucets in the world
  * @type {number}
  */
 box2d.Testbed.Sandbox.prototype.m_faucetEmitterIndex = 0;
-/** 
- * Count of pumps in the world 
+/**
+ * Count of pumps in the world
  * @type {number}
  */
 box2d.Testbed.Sandbox.prototype.m_pumpIndex = 0;
 
-/** 
- * How long have we been pushing the pumps? 
+/**
+ * How long have we been pushing the pumps?
  * @type {number}
  */
 box2d.Testbed.Sandbox.prototype.m_pumpTimer = 0.0;
-/** 
- * Particle creation flags 
+/**
+ * Particle creation flags
  * @type {number}
  */
 box2d.Testbed.Sandbox.prototype.m_particleFlags = 0;
 
-/** 
- * Pump force 
+/**
+ * Pump force
  * @type {box2d.b2Vec2}
  */
 box2d.Testbed.Sandbox.prototype.m_pumpForce = null;
 
-/** 
- * The shape we will use for the killfield 
+/**
+ * The shape we will use for the killfield
  * @type {box2d.b2PolygonShape}
  */
 box2d.Testbed.Sandbox.prototype.m_killFieldShape = null;
-/** 
- * Transform for the killfield shape 
+/**
+ * Transform for the killfield shape
  * @type {box2d.b2Transform}
  */
 box2d.Testbed.Sandbox.prototype.m_killFieldTransform = null;
 
-/** 
- * Pumps and emitters 
+/**
+ * Pumps and emitters
  * @type {Array.<box2d.b2Body>}
  */
 box2d.Testbed.Sandbox.prototype.m_pumps = null;
@@ -346,14 +346,14 @@ box2d.Testbed.Sandbox.prototype.m_pumps = null;
  */
 box2d.Testbed.Sandbox.prototype.m_emitters = null;
 
-/** 
- * Special particle tracker. 
+/**
+ * Special particle tracker.
  * @type {box2d.Testbed.SpecialParticleTracker}
  */
 box2d.Testbed.Sandbox.prototype.m_specialTracker = null;
 
-/** 
- * @const 
+/**
+ * @const
  * @type {Array.<box2d.Testbed.ParticleParameter.Value>}
  */
 box2d.Testbed.Sandbox.k_paramValues = [
@@ -369,15 +369,15 @@ box2d.Testbed.Sandbox.k_paramValues = [
 ];
 
 /**
- * @const 
- * @type {Array.<box2d.Testbed.ParticleParameter.Definition>} 
+ * @const
+ * @type {Array.<box2d.Testbed.ParticleParameter.Definition>}
  */
 box2d.Testbed.Sandbox.k_paramDef = [
   new box2d.Testbed.ParticleParameter.Definition(box2d.Testbed.Sandbox.k_paramValues)
 ];
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Sandbox.k_paramDefCount = box2d.Testbed.Sandbox.k_paramDef.length;
 
@@ -635,28 +635,28 @@ box2d.Testbed.Sandbox.prototype.AddFaucetEmitter = function(center, color) {
   this.m_faucetEmitterIndex++;
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2Joint} joint 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2Joint} joint
  */
 box2d.Testbed.Sandbox.prototype.JointDestroyed = function(joint) {
   box2d.Testbed.Test.prototype.JointDestroyed.call(this, joint);
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2ParticleGroup} group 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2ParticleGroup} group
  */
 box2d.Testbed.Sandbox.prototype.ParticleGroupDestroyed = function(group) {
   box2d.Testbed.Test.prototype.ParticleGroupDestroyed.call(this, group);
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2Contact} contact 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2Contact} contact
  */
 box2d.Testbed.Sandbox.prototype.BeginContact = function(contact) {
   box2d.Testbed.Test.prototype.BeginContact.call(this, contact);
@@ -664,8 +664,8 @@ box2d.Testbed.Sandbox.prototype.BeginContact = function(contact) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Contact} contact 
+ * @return {void}
+ * @param {box2d.b2Contact} contact
  */
 box2d.Testbed.Sandbox.prototype.EndContact = function(contact) {
   box2d.Testbed.Test.prototype.EndContact.call(this, contact);
@@ -673,9 +673,9 @@ box2d.Testbed.Sandbox.prototype.EndContact = function(contact) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Contact} contact 
- * @param {box2d.b2Manifold} oldManifold 
+ * @return {void}
+ * @param {box2d.b2Contact} contact
+ * @param {box2d.b2Manifold} oldManifold
  */
 box2d.Testbed.Sandbox.prototype.PreSolve = function(contact, oldManifold) {
   box2d.Testbed.Test.prototype.PreSolve.call(this, contact, oldManifold);
@@ -683,19 +683,19 @@ box2d.Testbed.Sandbox.prototype.PreSolve = function(contact, oldManifold) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Contact} contact 
- * @param {box2d.b2ContactImpulse} impulse 
+ * @return {void}
+ * @param {box2d.b2Contact} contact
+ * @param {box2d.b2ContactImpulse} impulse
  */
 box2d.Testbed.Sandbox.prototype.PostSolve = function(contact, impulse) {
   box2d.Testbed.Test.prototype.PostSolve.call(this, contact, impulse);
 }
 
-/** 
- * Allows you to set particle flags on devices with keyboards 
- * @export 
- * @return {void} 
- * @param {number} key 
+/**
+ * Allows you to set particle flags on devices with keyboards
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.Sandbox.prototype.Keyboard = function(key) {
   box2d.Testbed.Test.prototype.Keyboard.call(this, key);
@@ -729,17 +729,17 @@ box2d.Testbed.Sandbox.prototype.Keyboard = function(key) {
 
 /**
  * @export
- * @return {void} 
- * @param {number} key 
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.Sandbox.prototype.KeyboardUp = function(key) {
   box2d.Testbed.Test.prototype.KeyboardUp.call(this, key);
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2Vec2} p 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Vec2} p
  */
 box2d.Testbed.Sandbox.prototype.MouseDown = function(p) {
   box2d.Testbed.Test.prototype.MouseDown.call(this, p);
@@ -747,8 +747,8 @@ box2d.Testbed.Sandbox.prototype.MouseDown = function(p) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Vec2} p 
+ * @return {void}
+ * @param {box2d.b2Vec2} p
  */
 box2d.Testbed.Sandbox.prototype.MouseUp = function(p) {
   box2d.Testbed.Test.prototype.MouseUp.call(this, p);
@@ -756,18 +756,18 @@ box2d.Testbed.Sandbox.prototype.MouseUp = function(p) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Vec2} p 
+ * @return {void}
+ * @param {box2d.b2Vec2} p
  */
 box2d.Testbed.Sandbox.prototype.MouseMove = function(p) {
   box2d.Testbed.Test.prototype.MouseMove.call(this, p);
 }
 
-/** 
- * Per-frame step updater overridden from Test 
+/**
+ * Per-frame step updater overridden from Test
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Sandbox.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
@@ -819,18 +819,18 @@ box2d.Testbed.Sandbox.prototype.Step = function(settings) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.Testbed.Sandbox.prototype.GetDefaultViewZoom = function() {
   return box2d.Testbed.Test.prototype.GetDefaultViewZoom.call(this);
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Sandbox.Create = function(canvas, settings) {
   return new box2d.Testbed.Sandbox(canvas, settings);

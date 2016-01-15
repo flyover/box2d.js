@@ -27,7 +27,7 @@ goog.require('box2d.b2Fixture');
  * static: zero mass, zero velocity, may be manually moved
  * kinematic: zero mass, non-zero velocity set by user, moved by solver
  * dynamic: positive mass, non-zero velocity determined by forces, moved by solver
- * @export 
+ * @export
  * @enum
  */
 box2d.b2BodyType = {
@@ -43,12 +43,12 @@ goog.exportProperty(box2d.b2BodyType, 'b2_kinematicBody', box2d.b2BodyType.b2_ki
 goog.exportProperty(box2d.b2BodyType, 'b2_dynamicBody', box2d.b2BodyType.b2_dynamicBody);
 goog.exportProperty(box2d.b2BodyType, 'b2_bulletBody', box2d.b2BodyType.b2_bulletBody);
 
-/** 
- * A body definition holds all the data needed to construct a 
- * rigid body. 
- * You can safely re-use body definitions. Shapes are added to a 
- * body after construction. 
- * @export 
+/**
+ * A body definition holds all the data needed to construct a
+ * rigid body.
+ * You can safely re-use body definitions. Shapes are added to a
+ * body after construction.
+ * @export
  * @constructor
  */
 box2d.b2BodyDef = function() {
@@ -56,125 +56,125 @@ box2d.b2BodyDef = function() {
   this.linearVelocity = new box2d.b2Vec2(0, 0);
 }
 
-/** 
- * The body type: static, kinematic, or dynamic. 
- * Note: if a dynamic body would have zero mass, the mass is set 
- * to one. 
+/**
+ * The body type: static, kinematic, or dynamic.
+ * Note: if a dynamic body would have zero mass, the mass is set
+ * to one.
  * @export
- * @type {box2d.b2BodyType} 
+ * @type {box2d.b2BodyType}
  */
 box2d.b2BodyDef.prototype.type = box2d.b2BodyType.b2_staticBody;
 
-/** 
- * The world position of the body. Avoid creating bodies at the 
- * origin since this can lead to many overlapping shapes. 
- * @export 
- * @type {box2d.b2Vec2} 
+/**
+ * The world position of the body. Avoid creating bodies at the
+ * origin since this can lead to many overlapping shapes.
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2BodyDef.prototype.position = null;
 
-/** 
- * The world angle of the body in radians. 
- * @export 
- * @type {number} 
+/**
+ * The world angle of the body in radians.
+ * @export
+ * @type {number}
  */
 box2d.b2BodyDef.prototype.angle = 0;
 
-/** 
- * The linear velocity of the body's origin in world 
- * co-ordinates. 
- * @export 
+/**
+ * The linear velocity of the body's origin in world
+ * co-ordinates.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2BodyDef.prototype.linearVelocity = null;
 
-/** 
- * The angular velocity of the body. 
- * @export 
+/**
+ * The angular velocity of the body.
+ * @export
  * @type {number}
  */
 box2d.b2BodyDef.prototype.angularVelocity = 0;
 
-/** 
- * Linear damping is use to reduce the linear velocity. The 
- * damping parameter can be larger than 1.0f but the damping 
- * effect becomes sensitive to the time step when the damping 
- * parameter is large. 
- * @export 
+/**
+ * Linear damping is use to reduce the linear velocity. The
+ * damping parameter can be larger than 1.0f but the damping
+ * effect becomes sensitive to the time step when the damping
+ * parameter is large.
+ * @export
  * @type {number}
  */
 box2d.b2BodyDef.prototype.linearDamping = 0;
 
-/** 
- * Angular damping is use to reduce the angular velocity. The 
- * damping parameter can be larger than 1.0f but the damping 
- * effect becomes sensitive to the time step when the damping 
- * parameter is large. 
- * @export 
+/**
+ * Angular damping is use to reduce the angular velocity. The
+ * damping parameter can be larger than 1.0f but the damping
+ * effect becomes sensitive to the time step when the damping
+ * parameter is large.
+ * @export
  * @type {number}
  */
 box2d.b2BodyDef.prototype.angularDamping = 0;
 
-/** 
- * Set this flag to false if this body should never fall asleep. 
- * Note that this increases CPU usage. 
- * @export 
+/**
+ * Set this flag to false if this body should never fall asleep.
+ * Note that this increases CPU usage.
+ * @export
  * @type {boolean}
  */
 box2d.b2BodyDef.prototype.allowSleep = true;
 
-/** 
- * Is this body initially awake or sleeping? 
- * @export 
+/**
+ * Is this body initially awake or sleeping?
+ * @export
  * @type {boolean}
  */
 box2d.b2BodyDef.prototype.awake = true;
 
-/** 
- * Should this body be prevented from rotating? Useful for 
- * characters. 
- * @export 
+/**
+ * Should this body be prevented from rotating? Useful for
+ * characters.
+ * @export
  * @type {boolean}
  */
 box2d.b2BodyDef.prototype.fixedRotation = false;
 
-/** 
- * Is this a fast moving body that should be prevented from 
- * tunneling through other moving bodies? Note that all bodies 
- * are prevented from tunneling through kinematic and static 
- * bodies. This setting is only considered on dynamic bodies. 
- * warning You should use this flag sparingly since it increases 
- * processing time. 
- * @export 
+/**
+ * Is this a fast moving body that should be prevented from
+ * tunneling through other moving bodies? Note that all bodies
+ * are prevented from tunneling through kinematic and static
+ * bodies. This setting is only considered on dynamic bodies.
+ * warning You should use this flag sparingly since it increases
+ * processing time.
+ * @export
  * @type {boolean}
  */
 box2d.b2BodyDef.prototype.bullet = false;
 
-/** 
- * Does this body start out active? 
- * @export 
+/**
+ * Does this body start out active?
+ * @export
  * @type {boolean}
  */
 box2d.b2BodyDef.prototype.active = true;
 
-/** 
- * Use this to store application specific body data. 
- * @export 
+/**
+ * Use this to store application specific body data.
+ * @export
  * @type {*}
  */
 box2d.b2BodyDef.prototype.userData = null;
 
-/** 
- * Scale the gravity applied to this body. 
- * @export 
+/**
+ * Scale the gravity applied to this body.
+ * @export
  * @type {number}
  */
 box2d.b2BodyDef.prototype.gravityScale = 1;
 
-/** 
- * A rigid body. These are created via 
- * box2d.b2World::CreateBody. 
- * @export 
+/**
+ * A rigid body. These are created via
+ * box2d.b2World::CreateBody.
+ * @export
  * @constructor
  * @param {box2d.b2BodyDef} bd
  * @param {box2d.b2World} world
@@ -281,202 +281,202 @@ box2d.b2Body = function(bd, world) {
 }
 
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2Body.prototype.m_flag_islandFlag = false;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2Body.prototype.m_flag_awakeFlag = false;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2Body.prototype.m_flag_autoSleepFlag = false;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2Body.prototype.m_flag_bulletFlag = false;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2Body.prototype.m_flag_fixedRotationFlag = false;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2Body.prototype.m_flag_activeFlag = false;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2Body.prototype.m_flag_toiFlag = false;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Body.prototype.m_islandIndex = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2World}
  */
 box2d.b2Body.prototype.m_world = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Transform}
  */
 box2d.b2Body.prototype.m_xf = null; // the body origin transform
 /**
- * @export 
+ * @export
  * @type {box2d.b2Transform}
  */
 box2d.b2Body.prototype.m_out_xf = null;
 //#if B2_ENABLE_PARTICLE
 /**
- * @export 
+ * @export
  * @type {box2d.b2Transform}
  */
 box2d.b2Body.prototype.m_xf0 = null;
 //#endif
 /**
- * @export 
+ * @export
  * @type {box2d.b2Sweep}
  */
 box2d.b2Body.prototype.m_sweep = null; // the swept motion for CCD
 /**
- * @export 
+ * @export
  * @type {box2d.b2Sweep}
  */
 box2d.b2Body.prototype.m_out_sweep = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2JointEdge}
  */
 box2d.b2Body.prototype.m_jointList = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2ContactEdge}
  */
 box2d.b2Body.prototype.m_contactList = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Body}
  */
 box2d.b2Body.prototype.m_prev = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Body}
  */
 box2d.b2Body.prototype.m_next = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2Body.prototype.m_linearVelocity = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2Body.prototype.m_out_linearVelocity = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Body.prototype.m_angularVelocity = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Body.prototype.m_linearDamping = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Body.prototype.m_angularDamping = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Body.prototype.m_gravityScale = 1;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2Body.prototype.m_force = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Body.prototype.m_torque = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Body.prototype.m_sleepTime = 0;
 /**
- * @export 
- * @type {box2d.b2BodyType} 
+ * @export
+ * @type {box2d.b2BodyType}
  */
 box2d.b2Body.prototype.m_type = box2d.b2BodyType.b2_staticBody;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Body.prototype.m_mass = 1;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Body.prototype.m_invMass = 1;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Body.prototype.m_I = 0; // Rotational inertia about the center of mass.
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Body.prototype.m_invI = 0;
 /**
- * @export 
+ * @export
  * @type {*}
  */
 box2d.b2Body.prototype.m_userData = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Fixture}
  */
 box2d.b2Body.prototype.m_fixtureList = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Body.prototype.m_fixtureCount = 0;
 
 //#if B2_ENABLE_CONTROLLER
 
-/** 
- * @see box2d.b2Controller list 
- * @export 
+/**
+ * @see box2d.b2Controller list
+ * @export
  * @type {box2d.b2ControllerEdge}
  */
 box2d.b2Body.prototype.m_controllerList = null;
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Body.prototype.m_controllerCount = 0;
 
 //#endif
 
-/** 
- * @export 
+/**
+ * @export
  * @return {box2d.b2Fixture}
  * @param {box2d.b2FixtureDef|box2d.b2Shape} a
  * @param {number=} b
@@ -491,16 +491,16 @@ box2d.b2Body.prototype.CreateFixture = function(a, b) {
   }
 }
 
-/** 
- * Creates a fixture and attach it to this body. Use this 
- * function if you need to set some fixture parameters, like 
- * friction. Otherwise you can create the fixture directly from 
- * a shape. 
- * If the density is non-zero, this function automatically 
- * updates the mass of the body. Contacts are not created until 
- * the next time step. 
+/**
+ * Creates a fixture and attach it to this body. Use this
+ * function if you need to set some fixture parameters, like
+ * friction. Otherwise you can create the fixture directly from
+ * a shape.
+ * If the density is non-zero, this function automatically
+ * updates the mass of the body. Contacts are not created until
+ * the next time step.
  * warning This function is locked during callbacks.
- * @export 
+ * @export
  * @return {box2d.b2Fixture}
  * @param {box2d.b2FixtureDef} def the fixture definition.
  */
@@ -538,15 +538,15 @@ box2d.b2Body.prototype.CreateFixture_Def = function(def) {
   return fixture;
 }
 
-/** 
- * Creates a fixture from a shape and attach it to this body. 
- * This is a convenience function. Use b2FixtureDef if you need 
- * to set parameters like friction, restitution, user data, or 
- * filtering. 
- * If the density is non-zero, this function automatically 
- * updates the mass of the body. 
+/**
+ * Creates a fixture from a shape and attach it to this body.
+ * This is a convenience function. Use b2FixtureDef if you need
+ * to set parameters like friction, restitution, user data, or
+ * filtering.
+ * If the density is non-zero, this function automatically
+ * updates the mass of the body.
  * warning This function is locked during callbacks.
- * @export 
+ * @export
  * @return {box2d.b2Fixture}
  * @param {box2d.b2Shape} shape the shape to be cloned.
  * @param {number} density the shape density (set to zero for static bodies).
@@ -561,16 +561,16 @@ box2d.b2Body.prototype.CreateFixture_Shape_Density = function(shape, density) {
 }
 box2d.b2Body.prototype.CreateFixture_Shape_Density.s_def = new box2d.b2FixtureDef();
 
-/** 
- * Destroy a fixture. This removes the fixture from the 
- * broad-phase and destroys all contacts associated with this 
- * fixture. This will automatically adjust the mass of the body 
- * if the body is dynamic and the fixture has positive density. 
- * All fixtures attached to a body are implicitly destroyed when 
- * the body is destroyed. 
+/**
+ * Destroy a fixture. This removes the fixture from the
+ * broad-phase and destroys all contacts associated with this
+ * fixture. This will automatically adjust the mass of the body
+ * if the body is dynamic and the fixture has positive density.
+ * All fixtures attached to a body are implicitly destroyed when
+ * the body is destroyed.
  * warning This function is locked during callbacks.
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2Fixture} fixture the fixture to be removed.
  */
 box2d.b2Body.prototype.DestroyFixture = function(fixture) {
@@ -642,9 +642,9 @@ box2d.b2Body.prototype.DestroyFixture = function(fixture) {
   this.ResetMassData();
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2Transform|box2d.b2Vec2|number} a
  * @param {number=} b
  * @param {number=} c
@@ -661,13 +661,13 @@ box2d.b2Body.prototype.SetTransform = function(a, b, c) {
   }
 }
 
-/** 
- * Set the position of the body's origin and rotation. 
- * Manipulating a body's transform may cause non-physical 
- * behavior. 
+/**
+ * Set the position of the body's origin and rotation.
+ * Manipulating a body's transform may cause non-physical
+ * behavior.
  * Note: contacts are updated on the next call to b2World::Step.
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2Vec2} position the world position of the body's local origin.
  * @param {number} angle the world rotation in radians.
  */
@@ -676,11 +676,11 @@ box2d.b2Body.prototype.SetTransform_V2_A = function(position, angle) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} x 
- * @param {number} y 
- * @param {number} angle 
+ * @export
+ * @return {void}
+ * @param {number} x
+ * @param {number} y
+ * @param {number} angle
  */
 box2d.b2Body.prototype.SetTransform_X_Y_A = function(x, y, angle) {
   if (box2d.ENABLE_ASSERTS) {
@@ -715,30 +715,30 @@ box2d.b2Body.prototype.SetTransform_X_Y_A = function(x, y, angle) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2Transform} xf 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Transform} xf
  */
 box2d.b2Body.prototype.SetTransform_X = function(xf) {
   this.SetTransform_X_Y_A(xf.p.x, xf.p.y, xf.GetAngle());
 }
 
-/** 
- * Get the body transform for the body's origin. 
- * @export 
+/**
+ * Get the body transform for the body's origin.
+ * @export
  * @return {box2d.b2Transform} the world transform of the body's origin.
- * @param {box2d.b2Transform=} out 
+ * @param {box2d.b2Transform=} out
  */
 box2d.b2Body.prototype.GetTransform = function(out) {
   out = out || this.m_out_xf;
   return out.Copy(this.m_xf);
 }
 
-/** 
- * Get the world body origin position. 
- * @export 
+/**
+ * Get the world body origin position.
+ * @export
  * @return {box2d.b2Vec2} the world position of the body's origin.
- * @param {box2d.b2Vec2=} out 
+ * @param {box2d.b2Vec2=} out
  */
 box2d.b2Body.prototype.GetPosition = function(out) {
   out = out || this.m_out_xf.p;
@@ -746,29 +746,29 @@ box2d.b2Body.prototype.GetPosition = function(out) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2Vec2} position 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Vec2} position
  */
 box2d.b2Body.prototype.SetPosition = function(position) {
   this.SetTransform_V2_A(position, this.GetAngle());
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {number} x
- * @param {number} y 
+ * @param {number} y
  */
 box2d.b2Body.prototype.SetPositionXY = function(x, y) {
   this.SetTransform_X_Y_A(x, y, this.GetAngle());
 }
 
-/** 
- * Get the world body origin rotation. 
- * @export 
+/**
+ * Get the world body origin rotation.
+ * @export
  * @return {box2d.b2Rot} the world rotation of the body's origin.
- * @param {box2d.b2Rot=} out 
+ * @param {box2d.b2Rot=} out
  */
 box2d.b2Body.prototype.GetRotation = function(out) {
   out = out || this.m_out_xf.q;
@@ -776,17 +776,17 @@ box2d.b2Body.prototype.GetRotation = function(out) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2Rot} rotation 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Rot} rotation
  */
 box2d.b2Body.prototype.SetRotation = function(rotation) {
   this.SetTransform_V2_A(this.GetPosition(), rotation.GetAngle());
 }
 
-/** 
- * Get the angle in radians. 
- * @export 
+/**
+ * Get the angle in radians.
+ * @export
  * @return {number} the current world rotation angle in radians.
  */
 box2d.b2Body.prototype.GetAngle = function() {
@@ -794,40 +794,40 @@ box2d.b2Body.prototype.GetAngle = function() {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} angle 
+ * @export
+ * @return {void}
+ * @param {number} angle
  */
 box2d.b2Body.prototype.SetAngle = function(angle) {
   this.SetTransform_V2_A(this.GetPosition(), angle);
 }
 
-/** 
- * Get the world position of the center of mass. 
- * @export 
+/**
+ * Get the world position of the center of mass.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2=} out 
+ * @param {box2d.b2Vec2=} out
  */
 box2d.b2Body.prototype.GetWorldCenter = function(out) {
   out = out || this.m_out_sweep.c;
   return out.Copy(this.m_sweep.c);
 }
 
-/** 
- * Get the local position of the center of mass. 
- * @export 
+/**
+ * Get the local position of the center of mass.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2=} out 
+ * @param {box2d.b2Vec2=} out
  */
 box2d.b2Body.prototype.GetLocalCenter = function(out) {
   out = out || this.m_out_sweep.localCenter;
   return out.Copy(this.m_sweep.localCenter);
 }
 
-/** 
- * Set the linear velocity of the center of mass. 
- * @export 
- * @return {void} 
+/**
+ * Set the linear velocity of the center of mass.
+ * @export
+ * @return {void}
  * @param {box2d.b2Vec2} v the new linear velocity of the center of mass.
  */
 box2d.b2Body.prototype.SetLinearVelocity = function(v) {
@@ -842,21 +842,21 @@ box2d.b2Body.prototype.SetLinearVelocity = function(v) {
   this.m_linearVelocity.Copy(v);
 }
 
-/** 
- * Get the linear velocity of the center of mass. 
- * @export 
+/**
+ * Get the linear velocity of the center of mass.
+ * @export
  * @return {box2d.b2Vec2} the linear velocity of the center of mass.
- * @param {box2d.b2Vec2=} out 
+ * @param {box2d.b2Vec2=} out
  */
 box2d.b2Body.prototype.GetLinearVelocity = function(out) {
   out = out || this.m_out_linearVelocity;
   return out.Copy(this.m_linearVelocity);
 }
 
-/** 
- * Set the angular velocity. 
- * @export 
- * @return {void} 
+/**
+ * Set the angular velocity.
+ * @export
+ * @return {void}
  * @param {number} w the new angular velocity in radians/second.
  */
 box2d.b2Body.prototype.SetAngularVelocity = function(w) {
@@ -871,9 +871,9 @@ box2d.b2Body.prototype.SetAngularVelocity = function(w) {
   this.m_angularVelocity = w;
 }
 
-/** 
- * Get the angular velocity. 
- * @export 
+/**
+ * Get the angular velocity.
+ * @export
  * @return {number} the angular velocity in radians/second.
  */
 box2d.b2Body.prototype.GetAngularVelocity = function() {
@@ -881,8 +881,8 @@ box2d.b2Body.prototype.GetAngularVelocity = function() {
 }
 
 /**
- * @export 
- * @return {box2d.b2BodyDef} 
+ * @export
+ * @return {box2d.b2BodyDef}
  * @param {box2d.b2BodyDef} bd
  */
 box2d.b2Body.prototype.GetDefinition = function(bd) {
@@ -902,15 +902,15 @@ box2d.b2Body.prototype.GetDefinition = function(bd) {
   return bd;
 }
 
-/** 
- * Apply a force at a world point. If the force is not applied 
- * at the center of mass, it will generate a torque and affect 
- * the angular velocity. This wakes up the body. 
- * @export 
- * @return {void} 
+/**
+ * Apply a force at a world point. If the force is not applied
+ * at the center of mass, it will generate a torque and affect
+ * the angular velocity. This wakes up the body.
+ * @export
+ * @return {void}
  * @param {box2d.b2Vec2} force the world force vector, usually in Newtons (N).
- * @param {box2d.b2Vec2} point the world position of the point of application. 
- * @param {boolean=} wake also wake up the body 
+ * @param {box2d.b2Vec2} point the world position of the point of application.
+ * @param {boolean=} wake also wake up the body
  */
 box2d.b2Body.prototype.ApplyForce = function(force, point, wake) {
   wake = wake || true;
@@ -931,12 +931,12 @@ box2d.b2Body.prototype.ApplyForce = function(force, point, wake) {
   }
 }
 
-/** 
- * Apply a force to the center of mass. This wakes up the body. 
- * @export 
- * @return {void} 
+/**
+ * Apply a force to the center of mass. This wakes up the body.
+ * @export
+ * @return {void}
  * @param {box2d.b2Vec2} force the world force vector, usually in Newtons (N).
- * @param {boolean=} wake also wake up the body 
+ * @param {boolean=} wake also wake up the body
  */
 box2d.b2Body.prototype.ApplyForceToCenter = function(force, wake) {
   wake = (typeof(wake) === 'boolean') ? (wake) : (true);
@@ -956,14 +956,14 @@ box2d.b2Body.prototype.ApplyForceToCenter = function(force, wake) {
   }
 }
 
-/** 
- * Apply a torque. This affects the angular velocity without 
- * affecting the linear velocity of the center of mass. This 
- * wakes up the body. 
- * @export 
- * @return {void} 
+/**
+ * Apply a torque. This affects the angular velocity without
+ * affecting the linear velocity of the center of mass. This
+ * wakes up the body.
+ * @export
+ * @return {void}
  * @param {number} torque about the z-axis (out of the screen), usually in N-m.
- * @param {boolean=} wake also wake up the body 
+ * @param {boolean=} wake also wake up the body
  */
 box2d.b2Body.prototype.ApplyTorque = function(torque, wake) {
   wake = (typeof(wake) === 'boolean') ? (wake) : (true);
@@ -982,16 +982,16 @@ box2d.b2Body.prototype.ApplyTorque = function(torque, wake) {
   }
 }
 
-/** 
- * Apply an impulse at a point. This immediately modifies the 
- * velocity. It also modifies the angular velocity if the point 
- * of application is not at the center of mass. This wakes up 
- * the body. 
- * @export 
- * @return {void} 
+/**
+ * Apply an impulse at a point. This immediately modifies the
+ * velocity. It also modifies the angular velocity if the point
+ * of application is not at the center of mass. This wakes up
+ * the body.
+ * @export
+ * @return {void}
  * @param {box2d.b2Vec2} impulse the world impulse vector, usually in N-seconds or kg-m/s.
  * @param {box2d.b2Vec2} point the world position of the point of application.
- * @param {boolean=} wake also wake up the body 
+ * @param {boolean=} wake also wake up the body
  */
 box2d.b2Body.prototype.ApplyLinearImpulse = function(impulse, point, wake) {
   wake = (typeof(wake) === 'boolean') ? (wake) : (true);
@@ -1012,12 +1012,12 @@ box2d.b2Body.prototype.ApplyLinearImpulse = function(impulse, point, wake) {
   }
 }
 
-/** 
- * Apply an impulse to the center of mass. This wakes up the body. 
- * @export 
- * @return {void} 
+/**
+ * Apply an impulse to the center of mass. This wakes up the body.
+ * @export
+ * @return {void}
  * @param {box2d.b2Vec2} impulse the world impulse vector, usually in N-seconds or kg-m/s.
- * @param {boolean=} wake also wake up the body 
+ * @param {boolean=} wake also wake up the body
  */
 box2d.b2Body.prototype.ApplyLinearImpulseToCenter = function(impulse, wake) {
   wake = (typeof(wake) === 'boolean') ? (wake) : (true);
@@ -1037,12 +1037,12 @@ box2d.b2Body.prototype.ApplyLinearImpulseToCenter = function(impulse, wake) {
   }
 }
 
-/** 
- * Apply an angular impulse. 
- * @export 
- * @return {void} 
+/**
+ * Apply an angular impulse.
+ * @export
+ * @return {void}
  * @param {number} impulse the angular impulse in units of kg*m*m/s
- * @param {boolean=} wake also wake up the body 
+ * @param {boolean=} wake also wake up the body
  */
 box2d.b2Body.prototype.ApplyAngularImpulse = function(impulse, wake) {
   wake = (typeof(wake) === 'boolean') ? (wake) : (true);
@@ -1061,28 +1061,28 @@ box2d.b2Body.prototype.ApplyAngularImpulse = function(impulse, wake) {
   }
 }
 
-/** 
- * Get the total mass of the body. 
- * @export 
+/**
+ * Get the total mass of the body.
+ * @export
  * @return {number} the mass, usually in kilograms (kg).
  */
 box2d.b2Body.prototype.GetMass = function() {
   return this.m_mass;
 }
 
-/** 
- * Get the rotational inertia of the body about the local 
- * origin. 
- * @export 
+/**
+ * Get the rotational inertia of the body about the local
+ * origin.
+ * @export
  * @return {number} the rotational inertia, usually in kg-m^2.
  */
 box2d.b2Body.prototype.GetInertia = function() {
   return this.m_I + this.m_mass * box2d.b2Dot_V2_V2(this.m_sweep.localCenter, this.m_sweep.localCenter);
 }
 
-/** 
- * Get the mass data of the body. 
- * @export 
+/**
+ * Get the mass data of the body.
+ * @export
  * @return {box2d.b2MassData} a struct containing the mass, inertia and center of the body.
  * @param {box2d.b2MassData} data
  */
@@ -1093,15 +1093,15 @@ box2d.b2Body.prototype.GetMassData = function(data) {
   return data;
 }
 
-/** 
- * Set the mass properties to override the mass properties of 
- * the fixtures. 
- * Note that this changes the center of mass position. 
- * Note that creating or destroying fixtures can also alter the 
- * mass. 
- * This function has no effect if the body isn't dynamic. 
- * @export 
- * @return {void} 
+/**
+ * Set the mass properties to override the mass properties of
+ * the fixtures.
+ * Note that this changes the center of mass position.
+ * Note that creating or destroying fixtures can also alter the
+ * mass.
+ * This function has no effect if the body isn't dynamic.
+ * @export
+ * @return {void}
  * @param {box2d.b2MassData} massData the mass properties.
  */
 box2d.b2Body.prototype.SetMassData = function(massData) {
@@ -1146,13 +1146,13 @@ box2d.b2Body.prototype.SetMassData = function(massData) {
 }
 box2d.b2Body.prototype.SetMassData.s_oldCenter = new box2d.b2Vec2();
 
-/** 
- * This resets the mass properties to the sum of the mass 
- * properties of the fixtures. This normally does not need to be 
- * called unless you called SetMassData to override the mass and 
- * you later want to reset the mass. 
- * @export 
- * @return {void} 
+/**
+ * This resets the mass properties to the sum of the mass
+ * properties of the fixtures. This normally does not need to be
+ * called unless you called SetMassData to override the mass and
+ * you later want to reset the mass.
+ * @export
+ * @return {void}
  */
 box2d.b2Body.prototype.ResetMassData = function() {
   // Compute mass data from shapes. Each shape has its own density.
@@ -1224,138 +1224,138 @@ box2d.b2Body.prototype.ResetMassData.s_localCenter = new box2d.b2Vec2();
 box2d.b2Body.prototype.ResetMassData.s_oldCenter = new box2d.b2Vec2();
 box2d.b2Body.prototype.ResetMassData.s_massData = new box2d.b2MassData();
 
-/** 
- * Get the world coordinates of a point given the local 
- * coordinates. 
- * @export 
+/**
+ * Get the world coordinates of a point given the local
+ * coordinates.
+ * @export
  * @return {box2d.b2Vec2} the same point expressed in world coordinates.
  * @param {box2d.b2Vec2} localPoint a point on the body measured relative the the body's origin.
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Body.prototype.GetWorldPoint = function(localPoint, out) {
   return box2d.b2Mul_X_V2(this.m_xf, localPoint, out);
 }
 
-/** 
- * Get the world coordinates of a vector given the local 
- * coordinates. 
- * @export 
+/**
+ * Get the world coordinates of a vector given the local
+ * coordinates.
+ * @export
  * @return {box2d.b2Vec2} the same vector expressed in world coordinates.
  * @param {box2d.b2Vec2} localVector a vector fixed in the body.
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Body.prototype.GetWorldVector = function(localVector, out) {
   return box2d.b2Mul_R_V2(this.m_xf.q, localVector, out);
 }
 
-/** 
- * Gets a local point relative to the body's origin given a 
- * world point. 
- * @export 
+/**
+ * Gets a local point relative to the body's origin given a
+ * world point.
+ * @export
  * @return {box2d.b2Vec2} the corresponding local point relative to the body's origin.
  * @param {box2d.b2Vec2} worldPoint a point in world coordinates.
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Body.prototype.GetLocalPoint = function(worldPoint, out) {
   return box2d.b2MulT_X_V2(this.m_xf, worldPoint, out);
 }
 
-/** 
- * Gets a local vector given a world vector. 
- * @export 
+/**
+ * Gets a local vector given a world vector.
+ * @export
  * @return {box2d.b2Vec2} the corresponding local vector.
  * @param {box2d.b2Vec2} worldVector a vector in world coordinates.
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Body.prototype.GetLocalVector = function(worldVector, out) {
   return box2d.b2MulT_R_V2(this.m_xf.q, worldVector, out);
 }
 
-/** 
- * Get the world linear velocity of a world point attached to 
- * this body. 
- * @export 
+/**
+ * Get the world linear velocity of a world point attached to
+ * this body.
+ * @export
  * @return {box2d.b2Vec2} the world velocity of a point.
  * @param {box2d.b2Vec2} worldPoint a point in world coordinates.
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Body.prototype.GetLinearVelocityFromWorldPoint = function(worldPoint, out) {
   return box2d.b2AddCross_V2_S_V2(this.m_linearVelocity, this.m_angularVelocity, box2d.b2Sub_V2_V2(worldPoint, this.m_sweep.c, box2d.b2Vec2.s_t0), out);
 }
 
-/** 
- * Get the world velocity of a local point. 
- * @export 
+/**
+ * Get the world velocity of a local point.
+ * @export
  * @return {box2d.b2Vec2} the world velocity of a point.
  * @param {box2d.b2Vec2} localPoint a point in local coordinates.
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Body.prototype.GetLinearVelocityFromLocalPoint = function(localPoint, out) {
   return this.GetLinearVelocityFromWorldPoint(this.GetWorldPoint(localPoint, out), out);
 }
 
-/** 
- * Get the linear damping of the body. 
- * @export 
+/**
+ * Get the linear damping of the body.
+ * @export
  * @return {number}
  */
 box2d.b2Body.prototype.GetLinearDamping = function() {
   return this.m_linearDamping;
 }
 
-/** 
- * Set the linear damping of the body. 
- * @export 
+/**
+ * Set the linear damping of the body.
+ * @export
  * @param {number} linearDamping
  */
 box2d.b2Body.prototype.SetLinearDamping = function(linearDamping) {
   this.m_linearDamping = linearDamping;
 }
 
-/** 
- * Get the angular damping of the body. 
- * @export 
+/**
+ * Get the angular damping of the body.
+ * @export
  * @return {number}
  */
 box2d.b2Body.prototype.GetAngularDamping = function() {
   return this.m_angularDamping;
 }
 
-/** 
- * Set the angular damping of the body. 
- * @export 
- * @return {void} 
- * @param {number} angularDamping 
+/**
+ * Set the angular damping of the body.
+ * @export
+ * @return {void}
+ * @param {number} angularDamping
  */
 box2d.b2Body.prototype.SetAngularDamping = function(angularDamping) {
   this.m_angularDamping = angularDamping;
 }
 
-/** 
- * Get the gravity scale of the body. 
- * @export 
+/**
+ * Get the gravity scale of the body.
+ * @export
  * @return {number}
  */
 box2d.b2Body.prototype.GetGravityScale = function() {
   return this.m_gravityScale;
 }
 
-/** 
- * Set the gravity scale of the body. 
- * @export 
- * @return {void} 
- * @param {number} scale 
+/**
+ * Set the gravity scale of the body.
+ * @export
+ * @return {void}
+ * @param {number} scale
  */
 box2d.b2Body.prototype.SetGravityScale = function(scale) {
   this.m_gravityScale = scale;
 }
 
-/** 
- * Set the type of this body. This may alter the mass and 
- * velocity. 
- * @export 
- * @return {void} 
- * @param {box2d.b2BodyType} type 
+/**
+ * Set the type of this body. This may alter the mass and
+ * velocity.
+ * @export
+ * @return {void}
+ * @param {box2d.b2BodyType} type
  */
 box2d.b2Body.prototype.SetType = function(type) {
   if (box2d.ENABLE_ASSERTS) {
@@ -1408,42 +1408,42 @@ box2d.b2Body.prototype.SetType = function(type) {
   }
 }
 
-/** 
- * Get the type of this body. 
- * @export 
+/**
+ * Get the type of this body.
+ * @export
  * @return {box2d.b2BodyType}
  */
 box2d.b2Body.prototype.GetType = function() {
   return this.m_type;
 }
 
-/** 
- * Should this body be treated like a bullet for continuous 
- * collision detection? 
- * @export 
- * @return {void} 
- * @param {boolean} flag 
+/**
+ * Should this body be treated like a bullet for continuous
+ * collision detection?
+ * @export
+ * @return {void}
+ * @param {boolean} flag
  */
 box2d.b2Body.prototype.SetBullet = function(flag) {
   this.m_flag_bulletFlag = flag;
 }
 
-/** 
- * Is this body treated like a bullet for continuous collision 
- * detection? 
- * @export 
+/**
+ * Is this body treated like a bullet for continuous collision
+ * detection?
+ * @export
  * @return {boolean}
  */
 box2d.b2Body.prototype.IsBullet = function() {
   return this.m_flag_bulletFlag;
 }
 
-/** 
- * You can disable sleeping on this body. If you disable 
- * sleeping, the body will be woken. 
- * @export 
- * @return {void} 
- * @param {boolean} flag 
+/**
+ * You can disable sleeping on this body. If you disable
+ * sleeping, the body will be woken.
+ * @export
+ * @return {void}
+ * @param {boolean} flag
  */
 box2d.b2Body.prototype.SetSleepingAllowed = function(flag) {
   if (flag) {
@@ -1454,20 +1454,20 @@ box2d.b2Body.prototype.SetSleepingAllowed = function(flag) {
   }
 }
 
-/** 
- * Is this body allowed to sleep 
- * @export 
+/**
+ * Is this body allowed to sleep
+ * @export
  * @return {boolean}
  */
 box2d.b2Body.prototype.IsSleepingAllowed = function() {
   return this.m_flag_autoSleepFlag;
 }
 
-/** 
- * Set the sleep state of the body. A sleeping body has very low CPU cost. 
- * @export 
- * @return {void} 
- * @param {boolean} flag set to true to wake the body, false to 
+/**
+ * Set the sleep state of the body. A sleeping body has very low CPU cost.
+ * @export
+ * @return {void}
+ * @param {boolean} flag set to true to wake the body, false to
  *  	  put it to sleep.
  */
 box2d.b2Body.prototype.SetAwake = function(flag) {
@@ -1486,9 +1486,9 @@ box2d.b2Body.prototype.SetAwake = function(flag) {
   }
 }
 
-/** 
- * Get the sleeping state of this body. 
- * @export 
+/**
+ * Get the sleeping state of this body.
+ * @export
  * @return {boolean} true if the body is awake.
  */
 box2d.b2Body.prototype.IsAwake = function() {
@@ -1509,9 +1509,9 @@ box2d.b2Body.prototype.IsAwake = function() {
  * Joints connected to an inactive body are implicitly inactive.
  * An inactive body is still owned by a b2World object and remains
  * in the body list.
- * @export 
- * @return {void} 
- * @param {boolean} flag 
+ * @export
+ * @return {void}
+ * @param {boolean} flag
  */
 box2d.b2Body.prototype.SetActive = function(flag) {
   if (box2d.ENABLE_ASSERTS) {
@@ -1552,21 +1552,21 @@ box2d.b2Body.prototype.SetActive = function(flag) {
   }
 }
 
-/** 
- * Get the active state of the body. 
- * @export 
+/**
+ * Get the active state of the body.
+ * @export
  * @return {boolean}
  */
 box2d.b2Body.prototype.IsActive = function() {
   return this.m_flag_activeFlag;
 }
 
-/** 
- * Set this body to have fixed rotation. This causes the mass to 
- * be reset. 
- * @export 
- * @return {void} 
- * @param {boolean} flag 
+/**
+ * Set this body to have fixed rotation. This causes the mass to
+ * be reset.
+ * @export
+ * @return {void}
+ * @param {boolean} flag
  */
 box2d.b2Body.prototype.SetFixedRotation = function(flag) {
   var status = this.m_flag_fixedRotationFlag;
@@ -1581,77 +1581,77 @@ box2d.b2Body.prototype.SetFixedRotation = function(flag) {
   this.ResetMassData();
 }
 
-/** 
- * Does this body have fixed rotation? 
- * @export 
+/**
+ * Does this body have fixed rotation?
+ * @export
  * @return {boolean}
  */
 box2d.b2Body.prototype.IsFixedRotation = function() {
   return this.m_flag_fixedRotationFlag;
 }
 
-/** 
- * Get the list of all fixtures attached to this body. 
- * @export 
+/**
+ * Get the list of all fixtures attached to this body.
+ * @export
  * @return {box2d.b2Fixture}
  */
 box2d.b2Body.prototype.GetFixtureList = function() {
   return this.m_fixtureList;
 }
 
-/** 
- * Get the list of all joints attached to this body. 
- * @export 
+/**
+ * Get the list of all joints attached to this body.
+ * @export
  * @return {box2d.b2JointEdge}
  */
 box2d.b2Body.prototype.GetJointList = function() {
   return this.m_jointList;
 }
 
-/** 
- * Get the list of all contacts attached to this body. 
- * warning this list changes during the time step and you may 
- * miss some collisions if you don't use b2ContactListener. 
- * @export 
+/**
+ * Get the list of all contacts attached to this body.
+ * warning this list changes during the time step and you may
+ * miss some collisions if you don't use b2ContactListener.
+ * @export
  * @return {box2d.b2ContactEdge}
  */
 box2d.b2Body.prototype.GetContactList = function() {
   return this.m_contactList;
 }
 
-/** 
- * Get the next body in the world's body list. 
- * @export 
+/**
+ * Get the next body in the world's body list.
+ * @export
  * @return {box2d.b2Body}
  */
 box2d.b2Body.prototype.GetNext = function() {
   return this.m_next;
 }
 
-/** 
- * Get the user data pointer that was provided in the body 
- * definition. 
- * @export 
- * @return {*} 
+/**
+ * Get the user data pointer that was provided in the body
+ * definition.
+ * @export
+ * @return {*}
  */
 box2d.b2Body.prototype.GetUserData = function() {
   return this.m_userData;
 }
 
-/** 
- * Set the user data. Use this to store your application 
- * specific data. 
- * @export 
- * @return {void} 
- * @param {*} data 
+/**
+ * Set the user data. Use this to store your application
+ * specific data.
+ * @export
+ * @return {void}
+ * @param {*} data
  */
 box2d.b2Body.prototype.SetUserData = function(data) {
   this.m_userData = data;
 }
 
-/** 
- * Get the parent world of this body. 
- * @export 
+/**
+ * Get the parent world of this body.
+ * @export
  * @return {box2d.b2World}
  */
 box2d.b2Body.prototype.GetWorld = function() {
@@ -1659,8 +1659,8 @@ box2d.b2Body.prototype.GetWorld = function() {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.b2Body.prototype.SynchronizeFixtures = function() {
   var xf1 = box2d.b2Body.prototype.SynchronizeFixtures.s_xf1;
@@ -1676,8 +1676,8 @@ box2d.b2Body.prototype.SynchronizeFixtures = function() {
 box2d.b2Body.prototype.SynchronizeFixtures.s_xf1 = new box2d.b2Transform();
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.b2Body.prototype.SynchronizeTransform = function() {
   this.m_xf.q.SetAngle(this.m_sweep.a);
@@ -1685,12 +1685,12 @@ box2d.b2Body.prototype.SynchronizeTransform = function() {
   box2d.b2Sub_V2_V2(this.m_sweep.c, this.m_xf.p, this.m_xf.p);
 }
 
-/** 
- * This is used to prevent connected bodies from colliding. 
+/**
+ * This is used to prevent connected bodies from colliding.
  * It may lie, depending on the collideConnected flag.
- * @export 
- * @return {boolean} 
- * @param {box2d.b2Body} other 
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2Body} other
  */
 box2d.b2Body.prototype.ShouldCollide = function(other) {
   // At least one body should be dynamic or kinematic.
@@ -1701,10 +1701,10 @@ box2d.b2Body.prototype.ShouldCollide = function(other) {
   return this.ShouldCollideConnected(other);
 }
 
-/** 
- * @export 
- * @return {boolean} 
- * @param {box2d.b2Body} other 
+/**
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2Body} other
  */
 box2d.b2Body.prototype.ShouldCollideConnected = function(other) {
   // Does a joint prevent collision?
@@ -1720,9 +1720,9 @@ box2d.b2Body.prototype.ShouldCollideConnected = function(other) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} alpha 
+ * @export
+ * @return {void}
+ * @param {number} alpha
  */
 box2d.b2Body.prototype.Advance = function(alpha) {
   // Advance to the new safe time. This doesn't sync the broad-phase.
@@ -1734,9 +1734,9 @@ box2d.b2Body.prototype.Advance = function(alpha) {
   box2d.b2Sub_V2_V2(this.m_sweep.c, this.m_xf.p, this.m_xf.p);
 }
 
-/** 
- * Dump this body to a log file 
- * @export 
+/**
+ * Dump this body to a log file
+ * @export
  * @return {void}
  */
 box2d.b2Body.prototype.Dump = function() {
@@ -1789,18 +1789,18 @@ box2d.b2Body.prototype.Dump = function() {
 
 //#if B2_ENABLE_CONTROLLER
 
-/** 
- * @see box2d.b2Controller list 
- * @export 
+/**
+ * @see box2d.b2Controller list
+ * @export
  * @return {box2d.b2ControllerEdge}
  */
 box2d.b2Body.prototype.GetControllerList = function() {
   return this.m_controllerList;
 }
 
-/** 
- * @see box2d.b2Controller list 
- * @export 
+/**
+ * @see box2d.b2Controller list
+ * @export
  * @return {number}
  */
 box2d.b2Body.prototype.GetControllerCount = function() {

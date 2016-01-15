@@ -25,11 +25,11 @@ goog.require('box2d.Testbed.Test');
 // So why not go ahead and use soft weld joints? They behave like a revolute
 // joint with a rotational spring.
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Cantilever = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -194,17 +194,17 @@ box2d.Testbed.Cantilever = function(canvas, settings) {
 goog.inherits(box2d.Testbed.Cantilever, box2d.Testbed.Test);
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Cantilever.e_count = 8;
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Cantilever.Create = function(canvas, settings) {
   return new box2d.Testbed.Cantilever(canvas, settings);

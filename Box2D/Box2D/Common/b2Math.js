@@ -21,30 +21,30 @@ goog.provide('box2d.b2Math');
 goog.require('box2d.b2Settings');
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2_pi_over_180 = box2d.b2_pi / 180.0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2_180_over_pi = 180.0 / box2d.b2_pi;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2_two_pi = 2.0 * box2d.b2_pi;
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  * @param {number} n
  */
 box2d.b2Abs = Math.abs;
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {number} a
  * @param {number} b
@@ -52,7 +52,7 @@ box2d.b2Abs = Math.abs;
 box2d.b2Min = Math.min;
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {number} a
  * @param {number} b
@@ -60,7 +60,7 @@ box2d.b2Min = Math.min;
 box2d.b2Max = Math.max;
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {number} a
  * @param {number} lo
@@ -71,7 +71,7 @@ box2d.b2Clamp = function(a, lo, hi) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {number} num
  * @param {number} min
@@ -93,7 +93,7 @@ box2d.b2Wrap = function(num, min, max) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {number} rad
  */
@@ -106,8 +106,8 @@ box2d.b2WrapAngle = function(rad) {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {Array.<number>} a
  * @param {Array.<number>} b
  */
@@ -120,10 +120,10 @@ box2d.b2Swap = function(a, b) {
   b[0] = tmp;
 }
 
-/** 
- * This function is used to ensure that a floating point number 
- * is not a NaN or infinity. 
- * @export 
+/**
+ * This function is used to ensure that a floating point number
+ * is not a NaN or infinity.
+ * @export
  * @return {boolean}
  * @param {number} n
  */
@@ -132,17 +132,17 @@ box2d.b2IsValid = function(n) {
 }
 
 /**
- * @export 
- * @return {number} 
+ * @export
+ * @return {number}
  * @param {number} n
  */
 box2d.b2Sq = function(n) {
   return n * n;
 }
 
-/** 
- * This is a approximate yet fast inverse square-root. 
- * @export 
+/**
+ * This is a approximate yet fast inverse square-root.
+ * @export
  * @return {number}
  * @param {number} n
  */
@@ -151,7 +151,7 @@ box2d.b2InvSqrt = function(n) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {number} n
  */
@@ -160,7 +160,7 @@ box2d.b2Sqrt = function(n) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {number} x
  * @param {number} y
@@ -170,7 +170,7 @@ box2d.b2Pow = function(x, y) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {number} degrees
  */
@@ -179,7 +179,7 @@ box2d.b2DegToRad = function(degrees) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {number} radians
  */
@@ -188,7 +188,7 @@ box2d.b2RadToDeg = function(radians) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {number} radians
  */
@@ -197,7 +197,7 @@ box2d.b2Cos = function(radians) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {number} radians
  */
@@ -206,7 +206,7 @@ box2d.b2Sin = function(radians) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {number} n
  */
@@ -215,7 +215,7 @@ box2d.b2Acos = function(n) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {number} n
  */
@@ -224,7 +224,7 @@ box2d.b2Asin = function(n) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {number} y
  * @param {number} x
@@ -233,15 +233,15 @@ box2d.b2Atan2 = function(y, x) {
   return Math.atan2(y, x);
 }
 
-/** 
- * Next Largest Power of 2 
- * Given a binary integer value x, the next largest power of 2 
- * can be computed by a SWAR algorithm that recursively "folds" 
- * the upper bits into the lower bits. This process yields a bit 
- * vector with the same most significant 1 as x, but all 1's 
- * below it. Adding 1 to that value yields the next largest 
- * power of 2. For a 32-bit value: 
- * @export 
+/**
+ * Next Largest Power of 2
+ * Given a binary integer value x, the next largest power of 2
+ * can be computed by a SWAR algorithm that recursively "folds"
+ * the upper bits into the lower bits. This process yields a bit
+ * vector with the same most significant 1 as x, but all 1's
+ * below it. Adding 1 to that value yields the next largest
+ * power of 2. For a 32-bit value:
+ * @export
  * @return {number}
  * @param {number} x
  */
@@ -255,7 +255,7 @@ box2d.b2NextPowerOfTwo = function(x) {
 }
 
 /**
- * @export 
+ * @export
  * @return {boolean}
  * @param {number} x
  */
@@ -264,7 +264,7 @@ box2d.b2IsPowerOfTwo = function(x) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2Random = function() {
@@ -272,7 +272,7 @@ box2d.b2Random = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {number} lo
  * @param {number} hi
@@ -281,10 +281,10 @@ box2d.b2RandomRange = function(lo, hi) {
   return (hi - lo) * Math.random() + lo;
 }
 
-/** 
- * A 2D column vector. 
- * @export 
- * @constructor 
+/**
+ * A 2D column vector.
+ * @export
+ * @constructor
  * @param {number=} x
  * @param {number=} y
  */
@@ -297,74 +297,74 @@ box2d.b2Vec2 = function(x, y) {
 }
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Vec2.prototype.x = 0.0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Vec2.prototype.y = 0.0;
 
 //	/**
-//	 * @type {Float32Array} 
+//	 * @type {Float32Array}
 //	 */
 //	box2d.b2Vec2.prototype.a;
-//	
+//
 //	box2d.b2Vec2.prototype.__defineGetter__('x', function () { return this.a[0]; });
 //	box2d.b2Vec2.prototype.__defineGetter__('y', function () { return this.a[1]; });
 //	box2d.b2Vec2.prototype.__defineSetter__('x', function (n) { this.a[0] = n; });
 //	box2d.b2Vec2.prototype.__defineSetter__('y', function (n) { this.a[1] = n; });
 
 /**
- * @export 
+ * @export
  * @const
- * @type {box2d.b2Vec2} 
+ * @type {box2d.b2Vec2}
  */
 box2d.b2Vec2_zero = new box2d.b2Vec2();
 /**
- * @export 
+ * @export
  * @const
- * @type {box2d.b2Vec2} 
+ * @type {box2d.b2Vec2}
  */
 box2d.b2Vec2.ZERO = new box2d.b2Vec2();
 /**
- * @export 
+ * @export
  * @const
- * @type {box2d.b2Vec2} 
+ * @type {box2d.b2Vec2}
  */
 box2d.b2Vec2.UNITX = new box2d.b2Vec2(1.0, 0.0);
 /**
- * @export 
+ * @export
  * @const
- * @type {box2d.b2Vec2} 
+ * @type {box2d.b2Vec2}
  */
 box2d.b2Vec2.UNITY = new box2d.b2Vec2(0.0, 1.0);
 
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2Vec2.s_t0 = new box2d.b2Vec2();
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2Vec2.s_t1 = new box2d.b2Vec2();
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2Vec2.s_t2 = new box2d.b2Vec2();
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2Vec2.s_t3 = new box2d.b2Vec2();
 
 /**
- * @export 
+ * @export
  * @return {Array.<box2d.b2Vec2>}
  * @param {number=} length
  */
@@ -375,16 +375,16 @@ box2d.b2Vec2.MakeArray = function(length) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  */
 box2d.b2Vec2.prototype.Clone = function() {
   return new box2d.b2Vec2(this.x, this.y);
 }
 
-/** 
- * Set this vector to all zeros. 
- * @export 
+/**
+ * Set this vector to all zeros.
+ * @export
  * @return {box2d.b2Vec2}
  */
 box2d.b2Vec2.prototype.SetZero = function() {
@@ -393,9 +393,9 @@ box2d.b2Vec2.prototype.SetZero = function() {
   return this;
 }
 
-/** 
- * Set this vector to some specified coordinates. 
- * @export 
+/**
+ * Set this vector to some specified coordinates.
+ * @export
  * @return {box2d.b2Vec2}
  * @param {number} x
  * @param {number} y
@@ -407,7 +407,7 @@ box2d.b2Vec2.prototype.Set = function(x, y) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} other
  */
@@ -418,9 +418,9 @@ box2d.b2Vec2.prototype.Copy = function(other) {
   return this;
 }
 
-/** 
- * Add a vector to this vector. 
- * @export 
+/**
+ * Add a vector to this vector.
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} v
  */
@@ -431,10 +431,10 @@ box2d.b2Vec2.prototype.SelfAdd = function(v) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
- * @param {number} x 
- * @param {number} y 
+ * @param {number} x
+ * @param {number} y
  */
 box2d.b2Vec2.prototype.SelfAddXY = function(x, y) {
   this.x += x;
@@ -442,9 +442,9 @@ box2d.b2Vec2.prototype.SelfAddXY = function(x, y) {
   return this;
 }
 
-/** 
- * Subtract a vector from this vector. 
- * @export 
+/**
+ * Subtract a vector from this vector.
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} v
  */
@@ -455,10 +455,10 @@ box2d.b2Vec2.prototype.SelfSub = function(v) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
- * @param {number} x 
- * @param {number} y 
+ * @param {number} x
+ * @param {number} y
  */
 box2d.b2Vec2.prototype.SelfSubXY = function(x, y) {
   this.x -= x;
@@ -466,9 +466,9 @@ box2d.b2Vec2.prototype.SelfSubXY = function(x, y) {
   return this;
 }
 
-/** 
- * Multiply this vector by a scalar. 
- * @export 
+/**
+ * Multiply this vector by a scalar.
+ * @export
  * @return {box2d.b2Vec2}
  * @param {number} s
  */
@@ -478,9 +478,9 @@ box2d.b2Vec2.prototype.SelfMul = function(s) {
   return this;
 }
 
-/** 
- * this += s * v 
- * @export 
+/**
+ * this += s * v
+ * @export
  * @return {box2d.b2Vec2}
  * @param {number} s
  * @param {box2d.b2Vec2} v
@@ -491,9 +491,9 @@ box2d.b2Vec2.prototype.SelfMulAdd = function(s, v) {
   return this;
 }
 
-/** 
- * this -= s * v 
- * @export 
+/**
+ * this -= s * v
+ * @export
  * @return {box2d.b2Vec2}
  * @param {number} s
  * @param {box2d.b2Vec2} v
@@ -505,7 +505,7 @@ box2d.b2Vec2.prototype.SelfMulSub = function(s, v) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {box2d.b2Vec2} v
  */
@@ -514,7 +514,7 @@ box2d.b2Vec2.prototype.Dot = function(v) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {box2d.b2Vec2} v
  */
@@ -522,9 +522,9 @@ box2d.b2Vec2.prototype.Cross = function(v) {
   return this.x * v.y - this.y * v.x;
 }
 
-/** 
- * Get the length of this vector (the norm). 
- * @export 
+/**
+ * Get the length of this vector (the norm).
+ * @export
  * @return {number}
  */
 box2d.b2Vec2.prototype.Length = function() {
@@ -533,10 +533,10 @@ box2d.b2Vec2.prototype.Length = function() {
   return Math.sqrt(x * x + y * y);
 }
 
-/** 
- * Get the length squared. For performance, use this instead of 
- * b2Vec2::Length (if possible). 
- * @export 
+/**
+ * Get the length squared. For performance, use this instead of
+ * b2Vec2::Length (if possible).
+ * @export
  * @return {number}
  */
 box2d.b2Vec2.prototype.LengthSquared = function() {
@@ -545,9 +545,9 @@ box2d.b2Vec2.prototype.LengthSquared = function() {
   return (x * x + y * y);
 }
 
-/** 
- * Convert this vector into a unit vector. Returns the length. 
- * @export 
+/**
+ * Convert this vector into a unit vector. Returns the length.
+ * @export
  * @return {number}
  */
 box2d.b2Vec2.prototype.Normalize = function() {
@@ -561,7 +561,7 @@ box2d.b2Vec2.prototype.Normalize = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  */
 box2d.b2Vec2.prototype.SelfNormalize = function() {
@@ -570,7 +570,7 @@ box2d.b2Vec2.prototype.SelfNormalize = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {number} c
  * @param {number} s
@@ -584,7 +584,7 @@ box2d.b2Vec2.prototype.SelfRotate = function(c, s) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {number} radians
  */
@@ -592,9 +592,9 @@ box2d.b2Vec2.prototype.SelfRotateAngle = function(radians) {
   return this.SelfRotate(Math.cos(radians), Math.sin(radians));
 }
 
-/** 
- * Does this vector contain finite coordinates? 
- * @export 
+/**
+ * Does this vector contain finite coordinates?
+ * @export
  * @return {boolean}
  */
 box2d.b2Vec2.prototype.IsValid = function() {
@@ -602,7 +602,7 @@ box2d.b2Vec2.prototype.IsValid = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} v
  */
@@ -613,7 +613,7 @@ box2d.b2Vec2.prototype.SelfMin = function(v) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} v
  */
@@ -624,7 +624,7 @@ box2d.b2Vec2.prototype.SelfMax = function(v) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  */
 box2d.b2Vec2.prototype.SelfAbs = function() {
@@ -634,7 +634,7 @@ box2d.b2Vec2.prototype.SelfAbs = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  */
 box2d.b2Vec2.prototype.SelfNeg = function() {
@@ -643,10 +643,10 @@ box2d.b2Vec2.prototype.SelfNeg = function() {
   return this;
 }
 
-/** 
- * Get the skew vector such that dot(skew_vec, other) === 
- * cross(vec, other) 
- * @export 
+/**
+ * Get the skew vector such that dot(skew_vec, other) ===
+ * cross(vec, other)
+ * @export
  * @return {box2d.b2Vec2}
  */
 box2d.b2Vec2.prototype.SelfSkew = function() {
@@ -657,7 +657,7 @@ box2d.b2Vec2.prototype.SelfSkew = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} v
  * @param {box2d.b2Vec2} out
@@ -669,7 +669,7 @@ box2d.b2Abs_V2 = function(v, out) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} a
  * @param {box2d.b2Vec2} b
@@ -682,7 +682,7 @@ box2d.b2Min_V2_V2 = function(a, b, out) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} a
  * @param {box2d.b2Vec2} b
@@ -695,7 +695,7 @@ box2d.b2Max_V2_V2 = function(a, b, out) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} v
  * @param {box2d.b2Vec2} lo
@@ -708,10 +708,10 @@ box2d.b2Clamp_V2_V2_V2 = function(v, lo, hi, out) {
   return out;
 }
 
-/** 
- * Perform the dot product on two vectors. 
- * a.x * b.x + a.y * b.y 
- * @export 
+/**
+ * Perform the dot product on two vectors.
+ * a.x * b.x + a.y * b.y
+ * @export
  * @return {number}
  * @param {box2d.b2Vec2} a
  * @param {box2d.b2Vec2} b
@@ -720,10 +720,10 @@ box2d.b2Dot_V2_V2 = function(a, b) {
   return a.x * b.x + a.y * b.y;
 }
 
-/** 
- * Perform the cross product on two vectors. In 2D this produces a scalar. 
- * a.x * b.y - a.y * b.x 
- * @export 
+/**
+ * Perform the cross product on two vectors. In 2D this produces a scalar.
+ * a.x * b.y - a.y * b.x
+ * @export
  * @return {number}
  * @param {box2d.b2Vec2} a
  * @param {box2d.b2Vec2} b
@@ -732,10 +732,10 @@ box2d.b2Cross_V2_V2 = function(a, b) {
   return a.x * b.y - a.y * b.x;
 }
 
-/** 
- * Perform the cross product on a vector and a scalar. In 2D 
- * this produces a vector. 
- * @export 
+/**
+ * Perform the cross product on a vector and a scalar. In 2D
+ * this produces a vector.
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} v
  * @param {number} s
@@ -748,10 +748,10 @@ box2d.b2Cross_V2_S = function(v, s, out) {
   return out;
 }
 
-/** 
- * Perform the cross product on a scalar and a vector. In 2D 
- * this produces a vector. 
- * @export 
+/**
+ * Perform the cross product on a scalar and a vector. In 2D
+ * this produces a vector.
+ * @export
  * @return {box2d.b2Vec2}
  * @param {number} s
  * @param {box2d.b2Vec2} v
@@ -764,9 +764,9 @@ box2d.b2Cross_S_V2 = function(s, v, out) {
   return out;
 }
 
-/** 
- * Add two vectors component-wise. 
- * @export 
+/**
+ * Add two vectors component-wise.
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} a
  * @param {box2d.b2Vec2} b
@@ -778,9 +778,9 @@ box2d.b2Add_V2_V2 = function(a, b, out) {
   return out;
 }
 
-/** 
- * Subtract two vectors component-wise. 
- * @export 
+/**
+ * Subtract two vectors component-wise.
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} a
  * @param {box2d.b2Vec2} b
@@ -793,7 +793,7 @@ box2d.b2Sub_V2_V2 = function(a, b, out) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} v
  * @param {number} s
@@ -806,7 +806,7 @@ box2d.b2Add_V2_S = function(v, s, out) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} v
  * @param {number} s
@@ -819,7 +819,7 @@ box2d.b2Sub_V2_S = function(v, s, out) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {number} s
  * @param {box2d.b2Vec2} v
@@ -832,7 +832,7 @@ box2d.b2Mul_S_V2 = function(s, v, out) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} v
  * @param {number} s
@@ -845,7 +845,7 @@ box2d.b2Mul_V2_S = function(v, s, out) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} v
  * @param {number} s
@@ -857,9 +857,9 @@ box2d.b2Div_V2_S = function(v, s, out) {
   return out;
 }
 
-/** 
+/**
  * out = a + (s * b)
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} a
  * @param {number} s
@@ -871,9 +871,9 @@ box2d.b2AddMul_V2_S_V2 = function(a, s, b, out) {
     out.y = a.y + (s * b.y);
     return out;
   }
-  /** 
+  /**
    * out = a - (s * b)
-   * @export 
+   * @export
    * @return {box2d.b2Vec2}
    * @param {box2d.b2Vec2} a
    * @param {number} s
@@ -886,14 +886,14 @@ box2d.b2SubMul_V2_S_V2 = function(a, s, b, out) {
   return out;
 }
 
-/** 
- * out = a + b2Cross(s, v) 
- * @export 
- * @return {box2d.b2Vec2} 
+/**
+ * out = a + b2Cross(s, v)
+ * @export
+ * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} a
  * @param {number} s
  * @param {box2d.b2Vec2} v
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2AddCross_V2_S_V2 = function(a, s, v, out) {
   var v_x = v.x;
@@ -902,9 +902,9 @@ box2d.b2AddCross_V2_S_V2 = function(a, s, v, out) {
   return out;
 }
 
-/** 
- * Get the center of two vectors. 
- * @export 
+/**
+ * Get the center of two vectors.
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} a
  * @param {box2d.b2Vec2} b
@@ -916,9 +916,9 @@ box2d.b2Mid_V2_V2 = function(a, b, out) {
   return out;
 }
 
-/** 
- * Get the extent of two vectors (half-widths). 
- * @export 
+/**
+ * Get the extent of two vectors (half-widths).
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} a
  * @param {box2d.b2Vec2} b
@@ -931,7 +931,7 @@ box2d.b2Ext_V2_V2 = function(a, b, out) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {box2d.b2Vec2} a
  * @param {box2d.b2Vec2} b
@@ -943,7 +943,7 @@ box2d.b2Distance = function(a, b) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {box2d.b2Vec2} a
  * @param {box2d.b2Vec2} b
@@ -954,9 +954,9 @@ box2d.b2DistanceSquared = function(a, b) {
   return (c_x * c_x + c_y * c_y);
 }
 
-/** 
- * @export 
- * @constructor 
+/**
+ * @export
+ * @constructor
  * @param {number=} x
  * @param {number=} y
  * @param {number=} z
@@ -972,26 +972,26 @@ box2d.b2Vec3 = function(x, y, z) {
 }
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Vec3.prototype.x = 0.0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Vec3.prototype.y = 0.0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Vec3.prototype.z = 0.0;
 
 //	/**
-//	 * @type {Float32Array} 
+//	 * @type {Float32Array}
 //	 */
 //	box2d.b2Vec3.prototype.a;
-//	
+//
 //	box2d.b2Vec3.prototype.__defineGetter__('x', function () { return this.a[0]; });
 //	box2d.b2Vec3.prototype.__defineGetter__('y', function () { return this.a[1]; });
 //	box2d.b2Vec3.prototype.__defineGetter__('z', function () { return this.a[2]; });
@@ -1000,19 +1000,19 @@ box2d.b2Vec3.prototype.z = 0.0;
 //	box2d.b2Vec3.prototype.__defineSetter__('z', function (n) { this.a[2] = n; });
 
 /**
- * @export 
- * @const 
+ * @export
+ * @const
  * @type {box2d.b2Vec3}
  */
 box2d.b2Vec3.ZERO = new box2d.b2Vec3();
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec3}
  */
 box2d.b2Vec3.s_t0 = new box2d.b2Vec3();
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
  */
 box2d.b2Vec3.prototype.Clone = function() {
@@ -1020,7 +1020,7 @@ box2d.b2Vec3.prototype.Clone = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
  */
 box2d.b2Vec3.prototype.SetZero = function() {
@@ -1031,7 +1031,7 @@ box2d.b2Vec3.prototype.SetZero = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
  * @param {number} x
  * @param {number} y
@@ -1045,7 +1045,7 @@ box2d.b2Vec3.prototype.Set = function(x, y, z) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
  * @param {box2d.b2Vec3} other
  */
@@ -1058,7 +1058,7 @@ box2d.b2Vec3.prototype.Copy = function(other) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
  */
 box2d.b2Vec3.prototype.SelfNeg = function() {
@@ -1069,7 +1069,7 @@ box2d.b2Vec3.prototype.SelfNeg = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
  * @param {box2d.b2Vec3} v
  */
@@ -1081,7 +1081,7 @@ box2d.b2Vec3.prototype.SelfAdd = function(v) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
  * @param {box2d.b2Vec2} v
  * @param {number} z
@@ -1094,11 +1094,11 @@ box2d.b2Vec3.prototype.SelfAddV2 = function(v, z) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
- * @param {number} x 
- * @param {number} y 
- * @param {number} z 
+ * @param {number} x
+ * @param {number} y
+ * @param {number} z
  */
 box2d.b2Vec3.prototype.SelfAddXYZ = function(x, y, z) {
   this.x += x;
@@ -1108,7 +1108,7 @@ box2d.b2Vec3.prototype.SelfAddXYZ = function(x, y, z) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
  * @param {box2d.b2Vec3} v
  */
@@ -1120,7 +1120,7 @@ box2d.b2Vec3.prototype.SelfSub = function(v) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
  * @param {box2d.b2Vec2} v
  * @param {number} z
@@ -1133,11 +1133,11 @@ box2d.b2Vec3.prototype.SelfSubV2 = function(v, z) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
- * @param {number} x 
- * @param {number} y 
- * @param {number} z 
+ * @param {number} x
+ * @param {number} y
+ * @param {number} z
  */
 box2d.b2Vec3.prototype.SelfSubXYZ = function(x, y, z) {
   this.x -= x;
@@ -1147,7 +1147,7 @@ box2d.b2Vec3.prototype.SelfSubXYZ = function(x, y, z) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
  * @param {box2d.b2Vec3} v
  */
@@ -1159,7 +1159,7 @@ box2d.b2Vec3.prototype.SelfMul = function(v) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
  * @param {box2d.b2Vec2} v
  * @param {number} z
@@ -1172,7 +1172,7 @@ box2d.b2Vec3.prototype.SelfMulV2 = function(v, z) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
  * @param {number} x
  * @param {number} y
@@ -1186,7 +1186,7 @@ box2d.b2Vec3.prototype.SelfMulXYZ = function(x, y, z) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
  * @param {number} s
  */
@@ -1197,9 +1197,9 @@ box2d.b2Vec3.prototype.SelfMulScalar = function(s) {
   return this;
 }
 
-/** 
- * Get the length of this vector (the norm). 
- * @export 
+/**
+ * Get the length of this vector (the norm).
+ * @export
  * @return {number}
  */
 box2d.b2Vec3.prototype.Length = function() {
@@ -1209,10 +1209,10 @@ box2d.b2Vec3.prototype.Length = function() {
   return Math.sqrt(x * x + y * y + z * z);
 }
 
-/** 
- * Get the length squared. For performance, use this instead of 
- * b2Vec3::Length (if possible). 
- * @export 
+/**
+ * Get the length squared. For performance, use this instead of
+ * b2Vec3::Length (if possible).
+ * @export
  * @return {number}
  */
 box2d.b2Vec3.prototype.LengthSquared = function() {
@@ -1222,9 +1222,9 @@ box2d.b2Vec3.prototype.LengthSquared = function() {
   return (x * x + y * y + z * z);
 }
 
-/** 
- * Convert this vector into a unit vector. Returns the length. 
- * @export 
+/**
+ * Convert this vector into a unit vector. Returns the length.
+ * @export
  * @return {number}
  */
 box2d.b2Vec3.prototype.Normalize = function() {
@@ -1239,7 +1239,7 @@ box2d.b2Vec3.prototype.Normalize = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
  */
 box2d.b2Vec3.prototype.SelfNormalize = function() {
@@ -1247,9 +1247,9 @@ box2d.b2Vec3.prototype.SelfNormalize = function() {
   return this;
 }
 
-/** 
+/**
  * Add two vectors component-wise.
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
  * @param {box2d.b2Vec3} a
  * @param {box2d.b2Vec3} b
@@ -1262,9 +1262,9 @@ box2d.b2Add_V3_V3 = function(a, b, out) {
   return out;
 }
 
-/** 
+/**
  * Add two vectors component-wise.
- * @export 
+ * @export
  * @return {box2d.b2Vec3}
  * @param {box2d.b2Vec3} a
  * @param {box2d.b2Vec3} b
@@ -1277,9 +1277,9 @@ box2d.b2Sub_V3_V3 = function(a, b, out) {
   return out;
 }
 
-/** 
- * Perform the dot product on two vectors. 
- * @export 
+/**
+ * Perform the dot product on two vectors.
+ * @export
  * @return {number}
  * @param {box2d.b2Vec3} a
  * @param {box2d.b2Vec3} b
@@ -1288,9 +1288,9 @@ box2d.b2Dot_V3_V3 = function(a, b) {
   return a.x * b.x + a.y * b.y + a.z * b.z;
 }
 
-/** 
- * Perform the cross product on two vectors. 
- * @export 
+/**
+ * Perform the cross product on two vectors.
+ * @export
  * @return {box2d.b2Vec3}
  * @param {box2d.b2Vec3} a
  * @param {box2d.b2Vec3} b
@@ -1309,9 +1309,9 @@ box2d.b2Cross_V3_V3 = function(a, b, out) {
   return out;
 }
 
-/** 
- * @export 
- * @constructor 
+/**
+ * @export
+ * @constructor
  * @param {number=} x
  * @param {number=} y
  * @param {number=} z
@@ -1330,31 +1330,31 @@ box2d.b2Vec4 = function(x, y, z, w) {
 }
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Vec4.prototype.x = 0.0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Vec4.prototype.y = 0.0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Vec4.prototype.z = 0.0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Vec4.prototype.w = 0.0;
 
 //	/**
-//	 * @type {Float32Array} 
+//	 * @type {Float32Array}
 //	 */
 //	box2d.b2Vec4.prototype.a;
-//	
+//
 //	box2d.b2Vec4.prototype.__defineGetter__('x', function () { return this.a[0]; });
 //	box2d.b2Vec4.prototype.__defineGetter__('y', function () { return this.a[1]; });
 //	box2d.b2Vec4.prototype.__defineGetter__('z', function () { return this.a[2]; });
@@ -1365,19 +1365,19 @@ box2d.b2Vec4.prototype.w = 0.0;
 //	box2d.b2Vec4.prototype.__defineSetter__('w', function (n) { this.a[3] = n; });
 
 /**
- * @export 
- * @const 
+ * @export
+ * @const
  * @type {box2d.b2Vec4}
  */
 box2d.b2Vec4.ZERO = new box2d.b2Vec4(0.0, 0.0, 0.0, 0.0);
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec4}
  */
 box2d.b2Vec4.s_t0 = new box2d.b2Vec4();
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec4}
  */
 box2d.b2Vec4.prototype.Clone = function() {
@@ -1385,7 +1385,7 @@ box2d.b2Vec4.prototype.Clone = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec4}
  */
 box2d.b2Vec4.prototype.SetZero = function() {
@@ -1397,7 +1397,7 @@ box2d.b2Vec4.prototype.SetZero = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec4}
  * @param {number} x
  * @param {number} y
@@ -1413,7 +1413,7 @@ box2d.b2Vec4.prototype.Set = function(x, y, z, w) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec4}
  * @param {box2d.b2Vec4} other
  */
@@ -1426,10 +1426,10 @@ box2d.b2Vec4.prototype.Copy = function(other) {
   return this;
 }
 
-/** 
- * A 2-by-2 matrix. Stored in column-major order. 
- * @export 
- * @constructor 
+/**
+ * A 2-by-2 matrix. Stored in column-major order.
+ * @export
+ * @constructor
  */
 box2d.b2Mat22 = function() {
   this.ex = new box2d.b2Vec2(1.0, 0.0);
@@ -1437,35 +1437,35 @@ box2d.b2Mat22 = function() {
 }
 
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2Mat22.prototype.ex = null;
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2Mat22.prototype.ey = null;
 
 /**
- * @export 
- * @const 
- * @type {box2d.b2Mat22} 
+ * @export
+ * @const
+ * @type {box2d.b2Mat22}
  */
 box2d.b2Mat22.IDENTITY = new box2d.b2Mat22();
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Mat22}
  */
 box2d.b2Mat22.prototype.Clone = function() {
   return new box2d.b2Mat22().Copy(this);
 }
 
-/** 
- * Initialize this matrix using an angle. This matrix becomes an 
- * orthonormal rotation matrix. 
- * @export 
+/**
+ * Initialize this matrix using an angle. This matrix becomes an
+ * orthonormal rotation matrix.
+ * @export
  * @return {box2d.b2Mat22}
  * @param {number} radians
  */
@@ -1478,7 +1478,7 @@ box2d.b2Mat22.prototype.SetAngle = function(radians) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Mat22}
  * @param {box2d.b2Mat22} other
  */
@@ -1489,9 +1489,9 @@ box2d.b2Mat22.prototype.Copy = function(other) {
   return this;
 }
 
-/** 
- * Set this to the identity matrix. 
- * @export 
+/**
+ * Set this to the identity matrix.
+ * @export
  * @return {box2d.b2Mat22}
  */
 box2d.b2Mat22.prototype.SetIdentity = function() {
@@ -1500,9 +1500,9 @@ box2d.b2Mat22.prototype.SetIdentity = function() {
   return this;
 }
 
-/** 
- * Set this matrix to all zeros. 
- * @export 
+/**
+ * Set this matrix to all zeros.
+ * @export
  * @return {box2d.b2Mat22}
  */
 box2d.b2Mat22.prototype.SetZero = function() {
@@ -1511,10 +1511,10 @@ box2d.b2Mat22.prototype.SetZero = function() {
   return this;
 }
 
-/** 
- * Extract the angle from this matrix (assumed to be a rotation 
- * matrix). 
- * @export 
+/**
+ * Extract the angle from this matrix (assumed to be a rotation
+ * matrix).
+ * @export
  * @return {number}
  */
 box2d.b2Mat22.prototype.GetAngle = function() {
@@ -1522,7 +1522,7 @@ box2d.b2Mat22.prototype.GetAngle = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Mat22}
  * @param {box2d.b2Mat22} out
  */
@@ -1542,10 +1542,10 @@ box2d.b2Mat22.prototype.GetInverse = function(out) {
   return out;
 }
 
-/** 
- * Solve A * x = b, where b is a column vector. This is more 
- * efficient than computing the inverse in one-shot cases. 
- * @export 
+/**
+ * Solve A * x = b, where b is a column vector. This is more
+ * efficient than computing the inverse in one-shot cases.
+ * @export
  * @return {box2d.b2Vec2}
  * @param {number} b_x
  * @param {number} b_y
@@ -1566,7 +1566,7 @@ box2d.b2Mat22.prototype.Solve = function(b_x, b_y, out) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Mat22}
  */
 box2d.b2Mat22.prototype.SelfAbs = function() {
@@ -1576,7 +1576,7 @@ box2d.b2Mat22.prototype.SelfAbs = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Mat22}
  */
 box2d.b2Mat22.prototype.SelfInv = function() {
@@ -1584,7 +1584,7 @@ box2d.b2Mat22.prototype.SelfInv = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Mat22}
  * @param {box2d.b2Mat22} M
  */
@@ -1595,7 +1595,7 @@ box2d.b2Mat22.prototype.SelfAdd = function(M) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Mat22}
  * @param {box2d.b2Mat22} M
  */
@@ -1606,7 +1606,7 @@ box2d.b2Mat22.prototype.SelfSub = function(M) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Mat22}
  * @param {box2d.b2Mat22} M
  * @param {box2d.b2Mat22} out
@@ -1621,11 +1621,11 @@ box2d.b2Abs_M22 = function(M, out) {
   return out;
 }
 
-/** 
- * Multiply a matrix times a vector. If a rotation matrix is 
- * provided, then this transforms the vector from one frame to 
- * another. 
- * @export 
+/**
+ * Multiply a matrix times a vector. If a rotation matrix is
+ * provided, then this transforms the vector from one frame to
+ * another.
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Mat22} M
  * @param {box2d.b2Vec2} v
@@ -1641,11 +1641,11 @@ box2d.b2Mul_M22_V2 = function(M, v, out) {
   return out;
 }
 
-/** 
- * Multiply a matrix transpose times a vector. If a rotation 
- * matrix is provided, then this transforms the vector from one 
- * frame to another (inverse transform). 
- * @export 
+/**
+ * Multiply a matrix transpose times a vector. If a rotation
+ * matrix is provided, then this transforms the vector from one
+ * frame to another (inverse transform).
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Mat22} M
  * @param {box2d.b2Vec2} v
@@ -1662,7 +1662,7 @@ box2d.b2MulT_M22_V2 = function(M, v, out) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Mat22}
  * @param {box2d.b2Mat22} A
  * @param {box2d.b2Mat22} B
@@ -1681,7 +1681,7 @@ box2d.b2Add_M22_M22 = function(A, B, out) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Mat22}
  * @param {box2d.b2Mat22} A
  * @param {box2d.b2Mat22} B
@@ -1704,7 +1704,7 @@ box2d.b2Mul_M22_M22 = function(A, B, out) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Mat22}
  * @param {box2d.b2Mat22} A
  * @param {box2d.b2Mat22} B
@@ -1726,10 +1726,10 @@ box2d.b2MulT_M22_M22 = function(A, B, out) {
   return out;
 }
 
-/** 
- * A 3-by-3 matrix. Stored in column-major order. 
- * @export 
- * @constructor 
+/**
+ * A 3-by-3 matrix. Stored in column-major order.
+ * @export
+ * @constructor
  */
 box2d.b2Mat33 = function() {
   this.ex = new box2d.b2Vec3(1.0, 0.0, 0.0);
@@ -1738,30 +1738,30 @@ box2d.b2Mat33 = function() {
 }
 
 /**
- * @export 
- * @type {box2d.b2Vec3} 
+ * @export
+ * @type {box2d.b2Vec3}
  */
 box2d.b2Mat33.prototype.ex = null;
 /**
- * @export 
- * @type {box2d.b2Vec3} 
+ * @export
+ * @type {box2d.b2Vec3}
  */
 box2d.b2Mat33.prototype.ey = null;
 /**
- * @export 
- * @type {box2d.b2Vec3} 
+ * @export
+ * @type {box2d.b2Vec3}
  */
 box2d.b2Mat33.prototype.ez = null;
 
 /**
- * @export 
- * @const 
- * @type {box2d.b2Mat33} 
+ * @export
+ * @const
+ * @type {box2d.b2Mat33}
  */
 box2d.b2Mat33.IDENTITY = new box2d.b2Mat33();
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Mat33}
  */
 box2d.b2Mat33.prototype.Clone = function() {
@@ -1769,7 +1769,7 @@ box2d.b2Mat33.prototype.Clone = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Mat33}
  * @param {box2d.b2Mat33} other
  */
@@ -1782,7 +1782,7 @@ box2d.b2Mat33.prototype.Copy = function(other) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Mat33}
  */
 box2d.b2Mat33.prototype.SetIdentity = function() {
@@ -1792,9 +1792,9 @@ box2d.b2Mat33.prototype.SetIdentity = function() {
   return this;
 }
 
-/** 
- * Set this matrix to all zeros. 
- * @export 
+/**
+ * Set this matrix to all zeros.
+ * @export
  * @return {box2d.b2Mat33}
  */
 box2d.b2Mat33.prototype.SetZero = function() {
@@ -1805,7 +1805,7 @@ box2d.b2Mat33.prototype.SetZero = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Mat33}
  * @param {box2d.b2Mat33} M
  */
@@ -1816,10 +1816,10 @@ box2d.b2Mat33.prototype.SelfAdd = function(M) {
   return this;
 }
 
-/** 
- * Solve A * x = b, where b is a column vector. This is more 
- * efficient than computing the inverse in one-shot cases. 
- * @export 
+/**
+ * Solve A * x = b, where b is a column vector. This is more
+ * efficient than computing the inverse in one-shot cases.
+ * @export
  * @return {box2d.b2Vec3}
  * @param {number} b_x
  * @param {number} b_y
@@ -1846,11 +1846,11 @@ box2d.b2Mat33.prototype.Solve33 = function(b_x, b_y, b_z, out) {
   return out;
 }
 
-/** 
- * Solve A * x = b, where b is a column vector. This is more 
- * efficient than computing the inverse in one-shot cases. Solve 
- * only the upper 2-by-2 matrix equation. 
- * @export 
+/**
+ * Solve A * x = b, where b is a column vector. This is more
+ * efficient than computing the inverse in one-shot cases. Solve
+ * only the upper 2-by-2 matrix equation.
+ * @export
  * @return {box2d.b2Vec2}
  * @param {number} b_x
  * @param {number} b_y
@@ -1870,12 +1870,12 @@ box2d.b2Mat33.prototype.Solve22 = function(b_x, b_y, out) {
   return out;
 }
 
-/** 
- * Get the inverse of this matrix as a 2-by-2. 
+/**
+ * Get the inverse of this matrix as a 2-by-2.
  * Returns the zero matrix if singular.
- * @export 
- * @return {void} 
- * @param {box2d.b2Mat33} M 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Mat33} M
  */
 box2d.b2Mat33.prototype.GetInverse22 = function(M) {
   var a = this.ex.x,
@@ -1898,12 +1898,12 @@ box2d.b2Mat33.prototype.GetInverse22 = function(M) {
   M.ez.z = 0.0;
 }
 
-/** 
- * Get the symmetric inverse of this matrix as a 3-by-3. 
+/**
+ * Get the symmetric inverse of this matrix as a 3-by-3.
  * Returns the zero matrix if singular.
- * @export 
- * @return {void} 
- * @param {box2d.b2Mat33} M 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Mat33} M
  */
 box2d.b2Mat33.prototype.GetSymInverse33 = function(M) {
   var det = box2d.b2Dot_V3_V3(this.ex, box2d.b2Cross_V3_V3(this.ey, this.ez, box2d.b2Vec3.s_t0));
@@ -1931,9 +1931,9 @@ box2d.b2Mat33.prototype.GetSymInverse33 = function(M) {
   M.ez.z = det * (a11 * a22 - a12 * a12);
 }
 
-/** 
- * Multiply a matrix times a vector. 
- * @export 
+/**
+ * Multiply a matrix times a vector.
+ * @export
  * @return {box2d.b2Vec3}
  * @param {box2d.b2Mat33} A
  * @param {box2d.b2Vec3} v
@@ -1949,7 +1949,7 @@ box2d.b2Mul_M33_V3 = function(A, v, out) {
     return out;
   }
   /**
-   * @export 
+   * @export
    * @return {box2d.b2Vec3}
    * @param {box2d.b2Mat33} A
    * @param {number} x
@@ -1964,7 +1964,7 @@ box2d.b2Mul_M33_X_Y_Z = function(A, x, y, z, out) {
     return out;
   }
   /**
-   * @export 
+   * @export
    * @return {box2d.b2Vec2}
    * @param {box2d.b2Mat33} A
    * @param {box2d.b2Vec2} v
@@ -1978,7 +1978,7 @@ box2d.b2Mul22_M33_V2 = function(A, v, out) {
     return out;
   }
   /**
-   * @export 
+   * @export
    * @return {box2d.b2Vec2}
    * @param {box2d.b2Mat33} A
    * @param {number} x
@@ -1991,12 +1991,12 @@ box2d.b2Mul_M33_X_Y = function(A, x, y, out) {
   return out;
 }
 
-/** 
- * Rotation 
- * Initialize from an angle in radians 
- * @export 
- * @constructor 
- * @param {number=} angle 
+/**
+ * Rotation
+ * Initialize from an angle in radians
+ * @export
+ * @constructor
+ * @param {number=} angle
  */
 box2d.b2Rot = function(angle) {
   /// Sine and cosine
@@ -2009,40 +2009,40 @@ box2d.b2Rot = function(angle) {
 }
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Rot.prototype.angle = 0.0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Rot.prototype.s = 0.0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Rot.prototype.c = 1.0;
 
 /**
- * @export 
- * @const 
- * @type {box2d.b2Rot} 
+ * @export
+ * @const
+ * @type {box2d.b2Rot}
  */
 box2d.b2Rot.IDENTITY = new box2d.b2Rot();
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Rot}
  */
 box2d.b2Rot.prototype.Clone = function() {
   return new box2d.b2Rot().Copy(this);
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {box2d.b2Rot}
- * @param {box2d.b2Rot} other 
+ * @param {box2d.b2Rot} other
  */
 box2d.b2Rot.prototype.Copy = function(other) {
   this.angle = other.angle;
@@ -2051,11 +2051,11 @@ box2d.b2Rot.prototype.Copy = function(other) {
   return this;
 }
 
-/** 
- * Set using an angle in radians. 
- * @export 
- * @return {box2d.b2Rot} 
- * @param {number} angle 
+/**
+ * Set using an angle in radians.
+ * @export
+ * @return {box2d.b2Rot}
+ * @param {number} angle
  */
 box2d.b2Rot.prototype.Set = function(angle) {
   /// TODO_ERIN optimize
@@ -2067,17 +2067,17 @@ box2d.b2Rot.prototype.Set = function(angle) {
   return this;
 }
 
-/** 
- * @export 
- * @return {box2d.b2Rot} 
- * @param {number} angle 
+/**
+ * @export
+ * @return {box2d.b2Rot}
+ * @param {number} angle
  */
 box2d.b2Rot.prototype.SetAngle = box2d.b2Rot.prototype.Set;
 
-/** 
- * Set to the identity rotation 
- * @export 
- * @return {box2d.b2Rot} 
+/**
+ * Set to the identity rotation
+ * @export
+ * @return {box2d.b2Rot}
  */
 box2d.b2Rot.prototype.SetIdentity = function() {
   this.angle = 0.0;
@@ -2086,9 +2086,9 @@ box2d.b2Rot.prototype.SetIdentity = function() {
   return this;
 }
 
-/** 
- * Get the angle in radians 
- * @export 
+/**
+ * Get the angle in radians
+ * @export
  * @return {number}
  */
 box2d.b2Rot.prototype.GetAngle = function() {
@@ -2096,11 +2096,11 @@ box2d.b2Rot.prototype.GetAngle = function() {
   //	return Math.atan2(this.s, this.c);
 }
 
-/** 
- * Get the x-axis 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * Get the x-axis
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Rot.prototype.GetXAxis = function(out) {
   out.x = this.c;
@@ -2108,11 +2108,11 @@ box2d.b2Rot.prototype.GetXAxis = function(out) {
   return out;
 }
 
-/** 
- * Get the y-axis 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * Get the y-axis
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Rot.prototype.GetYAxis = function(out) {
   out.x = -this.s;
@@ -2120,13 +2120,13 @@ box2d.b2Rot.prototype.GetYAxis = function(out) {
   return out;
 }
 
-/** 
- * Multiply two rotations: q * r 
- * @export 
- * @return {box2d.b2Rot} 
+/**
+ * Multiply two rotations: q * r
+ * @export
+ * @return {box2d.b2Rot}
  * @param {box2d.b2Rot} q
  * @param {box2d.b2Rot} r
- * @param {box2d.b2Rot} out 
+ * @param {box2d.b2Rot} out
  */
 box2d.b2Mul_R_R = function(q, r, out) {
   // [qc -qs] * [rc -rs] = [qc*rc-qs*rs -qc*rs-qs*rc]
@@ -2143,13 +2143,13 @@ box2d.b2Mul_R_R = function(q, r, out) {
   return out;
 }
 
-/** 
- * Transpose multiply two rotations: qT * r 
- * @export 
- * @return {box2d.b2Rot} 
+/**
+ * Transpose multiply two rotations: qT * r
+ * @export
+ * @return {box2d.b2Rot}
  * @param {box2d.b2Rot} q
  * @param {box2d.b2Rot} r
- * @param {box2d.b2Rot} out 
+ * @param {box2d.b2Rot} out
  */
 box2d.b2MulT_R_R = function(q, r, out) {
   // [ qc qs] * [rc -rs] = [qc*rc+qs*rs -qc*rs+qs*rc]
@@ -2166,13 +2166,13 @@ box2d.b2MulT_R_R = function(q, r, out) {
   return out;
 }
 
-/** 
- * Rotate a vector 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Rot} q 
- * @param {box2d.b2Vec2} v 
- * @param {box2d.b2Vec2} out 
+/**
+ * Rotate a vector
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Rot} q
+ * @param {box2d.b2Vec2} v
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Mul_R_V2 = function(q, v, out) {
   var q_c = q.c,
@@ -2184,13 +2184,13 @@ box2d.b2Mul_R_V2 = function(q, v, out) {
   return out;
 }
 
-/** 
- * Inverse rotate a vector 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Rot} q 
- * @param {box2d.b2Vec2} v 
- * @param {box2d.b2Vec2} out 
+/**
+ * Inverse rotate a vector
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Rot} q
+ * @param {box2d.b2Vec2} v
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2MulT_R_V2 = function(q, v, out) {
   var q_c = q.c,
@@ -2202,11 +2202,11 @@ box2d.b2MulT_R_V2 = function(q, v, out) {
   return out;
 }
 
-/** 
- * A transform contains translation and rotation. It is used to 
- * represent the position and orientation of rigid frames. 
- * @export 
- * @constructor 
+/**
+ * A transform contains translation and rotation. It is used to
+ * represent the position and orientation of rigid frames.
+ * @export
+ * @constructor
  */
 box2d.b2Transform = function() {
   this.p = new box2d.b2Vec2();
@@ -2214,25 +2214,25 @@ box2d.b2Transform = function() {
 }
 
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2Transform.prototype.p = null;
 /**
- * @export 
- * @type {box2d.b2Rot} 
+ * @export
+ * @type {box2d.b2Rot}
  */
 box2d.b2Transform.prototype.q = null;
 
 /**
- * @export 
- * @const 
- * @type {box2d.b2Transform} 
+ * @export
+ * @const
+ * @type {box2d.b2Transform}
  */
 box2d.b2Transform.IDENTITY = new box2d.b2Transform();
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Transform}
  */
 box2d.b2Transform.prototype.Clone = function() {
@@ -2240,7 +2240,7 @@ box2d.b2Transform.prototype.Clone = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Transform}
  * @param {box2d.b2Transform} other
  */
@@ -2251,9 +2251,9 @@ box2d.b2Transform.prototype.Copy = function(other) {
   return this;
 }
 
-/** 
- * Set this to the identity transform. 
- * @export 
+/**
+ * Set this to the identity transform.
+ * @export
  * @return {box2d.b2Transform}
  */
 box2d.b2Transform.prototype.SetIdentity = function() {
@@ -2262,18 +2262,18 @@ box2d.b2Transform.prototype.SetIdentity = function() {
   return this;
 }
 
-/** 
- * @return {box2d.b2Transform} 
- * @param {box2d.b2Vec2} position 
- * @param {number} angle 
+/**
+ * @return {box2d.b2Transform}
+ * @param {box2d.b2Vec2} position
+ * @param {number} angle
  */
 box2d.b2Transform.prototype.Set = function(position, angle) {
   return this.SetPositionRotationAngle(position, angle);
 }
 
-/** 
- * Set this based on the position and angle. 
- * @export 
+/**
+ * Set this based on the position and angle.
+ * @export
  * @return {box2d.b2Transform}
  * @param {box2d.b2Vec2} position
  * @param {box2d.b2Rot} q
@@ -2285,7 +2285,7 @@ box2d.b2Transform.prototype.SetPositionRotation = function(position, q) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Transform}
  * @param {box2d.b2Vec2} pos
  * @param {number} a
@@ -2297,7 +2297,7 @@ box2d.b2Transform.prototype.SetPositionRotationAngle = function(pos, a) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Transform}
  * @param {box2d.b2Vec2} position
  */
@@ -2307,7 +2307,7 @@ box2d.b2Transform.prototype.SetPosition = function(position) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Transform}
  * @param {number} x
  * @param {number} y
@@ -2318,7 +2318,7 @@ box2d.b2Transform.prototype.SetPositionXY = function(x, y) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Transform}
  * @param {box2d.b2Rot} rotation
  */
@@ -2328,7 +2328,7 @@ box2d.b2Transform.prototype.SetRotation = function(rotation) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Transform}
  * @param {number} angle
  */
@@ -2338,7 +2338,7 @@ box2d.b2Transform.prototype.SetRotationAngle = function(angle) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  */
 box2d.b2Transform.prototype.GetPosition = function() {
@@ -2346,7 +2346,7 @@ box2d.b2Transform.prototype.GetPosition = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Rot}
  */
 box2d.b2Transform.prototype.GetRotation = function() {
@@ -2354,7 +2354,7 @@ box2d.b2Transform.prototype.GetRotation = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2Transform.prototype.GetRotationAngle = function() {
@@ -2362,7 +2362,7 @@ box2d.b2Transform.prototype.GetRotationAngle = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.b2Transform.prototype.GetAngle = function() {
@@ -2370,7 +2370,7 @@ box2d.b2Transform.prototype.GetAngle = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Transform} T
  * @param {box2d.b2Vec2} v
@@ -2391,7 +2391,7 @@ box2d.b2Mul_X_V2 = function(T, v, out) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Transform} T
  * @param {box2d.b2Vec2} v
@@ -2416,11 +2416,11 @@ box2d.b2MulT_X_V2 = function(T, v, out) {
 /**
  * v2 = A.q.Rot(B.q.Rot(v1) + B.p) + A.p
  *    = (A.q * B.q).Rot(v1) + A.q.Rot(B.p) + A.p
- * @export 
+ * @export
  * @return {box2d.b2Transform}
  * @param {box2d.b2Transform} A
  * @param {box2d.b2Transform} B
- * @param {box2d.b2Transform} out 
+ * @param {box2d.b2Transform} out
  */
 box2d.b2Mul_X_X = function(A, B, out) {
   box2d.b2Mul_R_R(A.q, B.q, out.q);
@@ -2431,11 +2431,11 @@ box2d.b2Mul_X_X = function(A, B, out) {
 /**
  * v2 = A.q' * (B.q * v1 + B.p - A.p)
  *    = A.q' * B.q * v1 + A.q' * (B.p - A.p)
- * @export 
+ * @export
  * @return {box2d.b2Transform}
  * @param {box2d.b2Transform} A
  * @param {box2d.b2Transform} B
- * @param {box2d.b2Transform} out 
+ * @param {box2d.b2Transform} out
  */
 box2d.b2MulT_X_X = function(A, B, out) {
   box2d.b2MulT_R_R(A.q, B.q, out.q);
@@ -2448,8 +2448,8 @@ box2d.b2MulT_X_X = function(A, B, out) {
  * Shapes are defined with respect to the body origin, which may
  * no coincide with the center of mass. However, to support dynamics
  * we must interpolate the center of mass position.
- * @export 
- * @constructor 
+ * @export
+ * @constructor
  */
 box2d.b2Sweep = function() {
   this.localCenter = new box2d.b2Vec2();
@@ -2458,41 +2458,41 @@ box2d.b2Sweep = function() {
 };
 
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2Sweep.prototype.localCenter = null; ///< local center of mass position
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2Sweep.prototype.c0 = null; ///< center world positions
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2Sweep.prototype.c = null;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Sweep.prototype.a0 = 0.0; ///< world angles
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Sweep.prototype.a = 0.0;
 
 /**
  * Fraction of the current time step in the range [0,1]
  * c0 and a0 are the positions at alpha0.
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Sweep.prototype.alpha0 = 0.0;
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Sweep}
  */
 box2d.b2Sweep.prototype.Clone = function() {
@@ -2500,7 +2500,7 @@ box2d.b2Sweep.prototype.Clone = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Sweep}
  * @param {box2d.b2Sweep} other
  */
@@ -2515,9 +2515,9 @@ box2d.b2Sweep.prototype.Copy = function(other) {
   return this;
 }
 
-/** 
- * Get the interpolated transform at a specific time. 
- * @export 
+/**
+ * Get the interpolated transform at a specific time.
+ * @export
  * @return {box2d.b2Transform}
  * @param {box2d.b2Transform} xf
  * @param {number} beta is a factor in [0,1], where 0 indicates alpha0.
@@ -2534,10 +2534,10 @@ box2d.b2Sweep.prototype.GetTransform = function(xf, beta) {
   return xf;
 }
 
-/** 
- * Advance the sweep forward, yielding a new initial state. 
- * @export 
- * @return {void} 
+/**
+ * Advance the sweep forward, yielding a new initial state.
+ * @export
+ * @return {void}
  * @param {number} alpha the new initial time.
  */
 box2d.b2Sweep.prototype.Advance = function(alpha) {
@@ -2551,18 +2551,18 @@ box2d.b2Sweep.prototype.Advance = function(alpha) {
   this.alpha0 = alpha;
 }
 
-/** 
- * Normalize an angle in radians to be between -pi and pi 
- * @export 
- * @return {void} 
+/**
+ * Normalize an angle in radians to be between -pi and pi
+ * @export
+ * @return {void}
  */
 box2d.b2Sweep.prototype.Normalize = function() {
   this.a0 = box2d.b2WrapAngle(this.a0);
   this.a = box2d.b2WrapAngle(this.a);
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  * @param {box2d.b2Vec3|box2d.b2Vec2} a
  * @param {box2d.b2Vec3|box2d.b2Vec2} b
@@ -2577,8 +2577,8 @@ box2d.b2Dot = function(a, b) {
   }
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {box2d.b2Vec3|box2d.b2Vec2|number}
  * @param {box2d.b2Vec3|box2d.b2Vec2|number} a
  * @param {box2d.b2Vec3|box2d.b2Vec2|number} b
@@ -2598,8 +2598,8 @@ box2d.b2Cross = function(a, b, out) {
   }
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {box2d.b2Vec3|box2d.b2Vec2}
  * @param {box2d.b2Vec3|box2d.b2Vec2} a
  * @param {box2d.b2Vec3|box2d.b2Vec2} b
@@ -2615,8 +2615,8 @@ box2d.b2Add = function(a, b, out) {
   }
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {box2d.b2Vec3|box2d.b2Vec2}
  * @param {box2d.b2Vec3|box2d.b2Vec2} a
  * @param {box2d.b2Vec3|box2d.b2Vec2} b
@@ -2632,8 +2632,8 @@ box2d.b2Sub = function(a, b, out) {
   }
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {box2d.b2Transform|box2d.b2Rot|box2d.b2Mat22|box2d.b2Vec3|box2d.b2Vec2}
  * @param {box2d.b2Transform|box2d.b2Rot|box2d.b2Mat33|box2d.b2Mat22} a
  * @param {box2d.b2Transform|box2d.b2Rot|box2d.b2Mat22|box2d.b2Vec3|box2d.b2Vec2} b
@@ -2659,8 +2659,8 @@ box2d.b2Mul = function(a, b, out) {
   }
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Mat22} a
  * @param {box2d.b2Vec2} b
@@ -2674,8 +2674,8 @@ box2d.b2Mul22 = function(a, b, out) {
   }
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {box2d.b2Transform|box2d.b2Rot|box2d.b2Mat22|box2d.b2Vec3|box2d.b2Vec2}
  * @param {box2d.b2Transform|box2d.b2Rot|box2d.b2Mat33|box2d.b2Mat22} a
  * @param {box2d.b2Transform|box2d.b2Rot|box2d.b2Mat22|box2d.b2Vec3|box2d.b2Vec2} b

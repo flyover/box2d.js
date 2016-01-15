@@ -21,11 +21,11 @@ goog.provide('box2d.Testbed.ShapeEditing');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.ShapeEditing = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -56,30 +56,30 @@ box2d.Testbed.ShapeEditing = function(canvas, settings) {
 goog.inherits(box2d.Testbed.ShapeEditing, box2d.Testbed.Test);
 
 /**
- * @export 
- * @type {box2d.b2Body} 
+ * @export
+ * @type {box2d.b2Body}
  */
 box2d.Testbed.ShapeEditing.prototype.m_body = null;
 /**
- * @export 
- * @type {box2d.b2Fixture} 
+ * @export
+ * @type {box2d.b2Fixture}
  */
 box2d.Testbed.ShapeEditing.prototype.m_fixture1 = null;
 /**
- * @export 
- * @type {box2d.b2Fixture} 
+ * @export
+ * @type {box2d.b2Fixture}
  */
 box2d.Testbed.ShapeEditing.prototype.m_fixture2 = null;
 /**
- * @export 
- * @type {boolean} 
+ * @export
+ * @type {boolean}
  */
 box2d.Testbed.ShapeEditing.prototype.m_sensor = false;
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.ShapeEditing.prototype.Keyboard = function(key) {
   switch (key) {
@@ -112,8 +112,8 @@ box2d.Testbed.ShapeEditing.prototype.Keyboard = function(key) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.ShapeEditing.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
@@ -123,11 +123,11 @@ box2d.Testbed.ShapeEditing.prototype.Step = function(settings) {
   this.m_textLine += box2d.Testbed.DRAW_STRING_NEW_LINE;
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.ShapeEditing.Create = function(canvas, settings) {
   return new box2d.Testbed.ShapeEditing(canvas, settings);

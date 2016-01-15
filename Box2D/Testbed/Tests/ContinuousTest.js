@@ -21,11 +21,11 @@ goog.provide('box2d.Testbed.ContinuousTest');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.ContinuousTest = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -97,19 +97,19 @@ box2d.Testbed.ContinuousTest = function(canvas, settings) {
 goog.inherits(box2d.Testbed.ContinuousTest, box2d.Testbed.Test);
 
 /**
- * @export 
- * @type {box2d.b2Body} 
+ * @export
+ * @type {box2d.b2Body}
  */
 box2d.Testbed.ContinuousTest.prototype.m_body = null;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.ContinuousTest.prototype.m_angularVelocity = 0.0;
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.Testbed.ContinuousTest.prototype.Launch = function() {
   box2d.b2_gjkCalls = 0;
@@ -130,8 +130,8 @@ box2d.Testbed.ContinuousTest.prototype.Launch = function() {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.ContinuousTest.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
@@ -161,11 +161,11 @@ box2d.Testbed.ContinuousTest.prototype.Step = function(settings) {
   }
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.ContinuousTest.Create = function(canvas, settings) {
   return new box2d.Testbed.ContinuousTest(canvas, settings);

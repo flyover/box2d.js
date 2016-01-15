@@ -20,8 +20,8 @@ goog.provide('box2d.b2Draw');
 
 goog.require('box2d.b2Settings');
 
-/** 
- * Color for debug drawing. Each value has the range [0,1]. 
+/**
+ * Color for debug drawing. Each value has the range [0,1].
  * @export
  * @constructor
  * @param {number} rr
@@ -37,22 +37,22 @@ box2d.b2Color = function(rr, gg, bb, aa) {
 }
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Color.prototype.r = 0.5;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Color.prototype.g = 0.5;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Color.prototype.b = 0.5;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Color.prototype.a = 1.0;
@@ -97,26 +97,26 @@ box2d.b2Color.MakeStyleString = function(r, g, b, a) {
 }
 
 /**
- * @export 
- * @const 
+ * @export
+ * @const
  * @type {box2d.b2Color}
  */
 box2d.b2Color.RED = new box2d.b2Color(1, 0, 0);
 /**
- * @export 
- * @const 
+ * @export
+ * @const
  * @type {box2d.b2Color}
  */
 box2d.b2Color.GREEN = new box2d.b2Color(0, 1, 0);
 /**
- * @export 
- * @const 
+ * @export
+ * @const
  * @type {box2d.b2Color}
  */
 box2d.b2Color.BLUE = new box2d.b2Color(0, 0, 1);
 
-/** 
- * @export 
+/**
+ * @export
  * @enum
  */
 box2d.b2DrawFlags = {
@@ -148,143 +148,143 @@ goog.exportProperty(box2d.b2DrawFlags, 'e_particleBit', box2d.b2DrawFlags.e_part
 //#endif
 goog.exportProperty(box2d.b2DrawFlags, 'e_all', box2d.b2DrawFlags.e_all);
 
-/** 
- * Implement and register this class with a b2World to provide 
- * debug drawing of physics entities in your game. 
- * @export 
+/**
+ * Implement and register this class with a b2World to provide
+ * debug drawing of physics entities in your game.
+ * @export
  * @constructor
  */
 box2d.b2Draw = function() {}
 
 /**
- * @export 
- * @type {box2d.b2DrawFlags} 
+ * @export
+ * @type {box2d.b2DrawFlags}
  */
 box2d.b2Draw.prototype.m_drawFlags = box2d.b2DrawFlags.e_none;
 
-/** 
- * Set the drawing flags. 
- * @export 
- * @return {void} 
- * @param {box2d.b2DrawFlags} flags 
+/**
+ * Set the drawing flags.
+ * @export
+ * @return {void}
+ * @param {box2d.b2DrawFlags} flags
  */
 box2d.b2Draw.prototype.SetFlags = function(flags) {
   this.m_drawFlags = flags;
 }
 
-/** 
- * Get the drawing flags. 
- * @export 
+/**
+ * Get the drawing flags.
+ * @export
  * @return {box2d.b2DrawFlags}
  */
 box2d.b2Draw.prototype.GetFlags = function() {
   return this.m_drawFlags;
 }
 
-/** 
- * Append flags to the current flags. 
- * @export 
- * @return {void} 
- * @param {box2d.b2DrawFlags} flags 
+/**
+ * Append flags to the current flags.
+ * @export
+ * @return {void}
+ * @param {box2d.b2DrawFlags} flags
  */
 box2d.b2Draw.prototype.AppendFlags = function(flags) {
   this.m_drawFlags |= flags;
 }
 
-/** 
- * Clear flags from the current flags. 
- * @export 
- * @return {void} 
- * @param {box2d.b2DrawFlags} flags 
+/**
+ * Clear flags from the current flags.
+ * @export
+ * @return {void}
+ * @param {box2d.b2DrawFlags} flags
  */
 box2d.b2Draw.prototype.ClearFlags = function(flags) {
   this.m_drawFlags &= ~flags;
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2Transform} xf 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Transform} xf
  */
 box2d.b2Draw.prototype.PushTransform = function(xf) {}
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2Transform} xf 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Transform} xf
  */
 box2d.b2Draw.prototype.PopTransform = function(xf) {}
 
-/** 
- * Draw a closed polygon provided in CCW order. 
- * @export 
- * @return {void} 
+/**
+ * Draw a closed polygon provided in CCW order.
+ * @export
+ * @return {void}
  * @param {Array.<box2d.b2Vec2>} vertices
  * @param {number} vertexCount
- * @param {box2d.b2Color} color 
+ * @param {box2d.b2Color} color
  */
 box2d.b2Draw.prototype.DrawPolygon = function(vertices, vertexCount, color) {}
 
-/** 
- * Draw a solid closed polygon provided in CCW order. 
- * @export 
- * @return {void} 
+/**
+ * Draw a solid closed polygon provided in CCW order.
+ * @export
+ * @return {void}
  * @param {Array.<box2d.b2Vec2>} vertices
  * @param {number} vertexCount
- * @param {box2d.b2Color} color 
+ * @param {box2d.b2Color} color
  */
 box2d.b2Draw.prototype.DrawSolidPolygon = function(vertices, vertexCount, color) {}
 
-/** 
- * Draw a circle. 
- * @export 
- * @return {void} 
+/**
+ * Draw a circle.
+ * @export
+ * @return {void}
  * @param {box2d.b2Vec2} center
  * @param {number} radius
- * @param {box2d.b2Color} color 
+ * @param {box2d.b2Color} color
  */
 box2d.b2Draw.prototype.DrawCircle = function(center, radius, color) {}
 
-/** 
- * Draw a solid circle. 
- * @export 
- * @return {void} 
+/**
+ * Draw a solid circle.
+ * @export
+ * @return {void}
  * @param {box2d.b2Vec2} center
  * @param {number} radius
  * @param {box2d.b2Vec2} axis
- * @param {box2d.b2Color} color 
+ * @param {box2d.b2Color} color
  */
 box2d.b2Draw.prototype.DrawSolidCircle = function(center, radius, axis, color) {}
 
 //#if B2_ENABLE_PARTICLE
 
-/** 
+/**
  * Draw a particle array
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {Array.<box2d.b2Vec2>} centers
  * @param {number} radius
- * @param {Array.<box2d.b2ParticleColor>} colors 
+ * @param {Array.<box2d.b2ParticleColor>} colors
  * @param {number} count
  */
 box2d.b2Draw.prototype.DrawParticles = function(centers, radius, colors, count) {}
 
 //#endif
 
-/** 
- * Draw a line segment. 
- * @export 
- * @return {void} 
+/**
+ * Draw a line segment.
+ * @export
+ * @return {void}
  * @param {box2d.b2Vec2} p1
  * @param {box2d.b2Vec2} p2
- * @param {box2d.b2Color} color 
+ * @param {box2d.b2Color} color
  */
 box2d.b2Draw.prototype.DrawSegment = function(p1, p2, color) {}
 
-/** 
- * Draw a transform. Choose your own length scale. 
- * @export 
- * @return {void} 
+/**
+ * Draw a transform. Choose your own length scale.
+ * @export
+ * @return {void}
  * @param {box2d.b2Transform} xf a transform.
  */
 box2d.b2Draw.prototype.DrawTransform = function(xf) {}

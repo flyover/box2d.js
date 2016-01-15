@@ -22,135 +22,135 @@ goog.provide('box2d.b2Controller');
 
 goog.require('box2d.b2Settings');
 
-/** 
- * A controller edge is used to connect bodies and controllers 
- * together in a bipartite graph. 
- * @export 
- * @constructor 
+/**
+ * A controller edge is used to connect bodies and controllers
+ * together in a bipartite graph.
+ * @export
+ * @constructor
  */
 box2d.b2ControllerEdge = function() {};
 
 /**
- * @export 
- * @type {box2d.b2Controller} 
+ * @export
+ * @type {box2d.b2Controller}
  */
 box2d.b2ControllerEdge.prototype.controller = null; ///< provides quick access to other end of this edge.
 /**
- * @export 
- * @type {box2d.b2Body} 
+ * @export
+ * @type {box2d.b2Body}
  */
 box2d.b2ControllerEdge.prototype.body = null; ///< the body
 /**
- * @export 
- * @type {box2d.b2ControllerEdge} 
+ * @export
+ * @type {box2d.b2ControllerEdge}
  */
 box2d.b2ControllerEdge.prototype.prevBody = null; ///< the previous controller edge in the controllers's joint list
 /**
- * @export 
- * @type {box2d.b2ControllerEdge} 
+ * @export
+ * @type {box2d.b2ControllerEdge}
  */
 box2d.b2ControllerEdge.prototype.nextBody = null; ///< the next controller edge in the controllers's joint list
 /**
- * @export 
- * @type {box2d.b2ControllerEdge} 
+ * @export
+ * @type {box2d.b2ControllerEdge}
  */
 box2d.b2ControllerEdge.prototype.prevController = null; ///< the previous controller edge in the body's joint list
 /**
- * @export 
- * @type {box2d.b2ControllerEdge} 
+ * @export
+ * @type {box2d.b2ControllerEdge}
  */
 box2d.b2ControllerEdge.prototype.nextController = null; ///< the next controller edge in the body's joint list
 
-/** 
- * Base class for controllers. Controllers are a convience for 
- * encapsulating common per-step functionality. 
- * @export 
- * @constructor 
+/**
+ * Base class for controllers. Controllers are a convience for
+ * encapsulating common per-step functionality.
+ * @export
+ * @constructor
  */
 box2d.b2Controller = function() {};
 
 /**
- * @export 
- * @type {box2d.b2World} 
+ * @export
+ * @type {box2d.b2World}
  */
 box2d.b2Controller.prototype.m_world = null;
 /**
- * @export 
- * @type {box2d.b2ControllerEdge} 
+ * @export
+ * @type {box2d.b2ControllerEdge}
  */
 box2d.b2Controller.prototype.m_bodyList = null;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Controller.prototype.m_bodyCount = 0;
 /**
- * @export 
- * @type {box2d.b2Controller} 
+ * @export
+ * @type {box2d.b2Controller}
  */
 box2d.b2Controller.prototype.m_prev = null;
 /**
- * @export 
- * @type {box2d.b2Controller} 
+ * @export
+ * @type {box2d.b2Controller}
  */
 box2d.b2Controller.prototype.m_next = null;
 
-/** 
- * Controllers override this to implement per-step 
- * functionality. 
- * @export 
- * @return {void} 
- * @param {box2d.b2TimeStep} step 
+/**
+ * Controllers override this to implement per-step
+ * functionality.
+ * @export
+ * @return {void}
+ * @param {box2d.b2TimeStep} step
  */
 box2d.b2Controller.prototype.Step = function(step) {}
 
-/** 
- * Controllers override this to provide debug drawing. 
- * @export 
- * @return {void} 
+/**
+ * Controllers override this to provide debug drawing.
+ * @export
+ * @return {void}
  * @param {box2d.b2Draw} debugDraw
  */
 box2d.b2Controller.prototype.Draw = function(debugDraw) {}
 
-/** 
- * Get the next controller in the world's body list. 
- * @export 
- * @return {box2d.b2Controller} 
+/**
+ * Get the next controller in the world's body list.
+ * @export
+ * @return {box2d.b2Controller}
  */
 box2d.b2Controller.prototype.GetNext = function() {
   return this.m_next;
 }
 
-/** 
- * Get the previous controller in the world's body list. 
- * @export 
- * @return {box2d.b2Controller} 
+/**
+ * Get the previous controller in the world's body list.
+ * @export
+ * @return {box2d.b2Controller}
  */
 box2d.b2Controller.prototype.GetPrev = function() {
   return this.m_prev;
 }
 
-/** 
- * Get the parent world of this body. 
- * @export 
- * @return {box2d.b2World} 
+/**
+ * Get the parent world of this body.
+ * @export
+ * @return {box2d.b2World}
  */
 box2d.b2Controller.prototype.GetWorld = function() {
   return this.m_world;
 }
 
-/** 
- * Get the attached body list 
- * @export 
+/**
+ * Get the attached body list
+ * @export
  * @return {box2d.b2ControllerEdge}
  */
 box2d.b2Controller.prototype.GetBodyList = function() {
   return this.m_bodyList;
 }
 
-/** 
- * Adds a body to the controller list. 
- * @export 
+/**
+ * Adds a body to the controller list.
+ * @export
  * @return {void}
  * @param {box2d.b2Body} body
  */
@@ -177,9 +177,9 @@ box2d.b2Controller.prototype.AddBody = function(body) {
   ++body.m_controllerCount;
 }
 
-/** 
- * Removes a body from the controller list. 
- * @export 
+/**
+ * Removes a body from the controller list.
+ * @export
  * @return {void}
  * @param {box2d.b2Body} body
  */
@@ -219,9 +219,9 @@ box2d.b2Controller.prototype.RemoveBody = function(body) {
   --body.m_controllerCount;
 }
 
-/** 
- * Removes all bodies from the controller list. 
- * @export 
+/**
+ * Removes all bodies from the controller list.
+ * @export
  * @return {void}
  */
 box2d.b2Controller.prototype.Clear = function() {

@@ -20,39 +20,39 @@
 
 goog.provide('box2d.Testbed.FullScreenUI');
 
-/** 
- * Handles drawing and selection of full screen UI. 
+/**
+ * Handles drawing and selection of full screen UI.
  * @constructor
  */
 box2d.Testbed.FullScreenUI = function() {
   this.Reset();
 }
 
-/** 
- * Whether particle parameters are enabled. 
+/**
+ * Whether particle parameters are enabled.
  * @type {boolean}
  */
 box2d.Testbed.FullScreenUI.prototype.m_particleParameterSelectionEnabled = false;
 
-/** 
- * Reset the UI to it's initial state. 
+/**
+ * Reset the UI to it's initial state.
  * @return {void}
  */
 box2d.Testbed.FullScreenUI.prototype.Reset = function() {
   this.m_particleParameterSelectionEnabled = false;
 }
 
-/** 
+/**
  * Enable / disable particle parameter selection.
  * @return {void}
- * @param {boolean} enable 
+ * @param {boolean} enable
  */
 box2d.Testbed.FullScreenUI.prototype.SetParticleParameterSelectionEnabled = function(enable) {
   this.m_particleParameterSelectionEnabled = enable;
 }
 
-/** 
- * Get whether particle parameter selection is enabled. 
+/**
+ * Get whether particle parameter selection is enabled.
  * @return {boolean}
  */
 box2d.Testbed.FullScreenUI.prototype.GetParticleParameterSelectionEnabled = function() {

@@ -23,11 +23,11 @@ goog.provide('box2d.b2VoronoiDiagram');
 goog.require('box2d.b2StackQueue');
 goog.require('box2d.b2Collision');
 
-/** 
- * A field representing the nearest generator from each point. 
- *  
- * @export 
- * @constructor 
+/**
+ * A field representing the nearest generator from each point.
+ *
+ * @export
+ * @constructor
  */
 box2d.b2VoronoiDiagram = function(generatorCapacity) {
   this.m_generatorBuffer = box2d.b2MakeArray(generatorCapacity, function(index) {
@@ -37,7 +37,7 @@ box2d.b2VoronoiDiagram = function(generatorCapacity) {
 }
 
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2VoronoiDiagram.Generator>}
  */
 box2d.b2VoronoiDiagram.prototype.m_generatorBuffer = null;
@@ -67,11 +67,11 @@ box2d.b2VoronoiDiagram.prototype.m_countY = 0;
  */
 box2d.b2VoronoiDiagram.prototype.m_diagram = null;
 
-/** 
- * Callback used by GetNodes(). 
- *  
+/**
+ * Callback used by GetNodes().
+ *
  * Receive tags for generators associated with a node.
- *  
+ *
  * @typedef {function(number,number,number):void}
  */
 box2d.b2VoronoiDiagram.NodeCallback;
@@ -94,11 +94,11 @@ box2d.b2VoronoiDiagram.Generator.prototype.center = null;
 box2d.b2VoronoiDiagram.Generator.prototype.tag = 0;
 
 /**
- * @constructor 
- * @param {number} x 
- * @param {number} y 
- * @param {number} i 
- * @param {box2d.b2VoronoiDiagram.Generator} g 
+ * @constructor
+ * @param {number} x
+ * @param {number} y
+ * @param {number} i
+ * @param {box2d.b2VoronoiDiagram.Generator} g
  */
 box2d.b2VoronoiDiagram.b2VoronoiDiagramTask = function(x, y, i, g) {
   this.m_x = x;
@@ -127,15 +127,15 @@ box2d.b2VoronoiDiagram.b2VoronoiDiagramTask.prototype.m_i = 0;
  */
 box2d.b2VoronoiDiagram.b2VoronoiDiagramTask.prototype.m_generator = null;
 
-/** 
- * Add a generator. 
- *  
- * @export 
+/**
+ * Add a generator.
+ *
+ * @export
  * @return {void}
  * @param {box2d.b2Vec2} center the position of the generator.
- * @param {number} tag a tag used to identify the generator in 
+ * @param {number} tag a tag used to identify the generator in
  *  	  callback functions.
- * @param {boolean} necessary whether to callback for nodes 
+ * @param {boolean} necessary whether to callback for nodes
  *  	  associated with the generator.
  */
 box2d.b2VoronoiDiagram.prototype.AddGenerator = function(center, tag, necessary) {
@@ -146,14 +146,14 @@ box2d.b2VoronoiDiagram.prototype.AddGenerator = function(center, tag, necessary)
   g.necessary = necessary;
 }
 
-/** 
- * Generate the Voronoi diagram. It is rasterized with a given 
+/**
+ * Generate the Voronoi diagram. It is rasterized with a given
  * interval in the same range as the necessary generators exist.
- *  
- * @export 
- * @return {void} 
- * @param {number} radius the interval of the diagram. 
- * @param {number} margin margin for which the range of the 
+ *
+ * @export
+ * @return {void}
+ * @param {number} radius the interval of the diagram.
+ * @param {number} margin margin for which the range of the
  *  	  diagram is extended.
  */
 box2d.b2VoronoiDiagram.prototype.Generate = function(radius, margin) {
@@ -282,13 +282,13 @@ box2d.b2VoronoiDiagram.prototype.Generate = function(radius, margin) {
   }
 }
 
-/** 
- * Enumerate all nodes that contain at least one necessary 
- * generator. 
- *  
- * @export 
- * @return {void} 
- * @param {function(number,number,number):void} callback 
+/**
+ * Enumerate all nodes that contain at least one necessary
+ * generator.
+ *
+ * @export
+ * @return {void}
+ * @param {function(number,number,number):void} callback
  */
 box2d.b2VoronoiDiagram.prototype.GetNodes = function(callback) {
   for (var y = 0; y < this.m_countY - 1; y++) {

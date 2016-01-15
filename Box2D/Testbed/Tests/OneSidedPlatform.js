@@ -21,11 +21,11 @@ goog.provide('box2d.Testbed.OneSidedPlatform');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.OneSidedPlatform = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -75,60 +75,60 @@ box2d.Testbed.OneSidedPlatform = function(canvas, settings) {
 goog.inherits(box2d.Testbed.OneSidedPlatform, box2d.Testbed.Test);
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.Testbed.OneSidedPlatform.e_unknown = 0;
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.Testbed.OneSidedPlatform.e_above = 1;
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.Testbed.OneSidedPlatform.e_below = 2;
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.OneSidedPlatform.prototype.m_radius = 0.0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.OneSidedPlatform.prototype.m_top = 0.0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.OneSidedPlatform.prototype.m_bottom = 0.0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.OneSidedPlatform.prototype.m_state = box2d.Testbed.OneSidedPlatform.e_unknown;
 /**
- * @export 
- * @type {box2d.b2Fixture} 
+ * @export
+ * @type {box2d.b2Fixture}
  */
 box2d.Testbed.OneSidedPlatform.prototype.m_platform = null;
 /**
- * @export 
- * @type {box2d.b2Fixture} 
+ * @export
+ * @type {box2d.b2Fixture}
  */
 box2d.Testbed.OneSidedPlatform.prototype.m_character = null;
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Contact} contact 
- * @param {box2d.b2Manifold} oldManifold 
+ * @return {void}
+ * @param {box2d.b2Contact} contact
+ * @param {box2d.b2Manifold} oldManifold
  */
 box2d.Testbed.OneSidedPlatform.prototype.PreSolve = function(contact, oldManifold) {
   box2d.Testbed.Test.prototype.PreSolve.call(this, contact, oldManifold);
@@ -153,8 +153,8 @@ box2d.Testbed.OneSidedPlatform.prototype.PreSolve = function(contact, oldManifol
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.OneSidedPlatform.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
@@ -166,11 +166,11 @@ box2d.Testbed.OneSidedPlatform.prototype.Step = function(settings) {
   this.m_textLine += box2d.Testbed.DRAW_STRING_NEW_LINE;
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.OneSidedPlatform.Create = function(canvas, settings) {
   return new box2d.Testbed.OneSidedPlatform(canvas, settings);

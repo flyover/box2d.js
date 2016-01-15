@@ -21,24 +21,24 @@ goog.provide('box2d.Testbed.RopeJoint');
 goog.require('box2d.Testbed.Test');
 
 /**
- * This test shows how a rope joint can be used to stabilize a 
- * chain of bodies with a heavy payload. Notice that the rope 
- * joint just prevents excessive stretching and has no other 
- * effect. 
- * By disabling the rope joint you can see that the Box2D solver 
- * has trouble supporting heavy bodies with light bodies. Try 
- * playing around with the densities, time step, and iterations 
- * to see how they affect stability. This test also shows how to 
- * use contact filtering. Filtering is configured so that the 
- * payload does not collide with the chain. 
+ * This test shows how a rope joint can be used to stabilize a
+ * chain of bodies with a heavy payload. Notice that the rope
+ * joint just prevents excessive stretching and has no other
+ * effect.
+ * By disabling the rope joint you can see that the Box2D solver
+ * has trouble supporting heavy bodies with light bodies. Try
+ * playing around with the densities, time step, and iterations
+ * to see how they affect stability. This test also shows how to
+ * use contact filtering. Filtering is configured so that the
+ * payload does not collide with the chain.
  */
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.RopeJoint = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -125,20 +125,20 @@ box2d.Testbed.RopeJoint = function(canvas, settings) {
 goog.inherits(box2d.Testbed.RopeJoint, box2d.Testbed.Test);
 
 /**
- * @export 
- * @type {box2d.b2RopeJointDef} 
+ * @export
+ * @type {box2d.b2RopeJointDef}
  */
 box2d.Testbed.RopeJoint.prototype.m_ropeDef = null;
 /**
- * @export 
- * @type {box2d.b2Joint} 
+ * @export
+ * @type {box2d.b2Joint}
  */
 box2d.Testbed.RopeJoint.prototype.m_rope = null;
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.RopeJoint.prototype.Keyboard = function(key) {
   switch (key) {
@@ -155,8 +155,8 @@ box2d.Testbed.RopeJoint.prototype.Keyboard = function(key) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.RopeJoint.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
@@ -170,11 +170,11 @@ box2d.Testbed.RopeJoint.prototype.Step = function(settings) {
   this.m_textLine += box2d.Testbed.DRAW_STRING_NEW_LINE;
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.RopeJoint.Create = function(canvas, settings) {
   return new box2d.Testbed.RopeJoint(canvas, settings);

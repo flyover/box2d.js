@@ -22,22 +22,22 @@ goog.provide('box2d.Testbed.Maxwell');
 
 goog.require('box2d.Testbed.Test');
 
-/** 
- * Game which adds some fun to Maxwell's demon. 
- *  
- * http://en.wikipedia.org/wiki/Maxwell's_demon 
- *  
- * The user's goal is to try to catch as many particles as 
- * possible in the bottom half of the container by splitting the 
- * container using a barrier with the 'a' key. 
- *  
+/**
+ * Game which adds some fun to Maxwell's demon.
+ *
+ * http://en.wikipedia.org/wiki/Maxwell's_demon
+ *
+ * The user's goal is to try to catch as many particles as
+ * possible in the bottom half of the container by splitting the
+ * container using a barrier with the 'a' key.
+ *
  * See Maxwell::Keyboard() for other controls.
- *  
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ *
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Maxwell = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -98,73 +98,73 @@ box2d.Testbed.Maxwell.prototype.m_barrierBody = null;
 box2d.Testbed.Maxwell.prototype.m_particleGroup = null;
 
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Maxwell.k_containerWidth = 2.0;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Maxwell.k_containerHeight = 4.0;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Maxwell.k_containerHalfWidth = box2d.Testbed.Maxwell.k_containerWidth / 2.0;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Maxwell.k_containerHalfHeight = box2d.Testbed.Maxwell.k_containerHeight / 2.0;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Maxwell.k_barrierHeight = box2d.Testbed.Maxwell.k_containerHalfHeight / 100.0;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Maxwell.k_barrierMovementIncrement = box2d.Testbed.Maxwell.k_containerHalfHeight * 0.1;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Maxwell.k_densityStep = 1.25;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Maxwell.k_densityMin = 0.01;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Maxwell.k_densityMax = 0.8;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Maxwell.k_densityDefault = 0.25;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Maxwell.k_temperatureStep = 0.2;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Maxwell.k_temperatureMin = 0.4;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Maxwell.k_temperatureMax = 10.0;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Maxwell.k_temperatureDefault = 5.0;
 
@@ -179,8 +179,8 @@ box2d.Testbed.Maxwell.prototype.DisableBarrier = function() {
   }
 }
 
-/** 
- * Enable the barrier. 
+/**
+ * Enable the barrier.
  * @return {void}
  */
 box2d.Testbed.Maxwell.prototype.EnableBarrier = function() {
@@ -198,8 +198,8 @@ box2d.Testbed.Maxwell.prototype.EnableBarrier = function() {
   }
 }
 
-/** 
- * Enable / disable the barrier. 
+/**
+ * Enable / disable the barrier.
  * @return {void}
  */
 box2d.Testbed.Maxwell.prototype.ToggleBarrier = function() {
@@ -210,8 +210,8 @@ box2d.Testbed.Maxwell.prototype.ToggleBarrier = function() {
   }
 }
 
-/** 
- * Destroy and recreate all particles. 
+/**
+ * Destroy and recreate all particles.
  * @return {void}
  */
 box2d.Testbed.Maxwell.prototype.ResetParticles = function() {
@@ -247,9 +247,9 @@ box2d.Testbed.Maxwell.prototype.ResetParticles = function() {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.Maxwell.prototype.Keyboard = function(key) {
   switch (key) {
@@ -293,10 +293,10 @@ box2d.Testbed.Maxwell.prototype.Keyboard = function(key) {
   }
 }
 
-/** 
- * Determine whether a point is in the container. 
- * @return {boolean} 
- * @param {box2d.b2Vec2} p 
+/**
+ * Determine whether a point is in the container.
+ * @return {boolean}
+ * @param {box2d.b2Vec2} p
  */
 box2d.Testbed.Maxwell.prototype.InContainer = function(p) {
   return p.x >= -box2d.Testbed.Maxwell.k_containerHalfWidth && p.x <= box2d.Testbed.Maxwell.k_containerHalfWidth &&
@@ -304,9 +304,9 @@ box2d.Testbed.Maxwell.prototype.InContainer = function(p) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2Vec2} p 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Vec2} p
  */
 box2d.Testbed.Maxwell.prototype.MouseDown = function(p) {
   if (!this.InContainer(p)) {
@@ -316,8 +316,8 @@ box2d.Testbed.Maxwell.prototype.MouseDown = function(p) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Vec2} p 
+ * @return {void}
+ * @param {box2d.b2Vec2} p
  */
 box2d.Testbed.Maxwell.prototype.MouseUp = function(p) {
   // If the pointer is in the container.
@@ -334,8 +334,8 @@ box2d.Testbed.Maxwell.prototype.MouseUp = function(p) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Maxwell.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
@@ -376,8 +376,8 @@ box2d.Testbed.Maxwell.prototype.Step = function(settings) {
     topPressure > 0.0 ? botPressure / topPressure - 1.0 : 0.0);
 }
 
-/** 
- * Reset the particles and the barrier. 
+/**
+ * Reset the particles and the barrier.
  * @return {void}
  */
 box2d.Testbed.Maxwell.prototype.Reset = function() {
@@ -386,10 +386,10 @@ box2d.Testbed.Maxwell.prototype.Reset = function() {
   this.EnableBarrier();
 }
 
-/** 
- * Move the divider / barrier. 
- * @return {void} 
- * @param {number} newPosition 
+/**
+ * Move the divider / barrier.
+ * @return {void}
+ * @param {number} newPosition
  */
 box2d.Testbed.Maxwell.prototype.MoveDivider = function(newPosition) {
   this.m_position = box2d.b2Clamp(newPosition, box2d.Testbed.Maxwell.k_barrierMovementIncrement,
@@ -398,18 +398,18 @@ box2d.Testbed.Maxwell.prototype.MoveDivider = function(newPosition) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.Testbed.Maxwell.prototype.GetDefaultViewZoom = function() {
   return 0.1;
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Maxwell.Create = function(canvas, settings) {
   return new box2d.Testbed.Maxwell(canvas, settings);

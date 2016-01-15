@@ -19,7 +19,7 @@
 goog.provide('box2d.b2StackAllocator');
 
 /**
- * @export 
+ * @export
  * @constructor
  */
 box2d.b2StackAllocator = function() {}

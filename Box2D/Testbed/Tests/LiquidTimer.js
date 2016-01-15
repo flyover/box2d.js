@@ -23,11 +23,11 @@ goog.provide('box2d.Testbed.LiquidTimer');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.LiquidTimer = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -146,40 +146,40 @@ box2d.Testbed.LiquidTimer = function(canvas, settings) {
 
 goog.inherits(box2d.Testbed.LiquidTimer, box2d.Testbed.Test);
 
-/** 
- * @const 
+/**
+ * @const
  * @type {Array.<box2d.Testbed.ParticleParameter.Value>}
  */
 box2d.Testbed.LiquidTimer.k_paramValues = [
   new box2d.Testbed.ParticleParameter.Value(box2d.b2ParticleFlag.b2_tensileParticle | box2d.b2ParticleFlag.b2_viscousParticle, box2d.Testbed.ParticleParameter.k_DefaultOptions, "tensile + viscous")
 ];
 /**
- * @const 
- * @type {Array.<box2d.Testbed.ParticleParameter.Definition>} 
+ * @const
+ * @type {Array.<box2d.Testbed.ParticleParameter.Definition>}
  */
 box2d.Testbed.LiquidTimer.k_paramDef = [
   new box2d.Testbed.ParticleParameter.Definition(box2d.Testbed.LiquidTimer.k_paramValues),
   new box2d.Testbed.ParticleParameter.Definition(box2d.Testbed.ParticleParameter.k_particleTypes)
 ];
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.Testbed.LiquidTimer.k_paramDefCount = box2d.Testbed.LiquidTimer.k_paramDef.length;
 
 /**
- * @export 
+ * @export
  * @return {number}
  */
 box2d.Testbed.LiquidTimer.prototype.GetDefaultViewZoom = function() {
   return 0.1;
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.LiquidTimer.Create = function(canvas, settings) {
   return new box2d.Testbed.LiquidTimer(canvas, settings);

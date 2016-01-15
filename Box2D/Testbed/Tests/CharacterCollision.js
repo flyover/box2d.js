@@ -20,18 +20,18 @@ goog.provide('box2d.Testbed.CharacterCollision');
 
 goog.require('box2d.Testbed.Test');
 
-/** 
- * This is a test of typical character collision scenarios. This 
- * does not show how you should implement a character in your 
- * application. 
+/**
+ * This is a test of typical character collision scenarios. This
+ * does not show how you should implement a character in your
+ * application.
  */
 
-/** 
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.CharacterCollision = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -244,15 +244,15 @@ box2d.Testbed.CharacterCollision = function(canvas, settings) {
 goog.inherits(box2d.Testbed.CharacterCollision, box2d.Testbed.Test);
 
 /**
- * @export 
- * @type {box2d.b2Body} 
+ * @export
+ * @type {box2d.b2Body}
  */
 box2d.Testbed.CharacterCollision.prototype.m_character = null;
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.CharacterCollision.prototype.Step = function(settings) {
   /*box2d.b2Vec2*/
@@ -269,11 +269,11 @@ box2d.Testbed.CharacterCollision.prototype.Step = function(settings) {
   this.m_textLine += box2d.Testbed.DRAW_STRING_NEW_LINE;
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.CharacterCollision.Create = function(canvas, settings) {
   return new box2d.Testbed.CharacterCollision(canvas, settings);

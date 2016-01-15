@@ -59,8 +59,8 @@ box2d.b2_toiRootIters = 0;
  */
 box2d.b2_toiMaxRootIters = 0;
 
-/** 
- * Input parameters for b2TimeOfImpact 
+/**
+ * Input parameters for b2TimeOfImpact
  * @export
  * @constructor
  */
@@ -98,7 +98,7 @@ box2d.b2TOIInput.prototype.sweepB = null;
 box2d.b2TOIInput.prototype.tMax = 0; // defines sweep interval [0, tMax]
 
 /**
- * @export 
+ * @export
  * @enum
  */
 box2d.b2TOIOutputState = {
@@ -114,8 +114,8 @@ goog.exportProperty(box2d.b2TOIOutputState, 'e_overlapped', box2d.b2TOIOutputSta
 goog.exportProperty(box2d.b2TOIOutputState, 'e_touching', box2d.b2TOIOutputState.e_touching);
 goog.exportProperty(box2d.b2TOIOutputState, 'e_separated', box2d.b2TOIOutputState.e_separated);
 
-/** 
- * Output parameters for b2TimeOfImpact. 
+/**
+ * Output parameters for b2TimeOfImpact.
  * @export
  * @constructor
  */
@@ -133,7 +133,7 @@ box2d.b2TOIOutput.prototype.state = box2d.b2TOIOutputState.e_unknown;
 box2d.b2TOIOutput.prototype.t = 0;
 
 /**
- * @export 
+ * @export
  * @enum
  */
 box2d.b2SeparationFunctionType = {
@@ -194,8 +194,8 @@ box2d.b2SeparationFunction.prototype.m_localPoint = null;
  */
 box2d.b2SeparationFunction.prototype.m_axis = null;
 
-/** 
- * TODO_ERIN might not need to return the separation 
+/**
+ * TODO_ERIN might not need to return the separation
  * @export
  * @return {number}
  * @param {box2d.b2SimplexCache} cache
@@ -471,13 +471,13 @@ box2d.b2SeparationFunction.prototype.Evaluate = function(indexA, indexB, t) {
 }
 
 /**
- * Compute the upper bound on time before two shapes penetrate. 
+ * Compute the upper bound on time before two shapes penetrate.
  * Time is represented as a fraction between [0,tMax]. This uses
- * a swept separating axis and may miss some intermediate, 
- * non-tunneling collision. If you change the time interval, you 
- * should call this function again. 
- * Note: use box2d.b2ShapeDistance to compute the contact point and 
- * normal at the time of impact. 
+ * a swept separating axis and may miss some intermediate,
+ * non-tunneling collision. If you change the time interval, you
+ * should call this function again.
+ * Note: use box2d.b2ShapeDistance to compute the contact point and
+ * normal at the time of impact.
  * @export
  * @return {void}
  * @param {box2d.b2TOIOutput} output

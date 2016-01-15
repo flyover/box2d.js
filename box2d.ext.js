@@ -4,174 +4,174 @@
 var box2d;
 
 /**
- * @return {void} 
+ * @return {void}
  * @param {...} args
  */
 box2d.b2Log;
 
 /**
- * @constructor 
- * @param {number=} major 
- * @param {number=} minor 
- * @param {number=} revision 
+ * @constructor
+ * @param {number=} major
+ * @param {number=} minor
+ * @param {number=} revision
  */
 box2d.b2Version;
 /**
- * @type {number} 
+ * @type {number}
  */
 box2d.b2Version.prototype.major;
 /**
- * @type {number} 
+ * @type {number}
  */
 box2d.b2Version.prototype.minor;
 /**
- * @type {number} 
+ * @type {number}
  */
 box2d.b2Version.prototype.revision;
 
 /**
- * @const 
- * @type {box2d.b2Version} 
+ * @const
+ * @type {box2d.b2Version}
  */
 box2d.b2_version;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_changelist;
 
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.b2_maxFloat;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.b2_epsilon;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.b2_epsilon_sq;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.b2_pi;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_maxManifoldPoints;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_maxPolygonVertices;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_aabbExtension;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_aabbMultiplier;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_linearSlop;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_angularSlop;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_polygonRadius;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_maxSubSteps;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_maxTOIContacts;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_velocityThreshold;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_maxLinearCorrection;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_maxAngularCorrection;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_maxTranslation;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_maxTranslationSquared;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_maxRotation;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_maxRotationSquared;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_baumgarte;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_toiBaumgarte;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_timeToSleep;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_linearSleepTolerance;
-/** 
- * @const 
- * @type {number} 
+/**
+ * @const
+ * @type {number}
  */
 box2d.b2_angularSleepTolerance;
 
 box2d.b2Clamp;
 
 /**
- * @constructor 
- * @param {number|Float32Array|Array.<number>=} a0 
- * @param {number=} a1 
+ * @constructor
+ * @param {number|Float32Array|Array.<number>=} a0
+ * @param {number=} a1
  */
 box2d.b2Vec2;
 /**
@@ -186,32 +186,32 @@ box2d.b2Vec2.prototype.y;
  * @return {box2d.b2Rot}
  */
 box2d.b2Vec2.prototype.Clone;
-/** 
+/**
  * @return {box2d.b2Vec2}
  * @param {number} x
  * @param {number} y
  */
 box2d.b2Vec2.prototype.Set;
-/** 
+/**
  * @return {box2d.b2Vec2}
  */
 box2d.b2Vec2.prototype.SetZero;
 /**
- * @return {box2d.b2Vec2} 
+ * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} other
  */
 box2d.b2Vec2.prototype.Copy;
-/** 
+/**
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} v
  */
 box2d.b2Vec2.prototype.SelfAdd;
-/** 
+/**
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} v
  */
 box2d.b2Vec2.prototype.SelfSub;
-/** 
+/**
  * @return {box2d.b2Vec2}
  * @param {number} s
  */
@@ -225,13 +225,13 @@ box2d.b2Vec2.prototype.Normalize;
  */
 box2d.b2Vec2.prototype.SelfNormalize;
 /**
- * @return {box2d.b2Vec2} 
+ * @return {box2d.b2Vec2}
  * @param {number} c
  * @param {number} s
  */
 box2d.b2Vec2.prototype.SelfRotate;
 /**
- * @return {box2d.b2Vec2} 
+ * @return {box2d.b2Vec2}
  * @param {number} a
  */
 box2d.b2Vec2.prototype.SelfRotateAngle;
@@ -239,20 +239,20 @@ box2d.b2Vec2.prototype.SelfRotateAngle;
  * @return {box2d.b2Vec2}
  */
 box2d.b2Vec2.prototype.SelfNeg;
-/** 
+/**
  * @return {number}
  */
 box2d.b2Vec2.prototype.Length;
-/** 
+/**
  * @return {number}
  */
 box2d.b2Vec2.prototype.LengthSquared;
 
 /**
- * @constructor 
- * @param {number=} x 
- * @param {number=} y 
- * @param {number=} z 
+ * @constructor
+ * @param {number=} x
+ * @param {number=} y
+ * @param {number=} z
  */
 box2d.b2Vec3;
 /**
@@ -268,13 +268,13 @@ box2d.b2Vec3.prototype.y;
  */
 box2d.b2Vec3.prototype.z;
 
-/** 
+/**
  * @return {number}
  * @param {box2d.b2Vec2} a
  * @param {box2d.b2Vec2} b
  */
 box2d.b2Dot_V2_V2;
-/** 
+/**
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} a
  * @param {box2d.b2Vec2} b
@@ -283,16 +283,16 @@ box2d.b2Dot_V2_V2;
 box2d.b2Sub_V2_V2;
 
 /**
- * @return {number} 
- * @param {box2d.b2Vec2} a 
- * @param {box2d.b2Vec2} b 
+ * @return {number}
+ * @param {box2d.b2Vec2} a
+ * @param {box2d.b2Vec2} b
  */
 box2d.b2Distance;
 
 /**
- * @return {number} 
- * @param {box2d.b2Vec2} a 
- * @param {box2d.b2Vec2} b 
+ * @return {number}
+ * @param {box2d.b2Vec2} a
+ * @param {box2d.b2Vec2} b
  */
 box2d.b2DistanceSquared;
 
@@ -301,7 +301,7 @@ box2d.b2DistanceSquared;
  */
 box2d.b2Rot;
 /**
- * @type {number} 
+ * @type {number}
  */
 box2d.b2Rot.prototype.angle;
 /**
@@ -313,44 +313,44 @@ box2d.b2Rot.prototype.s;
  */
 box2d.b2Rot.prototype.c;
 /**
- * @type {box2d.b2Rot} 
+ * @type {box2d.b2Rot}
  */
 box2d.b2Rot.IDENTITY;
 /**
  * @return {box2d.b2Rot}
  */
 box2d.b2Rot.prototype.Clone;
-/** 
+/**
  * @return {box2d.b2Rot}
- * @param {box2d.b2Rot} other 
+ * @param {box2d.b2Rot} other
  */
 box2d.b2Rot.prototype.Copy;
-/** 
- * @return {box2d.b2Rot} 
- * @param {number} angle 
+/**
+ * @return {box2d.b2Rot}
+ * @param {number} angle
  */
 box2d.b2Rot.prototype.Set;
-/** 
- * @return {box2d.b2Rot} 
- * @param {number} angle 
+/**
+ * @return {box2d.b2Rot}
+ * @param {number} angle
  */
 box2d.b2Rot.prototype.SetAngle;
-/** 
- * @return {box2d.b2Rot} 
+/**
+ * @return {box2d.b2Rot}
  */
 box2d.b2Rot.prototype.SetIdentity;
-/** 
+/**
  * @return {number}
  */
 box2d.b2Rot.prototype.GetAngle;
-/** 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Rot.prototype.GetXAxis;
-/** 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Rot.prototype.GetYAxis;
 
@@ -368,7 +368,7 @@ box2d.b2Transform.prototype.p;
 box2d.b2Transform.prototype.q;
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} a
  * @param {box2d.b2Vec2} b
@@ -377,7 +377,7 @@ box2d.b2Transform.prototype.q;
 box2d.b2Add_V2_V2;
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} a
  * @param {box2d.b2Vec2} b
@@ -386,7 +386,7 @@ box2d.b2Add_V2_V2;
 box2d.b2Sub_V2_V2;
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Transform} T
  * @param {box2d.b2Vec2} v
@@ -406,7 +406,7 @@ box2d.b2MulT_X_V2;
  * @return {box2d.b2Transform}
  * @param {box2d.b2Transform} A
  * @param {box2d.b2Transform} B
- * @param {box2d.b2Transform} out 
+ * @param {box2d.b2Transform} out
  */
 box2d.b2Mul_X_X;
 
@@ -414,7 +414,7 @@ box2d.b2Mul_X_X;
  * @return {box2d.b2Transform}
  * @param {box2d.b2Transform} A
  * @param {box2d.b2Transform} B
- * @param {box2d.b2Transform} out 
+ * @param {box2d.b2Transform} out
  */
 box2d.b2MulT_X_X;
 
@@ -422,20 +422,20 @@ box2d.b2MulT_X_X;
  * @constructor
  */
 box2d.b2MassData;
-/** 
+/**
  * @type {number}
  */
 box2d.b2MassData.prototype.mass;
-/** 
+/**
  * @type {box2d.b2Vec2}
  */
 box2d.b2MassData.prototype.center;
-/** 
+/**
  * @type {number}
  */
 box2d.b2MassData.prototype.I;
 
-/** 
+/**
  * @typedef {box2d.b2ShapeType}
  */
 box2d.b2ShapeType;
@@ -452,29 +452,29 @@ box2d.b2ShapeType.e_shapeTypeCount;
 box2d.b2Shape;
 
 /**
- * @constructor 
- * @extends {box2d.b2Shape} 
- * @param {number=} radius 
+ * @constructor
+ * @extends {box2d.b2Shape}
+ * @param {number=} radius
  */
 box2d.b2CircleShape;
-/** 
+/**
  * @type {box2d.b2Vec2}
  */
 box2d.b2CircleShape.prototype.m_p;
 
-/** 
- * @return {void} 
- * @param {box2d.b2MassData} massData 
- * @param {number} density 
+/**
+ * @return {void}
+ * @param {box2d.b2MassData} massData
+ * @param {number} density
  */
 box2d.b2CircleShape.prototype.ComputeMass;
 
 /**
  * @constructor
- * @extends {box2d.b2Shape} 
+ * @extends {box2d.b2Shape}
  */
 box2d.b2EdgeShape;
-/** 
+/**
  * @type {box2d.b2Vec2}
  */
 box2d.b2EdgeShape.prototype.m_vertex1;
@@ -482,7 +482,7 @@ box2d.b2EdgeShape.prototype.m_vertex1;
  * @type {box2d.b2Vec2}
  */
 box2d.b2EdgeShape.prototype.m_vertex2;
-/** 
+/**
  * @type {box2d.b2Vec2}
  */
 box2d.b2EdgeShape.prototype.m_vertex0;
@@ -498,72 +498,72 @@ box2d.b2EdgeShape.prototype.m_hasVertex0;
  * @type {boolean}
  */
 box2d.b2EdgeShape.prototype.m_hasVertex3;
-/** 
- * @return {box2d.b2EdgeShape} 
+/**
+ * @return {box2d.b2EdgeShape}
  * @param {box2d.b2Vec2} v1
- * @param {box2d.b2Vec2} v2 
+ * @param {box2d.b2Vec2} v2
  */
 box2d.b2EdgeShape.prototype.Set;
 
 /**
  * @constructor
- * @extends {box2d.b2Shape} 
+ * @extends {box2d.b2Shape}
  */
 box2d.b2PolygonShape;
 /**
- * @return {box2d.b2PolygonShape} 
+ * @return {box2d.b2PolygonShape}
  * @param {Array.<box2d.b2Vec2>} vertices
  * @param {number=} count
  */
 box2d.b2PolygonShape.prototype.Set;
-/** 
- * @return {box2d.b2PolygonShape} 
- * @param {number} hx 
- * @param {number} hy 
- * @param {box2d.b2Vec2=} center 
- * @param {number=} angle 
+/**
+ * @return {box2d.b2PolygonShape}
+ * @param {number} hx
+ * @param {number} hy
+ * @param {box2d.b2Vec2=} center
+ * @param {number=} angle
  */
 box2d.b2PolygonShape.prototype.SetAsBox;
-/** 
- * @return {box2d.b2PolygonShape} 
- * @param {number} hx 
- * @param {number} hy 
- * @param {box2d.b2Vec2} center 
- * @param {number} angle 
+/**
+ * @return {box2d.b2PolygonShape}
+ * @param {number} hx
+ * @param {number} hy
+ * @param {box2d.b2Vec2} center
+ * @param {number} angle
  */
 box2d.b2PolygonShape.prototype.SetAsOrientedBox;
 
-/** 
- * @return {void} 
- * @param {box2d.b2MassData} massData 
- * @param {number} density 
+/**
+ * @return {void}
+ * @param {box2d.b2MassData} massData
+ * @param {number} density
  */
 box2d.b2PolygonShape.prototype.ComputeMass;
 
 /**
  * @constructor
- * @extends {box2d.b2Shape} 
+ * @extends {box2d.b2Shape}
  */
 box2d.b2ChainShape;
-/** 
- * @return {box2d.b2ChainShape} 
- * @param {Array.<box2d.b2Vec2>} vertices 
- * @param {number=} count 
+/**
+ * @return {box2d.b2ChainShape}
+ * @param {Array.<box2d.b2Vec2>} vertices
+ * @param {number=} count
  */
 box2d.b2ChainShape.prototype.CreateLoop;
-/** 
- * @return {box2d.b2ChainShape} 
- * @param {Array.<box2d.b2Vec2>} vertices 
- * @param {number=} count 
+/**
+ * @return {box2d.b2ChainShape}
+ * @param {Array.<box2d.b2Vec2>} vertices
+ * @param {number=} count
  */
 box2d.b2ChainShape.prototype.CreateChain;
 
-/** 
+/**
  * @constructor
  */
 box2d.b2RayCastInput;
 
-/** 
+/**
  * @constructor
  */
 box2d.b2RayCastOutput;
@@ -597,19 +597,19 @@ box2d.b2FixtureDef.prototype.shape;
  * @type {*}
  */
 box2d.b2FixtureDef.prototype.userData;
-/** 
+/**
  * @type {number}
  */
 box2d.b2FixtureDef.prototype.friction;
-/** 
+/**
  * @type {number}
  */
 box2d.b2FixtureDef.prototype.restitution;
-/** 
+/**
  * @type {number}
  */
 box2d.b2FixtureDef.prototype.density;
-/** 
+/**
  * @type {boolean}
  */
 box2d.b2FixtureDef.prototype.isSensor;
@@ -622,104 +622,104 @@ box2d.b2FixtureDef.prototype.filter;
  * @constructor
  */
 box2d.b2Fixture;
-/** 
+/**
  * @return {box2d.b2ShapeType}
  */
 box2d.b2Fixture.prototype.GetType;
-/** 
+/**
  * @return {box2d.b2Shape}
  */
 box2d.b2Fixture.prototype.GetShape;
-/** 
+/**
  * @return {boolean}
  */
 box2d.b2Fixture.prototype.IsSensor;
-/** 
- * @return {box2d.b2Filter} 
+/**
+ * @return {box2d.b2Filter}
  */
 box2d.b2Fixture.prototype.GetFilterData;
-/** 
- * @return {*} 
+/**
+ * @return {*}
  */
 box2d.b2Fixture.prototype.GetUserData;
-/** 
- * @param {*} data 
+/**
+ * @param {*} data
  */
 box2d.b2Fixture.prototype.SetUserData;
-/** 
+/**
  * @return {box2d.b2Body}
  */
 box2d.b2Fixture.prototype.GetBody;
-/** 
+/**
  * @return {box2d.b2Fixture}
  */
 box2d.b2Fixture.prototype.GetNext;
-/** 
- * @return {void} 
- * @param {number} density 
+/**
+ * @return {void}
+ * @param {number} density
  */
 box2d.b2Fixture.prototype.SetDensity;
-/** 
- * @return {number} 
+/**
+ * @return {number}
  */
 box2d.b2Fixture.prototype.GetDensity;
-/** 
- * @return {number} 
+/**
+ * @return {number}
  */
 box2d.b2Fixture.prototype.GetFriction;
-/** 
- * @return {void} 
- * @param {number} friction 
+/**
+ * @return {void}
+ * @param {number} friction
  */
 box2d.b2Fixture.prototype.SetFriction;
-/** 
- * @return {number} 
+/**
+ * @return {number}
  */
 box2d.b2Fixture.prototype.GetRestitution;
-/** 
- * @return {void} 
- * @param {number} restitution 
+/**
+ * @return {void}
+ * @param {number} restitution
  */
 box2d.b2Fixture.prototype.SetRestitution;
-/** 
- * @return {boolean} 
- * @param {box2d.b2Vec2} p 
+/**
+ * @return {boolean}
+ * @param {box2d.b2Vec2} p
  */
 box2d.b2Fixture.prototype.TestPoint;
-/** 
- * @return {boolean} 
- * @param {box2d.b2RayCastOutput} output 
- * @param {box2d.b2RayCastInput} input 
- * @param {number} childIndex 
+/**
+ * @return {boolean}
+ * @param {box2d.b2RayCastOutput} output
+ * @param {box2d.b2RayCastInput} input
+ * @param {number} childIndex
  */
 box2d.b2Fixture.prototype.RayCast;
-/** 
- * @return {box2d.b2MassData} 
- * @param {box2d.b2MassData=} massData 
+/**
+ * @return {box2d.b2MassData}
+ * @param {box2d.b2MassData=} massData
  */
 box2d.b2Fixture.prototype.GetMassData;
-/** 
- * @return {box2d.b2AABB} 
- * @param {number} childIndex 
+/**
+ * @return {box2d.b2AABB}
+ * @param {number} childIndex
  */
 box2d.b2Fixture.prototype.GetAABB;
-/** 
- * @return {void} 
- * @param {box2d.b2Filter} filter 
+/**
+ * @return {void}
+ * @param {box2d.b2Filter} filter
  */
 box2d.b2Fixture.prototype.SetFilterData;
 /**
- * @return {void} 
+ * @return {void}
  */
 box2d.b2Fixture.prototype.Refilter;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {boolean} sensor
  */
 box2d.b2Fixture.prototype.SetSensor;
-/** 
+/**
  * @return {void}
- * @param {number} bodyIndex 
+ * @param {number} bodyIndex
  */
 box2d.b2Fixture.prototype.Dump;
 
@@ -735,59 +735,59 @@ box2d.b2BodyType.b2_dynamicBody;
  * @constructor
  */
 box2d.b2BodyDef;
-/** 
- * @type {box2d.b2BodyType} 
- */ 
+/**
+ * @type {box2d.b2BodyType}
+ */
 box2d.b2BodyDef.prototype.type;
-/** 
- * @type {box2d.b2Vec2} 
+/**
+ * @type {box2d.b2Vec2}
  */
 box2d.b2BodyDef.prototype.position;
-/** 
- * @type {number} 
+/**
+ * @type {number}
  */
 box2d.b2BodyDef.prototype.angle;
-/** 
+/**
  * @type {box2d.b2Vec2}
  */
 box2d.b2BodyDef.prototype.linearVelocity;
-/** 
+/**
  * @type {number}
  */
 box2d.b2BodyDef.prototype.angularVelocity;
-/** 
+/**
  * @type {number}
  */
 box2d.b2BodyDef.prototype.linearDamping;
-/** 
+/**
  * @type {number}
  */
 box2d.b2BodyDef.prototype.angularDamping;
-/** 
+/**
  * @type {boolean}
  */
 box2d.b2BodyDef.prototype.allowSleep;
-/** 
+/**
  * @type {boolean}
  */
 box2d.b2BodyDef.prototype.awake;
-/** 
+/**
  * @type {boolean}
  */
 box2d.b2BodyDef.prototype.fixedRotation;
-/** 
+/**
  * @type {boolean}
  */
 box2d.b2BodyDef.prototype.bullet;
-/** 
+/**
  * @type {boolean}
  */
 box2d.b2BodyDef.prototype.active;
-/** 
+/**
  * @type {*}
  */
 box2d.b2BodyDef.prototype.userData;
-/** 
+/**
  * @type {number}
  */
 box2d.b2BodyDef.prototype.gravityScale;
@@ -796,306 +796,306 @@ box2d.b2BodyDef.prototype.gravityScale;
  * @constructor
  */
 box2d.b2Body;
-/** 
+/**
  * @return {box2d.b2Fixture}
  * @param {box2d.b2FixtureDef|box2d.b2Shape} a
  * @param {number=} b
  */
 box2d.b2Body.prototype.CreateFixture;
-/** 
+/**
  * @return {box2d.b2Fixture}
  * @param {box2d.b2FixtureDef} def
  */
 box2d.b2Body.prototype.CreateFixture_Def;
-/** 
+/**
  * @return {box2d.b2Fixture}
  * @param {box2d.b2Shape} shape
  * @param {number} density
  */
 box2d.b2Body.prototype.CreateFixture_Shape_Density;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {box2d.b2Fixture} fixture
  */
 box2d.b2Body.prototype.DestroyFixture;
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2Vec2} position
  * @param {number} angle
  */
 box2d.b2Body.prototype.SetTransform;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {box2d.b2Vec2} position
  * @param {number} angle
  */
 box2d.b2Body.prototype.SetTransform_V2_A;
 /**
- * @return {void} 
- * @param {number} x 
- * @param {number} y 
- * @param {number} angle 
+ * @return {void}
+ * @param {number} x
+ * @param {number} y
+ * @param {number} angle
  */
 box2d.b2Body.prototype.SetTransform_X_Y_A;
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2Vec2} position
  * @param {number} angle
  */
 box2d.b2Body.prototype.SetTransform_X;
-/** 
+/**
  * @return {box2d.b2Transform}
- * @param {box2d.b2Transform=} out 
+ * @param {box2d.b2Transform=} out
  */
 box2d.b2Body.prototype.GetTransform;
-/** 
+/**
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2=} out 
+ * @param {box2d.b2Vec2=} out
  */
 box2d.b2Body.prototype.GetPosition;
 /**
- * @return {void} 
- * @param {box2d.b2Vec2} position 
+ * @return {void}
+ * @param {box2d.b2Vec2} position
  */
 box2d.b2Body.prototype.SetPosition;
 /**
- * @return {void} 
+ * @return {void}
  * @param {number} x
- * @param {number} y 
+ * @param {number} y
  */
 box2d.b2Body.prototype.SetPositionXY;
-/** 
+/**
  * @return {number}
  */
 box2d.b2Body.prototype.GetAngle;
 /**
- * @return {void} 
- * @param {number} angle 
+ * @return {void}
+ * @param {number} angle
  */
 box2d.b2Body.prototype.SetAngle;
-/** 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2=} out 
+/**
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2=} out
  */
 box2d.b2Body.prototype.GetWorldCenter;
-/** 
+/**
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2=} out 
+ * @param {box2d.b2Vec2=} out
  */
 box2d.b2Body.prototype.GetLocalCenter;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {box2d.b2Vec2} v
  */
 box2d.b2Body.prototype.SetLinearVelocity;
-/** 
+/**
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2=} out 
+ * @param {box2d.b2Vec2=} out
  */
 box2d.b2Body.prototype.GetLinearVelocity;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {number} w
  */
 box2d.b2Body.prototype.SetAngularVelocity;
-/** 
+/**
  * @return {number}
  */
 box2d.b2Body.prototype.GetAngularVelocity;
 /**
- * @return {box2d.b2BodyDef} 
+ * @return {box2d.b2BodyDef}
  * @param {box2d.b2BodyDef} bd
  */
 box2d.b2Body.prototype.GetDefinition;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {box2d.b2Vec2} force
  * @param {box2d.b2Vec2} point
  * @param {boolean=} wake
  */
 box2d.b2Body.prototype.ApplyForce;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {box2d.b2Vec2} force
  * @param {boolean=} wake
  */
 box2d.b2Body.prototype.ApplyForceToCenter;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {number} torque
  * @param {boolean=} wake
  */
 box2d.b2Body.prototype.ApplyTorque;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {box2d.b2Vec2} impulse
  * @param {box2d.b2Vec2} point
  * @param {boolean=} wake
  */
 box2d.b2Body.prototype.ApplyLinearImpulse;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {number} impulse
  * @param {boolean=} wake
  */
 box2d.b2Body.prototype.ApplyAngularImpulse;
-/** 
+/**
  * @return {number}
  */
 box2d.b2Body.prototype.GetMass;
-/** 
+/**
  * @return {number}
  */
 box2d.b2Body.prototype.GetInertia;
-/** 
+/**
  * @return {box2d.b2MassData}
  * @param {box2d.b2MassData} data
  */
 box2d.b2Body.prototype.GetMassData;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {box2d.b2MassData} massData
  */
 box2d.b2Body.prototype.SetMassData;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  */
 box2d.b2Body.prototype.ResetMassData;
-/** 
+/**
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} localPoint
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Body.prototype.GetWorldPoint;
-/** 
+/**
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} localVector
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Body.prototype.GetWorldVector;
-/** 
+/**
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} worldPoint
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Body.prototype.GetLocalPoint;
-/** 
+/**
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} worldVector
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Body.prototype.GetLocalVector;
-/** 
+/**
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} worldPoint
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Body.prototype.GetLinearVelocityFromWorldPoint;
-/** 
+/**
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} localPoint
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2Body.prototype.GetLinearVelocityFromLocalPoint;
-/** 
+/**
  * @return {number}
  */
 box2d.b2Body.prototype.GetLinearDamping;
-/** 
+/**
  * @param {number} linearDamping
  */
 box2d.b2Body.prototype.SetLinearDamping;
-/** 
+/**
  * @return {number}
  */
 box2d.b2Body.prototype.GetAngularDamping;
-/** 
- * @return {void} 
- * @param {number} angularDamping 
+/**
+ * @return {void}
+ * @param {number} angularDamping
  */
 box2d.b2Body.prototype.SetAngularDamping;
-/** 
+/**
  * @return {number}
  */
 box2d.b2Body.prototype.GetGravityScale;
-/** 
- * @return {void} 
- * @param {number} scale 
+/**
+ * @return {void}
+ * @param {number} scale
  */
 box2d.b2Body.prototype.SetGravityScale;
-/** 
- * @return {void} 
- * @param {box2d.b2BodyType} type 
+/**
+ * @return {void}
+ * @param {box2d.b2BodyType} type
  */
 box2d.b2Body.prototype.SetType;
-/** 
+/**
  * @return {box2d.b2BodyType}
  */
 box2d.b2Body.prototype.GetType;
-/** 
- * @return {void} 
- * @param {boolean} flag 
+/**
+ * @return {void}
+ * @param {boolean} flag
  */
 box2d.b2Body.prototype.SetBullet;
-/** 
+/**
  * @return {boolean}
  */
 box2d.b2Body.prototype.IsBullet;
-/** 
- * @return {void} 
- * @param {boolean} flag 
+/**
+ * @return {void}
+ * @param {boolean} flag
  */
 box2d.b2Body.prototype.SetSleepingAllowed;
-/** 
+/**
  * @return {boolean}
  */
 box2d.b2Body.prototype.IsSleepingAllowed;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {boolean} flag
  */
 box2d.b2Body.prototype.SetAwake;
-/** 
+/**
  * @return {boolean}
  */
 box2d.b2Body.prototype.IsAwake;
 /**
- * @return {void} 
- * @param {boolean} flag 
+ * @return {void}
+ * @param {boolean} flag
  */
 box2d.b2Body.prototype.SetActive;
-/** 
+/**
  * @return {boolean}
  */
 box2d.b2Body.prototype.IsActive;
-/** 
- * @return {void} 
- * @param {boolean} flag 
+/**
+ * @return {void}
+ * @param {boolean} flag
  */
 box2d.b2Body.prototype.SetFixedRotation;
-/** 
+/**
  * @return {boolean}
  */
 box2d.b2Body.prototype.IsFixedRotation;
-/** 
+/**
  * @return {box2d.b2Body}
  */
 box2d.b2Body.prototype.GetNext;
-/** 
- * @return {*} 
+/**
+ * @return {*}
  */
 box2d.b2Body.prototype.GetUserData;
-/** 
- * @return {void} 
- * @param {*} data 
+/**
+ * @return {void}
+ * @param {*} data
  */
 box2d.b2Body.prototype.SetUserData;
-/** 
+/**
  * @return {box2d.b2World}
  */
 box2d.b2Body.prototype.GetWorld;
 
-/** 
+/**
  * @typedef {box2d.b2JointType}
  */
 box2d.b2JointType;
@@ -1113,429 +1113,429 @@ box2d.b2JointType.e_ropeJoint;
 box2d.b2JointType.e_motorJoint;
 box2d.b2JointType.e_areaJoint;
 
-/** 
+/**
  * @constructor
  */
 box2d.b2JointDef;
-/** 
+/**
  * @type {box2d.b2JointType}
  */
 box2d.b2JointDef.prototype.type;
-/** 
+/**
  * @type {*}
  */
 box2d.b2JointDef.prototype.userData;
-/** 
+/**
  * @type {box2d.b2Body}
  */
 box2d.b2JointDef.prototype.bodyA;
-/** 
+/**
  * @type {box2d.b2Body}
  */
 box2d.b2JointDef.prototype.bodyB;
-/** 
+/**
  * @type {boolean}
  */
 box2d.b2JointDef.prototype.collideConnected;
 
 /**
- * @constructor 
+ * @constructor
  * @param {box2d.b2JointDef} def
  */
 box2d.b2Joint;
-/** 
+/**
  * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} out
  */
 box2d.b2Joint.prototype.GetAnchorA;
-/** 
- * @return {box2d.b2Vec2} 
+/**
+ * @return {box2d.b2Vec2}
  * @param {box2d.b2Vec2} out
  */
 box2d.b2Joint.prototype.GetAnchorB;
-/** 
- * @return {box2d.b2Vec2} 
- * @param {number} inv_dt 
+/**
+ * @return {box2d.b2Vec2}
+ * @param {number} inv_dt
  * @param {box2d.b2Vec2} out
  */
 box2d.b2Joint.prototype.GetReactionForce;
-/** 
- * @return {number} 
- * @param {number} inv_dt 
+/**
+ * @return {number}
+ * @param {number} inv_dt
  */
 box2d.b2Joint.prototype.GetReactionTorque;
-/** 
- * @return {box2d.b2JointType} 
+/**
+ * @return {box2d.b2JointType}
  */
 box2d.b2Joint.prototype.GetType;
-/** 
+/**
  * @return {box2d.b2Body}
  */
 box2d.b2Joint.prototype.GetBodyA;
-/** 
+/**
  * @return {box2d.b2Body}
  */
 box2d.b2Joint.prototype.GetBodyB;
-/** 
- * @return {box2d.b2Joint} 
+/**
+ * @return {box2d.b2Joint}
  */
 box2d.b2Joint.prototype.GetNext;
-/** 
- * @return {*} 
+/**
+ * @return {*}
  */
 box2d.b2Joint.prototype.GetUserData;
-/** 
- * @return {void} 
- * @param {*} data 
+/**
+ * @return {void}
+ * @param {*} data
  */
 box2d.b2Joint.prototype.SetUserData;
-/** 
+/**
  * @return {boolean}
  */
 box2d.b2Joint.prototype.GetCollideConnected;
-/** 
+/**
  * @return {void}
  */
 box2d.b2Joint.prototype.Dump;
-/** 
- * @return {boolean} 
+/**
+ * @return {boolean}
  */
 box2d.b2Joint.prototype.IsActive;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {box2d.b2Vec2} newOrigin
  */
 box2d.b2Joint.prototype.ShiftOrigin;
 
 /**
  * @constructor
- * @extends {box2d.b2JointDef} 
+ * @extends {box2d.b2JointDef}
  */
 box2d.b2RevoluteJointDef;
-/** 
+/**
  * @type {box2d.b2Vec2}
  */
 box2d.b2RevoluteJointDef.prototype.localAnchorA;
-/** 
+/**
  * @type {box2d.b2Vec2}
  */
 box2d.b2RevoluteJointDef.prototype.localAnchorB;
-/** 
+/**
  * @type {number}
  */
 box2d.b2RevoluteJointDef.prototype.referenceAngle;
-/** 
+/**
  * @type {boolean}
  */
 box2d.b2RevoluteJointDef.prototype.enableLimit;
-/** 
+/**
  * @type {number}
  */
 box2d.b2RevoluteJointDef.prototype.lowerAngle;
-/** 
+/**
  * @type {number}
  */
 box2d.b2RevoluteJointDef.prototype.upperAngle;
-/** 
+/**
  * @type {boolean}
  */
 box2d.b2RevoluteJointDef.prototype.enableMotor;
-/** 
+/**
  * @type {number}
  */
 box2d.b2RevoluteJointDef.prototype.motorSpeed;
-/** 
+/**
  * @type {number}
  */
 box2d.b2RevoluteJointDef.prototype.maxMotorTorque;
-/** 
- * @return {void} 
- * @param {box2d.b2Body} bA 
- * @param {box2d.b2Body} bB 
- * @param {box2d.b2Vec2} anchor 
+/**
+ * @return {void}
+ * @param {box2d.b2Body} bA
+ * @param {box2d.b2Body} bB
+ * @param {box2d.b2Vec2} anchor
  */
 box2d.b2RevoluteJointDef.prototype.Initialize;
 
 /**
  * @constructor
- * @extends {box2d.b2Joint} 
- * @param {box2d.b2RevoluteJointDef} def 
+ * @extends {box2d.b2Joint}
+ * @param {box2d.b2RevoluteJointDef} def
  */
 box2d.b2RevoluteJoint;
-/** 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2RevoluteJoint.prototype.GetAnchorA;
-/** 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2RevoluteJoint.prototype.GetAnchorB;
-/** 
- * @return {box2d.b2Vec2} 
- * @param {number} inv_dt 
+/**
+ * @return {box2d.b2Vec2}
+ * @param {number} inv_dt
  * @param {box2d.b2Vec2} out
  */
 box2d.b2RevoluteJoint.prototype.GetReactionForce;
-/** 
- * @return {number} 
- * @param {number} inv_dt 
+/**
+ * @return {number}
+ * @param {number} inv_dt
  */
 box2d.b2RevoluteJoint.prototype.GetReactionTorque;
-/** 
+/**
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2RevoluteJoint.prototype.GetLocalAnchorA;
-/** 
+/**
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2=} out 
+ * @param {box2d.b2Vec2=} out
  */
 box2d.b2RevoluteJoint.prototype.GetLocalAnchorB;
-/** 
+/**
  * @return {number}
  */
 box2d.b2RevoluteJoint.prototype.GetReferenceAngle;
-/** 
+/**
  * @return {number}
  */
 box2d.b2RevoluteJoint.prototype.GetJointAngle;
-/** 
+/**
  * @return {number}
  */
 box2d.b2RevoluteJoint.prototype.GetJointSpeed;
-/** 
+/**
  * @return {boolean}
  */
 box2d.b2RevoluteJoint.prototype.IsMotorEnabled;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {boolean} flag
  */
 box2d.b2RevoluteJoint.prototype.EnableMotor;
-/** 
+/**
  * @return {number}
- * @param {number} inv_dt 
+ * @param {number} inv_dt
  */
 box2d.b2RevoluteJoint.prototype.GetMotorTorque;
-/** 
+/**
  * @return {number}
  */
 box2d.b2RevoluteJoint.prototype.GetMotorSpeed;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {number} torque
  */
 box2d.b2RevoluteJoint.prototype.SetMaxMotorTorque;
-/** 
+/**
  * @return {number}
  */
 box2d.b2RevoluteJoint.prototype.GetMaxMotorTorque;
-/** 
+/**
  * @return {boolean}
  */
 box2d.b2RevoluteJoint.prototype.IsLimitEnabled;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {boolean} flag
  */
 box2d.b2RevoluteJoint.prototype.EnableLimit;
-/** 
+/**
  * @return {number}
  */
 box2d.b2RevoluteJoint.prototype.GetLowerLimit;
-/** 
+/**
  * @return {number}
  */
 box2d.b2RevoluteJoint.prototype.GetUpperLimit;
-/** 
- * @return {void} 
- * @param {number} lower 
- * @param {number} upper 
+/**
+ * @return {void}
+ * @param {number} lower
+ * @param {number} upper
  */
 box2d.b2RevoluteJoint.prototype.SetLimits;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {number} speed
  */
 box2d.b2RevoluteJoint.prototype.SetMotorSpeed;
-/** 
+/**
  * @return {void}
  */
 box2d.b2RevoluteJoint.prototype.Dump;
 
 /**
  * @constructor
- * @extends {box2d.b2JointDef} 
+ * @extends {box2d.b2JointDef}
  */
 box2d.b2PrismaticJointDef;
-/** 
+/**
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJointDef.prototype.localAnchorA;
-/** 
+/**
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJointDef.prototype.localAnchorB;
-/** 
+/**
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJointDef.prototype.localAxisA;
-/** 
+/**
  * @type {number}
  */
 box2d.b2PrismaticJointDef.prototype.referenceAngle;
-/** 
+/**
  * @type {boolean}
  */
 box2d.b2PrismaticJointDef.prototype.enableLimit;
-/** 
+/**
  * @type {number}
  */
 box2d.b2PrismaticJointDef.prototype.lowerTranslation;
-/** 
+/**
  * @type {number}
  */
 box2d.b2PrismaticJointDef.prototype.upperTranslation;
-/** 
+/**
  * @type {boolean}
  */
 box2d.b2PrismaticJointDef.prototype.enableMotor;
-/** 
+/**
  * @type {number}
  */
 box2d.b2PrismaticJointDef.prototype.maxMotorForce;
-/** 
+/**
  * @type {number}
  */
 box2d.b2PrismaticJointDef.prototype.motorSpeed;
-/** 
- * @return {void} 
- * @param {box2d.b2Body} bA 
- * @param {box2d.b2Body} bB 
- * @param {box2d.b2Vec2} anchor 
- * @param {box2d.b2Vec2} axis 
+/**
+ * @return {void}
+ * @param {box2d.b2Body} bA
+ * @param {box2d.b2Body} bB
+ * @param {box2d.b2Vec2} anchor
+ * @param {box2d.b2Vec2} axis
  */
 box2d.b2PrismaticJointDef.prototype.Initialize;
 
 /**
  * @constructor
- * @extends {box2d.b2Joint} 
- * @param {box2d.b2PrismaticJointDef} def 
+ * @extends {box2d.b2Joint}
+ * @param {box2d.b2PrismaticJointDef} def
  */
 box2d.b2PrismaticJoint;
-/** 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2PrismaticJoint.prototype.GetAnchorA;
-/** 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2PrismaticJoint.prototype.GetAnchorB;
-/** 
- * @return {box2d.b2Vec2} 
- * @param {number} inv_dt 
+/**
+ * @return {box2d.b2Vec2}
+ * @param {number} inv_dt
  * @param {box2d.b2Vec2} out
  */
 box2d.b2PrismaticJoint.prototype.GetReactionForce;
-/** 
- * @return {number} 
- * @param {number} inv_dt 
+/**
+ * @return {number}
+ * @param {number} inv_dt
  */
 box2d.b2PrismaticJoint.prototype.GetReactionTorque;
-/** 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2PrismaticJoint.prototype.GetLocalAnchorA;
-/** 
+/**
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2PrismaticJoint.prototype.GetLocalAnchorB;
-/** 
+/**
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2PrismaticJoint.prototype.GetLocalAxisA;
-/** 
+/**
  * @return {number}
  */
 box2d.b2PrismaticJoint.prototype.GetReferenceAngle;
-/** 
+/**
  * @return {number}
  */
 box2d.b2PrismaticJoint.prototype.GetJointTranslation;
-/** 
+/**
  * @return {number}
  */
 box2d.b2PrismaticJoint.prototype.GetJointSpeed;
-/** 
+/**
  * @return {boolean}
  */
 box2d.b2PrismaticJoint.prototype.IsLimitEnabled;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {boolean} flag
  */
 box2d.b2PrismaticJoint.prototype.EnableLimit;
-/** 
+/**
  * @return {number}
  */
 box2d.b2PrismaticJoint.prototype.GetLowerLimit;
-/** 
+/**
  * @return {number}
  */
 box2d.b2PrismaticJoint.prototype.GetUpperLimit;
-/** 
- * @return {void} 
- * @param {number} upper 
- * @param {number} lower 
+/**
+ * @return {void}
+ * @param {number} upper
+ * @param {number} lower
  */
 box2d.b2PrismaticJoint.prototype.SetLimits;
-/** 
+/**
  * @return {boolean}
  */
 box2d.b2PrismaticJoint.prototype.IsMotorEnabled;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {boolean} flag
  */
 box2d.b2PrismaticJoint.prototype.EnableMotor;
-/** 
- * @return {void} 
- * @param {number} speed 
+/**
+ * @return {void}
+ * @param {number} speed
  */
 box2d.b2PrismaticJoint.prototype.SetMotorSpeed;
-/** 
+/**
  * @return {number}
  */
 box2d.b2PrismaticJoint.prototype.GetMotorSpeed;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {number} force
  */
 box2d.b2PrismaticJoint.prototype.SetMaxMotorForce;
-/** 
+/**
  * @return {number}
  */
 box2d.b2PrismaticJoint.prototype.GetMaxMotorForce;
-/** 
+/**
  * @return {number}
- * @param {number} inv_dt 
+ * @param {number} inv_dt
  */
 box2d.b2PrismaticJoint.prototype.GetMotorForce;
-/** 
+/**
  * @return {void}
  */
 box2d.b2PrismaticJoint.prototype.Dump;
 
 /**
  * @constructor
- * @extends {box2d.b2JointDef} 
+ * @extends {box2d.b2JointDef}
  */
 box2d.b2MouseJointDef;
 /**
@@ -1545,104 +1545,104 @@ box2d.b2MouseJointDef.prototype.target;
 
 /**
  * @constructor
- * @extends {box2d.b2Joint} 
- * @param {box2d.b2MouseJointDef} def 
+ * @extends {box2d.b2Joint}
+ * @param {box2d.b2MouseJointDef} def
  */
 box2d.b2MouseJoint;
 
 /**
  * @constructor
- * @extends {box2d.b2JointDef} 
+ * @extends {box2d.b2JointDef}
  */
 box2d.b2WeldJointDef;
-/** 
+/**
  * @type {box2d.b2Vec2}
  */
 box2d.b2WeldJointDef.prototype.localAnchorA;
-/** 
+/**
  * @type {box2d.b2Vec2}
  */
 box2d.b2WeldJointDef.prototype.localAnchorB;
-/** 
+/**
  * @type {number}
  */
 box2d.b2WeldJointDef.prototype.referenceAngle;
-/** 
+/**
  * @type {number}
  */
 box2d.b2WeldJointDef.prototype.frequencyHz;
-/** 
+/**
  * @type {number}
  */
 box2d.b2WeldJointDef.prototype.dampingRatio;
-/** 
- * @return {void} 
- * @param {box2d.b2Body} bA 
- * @param {box2d.b2Body} bB 
- * @param {box2d.b2Vec2} anchor 
+/**
+ * @return {void}
+ * @param {box2d.b2Body} bA
+ * @param {box2d.b2Body} bB
+ * @param {box2d.b2Vec2} anchor
  */
 box2d.b2WeldJointDef.prototype.Initialize;
 
 /**
  * @constructor
- * @extends {box2d.b2Joint} 
- * @param {box2d.b2WeldJointDef} def 
+ * @extends {box2d.b2Joint}
+ * @param {box2d.b2WeldJointDef} def
  */
 box2d.b2WeldJoint;
-/** 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2WeldJoint.prototype.GetAnchorA;
-/** 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2WeldJoint.prototype.GetAnchorB;
-/** 
- * @return {box2d.b2Vec2} 
- * @param {number} inv_dt 
+/**
+ * @return {box2d.b2Vec2}
+ * @param {number} inv_dt
  * @param {box2d.b2Vec2} out
  */
 box2d.b2WeldJoint.prototype.GetReactionForce;
-/** 
- * @return {number} 
- * @param {number} inv_dt 
+/**
+ * @return {number}
+ * @param {number} inv_dt
  */
 box2d.b2WeldJoint.prototype.GetReactionTorque;
-/** 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2WeldJoint.prototype.GetLocalAnchorA;
-/** 
+/**
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2WeldJoint.prototype.GetLocalAnchorB;
-/** 
+/**
  * @return {number}
  */
 box2d.b2WeldJoint.prototype.GetReferenceAngle;
-/** 
- * @return {void} 
- * @param {number} speed 
+/**
+ * @return {void}
+ * @param {number} speed
  */
 box2d.b2WeldJoint.prototype.SetFrequency;
-/** 
+/**
  * @return {number}
  */
 box2d.b2WeldJoint.prototype.GetFrequency;
-/** 
- * @return {void} 
+/**
+ * @return {void}
  * @param {number} force
  */
 box2d.b2WeldJoint.prototype.SetDampingRatio;
-/** 
+/**
  * @return {number}
  */
 box2d.b2WeldJoint.prototype.GetDampingRatio;
-/** 
+/**
  * @return {void}
  */
 box2d.b2WeldJoint.prototype.Dump;
@@ -1652,7 +1652,7 @@ box2d.b2WeldJoint.prototype.Dump;
  */
 box2d.b2Contact;
 /**
- * @return {void} 
+ * @return {void}
  * @param {boolean} flag
  */
 box2d.b2Contact.prototype.SetEnabled;
@@ -1690,7 +1690,7 @@ box2d.b2ManifoldPoint.prototype.tangentImpulse;
  */
 box2d.b2ManifoldPoint.prototype.id;
 
-/** 
+/**
  * @typedef {box2d.b2ManifoldType}
  */
 box2d.b2ManifoldType;
@@ -1748,7 +1748,7 @@ box2d.b2WorldManifold.prototype.points;
  */
 box2d.b2WorldManifold.prototype.separations;
 
-/** 
+/**
  * @constructor
  */
 box2d.b2AABB;
@@ -1760,12 +1760,12 @@ box2d.b2AABB.prototype.lowerBound;
  * @type {box2d.b2Vec2}
  */
 box2d.b2AABB.prototype.upperBound;
-/** 
+/**
  * @return {box2d.b2Vec2}
  */
 box2d.b2AABB.prototype.GetCenter;
-/** 
- * @return {box2d.b2Vec2} 
+/**
+ * @return {box2d.b2Vec2}
  */
 box2d.b2AABB.prototype.GetExtents;
 
@@ -1824,28 +1824,28 @@ box2d.b2DrawFlags.e_all;
  */
 box2d.b2Draw;
 /**
- * @return {void} 
- * @param {box2d.b2DrawFlags} flags 
+ * @return {void}
+ * @param {box2d.b2DrawFlags} flags
  */
 box2d.b2Draw.prototype.SetFlags;
 /**
- * @return {box2d.b2DrawFlags} 
+ * @return {box2d.b2DrawFlags}
  */
 box2d.b2Draw.prototype.GetFlags;
 /**
- * @return {void} 
- * @param {box2d.b2DrawFlags} flags 
+ * @return {void}
+ * @param {box2d.b2DrawFlags} flags
  */
 box2d.b2Draw.prototype.AppendFlags;
 /**
- * @return {void} 
- * @param {box2d.b2DrawFlags} flags 
+ * @return {void}
+ * @param {box2d.b2DrawFlags} flags
  */
 box2d.b2Draw.prototype.ClearFlags;
 
 /**
- * @constructor 
- * @param {box2d.b2Vec2} gravity 
+ * @constructor
+ * @param {box2d.b2Vec2} gravity
  */
 box2d.b2World;
 box2d.b2World.prototype.SetGravity;

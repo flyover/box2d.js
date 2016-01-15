@@ -22,11 +22,11 @@ goog.require('box2d.Testbed.Test');
 
 // This is a fun demo that shows off the wheel joint
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Car = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -264,51 +264,51 @@ box2d.Testbed.Car = function(canvas, settings) {
 goog.inherits(box2d.Testbed.Car, box2d.Testbed.Test);
 
 /**
- * @export 
- * @type {box2d.b2Body} 
+ * @export
+ * @type {box2d.b2Body}
  */
 box2d.Testbed.Car.prototype.m_car = null;
 /**
- * @export 
- * @type {box2d.b2Body} 
+ * @export
+ * @type {box2d.b2Body}
  */
 box2d.Testbed.Car.prototype.m_wheel1 = null;
 /**
- * @export 
- * @type {box2d.b2Body} 
+ * @export
+ * @type {box2d.b2Body}
  */
 box2d.Testbed.Car.prototype.m_wheel2 = null;
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.Car.prototype.m_hz = 0.0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.Car.prototype.m_zeta = 0.0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.Car.prototype.m_speed = 0.0;
 /**
- * @export 
- * @type {box2d.b2WheelJoint} 
+ * @export
+ * @type {box2d.b2WheelJoint}
  */
 box2d.Testbed.Car.prototype.m_spring1 = null;
 /**
- * @export 
- * @type {box2d.b2WheelJoint} 
+ * @export
+ * @type {box2d.b2WheelJoint}
  */
 box2d.Testbed.Car.prototype.m_spring2 = null;
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.Car.prototype.Keyboard = function(key) {
   switch (key) {
@@ -340,8 +340,8 @@ box2d.Testbed.Car.prototype.Keyboard = function(key) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Car.prototype.Step = function(settings) {
   this.m_debugDraw.DrawString(5, this.m_textLine, "Keys: left = a, brake = s, right = d, hz down = q, hz up = e");
@@ -353,11 +353,11 @@ box2d.Testbed.Car.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Car.Create = function(canvas, settings) {
   return new box2d.Testbed.Car(canvas, settings);

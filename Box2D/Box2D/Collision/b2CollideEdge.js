@@ -20,17 +20,17 @@ goog.provide('box2d.b2CollideEdge');
 
 goog.require('box2d.b2Collision');
 
-/** 
- * Compute the collision manifold between an edge and a circle. 
- * Compute contact points for edge versus circle. 
+/**
+ * Compute the collision manifold between an edge and a circle.
+ * Compute contact points for edge versus circle.
  * This accounts for edge connectivity.
- * @export 
- * @return {void} 
- * @param {box2d.b2Manifold} manifold 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Manifold} manifold
  * @param {box2d.b2EdgeShape} edgeA
  * @param {box2d.b2Transform} xfA
  * @param {box2d.b2CircleShape} circleB
- * @param {box2d.b2Transform} xfB 
+ * @param {box2d.b2Transform} xfB
  */
 box2d.b2CollideEdgeAndCircle = function(manifold, edgeA, xfA, circleB, xfB) {
   manifold.pointCount = 0;
@@ -190,8 +190,8 @@ box2d.b2CollideEdgeAndCircle.s_P = new box2d.b2Vec2();
 box2d.b2CollideEdgeAndCircle.s_n = new box2d.b2Vec2();
 box2d.b2CollideEdgeAndCircle.s_id = new box2d.b2ContactID();
 
-/** 
- * @export 
+/**
+ * @export
  * @enum
  */
 box2d.b2EPAxisType = {
@@ -203,33 +203,33 @@ goog.exportProperty(box2d.b2EPAxisType, 'e_unknown', box2d.b2EPAxisType.e_unknow
 goog.exportProperty(box2d.b2EPAxisType, 'e_edgeA', box2d.b2EPAxisType.e_edgeA);
 goog.exportProperty(box2d.b2EPAxisType, 'e_edgeB', box2d.b2EPAxisType.e_edgeB);
 
-/** 
- * This structure is used to keep track of the best separating 
- * axis. 
- * @export 
+/**
+ * This structure is used to keep track of the best separating
+ * axis.
+ * @export
  * @constructor
  */
 box2d.b2EPAxis = function() {};
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2EPAxisType}
  */
 box2d.b2EPAxis.prototype.type = box2d.b2EPAxisType.e_unknown;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2EPAxis.prototype.index = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2EPAxis.prototype.separation = 0;
 
-/** 
- * This holds polygon B expressed in frame A. 
- * @export 
+/**
+ * This holds polygon B expressed in frame A.
+ * @export
  * @constructor
  */
 box2d.b2TempPolygon = function() {
@@ -239,24 +239,24 @@ box2d.b2TempPolygon = function() {
 };
 
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2Vec2>}
  */
 box2d.b2TempPolygon.prototype.vertices = null;
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2Vec2>}
  */
 box2d.b2TempPolygon.prototype.normals = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2TempPolygon.prototype.count = 0;
 
-/** 
- * Reference face used for clipping 
- * @export 
+/**
+ * Reference face used for clipping
+ * @export
  * @constructor
  */
 box2d.b2ReferenceFace = function() {
@@ -276,51 +276,51 @@ box2d.b2ReferenceFace = function() {
 };
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2ReferenceFace.prototype.i1 = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2ReferenceFace.prototype.i2 = 0;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2ReferenceFace.prototype.v1 = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2ReferenceFace.prototype.v2 = null;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2ReferenceFace.prototype.normal = null;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2ReferenceFace.prototype.sideNormal1 = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2ReferenceFace.prototype.sideOffset1 = 0;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2ReferenceFace.prototype.sideNormal2 = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2ReferenceFace.prototype.sideOffset2 = 0;
@@ -338,10 +338,10 @@ goog.exportProperty(box2d.b2EPColliderVertexType, 'e_isolated', box2d.b2EPCollid
 goog.exportProperty(box2d.b2EPColliderVertexType, 'e_concave', box2d.b2EPColliderVertexType.e_concave);
 goog.exportProperty(box2d.b2EPColliderVertexType, 'e_convex', box2d.b2EPColliderVertexType.e_convex);
 
-/** 
- * This class collides and edge and a polygon, taking into 
- * account edge adjacency. 
- * @export 
+/**
+ * This class collides and edge and a polygon, taking into
+ * account edge adjacency.
+ * @export
  * @constructor
  */
 box2d.b2EPCollider = function() {
@@ -359,93 +359,93 @@ box2d.b2EPCollider = function() {
 };
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2TempPolygon}
  */
 box2d.b2EPCollider.prototype.m_polygonB = null;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Transform}
  */
 box2d.b2EPCollider.prototype.m_xf = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2EPCollider.prototype.m_centroidB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2EPCollider.prototype.m_v0 = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2EPCollider.prototype.m_v1 = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2EPCollider.prototype.m_v2 = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2EPCollider.prototype.m_v3 = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2EPCollider.prototype.m_normal0 = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2EPCollider.prototype.m_normal1 = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2EPCollider.prototype.m_normal2 = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2EPCollider.prototype.m_normal = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2EPColliderVertexType}
  */
 box2d.b2EPCollider.prototype.m_type1 = box2d.b2EPColliderVertexType.e_isolated;
 /**
- * @export 
+ * @export
  * @type {box2d.b2EPColliderVertexType}
  */
 box2d.b2EPCollider.prototype.m_type2 = box2d.b2EPColliderVertexType.e_isolated;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2EPCollider.prototype.m_lowerLimit = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2EPCollider.prototype.m_upperLimit = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2EPCollider.prototype.m_radius = 0;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2EPCollider.prototype.m_front = false;
 
-/** 
+/**
  * Algorithm:
  * 1. Classify v1 and v2
  * 2. Classify polygon centroid as front or back
@@ -455,13 +455,13 @@ box2d.b2EPCollider.prototype.m_front = false;
  * 6. Visit each separating axes, only accept axes within the range
  * 7. Return if _any_ axis indicates separation
  * 8. Clip
- * @export 
- * @return {void} 
- * @param {box2d.b2Manifold} manifold 
- * @param {box2d.b2EdgeShape} edgeA 
- * @param {box2d.b2Transform} xfA 
- * @param {box2d.b2PolygonShape} polygonB 
- * @param {box2d.b2Transform} xfB 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Manifold} manifold
+ * @param {box2d.b2EdgeShape} edgeA
+ * @param {box2d.b2Transform} xfA
+ * @param {box2d.b2PolygonShape} polygonB
+ * @param {box2d.b2Transform} xfB
  */
 box2d.b2EPCollider.prototype.Collide = function(manifold, edgeA, xfA, polygonB, xfB) {
   box2d.b2MulT_X_X(xfA, xfB, this.m_xf);
@@ -820,9 +820,9 @@ box2d.b2EPCollider.s_edgeAxis = new box2d.b2EPAxis();
 box2d.b2EPCollider.s_polygonAxis = new box2d.b2EPAxis();
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2EPAxis}
- * @param {box2d.b2EPAxis} out 
+ * @param {box2d.b2EPAxis} out
  */
 box2d.b2EPCollider.prototype.ComputeEdgeSeparation = function(out) {
   /** @type {box2d.b2EPAxis} */
@@ -842,10 +842,10 @@ box2d.b2EPCollider.prototype.ComputeEdgeSeparation = function(out) {
   return axis;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {box2d.b2EPAxis}
- * @param {box2d.b2EPAxis} out 
+ * @param {box2d.b2EPAxis} out
  */
 box2d.b2EPCollider.prototype.ComputePolygonSeparation = function(out) {
   /** @type {box2d.b2EPAxis} */
@@ -899,15 +899,15 @@ box2d.b2EPCollider.prototype.ComputePolygonSeparation = function(out) {
 box2d.b2EPCollider.s_n = new box2d.b2Vec2();
 box2d.b2EPCollider.s_perp = new box2d.b2Vec2();
 
-/** 
+/**
  * Compute the collision manifold between an edge and a polygon.
- * @export 
- * @return {void} 
- * @param {box2d.b2Manifold} manifold 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Manifold} manifold
  * @param {box2d.b2EdgeShape} edgeA
  * @param {box2d.b2Transform} xfA
  * @param {box2d.b2PolygonShape} polygonB
- * @param {box2d.b2Transform} xfB 
+ * @param {box2d.b2Transform} xfB
  */
 box2d.b2CollideEdgeAndPolygon = function(manifold, edgeA, xfA, polygonB, xfB) {
   /** @type {box2d.b2EPCollider} */

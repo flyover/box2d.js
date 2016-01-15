@@ -22,16 +22,16 @@ goog.require('box2d.b2Settings');
 goog.require('box2d.b2Joint');
 goog.require('box2d.b2Math');
 
-/** 
- * Distance joint definition. This requires defining an anchor 
- * point on both bodies and the non-zero length of the distance 
- * joint. The definition uses local anchor points so that the 
- * initial configuration can violate the constraint slightly. 
- * This helps when saving and loading a game. 
+/**
+ * Distance joint definition. This requires defining an anchor
+ * point on both bodies and the non-zero length of the distance
+ * joint. The definition uses local anchor points so that the
+ * initial configuration can violate the constraint slightly.
+ * This helps when saving and loading a game.
  * warning Do not use a zero or short length.
- * @export 
- * @constructor 
- * @extends {box2d.b2JointDef} 
+ * @export
+ * @constructor
+ * @extends {box2d.b2JointDef}
  */
 box2d.b2DistanceJointDef = function() {
   box2d.b2JointDef.call(this, box2d.b2JointType.e_distanceJoint); // base class constructor
@@ -42,49 +42,49 @@ box2d.b2DistanceJointDef = function() {
 
 goog.inherits(box2d.b2DistanceJointDef, box2d.b2JointDef);
 
-/** 
- * The local anchor point relative to bodyA's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyA's origin.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2DistanceJointDef.prototype.localAnchorA = null;
 
-/** 
- * The local anchor point relative to bodyB's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyB's origin.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2DistanceJointDef.prototype.localAnchorB = null;
 
-/** 
- * The natural length between the anchor points. 
- * @export 
+/**
+ * The natural length between the anchor points.
+ * @export
  * @type {number}
  */
 box2d.b2DistanceJointDef.prototype.length = 1;
 
-/** 
- * The mass-spring-damper frequency in Hertz. A value of 0 
- * disables softness. 
- * @export 
+/**
+ * The mass-spring-damper frequency in Hertz. A value of 0
+ * disables softness.
+ * @export
  * @type {number}
  */
 box2d.b2DistanceJointDef.prototype.frequencyHz = 0;
 
-/** 
- * The damping ratio. 0 = no damping, 1 = critical damping. 
- * @export 
+/**
+ * The damping ratio. 0 = no damping, 1 = critical damping.
+ * @export
  * @type {number}
  */
 box2d.b2DistanceJointDef.prototype.dampingRatio = 0;
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2Body} b1 
- * @param {box2d.b2Body} b2 
- * @param {box2d.b2Vec2} anchor1 
- * @param {box2d.b2Vec2} anchor2 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2Body} b1
+ * @param {box2d.b2Body} b2
+ * @param {box2d.b2Vec2} anchor1
+ * @param {box2d.b2Vec2} anchor2
  */
 box2d.b2DistanceJointDef.prototype.Initialize = function(b1, b2, anchor1, anchor2) {
   this.bodyA = b1;
@@ -96,14 +96,14 @@ box2d.b2DistanceJointDef.prototype.Initialize = function(b1, b2, anchor1, anchor
   this.dampingRatio = 0;
 }
 
-/** 
- * A distance joint constrains two points on two bodies to 
- * remain at a fixed distance from each other. You can view this 
- * as a massless, rigid rod. 
- * @export 
- * @constructor 
- * @extends {box2d.b2Joint} 
- * @param {box2d.b2DistanceJointDef} def 
+/**
+ * A distance joint constrains two points on two bodies to
+ * remain at a fixed distance from each other. You can view this
+ * as a massless, rigid rod.
+ * @export
+ * @constructor
+ * @extends {box2d.b2Joint}
+ * @param {box2d.b2DistanceJointDef} def
  */
 box2d.b2DistanceJoint = function(def) {
   box2d.b2Joint.call(this, def); // base class constructor
@@ -130,248 +130,248 @@ box2d.b2DistanceJoint = function(def) {
 goog.inherits(box2d.b2DistanceJoint, box2d.b2Joint);
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DistanceJoint.prototype.m_frequencyHz = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DistanceJoint.prototype.m_dampingRatio = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DistanceJoint.prototype.m_bias = 0;
 
 // Solver shared
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2DistanceJoint.prototype.m_localAnchorA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2DistanceJoint.prototype.m_localAnchorB = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DistanceJoint.prototype.m_gamma = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DistanceJoint.prototype.m_impulse = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DistanceJoint.prototype.m_length = 0;
 
 // Solver temp
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DistanceJoint.prototype.m_indexA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DistanceJoint.prototype.m_indexB = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2DistanceJoint.prototype.m_u = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2DistanceJoint.prototype.m_rA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2DistanceJoint.prototype.m_rB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2DistanceJoint.prototype.m_localCenterA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2DistanceJoint.prototype.m_localCenterB = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DistanceJoint.prototype.m_invMassA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DistanceJoint.prototype.m_invMassB = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DistanceJoint.prototype.m_invIA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DistanceJoint.prototype.m_invIB = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DistanceJoint.prototype.m_mass = 0;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2DistanceJoint.prototype.m_qA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2DistanceJoint.prototype.m_qB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2DistanceJoint.prototype.m_lalcA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2DistanceJoint.prototype.m_lalcB = null;
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2DistanceJoint.prototype.GetAnchorA = function(out) {
   return this.m_bodyA.GetWorldPoint(this.m_localAnchorA, out);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2DistanceJoint.prototype.GetAnchorB = function(out) {
   return this.m_bodyB.GetWorldPoint(this.m_localAnchorB, out);
 }
 
-/** 
- * Get the reaction force given the inverse time step. 
+/**
+ * Get the reaction force given the inverse time step.
  * Unit is N.
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {number} inv_dt 
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {number} inv_dt
  * @param {box2d.b2Vec2} out
  */
 box2d.b2DistanceJoint.prototype.GetReactionForce = function(inv_dt, out) {
   return out.Set(inv_dt * this.m_impulse * this.m_u.x, inv_dt * this.m_impulse * this.m_u.y);
 }
 
-/** 
- * Get the reaction torque given the inverse time step. 
+/**
+ * Get the reaction torque given the inverse time step.
  * Unit is N*m. This is always zero for a distance joint.
- * @export 
- * @return {number} 
- * @param {number} inv_dt 
+ * @export
+ * @return {number}
+ * @param {number} inv_dt
  */
 box2d.b2DistanceJoint.prototype.GetReactionTorque = function(inv_dt) {
   return 0;
 }
 
-/** 
- * The local anchor point relative to bodyA's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyA's origin.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2DistanceJoint.prototype.GetLocalAnchorA = function(out) {
   return out.Copy(this.m_localAnchorA);
 }
 
-/** 
- * The local anchor point relative to bodyB's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyB's origin.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2DistanceJoint.prototype.GetLocalAnchorB = function(out) {
   return out.Copy(this.m_localAnchorB);
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {number} length
  */
 box2d.b2DistanceJoint.prototype.SetLength = function(length) {
   this.m_length = length;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2DistanceJoint.prototype.GetLength = function() {
   return this.m_length;
 }
 
-/** 
- * Set/get frequency in Hz. 
- * @export 
- * @return {void} 
+/**
+ * Set/get frequency in Hz.
+ * @export
+ * @return {void}
  * @param {number} hz
  */
 box2d.b2DistanceJoint.prototype.SetFrequency = function(hz) {
   this.m_frequencyHz = hz;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2DistanceJoint.prototype.GetFrequency = function() {
   return this.m_frequencyHz;
 }
 
-/** 
- * Set/get damping ratio. 
- * @export 
- * @return {void} 
+/**
+ * Set/get damping ratio.
+ * @export
+ * @return {void}
  * @param {number} ratio
  */
 box2d.b2DistanceJoint.prototype.SetDampingRatio = function(ratio) {
   this.m_dampingRatio = ratio;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2DistanceJoint.prototype.GetDampingRatio = function() {
   return this.m_dampingRatio;
 }
 
-/** 
- * Dump joint to dmLog 
- * @export 
+/**
+ * Dump joint to dmLog
+ * @export
  * @return {void}
  */
 box2d.b2DistanceJoint.prototype.Dump = function() {
@@ -392,9 +392,9 @@ box2d.b2DistanceJoint.prototype.Dump = function() {
   }
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2DistanceJoint.prototype.InitVelocityConstraints = function(data) {
@@ -509,9 +509,9 @@ box2d.b2DistanceJoint.prototype.InitVelocityConstraints = function(data) {
 }
 box2d.b2DistanceJoint.prototype.InitVelocityConstraints.s_P = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2DistanceJoint.prototype.SolveVelocityConstraints = function(data) {
@@ -556,9 +556,9 @@ box2d.b2DistanceJoint.prototype.SolveVelocityConstraints.s_vpB = new box2d.b2Vec
 box2d.b2DistanceJoint.prototype.SolveVelocityConstraints.s_P = new box2d.b2Vec2();
 
 /**
- * @export 
- * @return {boolean} 
- * @param {box2d.b2SolverData} data 
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2SolverData} data
  */
 box2d.b2DistanceJoint.prototype.SolvePositionConstraints = function(data) {
   if (this.m_frequencyHz > 0) {

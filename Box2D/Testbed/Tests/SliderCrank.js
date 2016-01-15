@@ -23,11 +23,11 @@ goog.require('box2d.Testbed.Test');
 // A motor driven slider crank with joint friction.
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.SliderCrank = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -126,28 +126,28 @@ box2d.Testbed.SliderCrank = function(canvas, settings) {
 goog.inherits(box2d.Testbed.SliderCrank, box2d.Testbed.Test);
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.Testbed.SliderCrank.e_count = 30;
 
 /**
- * @export 
- * @type {box2d.b2RevoluteJoint} 
+ * @export
+ * @type {box2d.b2RevoluteJoint}
  */
 box2d.Testbed.SliderCrank.prototype.m_joint1 = null;
 
 /**
- * @export 
- * @type {box2d.b2PrismaticJoint} 
+ * @export
+ * @type {box2d.b2PrismaticJoint}
  */
 box2d.Testbed.SliderCrank.prototype.m_joint2 = null;
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.SliderCrank.prototype.Keyboard = function(key) {
   switch (key) {
@@ -165,8 +165,8 @@ box2d.Testbed.SliderCrank.prototype.Keyboard = function(key) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.SliderCrank.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
@@ -177,11 +177,11 @@ box2d.Testbed.SliderCrank.prototype.Step = function(settings) {
   this.m_textLine += box2d.Testbed.DRAW_STRING_NEW_LINE;
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.SliderCrank.Create = function(canvas, settings) {
   return new box2d.Testbed.SliderCrank(canvas, settings);

@@ -23,11 +23,11 @@ goog.provide('box2d.Testbed.Impulse');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Impulse = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -76,8 +76,8 @@ box2d.Testbed.Impulse.kBoxTop = 4;
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Vec2} p 
+ * @return {void}
+ * @param {box2d.b2Vec2} p
  */
 box2d.Testbed.Impulse.prototype.MouseUp = function(p) {
   box2d.Testbed.Test.prototype.MouseUp.call(this, p);
@@ -95,9 +95,9 @@ box2d.Testbed.Impulse.prototype.MouseUp = function(p) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.Impulse.prototype.Keyboard = function(key) {
   box2d.Testbed.Test.prototype.Keyboard.call(this, key);
@@ -114,8 +114,8 @@ box2d.Testbed.Impulse.prototype.Keyboard = function(key) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Vec2} direction 
+ * @return {void}
+ * @param {box2d.b2Vec2} direction
  */
 box2d.Testbed.Impulse.prototype.ApplyImpulseOrForce = function(direction) {
   var particleSystem = this.m_world.GetParticleSystemList();
@@ -136,18 +136,18 @@ box2d.Testbed.Impulse.prototype.ApplyImpulseOrForce = function(direction) {
 }
 
 /**
- * @export 
- * @return {number} 
+ * @export
+ * @return {number}
  */
 box2d.Testbed.Impulse.prototype.GetDefaultViewZoom = function() {
   return 0.1;
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Impulse.Create = function(canvas, settings) {
   return new box2d.Testbed.Impulse(canvas, settings);

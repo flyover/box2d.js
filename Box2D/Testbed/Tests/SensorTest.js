@@ -21,11 +21,11 @@ goog.provide('box2d.Testbed.SensorTest');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.SensorTest = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -85,33 +85,33 @@ box2d.Testbed.SensorTest = function(canvas, settings) {
 goog.inherits(box2d.Testbed.SensorTest, box2d.Testbed.Test);
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.Testbed.SensorTest.e_count = 7;
 
 /**
- * @export 
- * @type {box2d.b2Fixture} 
+ * @export
+ * @type {box2d.b2Fixture}
  */
 box2d.Testbed.SensorTest.prototype.m_sensor = null;
 /**
- * @export 
- * @type {Array.<box2d.b2Body>} 
+ * @export
+ * @type {Array.<box2d.b2Body>}
  */
 box2d.Testbed.SensorTest.prototype.m_bodies = null;
 /**
- * @export 
- * @type {Array.<Array.<boolean>>} 
+ * @export
+ * @type {Array.<Array.<boolean>>}
  */
 box2d.Testbed.SensorTest.prototype.m_touching = null;
 
-/** 
+/**
  * Implement contact listener.
- * @export 
- * @return {void} 
- * @param {box2d.b2Contact} contact 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Contact} contact
  */
 box2d.Testbed.SensorTest.prototype.BeginContact = function(contact) {
   var fixtureA = contact.GetFixtureA();
@@ -134,11 +134,11 @@ box2d.Testbed.SensorTest.prototype.BeginContact = function(contact) {
   }
 }
 
-/** 
- * Implement contact listener. 
+/**
+ * Implement contact listener.
  * @export
- * @return {void} 
- * @param {box2d.b2Contact} contact 
+ * @return {void}
+ * @param {box2d.b2Contact} contact
  */
 box2d.Testbed.SensorTest.prototype.EndContact = function(contact) {
   var fixtureA = contact.GetFixtureA();
@@ -163,8 +163,8 @@ box2d.Testbed.SensorTest.prototype.EndContact = function(contact) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.SensorTest.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
@@ -195,11 +195,11 @@ box2d.Testbed.SensorTest.prototype.Step = function(settings) {
   }
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.SensorTest.Create = function(canvas, settings) {
   return new box2d.Testbed.SensorTest(canvas, settings);

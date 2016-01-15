@@ -21,16 +21,16 @@ goog.provide('box2d.b2ChainShape');
 goog.require('box2d.b2Shape');
 goog.require('box2d.b2EdgeShape');
 
-/** 
+/**
  * A chain shape is a free form sequence of line segments.
  * The chain has two-sided collision, so you can use inside and outside collision.
  * Therefore, you may use any winding order.
  * Since there may be many vertices, they are allocated using b2Alloc.
  * Connectivity information is used to create smooth collisions.
  * WARNING: The chain will not collide properly if there are self-intersections.
- * @export 
+ * @export
  * @constructor
- * @extends {box2d.b2Shape} 
+ * @extends {box2d.b2Shape}
  */
 box2d.b2ChainShape = function() {
   box2d.b2Shape.call(this, box2d.b2ShapeType.e_chainShape, box2d.b2_polygonRadius); // base class constructor
@@ -41,44 +41,44 @@ box2d.b2ChainShape = function() {
 
 goog.inherits(box2d.b2ChainShape, box2d.b2Shape);
 
-/** 
- * The vertices. Owned by this class. 
- * @export 
+/**
+ * The vertices. Owned by this class.
+ * @export
  * @type {Array.<box2d.b2Vec2>}
  */
 box2d.b2ChainShape.prototype.m_vertices = null;
 
-/** 
- * The vertex count. 
- * @export 
+/**
+ * The vertex count.
+ * @export
  * @type {number}
  */
 box2d.b2ChainShape.prototype.m_count = 0;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2ChainShape.prototype.m_prevVertex = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2ChainShape.prototype.m_nextVertex = null;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2ChainShape.prototype.m_hasPrevVertex = false;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2ChainShape.prototype.m_hasNextVertex = false;
 
-/** 
- * Clear all data. 
- * @export 
+/**
+ * Clear all data.
+ * @export
  * @return {void}
  */
 box2d.b2ChainShape.prototype.Clear = function() {
@@ -86,10 +86,10 @@ box2d.b2ChainShape.prototype.Clear = function() {
   this.m_count = 0;
 }
 
-/** 
- * Create a loop. This automatically adjusts connectivity. 
- * @export 
- * @return {box2d.b2ChainShape} 
+/**
+ * Create a loop. This automatically adjusts connectivity.
+ * @export
+ * @return {box2d.b2ChainShape}
  * @param {Array.<box2d.b2Vec2>} vertices an array of vertices, these are copied
  * @param {number=} count the vertex count
  */
@@ -121,10 +121,10 @@ box2d.b2ChainShape.prototype.CreateLoop = function(vertices, count) {
   return this;
 }
 
-/** 
- * Create a chain with isolated end vertices. 
- * @export 
- * @return {box2d.b2ChainShape} 
+/**
+ * Create a chain with isolated end vertices.
+ * @export
+ * @return {box2d.b2ChainShape}
  * @param {Array.<box2d.b2Vec2>} vertices an array of vertices, these are copied
  * @param {number=} count the vertex count
  */
@@ -162,9 +162,9 @@ box2d.b2ChainShape.prototype.CreateChain = function(vertices, count) {
 /**
  * Establish connectivity to a vertex that precedes the first vertex.
  * Don't call this for loops.
- * @export 
- * @return {box2d.b2ChainShape} 
- * @param {box2d.b2Vec2} prevVertex 
+ * @export
+ * @return {box2d.b2ChainShape}
+ * @param {box2d.b2Vec2} prevVertex
  */
 box2d.b2ChainShape.prototype.SetPrevVertex = function(prevVertex) {
   this.m_prevVertex.Copy(prevVertex);
@@ -175,9 +175,9 @@ box2d.b2ChainShape.prototype.SetPrevVertex = function(prevVertex) {
 /**
  * Establish connectivity to a vertex that follows the last vertex.
  * Don't call this for loops.
- * @export 
- * @return {box2d.b2ChainShape} 
- * @param {box2d.b2Vec2} nextVertex 
+ * @export
+ * @return {box2d.b2ChainShape}
+ * @param {box2d.b2Vec2} nextVertex
  */
 box2d.b2ChainShape.prototype.SetNextVertex = function(nextVertex) {
   this.m_nextVertex.Copy(nextVertex);
@@ -185,18 +185,18 @@ box2d.b2ChainShape.prototype.SetNextVertex = function(nextVertex) {
   return this;
 }
 
-/** 
- * Implement box2d.b2Shape. Vertices are cloned using b2Alloc. 
- * @export 
- * @return {box2d.b2Shape} 
+/**
+ * Implement box2d.b2Shape. Vertices are cloned using b2Alloc.
+ * @export
+ * @return {box2d.b2Shape}
  */
 box2d.b2ChainShape.prototype.Clone = function() {
   return new box2d.b2ChainShape().Copy(this);
 }
 
 /**
- * @export 
- * @return {box2d.b2Shape} 
+ * @export
+ * @return {box2d.b2Shape}
  * @param {box2d.b2Shape} other
  */
 box2d.b2ChainShape.prototype.Copy = function(other) {
@@ -215,9 +215,9 @@ box2d.b2ChainShape.prototype.Copy = function(other) {
   return this;
 }
 
-/** 
- * @see box2d.b2Shape::GetChildCount 
- * @export 
+/**
+ * @see box2d.b2Shape::GetChildCount
+ * @export
  * @return {number}
  */
 box2d.b2ChainShape.prototype.GetChildCount = function() {
@@ -225,12 +225,12 @@ box2d.b2ChainShape.prototype.GetChildCount = function() {
   return this.m_count - 1;
 }
 
-/** 
- * Get a child edge. 
- * @export 
- * @return {void} 
- * @param {box2d.b2EdgeShape} edge 
- * @param {number} index 
+/**
+ * Get a child edge.
+ * @export
+ * @return {void}
+ * @param {box2d.b2EdgeShape} edge
+ * @param {number} index
  */
 box2d.b2ChainShape.prototype.GetChildEdge = function(edge, index) {
   if (box2d.ENABLE_ASSERTS) {
@@ -263,7 +263,7 @@ box2d.b2ChainShape.prototype.GetChildEdge = function(edge, index) {
 /**
  * This always return false.
  * @see box2d.b2Shape::TestPoint
- * @export 
+ * @export
  * @return {boolean}
  * @param {box2d.b2Transform} xf
  * @param {box2d.b2Vec2} p
@@ -274,14 +274,14 @@ box2d.b2ChainShape.prototype.TestPoint = function(xf, p) {
 
 //#if B2_ENABLE_PARTICLE
 
-/** 
- * @see b2Shape::ComputeDistance 
- * @export 
- * @return {number} 
- * @param {box2d.b2Transform} xf 
- * @param {box2d.b2Vec2} p 
- * @param {box2d.b2Vec2} normal 
- * @param {number} childIndex 
+/**
+ * @see b2Shape::ComputeDistance
+ * @export
+ * @return {number}
+ * @param {box2d.b2Transform} xf
+ * @param {box2d.b2Vec2} p
+ * @param {box2d.b2Vec2} normal
+ * @param {number} childIndex
  */
 box2d.b2ChainShape.prototype.ComputeDistance = function(xf, p, normal, childIndex) {
   /** @type {box2d.b2EdgeShape} */
@@ -293,14 +293,14 @@ box2d.b2ChainShape.prototype.ComputeDistance.s_edgeShape = new box2d.b2EdgeShape
 
 //#endif
 
-/** 
- * Implement box2d.b2Shape. 
- * @export 
- * @return {boolean} 
- * @param {box2d.b2RayCastOutput} output 
- * @param {box2d.b2RayCastInput} input 
- * @param {box2d.b2Transform} xf 
- * @param {number} childIndex 
+/**
+ * Implement box2d.b2Shape.
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2RayCastOutput} output
+ * @param {box2d.b2RayCastInput} input
+ * @param {box2d.b2Transform} xf
+ * @param {number} childIndex
  */
 box2d.b2ChainShape.prototype.RayCast = function(output, input, xf, childIndex) {
   if (box2d.ENABLE_ASSERTS) {
@@ -317,13 +317,13 @@ box2d.b2ChainShape.prototype.RayCast = function(output, input, xf, childIndex) {
 }
 box2d.b2ChainShape.prototype.RayCast.s_edgeShape = new box2d.b2EdgeShape();
 
-/** 
- * @see box2d.b2Shape::ComputeAABB 
- * @export 
- * @return {void} 
- * @param {box2d.b2AABB} aabb 
- * @param {box2d.b2Transform} xf 
- * @param {number} childIndex 
+/**
+ * @see box2d.b2Shape::ComputeAABB
+ * @export
+ * @return {void}
+ * @param {box2d.b2AABB} aabb
+ * @param {box2d.b2Transform} xf
+ * @param {number} childIndex
  */
 box2d.b2ChainShape.prototype.ComputeAABB = function(aabb, xf, childIndex) {
     if (box2d.ENABLE_ASSERTS) {
@@ -344,22 +344,22 @@ box2d.b2ChainShape.prototype.ComputeAABB = function(aabb, xf, childIndex) {
     box2d.b2Max_V2_V2(v1, v2, aabb.upperBound);
   }
   /**
-   * @export 
+   * @export
    * @type {box2d.b2Vec2}
    */
 box2d.b2ChainShape.prototype.ComputeAABB.s_v1 = new box2d.b2Vec2();
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2ChainShape.prototype.ComputeAABB.s_v2 = new box2d.b2Vec2();
 
-/** 
- * @see box2d.b2Shape::ComputeMass 
- * @export 
- * @return {void} 
- * @param {box2d.b2MassData} massData 
- * @param {number} density 
+/**
+ * @see box2d.b2Shape::ComputeMass
+ * @export
+ * @return {void}
+ * @param {box2d.b2MassData} massData
+ * @param {number} density
  */
 box2d.b2ChainShape.prototype.ComputeMass = function(massData, density) {
   massData.mass = 0;
@@ -368,9 +368,9 @@ box2d.b2ChainShape.prototype.ComputeMass = function(massData, density) {
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2DistanceProxy} proxy 
- * @param {number} index 
+ * @return {void}
+ * @param {box2d.b2DistanceProxy} proxy
+ * @param {number} index
  */
 box2d.b2ChainShape.prototype.SetupDistanceProxy = function(proxy, index) {
   if (box2d.ENABLE_ASSERTS) {
@@ -390,7 +390,7 @@ box2d.b2ChainShape.prototype.SetupDistanceProxy = function(proxy, index) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {box2d.b2Vec2} normal
  * @param {number} offset
@@ -402,9 +402,9 @@ box2d.b2ChainShape.prototype.ComputeSubmergedArea = function(normal, offset, xf,
   return 0;
 }
 
-/** 
- * Dump this shape to the log file. 
- * @export 
+/**
+ * Dump this shape to the log file.
+ * @export
  * @return {void}
  */
 box2d.b2ChainShape.prototype.Dump = function() {

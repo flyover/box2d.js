@@ -23,13 +23,13 @@ goog.provide('box2d.Testbed.Sparky');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @constructor 
- * @param {box2d.b2ParticleSystem} particleSystem 
- * @param {box2d.b2Vec2} origin 
- * @param {number} size 
- * @param {number} speed 
- * @param {number} lifetime 
- * @param {number} particleFlags 
+ * @constructor
+ * @param {box2d.b2ParticleSystem} particleSystem
+ * @param {box2d.b2Vec2} origin
+ * @param {number} size
+ * @param {number} speed
+ * @param {number} lifetime
+ * @param {number} particleFlags
  */
 box2d.Testbed.ParticleVFX = function(particleSystem, origin, size, speed, lifetime, particleFlags) {
   this.m_origColor = new box2d.b2ParticleColor();
@@ -108,12 +108,12 @@ box2d.Testbed.ParticleVFX.prototype.Drop = function() {
   this.m_pg = null;
 }
 
-/** 
- * Calculates the brightness of the particles. 
- * Piecewise linear function where particle is at 1.0 brightness 
- * until t = lifetime/2, then linear falloff until t = 0, scaled 
- * by m_halfLifetime. 
- *  
+/**
+ * Calculates the brightness of the particles.
+ * Piecewise linear function where particle is at 1.0 brightness
+ * until t = lifetime/2, then linear falloff until t = 0, scaled
+ * by m_halfLifetime.
+ *
  * @return {number}
  */
 box2d.Testbed.ParticleVFX.prototype.ColorCoeff = function() {
@@ -124,8 +124,8 @@ box2d.Testbed.ParticleVFX.prototype.ColorCoeff = function() {
 }
 
 /**
- * @return {void} 
- * @param {number} dt 
+ * @return {void}
+ * @param {number} dt
  */
 box2d.Testbed.ParticleVFX.prototype.Step = function(dt) {
   if (this.m_remainingLifetime > 0.0) {
@@ -145,9 +145,9 @@ box2d.Testbed.ParticleVFX.prototype.Step = function(dt) {
   }
 }
 
-/** 
- * Are the particles entirely black? 
- *  
+/**
+ * Are the particles entirely black?
+ *
  * @return {boolean}
  */
 box2d.Testbed.ParticleVFX.prototype.IsDone = function() {
@@ -155,10 +155,10 @@ box2d.Testbed.ParticleVFX.prototype.IsDone = function() {
 }
 
 /**
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Sparky = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -203,34 +203,34 @@ goog.inherits(box2d.Testbed.Sparky, box2d.Testbed.Test);
  */
 box2d.Testbed.Sparky.prototype.m_VFXIndex = 0;
 
-/** 
- * Total number of bodies in the world. 
- *  
- * @const 
+/**
+ * Total number of bodies in the world.
+ *
+ * @const
  * @type {number}
  */
 box2d.Testbed.Sparky.c_maxCircles = 3; //6;
 
-/** 
- * You will need to raise this if you add more bodies. 
- *  
- * @const 
+/**
+ * You will need to raise this if you add more bodies.
+ *
+ * @const
  * @type {number}
  */
 box2d.Testbed.Sparky.c_maxVFX = 20; //50;
 
-/** 
- * How high to start the stack of sparky shapes. 
- *  
- * @const 
+/**
+ * How high to start the stack of sparky shapes.
+ *
+ * @const
  * @type {number}
  */
 box2d.Testbed.Sparky.SHAPE_HEIGHT_OFFSET = 7;
 
-/** 
- * Starting offset between sparky shapes. 
- *  
- * @const 
+/**
+ * Starting offset between sparky shapes.
+ *
+ * @const
  * @type {number}
  */
 box2d.Testbed.Sparky.SHAPE_OFFSET = 4.5;
@@ -240,25 +240,25 @@ box2d.Testbed.Sparky.SHAPE_OFFSET = 4.5;
  */
 box2d.Testbed.Sparky.prototype.m_VFX = null;
 
-/** 
- * Was there a contact this frame? 
- *  
+/**
+ * Was there a contact this frame?
+ *
  * @type {boolean}
  */
 box2d.Testbed.Sparky.prototype.m_contact = false;
 
-/** 
- * Where was the contact? 
- *  
+/**
+ * Where was the contact?
+ *
  * @type {box2d.b2Vec2}
  */
 box2d.Testbed.Sparky.prototype.m_contactPoint = null;
 
-/** 
- * Handles bodies colliding. 
- *  
+/**
+ * Handles bodies colliding.
+ *
  * @return {void}
- * @param {box2d.b2Contact} contact 
+ * @param {box2d.b2Contact} contact
  */
 box2d.Testbed.Sparky.prototype.BeginContact = function(contact) {
   box2d.Testbed.Test.prototype.BeginContact.call(this, contact);
@@ -280,8 +280,8 @@ box2d.Testbed.Sparky.prototype.BeginContact = function(contact) {
 }
 
 /**
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Sparky.prototype.Step = function(settings) {
   var particleFlags = box2d.Testbed.TestMain.GetParticleParameterValue();
@@ -308,12 +308,12 @@ box2d.Testbed.Sparky.prototype.Step = function(settings) {
   }
 }
 
-/** 
- * Create an explosion of particles at origin=p 
- *  
- * @return {void} 
- * @param {box2d.b2Vec2} p 
- * @param {number} particleFlags 
+/**
+ * Create an explosion of particles at origin=p
+ *
+ * @return {void}
+ * @param {box2d.b2Vec2} p
+ * @param {number} particleFlags
  */
 box2d.Testbed.Sparky.prototype.AddVFX = function(p, particleFlags) {
   var vfx = this.m_VFX[this.m_VFXIndex];
@@ -389,11 +389,11 @@ box2d.Testbed.Sparky.prototype.CreateWalls = function() {
   }
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Sparky.Create = function(canvas, settings) {
   return new box2d.Testbed.Sparky(canvas, settings);

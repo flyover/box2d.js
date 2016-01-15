@@ -24,8 +24,8 @@ goog.require('box2d.b2Collision');
 goog.require('box2d.b2BroadPhase');
 goog.require('box2d.b2ContactFactory');
 
-/** 
- * Delegate of box2d.b2World. 
+/**
+ * Delegate of box2d.b2World.
  * @constructor
  */
 box2d.b2ContactManager = function() {
@@ -35,45 +35,45 @@ box2d.b2ContactManager = function() {
 }
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2BroadPhase}
  */
 box2d.b2ContactManager.prototype.m_broadPhase = null;
 /**
- * @export 
- * @type {box2d.b2Contact} 
+ * @export
+ * @type {box2d.b2Contact}
  */
 box2d.b2ContactManager.prototype.m_contactList = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2ContactManager.prototype.m_contactCount = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2ContactFilter}
  */
 box2d.b2ContactManager.prototype.m_contactFilter = box2d.b2ContactFilter.b2_defaultFilter;
 /**
- * @export 
+ * @export
  * @type {box2d.b2ContactListener}
  */
 box2d.b2ContactManager.prototype.m_contactListener = box2d.b2ContactListener.b2_defaultListener;
 /**
- * @export 
+ * @export
  * @type {*}
  */
 box2d.b2ContactManager.prototype.m_allocator = null;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2ContactFactory}
  */
 box2d.b2ContactManager.prototype.m_contactFactory = null;
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2Contact} c
  */
 box2d.b2ContactManager.prototype.Destroy = function(c) {
@@ -130,11 +130,11 @@ box2d.b2ContactManager.prototype.Destroy = function(c) {
   --this.m_contactCount;
 }
 
-/** 
- * This is the top level collision call for the time step. Here 
- * all the narrow phase collision is processed for the world 
- * contact list. 
- * @export 
+/**
+ * This is the top level collision call for the time step. Here
+ * all the narrow phase collision is processed for the world
+ * contact list.
+ * @export
  * @return {void}
  */
 box2d.b2ContactManager.prototype.Collide = function() {
@@ -198,17 +198,17 @@ box2d.b2ContactManager.prototype.Collide = function() {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.b2ContactManager.prototype.FindNewContacts = function() {
   this.m_broadPhase.UpdatePairs(this);
 }
 
-/** 
- * Broad-phase callback. 
- * @export 
- * @return {void} 
+/**
+ * Broad-phase callback.
+ * @export
+ * @return {void}
  * @param {box2d.b2FixtureProxy} proxyUserDataA
  * @param {box2d.b2FixtureProxy} proxyUserDataB
  */

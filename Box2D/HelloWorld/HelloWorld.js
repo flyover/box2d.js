@@ -28,9 +28,9 @@ goog.require('box2d');
  * used with your rendering engine in your game engine.
  */
 
-/** 
- * @export 
- * @return {number} 
+/**
+ * @export
+ * @return {number}
  * @param {Array.<*>=} args
  */
 box2d.HelloWorld.main = function(args) {

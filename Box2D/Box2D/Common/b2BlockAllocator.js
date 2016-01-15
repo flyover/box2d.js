@@ -18,8 +18,8 @@
 
 goog.provide('box2d.b2BlockAllocator');
 
-/** 
- * @export 
+/**
+ * @export
  * @constructor
  */
 box2d.b2BlockAllocator = function() {}

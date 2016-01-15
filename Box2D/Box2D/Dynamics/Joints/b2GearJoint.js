@@ -24,12 +24,12 @@ goog.require('box2d.b2Math');
 goog.require('box2d.b2RevoluteJoint');
 goog.require('box2d.b2PrismaticJoint');
 
-/** 
- * Gear joint definition. This definition requires two existing 
- * revolute or prismatic joints (any combination will work). 
- * @export 
- * @constructor 
- * @extends {box2d.b2JointDef} 
+/**
+ * Gear joint definition. This definition requires two existing
+ * revolute or prismatic joints (any combination will work).
+ * @export
+ * @constructor
+ * @extends {box2d.b2JointDef}
  */
 box2d.b2GearJointDef = function() {
   box2d.b2JointDef.call(this, box2d.b2JointType.e_gearJoint); // base class constructor
@@ -37,44 +37,44 @@ box2d.b2GearJointDef = function() {
 
 goog.inherits(box2d.b2GearJointDef, box2d.b2JointDef);
 
-/** 
- * The first revolute/prismatic joint attached to the gear 
- * joint. 
- * @export 
+/**
+ * The first revolute/prismatic joint attached to the gear
+ * joint.
+ * @export
  * @type {box2d.b2Joint}
  */
 box2d.b2GearJointDef.prototype.joint1 = null;
 
-/** 
- * The second revolute/prismatic joint attached to the gear 
- * joint. 
- * @export 
+/**
+ * The second revolute/prismatic joint attached to the gear
+ * joint.
+ * @export
  * @type {box2d.b2Joint}
  */
 box2d.b2GearJointDef.prototype.joint2 = null;
 
-/** 
- * The gear ratio. 
- * @see box2d.b2GearJoint for explanation. 
- * @export 
+/**
+ * The gear ratio.
+ * @see box2d.b2GearJoint for explanation.
+ * @export
  * @type {number}
  */
 box2d.b2GearJointDef.prototype.ratio = 1;
 
-/** 
- * A gear joint is used to connect two joints together. Either 
- * joint can be a revolute or prismatic joint. You specify a 
- * gear ratio to bind the motions together: 
- * coordinateA + ratio * coordinateB = constant 
- * The ratio can be negative or positive. If one joint is a 
- * revolute joint and the other joint is a prismatic joint, then 
- * the ratio will have units of length or units of 1/length. 
- * warning You have to manually destroy the gear joint if jointA 
- * or jointB is destroyed. 
- * @export 
- * @constructor 
- * @extends {box2d.b2Joint} 
- * @param {box2d.b2GearJointDef} def 
+/**
+ * A gear joint is used to connect two joints together. Either
+ * joint can be a revolute or prismatic joint. You specify a
+ * gear ratio to bind the motions together:
+ * coordinateA + ratio * coordinateB = constant
+ * The ratio can be negative or positive. If one joint is a
+ * revolute joint and the other joint is a prismatic joint, then
+ * the ratio will have units of length or units of 1/length.
+ * warning You have to manually destroy the gear joint if jointA
+ * or jointB is destroyed.
+ * @export
+ * @constructor
+ * @extends {box2d.b2Joint}
+ * @param {box2d.b2GearJointDef} def
  */
 box2d.b2GearJoint = function(def) {
   box2d.b2Joint.call(this, def); // base class constructor
@@ -209,23 +209,23 @@ box2d.b2GearJoint = function(def) {
 goog.inherits(box2d.b2GearJoint, box2d.b2Joint);
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Joint}
  */
 box2d.b2GearJoint.prototype.m_joint1 = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Joint}
  */
 box2d.b2GearJoint.prototype.m_joint2 = null;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2JointType}
  */
 box2d.b2GearJoint.prototype.m_typeA = box2d.b2JointType.e_unknownJoint;
 /**
- * @export 
+ * @export
  * @type {box2d.b2JointType}
  */
 box2d.b2GearJoint.prototype.m_typeB = box2d.b2JointType.e_unknownJoint;
@@ -233,231 +233,231 @@ box2d.b2GearJoint.prototype.m_typeB = box2d.b2JointType.e_unknownJoint;
 // Body A is connected to body C
 // Body B is connected to body D
 /**
- * @export 
+ * @export
  * @type {box2d.b2Body}
  */
 box2d.b2GearJoint.prototype.m_bodyC = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Body}
  */
 box2d.b2GearJoint.prototype.m_bodyD = null;
 
 // Solver shared
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2GearJoint.prototype.m_localAnchorA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2GearJoint.prototype.m_localAnchorB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2GearJoint.prototype.m_localAnchorC = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2GearJoint.prototype.m_localAnchorD = null;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2GearJoint.prototype.m_localAxisC = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2GearJoint.prototype.m_localAxisD = null;
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_referenceAngleA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_referenceAngleB = 0;
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_constant = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_ratio = 0;
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_impulse = 0;
 
 // Solver temp
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_indexA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_indexB = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_indexC = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_indexD = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2GearJoint.prototype.m_lcA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2GearJoint.prototype.m_lcB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2GearJoint.prototype.m_lcC = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2GearJoint.prototype.m_lcD = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_mA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_mB = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_mC = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_mD = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_iA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_iB = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_iC = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_iD = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2GearJoint.prototype.m_JvAC = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2GearJoint.prototype.m_JvBD = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_JwA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_JwB = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_JwC = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_JwD = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2GearJoint.prototype.m_mass = 0;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2GearJoint.prototype.m_qA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2GearJoint.prototype.m_qB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2GearJoint.prototype.m_qC = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2GearJoint.prototype.m_qD = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2GearJoint.prototype.m_lalcA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2GearJoint.prototype.m_lalcB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2GearJoint.prototype.m_lalcC = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2GearJoint.prototype.m_lalcD = null;
@@ -654,10 +654,10 @@ box2d.b2GearJoint.prototype.SolveVelocityConstraints = function(data) {
   data.velocities[this.m_indexD].w = wD;
 }
 
-/** 
- * @export 
- * @return {boolean} 
- * @param {box2d.b2SolverData} data 
+/**
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2SolverData} data
  */
 box2d.b2GearJoint.prototype.SolvePositionConstraints = function(data) {
   /*box2d.b2Vec2&*/
@@ -809,28 +809,28 @@ box2d.b2GearJoint.prototype.SolvePositionConstraints.s_rB = new box2d.b2Vec2();
 box2d.b2GearJoint.prototype.SolvePositionConstraints.s_rC = new box2d.b2Vec2();
 box2d.b2GearJoint.prototype.SolvePositionConstraints.s_rD = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2GearJoint.prototype.GetAnchorA = function(out) {
   return this.m_bodyA.GetWorldPoint(this.m_localAnchorA, out);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2GearJoint.prototype.GetAnchorB = function(out) {
   return this.m_bodyB.GetWorldPoint(this.m_localAnchorB, out);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {number} inv_dt 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {number} inv_dt
  * @param {box2d.b2Vec2} out
  */
 box2d.b2GearJoint.prototype.GetReactionForce = function(inv_dt, out) {
@@ -839,10 +839,10 @@ box2d.b2GearJoint.prototype.GetReactionForce = function(inv_dt, out) {
   return box2d.b2Mul_S_V2(inv_dt * this.m_impulse, this.m_JvAC, out);
 }
 
-/** 
- * @export 
- * @return {number} 
- * @param {number} inv_dt 
+/**
+ * @export
+ * @return {number}
+ * @param {number} inv_dt
  */
 box2d.b2GearJoint.prototype.GetReactionTorque = function(inv_dt) {
   //	float32 L = m_impulse * m_JwA;
@@ -850,35 +850,35 @@ box2d.b2GearJoint.prototype.GetReactionTorque = function(inv_dt) {
   return inv_dt * this.m_impulse * this.m_JwA;
 }
 
-/** 
- * Get the first joint. 
- * @export 
+/**
+ * Get the first joint.
+ * @export
  * @return {box2d.b2Joint}
  */
 box2d.b2GearJoint.prototype.GetJoint1 = function() {
   return this.m_joint1;
 }
 
-/** 
- * Get the second joint. 
- * @export 
+/**
+ * Get the second joint.
+ * @export
  * @return {box2d.b2Joint}
  */
 box2d.b2GearJoint.prototype.GetJoint2 = function() {
   return this.m_joint2;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2GearJoint.prototype.GetRatio = function() {
   return this.m_ratio;
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {number} ratio
  */
 box2d.b2GearJoint.prototype.SetRatio = function(ratio) {
@@ -888,9 +888,9 @@ box2d.b2GearJoint.prototype.SetRatio = function(ratio) {
   this.m_ratio = ratio;
 }
 
-/** 
- * Dump joint to dmLog 
- * @export 
+/**
+ * Dump joint to dmLog
+ * @export
  * @return {void}
  */
 box2d.b2GearJoint.prototype.Dump = function() {

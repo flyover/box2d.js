@@ -21,7 +21,7 @@ goog.provide('box2d.Testbed.DynamicTreeTest');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
+ * @export
  * @constructor
  */
 box2d.Testbed.Actor = function() {
@@ -29,32 +29,32 @@ box2d.Testbed.Actor = function() {
 };
 
 /**
- * @export 
- * @type {box2d.b2AABB} 
+ * @export
+ * @type {box2d.b2AABB}
  */
 box2d.Testbed.Actor.prototype.aabb = null;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.Actor.prototype.fraction = 0.0;
 /**
- * @export 
- * @type {boolean} 
+ * @export
+ * @type {boolean}
  */
 box2d.Testbed.Actor.prototype.overlap = false;
 /**
- * @export 
- * @type {box2d.b2TreeNode} 
+ * @export
+ * @type {box2d.b2TreeNode}
  */
 box2d.Testbed.Actor.prototype.proxyId = null;
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.DynamicTreeTest = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -97,67 +97,67 @@ box2d.Testbed.DynamicTreeTest = function(canvas, settings) {
 goog.inherits(box2d.Testbed.DynamicTreeTest, box2d.Testbed.Test);
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.Testbed.DynamicTreeTest.e_actorCount = 128;
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.DynamicTreeTest.prototype.m_worldExtent = 0.0;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.DynamicTreeTest.prototype.m_proxyExtent = 0.0;
 /**
- * @export 
- * @type {box2d.b2DynamicTree} 
+ * @export
+ * @type {box2d.b2DynamicTree}
  */
 box2d.Testbed.DynamicTreeTest.prototype.m_tree = null;
 /**
- * @export 
- * @type {box2d.b2AABB} 
+ * @export
+ * @type {box2d.b2AABB}
  */
 box2d.Testbed.DynamicTreeTest.prototype.m_queryAABB = null;
 /**
- * @export 
- * @type {box2d.b2RayCastInput} 
+ * @export
+ * @type {box2d.b2RayCastInput}
  */
 box2d.Testbed.DynamicTreeTest.prototype.m_rayCastInput = null;
 /**
- * @export 
- * @type {box2d.b2RayCastOutput} 
+ * @export
+ * @type {box2d.b2RayCastOutput}
  */
 box2d.Testbed.DynamicTreeTest.prototype.m_rayCastOutput = null;
 /**
- * @export 
- * @type {box2d.Testbed.Actor} 
+ * @export
+ * @type {box2d.Testbed.Actor}
  */
 box2d.Testbed.DynamicTreeTest.prototype.m_actor = null;
 /**
- * @export 
- * @type {Array.<box2d.Testbed.Actor>} 
+ * @export
+ * @type {Array.<box2d.Testbed.Actor>}
  */
 box2d.Testbed.DynamicTreeTest.prototype.m_actors = null;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.DynamicTreeTest.prototype.m_stepCount = 0;
 /**
- * @export 
- * @type {boolean} 
+ * @export
+ * @type {boolean}
  */
 box2d.Testbed.DynamicTreeTest.prototype.m_automated = false;
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.DynamicTreeTest.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
@@ -223,9 +223,9 @@ box2d.Testbed.DynamicTreeTest.prototype.Step = function(settings) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.DynamicTreeTest.prototype.Keyboard = function(key) {
   switch (key) {
@@ -280,9 +280,9 @@ box2d.Testbed.DynamicTreeTest.prototype.RayCastCallback = function (input, proxy
 
 //void GetRandomAABB(box2d.b2AABB* aabb)
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2AABB} aabb 
+ * @export
+ * @return {void}
+ * @param {box2d.b2AABB} aabb
  */
 box2d.Testbed.DynamicTreeTest.prototype.GetRandomAABB = function(aabb) {
   var w = new box2d.b2Vec2();
@@ -297,9 +297,9 @@ box2d.Testbed.DynamicTreeTest.prototype.GetRandomAABB = function(aabb) {
 
 //void MoveAABB(box2d.b2AABB* aabb)
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2AABB} aabb 
+ * @export
+ * @return {void}
+ * @param {box2d.b2AABB} aabb
  */
 box2d.Testbed.DynamicTreeTest.prototype.MoveAABB = function(aabb) {
   var d = new box2d.b2Vec2();
@@ -322,8 +322,8 @@ box2d.Testbed.DynamicTreeTest.prototype.MoveAABB = function(aabb) {
 
 //void CreateProxy()
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.Testbed.DynamicTreeTest.prototype.CreateProxy = function() {
   for (var i = 0; i < box2d.Testbed.DynamicTreeTest.e_actorCount; ++i) {
@@ -339,8 +339,8 @@ box2d.Testbed.DynamicTreeTest.prototype.CreateProxy = function() {
 
 //void DestroyProxy()
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.Testbed.DynamicTreeTest.prototype.DestroyProxy = function() {
   for (var i = 0; i < box2d.Testbed.DynamicTreeTest.e_actorCount; ++i) {
@@ -356,8 +356,8 @@ box2d.Testbed.DynamicTreeTest.prototype.DestroyProxy = function() {
 
 //void MoveProxy()
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.Testbed.DynamicTreeTest.prototype.MoveProxy = function() {
   for (var i = 0; i < box2d.Testbed.DynamicTreeTest.e_actorCount; ++i) {
@@ -378,8 +378,8 @@ box2d.Testbed.DynamicTreeTest.prototype.MoveProxy = function() {
 
 //void Action()
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.Testbed.DynamicTreeTest.prototype.Action = function() {
   var choice = 0 | box2d.b2RandomRange(0, 20);
@@ -400,15 +400,15 @@ box2d.Testbed.DynamicTreeTest.prototype.Action = function() {
 
 //void Query()
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.Testbed.DynamicTreeTest.prototype.Query = function() {
   var that = this;
 
   /**
-   * @param {box2d.b2TreeNode} proxyId 
-   * @return {boolean} 
+   * @param {box2d.b2TreeNode} proxyId
+   * @return {boolean}
    */
   var QueryCallback = function(proxyId) {
     var actor = that.m_tree.GetUserData(proxyId);
@@ -433,16 +433,16 @@ box2d.Testbed.DynamicTreeTest.prototype.Query = function() {
 
 //void RayCast()
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.Testbed.DynamicTreeTest.prototype.RayCast = function() {
   var that = this;
 
   /**
-   * @param {box2d.b2RayCastInput} input 
-   * @param {box2d.b2TreeNode} proxyId 
-   * @return {number} 
+   * @param {box2d.b2RayCastInput} input
+   * @param {box2d.b2TreeNode} proxyId
+   * @return {number}
    */
   var RayCastCallback = function(input, proxyId) {
     var actor = that.m_tree.GetUserData(proxyId);
@@ -494,11 +494,11 @@ box2d.Testbed.DynamicTreeTest.prototype.RayCast = function() {
   */
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.DynamicTreeTest.Create = function(canvas, settings) {
   return new box2d.Testbed.DynamicTreeTest(canvas, settings);

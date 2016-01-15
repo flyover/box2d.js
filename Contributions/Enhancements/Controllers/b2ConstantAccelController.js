@@ -24,11 +24,11 @@ goog.require('box2d.b2Settings');
 goog.require('box2d.b2Controller');
 goog.require('box2d.b2Math');
 
-/** 
- * Applies a force every frame 
- * @export 
- * @constructor 
- * @extends {box2d.b2Controller} 
+/**
+ * Applies a force every frame
+ * @export
+ * @constructor
+ * @extends {box2d.b2Controller}
  */
 box2d.b2ConstantAccelController = function() {
   goog.base(this); // base class constructor
@@ -38,18 +38,18 @@ box2d.b2ConstantAccelController = function() {
 
 goog.inherits(box2d.b2ConstantAccelController, box2d.b2Controller);
 
-/** 
- * The acceleration to apply 
- * @export 
- * @type {box2d.b2Vec2} 
+/**
+ * The acceleration to apply
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2ConstantAccelController.prototype.A = null;
 
-/** 
- * @see box2d.b2Controller::Step 
- * @export 
- * @return {void} 
- * @param {box2d.b2TimeStep} step 
+/**
+ * @see box2d.b2Controller::Step
+ * @export
+ * @return {void}
+ * @param {box2d.b2TimeStep} step
  */
 box2d.b2ConstantAccelController.prototype.Step = function(step) {
   var dtA = box2d.b2Mul_S_V2(step.dt, this.A, box2d.b2ConstantAccelController.prototype.Step.s_dtA);

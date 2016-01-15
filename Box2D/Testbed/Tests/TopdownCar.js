@@ -24,13 +24,13 @@ goog.require('box2d.Testbed.Test');
 goog.require('box2d.Testbed.DestructionListener');
 
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 var DEGTORAD = 0.0174532925199432957;
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 var RADTODEG = 57.295779513082320876;
 
@@ -48,26 +48,26 @@ var TDC_DOWN = 0x8;
 var FUD_CAR_TIRE = 0;
 var FUD_GROUND_AREA = 1;
 
-/** 
- * a class to allow subclassing of different fixture user data 
+/**
+ * a class to allow subclassing of different fixture user data
  * @constructor
- * @param {number} type 
+ * @param {number} type
  */
 var FixtureUserData = function(type) {
   this.m_type = type;
 }
 
 /**
- * @return {number} 
+ * @return {number}
  */
 FixtureUserData.prototype.getType = function() {
   return this.m_type;
 }
 
-/** 
- * class to allow marking a fixture as a car tire 
- * @constructor 
- * @extends {FixtureUserData} 
+/**
+ * class to allow marking a fixture as a car tire
+ * @constructor
+ * @extends {FixtureUserData}
  */
 var CarTireFUD = function() {
   FixtureUserData.call(this, FUD_CAR_TIRE);
@@ -75,12 +75,12 @@ var CarTireFUD = function() {
 
 goog.inherits(CarTireFUD, FixtureUserData);
 
-/** 
- * class to allow marking a fixture as a ground area 
- * @constructor 
- * @extends {FixtureUserData} 
- * @param {number} fm 
- * @param {boolean} ooc 
+/**
+ * class to allow marking a fixture as a ground area
+ * @constructor
+ * @extends {FixtureUserData}
+ * @param {number} fm
+ * @param {boolean} ooc
  */
 var GroundAreaFUD = function(fm, ooc) {
   FixtureUserData.call(this, FUD_GROUND_AREA);
@@ -96,7 +96,7 @@ goog.inherits(GroundAreaFUD, FixtureUserData);
 
 /**
  * @constructor
- * @param {box2d.b2World} world 
+ * @param {box2d.b2World} world
  */
 var TDTire = function(world) {
   this.m_groundAreas = [];
@@ -116,11 +116,11 @@ var TDTire = function(world) {
 }
 
 /**
- * @return {void} 
- * @param {number} maxForwardSpeed 
- * @param {number} maxBackwardSpeed 
- * @param {number} maxDriveForce 
- * @param {number} maxLateralImpulse 
+ * @return {void}
+ * @param {number} maxForwardSpeed
+ * @param {number} maxBackwardSpeed
+ * @param {number} maxDriveForce
+ * @param {number} maxLateralImpulse
  */
 TDTire.prototype.setCharacteristics = function(maxForwardSpeed, maxBackwardSpeed, maxDriveForce, maxLateralImpulse) {
   this.m_maxForwardSpeed = maxForwardSpeed;
@@ -130,16 +130,16 @@ TDTire.prototype.setCharacteristics = function(maxForwardSpeed, maxBackwardSpeed
 }
 
 /**
- * @return {void} 
- * @param {FixtureUserData} ga 
+ * @return {void}
+ * @param {FixtureUserData} ga
  */
 TDTire.prototype.addGroundArea = function(ga) {
     this.m_groundAreas.push(ga);
     this.updateTraction();
   }
   /**
-   * @return {void} 
-   * @param {FixtureUserData} ga 
+   * @return {void}
+   * @param {FixtureUserData} ga
    */
 TDTire.prototype.removeGroundArea = function(ga) {
   this.m_groundAreas.splice(this.m_groundAreas.indexOf(ga));
@@ -147,7 +147,7 @@ TDTire.prototype.removeGroundArea = function(ga) {
 }
 
 /**
- * @return {void} 
+ * @return {void}
  */
 TDTire.prototype.updateTraction = function() {
   if (this.m_groundAreas.length === 0)
@@ -163,7 +163,7 @@ TDTire.prototype.updateTraction = function() {
 }
 
 /**
- * @return {box2d.b2Vec2} 
+ * @return {box2d.b2Vec2}
  */
 TDTire.prototype.getLateralVelocity = function() {
   var currentRightNormal = this.m_body.GetWorldVector(new box2d.b2Vec2(1, 0), new box2d.b2Vec2());
@@ -171,7 +171,7 @@ TDTire.prototype.getLateralVelocity = function() {
 }
 
 /**
- * @return {box2d.b2Vec2} 
+ * @return {box2d.b2Vec2}
  */
 TDTire.prototype.getForwardVelocity = function() {
   var currentForwardNormal = this.m_body.GetWorldVector(new box2d.b2Vec2(0, 1), new box2d.b2Vec2());
@@ -179,7 +179,7 @@ TDTire.prototype.getForwardVelocity = function() {
 }
 
 /**
- * @return {void} 
+ * @return {void}
  */
 TDTire.prototype.updateFriction = function() {
   //lateral linear velocity
@@ -199,8 +199,8 @@ TDTire.prototype.updateFriction = function() {
 }
 
 /**
- * @return {void} 
- * @param {number} controlState 
+ * @return {void}
+ * @param {number} controlState
  */
 TDTire.prototype.updateDrive = function(controlState) {
 
@@ -233,8 +233,8 @@ TDTire.prototype.updateDrive = function(controlState) {
 }
 
 /**
- * @return {void} 
- * @param {number} controlState 
+ * @return {void}
+ * @param {number} controlState
  */
 TDTire.prototype.updateTurn = function(controlState) {
   var desiredTorque = 0;
@@ -254,7 +254,7 @@ TDTire.prototype.updateTurn = function(controlState) {
 
 /**
  * @constructor
- * @param {box2d.b2World} world 
+ * @param {box2d.b2World} world
  */
 var TDCar = function(world) {
   this.m_tires = [];
@@ -362,8 +362,8 @@ TDCar.prototype.update = function(controlState) {
 
 /**
  * @constructor
- * @extends {box2d.Testbed.DestructionListener} 
- * @param {box2d.Testbed.Test} test 
+ * @extends {box2d.Testbed.DestructionListener}
+ * @param {box2d.Testbed.Test} test
  */
 var MyDestructionListener = function(test) {
   box2d.Testbed.DestructionListener.call(this, test);
@@ -372,8 +372,8 @@ var MyDestructionListener = function(test) {
 goog.inherits(MyDestructionListener, box2d.Testbed.DestructionListener);
 
 /**
- * @return {void} 
- * @param {box2d.b2Fixture} fixture 
+ * @return {void}
+ * @param {box2d.b2Fixture} fixture
  */
 MyDestructionListener.prototype.SayGoodbyeFixture = function(fixture) {
   ///	if ( FixtureUserData* fud = (FixtureUserData*)fixture.GetUserData() )
@@ -381,10 +381,10 @@ MyDestructionListener.prototype.SayGoodbyeFixture = function(fixture) {
   box2d.Testbed.DestructionListener.prototype.SayGoodbyeFixture.call(this, fixture);
 }
 
-/** 
- * (unused but must implement all pure virtual functions) 
- * @return {void} 
- * @param {box2d.b2Joint} joint 
+/**
+ * (unused but must implement all pure virtual functions)
+ * @return {void}
+ * @param {box2d.b2Joint} joint
  */
 MyDestructionListener.prototype.SayGoodbyeJoint = function(joint) {
   box2d.Testbed.DestructionListener.prototype.SayGoodbyeJoint.call(this, joint);
@@ -396,11 +396,11 @@ MyDestructionListener.prototype.SayGoodbyeJoint = function(joint) {
 
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.TopdownCar = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -440,9 +440,9 @@ box2d.Testbed.TopdownCar = function(canvas, settings) {
 goog.inherits(box2d.Testbed.TopdownCar, box2d.Testbed.Test);
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.TopdownCar.prototype.Keyboard = function(key) {
   switch (key) {
@@ -465,8 +465,8 @@ box2d.Testbed.TopdownCar.prototype.Keyboard = function(key) {
 
 /**
  * @export
- * @return {void} 
- * @param {number} key 
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.TopdownCar.prototype.KeyboardUp = function(key) {
   switch (key) {
@@ -488,9 +488,9 @@ box2d.Testbed.TopdownCar.prototype.KeyboardUp = function(key) {
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2Contact} contact 
- * @param {boolean} began 
+ * @return {void}
+ * @param {box2d.b2Contact} contact
+ * @param {boolean} began
  */
 box2d.Testbed.TopdownCar.handleContact = function(contact, began) {
   var a = contact.GetFixtureA();
@@ -507,10 +507,10 @@ box2d.Testbed.TopdownCar.handleContact = function(contact, began) {
     box2d.Testbed.TopdownCar.tire_vs_groundArea(b, a, began);
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2Contact} contact 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2Contact} contact
  */
 box2d.Testbed.TopdownCar.prototype.BeginContact = function(contact) {
   box2d.Testbed.TopdownCar.handleContact(contact, true);
@@ -518,18 +518,18 @@ box2d.Testbed.TopdownCar.prototype.BeginContact = function(contact) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Contact} contact 
+ * @return {void}
+ * @param {box2d.b2Contact} contact
  */
 box2d.Testbed.TopdownCar.prototype.EndContact = function(contact) {
   box2d.Testbed.TopdownCar.handleContact(contact, false);
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2Fixture} tireFixture 
- * @param {box2d.b2Fixture} groundAreaFixture 
- * @param {boolean} began 
+ * @return {void}
+ * @param {box2d.b2Fixture} tireFixture
+ * @param {box2d.b2Fixture} groundAreaFixture
+ * @param {boolean} began
  */
 box2d.Testbed.TopdownCar.tire_vs_groundArea = function(tireFixture, groundAreaFixture, began) {
   var tire = tireFixture.GetBody().GetUserData();
@@ -542,8 +542,8 @@ box2d.Testbed.TopdownCar.tire_vs_groundArea = function(tireFixture, groundAreaFi
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.TopdownCar.prototype.Step = function(settings) {
   /*this.m_tire.updateFriction();
@@ -563,11 +563,11 @@ box2d.Testbed.TopdownCar.prototype.Step = function(settings) {
 }
 
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.TopdownCar.Create = function(canvas, settings) {
   return new box2d.Testbed.TopdownCar(canvas, settings);

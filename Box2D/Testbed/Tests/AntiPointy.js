@@ -22,14 +22,14 @@ goog.provide('box2d.Testbed.AntiPointy');
 
 goog.require('box2d.Testbed.Test');
 
-/** 
- * Test the behavior of particles falling onto a concave 
- * ambiguous Body contact fixture junction. 
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * Test the behavior of particles falling onto a concave
+ * ambiguous Body contact fixture junction.
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.AntiPointy = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -94,8 +94,8 @@ box2d.Testbed.AntiPointy.prototype.m_particlesToCreate = 0;
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.AntiPointy.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
@@ -122,11 +122,11 @@ box2d.Testbed.AntiPointy.prototype.Step = function(settings) {
   this.m_particleSystem.CreateParticle(pd);
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.AntiPointy.Create = function(canvas, settings) {
   return new box2d.Testbed.AntiPointy(canvas, settings);

@@ -23,11 +23,11 @@ goog.require('box2d.Testbed.Test');
 // This test shows collision processing and tests
 // deferred body destruction.
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.CollisionProcessing = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -129,8 +129,8 @@ goog.inherits(box2d.Testbed.CollisionProcessing, box2d.Testbed.Test);
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.CollisionProcessing.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
@@ -184,11 +184,11 @@ box2d.Testbed.CollisionProcessing.prototype.Step = function(settings) {
   }
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.CollisionProcessing.Create = function(canvas, settings) {
   return new box2d.Testbed.CollisionProcessing(canvas, settings);

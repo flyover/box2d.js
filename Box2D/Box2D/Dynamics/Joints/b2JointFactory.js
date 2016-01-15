@@ -22,11 +22,11 @@ goog.require('box2d.b2Settings');
 goog.require('box2d.b2Math');
 goog.require('box2d.b2Joint');
 
-/** 
- * @export 
+/**
+ * @export
  * @return {box2d.b2Joint}
- * @param {box2d.b2JointDef} def 
- * @param allocator 
+ * @param {box2d.b2JointDef} def
+ * @param allocator
  */
 box2d.b2JointFactory.Create = function(def, allocator) {
   var joint = null;
@@ -114,10 +114,10 @@ box2d.b2JointFactory.Create = function(def, allocator) {
   return joint;
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2Joint} joint 
- * @param allocator 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2Joint} joint
+ * @param allocator
  */
 box2d.b2JointFactory.Destroy = function(joint, allocator) {}

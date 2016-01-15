@@ -24,13 +24,13 @@ goog.require('box2d.b2Settings');
 goog.require('box2d.b2Controller');
 goog.require('box2d.b2Math');
 
-/** 
- * Applies top down linear damping to the controlled bodies 
- * The damping is calculated by multiplying velocity by a matrix 
- * in local co-ordinates. 
- * @export 
- * @constructor 
- * @extends {box2d.b2Controller} 
+/**
+ * Applies top down linear damping to the controlled bodies
+ * The damping is calculated by multiplying velocity by a matrix
+ * in local co-ordinates.
+ * @export
+ * @constructor
+ * @extends {box2d.b2Controller}
  */
 box2d.b2TensorDampingController = function() {
   goog.base(this); // base class constructor
@@ -53,10 +53,10 @@ box2d.b2TensorDampingController = function() {
 
 goog.inherits(box2d.b2TensorDampingController, box2d.b2Controller);
 
-/** 
- * Tensor to use in damping model 
- * @export 
- * @type {box2d.b2Mat22} 
+/**
+ * Tensor to use in damping model
+ * @export
+ * @type {box2d.b2Mat22}
  */
 box2d.b2TensorDampingController.prototype.T = new box2d.b2Mat22();
 /*Some examples (matrixes in format (row1; row2))
@@ -66,19 +66,19 @@ box2d.b2TensorDampingController.prototype.T = new box2d.b2Mat22();
 */
 //By the way, tensor in this case just means matrix, don't let the terminology get you down.
 
-/** 
- * Set this to a positive number to clamp the maximum amount of 
- * damping done. 
- * @export 
- * @type {number} 
+/**
+ * Set this to a positive number to clamp the maximum amount of
+ * damping done.
+ * @export
+ * @type {number}
  */
 box2d.b2TensorDampingController.prototype.maxTimestep = 0;
 // Typically one wants maxTimestep to be 1/(max eigenvalue of T), so that damping will never cause something to reverse direction
 
-/** 
- * @see b2Controller::Step 
- * @return {void} 
- * @param {box2d.b2TimeStep} step 
+/**
+ * @see b2Controller::Step
+ * @return {void}
+ * @param {box2d.b2TimeStep} step
  */
 box2d.b2TensorDampingController.prototype.Step = function(step) {
   var timestep = step.dt;
@@ -104,11 +104,11 @@ box2d.b2TensorDampingController.prototype.Step = function(step) {
 }
 box2d.b2TensorDampingController.prototype.Step.s_damping = new box2d.b2Vec2();
 
-/** 
- * Sets damping independantly along the x and y axes 
- * @return {void} 
- * @param {number} xDamping 
- * @param {number} yDamping 
+/**
+ * Sets damping independantly along the x and y axes
+ * @return {void}
+ * @param {number} xDamping
+ * @param {number} yDamping
  */
 box2d.b2TensorDampingController.prototype.SetAxisAligned = function(xDamping, yDamping) {
   this.T.ex.x = (-xDamping);

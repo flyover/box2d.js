@@ -25,12 +25,12 @@ goog.require('box2d.b2Controller');
 goog.require('box2d.b2Math');
 goog.require('box2d.b2WorldCallbacks');
 
-/** 
- * Calculates buoyancy forces for fluids in the form of a half 
- * plane. 
- * @export 
- * @constructor 
- * @extends {box2d.b2Controller} 
+/**
+ * Calculates buoyancy forces for fluids in the form of a half
+ * plane.
+ * @export
+ * @constructor
+ * @extends {box2d.b2Controller}
  */
 box2d.b2BuoyancyController = function() {
   goog.base(this); // base class constructor
@@ -42,67 +42,67 @@ box2d.b2BuoyancyController = function() {
 
 goog.inherits(box2d.b2BuoyancyController, box2d.b2Controller);
 
-/** 
- * The outer surface normal 
- * @export 
- * @type {box2d.b2Vec2} 
+/**
+ * The outer surface normal
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2BuoyancyController.prototype.normal = null;
-/** 
- * The height of the fluid surface along the normal 
- * @export 
- * @type {number} 
+/**
+ * The height of the fluid surface along the normal
+ * @export
+ * @type {number}
  */
 box2d.b2BuoyancyController.prototype.offset = 0;
-/** 
- * The fluid density 
- * @export 
- * @type {number} 
+/**
+ * The fluid density
+ * @export
+ * @type {number}
  */
 box2d.b2BuoyancyController.prototype.density = 0;
-/** 
- * Fluid velocity, for drag calculations 
- * @export 
- * @type {box2d.b2Vec2} 
+/**
+ * Fluid velocity, for drag calculations
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2BuoyancyController.prototype.velocity = null;
-/** 
- * Linear drag co-efficient 
- * @export 
- * @type {number} 
+/**
+ * Linear drag co-efficient
+ * @export
+ * @type {number}
  */
 box2d.b2BuoyancyController.prototype.linearDrag = 0;
-/** 
- * Linear drag co-efficient 
- * @export 
- * @type {number} 
+/**
+ * Linear drag co-efficient
+ * @export
+ * @type {number}
  */
 box2d.b2BuoyancyController.prototype.angularDrag = 0;
-/** 
- * If false, bodies are assumed to be uniformly dense, otherwise 
- * use the shapes densities 
- * @export 
- * @type {boolean} 
+/**
+ * If false, bodies are assumed to be uniformly dense, otherwise
+ * use the shapes densities
+ * @export
+ * @type {boolean}
  */
 box2d.b2BuoyancyController.prototype.useDensity = false; //False by default to prevent a gotcha
-/** 
+/**
  * If true, gravity is taken from the world instead of the
- * @export 
- * @type {boolean} 
+ * @export
+ * @type {boolean}
  */
 box2d.b2BuoyancyController.prototype.useWorldGravity = true;
-/** 
- * Gravity vector, if the world's gravity is not used 
- * @export 
- * @type {box2d.b2Vec2} 
+/**
+ * Gravity vector, if the world's gravity is not used
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2BuoyancyController.prototype.gravity = null;
 
-/** 
- * @see box2d.b2Controller::Step 
- * @export 
- * @return {void} 
- * @param {box2d.b2TimeStep} step 
+/**
+ * @see box2d.b2Controller::Step
+ * @export
+ * @return {void}
+ * @param {box2d.b2TimeStep} step
  */
 box2d.b2BuoyancyController.prototype.Step = function(step) {
   if (!this.m_bodyList)
@@ -160,10 +160,10 @@ box2d.b2BuoyancyController.prototype.Step = function(step) {
   }
 }
 
-/** 
- * @see b2Controller::Draw 
- * @export 
- * @return {void} 
+/**
+ * @see b2Controller::Draw
+ * @export
+ * @return {void}
  * @param {box2d.b2Draw} debugDraw
  */
 box2d.b2BuoyancyController.prototype.Draw = function(debugDraw) {

@@ -21,11 +21,11 @@ goog.provide('box2d.Testbed.DistanceTest');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.DistanceTest = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -54,40 +54,40 @@ box2d.Testbed.DistanceTest = function(canvas, settings) {
 goog.inherits(box2d.Testbed.DistanceTest, box2d.Testbed.Test);
 
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.Testbed.DistanceTest.prototype.m_positionB = null;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.DistanceTest.prototype.m_angleB = 0.0;
 /**
- * @export 
- * @type {box2d.b2Transform} 
+ * @export
+ * @type {box2d.b2Transform}
  */
 box2d.Testbed.DistanceTest.prototype.m_transformA = null;
 /**
- * @export 
- * @type {box2d.b2Transform} 
+ * @export
+ * @type {box2d.b2Transform}
  */
 box2d.Testbed.DistanceTest.prototype.m_transformB = null;
 /**
- * @export 
- * @type {box2d.b2PolygonShape} 
+ * @export
+ * @type {box2d.b2PolygonShape}
  */
 box2d.Testbed.DistanceTest.prototype.m_polygonA = null;
 /**
- * @export 
- * @type {box2d.b2PolygonShape} 
+ * @export
+ * @type {box2d.b2PolygonShape}
  */
 box2d.Testbed.DistanceTest.prototype.m_polygonB = null;
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.DistanceTest.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
@@ -134,9 +134,9 @@ box2d.Testbed.DistanceTest.prototype.Step = function(settings) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.DistanceTest.prototype.Keyboard = function(key) {
   switch (key) {
@@ -168,11 +168,11 @@ box2d.Testbed.DistanceTest.prototype.Keyboard = function(key) {
   this.m_transformB.SetPositionRotationAngle(this.m_positionB, this.m_angleB);
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.DistanceTest.Create = function(canvas, settings) {
   return new box2d.Testbed.DistanceTest(canvas, settings);

@@ -24,11 +24,11 @@ goog.require('box2d.b2Settings');
 goog.require('box2d.b2Controller');
 goog.require('box2d.b2Math');
 
-/** 
- * Applies simplified gravity between every pair of bodies 
- * @export 
- * @constructor 
- * @extends {box2d.b2Controller} 
+/**
+ * Applies simplified gravity between every pair of bodies
+ * @export
+ * @constructor
+ * @extends {box2d.b2Controller}
  */
 box2d.b2GravityController = function() {
   goog.base(this); // base class constructor
@@ -36,24 +36,24 @@ box2d.b2GravityController = function() {
 
 goog.inherits(box2d.b2GravityController, box2d.b2Controller);
 
-/** 
- * Specifies the strength of the gravitiation force 
- * @export 
- * @type {number} 
+/**
+ * Specifies the strength of the gravitiation force
+ * @export
+ * @type {number}
  */
 box2d.b2GravityController.prototype.G = 1;
-/** 
- * If true, gravity is proportional to r^-2, otherwise r^-1 
- * @export 
- * @type {boolean} 
+/**
+ * If true, gravity is proportional to r^-2, otherwise r^-1
+ * @export
+ * @type {boolean}
  */
 box2d.b2GravityController.prototype.invSqr = true;
 
-/** 
- * @see b2Controller::Step 
- * @export 
- * @return {void} 
- * @param {box2d.b2TimeStep} step 
+/**
+ * @see b2Controller::Step
+ * @export
+ * @return {void}
+ * @param {box2d.b2TimeStep} step
  */
 box2d.b2GravityController.prototype.Step = function(step) {
   if (this.invSqr) {

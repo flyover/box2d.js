@@ -21,11 +21,11 @@ goog.provide('box2d.Testbed.Confined');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Confined = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -80,21 +80,21 @@ box2d.Testbed.Confined = function(canvas, settings) {
 goog.inherits(box2d.Testbed.Confined, box2d.Testbed.Test);
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Confined.e_columnCount = 0;
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Confined.e_rowCount = 0;
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.Testbed.Confined.prototype.CreateCircle = function() {
   var radius = 2.0;
@@ -118,9 +118,9 @@ box2d.Testbed.Confined.prototype.CreateCircle = function() {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.Confined.prototype.Keyboard = function(key) {
   switch (key) {
@@ -132,8 +132,8 @@ box2d.Testbed.Confined.prototype.Keyboard = function(key) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Confined.prototype.Step = function(settings) {
   var sleeping = true;
@@ -173,11 +173,11 @@ box2d.Testbed.Confined.prototype.Step = function(settings) {
   this.m_textLine += box2d.Testbed.DRAW_STRING_NEW_LINE;
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Confined.Create = function(canvas, settings) {
   return new box2d.Testbed.Confined(canvas, settings);

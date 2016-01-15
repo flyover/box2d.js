@@ -23,11 +23,11 @@ goog.provide('box2d.Testbed.Rope');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Rope = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -67,20 +67,20 @@ box2d.Testbed.Rope = function(canvas, settings) {
 goog.inherits(box2d.Testbed.Rope, box2d.Testbed.Test);
 
 /**
- * @export 
- * @type {box2d.b2Rope} 
+ * @export
+ * @type {box2d.b2Rope}
  */
 box2d.Testbed.Rope.prototype.m_rope = null;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.Rope.prototype.m_angle = 0.0;
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.Rope.prototype.Keyboard = function(key) {
   switch (key) {
@@ -98,8 +98,8 @@ box2d.Testbed.Rope.prototype.Keyboard = function(key) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Rope.prototype.Step = function(settings) {
   /*float32*/
@@ -121,11 +121,11 @@ box2d.Testbed.Rope.prototype.Step = function(settings) {
   this.m_textLine += box2d.Testbed.DRAW_STRING_NEW_LINE;
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Rope.Create = function(canvas, settings) {
   return new box2d.Testbed.Rope(canvas, settings);

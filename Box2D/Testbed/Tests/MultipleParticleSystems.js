@@ -23,16 +23,16 @@ goog.provide('box2d.Testbed.MultipleParticleSystems');
 goog.require('box2d.Testbed.Test');
 goog.require('box2d.Testbed.RadialEmitter');
 
-/** 
- * The "Multiple Systems" test uses two particle emitters to 
- * push a rigid body in opposing directions showing that 
- * particles from each system can interact with the same body 
- * and at the same time not interact with each other. 
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * The "Multiple Systems" test uses two particle emitters to
+ * push a rigid body in opposing directions showing that
+ * particles from each system can interact with the same body
+ * and at the same time not interact with each other.
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.MultipleParticleSystems = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -111,69 +111,69 @@ box2d.Testbed.MultipleParticleSystems.prototype.m_particleSystem2 = null;
  */
 box2d.Testbed.MultipleParticleSystems.prototype.m_emitters = null;
 
-/** 
- * Maximum number of particles per system. 
- * @const 
+/**
+ * Maximum number of particles per system.
+ * @const
  * @type {number}
  */
 box2d.Testbed.MultipleParticleSystems.k_maxParticleCount = 500;
-/** 
- * Size of the box which is pushed around by particles. 
- * @const 
+/**
+ * Size of the box which is pushed around by particles.
+ * @const
  * @type {box2d.b2Vec2}
  */
 box2d.Testbed.MultipleParticleSystems.k_dynamicBoxSize = new box2d.b2Vec2(0.5, 0.5);
-/** 
- * Mass of the box. 
- * @const 
+/**
+ * Mass of the box.
+ * @const
  * @type {number}
  */
 box2d.Testbed.MultipleParticleSystems.k_boxMass = 1.0;
-/** 
- * Emit rate of the emitters in particles per second. 
- * @const 
+/**
+ * Emit rate of the emitters in particles per second.
+ * @const
  * @type {number}
  */
 box2d.Testbed.MultipleParticleSystems.k_emitRate = 100.0;
-/** 
- * Location of the left emitter (the position of the right one 
- * is mirrored along the y-axis). 
- * @const 
+/**
+ * Location of the left emitter (the position of the right one
+ * is mirrored along the y-axis).
+ * @const
  * @type {box2d.b2Vec2}
  */
 box2d.Testbed.MultipleParticleSystems.k_emitterPosition = new box2d.b2Vec2(-5.0, 4.0);
-/** 
- * Starting velocity of particles from the left emitter (the 
- * velocity of particles from the right emitter are mirrored 
- * along the y-axis). 
- * @const 
+/**
+ * Starting velocity of particles from the left emitter (the
+ * velocity of particles from the right emitter are mirrored
+ * along the y-axis).
+ * @const
  * @type {box2d.b2Vec2}
  */
 box2d.Testbed.MultipleParticleSystems.k_emitterVelocity = new box2d.b2Vec2(7.0, -4.0);
-/** 
- * Size of particle emitters. 
- * @const 
+/**
+ * Size of particle emitters.
+ * @const
  * @type {box2d.b2Vec2}
  */
 box2d.Testbed.MultipleParticleSystems.k_emitterSize = new box2d.b2Vec2(1.0, 1.0);
-/** 
- * Color of the left emitter's particles. 
- * @const 
+/**
+ * Color of the left emitter's particles.
+ * @const
  * @type {box2d.b2ParticleColor}
  */
 box2d.Testbed.MultipleParticleSystems.k_leftEmitterColor = new box2d.b2ParticleColor(0x22, 0x33, 0xff, 0xff);
-/** 
- * Color of the right emitter's particles. 
- * @const 
+/**
+ * Color of the right emitter's particles.
+ * @const
  * @type {box2d.b2ParticleColor}
  */
 box2d.Testbed.MultipleParticleSystems.k_rightEmitterColor = new box2d.b2ParticleColor(0xff, 0x22, 0x11, 0xff);
 
-/** 
- * Run a simulation step. 
+/**
+ * Run a simulation step.
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.MultipleParticleSystems.prototype.Step = function(settings) {
   var dt = 1.0 / settings.hz;
@@ -184,19 +184,19 @@ box2d.Testbed.MultipleParticleSystems.prototype.Step = function(settings) {
 }
 
 /**
- * @export 
- * @return {number} 
+ * @export
+ * @return {number}
  */
 box2d.Testbed.MultipleParticleSystems.prototype.GetDefaultViewZoom = function() {
   return 0.2;
 }
 
-/** 
- * Create the multiple particle systems test. 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * Create the multiple particle systems test.
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.MultipleParticleSystems.Create = function(canvas, settings) {
   return new box2d.Testbed.MultipleParticleSystems(canvas, settings);

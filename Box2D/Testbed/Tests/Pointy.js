@@ -22,14 +22,14 @@ goog.provide('box2d.Testbed.Pointy');
 
 goog.require('box2d.Testbed.Test');
 
-/** 
- * Test behavior when particles fall on a convex ambigious Body 
- * contact fixture junction. 
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * Test behavior when particles fall on a convex ambigious Body
+ * contact fixture junction.
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Pointy = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -84,8 +84,8 @@ box2d.Testbed.Pointy.prototype.m_killfieldTransform = null;
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Pointy.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
@@ -109,11 +109,11 @@ box2d.Testbed.Pointy.prototype.Step = function(settings) {
   this.m_particleSystem.DestroyParticlesInShape(this.m_killfieldShape, this.m_killfieldTransform);
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Pointy.Create = function(canvas, settings) {
   return new box2d.Testbed.Pointy(canvas, settings);

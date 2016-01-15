@@ -21,11 +21,11 @@ goog.provide('box2d.Testbed.BulletTest');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.BulletTest = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -79,24 +79,24 @@ box2d.Testbed.BulletTest = function(canvas, settings) {
 goog.inherits(box2d.Testbed.BulletTest, box2d.Testbed.Test);
 
 /**
- * @export 
- * @type {box2d.b2Body} 
+ * @export
+ * @type {box2d.b2Body}
  */
 box2d.Testbed.BulletTest.prototype.m_body = null;
 /**
- * @export 
- * @type {box2d.b2Body} 
+ * @export
+ * @type {box2d.b2Body}
  */
 box2d.Testbed.BulletTest.prototype.m_bullet = null;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.BulletTest.prototype.m_x = 0.0;
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  */
 box2d.Testbed.BulletTest.prototype.Launch = function() {
   this.m_body.SetTransform_V2_A(new box2d.b2Vec2(0.0, 4.0), 0.0);
@@ -125,8 +125,8 @@ box2d.Testbed.BulletTest.prototype.Launch = function() {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.BulletTest.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
@@ -156,11 +156,11 @@ box2d.Testbed.BulletTest.prototype.Step = function(settings) {
   }
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.BulletTest.Create = function(canvas, settings) {
   return new box2d.Testbed.BulletTest(canvas, settings);

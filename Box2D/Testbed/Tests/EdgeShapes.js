@@ -21,9 +21,9 @@ goog.provide('box2d.Testbed.EdgeShapes');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.b2RayCastCallback} 
+ * @export
+ * @constructor
+ * @extends {box2d.b2RayCastCallback}
  */
 box2d.Testbed.EdgeShapesCallback = function() {
   box2d.b2RayCastCallback.call(this); // base class constructor
@@ -35,28 +35,28 @@ box2d.Testbed.EdgeShapesCallback = function() {
 goog.inherits(box2d.Testbed.EdgeShapesCallback, box2d.b2RayCastCallback);
 
 /**
- * @export 
- * @type {box2d.b2Fixture} 
+ * @export
+ * @type {box2d.b2Fixture}
  */
 box2d.Testbed.EdgeShapesCallback.prototype.m_fixture = null;
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.Testbed.EdgeShapesCallback.prototype.m_point = null;
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.Testbed.EdgeShapesCallback.prototype.m_normal = null;
 
 /**
- * @export 
- * @return {number} 
- * @param {box2d.b2Fixture} fixture 
- * @param {box2d.b2Vec2} point 
- * @param {box2d.b2Vec2} normal 
- * @param {number} fraction 
+ * @export
+ * @return {number}
+ * @param {box2d.b2Fixture} fixture
+ * @param {box2d.b2Vec2} point
+ * @param {box2d.b2Vec2} normal
+ * @param {number} fraction
  */
 box2d.Testbed.EdgeShapesCallback.prototype.ReportFixture = function(fixture, point, normal, fraction) {
   this.m_fixture = fixture;
@@ -67,11 +67,11 @@ box2d.Testbed.EdgeShapesCallback.prototype.ReportFixture = function(fixture, poi
 }
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.EdgeShapes = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -156,42 +156,42 @@ box2d.Testbed.EdgeShapes = function(canvas, settings) {
 goog.inherits(box2d.Testbed.EdgeShapes, box2d.Testbed.Test);
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.Testbed.EdgeShapes.e_maxBodies = 256;
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.EdgeShapes.prototype.m_bodyIndex = 0;
 /**
- * @export 
- * @type {Array.<box2d.b2Body>} 
+ * @export
+ * @type {Array.<box2d.b2Body>}
  */
 box2d.Testbed.EdgeShapes.prototype.m_bodies = null;
 /**
- * @export 
- * @type {Array.<box2d.b2PolygonShape>} 
+ * @export
+ * @type {Array.<box2d.b2PolygonShape>}
  */
 box2d.Testbed.EdgeShapes.prototype.m_polygons = null;
 /**
- * @export 
- * @type {box2d.b2CircleShape} 
+ * @export
+ * @type {box2d.b2CircleShape}
  */
 box2d.Testbed.EdgeShapes.prototype.m_circle = null;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.EdgeShapes.prototype.m_angle = 0.0;
 
-/** 
- * @export 
- * @return {void} 
- * @param {number} index 
+/**
+ * @export
+ * @return {void}
+ * @param {number} index
  */
 box2d.Testbed.EdgeShapes.prototype.CreateBody = function(index) {
   if (this.m_bodies[this.m_bodyIndex] !== null) {
@@ -231,9 +231,9 @@ box2d.Testbed.EdgeShapes.prototype.CreateBody = function(index) {
   this.m_bodyIndex = (this.m_bodyIndex + 1) % box2d.Testbed.EdgeShapes.e_maxBodies;
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  */
 box2d.Testbed.EdgeShapes.prototype.DestroyBody = function() {
   for (var i = 0; i < box2d.Testbed.EdgeShapes.e_maxBodies; ++i) {
@@ -246,9 +246,9 @@ box2d.Testbed.EdgeShapes.prototype.DestroyBody = function() {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.EdgeShapes.prototype.Keyboard = function(key) {
   switch (key) {
@@ -268,8 +268,8 @@ box2d.Testbed.EdgeShapes.prototype.Keyboard = function(key) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.EdgeShapes.prototype.Step = function(settings) {
   var advanceRay = !settings.pause || settings.singleStep;
@@ -300,11 +300,11 @@ box2d.Testbed.EdgeShapes.prototype.Step = function(settings) {
   }
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.EdgeShapes.Create = function(canvas, settings) {
   return new box2d.Testbed.EdgeShapes(canvas, settings);

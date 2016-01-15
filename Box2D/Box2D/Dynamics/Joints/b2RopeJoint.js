@@ -22,14 +22,14 @@ goog.require('box2d.b2Settings');
 goog.require('box2d.b2Joint');
 goog.require('box2d.b2Math');
 
-/** 
- * Rope joint definition. This requires two body anchor points 
- * and a maximum lengths. 
- * Note: by default the connected objects will not collide. see 
- * collideConnected in box2d.b2JointDef. 
- * @export 
- * @constructor 
- * @extends {box2d.b2JointDef} 
+/**
+ * Rope joint definition. This requires two body anchor points
+ * and a maximum lengths.
+ * Note: by default the connected objects will not collide. see
+ * collideConnected in box2d.b2JointDef.
+ * @export
+ * @constructor
+ * @extends {box2d.b2JointDef}
  */
 box2d.b2RopeJointDef = function() {
   box2d.b2JointDef.call(this, box2d.b2JointType.e_ropeJoint); // base class constructor
@@ -40,42 +40,42 @@ box2d.b2RopeJointDef = function() {
 
 goog.inherits(box2d.b2RopeJointDef, box2d.b2JointDef);
 
-/** 
- * The local anchor point relative to bodyA's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyA's origin.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RopeJointDef.prototype.localAnchorA = null;
 
-/** 
- * The local anchor point relative to bodyB's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyB's origin.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RopeJointDef.prototype.localAnchorB = null;
 
-/** 
- * The maximum length of the rope. 
- * Warning: this must be larger than box2d.b2_linearSlop or the 
- * joint will have no effect. 
- * @export 
+/**
+ * The maximum length of the rope.
+ * Warning: this must be larger than box2d.b2_linearSlop or the
+ * joint will have no effect.
+ * @export
  * @type {number}
  */
 box2d.b2RopeJointDef.prototype.maxLength = 0;
 
-/** 
- * A rope joint enforces a maximum distance between two points 
- * on two bodies. It has no other effect. 
- * Warning: if you attempt to change the maximum length during 
- * the simulation you will get some non-physical behavior. A 
- * model that would allow you to dynamically modify the length 
- * would have some sponginess, so I chose not to implement it 
- * that way. See box2d.b2DistanceJoint if you want to 
- * dynamically control length. 
- * @export 
- * @constructor 
- * @extends {box2d.b2Joint} 
- * @param {box2d.b2RopeJointDef} def 
+/**
+ * A rope joint enforces a maximum distance between two points
+ * on two bodies. It has no other effect.
+ * Warning: if you attempt to change the maximum length during
+ * the simulation you will get some non-physical behavior. A
+ * model that would allow you to dynamically modify the length
+ * would have some sponginess, so I chose not to implement it
+ * that way. See box2d.b2DistanceJoint if you want to
+ * dynamically control length.
+ * @export
+ * @constructor
+ * @extends {box2d.b2Joint}
+ * @param {box2d.b2RopeJointDef} def
  */
 box2d.b2RopeJoint = function(def) {
   box2d.b2Joint.call(this, def); // base class constructor
@@ -100,122 +100,122 @@ goog.inherits(box2d.b2RopeJoint, box2d.b2Joint);
 
 // Solver shared
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RopeJoint.prototype.m_localAnchorA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RopeJoint.prototype.m_localAnchorB = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RopeJoint.prototype.m_maxLength = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RopeJoint.prototype.m_length = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RopeJoint.prototype.m_impulse = 0;
 
 // Solver temp
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RopeJoint.prototype.m_indexA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RopeJoint.prototype.m_indexB = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RopeJoint.prototype.m_u = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RopeJoint.prototype.m_rA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RopeJoint.prototype.m_rB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RopeJoint.prototype.m_localCenterA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RopeJoint.prototype.m_localCenterB = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RopeJoint.prototype.m_invMassA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RopeJoint.prototype.m_invMassB = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RopeJoint.prototype.m_invIA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RopeJoint.prototype.m_invIB = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RopeJoint.prototype.m_mass = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2LimitState}
  */
 box2d.b2RopeJoint.prototype.m_state = box2d.b2LimitState.e_inactiveLimit;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2RopeJoint.prototype.m_qA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2RopeJoint.prototype.m_qB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RopeJoint.prototype.m_lalcA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RopeJoint.prototype.m_lalcB = null;
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2RopeJoint.prototype.InitVelocityConstraints = function(data) {
@@ -311,9 +311,9 @@ box2d.b2RopeJoint.prototype.InitVelocityConstraints = function(data) {
 }
 box2d.b2RopeJoint.prototype.InitVelocityConstraints.s_P = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2RopeJoint.prototype.SolveVelocityConstraints = function(data) {
@@ -368,10 +368,10 @@ box2d.b2RopeJoint.prototype.SolveVelocityConstraints.s_vpA = new box2d.b2Vec2();
 box2d.b2RopeJoint.prototype.SolveVelocityConstraints.s_vpB = new box2d.b2Vec2();
 box2d.b2RopeJoint.prototype.SolveVelocityConstraints.s_P = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {boolean} 
- * @param {box2d.b2SolverData} data 
+/**
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2SolverData} data
  */
 box2d.b2RopeJoint.prototype.SolvePositionConstraints = function(data) {
   /*box2d.b2Vec2&*/
@@ -425,28 +425,28 @@ box2d.b2RopeJoint.prototype.SolvePositionConstraints = function(data) {
 }
 box2d.b2RopeJoint.prototype.SolvePositionConstraints.s_P = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2RopeJoint.prototype.GetAnchorA = function(out) {
   return this.m_bodyA.GetWorldPoint(this.m_localAnchorA, out);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2RopeJoint.prototype.GetAnchorB = function(out) {
   return this.m_bodyB.GetWorldPoint(this.m_localAnchorB, out);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {number} inv_dt 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {number} inv_dt
  * @param {box2d.b2Vec2} out
  */
 box2d.b2RopeJoint.prototype.GetReactionForce = function(inv_dt, out) {
@@ -456,63 +456,63 @@ box2d.b2RopeJoint.prototype.GetReactionForce = function(inv_dt, out) {
   //	return out.Set(inv_dt * this.m_linearImpulse.x, inv_dt * this.m_linearImpulse.y);
 }
 
-/** 
- * @export 
- * @return {number} 
- * @param {number} inv_dt 
+/**
+ * @export
+ * @return {number}
+ * @param {number} inv_dt
  */
 box2d.b2RopeJoint.prototype.GetReactionTorque = function(inv_dt) {
   return 0;
 }
 
-/** 
- * The local anchor point relative to bodyA's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyA's origin.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2RopeJoint.prototype.GetLocalAnchorA = function(out) {
   return out.Copy(this.m_localAnchorA);
 }
 
-/** 
- * The local anchor point relative to bodyB's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyB's origin.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2RopeJoint.prototype.GetLocalAnchorB = function(out) {
   return out.Copy(this.m_localAnchorB);
 }
 
-/** 
- * Set/Get the maximum length of the rope. 
- * @export 
- * @return {void} 
+/**
+ * Set/Get the maximum length of the rope.
+ * @export
+ * @return {void}
  * @param {number} length
  */
 box2d.b2RopeJoint.prototype.SetMaxLength = function(length) {
     this.m_maxLength = length;
   }
-  /** 
-   * @export 
-   * @return {number} 
+  /**
+   * @export
+   * @return {number}
    */
 box2d.b2RopeJoint.prototype.GetMaxLength = function() {
   return this.m_maxLength;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {box2d.b2LimitState}
  */
 box2d.b2RopeJoint.prototype.GetLimitState = function() {
   return this.m_state;
 }
 
-/** 
- * Dump joint to dmLog 
- * @export 
+/**
+ * Dump joint to dmLog
+ * @export
  * @return {void}
  */
 box2d.b2RopeJoint.prototype.Dump = function() {

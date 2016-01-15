@@ -20,15 +20,15 @@ goog.provide('box2d.b2CollideCircle');
 
 goog.require('box2d.b2Collision');
 
-/** 
- * Compute the collision manifold between two circles. 
- * @export 
- * @return {void} 
- * @param {box2d.b2Manifold} manifold 
- * @param {box2d.b2CircleShape} circleA 
- * @param {box2d.b2Transform} xfA 
- * @param {box2d.b2CircleShape} circleB 
- * @param {box2d.b2Transform} xfB 
+/**
+ * Compute the collision manifold between two circles.
+ * @export
+ * @return {void}
+ * @param {box2d.b2Manifold} manifold
+ * @param {box2d.b2CircleShape} circleA
+ * @param {box2d.b2Transform} xfA
+ * @param {box2d.b2CircleShape} circleB
+ * @param {box2d.b2Transform} xfB
  */
 box2d.b2CollideCircles = function(manifold, circleA, xfA, circleB, xfB) {
   manifold.pointCount = 0;
@@ -53,11 +53,11 @@ box2d.b2CollideCircles = function(manifold, circleA, xfA, circleB, xfB) {
 box2d.b2CollideCircles.s_pA = new box2d.b2Vec2();
 box2d.b2CollideCircles.s_pB = new box2d.b2Vec2();
 
-/** 
- * Compute the collision manifold between a polygon and a 
- * circle. 
- * @export 
- * @return {void} 
+/**
+ * Compute the collision manifold between a polygon and a
+ * circle.
+ * @export
+ * @return {void}
  * @param {box2d.b2Manifold} manifold
  * @param {box2d.b2PolygonShape} polygonA
  * @param {box2d.b2Transform} xfA

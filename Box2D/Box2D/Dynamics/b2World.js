@@ -31,14 +31,14 @@ goog.require('box2d.b2WorldCallbacks');
 goog.require('box2d.b2JointFactory');
 
 /**
- * The world class manages all physics entities, dynamic 
- * simulation, and asynchronous queries. The world also contains 
- * efficient memory management facilities. 
+ * The world class manages all physics entities, dynamic
+ * simulation, and asynchronous queries. The world also contains
+ * efficient memory management facilities.
  */
 
-/** 
- * Construct a world object. 
- * @export 
+/**
+ * Construct a world object.
+ * @export
  * @constructor
  * @param {box2d.b2Vec2} gravity the world gravity vector.
  */
@@ -71,34 +71,34 @@ box2d.b2World = function(gravity) {
 //b2StackAllocator m_stackAllocator;
 
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2World.prototype.m_flag_newFixture = false;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2World.prototype.m_flag_locked = false;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2World.prototype.m_flag_clearForces = false;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2ContactManager}
  */
 box2d.b2World.prototype.m_contactManager = null;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Body}
  */
 box2d.b2World.prototype.m_bodyList = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Joint}
  */
 box2d.b2World.prototype.m_jointList = null;
@@ -106,7 +106,7 @@ box2d.b2World.prototype.m_jointList = null;
 //#if B2_ENABLE_PARTICLE
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2ParticleSystem}
  */
 box2d.b2World.prototype.m_particleSystemList = null;
@@ -114,114 +114,114 @@ box2d.b2World.prototype.m_particleSystemList = null;
 //#endif
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2World.prototype.m_bodyCount = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2World.prototype.m_jointCount = 0;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2World.prototype.m_gravity = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2World.prototype.m_out_gravity = null;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2World.prototype.m_allowSleep = true;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2DestructionListener}
  */
 box2d.b2World.prototype.m_destructionListener = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Draw}
  */
 box2d.b2World.prototype.m_debugDraw = null;
 
-/** 
- * This is used to compute the time step ratio to support a 
- * variable time step. 
- * @export 
+/**
+ * This is used to compute the time step ratio to support a
+ * variable time step.
+ * @export
  * @type {number}
  */
 box2d.b2World.prototype.m_inv_dt0 = 0;
 
-/** 
- * These are for debugging the solver. 
- * @export 
+/**
+ * These are for debugging the solver.
+ * @export
  * @type {boolean}
  */
 box2d.b2World.prototype.m_warmStarting = true;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2World.prototype.m_continuousPhysics = true;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2World.prototype.m_subStepping = false;
 
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2World.prototype.m_stepComplete = true;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Profile}
  */
 box2d.b2World.prototype.m_profile = null;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Island}
  */
 box2d.b2World.prototype.m_island = null;
 
 /**
- * @export 
+ * @export
  * @type {Array.<?box2d.b2Body>}
  */
 box2d.b2World.prototype.s_stack = null;
 
 //#if B2_ENABLE_CONTROLLER
 
-/** 
- * @see box2d.b2Controller list 
- * @export 
+/**
+ * @see box2d.b2Controller list
+ * @export
  * @type {box2d.b2Controller}
  */
 box2d.b2World.prototype.m_controllerList = null;
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2World.prototype.m_controllerCount = 0;
 
 //#endif
 
-/** 
- * Enable/disable sleep. 
- * @export 
- * @return {void} 
- * @param {boolean} flag 
+/**
+ * Enable/disable sleep.
+ * @export
+ * @return {void}
+ * @param {boolean} flag
  */
 box2d.b2World.prototype.SetAllowSleeping = function(flag) {
   if (flag === this.m_allowSleep) {
@@ -236,85 +236,85 @@ box2d.b2World.prototype.SetAllowSleeping = function(flag) {
   }
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {boolean}
  */
 box2d.b2World.prototype.GetAllowSleeping = function() {
   return this.m_allowSleep;
 }
 
-/** 
- * Enable/disable warm starting. For testing. 
- * @export 
- * @return {void} 
+/**
+ * Enable/disable warm starting. For testing.
+ * @export
+ * @return {void}
  * @param {boolean} flag
  */
 box2d.b2World.prototype.SetWarmStarting = function(flag) {
   this.m_warmStarting = flag;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {boolean}
  */
 box2d.b2World.prototype.GetWarmStarting = function() {
   return this.m_warmStarting;
 }
 
-/** 
- * Enable/disable continuous physics. For testing. 
- * @export 
- * @return {void} 
+/**
+ * Enable/disable continuous physics. For testing.
+ * @export
+ * @return {void}
  * @param {boolean} flag
  */
 box2d.b2World.prototype.SetContinuousPhysics = function(flag) {
   this.m_continuousPhysics = flag;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {boolean}
  */
 box2d.b2World.prototype.GetContinuousPhysics = function() {
   return this.m_continuousPhysics;
 }
 
-/** 
- * Enable/disable single stepped continuous physics. For 
- * testing. 
- * @export 
- * @return {void} 
+/**
+ * Enable/disable single stepped continuous physics. For
+ * testing.
+ * @export
+ * @return {void}
  * @param {boolean} flag
  */
 box2d.b2World.prototype.SetSubStepping = function(flag) {
   this.m_subStepping = flag;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {boolean}
  */
 box2d.b2World.prototype.GetSubStepping = function() {
   return this.m_subStepping;
 }
 
-/** 
- * Get the world body list. With the returned body, use 
- * b2Body::GetNext to get the next body in the world list. A 
- * NULL body indicates the end of the list. 
- * @export 
+/**
+ * Get the world body list. With the returned body, use
+ * b2Body::GetNext to get the next body in the world list. A
+ * NULL body indicates the end of the list.
+ * @export
  * @return {box2d.b2Body} the head of the world body list.
  */
 box2d.b2World.prototype.GetBodyList = function() {
   return this.m_bodyList;
 }
 
-/** 
- * Get the world joint list. With the returned joint, use 
- * b2Joint::GetNext to get the next joint in the world list. A 
- * NULL joint indicates the end of the list. 
- * @export 
+/**
+ * Get the world joint list. With the returned joint, use
+ * b2Joint::GetNext to get the next joint in the world list. A
+ * NULL joint indicates the end of the list.
+ * @export
  * @return {box2d.b2Joint} the head of the world joint list.
  */
 box2d.b2World.prototype.GetJointList = function() {
@@ -324,8 +324,8 @@ box2d.b2World.prototype.GetJointList = function() {
 //#if B2_ENABLE_PARTICLE
 
 /**
- * @export 
- * @return {box2d.b2ParticleSystem} 
+ * @export
+ * @return {box2d.b2ParticleSystem}
  */
 box2d.b2World.prototype.GetParticleSystemList = function() {
   return this.m_particleSystemList;
@@ -333,54 +333,54 @@ box2d.b2World.prototype.GetParticleSystemList = function() {
 
 //#endif
 
-/** 
- * Get the world contact list. With the returned contact, use 
- * box2d.b2Contact::GetNext to get the next contact in the world 
- * list. A NULL contact indicates the end of the list. 
- * warning contacts are created and destroyed in the middle of a 
- * time step. 
+/**
+ * Get the world contact list. With the returned contact, use
+ * box2d.b2Contact::GetNext to get the next contact in the world
+ * list. A NULL contact indicates the end of the list.
+ * warning contacts are created and destroyed in the middle of a
+ * time step.
  * Use box2d.b2ContactListener to avoid missing contacts.
- * @export 
+ * @export
  * @return {box2d.b2Contact} the head of the world contact list.
  */
 box2d.b2World.prototype.GetContactList = function() {
   return this.m_contactManager.m_contactList;
 }
 
-/** 
- * Get the number of bodies. 
- * @export 
- * @return {number} 
+/**
+ * Get the number of bodies.
+ * @export
+ * @return {number}
  */
 box2d.b2World.prototype.GetBodyCount = function() {
   return this.m_bodyCount;
 }
 
-/** 
- * Get the number of joints. 
- * @export 
- * @return {number} 
+/**
+ * Get the number of joints.
+ * @export
+ * @return {number}
  */
 box2d.b2World.prototype.GetJointCount = function() {
   return this.m_jointCount;
 }
 
-/** 
- * Get the number of contacts (each may have 0 or more contact 
- * points). 
- * @export 
- * @return {number} 
+/**
+ * Get the number of contacts (each may have 0 or more contact
+ * points).
+ * @export
+ * @return {number}
  */
 box2d.b2World.prototype.GetContactCount = function() {
   return this.m_contactManager.m_contactCount;
 }
 
-/** 
- * Change the global gravity vector. 
- * @export 
- * @return {void} 
+/**
+ * Change the global gravity vector.
+ * @export
+ * @return {void}
  * @param {box2d.b2Vec2} gravity
- * @param {boolean=} wake also wake up the bodies 
+ * @param {boolean=} wake also wake up the bodies
  */
 box2d.b2World.prototype.SetGravity = function(gravity, wake) {
   wake = wake || true;
@@ -396,118 +396,118 @@ box2d.b2World.prototype.SetGravity = function(gravity, wake) {
   }
 }
 
-/** 
- * Get the global gravity vector. 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2=} out 
+/**
+ * Get the global gravity vector.
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2=} out
  */
 box2d.b2World.prototype.GetGravity = function(out) {
   out = out || this.m_out_gravity;
   return out.Copy(this.m_gravity);
 }
 
-/** 
- * Is the world locked (in the middle of a time step). 
- * @export 
+/**
+ * Is the world locked (in the middle of a time step).
+ * @export
  * @return {boolean}
  */
 box2d.b2World.prototype.IsLocked = function() {
   return this.m_flag_locked;
 }
 
-/** 
- * Set flag to control automatic clearing of forces after each 
- * time step. 
- * @export 
- * @return {void} 
+/**
+ * Set flag to control automatic clearing of forces after each
+ * time step.
+ * @export
+ * @return {void}
  * @param {boolean} flag
  */
 box2d.b2World.prototype.SetAutoClearForces = function(flag) {
   this.m_flag_clearForces = flag;
 }
 
-/** 
- * Get the flag that controls automatic clearing of forces after 
- * each time step. 
- * @export 
+/**
+ * Get the flag that controls automatic clearing of forces after
+ * each time step.
+ * @export
  * @return {boolean}
  */
 box2d.b2World.prototype.GetAutoClearForces = function() {
   return this.m_flag_clearForces;
 }
 
-/** 
- * Get the contact manager for testing. 
- * @export 
+/**
+ * Get the contact manager for testing.
+ * @export
  * @return {box2d.b2ContactManager}
  */
 box2d.b2World.prototype.GetContactManager = function() {
   return this.m_contactManager;
 }
 
-/** 
- * Get the current profile. 
- * @export 
- * @return {box2d.b2Profile} 
+/**
+ * Get the current profile.
+ * @export
+ * @return {box2d.b2Profile}
  */
 box2d.b2World.prototype.GetProfile = function() {
   return this.m_profile;
 }
 
-/** 
- * Register a destruction listener. The listener is owned by you 
- * and must remain in scope. 
- * @export 
- * @return {void} 
+/**
+ * Register a destruction listener. The listener is owned by you
+ * and must remain in scope.
+ * @export
+ * @return {void}
  * @param {box2d.b2DestructionListener} listener
  */
 box2d.b2World.prototype.SetDestructionListener = function(listener) {
   this.m_destructionListener = listener;
 }
 
-/** 
- * Register a contact filter to provide specific control over 
- * collision. Otherwise the default filter is used 
- * (b2_defaultFilter). The listener is owned by you and must 
- * remain in scope. 
- * @export 
- * @return {void} 
+/**
+ * Register a contact filter to provide specific control over
+ * collision. Otherwise the default filter is used
+ * (b2_defaultFilter). The listener is owned by you and must
+ * remain in scope.
+ * @export
+ * @return {void}
  * @param {box2d.b2ContactFilter} filter
  */
 box2d.b2World.prototype.SetContactFilter = function(filter) {
   this.m_contactManager.m_contactFilter = filter;
 }
 
-/** 
- * Register a contact event listener. The listener is owned by 
- * you and must remain in scope. 
- * @export 
- * @return {void} 
+/**
+ * Register a contact event listener. The listener is owned by
+ * you and must remain in scope.
+ * @export
+ * @return {void}
  * @param {box2d.b2ContactListener} listener
  */
 box2d.b2World.prototype.SetContactListener = function(listener) {
   this.m_contactManager.m_contactListener = listener;
 }
 
-/** 
- * Register a routine for debug drawing. The debug draw 
- * functions are called inside with b2World::DrawDebugData 
- * method. The debug draw object is owned by you and must remain 
- * in scope. 
- * @export 
- * @return {void} 
+/**
+ * Register a routine for debug drawing. The debug draw
+ * functions are called inside with b2World::DrawDebugData
+ * method. The debug draw object is owned by you and must remain
+ * in scope.
+ * @export
+ * @return {void}
  * @param {box2d.b2Draw} debugDraw
  */
 box2d.b2World.prototype.SetDebugDraw = function(debugDraw) {
   this.m_debugDraw = debugDraw;
 }
 
-/** 
- * Create a rigid body given a definition. No reference to the 
- * definition is retained. 
+/**
+ * Create a rigid body given a definition. No reference to the
+ * definition is retained.
  * warning This function is locked during callbacks.
- * @export 
+ * @export
  * @return {box2d.b2Body}
  * @param {box2d.b2BodyDef} def
  */
@@ -534,15 +534,15 @@ box2d.b2World.prototype.CreateBody = function(def) {
   return b;
 }
 
-/** 
- * Destroy a rigid body given a definition. No reference to the 
- * definition is retained. This function is locked during 
- * callbacks. 
- * warning This automatically deletes all associated shapes and 
- * joints. 
- * warning This function is locked during callbacks. 
- * @export 
- * @return {void} 
+/**
+ * Destroy a rigid body given a definition. No reference to the
+ * definition is retained. This function is locked during
+ * callbacks.
+ * warning This automatically deletes all associated shapes and
+ * joints.
+ * warning This function is locked during callbacks.
+ * @export
+ * @return {void}
  * @param {box2d.b2Body} b
  */
 box2d.b2World.prototype.DestroyBody = function(b) {
@@ -637,14 +637,14 @@ box2d.b2World.prototype.DestroyBody = function(b) {
   --this.m_bodyCount;
 }
 
-/** 
- * Create a joint to constrain bodies together. No reference to 
- * the definition is retained. This may cause the connected 
- * bodies to cease colliding. 
+/**
+ * Create a joint to constrain bodies together. No reference to
+ * the definition is retained. This may cause the connected
+ * bodies to cease colliding.
  * warning This function is locked during callbacks.
- * @export 
+ * @export
  * @return {box2d.b2Joint}
- * @param {box2d.b2JointDef} def 
+ * @param {box2d.b2JointDef} def
  */
 box2d.b2World.prototype.CreateJoint = function(def) {
   if (box2d.ENABLE_ASSERTS) {
@@ -706,12 +706,12 @@ box2d.b2World.prototype.CreateJoint = function(def) {
   return j;
 }
 
-/** 
- * Destroy a joint. This may cause the connected bodies to begin 
- * colliding. 
+/**
+ * Destroy a joint. This may cause the connected bodies to begin
+ * colliding.
  * warning This function is locked during callbacks.
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2Joint} j
  */
 box2d.b2World.prototype.DestroyJoint = function(j) {
@@ -806,9 +806,9 @@ box2d.b2World.prototype.DestroyJoint = function(j) {
 //#if B2_ENABLE_PARTICLE
 
 /**
- * @export 
- * @return {box2d.b2ParticleSystem} 
- * @param {box2d.b2ParticleSystemDef} def 
+ * @export
+ * @return {box2d.b2ParticleSystem}
+ * @param {box2d.b2ParticleSystemDef} def
  */
 box2d.b2World.prototype.CreateParticleSystem = function(def) {
   if (box2d.ENABLE_ASSERTS) {
@@ -832,9 +832,9 @@ box2d.b2World.prototype.CreateParticleSystem = function(def) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2ParticleSystem} p 
+ * @export
+ * @return {void}
+ * @param {box2d.b2ParticleSystem} p
  */
 box2d.b2World.prototype.DestroyParticleSystem = function(p) {
   if (box2d.ENABLE_ASSERTS) {
@@ -860,11 +860,11 @@ box2d.b2World.prototype.DestroyParticleSystem = function(p) {
 
 //#endif
 
-/** 
- * Find islands, integrate and solve constraints, solve position 
- * constraints 
- * @export 
- * @return {void} 
+/**
+ * Find islands, integrate and solve constraints, solve position
+ * constraints
+ * @export
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2World.prototype.Solve = function(step) {
@@ -892,7 +892,7 @@ box2d.b2World.prototype.Solve = function(step) {
   island.Initialize(this.m_bodyCount,
     this.m_contactManager.m_contactCount,
     this.m_jointCount,
-    null, // this.m_stackAllocator, 
+    null, // this.m_stackAllocator,
     this.m_contactManager.m_contactListener);
 
   // Clear all the island flags.
@@ -1071,10 +1071,10 @@ box2d.b2World.prototype.Solve = function(step) {
   }
 }
 
-/** 
- * Find TOI contacts and solve them. 
- * @export 
- * @return {void} 
+/**
+ * Find TOI contacts and solve them.
+ * @export
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2World.prototype.SolveTOI = function(step) {
@@ -1406,11 +1406,11 @@ box2d.b2World.prototype.SolveTOI.s_backup2 = new box2d.b2Sweep();
 box2d.b2World.prototype.SolveTOI.s_toi_input = new box2d.b2TOIInput();
 box2d.b2World.prototype.SolveTOI.s_toi_output = new box2d.b2TOIOutput();
 
-/** 
- * Take a time step. This performs collision detection, 
- * integration, and constraint solution. 
- * @export 
- * @return {void} 
+/**
+ * Take a time step. This performs collision detection,
+ * integration, and constraint solution.
+ * @export
+ * @return {void}
  * @param {number} dt the amount of time to simulate, this should not vary.
  * @param {number} velocityIterations for the velocity constraint solver.
  * @param {number} positionIterations for the position constraint solver.
@@ -1499,18 +1499,18 @@ box2d.b2World.prototype.Step = function(dt, velocityIterations, positionIteratio
 box2d.b2World.prototype.Step.s_step = new box2d.b2TimeStep();
 
 /**
- * Manually clear the force buffer on all bodies. By default, 
- * forces are cleared automatically after each call to Step. The 
- * default behavior is modified by calling SetAutoClearForces. 
- * The purpose of this function is to support sub-stepping. 
- * Sub-stepping is often used to maintain a fixed sized time 
- * step under a variable frame-rate. 
- * When you perform sub-stepping you will disable auto clearing 
- * of forces and instead call ClearForces after all sub-steps 
- * are complete in one pass of your game loop. 
+ * Manually clear the force buffer on all bodies. By default,
+ * forces are cleared automatically after each call to Step. The
+ * default behavior is modified by calling SetAutoClearForces.
+ * The purpose of this function is to support sub-stepping.
+ * Sub-stepping is often used to maintain a fixed sized time
+ * step under a variable frame-rate.
+ * When you perform sub-stepping you will disable auto clearing
+ * of forces and instead call ClearForces after all sub-steps
+ * are complete in one pass of your game loop.
  * @see SetAutoClearForces
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.b2World.prototype.ClearForces = function() {
   for ( /** @type {box2d.b2Body} */ var body = this.m_bodyList; body; body = body.m_next) {
@@ -1519,12 +1519,12 @@ box2d.b2World.prototype.ClearForces = function() {
   }
 }
 
-/** 
- * Query the world for all fixtures that potentially overlap the 
- * provided AABB. 
- * @export 
- * @return {void} 
- * @param 
+/**
+ * Query the world for all fixtures that potentially overlap the
+ * provided AABB.
+ * @export
+ * @return {void}
+ * @param
  *  	  {box2d.b2QueryCallback|function(box2d.b2Fixture):boolean}
  *  	  callback a user implemented callback class.
  * @param {box2d.b2AABB} aabb the query box.
@@ -1534,8 +1534,8 @@ box2d.b2World.prototype.QueryAABB = function(callback, aabb) {
   var broadPhase = this.m_contactManager.m_broadPhase;
 
   /**
-   * @return {boolean} 
-   * @param {box2d.b2TreeNode} proxy 
+   * @return {boolean}
+   * @param {box2d.b2TreeNode} proxy
    */
   var WorldQueryAABBWrapper = function(proxy) {
     /* type {box2d.b2FixtureProxy} */
@@ -1565,23 +1565,23 @@ box2d.b2World.prototype.QueryAABB = function(callback, aabb) {
   //#endif
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param 
+/**
+ * @export
+ * @return {void}
+ * @param
  *  	  {box2d.b2QueryCallback|function(box2d.b2Fixture):boolean}
  *  	  callback
  * @param {box2d.b2Shape} shape
  * @param {box2d.b2Transform} transform
- * @param {number=} childIndex 
+ * @param {number=} childIndex
  */
 box2d.b2World.prototype.QueryShape = function(callback, shape, transform, childIndex) {
   /** @type {box2d.b2BroadPhase} */
   var broadPhase = this.m_contactManager.m_broadPhase;
 
   /**
-   * @return {boolean} 
-   * @param {box2d.b2TreeNode} proxy 
+   * @return {boolean}
+   * @param {box2d.b2TreeNode} proxy
    */
   var WorldQueryShapeWrapper = function(proxy) {
     /* type {box2d.b2FixtureProxy} */
@@ -1619,22 +1619,22 @@ box2d.b2World.prototype.QueryShape = function(callback, shape, transform, childI
 }
 box2d.b2World.prototype.QueryShape.s_aabb = new box2d.b2AABB();
 
-/** 
- * @export 
- * @return {void} 
- * @param 
+/**
+ * @export
+ * @return {void}
+ * @param
  *  	  {box2d.b2QueryCallback|function(box2d.b2Fixture):boolean}
  *  	  callback
  * @param {box2d.b2Vec2} point
- * @param {number=} slop 
+ * @param {number=} slop
  */
 box2d.b2World.prototype.QueryPoint = function(callback, point, slop) {
   /** @type {box2d.b2BroadPhase} */
   var broadPhase = this.m_contactManager.m_broadPhase;
 
   /**
-   * @return {boolean} 
-   * @param {box2d.b2TreeNode} proxy 
+   * @return {boolean}
+   * @param {box2d.b2TreeNode} proxy
    */
   var WorldQueryWrapper = function(proxy) {
     /* type {box2d.b2FixtureProxy} */
@@ -1673,14 +1673,14 @@ box2d.b2World.prototype.QueryPoint = function(callback, point, slop) {
 }
 box2d.b2World.prototype.QueryPoint.s_aabb = new box2d.b2AABB();
 
-/** 
- * Ray-cast the world for all fixtures in the path of the ray. 
- * Your callback controls whether you get the closest point, any 
- * point, or n-points. The ray-cast ignores shapes that contain 
- * the starting point. 
- * @export 
- * @return {void} 
- * @param 
+/**
+ * Ray-cast the world for all fixtures in the path of the ray.
+ * Your callback controls whether you get the closest point, any
+ * point, or n-points. The ray-cast ignores shapes that contain
+ * the starting point.
+ * @export
+ * @return {void}
+ * @param
  *  	  {box2d.b2RayCastCallback|function(box2d.b2Fixture,box2d.b2Vec2,box2d.b2Vec2,number):number}
  *  	  callback a user implemented callback class.
  * @param {box2d.b2Vec2} point1 the ray starting point
@@ -1691,9 +1691,9 @@ box2d.b2World.prototype.RayCast = function(callback, point1, point2) {
   var broadPhase = this.m_contactManager.m_broadPhase;
 
   /**
-   * @return {number} 
-   * @param {box2d.b2RayCastInput} input 
-   * @param {box2d.b2TreeNode} proxy 
+   * @return {number}
+   * @param {box2d.b2RayCastInput} input
+   * @param {box2d.b2TreeNode} proxy
    */
   var WorldRayCastWrapper = function(input, proxy) {
     /* type {box2d.b2FixtureProxy} */
@@ -1747,11 +1747,11 @@ box2d.b2World.prototype.RayCast.s_input = new box2d.b2RayCastInput();
 box2d.b2World.prototype.RayCast.s_output = new box2d.b2RayCastOutput();
 box2d.b2World.prototype.RayCast.s_point = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {box2d.b2Fixture} 
+/**
+ * @export
+ * @return {box2d.b2Fixture}
  * @param {box2d.b2Vec2} point1
- * @param {box2d.b2Vec2} point2 
+ * @param {box2d.b2Vec2} point2
  */
 box2d.b2World.prototype.RayCastOne = function(point1, point2) {
   /** @type {box2d.b2Fixture} */
@@ -1760,10 +1760,10 @@ box2d.b2World.prototype.RayCastOne = function(point1, point2) {
   var min_fraction = 1;
 
   /**
-   * @return {number} 
-   * @param {box2d.b2Fixture} fixture 
-   * @param {box2d.b2Vec2} point 
-   * @param {box2d.b2Vec2} normal 
+   * @return {number}
+   * @param {box2d.b2Fixture} fixture
+   * @param {box2d.b2Vec2} point
+   * @param {box2d.b2Vec2} normal
    * @param {number} fraction
    */
   function WorldRayCastOneWrapper(fixture, point, normal, fraction) {
@@ -1780,21 +1780,21 @@ box2d.b2World.prototype.RayCastOne = function(point1, point2) {
   return result;
 }
 
-/** 
- * @export 
- * @return {Array.<box2d.b2Fixture>} 
+/**
+ * @export
+ * @return {Array.<box2d.b2Fixture>}
  * @param {box2d.b2Vec2} point1
- * @param {box2d.b2Vec2} point2 
+ * @param {box2d.b2Vec2} point2
  * @param {Array.<box2d.b2Fixture>} out
  */
 box2d.b2World.prototype.RayCastAll = function(point1, point2, out) {
   out.length = 0;
 
   /**
-   * @return {number} 
-   * @param {box2d.b2Fixture} fixture 
-   * @param {box2d.b2Vec2} point 
-   * @param {box2d.b2Vec2} normal 
+   * @return {number}
+   * @param {box2d.b2Fixture} fixture
+   * @param {box2d.b2Vec2} point
+   * @param {box2d.b2Vec2} normal
    * @param {number} fraction
    */
   function WorldRayCastAllWrapper(fixture, point, normal, fraction) {
@@ -1807,11 +1807,11 @@ box2d.b2World.prototype.RayCastAll = function(point1, point2, out) {
   return out;
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2Fixture} fixture 
- * @param {box2d.b2Color} color 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2Fixture} fixture
+ * @param {box2d.b2Color} color
  */
 box2d.b2World.prototype.DrawShape = function(fixture, color) {
   /** @type {box2d.b2Shape} */
@@ -1883,9 +1883,9 @@ box2d.b2World.prototype.DrawShape = function(fixture, color) {
   }
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2Joint} joint
  */
 box2d.b2World.prototype.DrawJoint = function(joint) {
@@ -1947,9 +1947,9 @@ box2d.b2World.prototype.DrawJoint.s_s2 = new box2d.b2Vec2();
 
 //#if B2_ENABLE_PARTICLE
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2ParticleSystem} system
  */
 box2d.b2World.prototype.DrawParticleSystem = function(system) {
@@ -1970,8 +1970,8 @@ box2d.b2World.prototype.DrawParticleSystem = function(system) {
 
 /**
  * Call this to draw shapes and other debug draw data.
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.b2World.prototype.DrawDebugData = function() {
   if (this.m_debugDraw === null) {
@@ -2097,9 +2097,9 @@ box2d.b2World.prototype.DrawDebugData.s_color = new box2d.b2Color(0, 0, 0);
 box2d.b2World.prototype.DrawDebugData.s_vs = box2d.b2Vec2.MakeArray(4);
 box2d.b2World.prototype.DrawDebugData.s_xf = new box2d.b2Transform();
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2BroadPhase} broadPhase
  */
 box2d.b2World.prototype.SetBroadPhase = function(broadPhase) {
@@ -2116,16 +2116,16 @@ box2d.b2World.prototype.SetBroadPhase = function(broadPhase) {
 
 //#if B2_ENABLE_PARTICLE
 
-/** 
- * Recommend a value to be used in `Step` for 
- * `particleIterations`. This calculation is necessarily a 
- * simplification and should only be used as a starting point. 
- * Please see "Particle Iterations" in the Programmer's Guide 
- * for details. 
- *  
- * @export 
- * @return {number} 
- * @param {number} timeStep is the value to be passed into 
+/**
+ * Recommend a value to be used in `Step` for
+ * `particleIterations`. This calculation is necessarily a
+ * simplification and should only be used as a starting point.
+ * Please see "Particle Iterations" in the Programmer's Guide
+ * for details.
+ *
+ * @export
+ * @return {number}
+ * @param {number} timeStep is the value to be passed into
  *  	  `Step`.
  */
 box2d.b2World.prototype.CalculateReasonableParticleIterations = function(timeStep) {
@@ -2147,48 +2147,48 @@ box2d.b2World.prototype.CalculateReasonableParticleIterations = function(timeSte
 
 //#endif
 
-/** 
- * Get the number of broad-phase proxies. 
- * @export 
+/**
+ * Get the number of broad-phase proxies.
+ * @export
  * @return {number}
  */
 box2d.b2World.prototype.GetProxyCount = function() {
   return this.m_contactManager.m_broadPhase.GetProxyCount();
 }
 
-/** 
- * Get the height of the dynamic tree. 
- * @export 
+/**
+ * Get the height of the dynamic tree.
+ * @export
  * @return {number}
  */
 box2d.b2World.prototype.GetTreeHeight = function() {
   return this.m_contactManager.m_broadPhase.GetTreeHeight();
 }
 
-/** 
- * Get the balance of the dynamic tree. 
- * @export 
+/**
+ * Get the balance of the dynamic tree.
+ * @export
  * @return {number}
  */
 box2d.b2World.prototype.GetTreeBalance = function() {
   return this.m_contactManager.m_broadPhase.GetTreeBalance();
 }
 
-/** 
- * Get the quality metric of the dynamic tree. The smaller the 
- * better. The minimum is 1. 
- * @export 
+/**
+ * Get the quality metric of the dynamic tree. The smaller the
+ * better. The minimum is 1.
+ * @export
  * @return {number}
  */
 box2d.b2World.prototype.GetTreeQuality = function() {
   return this.m_contactManager.m_broadPhase.GetTreeQuality();
 }
 
-/** 
- * Shift the world origin. Useful for large worlds. 
+/**
+ * Shift the world origin. Useful for large worlds.
  * The body shift formula is: position -= newOrigin
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2Vec2} newOrigin the new origin with respect to the old origin
  */
 box2d.b2World.prototype.ShiftOrigin = function(newOrigin) {
@@ -2212,10 +2212,10 @@ box2d.b2World.prototype.ShiftOrigin = function(newOrigin) {
   this.m_contactManager.m_broadPhase.ShiftOrigin(newOrigin);
 }
 
-/** 
- * Dump the world into the log file. 
+/**
+ * Dump the world into the log file.
  * warning this should be called outside of a time step.
- * @export 
+ * @export
  * @return {void}
  */
 box2d.b2World.prototype.Dump = function() {
@@ -2269,9 +2269,9 @@ box2d.b2World.prototype.Dump = function() {
 //#if B2_ENABLE_CONTROLLER
 
 /**
- * @see box2d.b2Controller list 
- * @export 
- * @return {box2d.b2Controller} 
+ * @see box2d.b2Controller list
+ * @export
+ * @return {box2d.b2Controller}
  * @param {box2d.b2Controller} controller
  */
 box2d.b2World.prototype.AddController = function(controller) {
@@ -2290,8 +2290,8 @@ box2d.b2World.prototype.AddController = function(controller) {
 
 /**
  * @see box2d.b2Controller list
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2Controller} controller
  */
 box2d.b2World.prototype.RemoveController = function(controller) {

@@ -24,16 +24,16 @@ goog.provide('box2d.Testbed.ParticleParameter.Definition');
 goog.require('box2d.b2Particle');
 
 /**
- * @export 
+ * @export
  * @constructor
  */
 box2d.Testbed.ParticleParameter = function() {
   this.Reset();
 }
 
-/** 
- * @export 
- * @enum {number} 
+/**
+ * @export
+ * @enum {number}
  */
 box2d.Testbed.ParticleParameter.Options = {
   OptionStrictContacts: 1 << 0,
@@ -50,19 +50,19 @@ box2d.Testbed.ParticleParameter.Options = {
   OptionDrawProfile: 1 << 11
 };
 
-/** 
- * @export 
+/**
+ * @export
  * @type {number}
  */
 box2d.Testbed.ParticleParameter.k_DefaultOptions =
   box2d.Testbed.ParticleParameter.Options.OptionDrawShapes | box2d.Testbed.ParticleParameter.Options.OptionDrawParticles;
 
-/** 
- * Value of a particle parameter. 
- * @constructor 
- * @param {number} value 
- * @param {number} options 
- * @param {string} name 
+/**
+ * Value of a particle parameter.
+ * @constructor
+ * @param {number} value
+ * @param {number} options
+ * @param {string} name
  */
 box2d.Testbed.ParticleParameter.Value = function(value, options, name) {
   this.value = value;
@@ -70,30 +70,30 @@ box2d.Testbed.ParticleParameter.Value = function(value, options, name) {
   this.name = name;
 }
 
-/** 
- * Value associated with the parameter. 
+/**
+ * Value associated with the parameter.
  * @type {number}
  */
 box2d.Testbed.ParticleParameter.Value.prototype.value = 0;
 
-/** 
- * Any global (non particle-specific) options associated with 
+/**
+ * Any global (non particle-specific) options associated with
  * this parameter
  * @type {number}
  */
 box2d.Testbed.ParticleParameter.Value.prototype.options = 0;
 
-/** 
- * Name to display when this parameter is selected. 
+/**
+ * Name to display when this parameter is selected.
  * @type {string}
  */
 box2d.Testbed.ParticleParameter.Value.prototype.name = "";
 
-/** 
- * Particle parameter definition. 
- * @constructor 
+/**
+ * Particle parameter definition.
+ * @constructor
  * @param {Array.<box2d.Testbed.ParticleParameter.Value>} values
- * @param {number=} numValues 
+ * @param {number=} numValues
  */
 box2d.Testbed.ParticleParameter.Definition = function(values, numValues) {
   this.values = values;
@@ -189,10 +189,10 @@ box2d.Testbed.ParticleParameter.prototype.Reset = function() {
 }
 
 /**
- * @return {void} 
- * @param {Array.<box2d.Testbed.ParticleParameter.Definition>} 
+ * @return {void}
+ * @param {Array.<box2d.Testbed.ParticleParameter.Definition>}
  *  	  definition
- * @param {number=} definitionCount 
+ * @param {number=} definitionCount
  */
 box2d.Testbed.ParticleParameter.prototype.SetDefinition = function(definition, definitionCount) {
   this.m_definition = definition;
@@ -213,8 +213,8 @@ box2d.Testbed.ParticleParameter.prototype.Get = function() {
 }
 
 /**
- * @return {void} 
- * @param {number} index 
+ * @return {void}
+ * @param {number} index
  */
 box2d.Testbed.ParticleParameter.prototype.Set = function(index) {
   this.m_changed = this.m_index !== index;
@@ -240,8 +240,8 @@ box2d.Testbed.ParticleParameter.prototype.Decrement = function() {
 }
 
 /**
- * @return {boolean} 
- * @param {Array.<boolean>} restart 
+ * @return {boolean}
+ * @param {Array.<boolean>} restart
  */
 box2d.Testbed.ParticleParameter.prototype.Changed = function(restart) {
   var changed = this.m_changed;
@@ -277,8 +277,8 @@ box2d.Testbed.ParticleParameter.prototype.GetOptions = function() {
 }
 
 /**
- * @return {void} 
- * @param {boolean} enable 
+ * @return {void}
+ * @param {boolean} enable
  */
 box2d.Testbed.ParticleParameter.prototype.SetRestartOnChange = function(enable) {
   this.m_restartOnChange = enable;
@@ -292,8 +292,8 @@ box2d.Testbed.ParticleParameter.prototype.GetRestartOnChange = function() {
 }
 
 /**
- * @return {number} 
- * @param {number} value 
+ * @return {number}
+ * @param {number} value
  */
 box2d.Testbed.ParticleParameter.prototype.FindIndexByValue = function(value) {
   var index = 0;

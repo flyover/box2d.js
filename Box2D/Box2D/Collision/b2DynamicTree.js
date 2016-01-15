@@ -22,12 +22,12 @@ goog.require('box2d.b2Settings');
 goog.require('box2d.b2Collision');
 goog.require('box2d.b2GrowableStack');
 
-/** 
- * A node in the dynamic tree. The client does not interact with 
- * this directly. 
- * @export 
- * @constructor 
- * @param {number=} id 
+/**
+ * A node in the dynamic tree. The client does not interact with
+ * this directly.
+ * @export
+ * @constructor
+ * @param {number=} id
  */
 box2d.b2TreeNode = function(id) {
   this.m_id = id || 0;
@@ -36,57 +36,57 @@ box2d.b2TreeNode = function(id) {
 };
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2TreeNode.prototype.m_id = 0;
 
-/** 
- * Enlarged AABB 
- * @export 
+/**
+ * Enlarged AABB
+ * @export
  * @type {box2d.b2AABB}
  */
 box2d.b2TreeNode.prototype.aabb = null;
 
 /**
- * @export 
+ * @export
  * @type {*}
  */
 box2d.b2TreeNode.prototype.userData = null;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2TreeNode}
  */
 box2d.b2TreeNode.prototype.parent = null; // or box2d.b2TreeNode.prototype.next
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2TreeNode}
  */
 box2d.b2TreeNode.prototype.child1 = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2TreeNode}
  */
 box2d.b2TreeNode.prototype.child2 = null;
 
-/** 
- * leaf = 0, free node = -1 
- * @export 
+/**
+ * leaf = 0, free node = -1
+ * @export
  * @type {number}
  */
 box2d.b2TreeNode.prototype.height = 0;
 
 /**
- * @export 
- * @return {boolean} 
+ * @export
+ * @return {boolean}
  */
 box2d.b2TreeNode.prototype.IsLeaf = function() {
   return this.child1 === null;
 }
 
-/** 
+/**
  * A dynamic tree arranges data in a binary tree to accelerate
  * queries such as volume queries and ray casts. Leafs are proxies
  * with an AABB. In the tree we expand the proxy AABB by b2_fatAABBFactor
@@ -94,13 +94,13 @@ box2d.b2TreeNode.prototype.IsLeaf = function() {
  * object to move by small amounts without triggering a tree update.
  *
  * Nodes are pooled and relocatable, so we use node indices rather than pointers.
- * @export 
+ * @export
  * @constructor
  */
 box2d.b2DynamicTree = function() {}
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2TreeNode}
  */
 box2d.b2DynamicTree.prototype.m_root = null;
@@ -110,21 +110,21 @@ box2d.b2DynamicTree.prototype.m_root = null;
 //int32 box2d.b2DynamicTree.prototype.m_nodeCapacity;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2TreeNode}
  */
 box2d.b2DynamicTree.prototype.m_freeList = null;
 
-/** 
- * This is used to incrementally traverse the tree for 
- * re-balancing. 
- * @export 
+/**
+ * This is used to incrementally traverse the tree for
+ * re-balancing.
+ * @export
  * @type {number}
  */
 box2d.b2DynamicTree.prototype.m_path = 0;
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2DynamicTree.prototype.m_insertionCount = 0;
@@ -138,9 +138,9 @@ box2d.b2DynamicTree.s_subInput = new box2d.b2RayCastInput();
 box2d.b2DynamicTree.s_combinedAABB = new box2d.b2AABB();
 box2d.b2DynamicTree.s_aabb = new box2d.b2AABB();
 
-/** 
- * Get proxy user data. 
- * @export 
+/**
+ * Get proxy user data.
+ * @export
  * @return {*} the proxy user data or 0 if the id is invalid.
  * @param {box2d.b2TreeNode} proxy
  */
@@ -151,11 +151,11 @@ box2d.b2DynamicTree.prototype.GetUserData = function(proxy) {
   return proxy.userData;
 }
 
-/** 
- * Get the fat AABB for a proxy. 
- * @export 
- * @return {box2d.b2AABB} 
- * @param {box2d.b2TreeNode} proxy 
+/**
+ * Get the fat AABB for a proxy.
+ * @export
+ * @return {box2d.b2AABB}
+ * @param {box2d.b2TreeNode} proxy
  */
 box2d.b2DynamicTree.prototype.GetFatAABB = function(proxy) {
   if (box2d.ENABLE_ASSERTS) {
@@ -164,13 +164,13 @@ box2d.b2DynamicTree.prototype.GetFatAABB = function(proxy) {
   return proxy.aabb;
 }
 
-/** 
- * Query an AABB for overlapping proxies. The callback class is 
- * called for each proxy that overlaps the supplied AABB. 
- * @export 
- * @return {void} 
+/**
+ * Query an AABB for overlapping proxies. The callback class is
+ * called for each proxy that overlaps the supplied AABB.
+ * @export
+ * @return {void}
  * @param {function(box2d.b2TreeNode):boolean} callback
- * @param {box2d.b2AABB} aabb 
+ * @param {box2d.b2AABB} aabb
  */
 box2d.b2DynamicTree.prototype.Query = function(callback, aabb) {
   if (this.m_root === null) return;
@@ -207,13 +207,13 @@ box2d.b2DynamicTree.prototype.Query = function(callback, aabb) {
  * The callback also performs the any collision filtering. This has performance
  * roughly equal to k * log(n), where k is the number of collisions and n is the
  * number of proxies in the tree.
- * @export 
- * @return {void} 
- * @param 
+ * @export
+ * @return {void}
+ * @param
  *  	  {function(box2d.b2RayCastInput,box2d.b2TreeNode):number}
  *  	  callback a callback class that is called for each
  *  	  proxy that is hit by the ray.
- * @param {box2d.b2RayCastInput} input the ray-cast input data. 
+ * @param {box2d.b2RayCastInput} input the ray-cast input data.
  *  	  The ray extends from p1 to p1 + maxFraction * (p2 -
  *  	  p1).
  */
@@ -315,7 +315,7 @@ box2d.b2DynamicTree.prototype.RayCast = function(callback, input) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2TreeNode}
  */
 box2d.b2DynamicTree.prototype.AllocateNode = function() {
@@ -337,8 +337,8 @@ box2d.b2DynamicTree.prototype.AllocateNode = function() {
 box2d.b2DynamicTree.prototype.s_node_id = 0;
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2TreeNode} node
  */
 box2d.b2DynamicTree.prototype.FreeNode = function(node) {
@@ -347,13 +347,13 @@ box2d.b2DynamicTree.prototype.FreeNode = function(node) {
   this.m_freeList = node;
 }
 
-/** 
- * Create a proxy. Provide a tight fitting AABB and a userData 
- * pointer. 
- * @export 
+/**
+ * Create a proxy. Provide a tight fitting AABB and a userData
+ * pointer.
+ * @export
  * @return {box2d.b2TreeNode}
- * @param {box2d.b2AABB} aabb 
- * @param {*} userData 
+ * @param {box2d.b2AABB} aabb
+ * @param {*} userData
  */
 box2d.b2DynamicTree.prototype.CreateProxy = function(aabb, userData) {
   /** @type {box2d.b2TreeNode} */
@@ -376,10 +376,10 @@ box2d.b2DynamicTree.prototype.CreateProxy = function(aabb, userData) {
   return node;
 }
 
-/** 
- * Destroy a proxy. This asserts if the id is invalid. 
- * @export 
- * @return {void} 
+/**
+ * Destroy a proxy. This asserts if the id is invalid.
+ * @export
+ * @return {void}
  * @param {box2d.b2TreeNode} proxy
  */
 box2d.b2DynamicTree.prototype.DestroyProxy = function(proxy) {
@@ -391,16 +391,16 @@ box2d.b2DynamicTree.prototype.DestroyProxy = function(proxy) {
   this.FreeNode(proxy);
 }
 
-/** 
- * Move a proxy with a swepted AABB. If the proxy has moved 
- * outside of its fattened AABB, then the proxy is removed from 
- * the tree and re-inserted. Otherwise the function returns 
- * immediately. 
- * @export 
+/**
+ * Move a proxy with a swepted AABB. If the proxy has moved
+ * outside of its fattened AABB, then the proxy is removed from
+ * the tree and re-inserted. Otherwise the function returns
+ * immediately.
+ * @export
  * @return {boolean} true if the proxy was re-inserted.
  * @param {box2d.b2TreeNode} proxy
- * @param {box2d.b2AABB} aabb 
- * @param {box2d.b2Vec2} displacement 
+ * @param {box2d.b2AABB} aabb
+ * @param {box2d.b2Vec2} displacement
  */
 box2d.b2DynamicTree.prototype.MoveProxy = function(proxy, aabb, displacement) {
   if (box2d.ENABLE_ASSERTS) {
@@ -429,8 +429,8 @@ box2d.b2DynamicTree.prototype.MoveProxy = function(proxy, aabb, displacement) {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2TreeNode} leaf
  */
 box2d.b2DynamicTree.prototype.InsertLeaf = function(leaf) {
@@ -578,8 +578,8 @@ box2d.b2DynamicTree.prototype.InsertLeaf = function(leaf) {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2TreeNode} leaf
  */
 box2d.b2DynamicTree.prototype.RemoveLeaf = function(leaf) {
@@ -638,9 +638,9 @@ box2d.b2DynamicTree.prototype.RemoveLeaf = function(leaf) {
 /**
  * Perform a left or right rotation if node A is imbalanced.
  * Returns the new root index.
- * @export 
- * @param {box2d.b2TreeNode} A 
- * @return {box2d.b2TreeNode} 
+ * @export
+ * @param {box2d.b2TreeNode} A
+ * @return {box2d.b2TreeNode}
  */
 box2d.b2DynamicTree.prototype.Balance = function(A) {
   if (box2d.ENABLE_ASSERTS) {
@@ -762,11 +762,11 @@ box2d.b2DynamicTree.prototype.Balance = function(A) {
   return A;
 }
 
-/** 
- * Compute the height of the binary tree in O(N) time. Should 
- * not be called often. 
- * @export 
- * @return {number} 
+/**
+ * Compute the height of the binary tree in O(N) time. Should
+ * not be called often.
+ * @export
+ * @return {number}
  */
 box2d.b2DynamicTree.prototype.GetHeight = function() {
   if (this.m_root === null) {
@@ -776,10 +776,10 @@ box2d.b2DynamicTree.prototype.GetHeight = function() {
   return this.m_root.height;
 }
 
-/** 
- * Get the ratio of the sum of the node areas to the root area. 
- * @export 
- * @return {number} 
+/**
+ * Get the ratio of the sum of the node areas to the root area.
+ * @export
+ * @return {number}
  */
 box2d.b2DynamicTree.prototype.GetAreaRatio = function() {
   if (this.m_root === null) {
@@ -827,11 +827,11 @@ box2d.b2DynamicTree.prototype.GetAreaRatio = function() {
   return totalArea / rootArea;
 }
 
-/** 
- * Compute the height of a sub-tree. 
- * @export 
- * @return {number} 
- * @param {box2d.b2TreeNode} node 
+/**
+ * Compute the height of a sub-tree.
+ * @export
+ * @return {number}
+ * @param {box2d.b2TreeNode} node
  */
 box2d.b2DynamicTree.prototype.ComputeHeightNode = function(node) {
   if (node.IsLeaf()) {
@@ -846,8 +846,8 @@ box2d.b2DynamicTree.prototype.ComputeHeightNode = function(node) {
 }
 
 /**
- * @export 
- * @return {number} 
+ * @export
+ * @return {number}
  */
 box2d.b2DynamicTree.prototype.ComputeHeight = function() {
   /** @type {number} */
@@ -856,9 +856,9 @@ box2d.b2DynamicTree.prototype.ComputeHeight = function() {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2TreeNode} index 
+ * @export
+ * @return {void}
+ * @param {box2d.b2TreeNode} index
  */
 box2d.b2DynamicTree.prototype.ValidateStructure = function(index) {
   if (index === null) {
@@ -904,8 +904,8 @@ box2d.b2DynamicTree.prototype.ValidateStructure = function(index) {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2TreeNode} index
  */
 box2d.b2DynamicTree.prototype.ValidateMetrics = function(index) {
@@ -960,10 +960,10 @@ box2d.b2DynamicTree.prototype.ValidateMetrics = function(index) {
   this.ValidateMetrics(child2);
 }
 
-/** 
- * Validate this tree. For testing. 
- * @export 
- * @return {void} 
+/**
+ * Validate this tree. For testing.
+ * @export
+ * @return {void}
  */
 box2d.b2DynamicTree.prototype.Validate = function() {
   this.ValidateStructure(this.m_root);
@@ -983,11 +983,11 @@ box2d.b2DynamicTree.prototype.Validate = function() {
   }
 }
 
-/** 
- * Get the maximum balance of an node in the tree. The balance 
- * is the difference in height of the two children of a node. 
- * @export 
- * @return {number} 
+/**
+ * Get the maximum balance of an node in the tree. The balance
+ * is the difference in height of the two children of a node.
+ * @export
+ * @return {number}
  */
 box2d.b2DynamicTree.prototype.GetMaxBalance = function() {
   var GetMaxBalanceNode = function(node, maxBalance) {
@@ -1037,13 +1037,13 @@ box2d.b2DynamicTree.prototype.GetMaxBalance = function() {
   return maxBalance;
 }
 
-/** 
- * Build an optimal tree. Very expensive. For testing. 
- * @export 
- * @return {void} 
+/**
+ * Build an optimal tree. Very expensive. For testing.
+ * @export
+ * @return {void}
  */
 box2d.b2DynamicTree.prototype.RebuildBottomUp = function() {
-  /* 
+  /*
   int32* nodes = (int32*)b2Alloc(m_nodeCount * sizeof(int32));
   int32 count = 0;
 
@@ -1122,9 +1122,9 @@ box2d.b2DynamicTree.prototype.RebuildBottomUp = function() {
 /**
  * Shift the world origin. Useful for large worlds.
  * The shift formula is: position -= newOrigin
- * @export 
+ * @export
  * @param {box2d.b2Vec2} newOrigin the new origin with respect to the old origin
- * @return {void} 
+ * @return {void}
  */
 box2d.b2DynamicTree.prototype.ShiftOrigin = function(newOrigin) {
   var ShiftOriginNode = function(node, newOrigin) {

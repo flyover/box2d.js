@@ -23,18 +23,18 @@ goog.require('box2d.b2Joint');
 goog.require('box2d.b2Math');
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_minPulleyLength = 2;
 
-/** 
- * Pulley joint definition. This requires two ground anchors, 
- * two dynamic body anchor points, and a pulley ratio. 
- * @export 
- * @constructor 
- * @extends {box2d.b2JointDef} 
+/**
+ * Pulley joint definition. This requires two ground anchors,
+ * two dynamic body anchor points, and a pulley ratio.
+ * @export
+ * @constructor
+ * @extends {box2d.b2JointDef}
  */
 box2d.b2PulleyJointDef = function() {
   box2d.b2JointDef.call(this, box2d.b2JointType.e_pulleyJoint); // base class constructor
@@ -49,67 +49,67 @@ box2d.b2PulleyJointDef = function() {
 
 goog.inherits(box2d.b2PulleyJointDef, box2d.b2JointDef);
 
-/** 
- * The first ground anchor in world coordinates. This point 
- * never moves. 
- * @export 
+/**
+ * The first ground anchor in world coordinates. This point
+ * never moves.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PulleyJointDef.prototype.groundAnchorA = null;
 
-/** 
- * The second ground anchor in world coordinates. This point 
- * never moves. 
- * @export 
+/**
+ * The second ground anchor in world coordinates. This point
+ * never moves.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PulleyJointDef.prototype.groundAnchorB = null;
 
-/** 
- * The local anchor point relative to bodyA's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyA's origin.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PulleyJointDef.prototype.localAnchorA = null;
 
-/** 
- * The local anchor point relative to bodyB's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyB's origin.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PulleyJointDef.prototype.localAnchorB = null;
 
-/** 
- * The a reference length for the segment attached to bodyA. 
- * @export 
+/**
+ * The a reference length for the segment attached to bodyA.
+ * @export
  * @type {number}
  */
 box2d.b2PulleyJointDef.prototype.lengthA = 0;
 
-/** 
- * The a reference length for the segment attached to bodyB. 
- * @export 
+/**
+ * The a reference length for the segment attached to bodyB.
+ * @export
  * @type {number}
  */
 box2d.b2PulleyJointDef.prototype.lengthB = 0;
 
-/** 
- * The pulley ratio, used to simulate a block-and-tackle. 
- * @export 
+/**
+ * The pulley ratio, used to simulate a block-and-tackle.
+ * @export
  * @type {number}
  */
 box2d.b2PulleyJointDef.prototype.ratio = 1;
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2Body} bA 
- * @param {box2d.b2Body} bB 
- * @param {box2d.b2Vec2} groundA 
- * @param {box2d.b2Vec2} groundB 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2Body} bA
+ * @param {box2d.b2Body} bB
+ * @param {box2d.b2Vec2} groundA
+ * @param {box2d.b2Vec2} groundB
  * @param {box2d.b2Vec2} anchorA
  * @param {box2d.b2Vec2} anchorB
- * @param {number} r 
+ * @param {number} r
  */
 box2d.b2PulleyJointDef.prototype.Initialize = function(bA, bB, groundA, groundB, anchorA, anchorB, r) {
   this.bodyA = bA;
@@ -126,19 +126,19 @@ box2d.b2PulleyJointDef.prototype.Initialize = function(bA, bB, groundA, groundB,
   }
 }
 
-/** 
- * The pulley joint is connected to two bodies and two fixed ground points. 
- * The pulley supports a ratio such that: 
- * lengthA + ratio * lengthB <= constant 
- * Yes, the force transmitted is scaled by the ratio. 
+/**
+ * The pulley joint is connected to two bodies and two fixed ground points.
+ * The pulley supports a ratio such that:
+ * lengthA + ratio * lengthB <= constant
+ * Yes, the force transmitted is scaled by the ratio.
  * Warning: the pulley joint can get a bit squirrelly by itself.
- * They often work better when combined with prismatic joints. 
- * You should also cover the the anchor points with static 
- * shapes to prevent one side from going to zero length. 
- * @export 
- * @constructor 
- * @extends {box2d.b2Joint} 
- * @param {box2d.b2PulleyJointDef} def 
+ * They often work better when combined with prismatic joints.
+ * You should also cover the the anchor points with static
+ * shapes to prevent one side from going to zero length.
+ * @export
+ * @constructor
+ * @extends {box2d.b2Joint}
+ * @param {box2d.b2PulleyJointDef} def
  */
 box2d.b2PulleyJoint = function(def) {
   box2d.b2Joint.call(this, def); // base class constructor
@@ -181,145 +181,145 @@ box2d.b2PulleyJoint = function(def) {
 goog.inherits(box2d.b2PulleyJoint, box2d.b2Joint);
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PulleyJoint.prototype.m_groundAnchorA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PulleyJoint.prototype.m_groundAnchorB = null;
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PulleyJoint.prototype.m_lengthA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PulleyJoint.prototype.m_lengthB = 0;
 
 // Solver shared
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PulleyJoint.prototype.m_localAnchorA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PulleyJoint.prototype.m_localAnchorB = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PulleyJoint.prototype.m_constant = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PulleyJoint.prototype.m_ratio = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PulleyJoint.prototype.m_impulse = 0;
 
 // Solver temp
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PulleyJoint.prototype.m_indexA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PulleyJoint.prototype.m_indexB = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PulleyJoint.prototype.m_uA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PulleyJoint.prototype.m_uB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PulleyJoint.prototype.m_rA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PulleyJoint.prototype.m_rB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PulleyJoint.prototype.m_localCenterA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PulleyJoint.prototype.m_localCenterB = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PulleyJoint.prototype.m_invMassA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PulleyJoint.prototype.m_invMassB = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PulleyJoint.prototype.m_invIA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PulleyJoint.prototype.m_invIB = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PulleyJoint.prototype.m_mass = 0;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2PulleyJoint.prototype.m_qA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2PulleyJoint.prototype.m_qB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PulleyJoint.prototype.m_lalcA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PulleyJoint.prototype.m_lalcB = null;
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2PulleyJoint.prototype.InitVelocityConstraints = function(data) {
@@ -430,9 +430,9 @@ box2d.b2PulleyJoint.prototype.InitVelocityConstraints = function(data) {
 box2d.b2PulleyJoint.prototype.InitVelocityConstraints.s_PA = new box2d.b2Vec2();
 box2d.b2PulleyJoint.prototype.InitVelocityConstraints.s_PB = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2PulleyJoint.prototype.SolveVelocityConstraints = function(data) {
@@ -477,10 +477,10 @@ box2d.b2PulleyJoint.prototype.SolveVelocityConstraints.s_vpB = new box2d.b2Vec2(
 box2d.b2PulleyJoint.prototype.SolveVelocityConstraints.s_PA = new box2d.b2Vec2();
 box2d.b2PulleyJoint.prototype.SolveVelocityConstraints.s_PB = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {boolean} 
- * @param {box2d.b2SolverData} data 
+/**
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2SolverData} data
  */
 box2d.b2PulleyJoint.prototype.SolvePositionConstraints = function(data) {
   /*box2d.b2Vec2&*/
@@ -575,28 +575,28 @@ box2d.b2PulleyJoint.prototype.SolvePositionConstraints = function(data) {
 box2d.b2PulleyJoint.prototype.SolvePositionConstraints.s_PA = new box2d.b2Vec2();
 box2d.b2PulleyJoint.prototype.SolvePositionConstraints.s_PB = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2PulleyJoint.prototype.GetAnchorA = function(out) {
   return this.m_bodyA.GetWorldPoint(this.m_localAnchorA, out);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2PulleyJoint.prototype.GetAnchorB = function(out) {
   return this.m_bodyB.GetWorldPoint(this.m_localAnchorB, out);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {number} inv_dt 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {number} inv_dt
  * @param {box2d.b2Vec2} out
  */
 box2d.b2PulleyJoint.prototype.GetReactionForce = function(inv_dt, out) {
@@ -605,63 +605,63 @@ box2d.b2PulleyJoint.prototype.GetReactionForce = function(inv_dt, out) {
   return out.Set(inv_dt * this.m_impulse * this.m_uB.x, inv_dt * this.m_impulse * this.m_uB.y);
 }
 
-/** 
- * @export 
- * @return {number} 
- * @param {number} inv_dt 
+/**
+ * @export
+ * @return {number}
+ * @param {number} inv_dt
  */
 box2d.b2PulleyJoint.prototype.GetReactionTorque = function(inv_dt) {
   return 0;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2PulleyJoint.prototype.GetGroundAnchorA = function(out) {
   return out.Copy(this.m_groundAnchorA);
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2PulleyJoint.prototype.GetGroundAnchorB = function(out) {
   return out.Copy(this.m_groundAnchorB);
 }
 
-/** 
- * Get the current length of the segment attached to bodyA. 
- * @export 
+/**
+ * Get the current length of the segment attached to bodyA.
+ * @export
  * @return {number}
  */
 box2d.b2PulleyJoint.prototype.GetLengthA = function() {
   return this.m_lengthA;
 }
 
-/** 
- * Get the current length of the segment attached to bodyB. 
- * @export 
+/**
+ * Get the current length of the segment attached to bodyB.
+ * @export
  * @return {number}
  */
 box2d.b2PulleyJoint.prototype.GetLengthB = function() {
   return this.m_lengthB;
 }
 
-/** 
- * Get the pulley ratio. 
- * @export 
+/**
+ * Get the pulley ratio.
+ * @export
  * @return {number}
  */
 box2d.b2PulleyJoint.prototype.GetRatio = function() {
   return this.m_ratio;
 }
 
-/** 
- * Get the current length of the segment attached to bodyA. 
- * @export 
+/**
+ * Get the current length of the segment attached to bodyA.
+ * @export
  * @return {number}
  */
 box2d.b2PulleyJoint.prototype.GetCurrentLengthA = function() {
@@ -675,9 +675,9 @@ box2d.b2PulleyJoint.prototype.GetCurrentLengthA = function() {
 }
 box2d.b2PulleyJoint.prototype.GetCurrentLengthA.s_p = new box2d.b2Vec2();
 
-/** 
- * Get the current length of the segment attached to bodyB. 
- * @export 
+/**
+ * Get the current length of the segment attached to bodyB.
+ * @export
  * @return {number}
  */
 box2d.b2PulleyJoint.prototype.GetCurrentLengthB = function() {
@@ -691,9 +691,9 @@ box2d.b2PulleyJoint.prototype.GetCurrentLengthB = function() {
 }
 box2d.b2PulleyJoint.prototype.GetCurrentLengthB.s_p = new box2d.b2Vec2();
 
-/** 
- * Dump joint to dmLog 
- * @export 
+/**
+ * Dump joint to dmLog
+ * @export
  * @return {void}
  */
 box2d.b2PulleyJoint.prototype.Dump = function() {
@@ -716,10 +716,10 @@ box2d.b2PulleyJoint.prototype.Dump = function() {
   }
 }
 
-/** 
- * Implement b2Joint::ShiftOrigin 
- * @export 
- * @return {void} 
+/**
+ * Implement b2Joint::ShiftOrigin
+ * @export
+ * @return {void}
  * @param {box2d.b2Vec2} newOrigin
  */
 box2d.b2PulleyJoint.prototype.ShiftOrigin = function(newOrigin) {

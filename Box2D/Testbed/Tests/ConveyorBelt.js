@@ -21,11 +21,11 @@ goog.provide('box2d.Testbed.ConveyorBelt');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.ConveyorBelt = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -74,16 +74,16 @@ box2d.Testbed.ConveyorBelt = function(canvas, settings) {
 goog.inherits(box2d.Testbed.ConveyorBelt, box2d.Testbed.Test);
 
 /**
- * @export 
- * @type {box2d.b2Fixture} 
+ * @export
+ * @type {box2d.b2Fixture}
  */
 box2d.Testbed.ConveyorBelt.prototype.m_platform = null;
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Contact} contact 
- * @param {box2d.b2Manifold} oldManifold 
+ * @return {void}
+ * @param {box2d.b2Contact} contact
+ * @param {box2d.b2Manifold} oldManifold
  */
 box2d.Testbed.ConveyorBelt.prototype.PreSolve = function(contact, oldManifold) {
   box2d.Testbed.Test.prototype.PreSolve.call(this, contact, oldManifold);
@@ -104,18 +104,18 @@ box2d.Testbed.ConveyorBelt.prototype.PreSolve = function(contact, oldManifold) {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.ConveyorBelt.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.ConveyorBelt.Create = function(canvas, settings) {
   return new box2d.Testbed.ConveyorBelt(canvas, settings);

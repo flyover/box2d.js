@@ -26,9 +26,9 @@ goog.require('box2d.b2TimeStep');
 
 /**
  * @return {void}
- * @param {Array.<?>} array 
- * @param {number} a 
- * @param {number} b 
+ * @param {Array.<?>} array
+ * @param {number} a
+ * @param {number} b
  */
 box2d.std_iter_swap = function(array, a, b) {
   var tmp = array[a];
@@ -38,10 +38,10 @@ box2d.std_iter_swap = function(array, a, b) {
 
 /**
  * @return {Array.<?>}
- * @param {Array.<?>} array 
- * @param {number=} first 
- * @param {number=} len 
- * @param {function(?,?):boolean=} cmp 
+ * @param {Array.<?>} array
+ * @param {number=} first
+ * @param {number=} len
+ * @param {function(?,?):boolean=} cmp
  */
 box2d.std_sort = function(array, first, len, cmp) {
   if (typeof(first) !== 'number') first = 0;
@@ -77,10 +77,10 @@ box2d.std_sort = function(array, first, len, cmp) {
 
 /**
  * @return {Array.<?>}
- * @param {Array.<?>} array 
- * @param {number=} first 
- * @param {number=} len 
- * @param {function(?,?):boolean=} cmp 
+ * @param {Array.<?>} array
+ * @param {number=} first
+ * @param {number=} len
+ * @param {function(?,?):boolean=} cmp
  */
 box2d.std_stable_sort = function(array, first, len, cmp) {
   return box2d.std_sort(array, first, len, cmp);
@@ -88,9 +88,9 @@ box2d.std_stable_sort = function(array, first, len, cmp) {
 
 /**
  * @return {number}
- * @param {Array.<?>} array 
- * @param {function(?):boolean} predicate 
- * @param {number=} length 
+ * @param {Array.<?>} array
+ * @param {function(?):boolean} predicate
+ * @param {number=} length
  */
 box2d.std_remove_if = function(array, predicate, length) {
   if (typeof(length) !== 'number') length = array.length;
@@ -117,11 +117,11 @@ box2d.std_remove_if = function(array, predicate, length) {
 
 /**
  * @return {number}
- * @param {Array.<?>} array 
- * @param {number} first 
- * @param {number} last 
- * @param {?} val 
- * @param {function(?,?):boolean=} cmp 
+ * @param {Array.<?>} array
+ * @param {number} first
+ * @param {number} last
+ * @param {?} val
+ * @param {function(?,?):boolean=} cmp
  */
 box2d.std_lower_bound = function(array, first, last, val, cmp) {
   if (typeof(cmp) !== 'function') cmp = function(a, b) {
@@ -144,11 +144,11 @@ box2d.std_lower_bound = function(array, first, last, val, cmp) {
 
 /**
  * @return {number}
- * @param {Array.<?>} array 
- * @param {number} first 
- * @param {number} last 
- * @param {?} val 
- * @param {function(?,?):boolean=} cmp 
+ * @param {Array.<?>} array
+ * @param {number} first
+ * @param {number} last
+ * @param {?} val
+ * @param {function(?,?):boolean=} cmp
  */
 box2d.std_upper_bound = function(array, first, last, val, cmp) {
   if (typeof(cmp) !== 'function') cmp = function(a, b) {
@@ -171,10 +171,10 @@ box2d.std_upper_bound = function(array, first, last, val, cmp) {
 
 /**
  * @return {void}
- * @param {Array.<?>} array 
- * @param {number} first 
- * @param {number} n_first 
- * @param {number} last 
+ * @param {Array.<?>} array
+ * @param {number} first
+ * @param {number} n_first
+ * @param {number} last
  */
 box2d.std_rotate = function(array, first, n_first, last) {
   var next = n_first;
@@ -188,11 +188,11 @@ box2d.std_rotate = function(array, first, n_first, last) {
 }
 
 /**
- * @return {number} 
- * @param {Array.<?>} array 
- * @param {number} first 
- * @param {number} last 
- * @param {function(?,?):boolean} cmp 
+ * @return {number}
+ * @param {Array.<?>} array
+ * @param {number} first
+ * @param {number} last
+ * @param {function(?,?):boolean} cmp
  */
 box2d.std_unique = function(array, first, last, cmp) {
   if (first === last) {
@@ -209,9 +209,9 @@ box2d.std_unique = function(array, first, last, cmp) {
 }
 
 /**
- * @constructor 
- * @template T 
- * @param {function():T} allocator 
+ * @constructor
+ * @template T
+ * @param {function():T} allocator
  */
 box2d.b2GrowableBuffer = function(allocator) {
   this.data = [];
@@ -253,8 +253,8 @@ box2d.b2GrowableBuffer.prototype.Append = function() {
 }
 
 /**
- * @return {void} 
- * @param {number} newCapacity 
+ * @return {void}
+ * @param {number} newCapacity
  */
 box2d.b2GrowableBuffer.prototype.Reserve = function(newCapacity) {
   if (this.capacity >= newCapacity)
@@ -268,7 +268,7 @@ box2d.b2GrowableBuffer.prototype.Reserve = function(newCapacity) {
 }
 
 /**
- * @return {void} 
+ * @return {void}
  */
 box2d.b2GrowableBuffer.prototype.Grow = function() {
   // Double the capacity.
@@ -278,7 +278,7 @@ box2d.b2GrowableBuffer.prototype.Grow = function() {
 }
 
 /**
- * @return {void} 
+ * @return {void}
  */
 box2d.b2GrowableBuffer.prototype.Free = function() {
   if (this.data.length === 0) {
@@ -291,8 +291,8 @@ box2d.b2GrowableBuffer.prototype.Free = function() {
 }
 
 /**
- * @return {void} 
- * @param {number} newEnd 
+ * @return {void}
+ * @param {number} newEnd
  */
 box2d.b2GrowableBuffer.prototype.Shorten = function(newEnd) {
   box2d.b2Assert(false);
@@ -313,8 +313,8 @@ box2d.b2GrowableBuffer.prototype.GetCount = function() {
 }
 
 /**
- * @return {void} 
- * @param {number} newCount 
+ * @return {void}
+ * @param {number} newCount
  */
 box2d.b2GrowableBuffer.prototype.SetCount = function(newCount) {
   box2d.b2Assert(0 <= newCount && newCount <= this.capacity);
@@ -329,8 +329,8 @@ box2d.b2GrowableBuffer.prototype.GetCapacity = function() {
 }
 
 /**
- * @return {void} 
- * @param {function(T):boolean} pred 
+ * @return {void}
+ * @param {function(T):boolean} pred
  */
 box2d.b2GrowableBuffer.prototype.RemoveIf = function(pred) {
   var count = 0;
@@ -346,16 +346,16 @@ box2d.b2GrowableBuffer.prototype.RemoveIf = function(pred) {
 }
 
 /**
- * @return {void} 
- * @param {function(T,T):boolean} pred 
+ * @return {void}
+ * @param {function(T,T):boolean} pred
  */
 box2d.b2GrowableBuffer.prototype.Unique = function(pred) {
   this.count = box2d.std_unique(this.data, 0, this.count, pred);
 }
 
 /**
- * @constructor 
- * @extends {box2d.b2QueryCallback} 
+ * @constructor
+ * @extends {box2d.b2QueryCallback}
  * @param {box2d.b2ParticleSystem} system
  */
 box2d.b2FixtureParticleQueryCallback = function(system) {
@@ -374,10 +374,10 @@ box2d.b2FixtureParticleQueryCallback.prototype.ShouldQueryParticleSystem = funct
   return false;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {boolean}
- * @param {box2d.b2Fixture} fixture 
+ * @param {box2d.b2Fixture} fixture
  */
 box2d.b2FixtureParticleQueryCallback.prototype.ReportFixture = function(fixture) {
   if (fixture.IsSensor()) {
@@ -397,29 +397,29 @@ box2d.b2FixtureParticleQueryCallback.prototype.ReportFixture = function(fixture)
 }
 
 /**
- * @export 
- * @return {boolean} 
- * @param {box2d.b2ParticleSystem} system 
- * @param {number} index 
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2ParticleSystem} system
+ * @param {number} index
  */
 box2d.b2FixtureParticleQueryCallback.prototype.ReportParticle = function(system, index) {
   return false;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {void}
- * @param {box2d.b2Fixture} fixture 
- * @param {number} childIndex 
- * @param {number} index 
+ * @param {box2d.b2Fixture} fixture
+ * @param {number} childIndex
+ * @param {number} index
  */
 box2d.b2FixtureParticleQueryCallback.prototype.ReportFixtureAndParticle = function(fixture, childIndex, index) {
   box2d.b2Assert(false); // pure virtual
 }
 
 /**
- * @export 
- * @constructor 
+ * @export
+ * @constructor
  */
 box2d.b2ParticleContact = function() {
   this.normal = new box2d.b2Vec2();
@@ -430,54 +430,54 @@ box2d.b2ParticleContact = function() {
  */
 box2d.b2ParticleIndex;
 
-/** 
- * Indices of the respective particles making contact. 
- *  
- * @export 
- * @type {box2d.b2ParticleIndex} 
+/**
+ * Indices of the respective particles making contact.
+ *
+ * @export
+ * @type {box2d.b2ParticleIndex}
  */
 box2d.b2ParticleContact.prototype.indexA = 0;
 
-/** 
- * Indices of the respective particles making contact. 
- *  
- * @export 
- * @type {box2d.b2ParticleIndex} 
+/**
+ * Indices of the respective particles making contact.
+ *
+ * @export
+ * @type {box2d.b2ParticleIndex}
  */
 box2d.b2ParticleContact.prototype.indexB = 0;
 
-/** 
- * Weight of the contact. A value between 0.0f and 1.0f. 
- * 0.0f ==> particles are just barely touching 
- * 1.0f ==> particles are perfectly on top of each other 
- *  
- * @export 
- * @type {number} 
+/**
+ * Weight of the contact. A value between 0.0f and 1.0f.
+ * 0.0f ==> particles are just barely touching
+ * 1.0f ==> particles are perfectly on top of each other
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleContact.prototype.weight = 0.0;
 
-/** 
- * The normalized direction from A to B. 
- *  
- * @export 
- * @type {box2d.b2Vec2} 
+/**
+ * The normalized direction from A to B.
+ *
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2ParticleContact.prototype.normal = null;
 
-/** 
- * The logical sum of the particle behaviors that have been set. 
- * See the b2ParticleFlag enum. 
- *  
- * @export 
- * @type {number} 
+/**
+ * The logical sum of the particle behaviors that have been set.
+ * See the b2ParticleFlag enum.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleContact.prototype.flags = 0;
 
-/** 
- * @export 
+/**
+ * @export
  * @return {void}
- * @param {number} a 
- * @param {number} b 
+ * @param {number} a
+ * @param {number} b
  */
 box2d.b2ParticleContact.prototype.SetIndices = function(a, b) {
   box2d.b2Assert(a <= box2d.b2_maxParticleIndex && b <= box2d.b2_maxParticleIndex);
@@ -485,95 +485,95 @@ box2d.b2ParticleContact.prototype.SetIndices = function(a, b) {
   this.indexB = b;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {void}
- * @param {number} w 
+ * @param {number} w
  */
 box2d.b2ParticleContact.prototype.SetWeight = function(w) {
   this.weight = w;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {void}
- * @param {box2d.b2Vec2} n 
+ * @param {box2d.b2Vec2} n
  */
 box2d.b2ParticleContact.prototype.SetNormal = function(n) {
   this.normal.Copy(n);
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {void}
- * @param {number} f 
+ * @param {number} f
  */
 box2d.b2ParticleContact.prototype.SetFlags = function(f) {
   this.flags = f;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2ParticleContact.prototype.GetIndexA = function() {
   return this.indexA;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2ParticleContact.prototype.GetIndexB = function() {
   return this.indexB;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2ParticleContact.prototype.GetWeight = function() {
   return this.weight;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {box2d.b2Vec2}
  */
 box2d.b2ParticleContact.prototype.GetNormal = function() {
   return this.normal;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2ParticleContact.prototype.GetFlags = function() {
   return this.flags;
 }
 
-/** 
- * @export 
- * @return {boolean} 
- * @param {box2d.b2ParticleContact} rhs 
+/**
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2ParticleContact} rhs
  */
 box2d.b2ParticleContact.prototype.IsEqual = function(rhs) {
   return this.indexA === rhs.indexA && this.indexB === rhs.indexB && this.flags === rhs.flags && this.weight === rhs.weight && this.normal.x === rhs.normal.x && this.normal.y === rhs.normal.y;
 }
 
-/** 
- * @export 
- * @return {boolean} 
- * @param {box2d.b2ParticleContact} rhs 
+/**
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2ParticleContact} rhs
  */
 box2d.b2ParticleContact.prototype.IsNotEqual = function(rhs) {
   return !this.IsEqual(rhs);
 }
 
-/** 
- * @export 
- * @return {boolean} 
- * @param {box2d.b2ParticleContact} rhs 
+/**
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2ParticleContact} rhs
  */
 box2d.b2ParticleContact.prototype.ApproximatelyEqual = function(rhs) {
   var MAX_WEIGHT_DIFF = 0.01; // Weight 0 ~ 1, so about 1%
@@ -582,113 +582,113 @@ box2d.b2ParticleContact.prototype.ApproximatelyEqual = function(rhs) {
 }
 
 /**
- * @export 
- * @constructor 
+ * @export
+ * @constructor
  */
 box2d.b2ParticleBodyContact = function() {
   this.normal = new box2d.b2Vec2();
 }
 
-/** 
- * Index of the particle making contact. 
- *  
- * @export 
+/**
+ * Index of the particle making contact.
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleBodyContact.prototype.index = 0;
 
-/** 
- * The body making contact. 
- *  
- * @export 
- * @type {box2d.b2Body} 
+/**
+ * The body making contact.
+ *
+ * @export
+ * @type {box2d.b2Body}
  */
 box2d.b2ParticleBodyContact.prototype.body = null;
 
-/** 
- * The specific fixture making contact 
- *  
- * @export 
- * @type {box2d.b2Fixture} 
+/**
+ * The specific fixture making contact
+ *
+ * @export
+ * @type {box2d.b2Fixture}
  */
 box2d.b2ParticleBodyContact.prototype.fixture = null;
 
-/** 
- * Weight of the contact. A value between 0.0f and 1.0f. 
- *  
- * @export 
- * @type {number} 
+/**
+ * Weight of the contact. A value between 0.0f and 1.0f.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleBodyContact.prototype.weight = 0.0;
 
-/** 
- * The normalized direction from the particle to the body. 
- *  
- * @export 
- * @type {box2d.b2Vec2} 
+/**
+ * The normalized direction from the particle to the body.
+ *
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2ParticleBodyContact.prototype.normal = null;
 
-/** 
- * The effective mass used in calculating force. 
- *  
- * @export 
- * @type {number} 
+/**
+ * The effective mass used in calculating force.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleBodyContact.prototype.mass = 0.0;
 
-/** 
- * Connection between two particles 
- *  
- * @export 
- * @constructor 
+/**
+ * Connection between two particles
+ *
+ * @export
+ * @constructor
  */
 box2d.b2ParticlePair = function() {}
 
-/** 
- * Indices of the respective particles making pair. 
- *  
- * @export 
- * @type {number} 
+/**
+ * Indices of the respective particles making pair.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticlePair.prototype.indexA = 0;
 
-/** 
- * @export 
- * @type {number} 
+/**
+ * @export
+ * @type {number}
  */
 box2d.b2ParticlePair.prototype.indexB = 0;
 
-/** 
- * The logical sum of the particle flags. See the b2ParticleFlag 
- * enum. 
- *  
- * @export 
- * @type {number} 
+/**
+ * The logical sum of the particle flags. See the b2ParticleFlag
+ * enum.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticlePair.prototype.flags = 0;
 
-/** 
- * The strength of cohesion among the particles. 
- *  
- * @export 
- * @type {number} 
+/**
+ * The strength of cohesion among the particles.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticlePair.prototype.strength = 0.0;
 
-/** 
- * The initial distance of the particles. 
- *  
- * @export 
- * @type {number} 
+/**
+ * The initial distance of the particles.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticlePair.prototype.distance = 0.0;
 
-/** 
- * Connection between three particles 
- *  
- * @export 
- * @constructor 
+/**
+ * Connection between three particles
+ *
+ * @export
+ * @constructor
  */
 box2d.b2ParticleTriad = function() {
   this.pa = new box2d.b2Vec2(0.0, 0.0);
@@ -696,90 +696,90 @@ box2d.b2ParticleTriad = function() {
   this.pc = new box2d.b2Vec2(0.0, 0.0);
 }
 
-/** 
- * Indices of the respective particles making triad. 
- *  
- * @export 
- * @type {number} 
+/**
+ * Indices of the respective particles making triad.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleTriad.prototype.indexA = 0;
 
-/** 
- * @export 
- * @type {number} 
+/**
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleTriad.prototype.indexB = 0;
 
-/** 
- * @export 
- * @type {number} 
+/**
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleTriad.prototype.indexC = 0;
 
-/** 
- * The logical sum of the particle flags. See the b2ParticleFlag 
- * enum. 
- *  
- * @export 
- * @type {number} 
+/**
+ * The logical sum of the particle flags. See the b2ParticleFlag
+ * enum.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleTriad.prototype.flags = 0;
 
-/** 
- * The strength of cohesion among the particles. 
- *  
- * @export 
- * @type {number} 
+/**
+ * The strength of cohesion among the particles.
+ *
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleTriad.prototype.strength = 0.0;
 
-/** 
- * Values used for calculation. 
- *  
- * @export 
- * @type {box2d.b2Vec2} 
+/**
+ * Values used for calculation.
+ *
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2ParticleTriad.prototype.pa = null;
 
-/** 
- * @export 
- * @type {box2d.b2Vec2} 
+/**
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2ParticleTriad.prototype.pb = null;
 
-/** 
- * @export 
- * @type {box2d.b2Vec2} 
+/**
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.b2ParticleTriad.prototype.pc = null;
 
-/** 
- * @export 
- * @type {number} 
+/**
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleTriad.prototype.ka = 0.0;
 
-/** 
- * @export 
- * @type {number} 
+/**
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleTriad.prototype.kb = 0.0;
 
-/** 
- * @export 
- * @type {number} 
+/**
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleTriad.prototype.kc = 0.0;
 
-/** 
- * @export 
- * @type {number} 
+/**
+ * @export
+ * @type {number}
  */
 box2d.b2ParticleTriad.prototype.s = 0.0;
 
 /**
- * @export 
- * @constructor 
+ * @export
+ * @constructor
  */
 box2d.b2ParticleSystemDef = function() {
   ///	this.strictContactCheck = false;
@@ -808,213 +808,213 @@ box2d.b2ParticleSystemDef = function() {
   ///	this.lifetimeGranularity = 1.0 / 60.0;
 }
 
-/** 
- * Enable strict Particle/Body contact check. 
- * See SetStrictContactCheck for details. 
- *  
- * @export 
+/**
+ * Enable strict Particle/Body contact check.
+ * See SetStrictContactCheck for details.
+ *
+ * @export
  * @type {boolean}
  */
 box2d.b2ParticleSystemDef.prototype.strictContactCheck = false;
 
-/** 
- * Set the particle density. 
- * See SetDensity for details. 
- *  
- * @export 
+/**
+ * Set the particle density.
+ * See SetDensity for details.
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.density = 1.0;
 
-/** 
- * Change the particle gravity scale. Adjusts the effect of the 
- * global gravity vector on particles. Default value is 1.0f. 
- *  
- * @export 
+/**
+ * Change the particle gravity scale. Adjusts the effect of the
+ * global gravity vector on particles. Default value is 1.0f.
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.gravityScale = 1.0;
 
-/** 
+/**
  * Particles behave as circles with this radius. In Box2D units.
- *  
- * @export 
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.radius = 1.0;
 
-/** 
- * Set the maximum number of particles. 
- * By default, there is no maximum. The particle buffers can 
- * continue to grow while b2World's block allocator still has 
- * memory. 
- * See SetMaxParticleCount for details. 
- *  
- * @export 
+/**
+ * Set the maximum number of particles.
+ * By default, there is no maximum. The particle buffers can
+ * continue to grow while b2World's block allocator still has
+ * memory.
+ * See SetMaxParticleCount for details.
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.maxCount = 0;
 
-/** 
- * Increases pressure in response to compression 
+/**
+ * Increases pressure in response to compression
  * Smaller values allow more compression
- *  
- * @export 
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.pressureStrength = 0.005;
 
-/** 
- * Reduces velocity along the collision normal 
- * Smaller value reduces less 
- *  
- * @export 
+/**
+ * Reduces velocity along the collision normal
+ * Smaller value reduces less
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.dampingStrength = 1.0;
 
-/** 
- * Restores shape of elastic particle groups 
- * Larger values increase elastic particle velocity 
- *  
- * @export 
+/**
+ * Restores shape of elastic particle groups
+ * Larger values increase elastic particle velocity
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.elasticStrength = 0.25;
 
-/** 
- * Restores length of spring particle groups 
- * Larger values increase spring particle velocity 
- *  
- * @export 
+/**
+ * Restores length of spring particle groups
+ * Larger values increase spring particle velocity
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.springStrength = 0.25;
 
-/** 
- * Reduces relative velocity of viscous particles 
- * Larger values slow down viscous particles more 
- *  
- * @export 
+/**
+ * Reduces relative velocity of viscous particles
+ * Larger values slow down viscous particles more
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.viscousStrength = 0.25;
 
-/** 
- * Produces pressure on tensile particles 
+/**
+ * Produces pressure on tensile particles
  * 0~0.2. Larger values increase the amount of surface tension.
- *  
- * @export 
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.surfaceTensionPressureStrength = 0.2;
 
-/** 
- * Smoothes outline of tensile particles 
- * 0~0.2. Larger values result in rounder, smoother, 
- * water-drop-like clusters of particles. 
- *  
- * @export 
+/**
+ * Smoothes outline of tensile particles
+ * 0~0.2. Larger values result in rounder, smoother,
+ * water-drop-like clusters of particles.
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.surfaceTensionNormalStrength = 0.2;
 
-/** 
- * Produces additional pressure on repulsive particles 
- * Larger values repulse more 
- * Negative values mean attraction. The range where particles 
- * behave stably is about -0.2 to 2.0. 
- *  
- * @export 
+/**
+ * Produces additional pressure on repulsive particles
+ * Larger values repulse more
+ * Negative values mean attraction. The range where particles
+ * behave stably is about -0.2 to 2.0.
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.repulsiveStrength = 1.0;
 
-/** 
- * Produces repulsion between powder particles 
- * Larger values repulse more 
- *  
- * @export 
+/**
+ * Produces repulsion between powder particles
+ * Larger values repulse more
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.powderStrength = 0.5;
 
-/** 
- * Pushes particles out of solid particle group 
+/**
+ * Pushes particles out of solid particle group
  * Larger values repulse more
- *  
- * @export 
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.ejectionStrength = 0.5;
 
-/** 
- * Produces static pressure 
- * Larger values increase the pressure on neighboring partilces 
- * For a description of static pressure, see 
- * http://en.wikipedia.org/wiki/Static_pressure#Static_pressure_in_fluid_dynamics 
- *  
- * @export 
+/**
+ * Produces static pressure
+ * Larger values increase the pressure on neighboring partilces
+ * For a description of static pressure, see
+ * http://en.wikipedia.org/wiki/Static_pressure#Static_pressure_in_fluid_dynamics
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.staticPressureStrength = 0.2;
 
-/** 
- * Reduces instability in static pressure calculation 
- * Larger values make stabilize static pressure with fewer 
- * iterations 
- *  
- * @export 
+/**
+ * Reduces instability in static pressure calculation
+ * Larger values make stabilize static pressure with fewer
+ * iterations
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.staticPressureRelaxation = 0.2;
 
-/** 
- * Computes static pressure more precisely 
- * See SetStaticPressureIterations for details 
- *  
- * @export 
+/**
+ * Computes static pressure more precisely
+ * See SetStaticPressureIterations for details
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.staticPressureIterations = 8;
 
-/** 
- * Determines how fast colors are mixed 
- * 1.0f ==> mixed immediately 
- * 0.5f ==> mixed half way each simulation step (see 
- * b2World::Step()) 
- *  
- * @export 
+/**
+ * Determines how fast colors are mixed
+ * 1.0f ==> mixed immediately
+ * 0.5f ==> mixed half way each simulation step (see
+ * b2World::Step())
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.colorMixingStrength = 0.5;
 
-/** 
- * Whether to destroy particles by age when no more particles 
- * can be created.  See #b2ParticleSystem::SetDestructionByAge() 
- * for more information. 
- *  
- * @export 
+/**
+ * Whether to destroy particles by age when no more particles
+ * can be created.  See #b2ParticleSystem::SetDestructionByAge()
+ * for more information.
+ *
+ * @export
  * @type {boolean}
  */
 box2d.b2ParticleSystemDef.prototype.destroyByAge = true;
 
-/** 
- * Granularity of particle lifetimes in seconds.  By default 
- * this is set to (1.0f / 60.0f) seconds.  b2ParticleSystem uses 
- * a 32-bit signed value to track particle lifetimes so the 
- * maximum lifetime of a particle is (2^32 - 1) / (1.0f / 
- * lifetimeGranularity) seconds. With the value set to 1/60 the 
- * maximum lifetime or age of a particle is 2.27 years. 
- *  
- * @export 
+/**
+ * Granularity of particle lifetimes in seconds.  By default
+ * this is set to (1.0f / 60.0f) seconds.  b2ParticleSystem uses
+ * a 32-bit signed value to track particle lifetimes so the
+ * maximum lifetime of a particle is (2^32 - 1) / (1.0f /
+ * lifetimeGranularity) seconds. With the value set to 1/60 the
+ * maximum lifetime or age of a particle is 2.27 years.
+ *
+ * @export
  * @type {number}
  */
 box2d.b2ParticleSystemDef.prototype.lifetimeGranularity = 1.0 / 60.0;
 
 /**
  * @return {box2d.b2ParticleSystemDef}
- * @param {box2d.b2ParticleSystemDef} def 
+ * @param {box2d.b2ParticleSystemDef} def
  */
 box2d.b2ParticleSystemDef.prototype.Copy = function(def) {
   this.strictContactCheck = def.strictContactCheck;
@@ -1049,10 +1049,10 @@ box2d.b2ParticleSystemDef.prototype.Clone = function() {
 }
 
 /**
- * @export 
- * @constructor 
- * @param {box2d.b2ParticleSystemDef} def 
- * @param {box2d.b2World} world 
+ * @export
+ * @constructor
+ * @param {box2d.b2ParticleSystemDef} def
+ * @param {box2d.b2World} world
  */
 box2d.b2ParticleSystem = function(def, world) {
   this._ctor_(def, world);
@@ -1128,33 +1128,33 @@ box2d.b2ParticleSystem.prototype.m_count = 0;
  */
 box2d.b2ParticleSystem.prototype.m_internalAllocatedCapacity = 0;
 
-/** 
- * Allocator for b2ParticleHandle instances. 
- * b2SlabAllocator<b2ParticleHandle> m_handleAllocator; 
+/**
+ * Allocator for b2ParticleHandle instances.
+ * b2SlabAllocator<b2ParticleHandle> m_handleAllocator;
  * @type {*}
  */
 box2d.b2ParticleSystem.prototype.m_handleAllocator = null;
 
-/** 
- * Maps particle indicies to handles. 
- * @type 
+/**
+ * Maps particle indicies to handles.
+ * @type
  *  	 {box2d.b2ParticleSystem.UserOverridableBuffer<box2d.b2ParticleHandle>}
  */
 box2d.b2ParticleSystem.prototype.m_handleIndexBuffer = null;
 
-/** 
+/**
  * @type {box2d.b2ParticleSystem.UserOverridableBuffer<number>}
  */
 box2d.b2ParticleSystem.prototype.m_flagsBuffer = null;
 
-/** 
- * @type 
+/**
+ * @type
  *  	 {box2d.b2ParticleSystem.UserOverridableBuffer<box2d.b2Vec2>}
  */
 box2d.b2ParticleSystem.prototype.m_positionBuffer = null;
 
-/** 
- * @type 
+/**
+ * @type
  *  	 {box2d.b2ParticleSystem.UserOverridableBuffer<box2d.b2Vec2>}
  */
 box2d.b2ParticleSystem.prototype.m_velocityBuffer = null;
@@ -1164,86 +1164,86 @@ box2d.b2ParticleSystem.prototype.m_velocityBuffer = null;
  */
 box2d.b2ParticleSystem.prototype.m_forceBuffer = null;
 
-/** 
- * this.m_weightBuffer is populated in ComputeWeight and used in 
- * ComputeDepth(), SolveStaticPressure() and SolvePressure(). 
- *  
+/**
+ * this.m_weightBuffer is populated in ComputeWeight and used in
+ * ComputeDepth(), SolveStaticPressure() and SolvePressure().
+ *
  * @type {Array.<number>}
  */
 box2d.b2ParticleSystem.prototype.m_weightBuffer = null;
 
-/** 
- * When any particles have the flag b2_staticPressureParticle, 
- * this.m_staticPressureBuffer is first allocated and used in 
- * SolveStaticPressure() and SolvePressure().  It will be 
- * reallocated on subsequent CreateParticle() calls. 
- *  
+/**
+ * When any particles have the flag b2_staticPressureParticle,
+ * this.m_staticPressureBuffer is first allocated and used in
+ * SolveStaticPressure() and SolvePressure().  It will be
+ * reallocated on subsequent CreateParticle() calls.
+ *
  * @type {Array.<number>}
  */
 box2d.b2ParticleSystem.prototype.m_staticPressureBuffer = null;
 
-/** 
- * this.m_accumulationBuffer is used in many functions as a temporary 
- * buffer for scalar values. 
- *  
+/**
+ * this.m_accumulationBuffer is used in many functions as a temporary
+ * buffer for scalar values.
+ *
  * @type {Array.<number>}
  */
 box2d.b2ParticleSystem.prototype.m_accumulationBuffer = null;
 
-/** 
- * When any particles have the flag b2_tensileParticle, 
- * this.m_accumulation2Buffer is first allocated and used in 
- * SolveTensile() as a temporary buffer for vector values.  It 
- * will be reallocated on subsequent CreateParticle() calls. 
- *  
+/**
+ * When any particles have the flag b2_tensileParticle,
+ * this.m_accumulation2Buffer is first allocated and used in
+ * SolveTensile() as a temporary buffer for vector values.  It
+ * will be reallocated on subsequent CreateParticle() calls.
+ *
  * @type {Array.<box2d.b2Vec2>}
  */
 box2d.b2ParticleSystem.prototype.m_accumulation2Buffer = null;
 
-/** 
- * When any particle groups have the flag b2_solidParticleGroup, 
- * this.m_depthBuffer is first allocated and populated in 
- * ComputeDepth() and used in SolveSolid(). It will be 
- * reallocated on subsequent CreateParticle() calls. 
- *  
+/**
+ * When any particle groups have the flag b2_solidParticleGroup,
+ * this.m_depthBuffer is first allocated and populated in
+ * ComputeDepth() and used in SolveSolid(). It will be
+ * reallocated on subsequent CreateParticle() calls.
+ *
  * @type {Array.<number>}
  */
 box2d.b2ParticleSystem.prototype.m_depthBuffer = null;
 
-/** 
- * @type 
+/**
+ * @type
  *  	 {box2d.b2ParticleSystem.UserOverridableBuffer<box2d.b2ParticleColor>}
  */
 box2d.b2ParticleSystem.prototype.m_colorBuffer = null;
 
-/** 
+/**
  * @type {Array.<box2d.b2ParticleGroup>}
  */
 box2d.b2ParticleSystem.prototype.m_groupBuffer = null;
 
-/** 
+/**
  * @type {box2d.b2ParticleSystem.UserOverridableBuffer<*>}
  */
 box2d.b2ParticleSystem.prototype.m_userDataBuffer = null;
 
-/** 
- * Stuck particle detection parameters and record keeping 
- *  
+/**
+ * Stuck particle detection parameters and record keeping
+ *
  * @type {number}
  */
 box2d.b2ParticleSystem.prototype.m_stuckThreshold = 0;
 
-/** 
+/**
  * @type {box2d.b2ParticleSystem.UserOverridableBuffer<number>}
  */
 box2d.b2ParticleSystem.prototype.m_lastBodyContactStepBuffer = null;
 
-/** 
+/**
  * @type {box2d.b2ParticleSystem.UserOverridableBuffer<number>}
  */
 box2d.b2ParticleSystem.prototype.m_bodyContactCountBuffer = null;
 
-/** 
+/**
  * @type {box2d.b2ParticleSystem.UserOverridableBuffer<number>}
  */
 box2d.b2ParticleSystem.prototype.m_consecutiveContactStepsBuffer = null;
@@ -1278,36 +1278,36 @@ box2d.b2ParticleSystem.prototype.m_pairBuffer = null;
  */
 box2d.b2ParticleSystem.prototype.m_triadBuffer = null;
 
-/** 
- * Time each particle should be destroyed relative to the last 
- * time this.m_timeElapsed was initialized.  Each unit of time 
- * corresponds to b2ParticleSystemDef::lifetimeGranularity 
- * seconds. 
- *  
+/**
+ * Time each particle should be destroyed relative to the last
+ * time this.m_timeElapsed was initialized.  Each unit of time
+ * corresponds to b2ParticleSystemDef::lifetimeGranularity
+ * seconds.
+ *
  * @type {box2d.b2ParticleSystem.UserOverridableBuffer<number>}
  */
 box2d.b2ParticleSystem.prototype.m_expirationTimeBuffer = null;
 
-/** 
- * List of particle indices sorted by expiration time. 
- *  
+/**
+ * List of particle indices sorted by expiration time.
+ *
  * @type {box2d.b2ParticleSystem.UserOverridableBuffer<number>}
  */
 box2d.b2ParticleSystem.prototype.m_indexByExpirationTimeBuffer = null;
 
 /**
- * Time elapsed in 32:32 fixed point.  Each non-fractional unit 
- * of time corresponds to 
- * b2ParticleSystemDef::lifetimeGranularity seconds. 
- *  
- * @type {number} 
+ * Time elapsed in 32:32 fixed point.  Each non-fractional unit
+ * of time corresponds to
+ * b2ParticleSystemDef::lifetimeGranularity seconds.
+ *
+ * @type {number}
  */
 box2d.b2ParticleSystem.prototype.m_timeElapsed = 0;
 
-/** 
- * Whether the expiration time buffer has been modified and 
- * needs to be resorted. 
- *  
+/**
+ * Whether the expiration time buffer has been modified and
+ * needs to be resorted.
+ *
  * @type {boolean}
  */
 box2d.b2ParticleSystem.prototype.m_expirationTimeBufferRequiresSorting = false;
@@ -1343,69 +1343,69 @@ box2d.b2ParticleSystem.prototype.m_prev = null;
 box2d.b2ParticleSystem.prototype.m_next = null;
 
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.b2ParticleSystem.xTruncBits = 12;
 
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.b2ParticleSystem.yTruncBits = 12;
 
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.b2ParticleSystem.tagBits = 8 * 4; // 8u * sizeof(uint32);
 
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.b2ParticleSystem.yOffset = 1 << (box2d.b2ParticleSystem.yTruncBits - 1);
 
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.b2ParticleSystem.yShift = box2d.b2ParticleSystem.tagBits - box2d.b2ParticleSystem.yTruncBits;
 
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.b2ParticleSystem.xShift = box2d.b2ParticleSystem.tagBits - box2d.b2ParticleSystem.yTruncBits - box2d.b2ParticleSystem.xTruncBits;
 
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.b2ParticleSystem.xScale = 1 << box2d.b2ParticleSystem.xShift;
 
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.b2ParticleSystem.xOffset = box2d.b2ParticleSystem.xScale * (1 << (box2d.b2ParticleSystem.xTruncBits - 1));
 
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.b2ParticleSystem.yMask = ((1 << box2d.b2ParticleSystem.yTruncBits) - 1) << box2d.b2ParticleSystem.yShift;
 
 /**
- * @const 
- * @type {number} 
+ * @const
+ * @type {number}
  */
 box2d.b2ParticleSystem.xMask = ~box2d.b2ParticleSystem.yMask;
 
 /**
  * @return {number}
- * @param {number} x 
- * @param {number} y 
+ * @param {number} x
+ * @param {number} y
  */
 box2d.b2ParticleSystem.computeTag = function(x, y) {
   ///	return ((uint32)(y + yOffset) << yShift) + (uint32)(xScale * x + xOffset);
@@ -1414,8 +1414,8 @@ box2d.b2ParticleSystem.computeTag = function(x, y) {
 
 /**
  * @return {number}
- * @param {number} x 
- * @param {number} y 
+ * @param {number} x
+ * @param {number} y
  */
 box2d.b2ParticleSystem.computeRelativeTag = function(tag, x, y) {
   ///	return tag + (y << yShift) + (x << xShift);
@@ -1428,15 +1428,15 @@ box2d.b2ParticleSystem.computeRelativeTag = function(tag, x, y) {
 box2d.b2ParticleSystem.FixedSetAllocator = function() {}
 
 /**
- * @return {void} 
- * @param {number} itemIndex 
+ * @return {void}
+ * @param {number} itemIndex
  */
 box2d.b2ParticleSystem.FixedSetAllocator.prototype.Invalidate = function(itemIndex) {}
 
 /**
- * @constructor 
- * @param {box2d.b2Fixture} fixture 
- * @param {number} particle 
+ * @constructor
+ * @param {box2d.b2Fixture} fixture
+ * @param {number} particle
  */
 box2d.b2ParticleSystem.FixtureParticle = function(fixture, particle) {
   this.first = fixture;
@@ -1454,32 +1454,32 @@ box2d.b2ParticleSystem.FixtureParticle.prototype.first = null;
 box2d.b2ParticleSystem.FixtureParticle.prototype.second = box2d.b2_invalidParticleIndex;
 
 /**
- * @constructor 
- * @extends {box2d.b2ParticleSystem.FixedSetAllocator} 
+ * @constructor
+ * @extends {box2d.b2ParticleSystem.FixedSetAllocator}
  */
 box2d.b2ParticleSystem.FixtureParticleSet = function() {}
 
 goog.inherits(box2d.b2ParticleSystem.FixtureParticleSet, box2d.b2ParticleSystem.FixedSetAllocator);
 
 /**
- * @return {void} 
- * @param {box2d.b2GrowableBuffer<box2d.b2ParticleBodyContact>} 
+ * @return {void}
+ * @param {box2d.b2GrowableBuffer<box2d.b2ParticleBodyContact>}
  *  	  bodyContactBuffer
- * @param {box2d.b2ParticleSystem.UserOverridableBuffer<number>} 
+ * @param {box2d.b2ParticleSystem.UserOverridableBuffer<number>}
  *  	  flagsBuffer
  */
 box2d.b2ParticleSystem.FixtureParticleSet.prototype.Initialize = function(bodyContactBuffer, flagsBuffer) {}
 
 /**
- * @return {number} 
- * @param {box2d.b2ParticleSystem.FixtureParticle} pair 
+ * @return {number}
+ * @param {box2d.b2ParticleSystem.FixtureParticle} pair
  */
 box2d.b2ParticleSystem.FixtureParticleSet.prototype.Find = function(pair) {}
 
 /**
- * @constructor 
- * @param {number} particleA 
- * @param {number} particleB 
+ * @constructor
+ * @param {number} particleA
+ * @param {number} particleB
  */
 box2d.b2ParticleSystem.ParticlePair = function(particleA, particleB) {}
 
@@ -1495,76 +1495,76 @@ box2d.b2ParticleSystem.ParticlePair.prototype.second = box2d.b2_invalidParticleI
 
 /**
  * @constructor
- * @extends {box2d.b2ParticleSystem.FixedSetAllocator} 
+ * @extends {box2d.b2ParticleSystem.FixedSetAllocator}
  */
 box2d.b2ParticleSystem.b2ParticlePairSet = function() {}
 
 goog.inherits(box2d.b2ParticleSystem.b2ParticlePairSet, box2d.b2ParticleSystem.FixedSetAllocator);
 
 /**
- * @return {void} 
- * @param {box2d.b2GrowableBuffer<box2d.b2ParticleContact>} 
+ * @return {void}
+ * @param {box2d.b2GrowableBuffer<box2d.b2ParticleContact>}
  *  	  contactBuffer
- * @param {box2d.b2ParticleSystem.UserOverridableBuffer<number>} 
+ * @param {box2d.b2ParticleSystem.UserOverridableBuffer<number>}
  *  	  flagsBuffer
  */
 box2d.b2ParticleSystem.b2ParticlePairSet.prototype.Initialize = function(contactBuffer, flagsBuffer) {}
 
 /**
- * @return {number} 
- * @param {box2d.b2ParticleSystem.ParticlePair} pair 
+ * @return {number}
+ * @param {box2d.b2ParticleSystem.ParticlePair} pair
  */
 box2d.b2ParticleSystem.b2ParticlePairSet.prototype.Find = function(pair) {}
 
-/** 
- * Class for filtering pairs or triads. 
- *  
+/**
+ * Class for filtering pairs or triads.
+ *
  * @constructor
  */
 box2d.b2ParticleSystem.ConnectionFilter = function() {}
 
-/** 
- * Is the particle necessary for connection? 
- * A pair or a triad should contain at least one 'necessary' 
- * particle. 
- *  
- * @return {boolean} 
- * @param {number} index 
+/**
+ * Is the particle necessary for connection?
+ * A pair or a triad should contain at least one 'necessary'
+ * particle.
+ *
+ * @return {boolean}
+ * @param {number} index
  */
 box2d.b2ParticleSystem.ConnectionFilter.prototype.IsNecessary = function(index) {
   return true;
 }
 
-/** 
- * An additional condition for creating a pair. 
- *  
- * @return {boolean} 
- * @param {number} a 
- * @param {number} b 
+/**
+ * An additional condition for creating a pair.
+ *
+ * @return {boolean}
+ * @param {number} a
+ * @param {number} b
  */
 box2d.b2ParticleSystem.ConnectionFilter.prototype.ShouldCreatePair = function(a, b) {
   return true;
 }
 
-/** 
- * An additional condition for creating a triad. 
- *  
- * @return {boolean} 
- * @param {number} a 
- * @param {number} b 
- * @param {number} c 
+/**
+ * An additional condition for creating a triad.
+ *
+ * @return {boolean}
+ * @param {number} a
+ * @param {number} b
+ * @param {number} c
  */
 box2d.b2ParticleSystem.ConnectionFilter.prototype.ShouldCreateTriad = function(a, b, c) {
   return true;
 }
 
-/** 
+/**
  * b2ParticleSystem::b2ParticleSystem(const b2ParticleSystemDef*
- * def, b2World* world); 
- *  
+ * def, b2World* world);
+ *
  * @return {void}
- * @param {box2d.b2ParticleSystemDef} def 
- * @param {box2d.b2World} world 
+ * @param {box2d.b2ParticleSystemDef} def
+ * @param {box2d.b2World} world
  */
 box2d.b2ParticleSystem.prototype._ctor_ = function(def, world) {
   this.m_handleIndexBuffer = new box2d.b2ParticleSystem.UserOverridableBuffer();
@@ -1647,9 +1647,9 @@ box2d.b2ParticleSystem.prototype._ctor_ = function(def, world) {
   this.SetDestructionByAge(this.m_def.destroyByAge);
 }
 
-/** 
- * b2ParticleSystem::~b2ParticleSystem(); 
- *  
+/**
+ * b2ParticleSystem::~b2ParticleSystem();
+ *
  * @return {void}
  */
 box2d.b2ParticleSystem.prototype._dtor_ = function() {
@@ -1677,28 +1677,28 @@ box2d.b2ParticleSystem.prototype._dtor_ = function() {
   this.FreeBuffer(this.m_groupBuffer, this.m_internalAllocatedCapacity);
 }
 
-/** 
+/**
  * @return {void}
  */
 box2d.b2ParticleSystem.prototype.Drop = function() {
   this._dtor_();
 }
 
-/** 
- * Create a particle whose properties have been defined. 
- *  
- * No reference to the definition is retained. 
- *  
- * A simulation step must occur before it's possible to interact 
- * with a newly created particle.  For example, 
- * DestroyParticleInShape() will not destroy a particle until 
- * b2World::Step() has been called. 
- *  
- * warning: This function is locked during callbacks. 
- *  
- * @export 
+/**
+ * Create a particle whose properties have been defined.
+ *
+ * No reference to the definition is retained.
+ *
+ * A simulation step must occur before it's possible to interact
+ * with a newly created particle.  For example,
+ * DestroyParticleInShape() will not destroy a particle until
+ * b2World::Step() has been called.
+ *
+ * warning: This function is locked during callbacks.
+ *
+ * @export
  * @return {number} the index of the particle.
- * @param {box2d.b2ParticleDef} def 
+ * @param {box2d.b2ParticleDef} def
  */
 box2d.b2ParticleSystem.prototype.CreateParticle = function(def) {
   box2d.b2Assert(this.m_world.IsLocked() === false);
@@ -1789,14 +1789,14 @@ box2d.b2ParticleSystem.prototype.CreateParticle = function(def) {
   return index;
 }
 
-/** 
- * Retrieve a handle to the particle at the specified index. 
- *  
+/**
+ * Retrieve a handle to the particle at the specified index.
+ *
  * Please see #b2ParticleHandle for why you might want a handle.
- *  
- * @export 
- * @return {box2d.b2ParticleHandle} 
- * @param {number} index 
+ *
+ * @export
+ * @return {box2d.b2ParticleHandle}
+ * @param {number} index
  */
 box2d.b2ParticleSystem.prototype.GetParticleHandleFromIndex = function(index) {
   box2d.b2Assert(index >= 0 && index < this.GetParticleCount() && index !== box2d.b2_invalidParticleIndex);
@@ -1814,16 +1814,16 @@ box2d.b2ParticleSystem.prototype.GetParticleHandleFromIndex = function(index) {
   return handle;
 }
 
-/** 
- * Destroy a particle. 
- *  
- * The particle is removed after the next simulation step (see 
- * b2World::Step()). 
- *  
- * @export 
- * @return {void} 
+/**
+ * Destroy a particle.
+ *
+ * The particle is removed after the next simulation step (see
+ * b2World::Step()).
+ *
+ * @export
+ * @return {void}
  * @param {number} index Index of the particle to destroy.
- * @param {boolean=} callDestructionListener Whether to call the 
+ * @param {boolean=} callDestructionListener Whether to call the
  *  	  destruction listener just before the particle is
  *  	  destroyed.
  */
@@ -1835,16 +1835,16 @@ box2d.b2ParticleSystem.prototype.DestroyParticle = function(index, callDestructi
   this.SetParticleFlags(index, this.m_flagsBuffer.data[index] | flags);
 }
 
-/** 
- * Destroy the Nth oldest particle in the system. 
- *  
- * The particle is removed after the next b2World::Step(). 
- *  
- * @return {void} 
- * @param {number} index Index of the Nth oldest particle to 
+/**
+ * Destroy the Nth oldest particle in the system.
+ *
+ * The particle is removed after the next b2World::Step().
+ *
+ * @return {void}
+ * @param {number} index Index of the Nth oldest particle to
  *  	  destroy, 0 will destroy the oldest particle in the
  *  	  system, 1 will destroy the next oldest particle etc.
- * @param {boolean=} callDestructionListener Whether to call the 
+ * @param {boolean=} callDestructionListener Whether to call the
  *  	  destruction listener just before the particle is
  *  	  destroyed.
  */
@@ -1866,8 +1866,8 @@ box2d.b2ParticleSystem.prototype.DestroyOldestParticle = function(index, callDes
 }
 
 /**
- * @constructor 
- * @extends {box2d.b2QueryCallback} 
+ * @constructor
+ * @extends {box2d.b2QueryCallback}
  * @param {box2d.b2ParticleSystem} system
  */
 box2d.b2ParticleSystem.DestroyParticlesInShapeCallback = function(system, shape, xf, callDestructionListener) {
@@ -1905,18 +1905,18 @@ box2d.b2ParticleSystem.DestroyParticlesInShapeCallback.prototype.m_callDestructi
  */
 box2d.b2ParticleSystem.DestroyParticlesInShapeCallback.prototype.m_destroyed = 0;
 
-/** 
+/**
  * @return {boolean}
- * @param {box2d.b2Fixture} fixture 
+ * @param {box2d.b2Fixture} fixture
  */
 box2d.b2ParticleSystem.DestroyParticlesInShapeCallback.prototype.ReportFixture = function(fixture) {
   return false;
 }
 
 /**
- * @return {boolean} 
- * @param {box2d.b2ParticleSystem} particleSystem 
- * @param {number} index 
+ * @return {boolean}
+ * @param {box2d.b2ParticleSystem} particleSystem
+ * @param {number} index
  */
 box2d.b2ParticleSystem.DestroyParticlesInShapeCallback.prototype.ReportParticle = function(particleSystem, index) {
   if (particleSystem !== this.m_system)
@@ -1937,21 +1937,21 @@ box2d.b2ParticleSystem.DestroyParticlesInShapeCallback.prototype.Destroyed = fun
   return this.m_destroyed;
 }
 
-/** 
- * Destroy particles inside a shape. 
- *  
- * warning: This function is locked during callbacks. 
- *  
- * In addition, this function immediately destroys particles in 
- * the shape in constrast to DestroyParticle() which defers the 
- * destruction until the next simulation step. 
- *  
- * @export 
+/**
+ * Destroy particles inside a shape.
+ *
+ * warning: This function is locked during callbacks.
+ *
+ * In addition, this function immediately destroys particles in
+ * the shape in constrast to DestroyParticle() which defers the
+ * destruction until the next simulation step.
+ *
+ * @export
  * @return {number} Number of particles destroyed.
- * @param {box2d.b2Shape} shape Shape which encloses particles 
+ * @param {box2d.b2Shape} shape Shape which encloses particles
  *  	  that should be destroyed.
  * @param {box2d.b2Transform} xf Transform applied to the shape.
- * @param {boolean=} callDestructionListener Whether to call the 
+ * @param {boolean=} callDestructionListener Whether to call the
  *  	  world b2DestructionListener for each particle
  *  	  destroyed.
  */
@@ -1971,16 +1971,16 @@ box2d.b2ParticleSystem.prototype.DestroyParticlesInShape = function(shape, xf, c
 }
 box2d.b2ParticleSystem.prototype.DestroyParticlesInShape.s_aabb = new box2d.b2AABB();
 
-/** 
- * Create a particle group whose properties have been defined. 
- *  
- * No reference to the definition is retained. 
- *  
- * warning: This function is locked during callbacks. 
- *  
- * @export 
- * @return {box2d.b2ParticleGroup} 
- * @param {box2d.b2ParticleGroupDef} groupDef 
+/**
+ * Create a particle group whose properties have been defined.
+ *
+ * No reference to the definition is retained.
+ *
+ * warning: This function is locked during callbacks.
+ *
+ * @export
+ * @return {box2d.b2ParticleGroup}
+ * @param {box2d.b2ParticleGroupDef} groupDef
  */
 box2d.b2ParticleSystem.prototype.CreateParticleGroup = function(groupDef) {
   var s_transform = box2d.b2ParticleSystem.prototype.CreateParticleGroup.s_transform;
@@ -2042,9 +2042,9 @@ box2d.b2ParticleSystem.prototype.CreateParticleGroup = function(groupDef) {
 box2d.b2ParticleSystem.prototype.CreateParticleGroup.s_transform = new box2d.b2Transform();
 
 /**
- * @constructor 
- * @extends {box2d.b2ParticleSystem.ConnectionFilter} 
- * @param {number} threshold 
+ * @constructor
+ * @extends {box2d.b2ParticleSystem.ConnectionFilter}
+ * @param {number} threshold
  */
 box2d.b2ParticleSystem.JoinParticleGroupsFilter = function(threshold) {
   this.m_threshold = threshold;
@@ -2057,41 +2057,41 @@ goog.inherits(box2d.b2ParticleSystem.JoinParticleGroupsFilter, box2d.b2ParticleS
  */
 box2d.b2ParticleSystem.JoinParticleGroupsFilter.prototype.m_threshold = 0;
 
-/** 
- * An additional condition for creating a pair. 
- *  
- * @return {boolean} 
- * @param {number} a 
- * @param {number} b 
+/**
+ * An additional condition for creating a pair.
+ *
+ * @return {boolean}
+ * @param {number} a
+ * @param {number} b
  */
 box2d.b2ParticleSystem.JoinParticleGroupsFilter.prototype.ShouldCreatePair = function(a, b) {
   return (a < this.m_threshold && this.m_threshold <= b) ||
     (b < this.m_threshold && this.m_threshold <= a);
 }
 
-/** 
- * An additional condition for creating a triad. 
- *  
- * @return {boolean} 
- * @param {number} a 
- * @param {number} b 
- * @param {number} c 
+/**
+ * An additional condition for creating a triad.
+ *
+ * @return {boolean}
+ * @param {number} a
+ * @param {number} b
+ * @param {number} c
  */
 box2d.b2ParticleSystem.JoinParticleGroupsFilter.prototype.ShouldCreateTriad = function(a, b, c) {
   return (a < this.m_threshold || b < this.m_threshold || c < this.m_threshold) &&
     (this.m_threshold <= a || this.m_threshold <= b || this.m_threshold <= c);
 }
 
-/** 
- * Join two particle groups. 
- *  
- * warning: This function is locked during callbacks. 
- *  
- * @export 
- * @return {void} 
- * @param {box2d.b2ParticleGroup} groupA the first group. 
+/**
+ * Join two particle groups.
+ *
+ * warning: This function is locked during callbacks.
+ *
+ * @export
+ * @return {void}
+ * @param {box2d.b2ParticleGroup} groupA the first group.
  *  	  Expands to encompass the second group.
- * @param {box2d.b2ParticleGroup} groupB the second group. It is 
+ * @param {box2d.b2ParticleGroup} groupB the second group. It is
  *  	  destroyed.
  */
 box2d.b2ParticleSystem.prototype.JoinParticleGroups = function(groupA, groupB) {
@@ -2121,13 +2121,13 @@ box2d.b2ParticleSystem.prototype.JoinParticleGroups = function(groupA, groupB) {
   this.DestroyParticleGroup(groupB);
 }
 
-/** 
- * Split particle group into multiple disconnected groups. 
- *  
- * warning: This function is locked during callbacks. 
- *  
- * @export 
- * @return {void} 
+/**
+ * Split particle group into multiple disconnected groups.
+ *
+ * warning: This function is locked during callbacks.
+ *
+ * @export
+ * @return {void}
  * @param {box2d.b2ParticleGroup} group the group to be split.
  */
 box2d.b2ParticleSystem.prototype.SplitParticleGroup = function(group) {
@@ -2147,128 +2147,128 @@ box2d.b2ParticleSystem.prototype.SplitParticleGroup = function(group) {
   ///	this.m_world.m_stackAllocator.Free(nodeBuffer);
 }
 
-/** 
- * Get the world particle group list. With the returned group, 
- * use b2ParticleGroup::GetNext to get the next group in the 
- * world list. 
- *  
- * A null group indicates the end of the list. 
- *  
- * @export 
- * @return {box2d.b2ParticleGroup} the head of the world 
+/**
+ * Get the world particle group list. With the returned group,
+ * use b2ParticleGroup::GetNext to get the next group in the
+ * world list.
+ *
+ * A null group indicates the end of the list.
+ *
+ * @export
+ * @return {box2d.b2ParticleGroup} the head of the world
  *  	   particle group list.
  */
 box2d.b2ParticleSystem.prototype.GetParticleGroupList = function() {
   return this.m_groupList;
 }
 
-/** 
- * Get the number of particle groups. 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get the number of particle groups.
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetParticleGroupCount = function() {
   return this.m_groupCount;
 }
 
-/** 
- * Get the number of particles. 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get the number of particles.
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetParticleCount = function() {
   return this.m_count;
 }
 
-/** 
- * Get the maximum number of particles. 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get the maximum number of particles.
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetMaxParticleCount = function() {
   return this.m_def.maxCount;
 }
 
-/** 
- * Set the maximum number of particles. 
- *  
- * A value of 0 means there is no maximum. The particle buffers 
- * can continue to grow while b2World's block allocator still 
- * has memory. 
- *  
- * Note: If you try to CreateParticle() with more than this 
- * count, b2_invalidParticleIndex is returned unless 
- * SetDestructionByAge() is used to enable the destruction of 
- * the oldest particles in the system. 
- *  
- * @export 
- * @return {void} 
- * @param {number} count 
+/**
+ * Set the maximum number of particles.
+ *
+ * A value of 0 means there is no maximum. The particle buffers
+ * can continue to grow while b2World's block allocator still
+ * has memory.
+ *
+ * Note: If you try to CreateParticle() with more than this
+ * count, b2_invalidParticleIndex is returned unless
+ * SetDestructionByAge() is used to enable the destruction of
+ * the oldest particles in the system.
+ *
+ * @export
+ * @return {void}
+ * @param {number} count
  */
 box2d.b2ParticleSystem.prototype.SetMaxParticleCount = function(count) {
   box2d.b2Assert(this.m_count <= count);
   this.m_def.maxCount = count;
 }
 
-/** 
- * Get all existing particle flags. 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get all existing particle flags.
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetAllParticleFlags = function() {
   return this.m_allParticleFlags;
 }
 
-/** 
- * Get all existing particle group flags. 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get all existing particle group flags.
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetAllGroupFlags = function() {
   return this.m_allGroupFlags;
 }
 
-/** 
- * Pause or unpause the particle system. When paused, 
- * b2World::Step() skips over this particle system. All 
- * b2ParticleSystem function calls still work. 
- *  
- * @export 
- * @return {void} 
- * @param {boolean} paused paused is true to pause, false to 
+/**
+ * Pause or unpause the particle system. When paused,
+ * b2World::Step() skips over this particle system. All
+ * b2ParticleSystem function calls still work.
+ *
+ * @export
+ * @return {void}
+ * @param {boolean} paused paused is true to pause, false to
  *  	  un-pause.
  */
 box2d.b2ParticleSystem.prototype.SetPaused = function(paused) {
   this.m_paused = paused;
 }
 
-/** 
- * Initially, true, then, the last value passed into 
- * SetPaused(). 
- *  
- * @export 
- * @return {boolean} true if the particle system is being 
+/**
+ * Initially, true, then, the last value passed into
+ * SetPaused().
+ *
+ * @export
+ * @return {boolean} true if the particle system is being
  *  	   updated in b2World::Step().
  */
 box2d.b2ParticleSystem.prototype.GetPaused = function() {
   return this.m_paused;
 }
 
-/** 
- * Change the particle density. 
- *  
- * Particle density affects the mass of the particles, which in 
- * turn affects how the particles interact with b2Bodies. Note 
- * that the density does not affect how the particles interact 
- * with each other. 
- *  
- * @export 
- * @return {void} 
+/**
+ * Change the particle density.
+ *
+ * Particle density affects the mass of the particles, which in
+ * turn affects how the particles interact with b2Bodies. Note
+ * that the density does not affect how the particles interact
+ * with each other.
+ *
+ * @export
+ * @return {void}
  * @param {number} density
  */
 box2d.b2ParticleSystem.prototype.SetDensity = function(density) {
@@ -2276,22 +2276,22 @@ box2d.b2ParticleSystem.prototype.SetDensity = function(density) {
   this.m_inverseDensity = 1 / this.m_def.density;
 }
 
-/** 
- * Get the particle density. 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get the particle density.
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetDensity = function() {
   return this.m_def.density;
 }
 
-/** 
- * Change the particle gravity scale. Adjusts the effect of the 
- * global gravity vector on particles. 
- *  
- * @export 
- * @return {void} 
+/**
+ * Change the particle gravity scale. Adjusts the effect of the
+ * global gravity vector on particles.
+ *
+ * @export
+ * @return {void}
  * @param {number} gravityScale
  */
 box2d.b2ParticleSystem.prototype.SetGravityScale = function(gravityScale) {
@@ -2299,80 +2299,80 @@ box2d.b2ParticleSystem.prototype.SetGravityScale = function(gravityScale) {
 }
 
 
-/** 
- * Get the particle gravity scale. 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get the particle gravity scale.
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetGravityScale = function() {
   return this.m_def.gravityScale;
 }
 
-/** 
- * Damping is used to reduce the velocity of particles. The 
- * damping parameter can be larger than 1.0f but the damping 
- * effect becomes sensitive to the time step when the damping 
- * parameter is large. 
- *  
- * @export 
- * @return {void} 
+/**
+ * Damping is used to reduce the velocity of particles. The
+ * damping parameter can be larger than 1.0f but the damping
+ * effect becomes sensitive to the time step when the damping
+ * parameter is large.
+ *
+ * @export
+ * @return {void}
  * @param {number} damping
  */
 box2d.b2ParticleSystem.prototype.SetDamping = function(damping) {
   this.m_def.dampingStrength = damping;
 }
 
-/** 
- * Get damping for particles 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get damping for particles
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetDamping = function() {
   return this.m_def.dampingStrength;
 }
 
-/** 
- * Change the number of iterations when calculating the static 
- * pressure of particles. By default, 8 iterations. You can 
- * reduce the number of iterations down to 1 in some situations, 
- * but this may cause instabilities when many particles come 
- * together. If you see particles popping away from each other 
- * like popcorn, you may have to increase the number of 
- * iterations. 
- *  
- * For a description of static pressure, see 
- * http://en.wikipedia.org/wiki/Static_pressure#Static_pressure_in_fluid_dynamics 
- *  
- * @export 
- * @return {void} 
- * @param {number} iterations 
+/**
+ * Change the number of iterations when calculating the static
+ * pressure of particles. By default, 8 iterations. You can
+ * reduce the number of iterations down to 1 in some situations,
+ * but this may cause instabilities when many particles come
+ * together. If you see particles popping away from each other
+ * like popcorn, you may have to increase the number of
+ * iterations.
+ *
+ * For a description of static pressure, see
+ * http://en.wikipedia.org/wiki/Static_pressure#Static_pressure_in_fluid_dynamics
+ *
+ * @export
+ * @return {void}
+ * @param {number} iterations
  */
 box2d.b2ParticleSystem.prototype.SetStaticPressureIterations = function(iterations) {
   this.m_def.staticPressureIterations = iterations;
 }
 
-/** 
- * Get the number of iterations for static pressure of 
- * particles. 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get the number of iterations for static pressure of
+ * particles.
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetStaticPressureIterations = function() {
   return this.m_def.staticPressureIterations;
 }
 
-/** 
- * Change the particle radius. 
- *  
- * You should set this only once, on world start. 
- * If you change the radius during execution, existing particles 
- * may explode, shrink, or behave unexpectedly. 
- *  
- * @export 
- * @return {void} 
+/**
+ * Change the particle radius.
+ *
+ * You should set this only once, on world start.
+ * If you change the radius during execution, existing particles
+ * may explode, shrink, or behave unexpectedly.
+ *
+ * @export
+ * @return {void}
  * @param {number} radius
  */
 box2d.b2ParticleSystem.prototype.SetRadius = function(radius) {
@@ -2381,22 +2381,22 @@ box2d.b2ParticleSystem.prototype.SetRadius = function(radius) {
   this.m_inverseDiameter = 1 / this.m_particleDiameter;
 }
 
-/** 
- * Get the particle radius. 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get the particle radius.
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetRadius = function() {
   return this.m_particleDiameter / 2;
 }
 
-/** 
- * Get the position of each particle 
- *  
- * Array is length GetParticleCount() 
- *  
- * @export 
+/**
+ * Get the position of each particle
+ *
+ * Array is length GetParticleCount()
+ *
+ * @export
  * @return {Array.<box2d.b2Vec2>} the pointer to the head of the
  *  	   particle positions array.
  */
@@ -2404,12 +2404,12 @@ box2d.b2ParticleSystem.prototype.GetPositionBuffer = function() {
   return this.m_positionBuffer.data;
 }
 
-/** 
- * Get the velocity of each particle 
- *  
- * Array is length GetParticleCount() 
- *  
- * @export 
+/**
+ * Get the velocity of each particle
+ *
+ * Array is length GetParticleCount()
+ *
+ * @export
  * @return {Array.<box2d.b2Vec2>} the pointer to the head of the
  *  	   particle velocities array.
  */
@@ -2417,13 +2417,13 @@ box2d.b2ParticleSystem.prototype.GetVelocityBuffer = function() {
   return this.m_velocityBuffer.data;
 }
 
-/** 
- * Get the color of each particle 
- *  
- * Array is length GetParticleCount() 
- *  
- * @export 
- * @return {Array.<box2d.b2ParticleColor>} the pointer to the 
+/**
+ * Get the color of each particle
+ *
+ * Array is length GetParticleCount()
+ *
+ * @export
+ * @return {Array.<box2d.b2ParticleColor>} the pointer to the
  *  	   head of the particle colors array.
  */
 box2d.b2ParticleSystem.prototype.GetColorBuffer = function() {
@@ -2431,39 +2431,39 @@ box2d.b2ParticleSystem.prototype.GetColorBuffer = function() {
   return this.m_colorBuffer.data;
 }
 
-/** 
- * Get the particle-group of each particle. 
- *  
- * Array is length GetParticleCount() 
- *  
- * @export 
- * @return {Array.<box2d.b2ParticleGroup>} the pointer to the 
+/**
+ * Get the particle-group of each particle.
+ *
+ * Array is length GetParticleCount()
+ *
+ * @export
+ * @return {Array.<box2d.b2ParticleGroup>} the pointer to the
  *  	   head of the particle group array.
  */
 box2d.b2ParticleSystem.prototype.GetGroupBuffer = function() {
   return this.m_groupBuffer;
 }
 
-/** 
- * Get the weight of each particle 
- *  
- * Array is length GetParticleCount() 
- *  
- * @export 
- * @return {Array.<number>} the pointer to the head of the 
+/**
+ * Get the weight of each particle
+ *
+ * Array is length GetParticleCount()
+ *
+ * @export
+ * @return {Array.<number>} the pointer to the head of the
  *  	   particle positions array.
  */
 box2d.b2ParticleSystem.prototype.GetWeightBuffer = function() {
   return this.m_weightBuffer;
 }
 
-/** 
- * Get the user-specified data of each particle. 
- *  
- * Array is length GetParticleCount() 
- *  
- * @export 
- * @return {Array.<*>} the pointer to the head of the particle 
+/**
+ * Get the user-specified data of each particle.
+ *
+ * Array is length GetParticleCount()
+ *
+ * @export
+ * @return {Array.<*>} the pointer to the head of the particle
  *  	   user-data array.
  */
 box2d.b2ParticleSystem.prototype.GetUserDataBuffer = function() {
@@ -2471,26 +2471,26 @@ box2d.b2ParticleSystem.prototype.GetUserDataBuffer = function() {
   return this.m_userDataBuffer.data;
 }
 
-/** 
- * Get the flags for each particle. See the b2ParticleFlag enum. 
- *  
- * Array is length GetParticleCount() 
- *  
- * @export 
- * @return {Array.<number>} the pointer to the head of the 
+/**
+ * Get the flags for each particle. See the b2ParticleFlag enum.
+ *
+ * Array is length GetParticleCount()
+ *
+ * @export
+ * @return {Array.<number>} the pointer to the head of the
  *  	   particle-flags array.
  */
 box2d.b2ParticleSystem.prototype.GetFlagsBuffer = function() {
   return this.m_flagsBuffer.data;
 }
 
-/** 
- * Set flags for a particle. See the b2ParticleFlag enum. 
- *  
- * @export 
- * @return {void} 
- * @param {number} index 
- * @param {number} newFlags 
+/**
+ * Set flags for a particle. See the b2ParticleFlag enum.
+ *
+ * @export
+ * @return {void}
+ * @param {number} index
+ * @param {number} newFlags
  */
 box2d.b2ParticleSystem.prototype.SetParticleFlags = function(index, newFlags) {
   var oldFlags = this.m_flagsBuffer.data[index];
@@ -2511,32 +2511,32 @@ box2d.b2ParticleSystem.prototype.SetParticleFlags = function(index, newFlags) {
   this.m_flagsBuffer.data[index] = newFlags;
 }
 
-/** 
- * Get flags for a particle. See the b2ParticleFlag enum. 
- *  
- * @export 
- * @return {number} 
- * @param {number} index 
+/**
+ * Get flags for a particle. See the b2ParticleFlag enum.
+ *
+ * @export
+ * @return {number}
+ * @param {number} index
  */
 box2d.b2ParticleSystem.prototype.GetParticleFlags = function(index) {
   return this.m_flagsBuffer.data[index];
 }
 
-/** 
- * Set an external buffer for particle data. 
- *  
- * Normally, the b2World's block allocator is used for particle 
- * data. However, sometimes you may have an OpenGL or Java 
- * buffer for particle data. To avoid data duplication, you may 
- * supply this external buffer. 
- *  
- * Note that, when b2World's block allocator is used, the 
- * particle data buffers can grow as required. However, when 
- * external buffers are used, the maximum number of particles is 
- * clamped to the size of the smallest external buffer. 
- *  
- * @export 
- * @return {void} 
+/**
+ * Set an external buffer for particle data.
+ *
+ * Normally, the b2World's block allocator is used for particle
+ * data. However, sometimes you may have an OpenGL or Java
+ * buffer for particle data. To avoid data duplication, you may
+ * supply this external buffer.
+ *
+ * Note that, when b2World's block allocator is used, the
+ * particle data buffers can grow as required. However, when
+ * external buffers are used, the maximum number of particles is
+ * clamped to the size of the smallest external buffer.
+ *
+ * @export
+ * @return {void}
  * @param {*} buffer a pointer to a block of memory.
  * @param {number} capacity the number of values in the block.
  */
@@ -2544,73 +2544,73 @@ box2d.b2ParticleSystem.prototype.SetFlagsBuffer = function(buffer, capacity) {
   this.SetUserOverridableBuffer(this.m_flagsBuffer, buffer, capacity);
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {*} buffer 
- * @param {number} capacity 
+/**
+ * @export
+ * @return {void}
+ * @param {*} buffer
+ * @param {number} capacity
  */
 box2d.b2ParticleSystem.prototype.SetPositionBuffer = function(buffer, capacity) {
   this.SetUserOverridableBuffer(this.m_positionBuffer, buffer, capacity);
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {*} buffer 
- * @param {number} capacity 
+/**
+ * @export
+ * @return {void}
+ * @param {*} buffer
+ * @param {number} capacity
  */
 box2d.b2ParticleSystem.prototype.SetVelocityBuffer = function(buffer, capacity) {
   this.SetUserOverridableBuffer(this.m_velocityBuffer, buffer, capacity);
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {*} buffer 
- * @param {number} capacity 
+/**
+ * @export
+ * @return {void}
+ * @param {*} buffer
+ * @param {number} capacity
  */
 box2d.b2ParticleSystem.prototype.SetColorBuffer = function(buffer, capacity) {
   this.SetUserOverridableBuffer(this.m_colorBuffer, buffer, capacity);
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {*} buffer 
- * @param {number} capacity 
+/**
+ * @export
+ * @return {void}
+ * @param {*} buffer
+ * @param {number} capacity
  */
 box2d.b2ParticleSystem.prototype.SetUserDataBuffer = function(buffer, capacity) {
   this.SetUserOverridableBuffer(this.m_userDataBuffer, buffer, capacity);
 }
 
-/** 
- * Get contacts between particles 
- * Contact data can be used for many reasons, for example to 
- * trigger rendering or audio effects. 
- *  
- * @export 
- * @return {Array.<box2d.b2ParticleContact>} 
+/**
+ * Get contacts between particles
+ * Contact data can be used for many reasons, for example to
+ * trigger rendering or audio effects.
+ *
+ * @export
+ * @return {Array.<box2d.b2ParticleContact>}
  */
 box2d.b2ParticleSystem.prototype.GetContacts = function() {
   return this.m_contactBuffer.data;
 }
 
 /**
- * @export 
- * @return {number} 
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetContactCount = function() {
   return this.m_contactBuffer.count;
 }
 
-/** 
- * Get contacts between particles and bodies 
- *  
- * Contact data can be used for many reasons, for example to 
- * trigger rendering or audio effects. 
- *  
- * @export 
+/**
+ * Get contacts between particles and bodies
+ *
+ * Contact data can be used for many reasons, for example to
+ * trigger rendering or audio effects.
+ *
+ * @export
  * @return {Array.<box2d.b2ParticleBodyContact>}
  */
 box2d.b2ParticleSystem.prototype.GetBodyContacts = function() {
@@ -2618,15 +2618,15 @@ box2d.b2ParticleSystem.prototype.GetBodyContacts = function() {
 }
 
 /**
- * @export 
- * @return {number} 
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetBodyContactCount = function() {
   return this.m_bodyContactBuffer.count;
 }
 
-/** 
- * Get array of particle pairs. The particles in a pair: 
+/**
+ * Get array of particle pairs. The particles in a pair:
  *   (1) are contacting,
  *   (2) are in the same particle group,
  *   (3) are part of a rigid particle group, or are spring, elastic,
@@ -2636,27 +2636,27 @@ box2d.b2ParticleSystem.prototype.GetBodyContactCount = function() {
  *   (5) have at least one particle that returns true for
  *       ConnectionFilter::IsNecessary,
  *   (6) are not zombie particles.
- *  
- * Essentially, this is an array of spring or barrier particles 
- * that are interacting. The array is sorted by b2ParticlePair's 
- * indexA, and then indexB. There are no duplicate entries. 
- *  
- * @export 
- * @return {Array.<box2d.b2ParticlePair>} 
+ *
+ * Essentially, this is an array of spring or barrier particles
+ * that are interacting. The array is sorted by b2ParticlePair's
+ * indexA, and then indexB. There are no duplicate entries.
+ *
+ * @export
+ * @return {Array.<box2d.b2ParticlePair>}
  */
 box2d.b2ParticleSystem.prototype.GetPairs = function() {
   return this.m_pairBuffer.data;
 }
 
 /**
- * @export 
- * @return {number} 
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetPairCount = function() {
   return this.m_pairBuffer.count;
 }
 
-/** 
+/**
  * Get array of particle triads. The particles in a triad:
  *   (1) are in the same particle group,
  *   (2) are in a Voronoi triangle together,
@@ -2668,34 +2668,34 @@ box2d.b2ParticleSystem.prototype.GetPairCount = function() {
  *   (6) are part of a rigid particle group, or are spring, elastic,
  *       or wall particles.
  *   (7) are not zombie particles.
- * 
- * Essentially, this is an array of elastic particles that are 
+ *
+ * Essentially, this is an array of elastic particles that are
  * interacting. The array is sorted by b2ParticleTriad's indexA,
- * then indexB, then indexC. There are no duplicate entries. 
- *  
- * @export 
- * @return {Array.<box2d.b2ParticleTriad>} 
+ * then indexB, then indexC. There are no duplicate entries.
+ *
+ * @export
+ * @return {Array.<box2d.b2ParticleTriad>}
  */
 box2d.b2ParticleSystem.prototype.GetTriads = function() {
   return this.m_triadBuffer.data;
 }
 
 /**
- * @export 
- * @return {number} 
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetTriadCount = function() {
   return this.m_triadBuffer.count;
 }
 
-/** 
- * Set an optional threshold for the maximum number of 
- * consecutive particle iterations that a particle may contact 
- * multiple bodies before it is considered a candidate for being 
- * "stuck". Setting to zero or less disables. 
- *  
- * @return {void} 
- * @param {number} steps 
+/**
+ * Set an optional threshold for the maximum number of
+ * consecutive particle iterations that a particle may contact
+ * multiple bodies before it is considered a candidate for being
+ * "stuck". Setting to zero or less disables.
+ *
+ * @return {void}
+ * @param {number} steps
  */
 box2d.b2ParticleSystem.prototype.SetStuckThreshold = function(steps) {
   this.m_stuckThreshold = steps;
@@ -2707,36 +2707,36 @@ box2d.b2ParticleSystem.prototype.SetStuckThreshold = function(steps) {
   }
 }
 
-/** 
- * Get potentially stuck particles from the last step; the user 
- * must decide if they are stuck or not, and if so, delete or 
- * move them 
- *  
- * @export 
- * @return {Array.<number>} 
+/**
+ * Get potentially stuck particles from the last step; the user
+ * must decide if they are stuck or not, and if so, delete or
+ * move them
+ *
+ * @export
+ * @return {Array.<number>}
  */
 box2d.b2ParticleSystem.prototype.GetStuckCandidates = function() {
   ///	return m_stuckParticleBuffer.Data();
   return this.m_stuckParticleBuffer.Data();
 }
 
-/** 
- * Get the number of stuck particle candidates from the last 
- * step. 
- *  
- * @export 
- * @return {number} 
+/**
+ * Get the number of stuck particle candidates from the last
+ * step.
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetStuckCandidateCount = function() {
   ///	return m_stuckParticleBuffer.GetCount();
   return this.m_stuckParticleBuffer.GetCount();
 }
 
-/** 
- * Compute the kinetic energy that can be lost by damping force 
- *  
- * @export 
- * @return {number} 
+/**
+ * Compute the kinetic energy that can be lost by damping force
+ *
+ * @export
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.ComputeCollisionEnergy = function() {
   var s_v = box2d.b2ParticleSystem.prototype.ComputeCollisionEnergy.s_v;
@@ -2758,44 +2758,44 @@ box2d.b2ParticleSystem.prototype.ComputeCollisionEnergy = function() {
 }
 box2d.b2ParticleSystem.prototype.ComputeCollisionEnergy.s_v = new box2d.b2Vec2();
 
-/** 
- * Set strict Particle/Body contact check. 
- *  
- * This is an option that will help ensure correct behavior if 
- * there are corners in the world model where Particle/Body 
- * contact is ambiguous. This option scales at n*log(n) of the 
- * number of Particle/Body contacts, so it is best to only 
- * enable if it is necessary for your geometry. Enable if you 
- * see strange particle behavior around b2Body intersections. 
- *  
- * @export 
- * @return {void} 
+/**
+ * Set strict Particle/Body contact check.
+ *
+ * This is an option that will help ensure correct behavior if
+ * there are corners in the world model where Particle/Body
+ * contact is ambiguous. This option scales at n*log(n) of the
+ * number of Particle/Body contacts, so it is best to only
+ * enable if it is necessary for your geometry. Enable if you
+ * see strange particle behavior around b2Body intersections.
+ *
+ * @export
+ * @return {void}
  * @param {boolean} enabled
  */
 box2d.b2ParticleSystem.prototype.SetStrictContactCheck = function(enabled) {
   this.m_def.strictContactCheck = enabled;
 }
 
-/** 
- * Get the status of the strict contact check. 
- *  
- * @export 
- * @return {boolean} 
+/**
+ * Get the status of the strict contact check.
+ *
+ * @export
+ * @return {boolean}
  */
 box2d.b2ParticleSystem.prototype.GetStrictContactCheck = function() {
   return this.m_def.strictContactCheck;
 }
 
-/** 
- * Set the lifetime (in seconds) of a particle relative to the 
- * current time.  A lifetime of less than or equal to 0.0f 
- * results in the particle living forever until it's manually 
- * destroyed by the application. 
- *  
- * @export 
- * @return {void} 
- * @param {number} index 
- * @param {number} lifetime 
+/**
+ * Set the lifetime (in seconds) of a particle relative to the
+ * current time.  A lifetime of less than or equal to 0.0f
+ * results in the particle living forever until it's manually
+ * destroyed by the application.
+ *
+ * @export
+ * @return {void}
+ * @param {number} index
+ * @param {number} lifetime
  */
 box2d.b2ParticleSystem.prototype.SetParticleLifetime = function(index, lifetime) {
   box2d.b2Assert(this.ValidateParticleIndex(index));
@@ -2821,35 +2821,35 @@ box2d.b2ParticleSystem.prototype.SetParticleLifetime = function(index, lifetime)
   }
 }
 
-/** 
- * Get the lifetime (in seconds) of a particle relative to the 
- * current time.  A value > 0.0f is returned if the particle is 
- * scheduled to be destroyed in the future, values <= 0.0f 
- * indicate the particle has an infinite lifetime. 
- *  
- * @export 
- * @return {number} 
- * @param {number} index 
+/**
+ * Get the lifetime (in seconds) of a particle relative to the
+ * current time.  A value > 0.0f is returned if the particle is
+ * scheduled to be destroyed in the future, values <= 0.0f
+ * indicate the particle has an infinite lifetime.
+ *
+ * @export
+ * @return {number}
+ * @param {number} index
  */
 box2d.b2ParticleSystem.prototype.GetParticleLifetime = function(index) {
   box2d.b2Assert(this.ValidateParticleIndex(index));
   return this.ExpirationTimeToLifetime(this.GetExpirationTimeBuffer()[index]);
 }
 
-/** 
- * Enable / disable destruction of particles in CreateParticle() 
- * when no more particles can be created due to a prior call to 
- * SetMaxParticleCount().  When this is enabled, the oldest 
- * particle is destroyed in CreateParticle() favoring the 
- * destruction of particles with a finite lifetime over 
- * particles with infinite lifetimes. This feature is enabled by 
- * default when particle lifetimes are tracked.  Explicitly 
- * enabling this feature using this function enables particle 
- * lifetime tracking. 
- *  
- * @export 
- * @return {void} 
- * @param {boolean} enable 
+/**
+ * Enable / disable destruction of particles in CreateParticle()
+ * when no more particles can be created due to a prior call to
+ * SetMaxParticleCount().  When this is enabled, the oldest
+ * particle is destroyed in CreateParticle() favoring the
+ * destruction of particles with a finite lifetime over
+ * particles with infinite lifetimes. This feature is enabled by
+ * default when particle lifetimes are tracked.  Explicitly
+ * enabling this feature using this function enables particle
+ * lifetime tracking.
+ *
+ * @export
+ * @return {void}
+ * @param {boolean} enable
  */
 box2d.b2ParticleSystem.prototype.SetDestructionByAge = function(enable) {
   if (enable) {
@@ -2858,40 +2858,40 @@ box2d.b2ParticleSystem.prototype.SetDestructionByAge = function(enable) {
   this.m_def.destroyByAge = enable;
 }
 
-/** 
- * Get whether the oldest particle will be destroyed in 
- * CreateParticle() when the maximum number of particles are 
- * present in the system. 
- *  
- * @export 
- * @return {boolean} 
+/**
+ * Get whether the oldest particle will be destroyed in
+ * CreateParticle() when the maximum number of particles are
+ * present in the system.
+ *
+ * @export
+ * @return {boolean}
  */
 box2d.b2ParticleSystem.prototype.GetDestructionByAge = function() {
   return this.m_def.destroyByAge;
 }
 
-/** 
- * Get the array of particle expiration times indexed by 
- * particle index. 
- *  
- * GetParticleCount() items are in the returned array. 
- *  
- * @export 
- * @return {Array.<number>} 
+/**
+ * Get the array of particle expiration times indexed by
+ * particle index.
+ *
+ * GetParticleCount() items are in the returned array.
+ *
+ * @export
+ * @return {Array.<number>}
  */
 box2d.b2ParticleSystem.prototype.GetExpirationTimeBuffer = function() {
   this.m_expirationTimeBuffer.data = this.RequestBuffer(this.m_expirationTimeBuffer.data);
   return this.m_expirationTimeBuffer.data;
 }
 
-/** 
- * Convert a expiration time value in returned by 
- * GetExpirationTimeBuffer() to a time in seconds relative to 
- * the current simulation time. 
- *  
- * @export 
- * @return {number} 
- * @param {number} expirationTime 
+/**
+ * Convert a expiration time value in returned by
+ * GetExpirationTimeBuffer() to a time in seconds relative to
+ * the current simulation time.
+ *
+ * @export
+ * @return {number}
+ * @param {number} expirationTime
  */
 box2d.b2ParticleSystem.prototype.ExpirationTimeToLifetime = function(expirationTime) {
   return (expirationTime > 0 ?
@@ -2899,19 +2899,19 @@ box2d.b2ParticleSystem.prototype.ExpirationTimeToLifetime = function(expirationT
     expirationTime) * this.m_def.lifetimeGranularity;
 }
 
-/** 
- * Get the array of particle indices ordered by reverse 
- * lifetime. The oldest particle indexes are at the end of the 
- * array with the newest at the start.  Particles with infinite 
- * lifetimes (i.e expiration times less than or equal to 0) are 
- * placed at the start of the array. 
- * ExpirationTimeToLifetime(GetExpirationTimeBuffer()[index]) is 
- * equivalent to GetParticleLifetime(index). 
- *  
+/**
+ * Get the array of particle indices ordered by reverse
+ * lifetime. The oldest particle indexes are at the end of the
+ * array with the newest at the start.  Particles with infinite
+ * lifetimes (i.e expiration times less than or equal to 0) are
+ * placed at the start of the array.
+ * ExpirationTimeToLifetime(GetExpirationTimeBuffer()[index]) is
+ * equivalent to GetParticleLifetime(index).
+ *
  * GetParticleCount() items are in the returned array.
- *  
- * @export 
- * @return {Array.<number>} 
+ *
+ * @export
+ * @return {Array.<number>}
  */
 box2d.b2ParticleSystem.prototype.GetIndexByExpirationTimeBuffer = function() {
   // If particles are present, initialize / reinitialize the lifetime buffer.
@@ -2923,34 +2923,34 @@ box2d.b2ParticleSystem.prototype.GetIndexByExpirationTimeBuffer = function() {
   return this.m_indexByExpirationTimeBuffer.data;
 }
 
-/** 
- * Apply an impulse to one particle. This immediately modifies 
- * the velocity. Similar to b2Body::ApplyLinearImpulse. 
- *  
- * @export 
- * @return {void} 
+/**
+ * Apply an impulse to one particle. This immediately modifies
+ * the velocity. Similar to b2Body::ApplyLinearImpulse.
+ *
+ * @export
+ * @return {void}
  * @param {number} index the particle that will be modified.
- * @param {box2d.b2Vec2} impulse impulse the world impulse 
+ * @param {box2d.b2Vec2} impulse impulse the world impulse
  *  	  vector, usually in N-seconds or kg-m/s.
  */
 box2d.b2ParticleSystem.prototype.ParticleApplyLinearImpulse = function(index, impulse) {
   this.ApplyLinearImpulse(index, index + 1, impulse);
 }
 
-/** 
- * Apply an impulse to all particles between 'firstIndex' and 
- * 'lastIndex'. This immediately modifies the velocity. Note 
- * that the impulse is applied to the total mass of all 
- * particles. So, calling ParticleApplyLinearImpulse(0, impulse) 
- * and ParticleApplyLinearImpulse(1, impulse) will impart twice 
- * as much velocity as calling just ApplyLinearImpulse(0, 1, 
- * impulse). 
- *  
- * @export 
- * @return {void} 
+/**
+ * Apply an impulse to all particles between 'firstIndex' and
+ * 'lastIndex'. This immediately modifies the velocity. Note
+ * that the impulse is applied to the total mass of all
+ * particles. So, calling ParticleApplyLinearImpulse(0, impulse)
+ * and ParticleApplyLinearImpulse(1, impulse) will impart twice
+ * as much velocity as calling just ApplyLinearImpulse(0, 1,
+ * impulse).
+ *
+ * @export
+ * @return {void}
  * @param {number} firstIndex the first particle to be modified.
  * @param {number} lastIndex the last particle to be modified.
- * @param {box2d.b2Vec2} impulse the world impulse vector, 
+ * @param {box2d.b2Vec2} impulse the world impulse vector,
  *  	  usually in N-seconds or kg-m/s.
  */
 box2d.b2ParticleSystem.prototype.ApplyLinearImpulse = function(firstIndex, lastIndex, impulse) {
@@ -2966,20 +2966,20 @@ box2d.b2ParticleSystem.prototype.ApplyLinearImpulse = function(firstIndex, lastI
 }
 
 /**
- * @return {boolean} 
- * @param {box2d.b2Vec2} force 
+ * @return {boolean}
+ * @param {box2d.b2Vec2} force
  */
 box2d.b2ParticleSystem.IsSignificantForce = function(force) {
   return force.x !== 0 || force.y !== 0;
 }
 
-/** 
- * Apply a force to the center of a particle. 
- *  
- * @export 
- * @return {void} 
+/**
+ * Apply a force to the center of a particle.
+ *
+ * @export
+ * @return {void}
  * @param {number} index the particle that will be modified.
- * @param {box2d.b2Vec2} force the world force vector, usually 
+ * @param {box2d.b2Vec2} force the world force vector, usually
  *  	  in Newtons (N).
  */
 box2d.b2ParticleSystem.prototype.ParticleApplyForce = function(index, force) {
@@ -2991,18 +2991,18 @@ box2d.b2ParticleSystem.prototype.ParticleApplyForce = function(index, force) {
   }
 }
 
-/** 
- * Distribute a force across several particles. The particles 
- * must not be wall particles. Note that the force is 
- * distributed across all the particles, so calling this 
- * function for indices 0..N is not the same as calling 
- * ParticleApplyForce(i, force) for i in 0..N. 
- *  
- * @export 
- * @return {void} 
+/**
+ * Distribute a force across several particles. The particles
+ * must not be wall particles. Note that the force is
+ * distributed across all the particles, so calling this
+ * function for indices 0..N is not the same as calling
+ * ParticleApplyForce(i, force) for i in 0..N.
+ *
+ * @export
+ * @return {void}
  * @param {number} firstIndex the first particle to be modified.
- * @param {number} lastIndex the last particle to be modified. 
- * @param {box2d.b2Vec2} force the world force vector, usually 
+ * @param {number} lastIndex the last particle to be modified.
+ * @param {box2d.b2Vec2} force the world force vector, usually
  *  	  in Newtons (N).
  */
 box2d.b2ParticleSystem.prototype.ApplyForce = function(firstIndex, lastIndex, force) {
@@ -3030,25 +3030,25 @@ box2d.b2ParticleSystem.prototype.ApplyForce = function(firstIndex, lastIndex, fo
   }
 }
 
-/** 
- * Get the next particle-system in the world's particle-system 
- * list. 
- *  
- * @export 
- * @return {box2d.b2ParticleSystem} 
+/**
+ * Get the next particle-system in the world's particle-system
+ * list.
+ *
+ * @export
+ * @return {box2d.b2ParticleSystem}
  */
 box2d.b2ParticleSystem.prototype.GetNext = function() {
   return this.m_next;
 }
 
-/** 
- * Query the particle system for all particles that potentially 
- * overlap the provided AABB. 
- * b2QueryCallback::ShouldQueryParticleSystem is ignored. 
- *  
- * @export 
- * @return {void} 
- * @param {box2d.b2QueryCallback} callback a user implemented 
+/**
+ * Query the particle system for all particles that potentially
+ * overlap the provided AABB.
+ * b2QueryCallback::ShouldQueryParticleSystem is ignored.
+ *
+ * @export
+ * @return {void}
+ * @param {box2d.b2QueryCallback} callback a user implemented
  *  	  callback class.
  * @param {box2d.b2AABB} aabb the query box.
  */
@@ -3082,19 +3082,19 @@ box2d.b2ParticleSystem.prototype.QueryAABB = function(callback, aabb) {
   }
 }
 
-/** 
- * Query the particle system for all particles that potentially 
- * overlap the provided shape's AABB. Calls QueryAABB 
- * internally. b2QueryCallback::ShouldQueryParticleSystem is 
- * ignored. 
- *  
- * @export 
- * @return {void} 
- * @param {box2d.b2QueryCallback} callback a user implemented 
+/**
+ * Query the particle system for all particles that potentially
+ * overlap the provided shape's AABB. Calls QueryAABB
+ * internally. b2QueryCallback::ShouldQueryParticleSystem is
+ * ignored.
+ *
+ * @export
+ * @return {void}
+ * @param {box2d.b2QueryCallback} callback a user implemented
  *  	  callback class.
  * @param {box2d.b2Shape} shape the query shape
- * @param {box2d.b2Transform} xf the transform of the AABB 
- * @param {number=} childIndex 
+ * @param {box2d.b2Transform} xf the transform of the AABB
+ * @param {number=} childIndex
  */
 box2d.b2ParticleSystem.prototype.QueryShapeAABB = function(callback, shape, xf, childIndex) {
   var s_aabb = box2d.b2ParticleSystem.prototype.QueryShapeAABB.s_aabb;
@@ -3105,12 +3105,12 @@ box2d.b2ParticleSystem.prototype.QueryShapeAABB = function(callback, shape, xf, 
 }
 box2d.b2ParticleSystem.prototype.QueryShapeAABB.s_aabb = new box2d.b2AABB();
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2QueryCallback} callback 
- * @param {box2d.b2Vec2} point 
- * @param {number=} slop 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2QueryCallback} callback
+ * @param {box2d.b2Vec2} point
+ * @param {number=} slop
  */
 box2d.b2ParticleSystem.prototype.QueryPointAABB = function(callback, point, slop) {
   var s_aabb = box2d.b2ParticleSystem.prototype.QueryPointAABB.s_aabb;
@@ -3122,16 +3122,16 @@ box2d.b2ParticleSystem.prototype.QueryPointAABB = function(callback, point, slop
 }
 box2d.b2ParticleSystem.prototype.QueryPointAABB.s_aabb = new box2d.b2AABB();
 
-/** 
- * Ray-cast the particle system for all particles in the path of 
- * the ray. Your callback controls whether you get the closest 
- * point, any point, or n-points. The ray-cast ignores particles 
- * that contain the starting point. 
- * b2RayCastCallback::ShouldQueryParticleSystem is ignored. 
- *  
- * @export 
+/**
+ * Ray-cast the particle system for all particles in the path of
+ * the ray. Your callback controls whether you get the closest
+ * point, any point, or n-points. The ray-cast ignores particles
+ * that contain the starting point.
+ * b2RayCastCallback::ShouldQueryParticleSystem is ignored.
+ *
+ * @export
  * @return {void}
- * @param {box2d.b2RayCastCallback} callback a user implemented 
+ * @param {box2d.b2RayCastCallback} callback a user implemented
  *  	  callback class.
  * @param {box2d.b2Vec2} point1 the ray starting point
  * @param {box2d.b2Vec2} point2 the ray ending point
@@ -3196,13 +3196,13 @@ box2d.b2ParticleSystem.prototype.RayCast.s_v = new box2d.b2Vec2();
 box2d.b2ParticleSystem.prototype.RayCast.s_n = new box2d.b2Vec2();
 box2d.b2ParticleSystem.prototype.RayCast.s_point = new box2d.b2Vec2();
 
-/** 
- * Compute the axis-aligned bounding box for all particles 
- * contained within this particle system. 
- *  
- * @export 
- * @return {void} 
- * @param {box2d.b2AABB} aabb Returns the axis-aligned bounding 
+/**
+ * Compute the axis-aligned bounding box for all particles
+ * contained within this particle system.
+ *
+ * @export
+ * @return {void}
+ * @param {box2d.b2AABB} aabb Returns the axis-aligned bounding
  *  	  box of the system.
  */
 box2d.b2ParticleSystem.prototype.ComputeAABB = function(aabb) {
@@ -3226,8 +3226,8 @@ box2d.b2ParticleSystem.prototype.ComputeAABB = function(aabb) {
 }
 
 /**
- * @constructor 
- * @template T 
+ * @constructor
+ * @template T
  */
 box2d.b2ParticleSystem.UserOverridableBuffer = function() {};
 
@@ -3258,8 +3258,8 @@ box2d.b2ParticleSystem.Proxy.prototype.tag = 0;
 
 /**
  * @return {boolean}
- * @param {box2d.b2ParticleSystem.Proxy} a 
- * @param {box2d.b2ParticleSystem.Proxy} b 
+ * @param {box2d.b2ParticleSystem.Proxy} a
+ * @param {box2d.b2ParticleSystem.Proxy} b
  */
 box2d.b2ParticleSystem.Proxy.CompareProxyProxy = function(a, b) {
   return a.tag < b.tag;
@@ -3267,8 +3267,8 @@ box2d.b2ParticleSystem.Proxy.CompareProxyProxy = function(a, b) {
 
 /**
  * @return {boolean}
- * @param {number} a 
- * @param {box2d.b2ParticleSystem.Proxy} b 
+ * @param {number} a
+ * @param {box2d.b2ParticleSystem.Proxy} b
  */
 box2d.b2ParticleSystem.Proxy.CompareTagProxy = function(a, b) {
   return a < b.tag;
@@ -3276,26 +3276,26 @@ box2d.b2ParticleSystem.Proxy.CompareTagProxy = function(a, b) {
 
 /**
  * @return {boolean}
- * @param {box2d.b2ParticleSystem.Proxy} a 
- * @param {number} b 
+ * @param {box2d.b2ParticleSystem.Proxy} a
+ * @param {number} b
  */
 box2d.b2ParticleSystem.Proxy.CompareProxyTag = function(a, b) {
   return a.tag < b;
 }
 
-/** 
- * InsideBoundsEnumerator enumerates all particles inside the 
- * given bounds. 
- *  
- * Construct an enumerator with bounds of tags and a range of 
- * proxies. 
- *  
- * @constructor 
- * @param {box2d.b2ParticleSystem} system 
- * @param {number} lower 
- * @param {number} upper 
- * @param {number} first 
- * @param {number} last 
+/**
+ * InsideBoundsEnumerator enumerates all particles inside the
+ * given bounds.
+ *
+ * Construct an enumerator with bounds of tags and a range of
+ * proxies.
+ *
+ * @constructor
+ * @param {box2d.b2ParticleSystem} system
+ * @param {number} lower
+ * @param {number} upper
+ * @param {number} first
+ * @param {number} last
  */
 box2d.b2ParticleSystem.InsideBoundsEnumerator = function(system, lower, upper, first, last) {
   this.m_system = system;
@@ -3309,10 +3309,10 @@ box2d.b2ParticleSystem.InsideBoundsEnumerator = function(system, lower, upper, f
 }
 
 /**
- * Get index of the next particle. Returns 
- * b2_invalidParticleIndex if there are no more particles. 
- *  
- * @return {number} 
+ * Get index of the next particle. Returns
+ * b2_invalidParticleIndex if there are no more particles.
+ *
+ * @return {number}
  */
 box2d.b2ParticleSystem.InsideBoundsEnumerator.prototype.GetNext = function() {
   while (this.m_first < this.m_last) {
@@ -3330,79 +3330,79 @@ box2d.b2ParticleSystem.InsideBoundsEnumerator.prototype.GetNext = function() {
   return box2d.b2_invalidParticleIndex;
 }
 
-/** 
- * Node of linked lists of connected particles 
- *  
+/**
+ * Node of linked lists of connected particles
+ *
  * @constructor
  */
 box2d.b2ParticleSystem.ParticleListNode = function() {}
 
-/** 
- * The head of the list. 
- *  
+/**
+ * The head of the list.
+ *
  * @type {box2d.b2ParticleSystem.ParticleListNode}
  */
 box2d.b2ParticleSystem.ParticleListNode.prototype.list = null;
 
-/** 
- * The next node in the list. 
- *  
+/**
+ * The next node in the list.
+ *
  * @type {box2d.b2ParticleSystem.ParticleListNode}
  */
 box2d.b2ParticleSystem.ParticleListNode.prototype.next = null;
 
-/** 
- * Number of entries in the list. Valid only for the node at the 
- * head of the list. 
- *  
+/**
+ * Number of entries in the list. Valid only for the node at the
+ * head of the list.
+ *
  * @type {number}
  */
 box2d.b2ParticleSystem.ParticleListNode.prototype.count = 0;
 
-/** 
- * Particle index. 
- *  
- * @type {number} 
+/**
+ * Particle index.
+ *
+ * @type {number}
  */
 box2d.b2ParticleSystem.ParticleListNode.prototype.index = 0;
 
-/** 
- * All particle types that require creating pairs 
- *  
+/**
+ * All particle types that require creating pairs
+ *
  * @type {number}
  */
 box2d.b2ParticleSystem.k_pairFlags = box2d.b2ParticleFlag.b2_springParticle;
 
-/** 
- * All particle types that require creating triads 
- *  
+/**
+ * All particle types that require creating triads
+ *
  * @type {number}
  */
 box2d.b2ParticleSystem.k_triadFlags = box2d.b2ParticleFlag.b2_elasticParticle;
 
-/** 
- * All particle types that do not produce dynamic pressure 
- *  
+/**
+ * All particle types that do not produce dynamic pressure
+ *
  * @type {number}
  */
 box2d.b2ParticleSystem.k_noPressureFlags = box2d.b2ParticleFlag.b2_powderParticle | box2d.b2ParticleFlag.b2_tensileParticle;
 
-/** 
+/**
  * All particle types that apply extra damping force with bodies
- *  
+ *
  * @type {number}
  */
 box2d.b2ParticleSystem.k_extraDampingFlags = box2d.b2ParticleFlag.b2_staticPressureParticle;
 
-/** 
+/**
  * @type {number}
  */
 box2d.b2ParticleSystem.k_barrierWallFlags = box2d.b2ParticleFlag.b2_barrierParticle | box2d.b2ParticleFlag.b2_wallParticle;
 
 /**
  * @return {void}
- * @param {Array.<*>} b 
- * @param {number} capacity 
+ * @param {Array.<*>} b
+ * @param {number} capacity
  */
 box2d.b2ParticleSystem.prototype.FreeBuffer = function(b, capacity) {
   if (b === null) {
@@ -3413,8 +3413,8 @@ box2d.b2ParticleSystem.prototype.FreeBuffer = function(b, capacity) {
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2ParticleSystem.UserOverridableBuffer} b 
+ * @return {void}
+ * @param {box2d.b2ParticleSystem.UserOverridableBuffer} b
  */
 box2d.b2ParticleSystem.prototype.FreeUserOverridableBuffer = function(b) {
   if (b.userSuppliedCapacity == 0) {
@@ -3422,13 +3422,13 @@ box2d.b2ParticleSystem.prototype.FreeUserOverridableBuffer = function(b) {
   }
 }
 
-/** 
- * Reallocate a buffer 
- *  
+/**
+ * Reallocate a buffer
+ *
  * @return {Array.<*>}
- * @param {Array.<*>} oldBuffer 
- * @param {number} oldCapacity 
- * @param {number} newCapacity 
+ * @param {Array.<*>} oldBuffer
+ * @param {number} oldCapacity
+ * @param {number} newCapacity
  */
 box2d.b2ParticleSystem.prototype.ReallocateBuffer3 = function(oldBuffer, oldCapacity, newCapacity) {
   box2d.b2Assert(newCapacity > oldCapacity);
@@ -3437,15 +3437,15 @@ box2d.b2ParticleSystem.prototype.ReallocateBuffer3 = function(oldBuffer, oldCapa
   return newBuffer;
 }
 
-/** 
- * Reallocate a buffer 
- *  
- * @return {Array.<*>} 
- * @param {Array.<*>} buffer 
- * @param {number} userSuppliedCapacity 
- * @param {number} oldCapacity 
- * @param {number} newCapacity 
- * @param {boolean} deferred 
+/**
+ * Reallocate a buffer
+ *
+ * @return {Array.<*>}
+ * @param {Array.<*>} buffer
+ * @param {number} userSuppliedCapacity
+ * @param {number} oldCapacity
+ * @param {number} newCapacity
+ * @param {boolean} deferred
  */
 box2d.b2ParticleSystem.prototype.ReallocateBuffer5 = function(buffer, userSuppliedCapacity, oldCapacity, newCapacity, deferred) {
   box2d.b2Assert(newCapacity > oldCapacity);
@@ -3459,14 +3459,14 @@ box2d.b2ParticleSystem.prototype.ReallocateBuffer5 = function(buffer, userSuppli
   return buffer;
 }
 
-/** 
- * Reallocate a buffer 
- *  
+/**
+ * Reallocate a buffer
+ *
  * @return {Array.<*>}
  * @param {box2d.b2ParticleSystem.UserOverridableBuffer} buffer
- * @param {number} oldCapacity 
- * @param {number} newCapacity 
- * @param {boolean} deferred 
+ * @param {number} oldCapacity
+ * @param {number} newCapacity
+ * @param {boolean} deferred
  */
 box2d.b2ParticleSystem.prototype.ReallocateBuffer4 = function(buffer, oldCapacity, newCapacity, deferred) {
   box2d.b2Assert(newCapacity > oldCapacity);
@@ -3474,8 +3474,8 @@ box2d.b2ParticleSystem.prototype.ReallocateBuffer4 = function(buffer, oldCapacit
 }
 
 /**
- * @return {Array.<?>} 
- * @param {Array.<?>} buffer 
+ * @return {Array.<?>}
+ * @param {Array.<?>} buffer
  */
 box2d.b2ParticleSystem.prototype.RequestBuffer = function(buffer) {
   if (!buffer) {
@@ -3489,12 +3489,12 @@ box2d.b2ParticleSystem.prototype.RequestBuffer = function(buffer) {
   return buffer;
 }
 
-/** 
- * Reallocate the handle / index map and schedule the allocation 
- * of a new pool for handle allocation. 
- *  
- * @return {void} 
- * @param {number} newCapacity 
+/**
+ * Reallocate the handle / index map and schedule the allocation
+ * of a new pool for handle allocation.
+ *
+ * @return {void}
+ * @param {number} newCapacity
  */
 box2d.b2ParticleSystem.prototype.ReallocateHandleBuffers = function(newCapacity) {
   box2d.b2Assert(newCapacity > this.m_internalAllocatedCapacity);
@@ -3506,8 +3506,8 @@ box2d.b2ParticleSystem.prototype.ReallocateHandleBuffers = function(newCapacity)
 }
 
 /**
- * @return {void} 
- * @param {number} capacity 
+ * @return {void}
+ * @param {number} capacity
  */
 box2d.b2ParticleSystem.prototype.ReallocateInternalAllocatedBuffers = function(capacity) {
   function LimitCapacity(capacity, maxCount) {
@@ -3549,11 +3549,11 @@ box2d.b2ParticleSystem.prototype.ReallocateInternalAllocatedBuffers = function(c
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2ParticleGroupDef} groupDef 
- * @param {box2d.b2Transform} xf 
- * @param {box2d.b2Vec2} p 
+ * @export
+ * @return {void}
+ * @param {box2d.b2ParticleGroupDef} groupDef
+ * @param {box2d.b2Transform} xf
+ * @param {box2d.b2Vec2} p
  */
 box2d.b2ParticleSystem.prototype.CreateParticleForGroup = function(groupDef, xf, p) {
   var particleDef = new box2d.b2ParticleDef();
@@ -3584,11 +3584,11 @@ box2d.b2ParticleSystem.prototype.CreateParticleForGroup = function(groupDef, xf,
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2Shape} shape 
- * @param {box2d.b2ParticleGroupDef} groupDef 
- * @param {box2d.b2Transform} xf 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Shape} shape
+ * @param {box2d.b2ParticleGroupDef} groupDef
+ * @param {box2d.b2Transform} xf
  */
 box2d.b2ParticleSystem.prototype.CreateParticlesStrokeShapeForGroup = function(shape, groupDef, xf) {
   var s_edge = box2d.b2ParticleSystem.prototype.CreateParticlesStrokeShapeForGroup.s_edge;
@@ -3627,11 +3627,11 @@ box2d.b2ParticleSystem.prototype.CreateParticlesStrokeShapeForGroup.s_d = new bo
 box2d.b2ParticleSystem.prototype.CreateParticlesStrokeShapeForGroup.s_p = new box2d.b2Vec2();
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2Shape} shape 
- * @param {box2d.b2ParticleGroupDef} groupDef 
- * @param {box2d.b2Transform} xf 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Shape} shape
+ * @param {box2d.b2ParticleGroupDef} groupDef
+ * @param {box2d.b2Transform} xf
  */
 box2d.b2ParticleSystem.prototype.CreateParticlesFillShapeForGroup = function(shape, groupDef, xf) {
   var s_aabb = box2d.b2ParticleSystem.prototype.CreateParticlesFillShapeForGroup.s_aabb;
@@ -3659,11 +3659,11 @@ box2d.b2ParticleSystem.prototype.CreateParticlesFillShapeForGroup.s_aabb = new b
 box2d.b2ParticleSystem.prototype.CreateParticlesFillShapeForGroup.s_p = new box2d.b2Vec2();
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2Shape} shape 
- * @param {box2d.b2ParticleGroupDef} groupDef 
- * @param {box2d.b2Transform} xf 
+ * @export
+ * @return {void}
+ * @param {box2d.b2Shape} shape
+ * @param {box2d.b2ParticleGroupDef} groupDef
+ * @param {box2d.b2Transform} xf
  */
 box2d.b2ParticleSystem.prototype.CreateParticlesWithShapeForGroup = function(shape, groupDef, xf) {
   switch (shape.GetType()) {
@@ -3683,7 +3683,7 @@ box2d.b2ParticleSystem.prototype.CreateParticlesWithShapeForGroup = function(sha
 
 /**
  * @constructor
- * @extends {box2d.b2Shape} 
+ * @extends {box2d.b2Shape}
  */
 box2d.b2ParticleSystem.CompositeShape = function(shapes, shapeCount) {
   this.m_shapes = shapes;
@@ -3702,24 +3702,24 @@ box2d.b2ParticleSystem.CompositeShape.prototype.m_shapes = null;
  */
 box2d.b2ParticleSystem.CompositeShape.prototype.m_shapeCount = 0;
 
-/** 
- * @return {box2d.b2Shape} 
+/**
+ * @return {box2d.b2Shape}
  */
 box2d.b2ParticleSystem.CompositeShape.prototype.Clone = function() {
   box2d.b2Assert(false);
   return null;
 }
 
-/** 
+/**
  * @return {number}
  */
 box2d.b2ParticleSystem.CompositeShape.prototype.GetChildCount = function() {
   return 1;
 }
 
-/** 
- * @see box2d.b2Shape::TestPoint 
- * @export 
+/**
+ * @see box2d.b2Shape::TestPoint
+ * @export
  * @return {boolean}
  * @param {box2d.b2Transform} xf
  * @param {box2d.b2Vec2} p
@@ -3733,41 +3733,41 @@ box2d.b2ParticleSystem.CompositeShape.prototype.TestPoint = function(xf, p) {
   return false;
 }
 
-/** 
- * @see b2Shape::ComputeDistance 
- * @export 
- * @return {number} 
- * @param {box2d.b2Transform} xf 
- * @param {box2d.b2Vec2} p 
- * @param {box2d.b2Vec2} normal 
- * @param {number} childIndex 
+/**
+ * @see b2Shape::ComputeDistance
+ * @export
+ * @return {number}
+ * @param {box2d.b2Transform} xf
+ * @param {box2d.b2Vec2} p
+ * @param {box2d.b2Vec2} normal
+ * @param {number} childIndex
  */
 box2d.b2ParticleSystem.CompositeShape.prototype.ComputeDistance = function(xf, p, normal, childIndex) {
   box2d.b2Assert(false);
   return 0;
 }
 
-/** 
- * Implement box2d.b2Shape. 
- * @export 
- * @return {boolean} 
- * @param {box2d.b2RayCastOutput} output 
- * @param {box2d.b2RayCastInput} input 
- * @param {box2d.b2Transform} xf 
- * @param {number} childIndex 
+/**
+ * Implement box2d.b2Shape.
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2RayCastOutput} output
+ * @param {box2d.b2RayCastInput} input
+ * @param {box2d.b2Transform} xf
+ * @param {number} childIndex
  */
 box2d.b2ParticleSystem.CompositeShape.prototype.RayCast = function(output, input, xf, childIndex) {
   box2d.b2Assert(false);
   return false;
 }
 
-/** 
- * @see box2d.b2Shape::ComputeAABB 
- * @export 
- * @return {void} 
- * @param {box2d.b2AABB} aabb 
- * @param {box2d.b2Transform} xf 
- * @param {number} childIndex 
+/**
+ * @see box2d.b2Shape::ComputeAABB
+ * @export
+ * @return {void}
+ * @param {box2d.b2AABB} aabb
+ * @param {box2d.b2Transform} xf
+ * @param {number} childIndex
  */
 box2d.b2ParticleSystem.CompositeShape.prototype.ComputeAABB = function(aabb, xf, childIndex) {
   var s_subaabb = new box2d.b2AABB();
@@ -3786,24 +3786,24 @@ box2d.b2ParticleSystem.CompositeShape.prototype.ComputeAABB = function(aabb, xf,
   }
 }
 
-/** 
- * @see box2d.b2Shape::ComputeMass 
- * @export 
- * @return {void} 
- * @param {box2d.b2MassData} massData 
- * @param {number} density 
+/**
+ * @see box2d.b2Shape::ComputeMass
+ * @export
+ * @return {void}
+ * @param {box2d.b2MassData} massData
+ * @param {number} density
  */
 box2d.b2ParticleSystem.CompositeShape.prototype.ComputeMass = function(massData, density) {
   box2d.b2Assert(false);
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {Array.<box2d.b2Shape>} shapes 
- * @param {number} shapeCount 
- * @param {box2d.b2ParticleGroupDef} groupDef 
- * @param {box2d.b2Transform} xf 
+ * @export
+ * @return {void}
+ * @param {Array.<box2d.b2Shape>} shapes
+ * @param {number} shapeCount
+ * @param {box2d.b2ParticleGroupDef} groupDef
+ * @param {box2d.b2Transform} xf
  */
 box2d.b2ParticleSystem.prototype.CreateParticlesWithShapesForGroup = function(shapes, shapeCount, groupDef, xf) {
   var compositeShape = new box2d.b2ParticleSystem.CompositeShape(shapes, shapeCount);
@@ -3811,10 +3811,10 @@ box2d.b2ParticleSystem.prototype.CreateParticlesWithShapesForGroup = function(sh
 }
 
 /**
- * @export 
- * @return {number} 
- * @param {number} oldIndex 
- * @param {box2d.b2ParticleGroup} group 
+ * @export
+ * @return {number}
+ * @param {number} oldIndex
+ * @param {box2d.b2ParticleGroup} group
  */
 box2d.b2ParticleSystem.prototype.CloneParticle = function(oldIndex, group) {
   var def = new box2d.b2ParticleDef();
@@ -3863,11 +3863,11 @@ box2d.b2ParticleSystem.prototype.CloneParticle = function(oldIndex, group) {
   return newIndex;
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2ParticleGroup} group 
- * @param {boolean=} callDestructionListener 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2ParticleGroup} group
+ * @param {boolean=} callDestructionListener
  */
 box2d.b2ParticleSystem.prototype.DestroyParticlesInGroup = function(group, callDestructionListener) {
   for (var i = group.m_firstIndex; i < group.m_lastIndex; i++) {
@@ -3876,9 +3876,9 @@ box2d.b2ParticleSystem.prototype.DestroyParticlesInGroup = function(group, callD
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2ParticleGroup} group 
+ * @export
+ * @return {void}
+ * @param {box2d.b2ParticleGroup} group
  */
 box2d.b2ParticleSystem.prototype.DestroyParticleGroup = function(group) {
   box2d.b2Assert(this.m_groupCount > 0);
@@ -3907,9 +3907,9 @@ box2d.b2ParticleSystem.prototype.DestroyParticleGroup = function(group) {
 }
 
 /**
- * @return {boolean} 
- * @param {number} flags 
- * @param {box2d.b2ParticleGroup} group 
+ * @return {boolean}
+ * @param {number} flags
+ * @param {box2d.b2ParticleGroup} group
  */
 box2d.b2ParticleSystem.ParticleCanBeConnected = function(flags, group) {
   return ((flags & (box2d.b2ParticleFlag.b2_wallParticle | box2d.b2ParticleFlag.b2_springParticle | box2d.b2ParticleFlag.b2_elasticParticle)) !== 0) ||
@@ -3917,10 +3917,10 @@ box2d.b2ParticleSystem.ParticleCanBeConnected = function(flags, group) {
 }
 
 /**
- * @return {void} 
- * @param {number} firstIndex 
- * @param {number} lastIndex 
- * @param {box2d.b2ParticleSystem.ConnectionFilter} filter 
+ * @return {void}
+ * @param {number} firstIndex
+ * @param {number} lastIndex
+ * @param {box2d.b2ParticleSystem.ConnectionFilter} filter
  */
 box2d.b2ParticleSystem.prototype.UpdatePairsAndTriads = function(firstIndex, lastIndex, filter) {
   var s_dab = box2d.b2ParticleSystem.prototype.UpdatePairsAndTriads.s_dab;
@@ -4058,8 +4058,8 @@ box2d.b2ParticleSystem.prototype.UpdatePairsAndTriads.s_dbc = new box2d.b2Vec2()
 box2d.b2ParticleSystem.prototype.UpdatePairsAndTriads.s_dca = new box2d.b2Vec2();
 
 /**
- * @constructor 
- * @extends {box2d.b2ParticleSystem.ConnectionFilter} 
+ * @constructor
+ * @extends {box2d.b2ParticleSystem.ConnectionFilter}
  */
 box2d.b2ParticleSystem.ReactiveFilter = function(flagsBuffer) {
   this.m_flagsBuffer = flagsBuffer;
@@ -4074,7 +4074,7 @@ box2d.b2ParticleSystem.ReactiveFilter.prototype.m_flagsBuffer = null;
 
 /**
  * @return {boolean}
- * @param {number} index 
+ * @param {number} index
  */
 box2d.b2ParticleSystem.ReactiveFilter.prototype.IsNecessary = function(index) {
   return (this.m_flagsBuffer[index] & box2d.b2ParticleFlag.b2_reactiveParticle) !== 0;
@@ -4094,9 +4094,9 @@ box2d.b2ParticleSystem.prototype.UpdatePairsAndTriadsWithReactiveParticles = fun
 }
 
 /**
- * @return {boolean} 
- * @param {box2d.b2ParticlePair} a 
- * @param {box2d.b2ParticlePair} b 
+ * @return {boolean}
+ * @param {box2d.b2ParticlePair} a
+ * @param {box2d.b2ParticlePair} b
  */
 box2d.b2ParticleSystem.ComparePairIndices = function(a, b) {
   var diffA = a.indexA - b.indexA;
@@ -4105,18 +4105,18 @@ box2d.b2ParticleSystem.ComparePairIndices = function(a, b) {
 }
 
 /**
- * @return {boolean} 
- * @param {box2d.b2ParticlePair} a 
- * @param {box2d.b2ParticlePair} b 
+ * @return {boolean}
+ * @param {box2d.b2ParticlePair} a
+ * @param {box2d.b2ParticlePair} b
  */
 box2d.b2ParticleSystem.MatchPairIndices = function(a, b) {
   return a.indexA === b.indexA && a.indexB === b.indexB;
 }
 
 /**
- * @return {boolean} 
- * @param {box2d.b2ParticleTriad} a 
- * @param {box2d.b2ParticleTriad} b 
+ * @return {boolean}
+ * @param {box2d.b2ParticleTriad} a
+ * @param {box2d.b2ParticleTriad} b
  */
 box2d.b2ParticleSystem.CompareTriadIndices = function(a, b) {
   var diffA = a.indexA - b.indexA;
@@ -4127,18 +4127,18 @@ box2d.b2ParticleSystem.CompareTriadIndices = function(a, b) {
 }
 
 /**
- * @return {boolean} 
- * @param {box2d.b2ParticleTriad} a 
- * @param {box2d.b2ParticleTriad} b 
+ * @return {boolean}
+ * @param {box2d.b2ParticleTriad} a
+ * @param {box2d.b2ParticleTriad} b
  */
 box2d.b2ParticleSystem.MatchTriadIndices = function(a, b) {
   return a.indexA === b.indexA && a.indexB === b.indexB && a.indexC === b.indexC;
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2ParticleGroup} group 
- * @param {Array.<box2d.b2ParticleSystem.ParticleListNode>} 
+ * @return {void}
+ * @param {box2d.b2ParticleGroup} group
+ * @param {Array.<box2d.b2ParticleSystem.ParticleListNode>}
  *  	  nodeBuffer
  */
 box2d.b2ParticleSystem.InitializeParticleLists = function(group, nodeBuffer) {
@@ -4155,9 +4155,9 @@ box2d.b2ParticleSystem.InitializeParticleLists = function(group, nodeBuffer) {
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2ParticleGroup} group 
- * @param {Array.<box2d.b2ParticleSystem.ParticleListNode>} 
+ * @return {void}
+ * @param {box2d.b2ParticleGroup} group
+ * @param {Array.<box2d.b2ParticleSystem.ParticleListNode>}
  *  	  nodeBuffer
  */
 box2d.b2ParticleSystem.prototype.MergeParticleListsInContact = function(group, nodeBuffer) {
@@ -4190,9 +4190,9 @@ box2d.b2ParticleSystem.prototype.MergeParticleListsInContact = function(group, n
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2ParticleSystem.ParticleListNode} listA 
- * @param {box2d.b2ParticleSystem.ParticleListNode} listB 
+ * @return {void}
+ * @param {box2d.b2ParticleSystem.ParticleListNode} listA
+ * @param {box2d.b2ParticleSystem.ParticleListNode} listB
  */
 box2d.b2ParticleSystem.MergeParticleLists = function(listA, listB) {
   // Insert listB between index 0 and 1 of listA
@@ -4219,9 +4219,9 @@ box2d.b2ParticleSystem.MergeParticleLists = function(listA, listB) {
 }
 
 /**
- * @return {box2d.b2ParticleSystem.ParticleListNode} 
- * @param {box2d.b2ParticleGroup} group 
- * @param {Array.<box2d.b2ParticleSystem.ParticleListNode>} 
+ * @return {box2d.b2ParticleSystem.ParticleListNode}
+ * @param {box2d.b2ParticleGroup} group
+ * @param {Array.<box2d.b2ParticleSystem.ParticleListNode>}
  *  	  nodeBuffer
  */
 box2d.b2ParticleSystem.FindLongestParticleList = function(group, nodeBuffer) {
@@ -4239,11 +4239,11 @@ box2d.b2ParticleSystem.FindLongestParticleList = function(group, nodeBuffer) {
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2ParticleGroup} group 
- * @param {Array.<box2d.b2ParticleSystem.ParticleListNode>} 
+ * @return {void}
+ * @param {box2d.b2ParticleGroup} group
+ * @param {Array.<box2d.b2ParticleSystem.ParticleListNode>}
  *  	  nodeBuffer
- * @param {box2d.b2ParticleSystem.ParticleListNode} 
+ * @param {box2d.b2ParticleSystem.ParticleListNode}
  *  	  survivingList
  */
 box2d.b2ParticleSystem.prototype.MergeZombieParticleListNodes = function(group, nodeBuffer, survivingList) {
@@ -4259,9 +4259,9 @@ box2d.b2ParticleSystem.prototype.MergeZombieParticleListNodes = function(group, 
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2ParticleSystem.ParticleListNode} list 
- * @param {box2d.b2ParticleSystem.ParticleListNode} node 
+ * @return {void}
+ * @param {box2d.b2ParticleSystem.ParticleListNode} list
+ * @param {box2d.b2ParticleSystem.ParticleListNode} node
  */
 box2d.b2ParticleSystem.MergeParticleListAndNode = function(list, node) {
   // Insert node between index 0 and 1 of list
@@ -4281,11 +4281,11 @@ box2d.b2ParticleSystem.MergeParticleListAndNode = function(list, node) {
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2ParticleGroup} group 
- * @param {Array.<box2d.b2ParticleSystem.ParticleListNode>} 
+ * @return {void}
+ * @param {box2d.b2ParticleGroup} group
+ * @param {Array.<box2d.b2ParticleSystem.ParticleListNode>}
  *  	  nodeBuffer
- * @param {box2d.b2ParticleSystem.ParticleListNode} 
+ * @param {box2d.b2ParticleSystem.ParticleListNode}
  *  	  survivingList
  */
 box2d.b2ParticleSystem.prototype.CreateParticleGroupsFromParticleList = function(group, nodeBuffer, survivingList) {
@@ -4314,9 +4314,9 @@ box2d.b2ParticleSystem.prototype.CreateParticleGroupsFromParticleList = function
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2ParticleGroup} group 
- * @param {Array.<box2d.b2ParticleSystem.ParticleListNode>} 
+ * @return {void}
+ * @param {box2d.b2ParticleGroup} group
+ * @param {Array.<box2d.b2ParticleSystem.ParticleListNode>}
  *  	  nodeBuffer
  */
 box2d.b2ParticleSystem.prototype.UpdatePairsAndTriadsWithParticleList = function(group, nodeBuffer) {
@@ -4451,8 +4451,8 @@ box2d.b2ParticleSystem.prototype.ComputeDepth = function() {
 }
 
 /**
- * @return {box2d.b2ParticleSystem.InsideBoundsEnumerator} 
- * @param {box2d.b2AABB} aabb 
+ * @return {box2d.b2ParticleSystem.InsideBoundsEnumerator}
+ * @param {box2d.b2AABB} aabb
  */
 box2d.b2ParticleSystem.prototype.GetInsideBoundsEnumerator = function(aabb) {
   var lowerTag = box2d.b2ParticleSystem.computeTag(this.m_inverseDiameter * aabb.lowerBound.x - 1,
@@ -4498,10 +4498,10 @@ box2d.b2ParticleSystem.prototype.UpdateAllGroupFlags = function() {
 }
 
 /**
- * @return {void} 
- * @param {number} a 
- * @param {number} b 
- * @param {box2d.b2GrowableBuffer<box2d.b2ParticleContact>} 
+ * @return {void}
+ * @param {number} a
+ * @param {number} b
+ * @param {box2d.b2GrowableBuffer<box2d.b2ParticleContact>}
  *  	  contacts
  */
 box2d.b2ParticleSystem.prototype.AddContact = function(a, b, contacts) {
@@ -4529,8 +4529,8 @@ box2d.b2ParticleSystem.prototype.AddContact = function(a, b, contacts) {
 box2d.b2ParticleSystem.prototype.AddContact.s_d = new box2d.b2Vec2();
 
 /**
- * @return {void} 
- * @param {box2d.b2GrowableBuffer<box2d.b2ParticleContact>} 
+ * @return {void}
+ * @param {box2d.b2GrowableBuffer<box2d.b2ParticleContact>}
  *  	  contacts
  */
 box2d.b2ParticleSystem.prototype.FindContacts_Reference = function(contacts) {
@@ -4563,8 +4563,8 @@ box2d.b2ParticleSystem.prototype.FindContacts_Reference = function(contacts) {
 ///	void FindContacts_Simd(b2GrowableBuffer<b2ParticleContact>& contacts) const;
 
 /**
- * @return {void} 
- * @param {box2d.b2GrowableBuffer<box2d.b2ParticleContact>} 
+ * @return {void}
+ * @param {box2d.b2GrowableBuffer<box2d.b2ParticleContact>}
  *  	  contacts
  */
 box2d.b2ParticleSystem.prototype.FindContacts = function(contacts) {
@@ -4577,7 +4577,7 @@ box2d.b2ParticleSystem.prototype.FindContacts = function(contacts) {
 ///	static bool AreProxyBuffersTheSame(const b2GrowableBuffer<Proxy>& a, const b2GrowableBuffer<Proxy>& b);
 
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2GrowableBuffer<box2d.b2ParticleSystem.Proxy>}
  *  	  proxies
  */
@@ -4596,8 +4596,8 @@ box2d.b2ParticleSystem.prototype.UpdateProxies_Reference = function(proxies) {
 ///	void UpdateProxies_Simd(b2GrowableBuffer<Proxy>& proxies) const;
 
 /**
- * @return {void} 
- * @param {box2d.b2GrowableBuffer<box2d.b2ParticleSystem.Proxy>} 
+ * @return {void}
+ * @param {box2d.b2GrowableBuffer<box2d.b2ParticleSystem.Proxy>}
  *  	  proxies
  */
 box2d.b2ParticleSystem.prototype.UpdateProxies = function(proxies) {
@@ -4605,8 +4605,8 @@ box2d.b2ParticleSystem.prototype.UpdateProxies = function(proxies) {
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2GrowableBuffer<box2d.b2ParticleSystem.Proxy>} 
+ * @return {void}
+ * @param {box2d.b2GrowableBuffer<box2d.b2ParticleSystem.Proxy>}
  *  	  proxies
  */
 box2d.b2ParticleSystem.prototype.SortProxies = function(proxies) {
@@ -4617,8 +4617,8 @@ box2d.b2ParticleSystem.prototype.SortProxies = function(proxies) {
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2GrowableBuffer<box2d.b2ParticleContact>} 
+ * @return {void}
+ * @param {box2d.b2GrowableBuffer<box2d.b2ParticleContact>}
  *  	  contacts
  */
 box2d.b2ParticleSystem.prototype.FilterContacts = function(contacts) {
@@ -4637,8 +4637,8 @@ box2d.b2ParticleSystem.prototype.FilterContacts = function(contacts) {
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2ParticleSystem.b2ParticlePairSet} 
+ * @return {void}
+ * @param {box2d.b2ParticleSystem.b2ParticlePairSet}
  *  	  particlePairs
  */
 box2d.b2ParticleSystem.prototype.NotifyContactListenerPreContact = function(particlePairs) {
@@ -4653,8 +4653,8 @@ box2d.b2ParticleSystem.prototype.NotifyContactListenerPreContact = function(part
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2ParticleSystem.b2ParticlePairSet} 
+ * @return {void}
+ * @param {box2d.b2ParticleSystem.b2ParticlePairSet}
  *  	  particlePairs
  */
 box2d.b2ParticleSystem.prototype.NotifyContactListenerPostContact = function(particlePairs) {
@@ -4699,16 +4699,16 @@ box2d.b2ParticleSystem.prototype.NotifyContactListenerPostContact = function(par
 }
 
 /**
- * @return {boolean} 
- * @param {box2d.b2ParticleContact} contact 
+ * @return {boolean}
+ * @param {box2d.b2ParticleContact} contact
  */
 box2d.b2ParticleSystem.b2ParticleContactIsZombie = function(contact) {
   return (contact.flags & box2d.b2ParticleFlag.b2_zombieParticle) === box2d.b2ParticleFlag.b2_zombieParticle;
 }
 
 /**
- * @return {void} 
- * @param {boolean} exceptZombie 
+ * @return {void}
+ * @param {boolean} exceptZombie
  */
 box2d.b2ParticleSystem.prototype.UpdateContacts = function(exceptZombie) {
   this.UpdateProxies(this.m_proxyBuffer);
@@ -4729,8 +4729,8 @@ box2d.b2ParticleSystem.prototype.UpdateContacts = function(exceptZombie) {
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2ParticleSystem.FixtureParticleSet} fixtureSet 
+ * @return {void}
+ * @param {box2d.b2ParticleSystem.FixtureParticleSet} fixtureSet
  */
 box2d.b2ParticleSystem.prototype.NotifyBodyContactListenerPreContact = function(fixtureSet) {
   var contactListener = this.GetFixtureContactListener();
@@ -4744,8 +4744,8 @@ box2d.b2ParticleSystem.prototype.NotifyBodyContactListenerPreContact = function(
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2ParticleSystem.FixtureParticleSet} fixtureSet 
+ * @return {void}
+ * @param {box2d.b2ParticleSystem.FixtureParticleSet} fixtureSet
  */
 box2d.b2ParticleSystem.prototype.NotifyBodyContactListenerPostContact = function(fixtureSet) {
   var contactListener = this.GetFixtureContactListener();
@@ -4790,10 +4790,10 @@ box2d.b2ParticleSystem.prototype.NotifyBodyContactListenerPostContact = function
 }
 
 /**
- * @constructor 
- * @extends {box2d.b2FixtureParticleQueryCallback} 
- * @param {box2d.b2ParticleSystem} system 
- * @param {box2d.b2ContactFilter} contactFilter 
+ * @constructor
+ * @extends {box2d.b2FixtureParticleQueryCallback}
+ * @param {box2d.b2ParticleSystem} system
+ * @param {box2d.b2ContactFilter} contactFilter
  */
 box2d.b2ParticleSystem.UpdateBodyContactsCallback = function(system, contactFilter) {
   box2d.b2FixtureParticleQueryCallback.call(this, system); // base class constructor
@@ -4802,12 +4802,12 @@ box2d.b2ParticleSystem.UpdateBodyContactsCallback = function(system, contactFilt
 
 goog.inherits(box2d.b2ParticleSystem.UpdateBodyContactsCallback, box2d.b2FixtureParticleQueryCallback);
 
-/** 
- * @export 
+/**
+ * @export
  * @return {boolean}
- * @param {box2d.b2Fixture} fixture 
- * @param {box2d.b2ParticleSystem} particleSystem 
- * @param {number} particleIndex 
+ * @param {box2d.b2Fixture} fixture
+ * @param {box2d.b2ParticleSystem} particleSystem
+ * @param {number} particleIndex
  */
 box2d.b2ParticleSystem.UpdateBodyContactsCallback.prototype.ShouldCollideFixtureParticle = function(fixture, particleSystem, particleIndex) {
   // Call the contact filter if it's set, to determine whether to
@@ -4822,12 +4822,12 @@ box2d.b2ParticleSystem.UpdateBodyContactsCallback.prototype.ShouldCollideFixture
   return true;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {void}
- * @param {box2d.b2Fixture} fixture 
- * @param {number} childIndex 
- * @param {number} a 
+ * @param {box2d.b2Fixture} fixture
+ * @param {number} childIndex
+ * @param {number} a
  */
 box2d.b2ParticleSystem.UpdateBodyContactsCallback.prototype.ReportFixtureAndParticle = function(fixture, childIndex, a) {
   var s_n = box2d.b2ParticleSystem.UpdateBodyContactsCallback.prototype.ReportFixtureAndParticle.s_n;
@@ -4906,9 +4906,9 @@ box2d.b2ParticleSystem.prototype.UpdateBodyContacts = function() {
 box2d.b2ParticleSystem.prototype.UpdateBodyContacts.s_aabb = new box2d.b2AABB();
 
 /**
- * @export 
- * @return {void} 
- * @param {box2d.b2TimeStep} step 
+ * @export
+ * @return {void}
+ * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.Solve = function(step) {
   var s_subStep = box2d.b2ParticleSystem.prototype.Solve.s_subStep;
@@ -5010,10 +5010,10 @@ box2d.b2ParticleSystem.prototype.Solve = function(step) {
 box2d.b2ParticleSystem.prototype.Solve.s_subStep = new box2d.b2TimeStep();
 
 /**
- * @constructor 
- * @extends {box2d.b2FixtureParticleQueryCallback} 
- * @param {box2d.b2ParticleSystem} system 
- * @param {box2d.b2TimeStep} step 
+ * @constructor
+ * @extends {box2d.b2FixtureParticleQueryCallback}
+ * @param {box2d.b2ParticleSystem} system
+ * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.SolveCollisionCallback = function(system, step) {
   box2d.b2FixtureParticleQueryCallback.call(this, system); // base class constructor
@@ -5022,12 +5022,12 @@ box2d.b2ParticleSystem.SolveCollisionCallback = function(system, step) {
 
 goog.inherits(box2d.b2ParticleSystem.SolveCollisionCallback, box2d.b2FixtureParticleQueryCallback);
 
-/** 
- * @export 
+/**
+ * @export
  * @return {void}
- * @param {box2d.b2Fixture} fixture 
- * @param {number} childIndex 
- * @param {number} a 
+ * @param {box2d.b2Fixture} fixture
+ * @param {number} childIndex
+ * @param {number} a
  */
 box2d.b2ParticleSystem.SolveCollisionCallback.prototype.ReportFixtureAndParticle = function(fixture, childIndex, a) {
   var s_p1 = box2d.b2ParticleSystem.SolveCollisionCallback.prototype.ReportFixtureAndParticle.s_p1;
@@ -5097,17 +5097,17 @@ box2d.b2ParticleSystem.SolveCollisionCallback.prototype.ReportFixtureAndParticle
 box2d.b2ParticleSystem.SolveCollisionCallback.prototype.ReportFixtureAndParticle.s_f = new box2d.b2Vec2();
 
 /**
- * @export 
- * @return {boolean} 
- * @param {box2d.b2ParticleSystem} system 
- * @param {number} index 
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2ParticleSystem} system
+ * @param {number} index
  */
 box2d.b2ParticleSystem.SolveCollisionCallback.prototype.ReportParticle = function(system, index) {
   return false;
 }
 
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.SolveCollision = function(step) {
@@ -5143,7 +5143,7 @@ box2d.b2ParticleSystem.prototype.SolveCollision = function(step) {
 box2d.b2ParticleSystem.prototype.SolveCollision.s_aabb = new box2d.b2AABB();
 
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.LimitVelocity = function(step) {
@@ -5160,7 +5160,7 @@ box2d.b2ParticleSystem.prototype.LimitVelocity = function(step) {
 }
 
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.SolveGravity = function(step) {
@@ -5175,7 +5175,7 @@ box2d.b2ParticleSystem.prototype.SolveGravity = function(step) {
 box2d.b2ParticleSystem.prototype.SolveGravity.s_gravity = new box2d.b2Vec2();
 
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.SolveBarrier = function(step) {
@@ -5343,7 +5343,7 @@ box2d.b2ParticleSystem.prototype.SolveBarrier.s_dv = new box2d.b2Vec2();
 box2d.b2ParticleSystem.prototype.SolveBarrier.s_f = new box2d.b2Vec2();
 
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.SolveStaticPressure = function(step) {
@@ -5393,7 +5393,7 @@ box2d.b2ParticleSystem.prototype.SolveStaticPressure = function(step) {
 }
 
 /**
- * @return {void} 
+ * @return {void}
  */
 box2d.b2ParticleSystem.prototype.ComputeWeight = function() {
   // calculates the sum of contact-weights for each particle
@@ -5419,7 +5419,7 @@ box2d.b2ParticleSystem.prototype.ComputeWeight = function() {
 }
 
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.SolvePressure = function(step) {
@@ -5488,7 +5488,7 @@ box2d.b2ParticleSystem.prototype.SolvePressure = function(step) {
 box2d.b2ParticleSystem.prototype.SolvePressure.s_f = new box2d.b2Vec2();
 
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.SolveDamping = function(step) {
@@ -5546,7 +5546,7 @@ box2d.b2ParticleSystem.prototype.SolveDamping.s_v = new box2d.b2Vec2();
 box2d.b2ParticleSystem.prototype.SolveDamping.s_f = new box2d.b2Vec2();
 
 /**
- * @return {void} 
+ * @return {void}
  */
 box2d.b2ParticleSystem.prototype.SolveRigidDamping = function() {
   var s_t0 = box2d.b2ParticleSystem.prototype.SolveRigidDamping.s_t0;
@@ -5630,7 +5630,7 @@ box2d.b2ParticleSystem.prototype.SolveRigidDamping.s_p = new box2d.b2Vec2();
 box2d.b2ParticleSystem.prototype.SolveRigidDamping.s_v = new box2d.b2Vec2();
 
 /**
- * @return {void} 
+ * @return {void}
  */
 box2d.b2ParticleSystem.prototype.SolveExtraDamping = function() {
   var s_v = box2d.b2ParticleSystem.prototype.SolveExtraDamping.s_v;
@@ -5668,7 +5668,7 @@ box2d.b2ParticleSystem.prototype.SolveExtraDamping.s_v = new box2d.b2Vec2();
 box2d.b2ParticleSystem.prototype.SolveExtraDamping.s_f = new box2d.b2Vec2();
 
 /**
- * @return {void} 
+ * @return {void}
  */
 box2d.b2ParticleSystem.prototype.SolveWall = function() {
   var vel_data = this.m_velocityBuffer.data;
@@ -5680,7 +5680,7 @@ box2d.b2ParticleSystem.prototype.SolveWall = function() {
 }
 
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.SolveRigid = function(step) {
@@ -5726,7 +5726,7 @@ box2d.b2ParticleSystem.prototype.SolveRigid.s_transform = new box2d.b2Transform(
 box2d.b2ParticleSystem.prototype.SolveRigid.s_velocityTransform = new box2d.b2Transform();
 
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.SolveElastic = function(step) {
@@ -5774,7 +5774,7 @@ box2d.b2ParticleSystem.prototype.SolveElastic = function(step) {
       ///	pc -= midPoint;
       pc.x -= midPoint_x;
       pc.y -= midPoint_y;
-      ///	b2Rot r;	
+      ///	b2Rot r;
       var r = s_r;
       r.s = box2d.b2Cross_V2_V2(oa, pa) + box2d.b2Cross_V2_V2(ob, pb) + box2d.b2Cross_V2_V2(oc, pc);
       r.c = box2d.b2Dot_V2_V2(oa, pa) + box2d.b2Dot_V2_V2(ob, pb) + box2d.b2Dot_V2_V2(oc, pc);
@@ -5812,7 +5812,7 @@ box2d.b2ParticleSystem.prototype.SolveElastic.s_r = new box2d.b2Rot();
 box2d.b2ParticleSystem.prototype.SolveElastic.s_t0 = new box2d.b2Vec2();
 
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.SolveSpring = function(step) {
@@ -5865,7 +5865,7 @@ box2d.b2ParticleSystem.prototype.SolveSpring.s_d = new box2d.b2Vec2();
 box2d.b2ParticleSystem.prototype.SolveSpring.s_f = new box2d.b2Vec2();
 
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.SolveTensile = function(step) {
@@ -5924,7 +5924,7 @@ box2d.b2ParticleSystem.prototype.SolveTensile.s_s = new box2d.b2Vec2();
 box2d.b2ParticleSystem.prototype.SolveTensile.s_f = new box2d.b2Vec2();
 
 /**
- * @return {void} 
+ * @return {void}
  */
 box2d.b2ParticleSystem.prototype.SolveViscous = function() {
   var s_v = box2d.b2ParticleSystem.prototype.SolveViscous.s_v;
@@ -5972,7 +5972,7 @@ box2d.b2ParticleSystem.prototype.SolveViscous.s_v = new box2d.b2Vec2();
 box2d.b2ParticleSystem.prototype.SolveViscous.s_f = new box2d.b2Vec2();
 
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.SolveRepulsive = function(step) {
@@ -6000,7 +6000,7 @@ box2d.b2ParticleSystem.prototype.SolveRepulsive = function(step) {
 box2d.b2ParticleSystem.prototype.SolveRepulsive.s_f = new box2d.b2Vec2();
 
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.SolvePowder = function(step) {
@@ -6044,7 +6044,7 @@ box2d.b2ParticleSystem.prototype.SolvePowder = function(step) {
 box2d.b2ParticleSystem.prototype.SolvePowder.s_f = new box2d.b2Vec2();
 
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.SolveSolid = function(step) {
@@ -6070,7 +6070,7 @@ box2d.b2ParticleSystem.prototype.SolveSolid = function(step) {
 box2d.b2ParticleSystem.prototype.SolveSolid.s_f = new box2d.b2Vec2();
 
 /**
- * @return {void} 
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.SolveForce = function(step) {
@@ -6084,7 +6084,7 @@ box2d.b2ParticleSystem.prototype.SolveForce = function(step) {
 }
 
 /**
- * @return {void} 
+ * @return {void}
  */
 box2d.b2ParticleSystem.prototype.SolveColorMixing = function() {
   // mixes color between contacting particles
@@ -6108,7 +6108,7 @@ box2d.b2ParticleSystem.prototype.SolveColorMixing = function() {
 }
 
 /**
- * @return {void} 
+ * @return {void}
  */
 box2d.b2ParticleSystem.prototype.SolveZombie = function() {
   // removes particles with zombie flag
@@ -6304,11 +6304,11 @@ box2d.b2ParticleSystem.prototype.SolveZombie = function() {
   }
 }
 
-/** 
- * Destroy all particles which have outlived their lifetimes set 
- * by SetParticleLifetime(). 
- *  
- * @return {void} 
+/**
+ * Destroy all particles which have outlived their lifetimes set
+ * by SetParticleLifetime().
+ *
+ * @return {void}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.SolveLifetimes = function(step) {
@@ -6327,23 +6327,23 @@ box2d.b2ParticleSystem.prototype.SolveLifetimes = function(step) {
     ///	const ExpirationTimeComparator expirationTimeComparator(expirationTimes);
     ///	std::sort(expirationTimeIndices, expirationTimeIndices + particleCount, expirationTimeComparator);
 
-    /** 
-     * Compare the lifetime of particleIndexA and particleIndexB 
-     * returning true if the lifetime of A is greater than B for 
-     * particles that will expire.  If either particle's lifetime is 
-     * infinite (<= 0.0f) this function return true if the lifetime 
-     * of A is lesser than B. When used with std::sort() this 
-     * results in an array of particle indicies sorted in reverse 
-     * order by particle lifetime. 
-     *  
-     * For example, the set of lifetimes 
-     * (1.0, 0.7, 0.3, 0.0, -1.0, 2.0) 
-     * would be sorted as 
-     * (0.0, 1.0, -2.0, 1.0, 0.7, 0.3) 
-     *  
-     * @return {boolean} 
-     * @param {number} particleIndexA 
-     * @param {number} particleIndexB 
+    /**
+     * Compare the lifetime of particleIndexA and particleIndexB
+     * returning true if the lifetime of A is greater than B for
+     * particles that will expire.  If either particle's lifetime is
+     * infinite (<= 0.0f) this function return true if the lifetime
+     * of A is lesser than B. When used with std::sort() this
+     * results in an array of particle indicies sorted in reverse
+     * order by particle lifetime.
+     *
+     * For example, the set of lifetimes
+     * (1.0, 0.7, 0.3, 0.0, -1.0, 2.0)
+     * would be sorted as
+     * (0.0, 1.0, -2.0, 1.0, 0.7, 0.3)
+     *
+     * @return {boolean}
+     * @param {number} particleIndexA
+     * @param {number} particleIndexB
      */
     var ExpirationTimeComparator = function(particleIndexA, particleIndexB) {
       var expirationTimeA = expirationTimes[particleIndexA];
@@ -6373,10 +6373,10 @@ box2d.b2ParticleSystem.prototype.SolveLifetimes = function(step) {
 }
 
 /**
- * @return {void} 
- * @param {number} start 
- * @param {number} mid 
- * @param {number} end 
+ * @return {void}
+ * @param {number} start
+ * @param {number} mid
+ * @param {number} end
  */
 box2d.b2ParticleSystem.prototype.RotateBuffer = function(start, mid, end) {
   // move the particles assigned to the given group toward the end of array
@@ -6501,7 +6501,7 @@ box2d.b2ParticleSystem.prototype.RotateBuffer = function(start, mid, end) {
 }
 
 /**
- * @return {number} 
+ * @return {number}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.GetCriticalVelocity = function(step) {
@@ -6509,7 +6509,7 @@ box2d.b2ParticleSystem.prototype.GetCriticalVelocity = function(step) {
 }
 
 /**
- * @return {number} 
+ * @return {number}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.GetCriticalVelocitySquared = function(step) {
@@ -6518,7 +6518,7 @@ box2d.b2ParticleSystem.prototype.GetCriticalVelocitySquared = function(step) {
 }
 
 /**
- * @return {number} 
+ * @return {number}
  * @param {box2d.b2TimeStep} step
  */
 box2d.b2ParticleSystem.prototype.GetCriticalPressure = function(step) {
@@ -6526,14 +6526,14 @@ box2d.b2ParticleSystem.prototype.GetCriticalPressure = function(step) {
 }
 
 /**
- * @return {number} 
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetParticleStride = function() {
   return box2d.b2_particleStride * this.m_particleDiameter;
 }
 
 /**
- * @return {number} 
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetParticleMass = function() {
   var stride = this.GetParticleStride();
@@ -6541,7 +6541,7 @@ box2d.b2ParticleSystem.prototype.GetParticleMass = function() {
 }
 
 /**
- * @return {number} 
+ * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetParticleInvMass = function() {
   ///	return 1.777777 * this.m_inverseDensity * this.m_inverseDiameter * this.m_inverseDiameter;
@@ -6550,10 +6550,10 @@ box2d.b2ParticleSystem.prototype.GetParticleInvMass = function() {
   return this.m_inverseDensity * inverseStride * inverseStride;
 }
 
-/** 
- * Get the world's contact filter if any particles with the 
- * b2_contactFilterParticle flag are present in the system. 
- *  
+/**
+ * Get the world's contact filter if any particles with the
+ * b2_contactFilterParticle flag are present in the system.
+ *
  * @return {box2d.b2ContactFilter}
  */
 box2d.b2ParticleSystem.prototype.GetFixtureContactFilter = function() {
@@ -6561,11 +6561,11 @@ box2d.b2ParticleSystem.prototype.GetFixtureContactFilter = function() {
     this.m_world.m_contactManager.m_contactFilter : null;
 }
 
-/** 
- * Get the world's contact filter if any particles with the 
- * b2_particleContactFilterParticle flag are present in the 
- * system. 
- *  
+/**
+ * Get the world's contact filter if any particles with the
+ * b2_particleContactFilterParticle flag are present in the
+ * system.
+ *
  * @return {box2d.b2ContactFilter}
  */
 box2d.b2ParticleSystem.prototype.GetParticleContactFilter = function() {
@@ -6573,11 +6573,11 @@ box2d.b2ParticleSystem.prototype.GetParticleContactFilter = function() {
     this.m_world.m_contactManager.m_contactFilter : null;
 }
 
-/** 
- * Get the world's contact listener if any particles with the 
- * b2_fixtureContactListenerParticle flag are present in the 
- * system. 
- *  
+/**
+ * Get the world's contact listener if any particles with the
+ * b2_fixtureContactListenerParticle flag are present in the
+ * system.
+ *
  * @return {box2d.b2ContactListener}
  */
 box2d.b2ParticleSystem.prototype.GetFixtureContactListener = function() {
@@ -6585,11 +6585,11 @@ box2d.b2ParticleSystem.prototype.GetFixtureContactListener = function() {
     this.m_world.m_contactManager.m_contactListener : null;
 }
 
-/** 
- * Get the world's contact listener if any particles with the 
- * b2_particleContactListenerParticle flag are present in the 
- * system. 
- *  
+/**
+ * Get the world's contact listener if any particles with the
+ * b2_particleContactListenerParticle flag are present in the
+ * system.
+ *
  * @return {box2d.b2ContactListener}
  */
 box2d.b2ParticleSystem.prototype.GetParticleContactListener = function() {
@@ -6598,10 +6598,10 @@ box2d.b2ParticleSystem.prototype.GetParticleContactListener = function() {
 }
 
 /**
- * @return {*} 
- * @param {*} buffer 
- * @param {*} newData 
- * @param {number} newCapacity 
+ * @return {*}
+ * @param {*} buffer
+ * @param {*} newData
+ * @param {number} newCapacity
  */
 box2d.b2ParticleSystem.prototype.SetUserOverridableBuffer = function(buffer, newData, newCapacity) {
   box2d.b2Assert(((newData !== null) && (newCapacity > 0)) || ((newData === null) && (newCapacity === 0)));
@@ -6614,9 +6614,9 @@ box2d.b2ParticleSystem.prototype.SetUserOverridableBuffer = function(buffer, new
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2ParticleGroup} group 
- * @param {number} newFlags 
+ * @return {void}
+ * @param {box2d.b2ParticleGroup} group
+ * @param {number} newFlags
  */
 box2d.b2ParticleSystem.prototype.SetGroupFlags = function(group, newFlags) {
   var oldFlags = group.m_groupFlags;
@@ -6639,7 +6639,7 @@ box2d.b2ParticleSystem.prototype.SetGroupFlags = function(group, newFlags) {
 }
 
 /**
- * @return {void} 
+ * @return {void}
  */
 box2d.b2ParticleSystem.prototype.RemoveSpuriousBodyContacts = function() {
   // At this point we have a list of contact candidates based on AABB
@@ -6683,8 +6683,8 @@ box2d.b2ParticleSystem.prototype.RemoveSpuriousBodyContacts = function() {
   // Output the number of discarded contacts.
   var discarded = 0;
   /**
-   * @return {boolean} 
-   * @param {box2d.b2ParticleBodyContact} contact 
+   * @return {boolean}
+   * @param {box2d.b2ParticleBodyContact} contact
    */
   var b2ParticleBodyContactRemovePredicate = function(contact) {
     // This implements the selection criteria described in
@@ -6741,9 +6741,9 @@ box2d.b2ParticleSystem.prototype.RemoveSpuriousBodyContacts.s_pos = new box2d.b2
 box2d.b2ParticleSystem.prototype.RemoveSpuriousBodyContacts.s_normal = new box2d.b2Vec2();
 
 /**
- * @return {boolean} 
- * @param {box2d.b2ParticleBodyContact} lhs 
- * @param {box2d.b2ParticleBodyContact} rhs 
+ * @return {boolean}
+ * @param {box2d.b2ParticleBodyContact} lhs
+ * @param {box2d.b2ParticleBodyContact} rhs
  */
 box2d.b2ParticleSystem.BodyContactCompare = function(lhs, rhs) {
   if (lhs.index === rhs.index) {
@@ -6754,8 +6754,8 @@ box2d.b2ParticleSystem.BodyContactCompare = function(lhs, rhs) {
 }
 
 /**
- * @return {void} 
- * @param {number} particle 
+ * @return {void}
+ * @param {number} particle
  */
 box2d.b2ParticleSystem.prototype.DetectStuckParticle = function(particle) {
   // Detect stuck particles
@@ -6797,21 +6797,21 @@ box2d.b2ParticleSystem.prototype.DetectStuckParticle = function(particle) {
   this.m_lastBodyContactStepBuffer.data[particle] = this.m_timestamp;
 }
 
-/** 
- * Determine whether a particle index is valid. 
- *  
- * @return {boolean} 
- * @param {number} index 
+/**
+ * Determine whether a particle index is valid.
+ *
+ * @return {boolean}
+ * @param {number} index
  */
 box2d.b2ParticleSystem.prototype.ValidateParticleIndex = function(index) {
   return index >= 0 && index < this.GetParticleCount() &&
     index !== box2d.b2_invalidParticleIndex;
 }
 
-/** 
- * Get the time elapsed in 
- * b2ParticleSystemDef::lifetimeGranularity. 
- *  
+/**
+ * Get the time elapsed in
+ * b2ParticleSystemDef::lifetimeGranularity.
+ *
  * @return {number}
  */
 box2d.b2ParticleSystem.prototype.GetQuantizedTimeElapsed = function() {
@@ -6819,11 +6819,11 @@ box2d.b2ParticleSystem.prototype.GetQuantizedTimeElapsed = function() {
   return Math.floor(this.m_timeElapsed / 0x100000000);
 }
 
-/** 
- * Convert a lifetime in seconds to an expiration time. 
- *  
- * @return {number} 
- * @param {number} lifetime 
+/**
+ * Convert a lifetime in seconds to an expiration time.
+ *
+ * @return {number}
+ * @param {number} lifetime
  */
 box2d.b2ParticleSystem.prototype.LifetimeToExpirationTime = function(lifetime) {
   ///	return m_timeElapsed + (int64)((lifetime / m_def.lifetimeGranularity) * (float32)(1LL << 32));
@@ -6831,8 +6831,8 @@ box2d.b2ParticleSystem.prototype.LifetimeToExpirationTime = function(lifetime) {
 }
 
 /**
- * @return {boolean} 
- * @param {number} flags 
+ * @return {boolean}
+ * @param {number} flags
  */
 box2d.b2ParticleSystem.prototype.ForceCanBeApplied = function(flags) {
   return !(flags & box2d.b2ParticleFlag.b2_wallParticle);
@@ -6852,19 +6852,19 @@ box2d.b2ParticleSystem.prototype.PrepareForceBuffer = function() {
 }
 
 /**
- * @return {boolean} 
- * @param {box2d.b2ParticleGroup} group 
+ * @return {boolean}
+ * @param {box2d.b2ParticleGroup} group
  */
 box2d.b2ParticleSystem.prototype.IsRigidGroup = function(group) {
   return (group !== null) && ((group.m_groupFlags & box2d.b2ParticleGroupFlag.b2_rigidParticleGroup) !== 0);
 }
 
 /**
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2ParticleGroup} group 
- * @param {number} particleIndex 
- * @param {box2d.b2Vec2} point 
- * @param {box2d.b2Vec2} out 
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2ParticleGroup} group
+ * @param {number} particleIndex
+ * @param {box2d.b2Vec2} point
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2ParticleSystem.prototype.GetLinearVelocity = function(group, particleIndex, point, out) {
   if (this.IsRigidGroup(group)) {
@@ -6876,15 +6876,15 @@ box2d.b2ParticleSystem.prototype.GetLinearVelocity = function(group, particleInd
 }
 
 /**
- * @return {void} 
- * @param {Array.<number>} invMass 
- * @param {Array.<number>} invInertia 
- * @param {Array.<number>} tangentDistance 
- * @param {number} mass 
- * @param {number} inertia 
- * @param {box2d.b2Vec2} center 
- * @param {box2d.b2Vec2} point 
- * @param {box2d.b2Vec2} normal 
+ * @return {void}
+ * @param {Array.<number>} invMass
+ * @param {Array.<number>} invInertia
+ * @param {Array.<number>} tangentDistance
+ * @param {number} mass
+ * @param {number} inertia
+ * @param {box2d.b2Vec2} center
+ * @param {box2d.b2Vec2} point
+ * @param {box2d.b2Vec2} normal
  */
 box2d.b2ParticleSystem.prototype.InitDampingParameter = function(invMass, invInertia, tangentDistance, mass, inertia, center, point, normal) {
   ///	*invMass = mass > 0 ? 1 / mass : 0;
@@ -6896,15 +6896,15 @@ box2d.b2ParticleSystem.prototype.InitDampingParameter = function(invMass, invIne
 }
 
 /**
- * @return {void} 
- * @param {Array.<number>} invMass 
- * @param {Array.<number>} invInertia 
- * @param {Array.<number>} tangentDistance 
- * @param {boolean} isRigidGroup 
- * @param {box2d.b2ParticleGroup} group 
- * @param {number} particleIndex 
- * @param {box2d.b2Vec2} point 
- * @param {box2d.b2Vec2} normal 
+ * @return {void}
+ * @param {Array.<number>} invMass
+ * @param {Array.<number>} invInertia
+ * @param {Array.<number>} tangentDistance
+ * @param {boolean} isRigidGroup
+ * @param {box2d.b2ParticleGroup} group
+ * @param {number} particleIndex
+ * @param {box2d.b2Vec2} point
+ * @param {box2d.b2Vec2} normal
  */
 box2d.b2ParticleSystem.prototype.InitDampingParameterWithRigidGroupOrParticle = function(invMass, invInertia, tangentDistance, isRigidGroup, group, particleIndex, point, normal) {
   if (isRigidGroup) {
@@ -6916,14 +6916,14 @@ box2d.b2ParticleSystem.prototype.InitDampingParameterWithRigidGroupOrParticle = 
 }
 
 /**
- * @return {number} 
- * @param {number} invMassA 
- * @param {number} invInertiaA 
- * @param {number} tangentDistanceA 
- * @param {number} invMassB 
- * @param {number} invInertiaB 
- * @param {number} tangentDistanceB 
- * @param {number} normalVelocity 
+ * @return {number}
+ * @param {number} invMassA
+ * @param {number} invInertiaA
+ * @param {number} tangentDistanceA
+ * @param {number} invMassB
+ * @param {number} invInertiaB
+ * @param {number} tangentDistanceB
+ * @param {number} normalVelocity
  */
 box2d.b2ParticleSystem.prototype.ComputeDampingImpulse = function(invMassA, invInertiaA, tangentDistanceA, invMassB, invInertiaB, tangentDistanceB, normalVelocity) {
   var invMass =
@@ -6933,15 +6933,15 @@ box2d.b2ParticleSystem.prototype.ComputeDampingImpulse = function(invMassA, invI
 }
 
 /**
- * @return {void} 
- * @param {number} invMass 
- * @param {number} invInertia 
- * @param {number} tangentDistance 
- * @param {boolean} isRigidGroup 
- * @param {box2d.b2ParticleGroup} group 
- * @param {number} particleIndex 
- * @param {number} impulse 
- * @param {box2d.b2Vec2} normal 
+ * @return {void}
+ * @param {number} invMass
+ * @param {number} invInertia
+ * @param {number} tangentDistance
+ * @param {boolean} isRigidGroup
+ * @param {box2d.b2ParticleGroup} group
+ * @param {number} particleIndex
+ * @param {number} impulse
+ * @param {box2d.b2Vec2} normal
  */
 box2d.b2ParticleSystem.prototype.ApplyDamping = function(invMass, invInertia, tangentDistance, isRigidGroup, group, particleIndex, impulse, normal) {
   if (isRigidGroup) {

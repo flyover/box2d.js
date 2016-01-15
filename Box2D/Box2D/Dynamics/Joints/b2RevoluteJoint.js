@@ -22,21 +22,21 @@ goog.require('box2d.b2Settings');
 goog.require('box2d.b2Joint');
 goog.require('box2d.b2Math');
 
-/** 
- * Revolute joint definition. This requires defining an anchor 
- * point where the bodies are joined. The definition uses local 
- * anchor points so that the initial configuration can violate 
- * the constraint slightly. You also need to specify the initial 
- * relative angle for joint limits. This helps when saving and 
- * loading a game. 
- * The local anchor points are measured from the body's origin 
- * rather than the center of mass because: 
- * 1. you might not know where the center of mass will be. 
- * 2. if you add/remove shapes from a body and recompute the 
- * mass, the joints will be broken. 
- * @export 
- * @constructor 
- * @extends {box2d.b2JointDef} 
+/**
+ * Revolute joint definition. This requires defining an anchor
+ * point where the bodies are joined. The definition uses local
+ * anchor points so that the initial configuration can violate
+ * the constraint slightly. You also need to specify the initial
+ * relative angle for joint limits. This helps when saving and
+ * loading a game.
+ * The local anchor points are measured from the body's origin
+ * rather than the center of mass because:
+ * 1. you might not know where the center of mass will be.
+ * 2. if you add/remove shapes from a body and recompute the
+ * mass, the joints will be broken.
+ * @export
+ * @constructor
+ * @extends {box2d.b2JointDef}
  */
 box2d.b2RevoluteJointDef = function() {
   box2d.b2JointDef.call(this, box2d.b2JointType.e_revoluteJoint); // base class constructor
@@ -47,78 +47,78 @@ box2d.b2RevoluteJointDef = function() {
 
 goog.inherits(box2d.b2RevoluteJointDef, box2d.b2JointDef);
 
-/** 
- * The local anchor point relative to bodyA's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyA's origin.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RevoluteJointDef.prototype.localAnchorA = null;
 
-/** 
- * The local anchor point relative to bodyB's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyB's origin.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RevoluteJointDef.prototype.localAnchorB = null;
 
-/** 
- * The bodyB angle minus bodyA angle in the reference state 
- * (radians). 
- * @export 
+/**
+ * The bodyB angle minus bodyA angle in the reference state
+ * (radians).
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJointDef.prototype.referenceAngle = 0;
 
-/** 
- * A flag to enable joint limits. 
- * @export 
+/**
+ * A flag to enable joint limits.
+ * @export
  * @type {boolean}
  */
 box2d.b2RevoluteJointDef.prototype.enableLimit = false;
 
-/** 
- * The lower angle for the joint limit (radians). 
- * @export 
+/**
+ * The lower angle for the joint limit (radians).
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJointDef.prototype.lowerAngle = 0;
 
-/** 
- * The upper angle for the joint limit (radians). 
- * @export 
+/**
+ * The upper angle for the joint limit (radians).
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJointDef.prototype.upperAngle = 0;
 
-/** 
- * A flag to enable the joint motor. 
- * @export 
+/**
+ * A flag to enable the joint motor.
+ * @export
  * @type {boolean}
  */
 box2d.b2RevoluteJointDef.prototype.enableMotor = false;
 
-/** 
- * The desired motor speed. Usually in radians per second. 
- * @export 
+/**
+ * The desired motor speed. Usually in radians per second.
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJointDef.prototype.motorSpeed = 0;
 
-/** 
- * The maximum motor torque used to achieve the desired motor 
- * speed. 
- * Usually in N-m. 
- * @export 
+/**
+ * The maximum motor torque used to achieve the desired motor
+ * speed.
+ * Usually in N-m.
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJointDef.prototype.maxMotorTorque = 0;
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2Body} bA 
- * @param {box2d.b2Body} bB 
- * @param {box2d.b2Vec2} anchor 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2Body} bA
+ * @param {box2d.b2Body} bB
+ * @param {box2d.b2Vec2} anchor
  */
 box2d.b2RevoluteJointDef.prototype.Initialize = function(bA, bB, anchor) {
   this.bodyA = bA;
@@ -128,19 +128,19 @@ box2d.b2RevoluteJointDef.prototype.Initialize = function(bA, bB, anchor) {
   this.referenceAngle = this.bodyB.GetAngle() - this.bodyA.GetAngle();
 }
 
-/** 
- * A revolute joint constrains two bodies to share a common 
- * point while they are free to rotate about the point. The 
- * relative rotation about the shared point is the joint angle. 
- * You can limit the relative rotation with a joint limit that 
- * specifies a lower and upper angle. You can use a motor to 
- * drive the relative rotation about the shared point. A maximum 
- * motor torque is provided so that infinite forces are not 
- * generated. 
- * @export 
- * @constructor 
- * @extends {box2d.b2Joint} 
- * @param {box2d.b2RevoluteJointDef} def 
+/**
+ * A revolute joint constrains two bodies to share a common
+ * point while they are free to rotate about the point. The
+ * relative rotation about the shared point is the joint angle.
+ * You can limit the relative rotation with a joint limit that
+ * specifies a lower and upper angle. You can use a motor to
+ * drive the relative rotation about the shared point. A maximum
+ * motor torque is provided so that infinite forces are not
+ * generated.
+ * @export
+ * @constructor
+ * @extends {box2d.b2Joint}
+ * @param {box2d.b2RevoluteJointDef} def
  */
 box2d.b2RevoluteJoint = function(def) {
   box2d.b2Joint.call(this, def); // base class constructor
@@ -181,159 +181,159 @@ goog.inherits(box2d.b2RevoluteJoint, box2d.b2Joint);
 
 // Solver shared
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RevoluteJoint.prototype.m_localAnchorA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RevoluteJoint.prototype.m_localAnchorB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec3}
  */
 box2d.b2RevoluteJoint.prototype.m_impulse = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJoint.prototype.m_motorImpulse = 0;
 
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2RevoluteJoint.prototype.m_enableMotor = false;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJoint.prototype.m_maxMotorTorque = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJoint.prototype.m_motorSpeed = 0;
 
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2RevoluteJoint.prototype.m_enableLimit = false;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJoint.prototype.m_referenceAngle = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJoint.prototype.m_lowerAngle = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJoint.prototype.m_upperAngle = 0;
 
 // Solver temp
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJoint.prototype.m_indexA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJoint.prototype.m_indexB = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RevoluteJoint.prototype.m_rA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RevoluteJoint.prototype.m_rB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RevoluteJoint.prototype.m_localCenterA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RevoluteJoint.prototype.m_localCenterB = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJoint.prototype.m_invMassA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJoint.prototype.m_invMassB = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJoint.prototype.m_invIA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJoint.prototype.m_invIB = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Mat33}
  */
 box2d.b2RevoluteJoint.prototype.m_mass = null; // effective mass for point-to-point constraint.
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RevoluteJoint.prototype.m_motorMass = 0; // effective mass for motor/limit angular constraint.
 /**
- * @export 
+ * @export
  * @type {box2d.b2LimitState}
  */
 box2d.b2RevoluteJoint.prototype.m_limitState = box2d.b2LimitState.e_inactiveLimit;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2RevoluteJoint.prototype.m_qA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2RevoluteJoint.prototype.m_qB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RevoluteJoint.prototype.m_lalcA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RevoluteJoint.prototype.m_lalcB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Mat22}
  */
 box2d.b2RevoluteJoint.prototype.m_K = null;
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2RevoluteJoint.prototype.InitVelocityConstraints = function(data) {
@@ -460,9 +460,9 @@ box2d.b2RevoluteJoint.prototype.InitVelocityConstraints = function(data) {
 }
 box2d.b2RevoluteJoint.prototype.InitVelocityConstraints.s_P = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2RevoluteJoint.prototype.SolveVelocityConstraints = function(data) {
@@ -601,10 +601,10 @@ box2d.b2RevoluteJoint.prototype.SolveVelocityConstraints.s_impulse3 = new box2d.
 box2d.b2RevoluteJoint.prototype.SolveVelocityConstraints.s_reduced = new box2d.b2Vec2();
 box2d.b2RevoluteJoint.prototype.SolveVelocityConstraints.s_impulse2 = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {boolean} 
- * @param {box2d.b2SolverData} data 
+/**
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2SolverData} data
  */
 box2d.b2RevoluteJoint.prototype.SolvePositionConstraints = function(data) {
   /*box2d.b2Vec2&*/
@@ -719,30 +719,30 @@ box2d.b2RevoluteJoint.prototype.SolvePositionConstraints = function(data) {
 box2d.b2RevoluteJoint.prototype.SolvePositionConstraints.s_C = new box2d.b2Vec2();
 box2d.b2RevoluteJoint.prototype.SolvePositionConstraints.s_impulse = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2RevoluteJoint.prototype.GetAnchorA = function(out) {
   return this.m_bodyA.GetWorldPoint(this.m_localAnchorA, out);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2RevoluteJoint.prototype.GetAnchorB = function(out) {
   return this.m_bodyB.GetWorldPoint(this.m_localAnchorB, out);
 }
 
-/** 
- * Get the reaction force given the inverse time step. 
+/**
+ * Get the reaction force given the inverse time step.
  * Unit is N.
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {number} inv_dt 
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {number} inv_dt
  * @param {box2d.b2Vec2} out
  */
 box2d.b2RevoluteJoint.prototype.GetReactionForce = function(inv_dt, out) {
@@ -751,49 +751,49 @@ box2d.b2RevoluteJoint.prototype.GetReactionForce = function(inv_dt, out) {
   return out.Set(inv_dt * this.m_impulse.x, inv_dt * this.m_impulse.y);
 }
 
-/** 
- * Get the reaction torque due to the joint limit given the 
- * inverse time step. 
- * Unit is N*m. 
- * @export 
- * @return {number} 
- * @param {number} inv_dt 
+/**
+ * Get the reaction torque due to the joint limit given the
+ * inverse time step.
+ * Unit is N*m.
+ * @export
+ * @return {number}
+ * @param {number} inv_dt
  */
 box2d.b2RevoluteJoint.prototype.GetReactionTorque = function(inv_dt) {
   return inv_dt * this.m_impulse.z;
 }
 
-/** 
- * The local anchor point relative to bodyA's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyA's origin.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2RevoluteJoint.prototype.GetLocalAnchorA = function(out) {
   return out.Copy(this.m_localAnchorA);
 }
 
-/** 
- * The local anchor point relative to bodyB's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyB's origin.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2=} out 
+ * @param {box2d.b2Vec2=} out
  */
 box2d.b2RevoluteJoint.prototype.GetLocalAnchorB = function(out) {
   return out.Copy(this.m_localAnchorB);
 }
 
-/** 
- * Get the reference angle. 
- * @export 
+/**
+ * Get the reference angle.
+ * @export
  * @return {number}
  */
 box2d.b2RevoluteJoint.prototype.GetReferenceAngle = function() {
   return this.m_referenceAngle;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2RevoluteJoint.prototype.GetJointAngle = function() {
@@ -803,8 +803,8 @@ box2d.b2RevoluteJoint.prototype.GetJointAngle = function() {
   return this.m_bodyB.m_sweep.a - this.m_bodyA.m_sweep.a - this.m_referenceAngle;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2RevoluteJoint.prototype.GetJointSpeed = function() {
@@ -814,17 +814,17 @@ box2d.b2RevoluteJoint.prototype.GetJointSpeed = function() {
   return this.m_bodyB.m_angularVelocity - this.m_bodyA.m_angularVelocity;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {boolean}
  */
 box2d.b2RevoluteJoint.prototype.IsMotorEnabled = function() {
   return this.m_enableMotor;
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {boolean} flag
  */
 box2d.b2RevoluteJoint.prototype.EnableMotor = function(flag) {
@@ -835,53 +835,53 @@ box2d.b2RevoluteJoint.prototype.EnableMotor = function(flag) {
   }
 }
 
-/** 
- * Get the current motor torque given the inverse time step. 
- * Unit is N*m. 
- * @export 
+/**
+ * Get the current motor torque given the inverse time step.
+ * Unit is N*m.
+ * @export
  * @return {number}
- * @param {number} inv_dt 
+ * @param {number} inv_dt
  */
 box2d.b2RevoluteJoint.prototype.GetMotorTorque = function(inv_dt) {
   return inv_dt * this.m_motorImpulse;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2RevoluteJoint.prototype.GetMotorSpeed = function() {
   return this.m_motorSpeed;
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {number} torque
  */
 box2d.b2RevoluteJoint.prototype.SetMaxMotorTorque = function(torque) {
   this.m_maxMotorTorque = torque;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2RevoluteJoint.prototype.GetMaxMotorTorque = function() {
   return this.m_maxMotorTorque;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {boolean}
  */
 box2d.b2RevoluteJoint.prototype.IsLimitEnabled = function() {
   return this.m_enableLimit;
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {boolean} flag
  */
 box2d.b2RevoluteJoint.prototype.EnableLimit = function(flag) {
@@ -893,27 +893,27 @@ box2d.b2RevoluteJoint.prototype.EnableLimit = function(flag) {
   }
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2RevoluteJoint.prototype.GetLowerLimit = function() {
   return this.m_lowerAngle;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2RevoluteJoint.prototype.GetUpperLimit = function() {
   return this.m_upperAngle;
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {number} lower 
- * @param {number} upper 
+/**
+ * @export
+ * @return {void}
+ * @param {number} lower
+ * @param {number} upper
  */
 box2d.b2RevoluteJoint.prototype.SetLimits = function(lower, upper) {
 
@@ -926,9 +926,9 @@ box2d.b2RevoluteJoint.prototype.SetLimits = function(lower, upper) {
   }
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {number} speed
  */
 box2d.b2RevoluteJoint.prototype.SetMotorSpeed = function(speed) {
@@ -939,9 +939,9 @@ box2d.b2RevoluteJoint.prototype.SetMotorSpeed = function(speed) {
   }
 }
 
-/** 
- * Dump to b2Log. 
- * @export 
+/**
+ * Dump to b2Log.
+ * @export
  * @return {void}
  */
 box2d.b2RevoluteJoint.prototype.Dump = function() {

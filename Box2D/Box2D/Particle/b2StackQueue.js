@@ -22,7 +22,7 @@ goog.provide('box2d.b2StackQueue');
 
 /**
  * @constructor
- * @param {number} capacity 
+ * @param {number} capacity
  */
 box2d.b2StackQueue = function(capacity) {
   this.m_buffer = box2d.b2MakeArray(capacity);
@@ -50,8 +50,8 @@ box2d.b2StackQueue.prototype.m_back = 0;
 box2d.b2StackQueue.prototype.m_capacity = 0;
 
 /**
- * @return {void} 
- * @param {*} item 
+ * @return {void}
+ * @param {*} item
  */
 box2d.b2StackQueue.prototype.Push = function(item) {
   if (this.m_back >= this.m_capacity) {
@@ -76,7 +76,7 @@ box2d.b2StackQueue.prototype.Push = function(item) {
 }
 
 /**
- * @return {void} 
+ * @return {void}
  */
 box2d.b2StackQueue.prototype.Pop = function() {
   box2d.b2Assert(this.m_front < this.m_back);
@@ -85,7 +85,7 @@ box2d.b2StackQueue.prototype.Pop = function() {
 }
 
 /**
- * @return {boolean} 
+ * @return {boolean}
  */
 box2d.b2StackQueue.prototype.Empty = function() {
   box2d.b2Assert(this.m_front <= this.m_back);
@@ -93,7 +93,7 @@ box2d.b2StackQueue.prototype.Empty = function() {
 }
 
 /**
- * @return {*} 
+ * @return {*}
  */
 box2d.b2StackQueue.prototype.Front = function() {
   return this.m_buffer[this.m_front];

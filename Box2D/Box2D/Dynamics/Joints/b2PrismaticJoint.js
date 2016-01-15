@@ -22,17 +22,17 @@ goog.require('box2d.b2Settings');
 goog.require('box2d.b2Joint');
 goog.require('box2d.b2Math');
 
-/** 
- * Prismatic joint definition. This requires defining a line of 
- * motion using an axis and an anchor point. The definition uses 
- * local anchor points and a local axis so that the initial 
- * configuration can violate the constraint slightly. The joint 
- * translation is zero when the local anchor points coincide in 
- * world space. Using local anchors and a local axis helps when 
- * saving and loading a game. 
- * @export 
- * @constructor 
- * @extends {box2d.b2JointDef} 
+/**
+ * Prismatic joint definition. This requires defining a line of
+ * motion using an axis and an anchor point. The definition uses
+ * local anchor points and a local axis so that the initial
+ * configuration can violate the constraint slightly. The joint
+ * translation is zero when the local anchor points coincide in
+ * world space. Using local anchors and a local axis helps when
+ * saving and loading a game.
+ * @export
+ * @constructor
+ * @extends {box2d.b2JointDef}
  */
 box2d.b2PrismaticJointDef = function() {
   box2d.b2JointDef.call(this, box2d.b2JointType.e_prismaticJoint); // base class constructor
@@ -44,86 +44,86 @@ box2d.b2PrismaticJointDef = function() {
 
 goog.inherits(box2d.b2PrismaticJointDef, box2d.b2JointDef);
 
-/** 
- * The local anchor point relative to bodyA's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyA's origin.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJointDef.prototype.localAnchorA = null;
 
-/** 
- * The local anchor point relative to bodyB's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyB's origin.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJointDef.prototype.localAnchorB = null;
 
-/** 
- * The local translation unit axis in bodyA. 
- * @export 
+/**
+ * The local translation unit axis in bodyA.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJointDef.prototype.localAxisA = null;
 
-/** 
- * The constrained angle between the bodies: bodyB_angle - 
- * bodyA_angle. 
- * @export 
+/**
+ * The constrained angle between the bodies: bodyB_angle -
+ * bodyA_angle.
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJointDef.prototype.referenceAngle = 0;
 
-/** 
- * Enable/disable the joint limit. 
- * @export 
+/**
+ * Enable/disable the joint limit.
+ * @export
  * @type {boolean}
  */
 box2d.b2PrismaticJointDef.prototype.enableLimit = false;
 
-/** 
- * The lower translation limit, usually in meters. 
- * @export 
+/**
+ * The lower translation limit, usually in meters.
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJointDef.prototype.lowerTranslation = 0;
 
-/** 
- * The upper translation limit, usually in meters. 
- * @export 
+/**
+ * The upper translation limit, usually in meters.
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJointDef.prototype.upperTranslation = 0;
 
-/** 
- * Enable/disable the joint motor. 
- * @export 
+/**
+ * Enable/disable the joint motor.
+ * @export
  * @type {boolean}
  */
 box2d.b2PrismaticJointDef.prototype.enableMotor = false;
 
-/** 
- * The maximum motor torque, usually in N-m. 
- * @export 
+/**
+ * The maximum motor torque, usually in N-m.
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJointDef.prototype.maxMotorForce = 0;
 
-/** 
- * The desired motor speed in radians per second. 
- * @export 
+/**
+ * The desired motor speed in radians per second.
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJointDef.prototype.motorSpeed = 0;
 
-/** 
- * Initialize the bodies, anchors, axis, and reference angle 
- * using the world anchor and unit world axis. 
- * @export 
- * @return {void} 
- * @param {box2d.b2Body} bA 
- * @param {box2d.b2Body} bB 
- * @param {box2d.b2Vec2} anchor 
- * @param {box2d.b2Vec2} axis 
+/**
+ * Initialize the bodies, anchors, axis, and reference angle
+ * using the world anchor and unit world axis.
+ * @export
+ * @return {void}
+ * @param {box2d.b2Body} bA
+ * @param {box2d.b2Body} bB
+ * @param {box2d.b2Vec2} anchor
+ * @param {box2d.b2Vec2} axis
  */
 box2d.b2PrismaticJointDef.prototype.Initialize = function(bA, bB, anchor, axis) {
   this.bodyA = bA;
@@ -134,16 +134,16 @@ box2d.b2PrismaticJointDef.prototype.Initialize = function(bA, bB, anchor, axis) 
   this.referenceAngle = this.bodyB.GetAngle() - this.bodyA.GetAngle();
 }
 
-/** 
- * A prismatic joint. This joint provides one degree of freedom: 
- * translation along an axis fixed in bodyA. Relative rotation 
- * is prevented. You can use a joint limit to restrict the range 
- * of motion and a joint motor to drive the motion or to model 
- * joint friction. 
- * @export 
- * @constructor 
- * @extends {box2d.b2Joint} 
- * @param {box2d.b2PrismaticJointDef} def 
+/**
+ * A prismatic joint. This joint provides one degree of freedom:
+ * translation along an axis fixed in bodyA. Relative rotation
+ * is prevented. You can use a joint limit to restrict the range
+ * of motion and a joint motor to drive the motion or to model
+ * joint friction.
+ * @export
+ * @constructor
+ * @extends {box2d.b2Joint}
+ * @param {box2d.b2PrismaticJointDef} def
  */
 box2d.b2PrismaticJoint = function(def) {
   box2d.b2Joint.call(this, def); // base class constructor
@@ -181,202 +181,202 @@ goog.inherits(box2d.b2PrismaticJoint, box2d.b2Joint);
 
 // Solver shared
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJoint.prototype.m_localAnchorA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJoint.prototype.m_localAnchorB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJoint.prototype.m_localXAxisA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJoint.prototype.m_localYAxisA = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJoint.prototype.m_referenceAngle = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec3}
  */
 box2d.b2PrismaticJoint.prototype.m_impulse = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJoint.prototype.m_motorImpulse = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJoint.prototype.m_lowerTranslation = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJoint.prototype.m_upperTranslation = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJoint.prototype.m_maxMotorForce = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJoint.prototype.m_motorSpeed = 0;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2PrismaticJoint.prototype.m_enableLimit = false;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2PrismaticJoint.prototype.m_enableMotor = false;
 /**
- * @export 
+ * @export
  * @type {box2d.b2LimitState}
  */
 box2d.b2PrismaticJoint.prototype.m_limitState = box2d.b2LimitState.e_inactiveLimit;
 
 // Solver temp
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJoint.prototype.m_indexA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJoint.prototype.m_indexB = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJoint.prototype.m_localCenterA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJoint.prototype.m_localCenterB = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJoint.prototype.m_invMassA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJoint.prototype.m_invMassB = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJoint.prototype.m_invIA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJoint.prototype.m_invIB = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJoint.prototype.m_axis = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJoint.prototype.m_perp = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJoint.prototype.m_s1 = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJoint.prototype.m_s2 = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJoint.prototype.m_a1 = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJoint.prototype.m_a2 = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Mat33}
  */
 box2d.b2PrismaticJoint.prototype.m_K = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Mat33}
  */
 box2d.b2PrismaticJoint.prototype.m_K3 = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Mat22}
  */
 box2d.b2PrismaticJoint.prototype.m_K2 = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2PrismaticJoint.prototype.m_motorMass = 0;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2PrismaticJoint.prototype.m_qA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2PrismaticJoint.prototype.m_qB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJoint.prototype.m_lalcA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJoint.prototype.m_lalcB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJoint.prototype.m_rA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2PrismaticJoint.prototype.m_rB = null;
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2PrismaticJoint.prototype.InitVelocityConstraints = function(data) {
@@ -549,9 +549,9 @@ box2d.b2PrismaticJoint.prototype.InitVelocityConstraints = function(data) {
 box2d.b2PrismaticJoint.prototype.InitVelocityConstraints.s_d = new box2d.b2Vec2();
 box2d.b2PrismaticJoint.prototype.InitVelocityConstraints.s_P = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2PrismaticJoint.prototype.SolveVelocityConstraints = function(data) {
@@ -690,10 +690,10 @@ box2d.b2PrismaticJoint.prototype.SolveVelocityConstraints.s_f1 = new box2d.b2Vec
 box2d.b2PrismaticJoint.prototype.SolveVelocityConstraints.s_df3 = new box2d.b2Vec3();
 box2d.b2PrismaticJoint.prototype.SolveVelocityConstraints.s_df2 = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {boolean} 
- * @param {box2d.b2SolverData} data 
+/**
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2SolverData} data
  */
 box2d.b2PrismaticJoint.prototype.SolvePositionConstraints = function(data) {
   /*box2d.b2Vec2&*/
@@ -859,28 +859,28 @@ box2d.b2PrismaticJoint.prototype.SolvePositionConstraints.s_impulse = new box2d.
 box2d.b2PrismaticJoint.prototype.SolvePositionConstraints.s_impulse1 = new box2d.b2Vec2();
 box2d.b2PrismaticJoint.prototype.SolvePositionConstraints.s_P = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2PrismaticJoint.prototype.GetAnchorA = function(out) {
   return this.m_bodyA.GetWorldPoint(this.m_localAnchorA, out);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2PrismaticJoint.prototype.GetAnchorB = function(out) {
   return this.m_bodyB.GetWorldPoint(this.m_localAnchorB, out);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {number} inv_dt 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {number} inv_dt
  * @param {box2d.b2Vec2} out
  */
 box2d.b2PrismaticJoint.prototype.GetReactionForce = function(inv_dt, out) {
@@ -888,56 +888,56 @@ box2d.b2PrismaticJoint.prototype.GetReactionForce = function(inv_dt, out) {
   return out.Set(inv_dt * (this.m_impulse.x * this.m_perp.x + (this.m_motorImpulse + this.m_impulse.z) * this.m_axis.x), inv_dt * (this.m_impulse.x * this.m_perp.y + (this.m_motorImpulse + this.m_impulse.z) * this.m_axis.y));
 }
 
-/** 
- * @export 
- * @return {number} 
- * @param {number} inv_dt 
+/**
+ * @export
+ * @return {number}
+ * @param {number} inv_dt
  */
 box2d.b2PrismaticJoint.prototype.GetReactionTorque = function(inv_dt) {
   return inv_dt * this.m_impulse.y;
 }
 
-/** 
- * The local anchor point relative to bodyA's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyA's origin.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2PrismaticJoint.prototype.GetLocalAnchorA = function(out) {
   return out.Copy(this.m_localAnchorA);
 }
 
-/** 
- * The local anchor point relative to bodyB's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyB's origin.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2PrismaticJoint.prototype.GetLocalAnchorB = function(out) {
   return out.Copy(this.m_localAnchorB);
 }
 
-/** 
- * The local joint axis relative to bodyA. 
- * @export 
+/**
+ * The local joint axis relative to bodyA.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2PrismaticJoint.prototype.GetLocalAxisA = function(out) {
   return out.Copy(this.m_localXAxisA);
 }
 
-/** 
- * Get the reference angle. 
- * @export 
+/**
+ * Get the reference angle.
+ * @export
  * @return {number}
  */
 box2d.b2PrismaticJoint.prototype.GetReferenceAngle = function() {
   return this.m_referenceAngle;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2PrismaticJoint.prototype.GetJointTranslation = function() {
@@ -959,8 +959,8 @@ box2d.b2PrismaticJoint.prototype.GetJointTranslation.s_pB = new box2d.b2Vec2();
 box2d.b2PrismaticJoint.prototype.GetJointTranslation.s_d = new box2d.b2Vec2();
 box2d.b2PrismaticJoint.prototype.GetJointTranslation.s_axis = new box2d.b2Vec2();
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2PrismaticJoint.prototype.GetJointSpeed = function() {
@@ -1001,17 +1001,17 @@ box2d.b2PrismaticJoint.prototype.GetJointSpeed = function() {
   return speed;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {boolean}
  */
 box2d.b2PrismaticJoint.prototype.IsLimitEnabled = function() {
   return this.m_enableLimit;
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {boolean} flag
  */
 box2d.b2PrismaticJoint.prototype.EnableLimit = function(flag) {
@@ -1023,27 +1023,27 @@ box2d.b2PrismaticJoint.prototype.EnableLimit = function(flag) {
   }
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2PrismaticJoint.prototype.GetLowerLimit = function() {
   return this.m_lowerTranslation;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2PrismaticJoint.prototype.GetUpperLimit = function() {
   return this.m_upperTranslation;
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {number} upper 
- * @param {number} lower 
+/**
+ * @export
+ * @return {void}
+ * @param {number} upper
+ * @param {number} lower
  */
 box2d.b2PrismaticJoint.prototype.SetLimits = function(lower, upper) {
   if (lower !== this.m_lowerTranslation || upper !== this.m_upperTranslation) {
@@ -1055,17 +1055,17 @@ box2d.b2PrismaticJoint.prototype.SetLimits = function(lower, upper) {
   }
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {boolean}
  */
 box2d.b2PrismaticJoint.prototype.IsMotorEnabled = function() {
   return this.m_enableMotor;
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {boolean} flag
  */
 box2d.b2PrismaticJoint.prototype.EnableMotor = function(flag) {
@@ -1074,10 +1074,10 @@ box2d.b2PrismaticJoint.prototype.EnableMotor = function(flag) {
   this.m_enableMotor = flag;
 }
 
-/** 
- * @export 
- * @return {void} 
- * @param {number} speed 
+/**
+ * @export
+ * @return {void}
+ * @param {number} speed
  */
 box2d.b2PrismaticJoint.prototype.SetMotorSpeed = function(speed) {
   this.m_bodyA.SetAwake(true);
@@ -1085,17 +1085,17 @@ box2d.b2PrismaticJoint.prototype.SetMotorSpeed = function(speed) {
   this.m_motorSpeed = speed;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2PrismaticJoint.prototype.GetMotorSpeed = function() {
   return this.m_motorSpeed;
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {number} force
  */
 box2d.b2PrismaticJoint.prototype.SetMaxMotorForce = function(force) {
@@ -1104,26 +1104,26 @@ box2d.b2PrismaticJoint.prototype.SetMaxMotorForce = function(force) {
   this.m_maxMotorForce = force;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
  */
 box2d.b2PrismaticJoint.prototype.GetMaxMotorForce = function() {
   return this.m_maxMotorForce;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @return {number}
- * @param {number} inv_dt 
+ * @param {number} inv_dt
  */
 box2d.b2PrismaticJoint.prototype.GetMotorForce = function(inv_dt) {
   return inv_dt * this.m_motorImpulse;
 }
 
-/** 
- * Dump to b2Log 
- * @export 
+/**
+ * Dump to b2Log
+ * @export
  * @return {void}
  */
 box2d.b2PrismaticJoint.prototype.Dump = function() {

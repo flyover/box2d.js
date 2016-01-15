@@ -22,39 +22,39 @@ goog.require('box2d.b2Settings');
 goog.require('box2d.b2Math');
 goog.require('box2d.b2ShapeDistance');
 
-/** 
- * This holds the mass data computed for a shape. 
- * @export 
+/**
+ * This holds the mass data computed for a shape.
+ * @export
  * @constructor
  */
 box2d.b2MassData = function() {
   this.center = new box2d.b2Vec2(0, 0);
 };
 
-/** 
- * The mass of the shape, usually in kilograms. 
- * @export 
+/**
+ * The mass of the shape, usually in kilograms.
+ * @export
  * @type {number}
  */
 box2d.b2MassData.prototype.mass = 0;
 
-/** 
- * The position of the shape's centroid relative to the shape's 
- * origin. 
- * @export 
+/**
+ * The position of the shape's centroid relative to the shape's
+ * origin.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2MassData.prototype.center = null;
 
-/** 
- * The rotational inertia of the shape about the local origin. 
- * @export 
+/**
+ * The rotational inertia of the shape about the local origin.
+ * @export
  * @type {number}
  */
 box2d.b2MassData.prototype.I = 0;
 
-/** 
- * @export 
+/**
+ * @export
  * @enum
  */
 box2d.b2ShapeType = {
@@ -72,16 +72,16 @@ goog.exportProperty(box2d.b2ShapeType, 'e_polygonShape', box2d.b2ShapeType.e_pol
 goog.exportProperty(box2d.b2ShapeType, 'e_chainShape', box2d.b2ShapeType.e_chainShape);
 goog.exportProperty(box2d.b2ShapeType, 'e_shapeTypeCount', box2d.b2ShapeType.e_shapeTypeCount);
 
-/** 
- * A shape is used for collision detection. You can create a 
- * shape however you like. 
- * Shapes used for simulation in box2d.b2World are created 
- * automatically when a box2d.b2Fixture is created. Shapes may 
- * encapsulate a one or more child shapes. 
- * @export 
- * @constructor 
- * @param {box2d.b2ShapeType} type 
- * @param {number} radius 
+/**
+ * A shape is used for collision detection. You can create a
+ * shape however you like.
+ * Shapes used for simulation in box2d.b2World are created
+ * automatically when a box2d.b2Fixture is created. Shapes may
+ * encapsulate a one or more child shapes.
+ * @export
+ * @constructor
+ * @param {box2d.b2ShapeType} type
+ * @param {number} radius
  */
 box2d.b2Shape = function(type, radius) {
   this.m_type = type;
@@ -89,19 +89,19 @@ box2d.b2Shape = function(type, radius) {
 }
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2ShapeType}
  */
 box2d.b2Shape.prototype.m_type = box2d.b2ShapeType.e_unknown;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Shape.prototype.m_radius = 0;
 
-/** 
- * Clone the concrete shape using the provided allocator. 
- * @export 
+/**
+ * Clone the concrete shape using the provided allocator.
+ * @export
  * @return {box2d.b2Shape}
  */
 box2d.b2Shape.prototype.Clone = function() {
@@ -112,9 +112,9 @@ box2d.b2Shape.prototype.Clone = function() {
 }
 
 /**
- * @export 
- * @return {box2d.b2Shape} 
- * @param {box2d.b2Shape} other 
+ * @export
+ * @return {box2d.b2Shape}
+ * @param {box2d.b2Shape} other
  */
 box2d.b2Shape.prototype.Copy = function(other) {
   if (box2d.ENABLE_ASSERTS) {
@@ -124,19 +124,19 @@ box2d.b2Shape.prototype.Copy = function(other) {
   return this;
 }
 
-/** 
- * Get the type of this shape. You can use this to down cast to 
- * the concrete shape. 
- * @export 
+/**
+ * Get the type of this shape. You can use this to down cast to
+ * the concrete shape.
+ * @export
  * @return {box2d.b2ShapeType} the shape type.
  */
 box2d.b2Shape.prototype.GetType = function() {
   return this.m_type;
 }
 
-/** 
- * Get the number of child primitives. 
- * @export 
+/**
+ * Get the number of child primitives.
+ * @export
  * @return {number}
  */
 box2d.b2Shape.prototype.GetChildCount = function() {
@@ -146,11 +146,11 @@ box2d.b2Shape.prototype.GetChildCount = function() {
   return 0;
 }
 
-/** 
- * Test a point for containment in this shape. This only works 
- * for convex shapes. 
- * @export 
- * @return {boolean} 
+/**
+ * Test a point for containment in this shape. This only works
+ * for convex shapes.
+ * @export
+ * @return {boolean}
  * @param {box2d.b2Transform} xf the shape world transform.
  * @param {box2d.b2Vec2} p a point in world coordinates.
  */
@@ -163,16 +163,16 @@ box2d.b2Shape.prototype.TestPoint = function(xf, p) {
 
 //#if B2_ENABLE_PARTICLE
 
-/** 
- * Compute the distance from the current shape to the specified 
- * point. This only works for convex shapes. 
- * @export 
+/**
+ * Compute the distance from the current shape to the specified
+ * point. This only works for convex shapes.
+ * @export
  * @return {number} returns the distance from the current shape.
  * @param {box2d.b2Transform} xf the shape world transform.
  * @param {box2d.b2Vec2} p a point in world coordinates.
- * @param {box2d.b2Vec2} normal returns the direction in which 
+ * @param {box2d.b2Vec2} normal returns the direction in which
  *  	  the distance increases.
- * @param {number} childIndex 
+ * @param {number} childIndex
  */
 box2d.b2Shape.prototype.ComputeDistance = function(xf, p, normal, childIndex) {
   if (box2d.ENABLE_ASSERTS) {
@@ -183,10 +183,10 @@ box2d.b2Shape.prototype.ComputeDistance = function(xf, p, normal, childIndex) {
 
 //#endif
 
-/** 
- * Cast a ray against a child shape. 
- * @export 
- * @return {boolean} 
+/**
+ * Cast a ray against a child shape.
+ * @export
+ * @return {boolean}
  * @param {box2d.b2RayCastOutput} output the ray-cast results.
  * @param {box2d.b2RayCastInput} input the ray-cast input parameters.
  * @param {box2d.b2Transform} transform the transform to be applied to the shape.
@@ -199,11 +199,11 @@ box2d.b2Shape.prototype.RayCast = function(output, input, transform, childIndex)
   return false;
 }
 
-/** 
- * Given a transform, compute the associated axis aligned 
- * bounding box for a child shape. 
- * @export 
- * @return {void} 
+/**
+ * Given a transform, compute the associated axis aligned
+ * bounding box for a child shape.
+ * @export
+ * @return {void}
  * @param {box2d.b2AABB} aabb returns the axis aligned box.
  * @param {box2d.b2Transform} xf the world transform of the shape.
  * @param {number} childIndex the child shape
@@ -214,12 +214,12 @@ box2d.b2Shape.prototype.ComputeAABB = function(aabb, xf, childIndex) {
   }
 }
 
-/** 
- * Compute the mass properties of this shape using its 
- * dimensions and density. 
+/**
+ * Compute the mass properties of this shape using its
+ * dimensions and density.
  * The inertia tensor is computed about the local origin.
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  * @param {box2d.b2MassData} massData returns the mass data for this shape.
  * @param {number} density the density in kilograms per meter squared.
  */
@@ -230,9 +230,9 @@ box2d.b2Shape.prototype.ComputeMass = function(massData, density) {
 }
 
 /**
- * @return {void} 
- * @param {box2d.b2DistanceProxy} proxy 
- * @param {number} index 
+ * @return {void}
+ * @param {box2d.b2DistanceProxy} proxy
+ * @param {number} index
  */
 box2d.b2Shape.prototype.SetupDistanceProxy = function(proxy, index) {
   if (box2d.ENABLE_ASSERTS) {
@@ -241,7 +241,7 @@ box2d.b2Shape.prototype.SetupDistanceProxy = function(proxy, index) {
 }
 
 /**
- * @export 
+ * @export
  * @return {number}
  * @param {box2d.b2Vec2} normal
  * @param {number} offset
@@ -255,9 +255,9 @@ box2d.b2Shape.prototype.ComputeSubmergedArea = function(normal, offset, xf, c) {
   return 0;
 }
 
-/** 
- * Dump this shape to the log file. 
- * @export 
+/**
+ * Dump this shape to the log file.
+ * @export
  * @return {void}
  */
 box2d.b2Shape.prototype.Dump = function() {

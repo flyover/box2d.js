@@ -24,11 +24,11 @@ goog.provide('box2d.Testbed.TheoJansen');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.TheoJansen = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -41,41 +41,41 @@ box2d.Testbed.TheoJansen = function(canvas, settings) {
 goog.inherits(box2d.Testbed.TheoJansen, box2d.Testbed.Test);
 
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.Testbed.TheoJansen.prototype.m_offset = null;
 /**
- * @export 
- * @type {box2d.b2Body} 
+ * @export
+ * @type {box2d.b2Body}
  */
 box2d.Testbed.TheoJansen.prototype.m_chassis = null;
 /**
- * @export 
- * @type {box2d.b2Body} 
+ * @export
+ * @type {box2d.b2Body}
  */
 box2d.Testbed.TheoJansen.prototype.m_wheel = null;
 /**
- * @export 
- * @type {box2d.b2Joint} 
+ * @export
+ * @type {box2d.b2Joint}
  */
 box2d.Testbed.TheoJansen.prototype.m_motorJoint = null;
 /**
- * @export 
- * @type {boolean} 
+ * @export
+ * @type {boolean}
  */
 box2d.Testbed.TheoJansen.prototype.m_motorOn = false;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.TheoJansen.prototype.m_motorSpeed = 0;
 
-/** 
- * @export 
- * @return {void} 
- * @param {number} s 
- * @param {box2d.b2Vec2} wheelAnchor 
+/**
+ * @export
+ * @return {void}
+ * @param {number} s
+ * @param {box2d.b2Vec2} wheelAnchor
  */
 box2d.Testbed.TheoJansen.prototype.CreateLeg = function(s, wheelAnchor) {
   var p1 = new box2d.b2Vec2(5.4 * s, -6.1);
@@ -167,8 +167,8 @@ box2d.Testbed.TheoJansen.prototype.CreateLeg = function(s, wheelAnchor) {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.Testbed.TheoJansen.prototype.Construct = function() {
   this.m_offset.Set(0.0, 8.0);
@@ -262,8 +262,8 @@ box2d.Testbed.TheoJansen.prototype.Construct = function() {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.TheoJansen.prototype.Step = function(settings) {
   this.m_debugDraw.DrawString(5, this.m_textLine, "Keys: left = a, brake = s, right = d, toggle motor = m");
@@ -273,9 +273,9 @@ box2d.Testbed.TheoJansen.prototype.Step = function(settings) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.TheoJansen.prototype.Keyboard = function(key) {
   switch (key) {
@@ -297,11 +297,11 @@ box2d.Testbed.TheoJansen.prototype.Keyboard = function(key) {
   }
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.TheoJansen.Create = function(canvas, settings) {
   return new box2d.Testbed.TheoJansen(canvas, settings);

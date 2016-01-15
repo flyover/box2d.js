@@ -42,24 +42,24 @@ if (!Object.defineProperty) {
   }
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @define {boolean}
  */
 box2d.DEBUG = true;
 
-/** 
- * @export 
+/**
+ * @export
  * @define {boolean}
  */
 box2d.ENABLE_ASSERTS = box2d.DEBUG;
 
-/** 
- * @export 
- * @return {void} 
- * @param {boolean} condition 
- * @param {string=} opt_message 
- * @param {...} var_args 
+/**
+ * @export
+ * @return {void}
+ * @param {boolean} condition
+ * @param {string=} opt_message
+ * @param {...} var_args
  */
 box2d.b2Assert = function(condition, opt_message, var_args) {
   if (box2d.DEBUG) {
@@ -72,204 +72,204 @@ box2d.b2Assert = function(condition, opt_message, var_args) {
 }
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_maxFloat = 1E+37; // FLT_MAX instead of Number.MAX_VALUE;
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_epsilon = 1E-5; // FLT_EPSILON instead of Number.MIN_VALUE;
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_epsilon_sq = (box2d.b2_epsilon * box2d.b2_epsilon);
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_pi = Math.PI;
 
 /**
- * Global tuning constants based on meters-kilograms-seconds 
- * (MKS) units. 
+ * Global tuning constants based on meters-kilograms-seconds
+ * (MKS) units.
  */
 
 // Collision
 
-/** 
- * The maximum number of contact points between two convex 
- * shapes. Do not change this value. 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * The maximum number of contact points between two convex
+ * shapes. Do not change this value.
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_maxManifoldPoints = 2;
 
-/** 
- * The maximum number of vertices on a convex polygon. You 
- * cannot increase this too much because b2BlockAllocator has a 
- * maximum object size. 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * The maximum number of vertices on a convex polygon. You
+ * cannot increase this too much because b2BlockAllocator has a
+ * maximum object size.
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_maxPolygonVertices = 8;
 
-/** 
- * This is used to fatten AABBs in the dynamic tree. This allows 
- * proxies to move by a small amount without triggering a tree 
- * adjustment. 
- * This is in meters. 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * This is used to fatten AABBs in the dynamic tree. This allows
+ * proxies to move by a small amount without triggering a tree
+ * adjustment.
+ * This is in meters.
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_aabbExtension = 0.1;
 
-/** 
- * This is used to fatten AABBs in the dynamic tree. This is 
- * used to predict the future position based on the current 
- * displacement. 
- * This is a dimensionless multiplier. 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * This is used to fatten AABBs in the dynamic tree. This is
+ * used to predict the future position based on the current
+ * displacement.
+ * This is a dimensionless multiplier.
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_aabbMultiplier = 2;
 
-/** 
- * A small length used as a collision and constraint tolerance. 
- * Usually it is chosen to be numerically significant, but 
- * visually insignificant. 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * A small length used as a collision and constraint tolerance.
+ * Usually it is chosen to be numerically significant, but
+ * visually insignificant.
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_linearSlop = 0.008; //0.005;
 
-/** 
- * A small angle used as a collision and constraint tolerance. 
- * Usually it is chosen to be numerically significant, but 
- * visually insignificant. 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * A small angle used as a collision and constraint tolerance.
+ * Usually it is chosen to be numerically significant, but
+ * visually insignificant.
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_angularSlop = 2 / 180 * box2d.b2_pi;
 
-/** 
- * The radius of the polygon/edge shape skin. This should not be 
- * modified. Making this smaller means polygons will have an 
- * insufficient buffer for continuous collision. 
+/**
+ * The radius of the polygon/edge shape skin. This should not be
+ * modified. Making this smaller means polygons will have an
+ * insufficient buffer for continuous collision.
  * Making it larger may create artifacts for vertex collision.
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_polygonRadius = 2 * box2d.b2_linearSlop;
 
-/** 
- * Maximum number of sub-steps per contact in continuous physics 
- * simulation. 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * Maximum number of sub-steps per contact in continuous physics
+ * simulation.
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_maxSubSteps = 8;
 
 
 // Dynamics
 
-/** 
- * Maximum number of contacts to be handled to solve a TOI 
- * impact. 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * Maximum number of contacts to be handled to solve a TOI
+ * impact.
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_maxTOIContacts = 32;
 
-/** 
- * A velocity threshold for elastic collisions. Any collision 
- * with a relative linear velocity below this threshold will be 
- * treated as inelastic. 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * A velocity threshold for elastic collisions. Any collision
+ * with a relative linear velocity below this threshold will be
+ * treated as inelastic.
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_velocityThreshold = 1;
 
-/** 
- * The maximum linear position correction used when solving 
- * constraints. This helps to prevent overshoot. 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * The maximum linear position correction used when solving
+ * constraints. This helps to prevent overshoot.
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_maxLinearCorrection = 0.2;
 
-/** 
- * The maximum angular position correction used when solving 
- * constraints. This helps to prevent overshoot. 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * The maximum angular position correction used when solving
+ * constraints. This helps to prevent overshoot.
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_maxAngularCorrection = 8 / 180 * box2d.b2_pi;
 
-/** 
- * The maximum linear velocity of a body. This limit is very 
- * large and is used to prevent numerical problems. You 
- * shouldn't need to adjust this. 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * The maximum linear velocity of a body. This limit is very
+ * large and is used to prevent numerical problems. You
+ * shouldn't need to adjust this.
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_maxTranslation = 2;
-/** 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_maxTranslationSquared = box2d.b2_maxTranslation * box2d.b2_maxTranslation;
 
-/** 
- * The maximum angular velocity of a body. This limit is very 
- * large and is used to prevent numerical problems. You 
- * shouldn't need to adjust this. 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * The maximum angular velocity of a body. This limit is very
+ * large and is used to prevent numerical problems. You
+ * shouldn't need to adjust this.
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_maxRotation = 0.5 * box2d.b2_pi;
-/** 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_maxRotationSquared = box2d.b2_maxRotation * box2d.b2_maxRotation;
 
-/** 
- * This scale factor controls how fast overlap is resolved. 
- * Ideally this would be 1 so that overlap is removed in one 
- * time step. However using values close to 1 often lead to 
- * overshoot. 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * This scale factor controls how fast overlap is resolved.
+ * Ideally this would be 1 so that overlap is removed in one
+ * time step. However using values close to 1 often lead to
+ * overshoot.
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_baumgarte = 0.2;
-/** 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_toiBaumgarte = 0.75;
 
@@ -279,93 +279,93 @@ box2d.b2_toiBaumgarte = 0.75;
 
 // Particle
 
-/** 
- * A symbolic constant that stands for particle allocation 
- * error. 
- *  
- * @export 
- * @const 
- * @type {number} 
+/**
+ * A symbolic constant that stands for particle allocation
+ * error.
+ *
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_invalidParticleIndex = -1;
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_maxParticleIndex = 0x7FFFFFFF;
 
-/** 
- * The default distance between particles, multiplied by the 
- * particle diameter. 
- *  
- * @export 
- * @const 
- * @type {number} 
+/**
+ * The default distance between particles, multiplied by the
+ * particle diameter.
+ *
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_particleStride = 0.75;
 
-/** 
- * The minimum particle weight that produces pressure. 
- *  
- * @export 
- * @const 
- * @type {number} 
+/**
+ * The minimum particle weight that produces pressure.
+ *
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_minParticleWeight = 1.0;
 
-/** 
- * The upper limit for particle pressure. 
- *  
- * @export 
- * @const 
- * @type {number} 
+/**
+ * The upper limit for particle pressure.
+ *
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_maxParticlePressure = 0.25;
 
-/** 
- * The upper limit for force between particles. 
- *  
- * @export 
- * @const 
- * @type {number} 
+/**
+ * The upper limit for force between particles.
+ *
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_maxParticleForce = 0.5;
 
-/** 
- * The maximum distance between particles in a triad, multiplied 
- * by the particle diameter. 
- *  
- * @export 
- * @const 
- * @type {number} 
+/**
+ * The maximum distance between particles in a triad, multiplied
+ * by the particle diameter.
+ *
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_maxTriadDistance = 2.0;
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_maxTriadDistanceSquared = (box2d.b2_maxTriadDistance * box2d.b2_maxTriadDistance);
 
-/** 
- * The initial size of particle data buffers. 
- *  
- * @export 
- * @const 
- * @type {number} 
+/**
+ * The initial size of particle data buffers.
+ *
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_minParticleSystemBufferCapacity = 256;
 
-/** 
- * The time into the future that collisions against barrier 
- * particles will be detected. 
- *  
- * @export 
- * @const 
- * @type {number} 
+/**
+ * The time into the future that collisions against barrier
+ * particles will be detected.
+ *
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_barrierCollisionTime = 2.5;
 
@@ -375,73 +375,73 @@ box2d.b2_barrierCollisionTime = 2.5;
 
 // Sleep
 
-/** 
- * The time that a body must be still before it will go to 
- * sleep. 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * The time that a body must be still before it will go to
+ * sleep.
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_timeToSleep = 0.5;
 
-/** 
- * A body cannot sleep if its linear velocity is above this 
- * tolerance. 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * A body cannot sleep if its linear velocity is above this
+ * tolerance.
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_linearSleepTolerance = 0.01;
 
-/** 
- * A body cannot sleep if its angular velocity is above this 
- * tolerance. 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * A body cannot sleep if its angular velocity is above this
+ * tolerance.
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_angularSleepTolerance = 2 / 180 * box2d.b2_pi;
 
 // Memory Allocation
 
-/** 
- * Implement this function to use your own memory allocator. 
- * @export 
- * @return {*} 
- * @param {number} size 
+/**
+ * Implement this function to use your own memory allocator.
+ * @export
+ * @return {*}
+ * @param {number} size
  */
 box2d.b2Alloc = function(size) {
   return null;
 }
 
-/** 
- * If you implement b2Alloc, you should also implement this 
- * function. 
- * @export  
- * @return {void} 
- * @param {*} mem 
+/**
+ * If you implement b2Alloc, you should also implement this
+ * function.
+ * @export
+ * @return {void}
+ * @param {*} mem
  */
 box2d.b2Free = function(mem) {}
 
-/** 
- * Logging function. 
+/**
+ * Logging function.
  * You can modify this to use your logging facility.
- * @export 
- * @return {void} 
- * @param {...string|number|boolean} var_args 
+ * @export
+ * @return {void}
+ * @param {...string|number|boolean} var_args
  */
 box2d.b2Log = function(var_args) {
   goog.global.console.log.apply(null, arguments);
 }
 
-/** 
- * Version numberinf scheme See 
- * http://en.wikipedia.org/wiki/Software_versioning 
- * @export 
+/**
+ * Version numberinf scheme See
+ * http://en.wikipedia.org/wiki/Software_versioning
+ * @export
  * @constructor
- * @param {number=} major 
- * @param {number=} minor 
- * @param {number=} revision 
+ * @param {number=} major
+ * @param {number=} minor
+ * @param {number=} revision
  */
 box2d.b2Version = function(major, minor, revision) {
   this.major = major || 0;
@@ -450,66 +450,66 @@ box2d.b2Version = function(major, minor, revision) {
 };
 
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Version.prototype.major = 0; ///< significant changes
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Version.prototype.minor = 0; ///< incremental changes
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.b2Version.prototype.revision = 0; ///< bug fixes
 
 /**
- * @export 
+ * @export
  * @return {string}
  */
 box2d.b2Version.prototype.toString = function() {
   return this.major + "." + this.minor + "." + this.revision;
 }
 
-/** 
- * Current version. 
- * @export 
- * @const 
- * @type {box2d.b2Version} 
+/**
+ * Current version.
+ * @export
+ * @const
+ * @type {box2d.b2Version}
  */
 box2d.b2_version = new box2d.b2Version(2, 3, 2);
-/** 
- * @export 
- * @const 
- * @type {number} 
+/**
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.b2_changelist = 313;
 
-/** 
- * @export 
- * @return {number} 
- * @param {string} v 
+/**
+ * @export
+ * @return {number}
+ * @param {string} v
  */
 box2d.b2ParseInt = function(v) {
   return parseInt(v, 10);
 }
 
 /**
- * @export 
- * @return {number} 
- * @param {string} v 
+ * @export
+ * @return {number}
+ * @param {string} v
  */
 box2d.b2ParseUInt = function(v) {
   return box2d.b2Abs(parseInt(v, 10));
 }
 
-/** 
- * @export 
- * @return {Array.<*>} 
- * @param {number=} length 
- * @param {function(number): *=} init 
+/**
+ * @export
+ * @return {Array.<*>}
+ * @param {number=} length
+ * @param {function(number): *=} init
  */
 box2d.b2MakeArray = function(length, init) {
   length = (typeof(length) === 'number') ? (length) : (0);
@@ -526,9 +526,9 @@ box2d.b2MakeArray = function(length, init) {
   return a;
 }
 
-/** 
- * @export 
- * @return {Array.<number>} 
+/**
+ * @export
+ * @return {Array.<number>}
  * @param {number=} length
  */
 box2d.b2MakeNumberArray = function(length) {

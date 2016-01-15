@@ -20,14 +20,14 @@ goog.provide('box2d.Testbed.Pinball');
 
 goog.require('box2d.Testbed.Test');
 
-/** 
- * This tests bullet collision and provides an example of a 
- * gameplay scenario. This also uses a loop shape. 
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * This tests bullet collision and provides an example of a
+ * gameplay scenario. This also uses a loop shape.
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Pinball = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -137,30 +137,30 @@ box2d.Testbed.Pinball = function(canvas, settings) {
 goog.inherits(box2d.Testbed.Pinball, box2d.Testbed.Test);
 
 /**
- * @export 
- * @type {box2d.b2RevoluteJoint} 
+ * @export
+ * @type {box2d.b2RevoluteJoint}
  */
 box2d.Testbed.Pinball.prototype.m_leftJoint = null;
 /**
- * @export 
- * @type {box2d.b2RevoluteJoint} 
+ * @export
+ * @type {box2d.b2RevoluteJoint}
  */
 box2d.Testbed.Pinball.prototype.m_rightJoint = null;
 /**
- * @export 
- * @type {box2d.b2Body} 
+ * @export
+ * @type {box2d.b2Body}
  */
 box2d.Testbed.Pinball.prototype.m_ball = null;
 /**
- * @export 
- * @type {boolean} 
+ * @export
+ * @type {boolean}
  */
 box2d.Testbed.Pinball.prototype.m_button = false;
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Pinball.prototype.Step = function(settings) {
   if (this.m_button) {
@@ -179,9 +179,9 @@ box2d.Testbed.Pinball.prototype.Step = function(settings) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.Pinball.prototype.Keyboard = function(key) {
   switch (key) {
@@ -192,9 +192,9 @@ box2d.Testbed.Pinball.prototype.Keyboard = function(key) {
 }
 
 /**
- * @export 
- * @return {void} 
- * @param {number} key 
+ * @export
+ * @return {void}
+ * @param {number} key
  */
 box2d.Testbed.Pinball.prototype.KeyboardUp = function(key) {
   switch (key) {
@@ -204,11 +204,11 @@ box2d.Testbed.Pinball.prototype.KeyboardUp = function(key) {
   }
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Pinball.Create = function(canvas, settings) {
   return new box2d.Testbed.Pinball(canvas, settings);

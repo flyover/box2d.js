@@ -23,12 +23,12 @@ goog.require('box2d.b2Math');
 goog.require('box2d.b2ShapeDistance');
 
 /**
- * Structures and functions used for computing contact points, 
- * distance queries, and TOI queries. 
+ * Structures and functions used for computing contact points,
+ * distance queries, and TOI queries.
  */
 
-/** 
- * @export 
+/**
+ * @export
  * @enum
  */
 box2d.b2ContactFeatureType = {
@@ -38,41 +38,41 @@ box2d.b2ContactFeatureType = {
 goog.exportProperty(box2d.b2ContactFeatureType, 'e_vertex', box2d.b2ContactFeatureType.e_vertex);
 goog.exportProperty(box2d.b2ContactFeatureType, 'e_face', box2d.b2ContactFeatureType.e_face);
 
-/** 
- * The features that intersect to form the contact point 
+/**
+ * The features that intersect to form the contact point
  * This must be 4 bytes or less.
- * @export 
- * @constructor 
+ * @export
+ * @constructor
  */
 box2d.b2ContactFeature = function() {};
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2ContactFeature.prototype._key = 0;
 /**
- * @export 
+ * @export
  * @type {boolean}
  */
 box2d.b2ContactFeature.prototype._key_invalid = false;
 /**
- * @export 
+ * @export
  * @type {number}
  */
-box2d.b2ContactFeature.prototype._indexA = 0; ///< Feature index on shapeA   
+box2d.b2ContactFeature.prototype._indexA = 0; ///< Feature index on shapeA
 /**
- * @export 
+ * @export
  * @type {number}
  */
-box2d.b2ContactFeature.prototype._indexB = 0; ///< Feature index on shapeB   
+box2d.b2ContactFeature.prototype._indexB = 0; ///< Feature index on shapeB
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2ContactFeature.prototype._typeA = 0; ///< The feature type on shapeA
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2ContactFeature.prototype._typeB = 0; ///< The feature type on shapeB
@@ -164,22 +164,22 @@ Object.defineProperty(
   }
 );
 
-/** 
- * Contact ids to facilitate warm starting. 
- * @export 
- * @constructor 
+/**
+ * Contact ids to facilitate warm starting.
+ * @export
+ * @constructor
  */
 box2d.b2ContactID = function() {
   this.cf = new box2d.b2ContactFeature();
 }
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2ContactFeature}
  */
 box2d.b2ContactID.prototype.cf = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2ContactID.prototype.key = 0; ///< Used to quickly compare contact ids.
@@ -199,7 +199,7 @@ Object.defineProperty(
 );
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2ContactID}
  * @param {box2d.b2ContactID} o
  */
@@ -209,7 +209,7 @@ box2d.b2ContactID.prototype.Copy = function(o) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2ContactID}
  */
 box2d.b2ContactID.prototype.Clone = function() {
@@ -227,7 +227,7 @@ box2d.b2ContactID.prototype.Clone = function() {
  * This structure is stored across time steps, so we keep it small.
  * Note: the impulses are used for internal caching and may not
  * provide reliable contact forces, especially for high speed collisions.
- * @export 
+ * @export
  * @constructor
  */
 box2d.b2ManifoldPoint = function() {
@@ -236,30 +236,30 @@ box2d.b2ManifoldPoint = function() {
 }
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2ManifoldPoint.prototype.localPoint = null; ///< usage depends on manifold type
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2ManifoldPoint.prototype.normalImpulse = 0; ///< the non-penetration impulse
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2ManifoldPoint.prototype.tangentImpulse = 0; ///< the friction impulse
 /**
- * @export 
+ * @export
  * @type {box2d.b2ContactID}
  */
 box2d.b2ManifoldPoint.prototype.id = null; ///< uniquely identifies a contact point between two shapes
 
 /**
- * @export 
+ * @export
  * @return {Array.<box2d.b2ManifoldPoint>}
- * @param {number} length 
+ * @param {number} length
  */
 box2d.b2ManifoldPoint.MakeArray = function(length) {
   return box2d.b2MakeArray(length, function(i) {
@@ -268,8 +268,8 @@ box2d.b2ManifoldPoint.MakeArray = function(length) {
 }
 
 /**
- * @export 
- * @return {void} 
+ * @export
+ * @return {void}
  */
 box2d.b2ManifoldPoint.prototype.Reset = function() {
   this.localPoint.SetZero();
@@ -279,9 +279,9 @@ box2d.b2ManifoldPoint.prototype.Reset = function() {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2ManifoldPoint}
- * @param {box2d.b2ManifoldPoint} o 
+ * @param {box2d.b2ManifoldPoint} o
  */
 box2d.b2ManifoldPoint.prototype.Copy = function(o) {
   this.localPoint.Copy(o.localPoint);
@@ -291,8 +291,8 @@ box2d.b2ManifoldPoint.prototype.Copy = function(o) {
   return this;
 }
 
-/** 
- * @export 
+/**
+ * @export
  * @enum
  */
 box2d.b2ManifoldType = {
@@ -306,7 +306,7 @@ goog.exportProperty(box2d.b2ManifoldType, 'e_circles', box2d.b2ManifoldType.e_ci
 goog.exportProperty(box2d.b2ManifoldType, 'e_faceA', box2d.b2ManifoldType.e_faceA);
 goog.exportProperty(box2d.b2ManifoldType, 'e_faceB', box2d.b2ManifoldType.e_faceB);
 
-/** 
+/**
  * A manifold for two touching convex shapes.
  * Box2D supports multiple types of contact:
  * - clip point versus plane with radius
@@ -323,7 +323,7 @@ goog.exportProperty(box2d.b2ManifoldType, 'e_faceB', box2d.b2ManifoldType.e_face
  * account for movement, which is critical for continuous physics.
  * All contact scenarios must be expressed in one of these types.
  * This structure is stored across time steps, so we keep it small.
- * @export 
+ * @export
  * @constructor
  */
 box2d.b2Manifold = function() {
@@ -335,34 +335,34 @@ box2d.b2Manifold = function() {
 }
 
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2ManifoldPoint>}
  */
 box2d.b2Manifold.prototype.points = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2Manifold.prototype.localNormal = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2Manifold.prototype.localPoint = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2ManifoldType}
  */
 box2d.b2Manifold.prototype.type = box2d.b2ManifoldType.e_unknown;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2Manifold.prototype.pointCount = 0;
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  */
 box2d.b2Manifold.prototype.Reset = function() {
   for (var i = 0, ict = box2d.b2_maxManifoldPoints; i < ict; ++i) {
@@ -375,10 +375,10 @@ box2d.b2Manifold.prototype.Reset = function() {
   this.pointCount = 0;
 }
 
-/** 
- * @export 
- * @return {box2d.b2Manifold} 
- * @param {box2d.b2Manifold} o 
+/**
+ * @export
+ * @return {box2d.b2Manifold}
+ * @param {box2d.b2Manifold} o
  */
 box2d.b2Manifold.prototype.Copy = function(o) {
   this.pointCount = o.pointCount;
@@ -393,17 +393,17 @@ box2d.b2Manifold.prototype.Copy = function(o) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2Manifold}
  */
 box2d.b2Manifold.prototype.Clone = function() {
   return new box2d.b2Manifold().Copy(this);
 }
 
-/** 
- * This is used to compute the current state of a contact 
- * manifold. 
- * @export 
+/**
+ * This is used to compute the current state of a contact
+ * manifold.
+ * @export
  * @constructor
  */
 box2d.b2WorldManifold = function() {
@@ -413,33 +413,33 @@ box2d.b2WorldManifold = function() {
 }
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WorldManifold.prototype.normal = null; ///< world vector pointing from A to B
 /**
- * @export 
+ * @export
  * @type {Array.<box2d.b2Vec2>}
  */
 box2d.b2WorldManifold.prototype.points = null; ///< world contact point (point of intersection)
 /**
- * @export 
+ * @export
  * @type {Array.<number>}
  */
 box2d.b2WorldManifold.prototype.separations = null; ///< a negative value indicates overlap, in meters
 
-/** 
- * Evaluate the manifold with supplied transforms. This assumes 
- * modest motion from the original state. This does not change 
- * the point count, impulses, etc. The radii must come from the 
- * shapes that generated the manifold. 
- * @export 
+/**
+ * Evaluate the manifold with supplied transforms. This assumes
+ * modest motion from the original state. This does not change
+ * the point count, impulses, etc. The radii must come from the
+ * shapes that generated the manifold.
+ * @export
  * @param {box2d.b2Manifold} manifold
  * @param {box2d.b2Transform} xfA
  * @param {number} radiusA
  * @param {box2d.b2Transform} xfB
- * @param {number} radiusB 
- * @return {void} 
+ * @param {number} radiusB
+ * @return {void}
  */
 box2d.b2WorldManifold.prototype.Initialize = function(manifold, xfA, radiusA, xfB, radiusB) {
   if (manifold.pointCount === 0) {
@@ -506,9 +506,9 @@ box2d.b2WorldManifold.prototype.Initialize.s_cB = new box2d.b2Vec2();
 box2d.b2WorldManifold.prototype.Initialize.s_planePoint = new box2d.b2Vec2();
 box2d.b2WorldManifold.prototype.Initialize.s_clipPoint = new box2d.b2Vec2();
 
-/** 
- * This is used for determining the state of contact points. 
- * @export 
+/**
+ * This is used for determining the state of contact points.
+ * @export
  * @enum
  */
 box2d.b2PointState = {
@@ -522,17 +522,17 @@ goog.exportProperty(box2d.b2PointState, 'b2_addState    ', box2d.b2PointState.b2
 goog.exportProperty(box2d.b2PointState, 'b2_persistState', box2d.b2PointState.b2_persistState);
 goog.exportProperty(box2d.b2PointState, 'b2_removeState ', box2d.b2PointState.b2_removeState);
 
-/** 
- * Compute the point states given two manifolds. The states 
- * pertain to the transition from manifold1 to manifold2. So 
- * state1 is either persist or remove while state2 is either add 
- * or persist. 
- * @export 
+/**
+ * Compute the point states given two manifolds. The states
+ * pertain to the transition from manifold1 to manifold2. So
+ * state1 is either persist or remove while state2 is either add
+ * or persist.
+ * @export
  * @return {void}
- * @param {Array.<box2d.b2PointState>} state1 
- * @param {Array.<box2d.b2PointState>} state2 
- * @param {box2d.b2Manifold} manifold1 
- * @param {box2d.b2Manifold} manifold2 
+ * @param {Array.<box2d.b2PointState>} state1
+ * @param {Array.<box2d.b2PointState>} state2
+ * @param {box2d.b2Manifold} manifold1
+ * @param {box2d.b2Manifold} manifold2
  */
 box2d.b2GetPointStates = function(state1, state2, manifold1, manifold2) {
   // Detect persists and removes.
@@ -572,9 +572,9 @@ box2d.b2GetPointStates = function(state1, state2, manifold1, manifold2) {
   }
 }
 
-/** 
- * Used for computing contact manifolds. 
- * @export 
+/**
+ * Used for computing contact manifolds.
+ * @export
  * @constructor
  */
 box2d.b2ClipVertex = function() {
@@ -583,20 +583,20 @@ box2d.b2ClipVertex = function() {
 };
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2ClipVertex.prototype.v = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2ContactID}
  */
 box2d.b2ClipVertex.prototype.id = null;
 
 /**
- * @export 
- * @return {Array.<box2d.b2ClipVertex>} 
- * @param {number=} length 
+ * @export
+ * @return {Array.<box2d.b2ClipVertex>}
+ * @param {number=} length
  */
 box2d.b2ClipVertex.MakeArray = function(length) {
   return box2d.b2MakeArray(length, function(i) {
@@ -605,9 +605,9 @@ box2d.b2ClipVertex.MakeArray = function(length) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2ClipVertex}
- * @param {box2d.b2ClipVertex} other 
+ * @param {box2d.b2ClipVertex} other
  */
 box2d.b2ClipVertex.prototype.Copy = function(other) {
   this.v.Copy(other.v);
@@ -615,10 +615,10 @@ box2d.b2ClipVertex.prototype.Copy = function(other) {
   return this;
 }
 
-/** 
- * Ray-cast input data. The ray extends from p1 to p1 + 
- * maxFraction * (p2 - p1). 
- * @export 
+/**
+ * Ray-cast input data. The ray extends from p1 to p1 +
+ * maxFraction * (p2 - p1).
+ * @export
  * @constructor
  */
 box2d.b2RayCastInput = function() {
@@ -628,24 +628,24 @@ box2d.b2RayCastInput = function() {
 }
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RayCastInput.prototype.p1 = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RayCastInput.prototype.p2 = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RayCastInput.prototype.maxFraction = 1;
 
 /**
- * @export 
- * @return {box2d.b2RayCastInput} 
+ * @export
+ * @return {box2d.b2RayCastInput}
  * @param {box2d.b2RayCastInput} o
  */
 box2d.b2RayCastInput.prototype.Copy = function(o) {
@@ -655,10 +655,10 @@ box2d.b2RayCastInput.prototype.Copy = function(o) {
   return this;
 }
 
-/** 
- * Ray-cast output data. The ray hits at p1 + fraction * (p2 - 
- * p1), where p1 and p2 come from box2d.b2RayCastInput. 
- * @export 
+/**
+ * Ray-cast output data. The ray hits at p1 + fraction * (p2 -
+ * p1), where p1 and p2 come from box2d.b2RayCastInput.
+ * @export
  * @constructor
  */
 box2d.b2RayCastOutput = function() {
@@ -667,20 +667,20 @@ box2d.b2RayCastOutput = function() {
 };
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2RayCastOutput.prototype.normal = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2RayCastOutput.prototype.fraction = 0;
 
 /**
- * @export 
- * @return {box2d.b2RayCastOutput} 
- * @param {box2d.b2RayCastOutput} o 
+ * @export
+ * @return {box2d.b2RayCastOutput}
+ * @param {box2d.b2RayCastOutput} o
  */
 box2d.b2RayCastOutput.prototype.Copy = function(o) {
   this.normal.Copy(o.normal);
@@ -688,9 +688,9 @@ box2d.b2RayCastOutput.prototype.Copy = function(o) {
   return this;
 }
 
-/** 
- * An axis aligned bounding box. 
- * @export 
+/**
+ * An axis aligned bounding box.
+ * @export
  * @constructor
  */
 box2d.b2AABB = function() {
@@ -702,39 +702,39 @@ box2d.b2AABB = function() {
 };
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2AABB.prototype.lowerBound = null; ///< the lower vertex
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2AABB.prototype.upperBound = null; ///< the upper vertex
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2AABB.prototype.m_out_center = null; // access using GetCenter()
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2AABB.prototype.m_out_extent = null; // access using GetExtents()
 
 /**
- * @export 
- * @return {box2d.b2AABB} 
+ * @export
+ * @return {box2d.b2AABB}
  */
 box2d.b2AABB.prototype.Clone = function() {
   return new box2d.b2AABB().Copy(this);
 }
 
 /**
- * @export 
- * @return {box2d.b2AABB} 
- * @param {box2d.b2AABB} o 
+ * @export
+ * @return {box2d.b2AABB}
+ * @param {box2d.b2AABB} o
  */
 box2d.b2AABB.prototype.Copy = function(o) {
   this.lowerBound.Copy(o.lowerBound);
@@ -742,9 +742,9 @@ box2d.b2AABB.prototype.Copy = function(o) {
   return this;
 }
 
-/** 
- * Verify that the bounds are sorted. 
- * @export 
+/**
+ * Verify that the bounds are sorted.
+ * @export
  * @return {boolean}
  */
 box2d.b2AABB.prototype.IsValid = function() {
@@ -755,28 +755,28 @@ box2d.b2AABB.prototype.IsValid = function() {
   return valid;
 }
 
-/** 
- * Get the center of the AABB. 
- * @export 
+/**
+ * Get the center of the AABB.
+ * @export
  * @return {box2d.b2Vec2}
  */
 box2d.b2AABB.prototype.GetCenter = function() {
   return box2d.b2Mid_V2_V2(this.lowerBound, this.upperBound, this.m_out_center);
 }
 
-/** 
- * Get the extents of the AABB (half-widths). 
- * @export 
- * @return {box2d.b2Vec2} 
+/**
+ * Get the extents of the AABB (half-widths).
+ * @export
+ * @return {box2d.b2Vec2}
  */
 box2d.b2AABB.prototype.GetExtents = function() {
   return box2d.b2Ext_V2_V2(this.lowerBound, this.upperBound, this.m_out_extent);
 }
 
-/** 
- * Get the perimeter length 
- * @export 
- * @return {number} 
+/**
+ * Get the perimeter length
+ * @export
+ * @return {number}
  */
 box2d.b2AABB.prototype.GetPerimeter = function() {
   var wx = this.upperBound.x - this.lowerBound.x;
@@ -784,10 +784,10 @@ box2d.b2AABB.prototype.GetPerimeter = function() {
   return 2 * (wx + wy);
 }
 
-/** 
- * @return {box2d.b2AABB} 
- * @param {box2d.b2AABB} a0 
- * @param {box2d.b2AABB=} a1 
+/**
+ * @return {box2d.b2AABB}
+ * @param {box2d.b2AABB} a0
+ * @param {box2d.b2AABB=} a1
  */
 box2d.b2AABB.prototype.Combine = function(a0, a1) {
   switch (arguments.length) {
@@ -800,10 +800,10 @@ box2d.b2AABB.prototype.Combine = function(a0, a1) {
   }
 }
 
-/** 
- * Combine an AABB into this one. 
- * @export 
- * @return {box2d.b2AABB} 
+/**
+ * Combine an AABB into this one.
+ * @export
+ * @return {box2d.b2AABB}
  * @param {box2d.b2AABB} aabb
  */
 box2d.b2AABB.prototype.Combine1 = function(aabb) {
@@ -814,10 +814,10 @@ box2d.b2AABB.prototype.Combine1 = function(aabb) {
   return this;
 }
 
-/** 
- * Combine two AABBs into this one. 
- * @export 
- * @return {box2d.b2AABB} 
+/**
+ * Combine two AABBs into this one.
+ * @export
+ * @return {box2d.b2AABB}
  * @param {box2d.b2AABB} aabb1
  * @param {box2d.b2AABB} aabb2
  */
@@ -830,7 +830,7 @@ box2d.b2AABB.prototype.Combine2 = function(aabb1, aabb2) {
 }
 
 /**
- * @export 
+ * @export
  * @return {box2d.b2AABB}
  * @param {box2d.b2AABB} aabb1
  * @param {box2d.b2AABB} aabb2
@@ -841,11 +841,11 @@ box2d.b2AABB.Combine = function(aabb1, aabb2, out) {
   return out;
 }
 
-/** 
- * Does this aabb contain the provided AABB. 
- * @export 
- * @return {boolean} 
- * @param {box2d.b2AABB} aabb 
+/**
+ * Does this aabb contain the provided AABB.
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2AABB} aabb
  */
 box2d.b2AABB.prototype.Contains = function(aabb) {
   var result = true;
@@ -856,9 +856,9 @@ box2d.b2AABB.prototype.Contains = function(aabb) {
   return result;
 }
 
-/** 
- * From Real-time Collision Detection, p179. 
- * @export 
+/**
+ * From Real-time Collision Detection, p179.
+ * @export
  * @return {boolean}
  * @param {box2d.b2RayCastOutput} output
  * @param {box2d.b2RayCastInput} input
@@ -959,9 +959,9 @@ box2d.b2AABB.prototype.RayCast = function(output, input) {
 }
 
 /**
- * @export 
- * @return {boolean} 
- * @param {box2d.b2AABB} other 
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2AABB} other
  */
 box2d.b2AABB.prototype.TestOverlap = function(other) {
   var d1_x = other.lowerBound.x - this.upperBound.x;
@@ -979,10 +979,10 @@ box2d.b2AABB.prototype.TestOverlap = function(other) {
 }
 
 /**
- * @export 
- * @return {boolean} 
+ * @export
+ * @return {boolean}
  * @param {box2d.b2AABB} a
- * @param {box2d.b2AABB} b 
+ * @param {box2d.b2AABB} b
  */
 box2d.b2TestOverlap_AABB = function(a, b) {
   var d1_x = b.lowerBound.x - a.upperBound.x;
@@ -999,16 +999,16 @@ box2d.b2TestOverlap_AABB = function(a, b) {
   return true;
 }
 
-/** 
- * Clipping for contact manifolds. 
- * Sutherland-Hodgman clipping. 
- * @export 
- * @return {number} 
- * @param {Array.<box2d.b2ClipVertex>} vOut 
+/**
+ * Clipping for contact manifolds.
+ * Sutherland-Hodgman clipping.
+ * @export
+ * @return {number}
+ * @param {Array.<box2d.b2ClipVertex>} vOut
  * @param {Array.<box2d.b2ClipVertex>} vIn
- * @param {box2d.b2Vec2} normal 
- * @param {number} offset 
- * @param {number} vertexIndexA 
+ * @param {box2d.b2Vec2} normal
+ * @param {number} offset
+ * @param {number} vertexIndexA
  */
 box2d.b2ClipSegmentToLine = function(vOut, vIn, normal, offset, vertexIndexA) {
   // Start with no output points
@@ -1046,14 +1046,14 @@ box2d.b2ClipSegmentToLine = function(vOut, vIn, normal, offset, vertexIndexA) {
 }
 
 /**
- * @export 
- * @return {boolean} 
- * @param {box2d.b2Shape} shapeA 
- * @param {number} indexA 
- * @param {box2d.b2Shape} shapeB 
- * @param {number} indexB 
- * @param {box2d.b2Transform} xfA 
- * @param {box2d.b2Transform} xfB 
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2Shape} shapeA
+ * @param {number} indexA
+ * @param {box2d.b2Shape} shapeB
+ * @param {number} indexB
+ * @param {box2d.b2Transform} xfA
+ * @param {box2d.b2Transform} xfB
  */
 box2d.b2TestOverlap_Shape = function(shapeA, indexA, shapeB, indexB, xfA, xfB) {
   var input = box2d.b2TestOverlap_Shape.s_input.Reset();
@@ -1077,14 +1077,14 @@ box2d.b2TestOverlap_Shape.s_simplexCache = new box2d.b2SimplexCache();
 box2d.b2TestOverlap_Shape.s_output = new box2d.b2DistanceOutput();
 
 /**
- * @export 
- * @return {boolean} 
- * @param {box2d.b2AABB|box2d.b2Shape} AABBA_or_shapeA 
- * @param {box2d.b2AABB|number} AABBB_or_indexA 
- * @param {box2d.b2Shape=} shapeB 
- * @param {number=} indexB 
- * @param {box2d.b2Transform=} xfA 
- * @param {box2d.b2Transform=} xfB 
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2AABB|box2d.b2Shape} AABBA_or_shapeA
+ * @param {box2d.b2AABB|number} AABBB_or_indexA
+ * @param {box2d.b2Shape=} shapeB
+ * @param {number=} indexB
+ * @param {box2d.b2Transform=} xfA
+ * @param {box2d.b2Transform=} xfB
  */
 box2d.b2TestOverlap = function(AABBA_or_shapeA, AABBB_or_indexA, shapeB, indexB, xfA, xfB) {
   if ((AABBA_or_shapeA instanceof box2d.b2AABB) &&

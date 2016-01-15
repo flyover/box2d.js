@@ -22,14 +22,14 @@ goog.require('box2d.b2Settings');
 goog.require('box2d.b2Joint');
 goog.require('box2d.b2Math');
 
-/** 
- * Weld joint definition. You need to specify local anchor 
- * points where they are attached and the relative body angle. 
- * The position of the anchor points is important for computing 
- * the reaction torque. 
- * @export 
- * @constructor 
- * @extends {box2d.b2JointDef} 
+/**
+ * Weld joint definition. You need to specify local anchor
+ * points where they are attached and the relative body angle.
+ * The position of the anchor points is important for computing
+ * the reaction torque.
+ * @export
+ * @constructor
+ * @extends {box2d.b2JointDef}
  */
 box2d.b2WeldJointDef = function() {
   box2d.b2JointDef.call(this, box2d.b2JointType.e_weldJoint); // base class constructor
@@ -40,49 +40,49 @@ box2d.b2WeldJointDef = function() {
 
 goog.inherits(box2d.b2WeldJointDef, box2d.b2JointDef);
 
-/** 
- * The local anchor point relative to bodyA's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyA's origin.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WeldJointDef.prototype.localAnchorA = null;
 
-/** 
- * The local anchor point relative to bodyB's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyB's origin.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WeldJointDef.prototype.localAnchorB = null;
 
-/** 
- * The bodyB angle minus bodyA angle in the reference state 
- * (radians). 
- * @export 
+/**
+ * The bodyB angle minus bodyA angle in the reference state
+ * (radians).
+ * @export
  * @type {number}
  */
 box2d.b2WeldJointDef.prototype.referenceAngle = 0;
 
-/** 
- * The mass-spring-damper frequency in Hertz. Rotation only. 
- * Disable softness with a value of 0. 
- * @export 
+/**
+ * The mass-spring-damper frequency in Hertz. Rotation only.
+ * Disable softness with a value of 0.
+ * @export
  * @type {number}
  */
 box2d.b2WeldJointDef.prototype.frequencyHz = 0;
 
-/** 
- * The damping ratio. 0 = no damping, 1 = critical damping. 
- * @export 
+/**
+ * The damping ratio. 0 = no damping, 1 = critical damping.
+ * @export
  * @type {number}
  */
 box2d.b2WeldJointDef.prototype.dampingRatio = 0;
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2Body} bA 
- * @param {box2d.b2Body} bB 
- * @param {box2d.b2Vec2} anchor 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2Body} bA
+ * @param {box2d.b2Body} bB
+ * @param {box2d.b2Vec2} anchor
  */
 box2d.b2WeldJointDef.prototype.Initialize = function(bA, bB, anchor) {
   this.bodyA = bA;
@@ -92,14 +92,14 @@ box2d.b2WeldJointDef.prototype.Initialize = function(bA, bB, anchor) {
   this.referenceAngle = this.bodyB.GetAngle() - this.bodyA.GetAngle();
 }
 
-/** 
- * A weld joint essentially glues two bodies together. A weld 
- * joint may distort somewhat because the island constraint 
- * solver is approximate. 
- * @export 
- * @constructor 
- * @extends {box2d.b2Joint} 
- * @param {box2d.b2WeldJointDef} def 
+/**
+ * A weld joint essentially glues two bodies together. A weld
+ * joint may distort somewhat because the island constraint
+ * solver is approximate.
+ * @export
+ * @constructor
+ * @extends {box2d.b2Joint}
+ * @param {box2d.b2WeldJointDef} def
  */
 box2d.b2WeldJoint = function(def) {
   box2d.b2Joint.call(this, def); // base class constructor
@@ -128,127 +128,127 @@ box2d.b2WeldJoint = function(def) {
 goog.inherits(box2d.b2WeldJoint, box2d.b2Joint);
 
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WeldJoint.prototype.m_frequencyHz = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WeldJoint.prototype.m_dampingRatio = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WeldJoint.prototype.m_bias = 0;
 
 // Solver shared
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WeldJoint.prototype.m_localAnchorA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WeldJoint.prototype.m_localAnchorB = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WeldJoint.prototype.m_referenceAngle = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WeldJoint.prototype.m_gamma = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec3}
  */
 box2d.b2WeldJoint.prototype.m_impulse = null;
 
 // Solver temp
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WeldJoint.prototype.m_indexA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WeldJoint.prototype.m_indexB = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WeldJoint.prototype.m_rA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WeldJoint.prototype.m_rB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WeldJoint.prototype.m_localCenterA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WeldJoint.prototype.m_localCenterB = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WeldJoint.prototype.m_invMassA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WeldJoint.prototype.m_invMassB = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WeldJoint.prototype.m_invIA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2WeldJoint.prototype.m_invIB = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Mat33}
  */
 box2d.b2WeldJoint.prototype.m_mass = null;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2WeldJoint.prototype.m_qA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2WeldJoint.prototype.m_qB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WeldJoint.prototype.m_lalcA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2WeldJoint.prototype.m_lalcB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Mat33}
  */
 box2d.b2WeldJoint.prototype.m_K = null;
@@ -386,9 +386,9 @@ box2d.b2WeldJoint.prototype.InitVelocityConstraints = function(data) {
 }
 box2d.b2WeldJoint.prototype.InitVelocityConstraints.s_P = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2WeldJoint.prototype.SolveVelocityConstraints = function(data) {
@@ -479,9 +479,9 @@ box2d.b2WeldJoint.prototype.SolveVelocityConstraints.s_impulse = new box2d.b2Vec
 box2d.b2WeldJoint.prototype.SolveVelocityConstraints.s_P = new box2d.b2Vec2();
 
 /**
- * @export 
- * @return {boolean} 
- * @param {box2d.b2SolverData} data 
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2SolverData} data
  */
 box2d.b2WeldJoint.prototype.SolvePositionConstraints = function(data) {
   /*box2d.b2Vec2&*/
@@ -600,28 +600,28 @@ box2d.b2WeldJoint.prototype.SolvePositionConstraints.s_P = new box2d.b2Vec2();
 box2d.b2WeldJoint.prototype.SolvePositionConstraints.s_impulse = new box2d.b2Vec3();
 box2d.b2WeldJoint.prototype.SolvePositionConstraints.s_impulse2 = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2WeldJoint.prototype.GetAnchorA = function(out) {
   return this.m_bodyA.GetWorldPoint(this.m_localAnchorA, out);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2WeldJoint.prototype.GetAnchorB = function(out) {
   return this.m_bodyB.GetWorldPoint(this.m_localAnchorB, out);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {number} inv_dt 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {number} inv_dt
  * @param {box2d.b2Vec2} out
  */
 box2d.b2WeldJoint.prototype.GetReactionForce = function(inv_dt, out) {
@@ -630,79 +630,79 @@ box2d.b2WeldJoint.prototype.GetReactionForce = function(inv_dt, out) {
   return out.Set(inv_dt * this.m_impulse.x, inv_dt * this.m_impulse.y);
 }
 
-/** 
- * @export 
- * @return {number} 
- * @param {number} inv_dt 
+/**
+ * @export
+ * @return {number}
+ * @param {number} inv_dt
  */
 box2d.b2WeldJoint.prototype.GetReactionTorque = function(inv_dt) {
   return inv_dt * this.m_impulse.z;
 }
 
-/** 
- * The local anchor point relative to bodyA's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyA's origin.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2WeldJoint.prototype.GetLocalAnchorA = function(out) {
   return out.Copy(this.m_localAnchorA);
 }
 
-/** 
- * The local anchor point relative to bodyB's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyB's origin.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2WeldJoint.prototype.GetLocalAnchorB = function(out) {
   return out.Copy(this.m_localAnchorB);
 }
 
-/** 
- * Get the reference angle. 
- * @export 
+/**
+ * Get the reference angle.
+ * @export
  * @return {number}
  */
 box2d.b2WeldJoint.prototype.GetReferenceAngle = function() {
   return this.m_referenceAngle;
 }
 
-/** 
- * Set/get frequency in Hz. 
- * @return {void} 
- * @param {number} hz 
+/**
+ * Set/get frequency in Hz.
+ * @return {void}
+ * @param {number} hz
  */
 box2d.b2WeldJoint.prototype.SetFrequency = function(hz) {
     this.m_frequencyHz = hz;
   }
-  /** 
-   * @export 
+  /**
+   * @export
    * @return {number}
    */
 box2d.b2WeldJoint.prototype.GetFrequency = function() {
   return this.m_frequencyHz;
 }
 
-/** 
- * Set/get damping ratio. 
- * @return {void} 
- * @param {number} ratio 
+/**
+ * Set/get damping ratio.
+ * @return {void}
+ * @param {number} ratio
  */
 box2d.b2WeldJoint.prototype.SetDampingRatio = function(ratio) {
     this.m_dampingRatio = ratio;
   }
-  /** 
-   * @export 
+  /**
+   * @export
    * @return {number}
    */
 box2d.b2WeldJoint.prototype.GetDampingRatio = function() {
   return this.m_dampingRatio;
 }
 
-/** 
- * Dump to b2Log 
- * @export 
+/**
+ * Dump to b2Log
+ * @export
  * @return {void}
  */
 box2d.b2WeldJoint.prototype.Dump = function() {

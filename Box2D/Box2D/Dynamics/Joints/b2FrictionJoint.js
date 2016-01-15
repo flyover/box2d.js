@@ -22,11 +22,11 @@ goog.require('box2d.b2Settings');
 goog.require('box2d.b2Joint');
 goog.require('box2d.b2Math');
 
-/** 
- * Friction joint definition. 
- * @export 
- * @constructor 
- * @extends {box2d.b2JointDef} 
+/**
+ * Friction joint definition.
+ * @export
+ * @constructor
+ * @extends {box2d.b2JointDef}
  */
 box2d.b2FrictionJointDef = function() {
   box2d.b2JointDef.call(this, box2d.b2JointType.e_frictionJoint); // base class constructor
@@ -37,40 +37,40 @@ box2d.b2FrictionJointDef = function() {
 
 goog.inherits(box2d.b2FrictionJointDef, box2d.b2JointDef);
 
-/** 
- * The local anchor point relative to bodyA's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyA's origin.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2FrictionJointDef.prototype.localAnchorA = null;
 
-/** 
- * The local anchor point relative to bodyB's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyB's origin.
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2FrictionJointDef.prototype.localAnchorB = null;
 
-/** 
- * The maximum friction force in N. 
- * @export 
+/**
+ * The maximum friction force in N.
+ * @export
  * @type {number}
  */
 box2d.b2FrictionJointDef.prototype.maxForce = 0;
 
-/** 
- * The maximum friction torque in N-m. 
- * @export 
+/**
+ * The maximum friction torque in N-m.
+ * @export
  * @type {number}
  */
 box2d.b2FrictionJointDef.prototype.maxTorque = 0;
 
-/** 
- * @export 
- * @return {void} 
- * @param {box2d.b2Body} bA 
- * @param {box2d.b2Body} bB 
- * @param {box2d.b2Vec2} anchor 
+/**
+ * @export
+ * @return {void}
+ * @param {box2d.b2Body} bA
+ * @param {box2d.b2Body} bB
+ * @param {box2d.b2Vec2} anchor
  */
 box2d.b2FrictionJointDef.prototype.Initialize = function(bA, bB, anchor) {
   this.bodyA = bA;
@@ -79,13 +79,13 @@ box2d.b2FrictionJointDef.prototype.Initialize = function(bA, bB, anchor) {
   this.bodyB.GetLocalPoint(anchor, this.localAnchorB);
 }
 
-/** 
- * Friction joint. This is used for top-down friction. It 
- * provides 2D translational friction and angular friction. 
- * @export 
- * @constructor 
- * @extends {box2d.b2Joint} 
- * @param {box2d.b2FrictionJointDef} def 
+/**
+ * Friction joint. This is used for top-down friction. It
+ * provides 2D translational friction and angular friction.
+ * @export
+ * @constructor
+ * @extends {box2d.b2Joint}
+ * @param {box2d.b2FrictionJointDef} def
  */
 box2d.b2FrictionJoint = function(def) {
   box2d.b2Joint.call(this, def); // base class constructor
@@ -113,129 +113,129 @@ box2d.b2FrictionJoint = function(def) {
 goog.inherits(box2d.b2FrictionJoint, box2d.b2Joint);
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2FrictionJoint.prototype.m_localAnchorA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2FrictionJoint.prototype.m_localAnchorB = null;
 
 // Solver shared
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2FrictionJoint.prototype.m_linearImpulse = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2FrictionJoint.prototype.m_angularImpulse = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2FrictionJoint.prototype.m_maxForce = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2FrictionJoint.prototype.m_maxTorque = 0;
 
 // Solver temp
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2FrictionJoint.prototype.m_indexA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2FrictionJoint.prototype.m_indexB = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2FrictionJoint.prototype.m_rA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2FrictionJoint.prototype.m_rB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2FrictionJoint.prototype.m_localCenterA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2FrictionJoint.prototype.m_localCenterB = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2FrictionJoint.prototype.m_invMassA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2FrictionJoint.prototype.m_invMassB = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2FrictionJoint.prototype.m_invIA = 0;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2FrictionJoint.prototype.m_invIB = 0;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Mat22}
  */
 box2d.b2FrictionJoint.prototype.m_linearMass = null;
 /**
- * @export 
+ * @export
  * @type {number}
  */
 box2d.b2FrictionJoint.prototype.m_angularMass = 0;
 
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2FrictionJoint.prototype.m_qA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Rot}
  */
 box2d.b2FrictionJoint.prototype.m_qB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2FrictionJoint.prototype.m_lalcA = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Vec2}
  */
 box2d.b2FrictionJoint.prototype.m_lalcB = null;
 /**
- * @export 
+ * @export
  * @type {box2d.b2Mat22}
  */
 box2d.b2FrictionJoint.prototype.m_K = null;
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2FrictionJoint.prototype.InitVelocityConstraints = function(data) {
@@ -335,9 +335,9 @@ box2d.b2FrictionJoint.prototype.InitVelocityConstraints = function(data) {
   data.velocities[this.m_indexB].w = wB;
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  * @param {box2d.b2SolverData} data
  */
 box2d.b2FrictionJoint.prototype.SolveVelocityConstraints = function(data) {
@@ -424,113 +424,113 @@ box2d.b2FrictionJoint.prototype.SolveVelocityConstraints.s_Cdot = new box2d.b2Ve
 box2d.b2FrictionJoint.prototype.SolveVelocityConstraints.s_impulseV = new box2d.b2Vec2();
 box2d.b2FrictionJoint.prototype.SolveVelocityConstraints.s_oldImpulseV = new box2d.b2Vec2();
 
-/** 
- * @export 
- * @return {boolean} 
- * @param {box2d.b2SolverData} data 
+/**
+ * @export
+ * @return {boolean}
+ * @param {box2d.b2SolverData} data
  */
 box2d.b2FrictionJoint.prototype.SolvePositionConstraints = function(data) {
   return true;
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2FrictionJoint.prototype.GetAnchorA = function(out) {
   return this.m_bodyA.GetWorldPoint(this.m_localAnchorA, out);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {box2d.b2Vec2} out 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2FrictionJoint.prototype.GetAnchorB = function(out) {
   return this.m_bodyB.GetWorldPoint(this.m_localAnchorB, out);
 }
 
-/** 
- * @export 
- * @return {box2d.b2Vec2} 
- * @param {number} inv_dt 
+/**
+ * @export
+ * @return {box2d.b2Vec2}
+ * @param {number} inv_dt
  * @param {box2d.b2Vec2} out
  */
 box2d.b2FrictionJoint.prototype.GetReactionForce = function(inv_dt, out) {
   return out.Set(inv_dt * this.m_linearImpulse.x, inv_dt * this.m_linearImpulse.y);
 }
 
-/** 
- * @export 
- * @return {number} 
- * @param {number} inv_dt 
+/**
+ * @export
+ * @return {number}
+ * @param {number} inv_dt
  */
 box2d.b2FrictionJoint.prototype.GetReactionTorque = function(inv_dt) {
   return inv_dt * this.m_angularImpulse;
 }
 
-/** 
- * The local anchor point relative to bodyA's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyA's origin.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2FrictionJoint.prototype.GetLocalAnchorA = function(out) {
   return out.Copy(this.m_localAnchorA);
 }
 
-/** 
- * The local anchor point relative to bodyB's origin. 
- * @export 
+/**
+ * The local anchor point relative to bodyB's origin.
+ * @export
  * @return {box2d.b2Vec2}
- * @param {box2d.b2Vec2} out 
+ * @param {box2d.b2Vec2} out
  */
 box2d.b2FrictionJoint.prototype.GetLocalAnchorB = function(out) {
   return out.Copy(this.m_localAnchorB);
 }
 
-/** 
- * Set the maximum friction force in N. 
- * @export 
- * @return {void} 
+/**
+ * Set the maximum friction force in N.
+ * @export
+ * @return {void}
  * @param {number} force
  */
 box2d.b2FrictionJoint.prototype.SetMaxForce = function(force) {
   this.m_maxForce = force;
 }
 
-/** 
- * Get the maximum friction force in N. 
- * @export 
+/**
+ * Get the maximum friction force in N.
+ * @export
  * @return {number}
  */
 box2d.b2FrictionJoint.prototype.GetMaxForce = function() {
   return this.m_maxForce;
 }
 
-/** 
- * Set the maximum friction torque in N*m. 
- * @export 
- * @return {void} 
+/**
+ * Set the maximum friction torque in N*m.
+ * @export
+ * @return {void}
  * @param {number} torque
  */
 box2d.b2FrictionJoint.prototype.SetMaxTorque = function(torque) {
   this.m_maxTorque = torque;
 }
 
-/** 
- * Get the maximum friction torque in N*m. 
- * @export 
+/**
+ * Get the maximum friction torque in N*m.
+ * @export
  * @return {number}
  */
 box2d.b2FrictionJoint.prototype.GetMaxTorque = function() {
   return this.m_maxTorque;
 }
 
-/** 
- * Dump joint to dmLog 
- * @export 
+/**
+ * Dump joint to dmLog
+ * @export
  * @return {void}
  */
 box2d.b2FrictionJoint.prototype.Dump = function() {

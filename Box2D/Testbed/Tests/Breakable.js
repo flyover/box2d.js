@@ -21,11 +21,11 @@ goog.provide('box2d.Testbed.Breakable');
 goog.require('box2d.Testbed.Test');
 
 /**
- * @export 
- * @constructor 
- * @extends {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+ * @export
+ * @constructor
+ * @extends {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Breakable = function(canvas, settings) {
   box2d.Testbed.Test.call(this, canvas, settings); // base class constructor
@@ -69,63 +69,63 @@ box2d.Testbed.Breakable = function(canvas, settings) {
 goog.inherits(box2d.Testbed.Breakable, box2d.Testbed.Test);
 
 /**
- * @export 
- * @const 
- * @type {number} 
+ * @export
+ * @const
+ * @type {number}
  */
 box2d.Testbed.Breakable.e_count = 7;
 
 /**
- * @export 
- * @type {box2d.b2Body} 
+ * @export
+ * @type {box2d.b2Body}
  */
 box2d.Testbed.Breakable.prototype.m_body1 = null;
 /**
- * @export 
- * @type {box2d.b2Vec2} 
+ * @export
+ * @type {box2d.b2Vec2}
  */
 box2d.Testbed.Breakable.prototype.m_velocity = null;
 /**
- * @export 
- * @type {number} 
+ * @export
+ * @type {number}
  */
 box2d.Testbed.Breakable.prototype.m_angularVelocity = 0;
 /**
- * @export 
- * @type {box2d.b2PolygonShape} 
+ * @export
+ * @type {box2d.b2PolygonShape}
  */
 box2d.Testbed.Breakable.prototype.m_shape1 = null;
 /**
- * @export 
- * @type {box2d.b2PolygonShape} 
+ * @export
+ * @type {box2d.b2PolygonShape}
  */
 box2d.Testbed.Breakable.prototype.m_shape2 = null;
 /**
- * @export 
- * @type {box2d.b2Fixture} 
+ * @export
+ * @type {box2d.b2Fixture}
  */
 box2d.Testbed.Breakable.prototype.m_piece1 = null;
 /**
- * @export 
- * @type {box2d.b2Fixture} 
+ * @export
+ * @type {box2d.b2Fixture}
  */
 box2d.Testbed.Breakable.prototype.m_piece2 = null;
 /**
- * @export 
- * @type {boolean} 
+ * @export
+ * @type {boolean}
  */
 box2d.Testbed.Breakable.prototype.m_broke = false;
 /**
- * @export 
- * @type {boolean} 
+ * @export
+ * @type {boolean}
  */
 box2d.Testbed.Breakable.prototype.m_break = false;
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.b2Contact} contact 
- * @param {box2d.b2ContactImpulse} impulse 
+ * @return {void}
+ * @param {box2d.b2Contact} contact
+ * @param {box2d.b2ContactImpulse} impulse
  */
 box2d.Testbed.Breakable.prototype.PostSolve = function(contact, impulse) {
   if (this.m_broke) {
@@ -149,9 +149,9 @@ box2d.Testbed.Breakable.prototype.PostSolve = function(contact, impulse) {
   }
 }
 
-/** 
- * @export 
- * @return {void} 
+/**
+ * @export
+ * @return {void}
  */
 box2d.Testbed.Breakable.prototype.Break = function() {
   // Create two bodies from one.
@@ -194,8 +194,8 @@ box2d.Testbed.Breakable.prototype.Break = function() {
 
 /**
  * @export
- * @return {void} 
- * @param {box2d.Testbed.Settings} settings 
+ * @return {void}
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Breakable.prototype.Step = function(settings) {
   if (this.m_break) {
@@ -213,11 +213,11 @@ box2d.Testbed.Breakable.prototype.Step = function(settings) {
   box2d.Testbed.Test.prototype.Step.call(this, settings);
 }
 
-/** 
- * @export 
- * @return {box2d.Testbed.Test} 
- * @param {HTMLCanvasElement} canvas 
- * @param {box2d.Testbed.Settings} settings 
+/**
+ * @export
+ * @return {box2d.Testbed.Test}
+ * @param {HTMLCanvasElement} canvas
+ * @param {box2d.Testbed.Settings} settings
  */
 box2d.Testbed.Breakable.Create = function(canvas, settings) {
   return new box2d.Testbed.Breakable(canvas, settings);

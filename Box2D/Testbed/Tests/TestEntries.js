@@ -105,10 +105,10 @@ goog.require('box2d.Testbed.VerticalStack');
 goog.require('box2d.Testbed.WaveMachine');
 goog.require('box2d.Testbed.Web');
 
-/** 
- * @export 
- * @return {Array.<box2d.Testbed.TestEntry>} 
- * @param {Array.<box2d.Testbed.TestEntry>} entries 
+/**
+ * @export
+ * @return {Array.<box2d.Testbed.TestEntry>}
+ * @param {Array.<box2d.Testbed.TestEntry>} entries
  */
 box2d.Testbed.GetTestEntries = function(entries) {
   //#if B2_ENABLE_PARTICLE
