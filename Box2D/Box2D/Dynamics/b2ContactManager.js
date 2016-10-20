@@ -150,14 +150,6 @@ box2d.b2ContactManager.prototype.Collide = function() {
 
     // Is this contact flagged for filtering?
     if (c.m_flag_filterFlag) {
-      // Should these bodies collide?
-      if (!bodyB.ShouldCollide(bodyA)) {
-        var cNuke = c;
-        c = cNuke.m_next;
-        this.Destroy(cNuke);
-        continue;
-      }
-
       // Check user filtering.
       if (this.m_contactFilter && !this.m_contactFilter.ShouldCollide(fixtureA, fixtureB)) {
         cNuke = c;
@@ -259,11 +251,6 @@ box2d.b2ContactManager.prototype.AddPair = function(proxyUserDataA, proxyUserDat
     }
 
     edge = edge.next;
-  }
-
-  // Does a joint override collision? Is at least one body dynamic?
-  if (!bodyB.ShouldCollide(bodyA)) {
-    return;
   }
 
   // Check user filtering.
