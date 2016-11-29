@@ -4077,7 +4077,7 @@ box2d.b2ParticleSystem.ReactiveFilter.prototype.m_flagsBuffer = null;
  * @param {number} index
  */
 box2d.b2ParticleSystem.ReactiveFilter.prototype.IsNecessary = function(index) {
-  return (this.m_flagsBuffer[index] & box2d.b2ParticleFlag.b2_reactiveParticle) !== 0;
+  return (this.m_flagsBuffer.data[index] & box2d.b2ParticleFlag.b2_reactiveParticle) !== 0;
 }
 
 /**
