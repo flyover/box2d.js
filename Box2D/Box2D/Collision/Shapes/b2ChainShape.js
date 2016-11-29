@@ -377,14 +377,13 @@ box2d.b2ChainShape.prototype.SetupDistanceProxy = function(proxy, index) {
     box2d.b2Assert(0 <= index && index < this.m_count);
   }
 
-  proxy.m_buffer[0].Copy(this.m_vertices[index]);
-  if (index + 1 < this.m_count) {
-    proxy.m_buffer[1].Copy(this.m_vertices[index + 1]);
-  } else {
-    proxy.m_buffer[1].Copy(this.m_vertices[0]);
-  }
-
   proxy.m_vertices = proxy.m_buffer;
+  proxy.m_vertices[0].Copy(this.m_vertices[index]);
+  if (index + 1 < this.m_count) {
+    proxy.m_vertices[1].Copy(this.m_vertices[index + 1]);
+  } else {
+    proxy.m_vertices[1].Copy(this.m_vertices[0]);
+  }
   proxy.m_count = 2;
   proxy.m_radius = this.m_radius;
 }
